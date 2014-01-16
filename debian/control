@@ -1,0 +1,21 @@
+Source: libsequence
+Section: devel
+Priority: optional
+Maintainer: Kevin Thornton <krthornt@uchicago.edu>
+Standards-Version: 3.5.8
+Build-Depends: debmake, libboost-dev
+
+Package: libsequence1-dev
+Architecture: any
+Depends: libsequence1, libc6-dev, libboost-dev
+Provides: libsequence-dev
+Conflicts: libsequence-dev
+Description: development files (headers) for libsequence
+ Missing
+
+Package: libsequence1
+Architecture: any
+Depends: ${shlibs:Depends}
+Description: a C++ class library for population genetics and molecular evolution
+ Missing
+

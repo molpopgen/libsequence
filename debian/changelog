@@ -1,0 +1,219 @@
+libsequence (1.6.4-1) unstable; urgency=medium
+  * fixed case-sensitivity bug in haplotype statistics
+  * many minor changes--see changelog for details
+libsequence (1.6.3-1) unstable; urgency=low
+  * Improvements to template design for coalescent simulations w/respect to random-number-generator independence
+  * Added interface for simulating partially-linked fragments under neutral models
+  * implementation classes how pointed to by std::auto_pointer.  should be more exception-safe
+  * Added Snn test code (Hudson)
+  * Added code for stochastic simulation of the trajectory of a benficial allele, a la Coop & Griffiths
+  * Various code cleanups
+ -- Kevin Thornton <kt234@cornell.edu>  Sun, 22 Jun 2006 16:38:00 -0600	
+libsequence (1.6.2-1) unstable; urgency=medium
+  * Fixed bug in pairwise LD stats in presence of outgroup
+  * Fixed rare segfault in calculation of sliding windows along polymorphism tables
+  * Fixed numerical precision error when checking population weights in class FST
+ -- Kevin Thornton <kt234@cornell.edu>  Sun, 06 Mar 2006 16:38:00 -0600
+libsequence (1.6.0-1) unstable; urgency=low
+  * PolySNP now returns "nan" for summary statistics that need an outgroup, but the outgroup is not present
+  * Bug fix: when a PolySNP/PolySIM object was constructed from a SimData object that has 0 segregating sites, the value of 0 was returned for number of haplotypes.  It now correctly returns 1.
+ -- Kevin Thornton <kt234@cornell.edu>  Fri, 29 Jul 2005 09:38:00 -0600
+libsequence (1.5.9-1) unstable; urgency=low
+  * Binary compatibility broken with previous releases
+  * Member functions of Sequence::SimData are now declared as virtual so that this class can be used as a base for reading in data from other infinitely-many sites coalescent simulation programs.  The main rationale for this is compatibility with Sequence::PolySIM to analyze these sorts of data
+  * Schemes for throwing mutations down on ancestral recombination graphs are now more efficient
+ -- Kevin Thornton <kt234@cornell.edu>  Fri, 29 Jul 2005 09:38:00 -0600
+libsequence (1.5.8-1) unstable; urgency=medium
+   * Undid the change to crossover routines for coalescent simulations that appeared in 1.5.7.  Turns out it caused massive memory consumption.
+   * fixed this file so that debbuild works
+ -- Kevin Thornton <kt234@cornell.edu>  Fri, 29 Jul 2005 09:38:00 -0600
+libsequence (1.5.7-1) unstable; urgency=low
+   * More efficient crossover routine in coalescent simulation
+   * Bug in Sequence::SimpleSNP fixed (error was in call to RemoveInvariantColumns in member function read)
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.6-1) unstable; urgency=low
+   * Definition of Sequence::Alignment::RemoveFixedOutgroupInsertions is no longer recursive
+   * added options to configure script to allow cpu-specific optimizations on powerpc systems running OS X with gcc
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.5-1) unstable; urgency=medium
+   * fixed bug in preprocessing of data in class Sequence::PolySNP.  The preprocessing itself was fine (i.e. no calculations were incorrect).  The problem was that not all functions ensured that preprocessing had occurred.  This meant that, if you did calculations in a certain order, you would get nonsense results for some statistics (i.e. Rm).  Now, preprocessing is done automaticall upon object construction
+   * Definitions of Minrec are now non-recursive and moved into PolySNP.cc/PolySIM.cc from src/Recombination.cc
+   * changed type of Sequence::marginal::nsam from const to mutable, to allow default copy operation
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.4-1) unstable; urgency=medium
+   * old coalescent code removed
+   * new coalescent code added
+   * Boost-based random number system removed
+   * simple wrappers for gsl-based RNG system added
+   * minor bugfixes to function objects that no-one uses
+   * binary compatibility broken w/previous library versions due to removal of old  simulation code
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.3-1) unstable; urgency=medium
+   * Fixed bug in class Sequence::PolySNP::ThetaPi() for sites where all but 1 individual had missing data
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.2-1) unstable; urgency=low
+   * Fixed bug that wasn't properly fixed in 1.5.1 re: sliding windows
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.5.0-1) unstable; urgency=low
+   * Fixed implicit typename in Sequence/bits/descriptiveStats.hpp
+   * Fixed bug in documentation of formula for PolySNP::ThetaPi()
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.4.9-1) unstable; urgency=low
+   * Fixed bug in HKA.cc that resulted from a > when a >= was required
+   * Fixed several declarations that were not standard C++ and prevented
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+compilation under gcc 3.4
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 29 Nov 2004 20:58:00 -0600
+libsequence (1.4.8-1) unstable; urgency=high
+   * Serious bug in accounting derived states is now fixed.
+ -- Kevin Thornton <kt234@cornell.edu>  Wed, 03 Nov 2004 16:42:00 -0600
+libsequence (1.4.7-1) unstable; urgency=low
+   * Wall's Q is now properly set to -1 by Sequence::PolySIM when the number of segregating sites < 2
+ -- Kevin Thornton <kt234@cornell.edu>  Wed, 15 Sep 2004 16:42:00 -0600
+libsequence (1.4.6-1) unstable; urgency=low
+   * minor bugfixes in calculation of HKA statistics
+ -- Kevin Thornton <kt234@cornell.edu>  Wed, 15 Sep 2004 16:42:00 -0600
+libsequence (1.4.4-1) unstable; urgency=low
+   * added #include <cctype> to source files using toupper, which didn't already include it.  The lack of including this file caused compilation to fail on some system (shouldn't it have done so on all systems?)
+ -- Kevin Thornton <kt234@cornell.edu>  Thu, 8 Jul 2004 08:31:00 -0600
+libsequence (1.4.3-1) unstable; urgency=medium
+   * bugfixes : in PolySNP.cc, NumSingletons and NumExternalMutations could give incorrect results with missing data (in cases were all but 1 individual is missing).  This affected the output of Fu & Li statistics.  
+   * class SimData now does output exactly like hudson's ms program when there are 0 segregating sites
+   * class SimData can now be read in from C-style FILE *.
+   * made implementations of routines for coalescent simulation a little more robust to uniform random number generators that return 1.0
+   * in Alignment.hpp, an exception specification in a declaration did not match the definition.  Fixed.
+ -- Kevin Thornton <kt234@cornell.edu>  Fri, 4 Jun 2004 11:02:00 -0600
+libsequence (1.4.2-1) unstable; urgency=medium
+   *removal of unused variables in several place
+   *efficiency improvement in Sequence::NumDiffs() (in Comparisons.hpp)
+   *updated Sequence::uniform (in BoostRandomNumbers.hpp) so that it compiles and is compatible with std::random_shuffle
+   *new functions added to namespace Alignment and PolyTableFunctions.hpp
+   *added several new headers providing template functions for simple statistics
+   *fixed some bugs in Sequence::SimpleSNP (sample size now printed correctly upon output when there is an outgroup)
+   *fixed bug in Recombination::Disequilibrium (frequency filter now works, case-insensitivity implemented).  And, for D and D', the 11 gamete type is in terms of the minor (or derived) allele
+   *fixed use of assert() to deal with compiler warnings
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 12 May 2004 15:02:00 -0600
+libsequence (1.4.1-1) unstable; urgency=high
+   * PolySNP -- member functions explicitly check for gaps in snps
+   * PolySNP -- NumExternalMutations() was incorrect, leading to bad values for Fu/Li statistics with outgroup.  Fixed.
+   * PolySNP/PolySIM -- bugs fixed in calculations of Wall's statistics.  Q was simply incorrect, and all statistics were incorrect for polymorphism tables constructed with invariant ingroup data
+   * SimpleSNP -- fixed segfault on input for files containing outgroup data
+   * PolyTableFunctions.hpp added, contains functions to manipulate PolyTable objects in non-const ways
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 26 Apr 2004 12:12:00 -0600
+libsequence (1.4.0-1) unstable; urgency=medium
+   * PolySNP::FuLiD() is now correct, no longer returning -inf
+   * PolySites::read() is now public
+   * PolyFunctional.hpp is now included
+ -- Kevin Thornton <kt234@cornell.edu>  Fri, 16 Apr 2004 12:26:00 -0600
+libsequence (1.3.9-1) unstable; urgency=medium
+   * Sequence::Translate no longer prints codons to stdout
+ -- Kevin Thornton <kt234@cornell.edu>  Mon, 12 Apr 2004 09:10:00 -0600
+libsequence (1.3.8-1) unstable; urgency=medium
+
+   * fixed bug in Sequence::PolyTable::Binary() that caused the transformed data not to be assigned
+   * fixed Sequence::SimData::read() so that input from std::istreams works now.  The member function fromstdin() had no problems (and is faster anyways)
+   * non-const operator[] added to PolyTable
+   * public memeber assign() added to AlignStream
+   * print() defined for Clustalw
+   * removed Hudson's code (since in practice everyone just pipes the results of ms to another program anyways...)
+   * libsequence should now be case-preserving of input data
+   * PolyTable now has assign() member functions, to mimic std::vector
+   * PolyTableSlice, a template class for sliding window analyses, is completely re-written and easier to use
+   * updates to documentation
+ -- Kevin Thornton <kt234@cornell.edu>  Thu, 08 Apr 2004 19:41:00 -0600
+libsequence (1.3.7-1) unstable; urgency=low
+   * SimData::fromstdin() now returns the return value from the last call to fscanf.  This makes the termination condition for reading input more transparant.
+   * The header file <Sequence/BoostRandomNumbers.hpp> was updated to be compatible with the latest boost release (1.31.0), while also maintaining compatibility with previous releases
+ -- Kevin Thornton <kt234@cornell.edu>  Wed, 11 Feb 2004 10:25:00 -0600
+libsequence (1.3.6-1) unstable; urgency=low
+   * new PolyTable constructor to allow construction from range of PolyTable::const_site_iterator	
+   * new header <Sequence/shortestPath.hpp> to facilitate dealing w/differences between codons
+   * improvements to documentation
+   * cleaned up implementation of Sequence::FST and Sequence::PolySNP::DepaulisVeuilleStatistics
+ -- Kevin Thornton <kt234@cornell.edu>  Sun, 18 Jan 2004 14:52:00 -0600
+libsequence (1.3.5-1) unstable; urgency=high
+	
+   * BugFix!: Rm (Hudson & Kaplan 1985) is now correct in Sequence::PolySIM (it was off by one for some data sets)
+   * new class, Sequence::coalNoRec implements a coalescent sim w/o recombination
+ -- Kevin Thornton <kt234@cornell.edu>  Sun, 18 Jan 2004 14:52:00 -0600
+libsequence (1.3.4-1) unstable; urgency=medium
+	
+   * Many changes.  New PolyTable functions and iterators.
+   * Sequence::Seq now inherits from std::pair<string,string>
+   * Definitions oftemplates in Sequence::Alignment cleaned up
+   * Ka/Ks code went through some implementation cleanup
+   * autoconf macros now used to help check for C++ headers
+   * now depends on BOOST (http://www.boost.org) to compile
+ -- Kevin Thornton <kt234@cornell.edu>  Sun, 01 Jan 2004 16:00:00 -0600
+libsequence (1.3.3-1) unstable; urgency=medium
+
+  * Added exception specifications
+  * Cleaned up some template declarations
+  * Sequence::Alignment::GetData now do more elegant checking for the existence of input files
+  * headers are now in the subdir Sequence!!
+	
+ -- Kevin Thornton <krthornt@uchicago.edu>  Sun, 27 Oct 2003 11:46:00 -0600
+libsequence (1.3.2-1) unstable; urgency=low
+
+  * Iterators added to Sequence::AlignStream<T>
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Thu, 07 Aug 2003 09:00:00 -0600
+libsequence (1.3.1-1) unstable; urgency=low
+
+  * Updated Sequence::FST member functions.  Documentation fixes
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Teu, 05 Aug 2003 13:00:00 -0600
+libsequence (1.3.0-1) unstable; urgency=low
+
+  * Bugfix for Sequence::Comparisons::NumDiffS()--now skips missing data as it should.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Teu, 09 Jun 2003 15:00:00 -0600
+libsequence (1.2.9-1) unstable; urgency=low
+
+  * Bugfix for PolySNP::ThetaW().  Caused the denominator to be incorrectly calculated.  It only occured when running my 'compute' program (from analysis 0.4.8) on several files at once. May have been gcc-3.3 specific, but now it works more generally.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Sat, 21 Jun 2003 12:30:00 -0600
+libsequence (1.2.8-1) unstable; urgency=low
+
+  * Restore compatibility with gcc 2.95
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Sat, 7 Jun 2003 15:20:00 -0600
+libsequence (1.2.7-1) unstable; urgency=low
+
+  * Fixed bug that prevented SeqUtilities.hpp from being included
+  * Added label(unsigned) to Sequence::Hudson2001	
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Sum, 1 Jun 2003 10:20:00 -0600
+libsequence (1.2.6-1) unstable; urgency=low
+
+  * Bugfix release: Fixed bug in PolySNP::ThetaH (PolySIM::ThetaH was fine)
+  * Sequence::PolySNP now preprocesses state count info for segregating sites, resulting in a big runtime improvement for sequence data
+  * Routines to calculate Rmin are no longer recursive.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Wed, 21 May 2003 09:20:00 -0600
+libsequence (1.2.5-1) unstable; urgency=low
+
+  * Bugfix release: fixes Sequence::PolySNP::WallStats() for the case when S < 2.  Fixed several missing #include directives, too 
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Mon, 19 May 2003 13:10:00 -0600
+libsequence (1.2.4-1) unstable; urgency=low
+
+  * Bugfix release: fixes Sequence::PolySNP::WallStats() for the case when S < 2.  Fixed several missing #include directives, too 
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Fri, 9 May 2003 08:30:00 -0600
+libsequence (1.2.3-1) unstable; urgency=low
+
+  * Bugfix release to fix segfaults on OS X.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Fri, 9 May 2003 08:30:00 -0600
+libsequence (1.2.2-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Sat, 3 May 2003 16:27:39 -0600
+
+libsequence (1.2.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Kevin Thornton <krthornt@uchicago.edu>  Mon, 31 Mar 2003 16:23:39 -0600

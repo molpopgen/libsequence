@@ -1,0 +1,21 @@
+Begin3
+Title:		libsequence2
+Version:	@VERSION@
+Entered-date:	@ISODATE@
+Description:	a library for various sequence I/O operations
+		@configure_input@
+		Please edit libsequence2.lsm.in to fix the Keywords and
+		Primary-site entries, add several more lines of
+		description here if appropriate, and to delete these
+		instructions.
+Keywords:	[substitute your keywords here]
+Author: 	k-thornton@uchicago.edu (Kevin Thornton)
+Maintained-by:	k-thornton@uchicago.edu (Kevin Thornton)
+Primary-site:	metlab.unc.edu pub/Linux/apps/some/directory
+		31k libsequence2-@VERSION@.tar.gz
+		500  libsequence2.lsm
+Alternate-site: 
+Original-site:  
+Platforms:      
+Copying-policy:	GNU copyleft
+End

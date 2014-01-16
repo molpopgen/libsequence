@@ -1,0 +1,2181 @@
+2003-05-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* doc/libsequence.doxygen, debian/changelog, configure, configure.in:
+	package version 1.2.6
+
+	* src/PolySNP.cc:
+	Added preprocessing functions to _PolySNPImpl.  Basically, it stores the state count information for each site, making calculation of summary statistics linear operations (in S) rather than O(n x S).  A bug in ThetaH was also fixed which resulted in the statistic being 6x larger than it should be.
+
+2003-05-20  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Recombination.cc: removed unused variables from Minrec routines
+
+	* src/Recombination.cc:
+	definitions of Recombination::Minrec are no longer recursive
+
+2003-05-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* doc/libsequence.doxygen, debian/changelog, configure, configure.in:
+	package 1.2.5
+
+	* src/Comeron95.cc: added missing #include<cassert>
+
+2003-05-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Hudson2001.cc:
+	removed a free() to a pointer that was never malloced!  oops...
+
+	* src/ChangeLog, ChangeLog: updated
+
+	* debian/changelog, aclocal.m4, configure, configure.in:
+	package version up to 1.2.4
+
+	* doc/libsequence.doxygen: package up to 1.2.4
+
+	* src/PolySNP.cc:
+	fixed WallStats so that nothing is computed when the number of seg. sites is <= 1
+
+2003-05-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* debian/changelog, aclocal.m4, configure, configure.in:
+	package version up to 1.2.4
+
+	* doc/libsequence.doxygen: package up to 1.2.4
+
+	* src/PolySNP.cc:
+	fixed WallStats so that nothing is computed when the number of seg. sites is <= 1
+
+2003-05-15  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Alignment.tcc: added #include<limits>
+
+	* src/Alignment.hpp: removed #include<limits>
+
+	* src/Comparisons.cc: added #include<string>
+
+	* src/Comparisons.cc: added #include<cassert>
+
+	* src/Comeron95.cc: added #include<memory>
+
+2003-05-14  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/SeqUtilities.hpp: added macros to prevent recursive #inlude
+
+2003-05-09  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* libsequence.spec:
+	added first draft of a working spec file for RPM building
+
+	* src/ChangeLog, ChangeLog, configure, configure.in:
+	package version 1.2.3, a bugfix release
+
+	* debian/changelog: package 1.2.3
+
+	* doc/libsequence.doxygen: package version to 1.2.3
+
+	* src/PolyTable.cc:
+	added resize() to 2 PolyTable::Assign routines to fix segfault problem on OS X
+
+2003-05-09  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* debian/changelog: package 1.2.3
+
+	* doc/libsequence.doxygen: package version to 1.2.3
+
+	* src/PolyTable.cc:
+	added resize() to 2 PolyTable::Assign routines to fix segfault problem on OS X
+
+2003-05-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* doc/libsequence.doxygen: update version to 1.2.2
+
+2003-05-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in:
+	added missing directories to documentation so that they're included in "make dist"
+
+	* debian/changelog: debian package version 1.2.2-1
+
+	* configure, configure.in: package version 1.2.2
+
+	* src/Alignment.tcc:
+	removed repeated calls to vector.size() in RemoveGaps()
+
+2003-04-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/AlignStream.hpp, src/AlignStream.tcc, src/Alignment.hpp, src/Alignment.tcc, src/AlignmentSpecializations.cc, src/Clustalw.hpp, src/Clustalw.tcc, src/ClustalwSpecializations.cc, src/CodonTable.cc, src/CodonTable.hpp, src/Comeron95.cc, src/Comeron95.hpp, src/Comparisons.cc, src/Comparisons.hpp, src/ComplementBase.cc, src/ComplementBase.hpp, src/FST.cc, src/FST.hpp, src/Fasta.cc, src/Fasta.hpp, src/FastaExplicit.cc, src/FastaExplicit.hpp, src/Grantham.cc, src/Grantham.hpp, src/GranthamWeights.cc, src/GranthamWeights.hpp, src/Hudson2001.cc, src/Hudson2001.hpp, src/Kimura80.cc, src/Kimura80.hpp, src/PathwayHelper.cc, src/PathwayHelper.hpp, src/PolySIM.cc, src/PolySIM.hpp, src/PolySNP.cc, src/PolySNP.hpp, src/PolySites.cc, src/PolySites.hpp, src/PolySites.tcc, src/PolyTable.cc, src/PolyTable.hpp, src/PolyTableManip.cc, src/PolyTableManip.hpp, src/PolyTableSlice.hpp, src/Recombination.cc, src/Recombination.hpp, src/RedundancyCom95.cc, src/RedundancyCom95.hpp, src/Seq.cc, src/Seq.hpp, src/SeqEnums.hpp, src/SeqExceptions.hpp, src/SeqUtilities.hpp, src/SimData.cc, src/SimData.hpp, src/SimParams.cc, src/SimParams.hpp, src/SingleSub.cc, src/SingleSub.hpp, src/Sites.cc, src/Sites.hpp, src/ThreeSubs.cc, src/ThreeSubs.hpp, src/Translate2.cc, src/Translate2.hpp, src/TwoSubs.cc, src/TwoSubs.hpp, src/Unweighted.cc, src/Unweighted.hpp, src/WeightingSchemes.hpp, src/ms_interface.cc, src/ms_interface.hpp, src/ms_structs.h, src/msfunc.c, src/msfunc.h, src/rand1.c, src/rand1.h, src/stateCounter.cc, src/stateCounter.hpp, src/streec.c, src/streec.h:
+	used astyle to reformat all the code, --style=gnu
+
+2003-04-07  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Comeron95.hpp: updated dox to refer to .hpp rather than .h
+
+	* src/Clustalw.hpp:
+	added documentation about types with which this class can be instantiated
+
+2003-04-06  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Alignment.tcc, src/AlignmentSpecializations.cc:
+	removed calls to std::vector::erase() and std::vector::clear(), since that will be done implicity by a desctructor call when the fuctions exit
+
+	* src/Alignment.tcc:
+	UngappedLength now stops evaluating a site after the first gap character is encountered.
+
+	* src/Seq.cc: updated main page documentation
+
+	* src/Alignment.tcc, src/AlignmentSpecializations.cc:
+	documented specializations.  RemoveGaps now stops evaluating a site after the first gap character is encounterd (previously, it iterated through the rest of the data).
+
+	* src/FastaExplicit.cc:
+	added doxygen tags.  Also, ClustalW<Fasta> is now instantiated first, which results in smaller code size
+
+	* src/AlignStream.hpp, src/AlignStream.tcc, src/Alignment.hpp, src/AlignmentSpecializations.cc, src/Clustalw.hpp, src/Clustalw.tcc, src/ClustalwSpecializations.cc, src/CodonTable.hpp, src/Comeron95.hpp, src/Comparisons.hpp, src/ComplementBase.hpp, src/FST.hpp, src/Fasta.hpp, src/FastaExplicit.hpp, src/Grantham.hpp, src/GranthamWeights.hpp, src/Hudson2001.hpp, src/Kimura80.hpp, src/PathwayHelper.hpp, src/PolySIM.hpp, src/PolySNP.hpp, src/PolySites.hpp, src/PolyTable.hpp, src/PolyTableManip.hpp, src/PolyTableSlice.hpp, src/Recombination.hpp, src/RedundancyCom95.hpp, src/Seq.hpp, src/SeqEnums.hpp, src/SeqExceptions.hpp, src/SimData.hpp, src/SimParams.hpp, src/SingleSub.hpp, src/Sites.hpp, src/ThreeSubs.hpp, src/Translate2.hpp, src/TwoSubs.hpp, src/Unweighted.hpp, src/ms_interface.hpp, src/stateCounter.hpp:
+	added \file and @brief documentation
+
+2003-04-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Clustalw.hpp, src/Clustalw.tcc, src/ClustalwSpecializations.cc, src/Makefile.am, src/Makefile.in:
+	added specializations to ClustalW for std::string
+
+	* src/Alignment.hpp, src/Alignment.tcc, src/AlignmentSpecializations.cc, src/Makefile.am, src/Makefile.in:
+	added new file with specializations for namespace Alignment for std::strings
+
+2003-04-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* examples/gestimator.cc:
+	modified example to show how to use explicitly-instantiated functions from namespace Sequence::Alignment
+
+	* src/ChangeLog, ChangeLog: *** empty log message ***
+
+2003-04-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/FastaExplicit.cc, src/FastaExplicit.hpp:
+	added Sequence:: to declaration of types for the instantiation of ClustalW<Fasta>
+
+	* src/FastaExplicit.hpp:
+	rearranged code so that #include -ing with non-GNU compilers does nothing at all
+
+	* src/FastaExplicit.hpp:
+	added documentation on how to use this file in portable code
+
+	* src/FastaExplicit.cc, src/FastaExplicit.hpp, src/Makefile.am, src/Makefile.in:
+	added explicit instantiations of templates for Sequence::Fasta I/O routines
+
+	* examples/Makefile: added FastaExplicit example
+
+	* examples/FastaExplicit.cc: added doxygen tags
+
+	* src/Alignment.hpp:
+	modified declarations of Trim and TrimComplement to match Alignment.tcc
+
+	* examples/FastaExplicit.cc: added new example file
+
+	* src/PolySIM.cc, src/PolySIM.hpp, src/PolySNP.cc, src/PolySNP.hpp:
+	replaced private data with pointer to implementation details
+
+	* src/Alignment.tcc: cleaned up Trim and TrimComplement code
+
+	* src/Seq.cc, src/Seq.hpp: sddesd substr(unsigned)
+
+2003-04-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* FastaExplicit.cc, FastaExplicit.hpp:
+	added Sequence:: to declaration of types for the instantiation of ClustalW<Fasta>
+
+	* FastaExplicit.hpp:
+	rearranged code so that #include -ing with non-GNU compilers does nothing at all
+
+	* FastaExplicit.hpp:
+	added documentation on how to use this file in portable code
+
+	* FastaExplicit.cc, FastaExplicit.hpp, Makefile.am, Makefile.in:
+	added explicit instantiations of templates for Sequence::Fasta I/O routines
+
+	* Alignment.hpp:
+	modified declarations of Trim and TrimComplement to match Alignment.tcc
+
+	* PolySIM.cc, PolySIM.hpp, PolySNP.cc, PolySNP.hpp:
+	replaced private data with pointer to implementation details
+
+	* Alignment.tcc: cleaned up Trim and TrimComplement code
+
+	* Seq.cc, Seq.hpp: sddesd substr(unsigned)
+
+2003-04-02  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* FST.cc, FST.hpp: added ability to deal with an outgroup sequence
+
+	* Seq.cc: fixed error in doc intro
+
+	* FST.cc, FST.hpp: added some typedefs for readability
+
+	* FST.cc: removed an unecessary #include
+
+	* FST.cc, FST.hpp:
+	added private operator=.  The private data for this class are no longer a pointer to data, but are now a 2D vector of type: vector< vector<Sequence::stateCounter> >, and the constructor fills this vector with the state information for every site in every pop.  This info is used in all future calculations.  These makes all calculations much faster
+
+	* FST.cc:
+	reduced the number of times calculations are perfomed on the data by a factor
+	of 0.5*("n choose 2")
+
+	* stateCounter.cc, stateCounter.hpp:
+	made gapchar mutable so that default copy constructor/operator= work
+
+	* PolySNP.cc: cleanup
+
+	* PolySNP.cc:
+	applied optimizations to WallStats() from PolySIM::WallStats()
+
+	* PolySIM.cc: made a simplification to WallStats(), cleaned up code
+
+	* PolySIM.cc, PolySIM.hpp, PolySNP.cc, PolySNP.hpp:
+	optimized calculation of Wall's statistics in PolySNP.  Also made calculations for these statistics virtual in PolySNP, and provided faster versions in PolySIM
+
+2003-03-28  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SeqUtilities.hpp: changed a variable name
+
+	* SeqUtilities.hpp:
+	modifed to allow case sentitive/insensitive matching
+
+	* SeqUtilities.hpp:
+	reduced validDNASeq and validPepSeq to 1 function, validSeq
+
+	* SeqUtilities.hpp: fixed dox for pep_alphabet (copy/past oops..)
+
+	* SeqUtilities.hpp: added alphabets as contants in namespace Sequence
+
+2003-03-27  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTableSlice.hpp: removed type in doxygen tags
+
+	* SeqUtilities.hpp: made alphabets arguments
+
+	* SeqUtilities.hpp: added X and x as additional DNA characters
+
+	* SeqUtilities.hpp: added more documentation
+
+	* Makefile.am, Makefile.in, SeqUtilities.hpp: SeqUtilities added
+
+2003-03-26  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: removed a temporary variable from Seq::Subseq()
+
+2003-03-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: cleanup
+
+	* Seq.cc: made implementation of Seq::Subseq more sensible
+
+	* ComplementBase.cc, ComplementBase.hpp, Makefile.am, Makefile.in, Seq.cc, SeqFunctors.cc, SeqFunctors.hpp:
+	a little re-organization of the source for function objects
+
+	* stateCounter.hpp:
+	changed documentation--class is now in group functors
+
+	* Seq.cc:
+	Seq::UngappedLength() now uses std::for_each and Sequence::stateCounter
+
+	* SeqFunctors.hpp:
+	added doxygen tags to ComplementBase to declare it in the functors group
+
+	* SeqFunctors.hpp: added doxygen tags
+
+	* Makefile.am, Makefile.in, Seq.cc, SeqFunctors.cc, SeqFunctors.hpp:
+	added new files.  Seq.cc changed to use ComplementBase function object and STL algorithms for Seq::Complement() and Seq::Revcom()
+
+	* Grantham.hpp, Hudson2001.hpp, PathwayHelper.hpp, PolySNP.hpp, PolySites.cc, PolyTable.hpp, Recombination.hpp, Seq.cc, SeqEnums.hpp, SimData.hpp:
+	fixed more errors in documentation (headers were referred to as .h instead of .hpp)
+
+	* Seq.cc:
+	fixed bug in Revcom that resulted in non-sensical characters ending up in the string
+
+2003-03-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SeqEnums.hpp, SeqExceptions.hpp, SimData.hpp, SimParams.hpp, SingleSub.hpp, Sites.cc, Sites.hpp, ThreeSubs.hpp, Translate2.cc, Translate2.hpp, TwoSubs.hpp, WeightingSchemes.hpp, ms_interface.hpp, AlignStream.hpp, Alignment.hpp, Clustalw.hpp, CodonTable.cc, Comeron95.cc, Comeron95.hpp, Comparisons.hpp, Fasta.hpp, Grantham.hpp, GranthamWeights.cc, GranthamWeights.hpp, Kimura80.hpp, Makefile.in, PathwayHelper.hpp, PolySIM.hpp, PolySNP.hpp, PolyTable.hpp, PolyTableManip.hpp, PolyTableSlice.hpp, Recombination.hpp, RedundancyCom95.cc, RedundancyCom95.hpp, Seq.cc, Seq.hpp:
+	removed "using namespace Sequence" from all headers
+
+	* Hudson2001.cc, Hudson2001.hpp: implemented print
+
+	* Makefile.am: added PolySites.tcc
+
+	* PolySites.tcc: implemetation of Sequence::PolySites template members
+
+	* PolySites.hpp, PolySites.cc: added templated constructor
+
+2003-03-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.hpp, Alignment.tcc: removed dependency on macro
+
+	* Comparisons.cc, Makefile.am, Makefile.in, SeqDefines.hpp:
+	removed use of macros to test for odd or even values
+
+	* FST.cc: fixed bug in documentation
+
+	* Fasta.cc, Fasta.hpp, Hudson2001.cc, Hudson2001.hpp, PolySites.cc, PolySites.hpp, PolyTable.cc, PolyTable.hpp, Seq.cc, Seq.hpp, SimData.cc, SimData.hpp:
+	went back to allowing the compiler to write copy constructor and operator=.  There are no pointer data in any of these classes, so the default (compiler-generated) code should suffice.
+
+	* stateCounter.cc, stateCounter.hpp:
+	added stateCounter::ndna for error checking
+
+	* FST.cc, FST.hpp: added FST::nstate for error checking
+
+2003-03-20  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* stateCounter.cc, stateCounter.hpp: updated documentation
+
+	* Fasta.cc, Makefile.in, PolySIM.cc, PolySNP.cc, Recombination.cc, SimData.cc, stateCounter.cc:
+	general code cleanup
+
+	* Poly.hpp, Poly.cc: removed deprecated class Sequence::Poly
+
+	* stateCounter.cc: added some const correctness to the calss
+
+	* stateCounter.hpp: added some const correctness to the class
+
+	* Makefile.am: removed Poly.cc, Poly.hpp.  Change .so to 11:0:0
+
+	* PolyTable.cc:
+	changed Assign() to require fewer function calls to std::vector
+
+	* PolySites.cc: fixed missing ;
+
+	* PolySites.cc: replaced std::endl with '\n';
+
+	* Fasta.cc:
+	changed std::endl to '\n' in print().  no need to flush every time (giggle)
+
+	* PolySNP.hpp: fixed error in  a code comment
+
+2003-03-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc:
+	the '.' character should now be handled correctly (I hope...)
+
+	* SimData.cc, SimData.hpp: simplified class and implemented print()
+
+	* SeqExceptions.hpp: removed silly exception classes that I never used
+
+	* Seq.cc: updated documentation
+
+	* Fasta.cc: changed which exception is thrown
+
+	* FST.hpp, FST.cc:
+	added routines to count # shared, private, and fixed polymorphisms in data
+
+2003-03-17  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* stateCounter.cc, stateCounter.hpp: source files to new class added
+
+	* PolySNP.cc, PolySites.cc, PolySites.hpp, PolyTable.cc, Recombination.cc:
+	upgraded to use stateCounter
+
+	* Poly.cc: removed msstats.cc as an example
+
+	* Makefile.am, Makefile.in: added new source files
+
+	* FST.cc, FST.hpp: added new class to calcualte FST
+
+2003-03-14  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in, Poly.hpp, PolySIM.cc, PolySIM.hpp, PolySNP.cc, PolySNP.hpp:
+	added new Polymorphism analysis classes.  Much better--faster, more efficient, and easier to use.
+
+2003-03-12  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Clustalw.hpp, Fasta.hpp, GranthamWeights.hpp, Hudson2001.hpp, Makefile.in, PolySites.hpp, SeqExceptions.hpp, SimData.hpp, Unweighted.hpp:
+	removed unecessary word "virtual"
+
+2003-03-11  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ChangeLog: updated
+
+2003-03-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Clustalw.hpp, Clustalw.tcc: cleanup
+
+2003-03-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* doc/libsequence.doxygen: added .tcc as file suffix to search
+
+	* src/Clustalw.hpp, src/Clustalw.tcc: cleanup
+
+2003-02-28  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/AlignStream.hpp, src/AlignStream.tcc, src/Clustalw.hpp, src/Clustalw.tcc:
+	fixed problems in class design.  ClustalW now calls AlignStream constructor, and there is now a method to assign data to AlignStream<T>
+
+	* src/Makefile.am, src/Makefile.in: added .tcc files
+
+	* src/AlignStream.hpp, src/AlignStream.tcc, src/Alignment.hpp, src/Alignment.tcc, src/Clustalw.hpp, src/Clustalw.tcc:
+	changed templates to an interface (.hpp) and an implementation (.tcc) file for clarity
+
+	* src/Translate2.hpp: fixed bug in documentation
+
+2003-02-27  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/SimParams.cc: added #include<cctype>
+
+	* src/SimParams.hpp: added doxygen tags
+
+	* src/SimParams.cc, src/SimParams.hpp:
+	simplified this class a lot.  ms is likeley to change soon, and the command line will be very different in some cases, so these simplifications make things easier to read in, but will require a programmer to parse the command line him/her self if necessary
+
+	* src/CodonTable.cc:
+	removed unecessary sorting of return vector (its filled so that its sorted, so the extra call to std::sort was silly)
+
+2003-02-26  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Seq.cc: removed #include<iostream>
+
+	* src/SingleSub.cc, src/Sites.cc: removed #include<string>
+
+	* src/RedundancyCom95.cc: removed #include<stdlib>
+
+	* src/Recombination.cc: removed #include<utility>
+
+	* src/Comparisons.cc, src/Comeron95.hpp: removed #include<string>
+
+	* src/ThreeSubs.cc: removed #include<memory>, #include<string>
+
+	* src/TwoSubs.cc: removed #include<string>,#include<memory>
+
+	* src/ms_interface.cc: removed #include<iostream>
+
+	* src/AlignStream.hpp: deleted commented out code
+
+	* src/Kimura80.cc, src/Kimura80.hpp:
+	removed unecessary includes and unecessary object copying
+
+	* src/PolySites.cc: removed #include<cstdlib>
+
+	* src/GranthamWeights.hpp: removed #include<memory>
+
+	* src/Comeron95.cc: removed redundant include statements
+
+	* src/AlignStream.hpp: removed redunant #include<vector>
+
+	* src/GranthamWeights.cc, src/RedundancyCom95.cc:
+	updated to new Translate interface
+
+	* src/Translate2.cc, src/Translate2.hpp:
+	Translate() is now a range function that takes iterators as arguments
+
+	* src/CodonTable.cc, src/CodonTable.hpp:
+	reduced compilation dependencies, added std:: delcarations where needed, and improved speed a bit by changing how next position of search is incremented
+
+	* src/Seq.cc, src/Seq.hpp:
+	removed Seq::Reverse() because addition of iterators made it redundant with std::reverse() in <algorithm>
+
+2003-02-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Fasta.hpp, src/Fasta.cc: removed redundant constructor
+
+	* src/PolyTable.hpp: removed commented out code
+
+2003-02-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/ChangeLog, ChangeLog: updated
+
+	* src/Fasta.cc, src/Hudson2001.cc:
+	added some missing include statements
+
+	* Makefile.am, Makefile.in, configure, configure.in:
+	package version 1.1.9
+
+	* doc/libsequence.doxygen: update to version 1.1.9
+
+	* src/Makefile.am, src/Makefile.in: updated source lists
+
+	* src/Comeron95.hpp, src/Poly.cc, src/SimData.hpp:
+	added doxygen tags to example code
+
+	* src/PolyTable.cc, src/PolyTable.hpp, src/Seq.cc, src/Seq.hpp:
+	added iterators
+
+	* src/BaseComp.cc, src/BaseComp.hpp:
+	removed--these are now useless w/the addition of iterators to sequence::seq
+
+	* src/CodonTable.cc, src/CodonTable.hpp:
+	added functions to do codon counting
+
+	* examples/Makefile, examples/codons.cc, examples/gestimator.cc, examples/getopt.c, examples/getopt.h, examples/getopt1.c, examples/int_handler.cc, examples/int_handler.hpp, examples/msstats.cc:
+	added example files
+
+2003-02-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Fasta.cc, src/Hudson2001.cc:
+	added some missing include statements
+
+	* Makefile.am, Makefile.in, configure, configure.in:
+	package version 1.1.9
+
+	* doc/libsequence.doxygen: update to version 1.1.9
+
+	* src/Makefile.am, src/Makefile.in: updated source lists
+
+	* src/Comeron95.hpp, src/Poly.cc, src/SimData.hpp:
+	added doxygen tags to example code
+
+	* src/PolyTable.cc, src/PolyTable.hpp, src/Seq.cc, src/Seq.hpp:
+	added iterators
+
+	* src/BaseComp.cc, src/BaseComp.hpp:
+	removed--these are now useless w/the addition of iterators to sequence::seq
+
+	* src/CodonTable.cc, src/CodonTable.hpp:
+	added functions to do codon counting
+
+	* examples/Makefile, examples/codons.cc, examples/gestimator.cc, examples/getopt.c, examples/getopt.h, examples/getopt1.c, examples/int_handler.cc, examples/int_handler.hpp, examples/msstats.cc:
+	added example files
+
+2003-02-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* doc/libsequence.doxygen: updated package to 1.1.8
+
+	* ChangeLog, Makefile.in, configure, configure.in: package 1.1.8
+
+	* src/Recombination.cc, src/Recombination.hpp:
+	Generalized Disequilibrium() to handle sequence data.  also, D11 now represents disequilibrium b/w either high-frequency or derived sites
+
+	* src/PolyTableManip.cc, src/PolyTableManip.hpp: added documentation
+
+2003-02-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/Recombination.cc, src/Recombination.hpp:
+	Generalized Disequilibrium() to handle sequence data.  also, D11 now represents disequilibrium b/w either high-frequency or derived sites
+
+	* src/PolyTableManip.cc, src/PolyTableManip.hpp: added documentation
+
+2003-02-20  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* src/AlignStream.hpp, src/Alignment.hpp, src/BaseComp.cc, src/BaseComp.hpp, src/Clustalw.hpp, src/Comeron95.hpp, src/Comparisons.cc, src/Hudson2001.cc, src/Makefile.am, src/Makefile.in, src/PathwayHelper.cc, src/PolySites.cc, src/PolySites.hpp, src/PolyTable.cc, src/PolyTable.hpp, src/Seq.cc, src/Seq.hpp, src/SimData.cc, src/SimData.hpp, src/Translate2.cc, src/ms_interface.cc:
+	global change of unsigned int to unsigned.  Added PolyTableManip.  Library sonam up to 8:0:0
+
+	* src/PolyTableManip.cc, src/PolyTableManip.hpp: added
+
+	* src/Poly.hpp, src/Recombination.cc, src/Recombination.hpp, src/Poly.cc:
+	added new Minrec, generalized for sequence data
+
+2003-02-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ChangeLog, Makefile.in: added
+
+	* ChangeLog: removed
+
+	* src/ChangeLog: updated
+
+	* configure, configure.in: package 1.1.7
+
+	* src/Makefile.in: *** empty log message ***
+
+	* doc/libsequence.doxygen: updated project #
+
+	* src/Makefile.am: changed soversion to 7:0:0
+
+	* src/Poly.cc: cleanup
+
+	* src/SimData.hpp:
+	implemented virtual void Binary() to return immediately, since there's nothing to to in this case
+
+	* src/PolyTable.cc, src/PolyTable.hpp:
+	added Binary() routine from PolySites as virtual function
+
+	* src/PolySites.cc, src/PolySites.hpp: moved Binary() to base class
+
+	* src/Poly.hpp: made denominator functions private
+
+	* src/Poly.cc: some reformatting
+
+	* src/Makefile.am: Recombination.hpp is no longer installed
+
+	* src/Poly.cc: changed #include<float.h> to #include<cfloat>
+
+	* src/PolySites.cc: removed old, commented out constructor
+
+	* src/PolySites.cc: cleaned up Binary() dramatically
+
+	* src/PolySites.cc:
+	positions now stored as starting from 1, rather than indexes starting from 0
+
+2003-02-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.in: *** empty log message ***
+
+	* Makefile.am: changed soversion to 7:0:0
+
+	* Poly.cc: cleanup
+
+	* SimData.hpp:
+	implemented virtual void Binary() to return immediately, since there's nothing to to in this case
+
+	* PolyTable.cc, PolyTable.hpp:
+	added Binary() routine from PolySites as virtual function
+
+	* PolySites.cc, PolySites.hpp: moved Binary() to base class
+
+	* Poly.hpp: made denominator functions private
+
+	* Poly.cc: some reformatting
+
+	* Makefile.am: Recombination.hpp is no longer installed
+
+	* Poly.cc: changed #include<float.h> to #include<cfloat>
+
+	* PolySites.cc: removed old, commented out constructor
+
+	* PolySites.cc: cleaned up Binary() dramatically
+
+	* PolySites.cc:
+	positions now stored as starting from 1, rather than indexes starting from 0
+
+2003-02-18  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am:
+	updatead soversion to 6:0:0 to reflect change in Poly.hpp
+
+	* Poly.cc, Poly.hpp: removed NumPoly(SimData *)
+
+	* PolySites.cc:
+	Binary() now handles missing data in the polymorphism table
+
+2003-02-17  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.hpp: cleanup
+
+	* Hudson2001.cc:
+	fixed bug in read() that resulted in bad behavior (allocated to much space in the outgroup string)
+
+	* Hudson2001.cc:
+	replaced C-style arrays with vectors and strings, removing some random segfault problems that were occurring in the read() routine
+
+2003-02-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in: soversion up to 5.0.0
+
+	* Poly.cc, Poly.hpp:
+	most functions returning int now return unsigned int
+
+	* Recombination.cc, Recombination.hpp: Minrec now returns unsigned int
+
+2003-02-14  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.cc:
+	fixed bugs in RemoveMissing(), RemoveMultiHits(), ApplyFreqFilter()
+
+2003-02-09  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ChangeLog: *** empty log message ***
+
+	* Recombination.cc:
+	updated ProductMoment() to latest (more proper functor-like) version from cpptools
+
+	* Comeron95.cc: cleanup
+
+	* TwoSubs.cc: more cleanup
+
+	* TwoSubs.cc: cleanup of an ancient commented-out block
+
+	* Poly.cc:
+	removed simplification in ThetaW(SimData *) so that # polymorphic sites is now caclculated explicitly.  This will allow some laziness when people simulate for ascertained samples.
+
+	* PolyTable.cc:
+	fixed GetPositions and GetData to elimitate unecessary copying
+
+	* PolyTable.hpp: cleanup
+
+2003-02-09  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Recombination.cc:
+	updated ProductMoment() to latest (more proper functor-like) version from cpptools
+
+	* Comeron95.cc: cleanup
+
+	* TwoSubs.cc: more cleanup
+
+	* TwoSubs.cc: cleanup of an ancient commented-out block
+
+	* Poly.cc:
+	removed simplification in ThetaW(SimData *) so that # polymorphic sites is now caclculated explicitly.  This will allow some laziness when people simulate for ascertained samples.
+
+	* PolyTable.cc:
+	fixed GetPositions and GetData to elimitate unecessary copying
+
+	* PolyTable.hpp: cleanup
+
+2003-02-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.in: *** empty log message ***
+
+	* Makefile.am: updated .so number to reflect change in ms_interface.hpp
+
+	* ms_interface.cc, ms_interface.hpp: added empty() member function
+
+2003-02-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimParams.cc:
+	fixed bug in output: population structure model params were output as -c instead of -m (which is correct)
+
+2003-01-18  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc, Kimura80.cc:
+	computational checks are done using only finite(),for portability to OS X.  Numerical results are confirmed to be unchanged...
+
+	* Comeron95.cc, Kimura80.cc, Makefile.am, PolyTableSlice.hpp:
+	Comeron95/Kimura80.cc -- replaced isnan() with !finite()&&!isinf()
+
+2003-01-10  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimData.cc: removed mistaken cout call (oops!)
+
+	* PolyTable.cc: cleanup
+
+2003-01-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.cc, PolyTable.hpp: added PurgeMissing()
+
+	* Recombination.cc, Recombination.hpp: fixed doxygen bugs
+
+2002-12-31  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.hpp, PolySites.hpp, Translate2.hpp:
+	fixed bugs in doxygen tags
+
+2002-12-29  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc:
+	Changed calculation of Wall's statistics to deal with missing data by using my Different() routine instead of the std::string::operator==
+	C
+
+2002-12-28  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in, PolySites.cc, PolySites.hpp, PolyTable.cc, PolyTable.hpp:
+	package version 1.1.0
+
+	* Alignment.hpp: made changes so to replace Sequence::Seq::g
+
+2002-12-20  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Hudson2001.cc, Hudson2001.hpp:
+	moved inclusion of SeqException.hpp from header to source file
+
+	* Hudson2001.hpp: fixed typo in dox
+
+2002-12-18  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Recombination.cc, Recombination.hpp:
+	beginning to add generalized LD routines--Rsquared is done now
+
+2002-11-26  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc:
+	fixed bug in print() where position of 1st polymorphic site was off by 1
+
+2002-11-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Recombination.cc: added D' to Disequilibrium().  It works now!
+
+2002-11-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.in, Recombination.cc: removed D' from Disequlibrium fxn
+
+2002-11-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.cc: fixed type in documentation to PolyTable::Assign
+
+	* Poly.cc: fixed errors in documentation for Wall statistics
+
+	* Poly.cc: updated dox to Poly::Dnominator
+
+	* Poly.cc: generalized ThetaW for sequence data to handle missing data
+
+2002-11-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.cc: fiexed error in one version of PolyTable::Assign
+
+2002-11-13  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc: made change to documentation of freqfilter parameter
+
+	* PolySites.cc: fixed logic error in frequency filter implementation
+
+	* Makefile.am:
+	change to PolySites breaks binary compatibility, change library .so version to 2.11.0
+
+	* PolySites.cc, PolySites.hpp:
+	implemented frequency filter to class constructor
+
+2002-11-12  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimData.cc: added #include<cstdio>
+
+2002-11-11  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimParams.hpp, SimParams.cc: added functions to return sim parameters
+
+	* SimParams.cc, SimParams.hpp:
+	started added functions to return sim params
+
+	* SimData.cc: fixed compiler warning in SimData::fromstdin()
+
+2002-11-08  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am: updated library revision #
+
+	* SimData.cc: fixed bug in reading in of SimData
+
+	* SimData.cc, SimData.hpp:
+	added member function for faster simulation I/O
+
+2002-11-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc, PolySites.hpp: cleanup
+
+2002-09-13  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimParams.cc:
+	fixed to work with multiple versions of ms (seedline or not...)
+
+2002-09-10  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc: fixed boundary error in Wall statistics
+
+	* Poly.cc, Poly.hpp: implemented Wall's (1999) B, B', and Q statistics
+
+2002-09-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc: fixed bug in operator=
+
+	* Hudson2001.cc, Hudson2001.hpp: added function to check for outgroup
+
+2002-08-17  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ThreeSubs.hpp, TwoSubs.hpp, SingleSub.hpp, Grantham.hpp: updated dox
+
+	* GranthamWeights.cc, GranthamWeights.hpp:
+	updated to use functor interface of class Grantham
+
+	* Grantham.cc, Grantham.hpp: turned class into a function object
+
+	* Comeron95.cc: cleaup from changes to functors
+
+2002-08-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc, Makefile.am, Makefile.in, SingleSub.cc, SingleSub.hpp, ThreeSubs.cc, ThreeSubs.hpp, TwoSubs.cc, TwoSubs.hpp:
+	changed Ka/Ks classes to function objects, incremented library revision #
+
+	* Poly.hpp: removed private operator=..D'oh!
+
+	* Poly.hpp: added private operator=
+
+	* Translate2.cc: added std:: to string declarations
+
+	* GranthamWeights.cc: cleanup
+
+	* Recombination.cc:
+	changed some variable names that got parsed oddly (incorrectly?) on OS X and Sun systems
+
+	* PolySites.cc, PolySites.hpp, Hudson2001.cc, Hudson2001.hpp, SimData.cc, SimData.hpp:
+	appropriately defined operator=
+
+	* PolyTable.cc, PolyTable.hpp:
+	added operator= and operator== to deal w/dynamic data.  moved definitions of Assign()'s to .cc file
+
+	* Comeron95.hpp: added private copy constructor to prevent tom-foolery
+
+2002-08-15  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Fasta.cc: cleanup
+
+	* Makefile.am, SeqStream.hpp: remove SeqStream.hpp interface
+
+	* PolySites.cc, PolySites.hpp: removed constructor for vector<Seq>
+
+	* Fasta.cc, Fasta.hpp, Seq.cc, Seq.hpp:
+	collapsed SeqStream interface into Seq, following Item 33 of More Effective C++
+
+	* GranthamWeights.hpp: added std:: to declaration of auto_ptr's
+
+2002-08-12  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc, ThreeSubs.cc, TwoSubs.cc:
+	change declaration of auto_ptr to std::auto_ptr to make g++-3.1 happy
+
+	* Comeron95.cc: updated dox re: weightin schemes
+
+	* PolySites.hpp: updated dox
+
+	* Poly.hpp, Comeron95.hpp: updated documentation
+
+	* Comeron95.cc: use auto_ptr<thing> for exception-safety
+
+	* ThreeSubs.cc, TwoSubs.cc:
+	now use auto_ptrs for pointers to class SingleSub
+
+	* GranthamWeights.cc, GranthamWeights.hpp: now uses auto_ptr<Grantham>
+
+	* Alignment.hpp: update doxygen tags to new interface
+
+	* AlignStream.hpp, Alignment.hpp, Clustalw.hpp, PolySites.cc, PolySites.hpp:
+	changed library interface from vector<T*> to vector<T> in general
+
+2002-08-07  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc:
+	fixed a bug where I forgot to reset state counts in fillit()
+
+2002-08-06  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in: removed unecessary source files
+
+	* Correlations.hpp, Makefile.am, Makefile.in, Permute.hpp, Recombination.cc:
+	removed statistical templates to new project
+
+	* Correlations.hpp: removed doxygen references to GSL
+
+	* Correlations.hpp: fixed typos in PermuteProductMoment(T*,T*,unsigned)
+
+	* Correlations.hpp, Permute.hpp:
+	added Permute template function.  Removed need for GSL in Correlations.hpp
+
+2002-08-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Correlations.hpp: updated dox to discuss coefficient of Determination
+
+	* PolySites.cc: updated documentation
+
+	* PolySites.cc:
+	added ability to manipulate data in 0/1 format.  Also, segsite positions are output starting from 1
+
+	* Correlations.hpp:
+	permutation procedure now compares against DBL_EPSILON to increment the probability
+
+	* Correlations.hpp: added versions of functions for arrays
+
+2002-08-02  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.in, Recombination.cc: update to doc
+
+	* Correlations.hpp:
+	fixed error in calculation of p-value--was only doing the one-tailed test. Results now compatible with R.
+
+	* Makefile.am: added Correlations.hpp to sources lists
+
+	* Correlations.hpp: new files--product-moment correlations
+
+2002-08-01  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Hudson2001.cc, PolyTable.cc, PolyTable.hpp:
+	fixed Hudson2001.cc to use strcpy...
+
+	* SeqExceptions.hpp:
+	made initialization of base class done appropriately
+
+2002-07-31  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Fasta.cc, Fasta.hpp, Makefile.in, Seq.cc, Seq.hpp, SeqStream.hpp:
+	added nice copy constructors and operator=
+
+2002-07-29  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc:
+	moved if() statements that may results in exceptions being thrown to earlier in constructor, to prevent possibility of resource leaks
+
+	* Comeron95.cc:
+	fixed memory leak in constructor.  The leak occured in weighting scheme objects had to be initialized and an exception was then thrown--the weighting schemes were never deleted
+
+	* ms_interface.cc:
+	fixed memory leak-- _sim_gametes is now cleanup up in the destructor
+
+	* PolyTable.hpp: removed unecessary if() statements
+
+	* msfunc.c: simplified variable initialization in isseg()
+
+	* Makefile.am: added PolyTableSlice.hpp to include_HEADERS
+
+	* PolySites.cc: fixed memory leak (using valgrind)
+
+2002-07-28  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc: fixed mismatched new [] /delete []
+
+2002-07-27  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTable.hpp, SimData.hpp:
+	added comments on how site positions are represented
+
+	* PolyTableSlice.hpp:
+	removed specialization for Sequence::SimData -- not worth implementing yet
+
+2002-07-26  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyTableSlice.hpp: added specializations for Sequence::SimData
+
+	* SimData.hpp: added constructor (vector<double>,vector<string>)
+
+2002-07-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: added documentation
+
+	* Seq.cc: *** empty log message ***
+
+	* Seq.cc: fixed typo
+
+	* Seq.cc: added discussion of namespaces and scope
+
+	* Poly.hpp:
+	fixed forward declarations so that SimData.hpp no longer needs to be included
+
+	* TwoSubs.h, Unweighted.h, WeightingSchemes.h, ms_interface.h, AlignStream.h, Alignment.h, BaseComp.h, Clustalw.h, Comeron95.h, Comparisons.h, Fasta.h, Grantham.h, GranthamWeights.h, Hudson2001.h, Kimura80.h, Makefile.am, Makefile.in, PathwayHelper.h, Poly.h, PolySites.h, PolyTable.h, PolyTableSlice.h, Recombination.h, RedundancyCom95.h, Seq.h, SeqDefines.h, SeqEnums.h, SeqExceptions.h, SeqStream.h, SimData.h, SimParams.h, SingleSub.h, Sites.h, ThreeSubs.h, Translate2.h:
+	removed these headers (see below)
+
+	* BaseComp.cc, Comeron95.cc, Comparisons.cc, Fasta.cc, Grantham.cc, GranthamWeights.cc, Hudson2001.cc, Kimura80.cc, Poly.cc, PolySites.cc, PolyTable.cc, Recombination.cc, RedundancyCom95.cc, Seq.cc, SimData.cc, SimParams.cc, SingleSub.cc, Sites.cc, ThreeSubs.cc, Translate2.cc, TwoSubs.cc, Unweighted.cc, ms_interface.cc:
+	update to new .hpp extensions
+
+	* AlignStream.hpp, Alignment.hpp, BaseComp.hpp, Clustalw.hpp, Comeron95.hpp, Comparisons.hpp, Fasta.hpp, Grantham.hpp, GranthamWeights.hpp, Hudson2001.hpp, Kimura80.hpp, PathwayHelper.hpp, Poly.hpp, PolySites.hpp, PolyTable.hpp, PolyTableSlice.hpp, Recombination.hpp, RedundancyCom95.hpp, Seq.hpp, SeqDefines.hpp, SeqEnums.hpp, SeqExceptions.hpp, SeqStream.hpp, SimData.hpp, SimParams.hpp, SingleSub.hpp, Sites.hpp, ThreeSubs.hpp, Translate2.hpp, TwoSubs.hpp, Unweighted.hpp, WeightingSchemes.hpp, ms_interface.hpp:
+	renamed all C++ headers to have a .hpp extenstion, to differentiate them from the C headers
+
+	* ChangeLog, Makefile.in, PolyTableSlice.h, Seq.cc:
+	first version of PolyTableSlice<> functor
+
+2002-07-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc: use AnalysisEnums for clarity
+
+	* Fasta.cc: update to new SeqStream constructor
+
+	* Seq.h, SeqStream.h: removed gratuitous constructors
+
+	* PolyTable.h: made documentation a little clearer
+
+	* PolyTable.h: documented Assign() functions
+
+	* ms_interface.cc:
+	updates to new SimData interface w/respect to changes in PolyTable (see below)
+
+	* Hudson2001.h:
+	made constructor explicit, and it now calls base class constructor
+
+	* PolySites.cc, SimData.cc, SimData.h:
+	modified constructors to make calls to base class constructors, so that things work as they should, now...
+
+	* PolyTable.cc:
+	GetData() and GetPositions() now create and appropriate std::vector<T> on demand and return that, since the private data are no longer std::vectors, but are now normal arrays
+
+	* PolyTable.h:
+	the private data are now a double* and a std::string* rather than vector<double> and vector<std::string>, respectively
+
+	* Makefile.am:
+	increment library version to 1.0.8 to reflect interface changes to PolyTable
+
+	* PolySites.cc, PolySites.h:
+	update to new PolyTable interface.  Re-implemented fillit() and Binary() so thay they are shorter, faster, and more clear as to what's going on (and they now make coffee, too).
+
+	* Poly.cc: clarified an assignment
+
+	* Hudson2001.cc, SimData.cc, SimData.h:
+	updates to new PolyTable interface
+
+	* PolyTable.h: changed class so that there is no more protected data!!!
+
+	* ms_interface.cc: changed a C-style cast to a static_cast<void>()
+
+2002-07-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ms_interface.cc:
+	updates to new SimData interface w/respect to changes in PolyTable (see below)
+
+	* Hudson2001.h:
+	made constructor explicit, and it now calls base class constructor
+
+	* PolySites.cc, SimData.cc, SimData.h:
+	modified constructors to make calls to base class constructors, so that things work as they should, now...
+
+	* PolyTable.cc:
+	GetData() and GetPositions() now create and appropriate std::vector<T> on demand and return that, since the private data are no longer std::vectors, but are now normal arrays
+
+	* PolyTable.h:
+	the private data are now a double* and a std::string* rather than vector<double> and vector<std::string>, respectively
+
+	* Makefile.am:
+	increment library version to 1.0.8 to reflect interface changes to PolyTable
+
+	* PolySites.cc, PolySites.h:
+	update to new PolyTable interface.  Re-implemented fillit() and Binary() so thay they are shorter, faster, and more clear as to what's going on (and they now make coffee, too).
+
+	* Poly.cc: clarified an assignment
+
+	* Hudson2001.cc, SimData.cc, SimData.h:
+	updates to new PolyTable interface
+
+	* PolyTable.h: changed class so that there is no more protected data!!!
+
+	* ms_interface.cc: changed a C-style cast to a static_cast<void>()
+
+2002-07-23  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* ChangeLog: package version 0.96
+
+	* Fasta.cc, Fasta.h, Makefile.am, Makefile.in, Seq.cc, Seq.h, SeqHelper.cc, SeqHelper.h, SeqStream.h:
+	removed SeqHelper machinery.  reformulated Seq and SeqStream to fix subtle design issues.  Base class constructors are now called properly, and there is no need for private data anywhere except in the base class Sequence::Seq.  This undoes yesterday's changes.  Thanks to "Pete" for help on this one.
+
+2002-07-23  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Fasta.cc, Fasta.h, Makefile.am, Makefile.in, Seq.cc, Seq.h, SeqHelper.cc, SeqHelper.h, SeqStream.h:
+	removed SeqHelper machinery.  reformulated Seq and SeqStream to fix subtle design issues.  Base class constructors are now called properly, and there is no need for private data anywhere except in the base class Sequence::Seq.  This undoes yesterday's changes.  Thanks to "Pete" for help on this one.
+
+	* Fasta.cc, Fasta.h, Makefile.am, Makefile.in, Seq.cc, Seq.h, SeqHelper.cc, SeqHelper.h:
+	added SeqHelper.cc/.h to allow me to make all data that was protected in Sequence::Seq no private!!!
+
+	* Poly.h: formatting & cleanup
+
+2002-07-22  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Hudson2001.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolySites.h, Recombination.cc, Recombination.h, SimData.h:
+	updated to the rename of class PolyData to class PolyTable
+
+	* PolyData.cc, PolyData.h, PolyTable.cc, PolyTable.h:
+	renamed PolyData.* to PolyTable.*
+
+2002-07-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* BaseComp.cc: now keeps track of bases on complementary strand.
+
+	* BaseComp.h:
+	added private variables to keep track of bases on complementary strand.  changed all base count variables to unsinged int from double, for safety
+
+	* AlignStream.h, Alignment.h, Clustalw.h:
+	needed to add some using std::foo's to keep things working
+
+	* Alignment.h, BaseComp.h, Comeron95.cc, Comeron95.h, Comparisons.h, Fasta.cc, Kimura80.cc, Kimura80.h, PathwayHelper.cc, Poly.cc, Poly.h, PolyData.h, Recombination.h, RedundancyCom95.h, Seq.h, SeqExceptions.h, SeqStream.h, SimParams.h, SingleSub.h, Sites.h, ThreeSubs.h, Translate2.h, TwoSubs.h, WeightingSchemes.h, ms_interface.h:
+	changed all using namespace std declarations to using std::foo
+
+	* ThreeSubs.h:
+	removed useless ThreeSubs:: qualifiers in inlined function definitions
+
+	* Translate2.cc: fixed bugs in assert() statement
+
+	* ThreeSubs.cc, ThreeSubs.h: inlined value returning functions
+
+2002-07-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc: clarified some documentation
+
+	* Comeron95.h: updated example code
+
+	* Comeron95.h: added code example to doc
+
+	* Comeron95.cc, PolySites.cc: updates in documentation
+
+	* ms_structs.h: fixed typo in documentation
+
+	* ms_interface.cc, ms_interface.h:
+	added new constructor that can take parameter values directly
+
+	* Unweighted.h, Alignment.h, GranthamWeights.h, Poly.cc, Poly.h, PolySites.cc:
+	updates to documentation
+
+	* Alignment.h, PolySites.cc:
+	touched up some documentation with \code and \endcode tags
+
+	* RedundancyCom95.cc: added comment on some kludgy code
+
+	* Recombination.cc:
+	fixed error in Disequilibrium() where a value was used before it was initialized
+
+	* Recombination.cc: fixed typo in documentation
+
+	* Recombination.cc:
+	added @author tags for code contributed by Dick Hudson and Jeff Wall
+
+	* Recombination.cc: formatting
+
+	* Poly.cc, Poly.h:
+	added \warnings to functions that give results that may be undefined when there are missing data
+
+	* ChangeLog: *** empty log message ***
+
+2002-07-18  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc, PolySites.cc, SeqStream.h, WeightingSchemes.h:
+	substantial additions to documentation
+
+	* GranthamWeights.cc: fixed typo
+
+	* GranthamWeights.cc: documented destructors
+
+	* Recombination.cc: fiddling with documentation
+
+	* Recombination.cc: documentation formatting
+
+	* Recombination.cc: fixed dangerous use of doubles in Disequilibrium
+
+	* ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc, TwoSubs.h:
+	fixed more documentation glitches
+
+	* rand1.c, ms_interface.cc: cleanup
+
+	* ms_interface.cc: settle on using srand()
+
+	* rand1.c: settle on using rand()
+
+	* AlignStream.h, Comparisons.h, PathwayHelper.h, Poly.cc, Recombination.h, SeqEnums.h, ThreeSubs.cc, Translate2.h:
+	fix minor bugs in documentation
+
+	* RedundancyCom95.cc: documented public interface
+
+	* ms_interface.cc:
+	fixed error in conditional compilation of random number seeding
+
+	* rand1.c: fixed portability problem with ran1(void)
+
+	* AlignStream.h, Alignment.h, BaseComp.cc, BaseComp.h, Clustalw.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Comparisons.h, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, GranthamWeights.cc, GranthamWeights.h, Hudson2001.cc, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, PathwayHelper.h, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, PolySites.h, Recombination.cc, Recombination.h, RedundancyCom95.cc, RedundancyCom95.h, Seq.cc, Seq.h, SeqEnums.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimData.h, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, ThreeSubs.h, Translate2.h, TwoSubs.cc, TwoSubs.h, Unweighted.cc, Unweighted.h, WeightingSchemes.h, ms_interface.cc, ms_interface.h:
+	massive changes to documentation.  #include directives now properly docuemented.  Also, doxygen groups are used to organize the manual
+
+	* GranthamWeights.cc, Makefile.am, Makefile.in, PathwayHelper.cc, PathwayHelper.h, ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc:
+	update to use namespace PathwayHelper
+
+	* Comeron95.cc: updated comment
+
+2002-07-18  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc, PolySites.cc, SeqStream.h, WeightingSchemes.h:
+	substantial additions to documentation
+
+	* GranthamWeights.cc: fixed typo
+
+	* GranthamWeights.cc: documented destructors
+
+	* Recombination.cc: fiddling with documentation
+
+	* Recombination.cc: documentation formatting
+
+	* Recombination.cc: fixed dangerous use of doubles in Disequilibrium
+
+	* ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc, TwoSubs.h:
+	fixed more documentation glitches
+
+	* rand1.c, ms_interface.cc: cleanup
+
+	* ms_interface.cc: settle on using srand()
+
+	* rand1.c: settle on using rand()
+
+	* AlignStream.h, Comparisons.h, PathwayHelper.h, Poly.cc, Recombination.h, SeqEnums.h, ThreeSubs.cc, Translate2.h:
+	fix minor bugs in documentation
+
+	* RedundancyCom95.cc: documented public interface
+
+	* ms_interface.cc:
+	fixed error in conditional compilation of random number seeding
+
+	* rand1.c: fixed portability problem with ran1(void)
+
+	* AlignStream.h, Alignment.h, BaseComp.cc, BaseComp.h, Clustalw.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Comparisons.h, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, GranthamWeights.cc, GranthamWeights.h, Hudson2001.cc, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, PathwayHelper.h, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, PolySites.h, Recombination.cc, Recombination.h, RedundancyCom95.cc, RedundancyCom95.h, Seq.cc, Seq.h, SeqEnums.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimData.h, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, ThreeSubs.h, Translate2.h, TwoSubs.cc, TwoSubs.h, Unweighted.cc, Unweighted.h, WeightingSchemes.h, ms_interface.cc, ms_interface.h:
+	massive changes to documentation.  #include directives now properly docuemented.  Also, doxygen groups are used to organize the manual
+
+	* GranthamWeights.cc, Makefile.am, Makefile.in, PathwayHelper.cc, PathwayHelper.h, ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc:
+	update to use namespace PathwayHelper
+
+	* Comeron95.cc: updated comment
+
+	* Comeron95.cc: added documentation re:pathway weighting
+
+	* ThreeSubs.cc: fixed typo in documentation
+
+	* ThreeSubs.cc: made language in comments more precise
+
+	* Comeron95.cc, GranthamWeights.cc, ThreeSubs.cc, TwoSubs.cc, Unweighted.cc, WeightingSchemes.h:
+	added documentation related to pathway weighting
+	images for documentation
+
+2002-07-17  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Comeron95.cc, GranthamWeights.cc, Makefile.am, Makefile.in, SeqEnums.h, ThreeSubs.cc, ThreeSubs.h, Translate2.cc, TwoSubs.cc, TwoSubs.h:
+	cleanup after implementation of generalized weighting scheme.
+
+	* SeqEnums.cc: removed SeqEnums.cc
+
+	* Comeron95.cc, Comeron95.h, GranthamWeights.cc, GranthamWeights.h, Makefile.am, Makefile.in, ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc, TwoSubs.h, Unweighted.cc, Unweighted.h, WeightingSchemes.h:
+	added capability to use arbitray weigting schemes in Ka/Ks calculations
+
+	* RedundancyCom95.cc, ThreeSubs.cc: remove #include<iostream>
+
+	* Translate2.cc: fixed problem in definition of Translation()
+
+	* Kimura80.cc: fixed portability problem to gcc on Sun machines
+
+	* Poly.cc, Translate2.h: added some formatting to doxygen tags
+
+	* Makefile.am: added SeqEnums.cc
+
+	* SeqEnums.cc: contains definition of ValidCode
+
+	* SeqEnums.h: added prototype for ValidCode
+
+	* Comeron95.cc, Comeron95.h, RedundancyCom95.cc, RedundancyCom95.h, ThreeSubs.cc, ThreeSubs.h, Translate2.cc, Translate2.h, TwoSubs.cc, TwoSubs.h:
+	improved code clarity by changing function calls to Translate() to take argument of type Sequence::SeqEnums::GeneticCodes
+
+	* Translate2.h: fixed errors in documentation
+
+	* Comeron95.cc:
+	change I'm note sure of : removed isnan() checking on Bs--with the check enabled, seems to not let silent sites saturate sometimes when they probably should
+
+	* RedundancyCom95.cc, ThreeSubs.cc, Translate2.cc, TwoSubs.cc:
+	update and cleanup to new return type (std::string) of Translate functions
+
+	* Translate2.h:
+	possibility of memory leak fixed.  return types changed to string.  Note for future: return type of char * is a pain...
+
+	* RedundancyCom95.cc: fixed typo in documentation
+
+	* RedundancyCom95.cc: cleanup from changes to Translate
+
+	* Translate2.h:
+	documented the possibility of memory leak when Translate() is used carelessly (as I have already done).  Must fix this in future...
+
+	* RedundancyCom95.cc, ThreeSubs.cc, TwoSubs.cc:
+	fixed memory leak imposed by not fully comprehending new Tranlate interface :)
+
+2002-07-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am:
+	change library version to 1.0.7 since new Translate machinery breaks compatibility
+
+	* Translate.cc, Translate.h, Translate2.h:
+	added comments to Translate2.h, removed deprecated Translate.cc/Translate.h
+
+	* ThreeSubs.cc, TwoSubs.cc: removed #include<memory>
+
+	* Makefile.am, Makefile.in, Translate2.cc, Translate2.h:
+	replacement of Translation class with functions
+
+	* RedundancyCom95.cc, ThreeSubs.cc, TwoSubs.cc:
+	update to use Translate2 instead of Translate
+
+	* Comeron95.cc, Fasta.cc, SingleSub.cc, ThreeSubs.cc, TwoSubs.cc:
+	added documentation to private member functions
+
+	* Comeron95.cc:
+	removed function declaration that I accidently copy/pasted in...
+
+	* ChangeLog: update
+
+	* Makefile.am:
+	upped library version to 1.0.6 due to changes in Comeron95.h
+
+	* Comeron95.cc: placed inline functions in this file
+
+	* Comeron95.h: removed inline funcions
+
+	* TwoSubs.cc, TwoSubs.h:
+	moved private data from TwoSubs into an implementation class
+
+	* Seq.cc: added comment on thread safety
+
+	* Comeron95.cc, Comeron95.h:
+	fixed dangerous comparison of a double to 0.0
+
+	* Makefile.am: fixed typo
+
+	* Makefile.am: added SeqDefines.h to Makefile
+
+	* Alignment.h:
+	added more uses of EVEN and ODD that I forgot befor making the last commit
+
+	* Comparisons.cc, SeqDefines.h, Alignment.h:
+	moved definitions of EVEN and ODD to SeqDefines.h, updated Alignment.h to use these macros (rather than the modulo operator)
+
+2002-07-16  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am:
+	upped library version to 1.0.6 due to changes in Comeron95.h
+
+	* Comeron95.cc: placed inline functions in this file
+
+	* Comeron95.h: removed inline funcions
+
+	* TwoSubs.cc, TwoSubs.h:
+	moved private data from TwoSubs into an implementation class
+
+	* Seq.cc: added comment on thread safety
+
+	* Comeron95.cc, Comeron95.h:
+	fixed dangerous comparison of a double to 0.0
+
+	* Makefile.am: fixed typo
+
+	* Makefile.am: added SeqDefines.h to Makefile
+
+	* Alignment.h:
+	added more uses of EVEN and ODD that I forgot befor making the last commit
+
+	* Comparisons.cc, SeqDefines.h, Alignment.h:
+	moved definitions of EVEN and ODD to SeqDefines.h, updated Alignment.h to use these macros (rather than the modulo operator)
+
+2002-07-13  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc, Poly.h, Recombination.cc:
+	fixed several dangerous float compares in routines for Hudon's C.  Also made serveral changes to Poly.cc and Recombination.cc so that now several variables are kept as int until the last second, then typecase to double
+
+2002-07-11  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolyData.h: updated documentation
+
+	* Alignment.h: cleaup
+
+	* Fasta.cc: cleanup
+
+	* Fasta.cc:
+	use static_cast<char *> to fix 2 compiler warinings about old-style casts (calls to malloc and realloc)
+
+2002-07-10  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.h: made constructors explicit
+
+	* Seq.cc: updated documentation
+
+	* Alignment.h: updated dox re:exceptions
+
+	* Alignment.h:
+	updated exception throwing to new version of SeqExceptions.h
+
+	* ms_interface.cc:
+	updated to new interface for SimData (explicit constructor...)
+
+	* SimData.h: made constructors explicit
+
+	* ThreeSubs.h, Translate.h, TwoSubs.h: cleanup
+
+	* ms_interface.h: made constructor explicit
+
+	* SeqExceptions.h: massive streamlining
+
+	* Comeron95.cc, Comparisons.cc, Kimura80.cc, SeqExceptions.h, Translate.cc:
+	reduced the number of exceptions derived from SeqException, updated classes accordingly
+
+2002-07-09  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: updates to documentation
+
+	* Comeron95.cc: fixed typo in assert() statement
+
+	* Sites.cc, Comparisons.cc: fixed type in assert() statement
+
+	* Makefile.in: *** empty log message ***
+
+	* Seq.cc:
+	added documentation on NDEBUG and its uses, and how the library views exceptions and assert()
+
+	* Makefile.am: fixed portability bug in setting CC and CXX
+
+	* streec.c:
+	removed include of <malloc.h> because it caused a compile error on OS X
+
+	* PolySites.h: fixed typo in doxygen tags
+
+	* PolySites.h: reimplemented fillIt() as a template
+
+	* PolySites.cc: re-implemented fillit() as a template
+
+	* BaseComp.h: made constructors explicit
+
+	* Kimura80.h, Kimura80.cc: made constructor explicit
+
+	* RedundancyCom95.h: Made constructor explicit
+
+	* SingleSub.cc, SingleSub.h, ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc, TwoSubs.h:
+	Made constructors explicit
+
+	* Sites.cc, Sites.h:
+	made constructor explicit, removed throw() statements in favor of assert()
+
+	* Comeron95.cc, Comeron95.h: Made constructor explicit
+
+	* Poly.h: changed _CalculatedDandV from protected to private
+
+2002-07-08  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Sites.cc, Sites.h: code cleanup
+
+	* TwoSubs.cc: removed silly include statement
+
+	* ThreeSubs.cc:
+	fixed a silly include that resulted in too much being compiled into this class
+
+	* AlignStream.h, Alignment.h, Clustalw.h, Comeron95.h, Fasta.cc, Fasta.h, Poly.cc, Seq.h, ThreeSubs.cc, ThreeSubs.h:
+	documented lots of undocumented stuff
+
+	* Comeron95.cc, Sites.cc, Sites.h:
+	changed public data of class Sites to private, and added member functions for data access.  Updated Comeron95 to reflect those changes
+
+	* rand1.c, rand1.h: removed commented out code
+
+	* ChangeLog, Makefile.am, Makefile.in, Seq.cc, SeqFuncs.cc, SeqFuncs.h:
+	removed SeqFuncs.* Moved ComplementBase to anonymous namespace in Seq.cc
+
+	* SeqFuncs.h: added \note tag to documentation of ComplementBase
+
+	* SeqFuncs.cc: added default to switch statement in ComplementBase()
+
+	* Makefile.am, Makefile.in, PolySites.h, Seq.h, SeqFuncs.cc, SeqFuncs.h:
+	updated documentation.  Add Complement() to Sequence::Seq.
+
+	* Seq.cc: update to make use of SeqFuncs.h
+
+	* SeqFuncs.cc, SeqFuncs.h:
+	A file to contain generic routines useful for implementing library functionality
+
+	* Seq.cc: updated documentation
+
+	* PolySites.cc:
+	changed some vector member function calls from erase(x,y) to clear() for clariy=ty
+
+	* PolySites.cc: fixed typo in constructor
+
+	* PolySites.cc: documented the class more completely
+
+	* Kimura80.cc: updated doxygen tags
+
+	* Kimura80.cc:
+	fixed some comparisons involving doubles to use DBL_EPSILON
+
+	* Comeron95.cc, Comparisons.cc, Fasta.cc, Hudson2001.cc, Kimura80.cc, Poly.cc, PolyData.h, RedundancyCom95.cc, Sites.cc, ms_interface.cc, ms_structs.h:
+	Many changes in exception handling -- many exceptions changed to simple assert statements.  mainly because true exceptions aren't needed, but efficiency and code size was also a particular concern.
+
+	* Makefile.am, Makefile.in: changed library revision to 1.0.5
+
+	* Seq.cc: the same problem with unsigned also applied to Reverse()
+
+	* Seq.cc:
+	fixed problem in Revcom where use of an unsigned and checking for 0 led to a segfault
+
+	* Sites.cc:
+	added #include<cmath> for use of fabs() -- an error not to under g++ 3.1.1
+
+	* TwoSubs.cc:
+	added #include<cmath> for use of fabs() -- an error not to do so under g++ 3.1.1
+
+	* Makefile.am, Makefile.in, ms_interface.cc, ms_interface.h, ms_structs.h, rand1.c:
+	added some doxygen tags to public interface to simulation code
+
+2002-07-08  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SeqFuncs.h: added \note tag to documentation of ComplementBase
+
+	* SeqFuncs.cc: added default to switch statement in ComplementBase()
+
+	* Makefile.am, Makefile.in, PolySites.h, Seq.h, SeqFuncs.cc, SeqFuncs.h:
+	updated documentation.  Add Complement() to Sequence::Seq.
+
+	* Seq.cc: update to make use of SeqFuncs.h
+
+	* SeqFuncs.cc, SeqFuncs.h:
+	A file to contain generic routines useful for implementing library functionality
+
+	* Seq.cc: updated documentation
+
+	* PolySites.cc:
+	changed some vector member function calls from erase(x,y) to clear() for clariy=ty
+
+	* PolySites.cc: fixed typo in constructor
+
+	* PolySites.cc: documented the class more completely
+
+	* Kimura80.cc: updated doxygen tags
+
+	* Kimura80.cc:
+	fixed some comparisons involving doubles to use DBL_EPSILON
+
+	* Comeron95.cc, Comparisons.cc, Fasta.cc, Hudson2001.cc, Kimura80.cc, Poly.cc, PolyData.h, RedundancyCom95.cc, Sites.cc, ms_interface.cc, ms_structs.h:
+	Many changes in exception handling -- many exceptions changed to simple assert statements.  mainly because true exceptions aren't needed, but efficiency and code size was also a particular concern.
+
+	* Makefile.am, Makefile.in: changed library revision to 1.0.5
+
+	* Seq.cc: the same problem with unsigned also applied to Reverse()
+
+	* Seq.cc:
+	fixed problem in Revcom where use of an unsigned and checking for 0 led to a segfault
+
+	* Sites.cc:
+	added #include<cmath> for use of fabs() -- an error not to under g++ 3.1.1
+
+	* TwoSubs.cc:
+	added #include<cmath> for use of fabs() -- an error not to do so under g++ 3.1.1
+
+	* Makefile.am, Makefile.in, ms_interface.cc, ms_interface.h, ms_structs.h, rand1.c:
+	added some doxygen tags to public interface to simulation code
+
+2002-07-07  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Makefile.am, Makefile.in, Seq.cc, SimData.cc, SimData.h, ms_interface.cc, ms_interface.h, ms_structs.h, msfunc.c, msfunc.h, rand1.c, rand1.h, streec.c, streec.h:
+	addition of coalescent simulation to library
+
+	* Grantham.cc:
+	fixed some minor issues relating to initialization of distance matrix
+
+	* Seq.cc, ThreeSubs.cc: additions to documentation
+
+2002-07-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h, BaseComp.cc, Comeron95.cc, Comeron95.h, Grantham.cc, Grantham.h, Seq.cc, SingleSub.cc, SingleSub.h, ThreeSubs.cc, ThreeSubs.h, Translate.cc, TwoSubs.cc, TwoSubs.h:
+	updates to doxygen tags
+
+	* Poly.cc, Recombination.cc, Seq.cc, Seq.h:
+	substantial additions to documentation
+
+	* BaseComp.cc, Poly.cc, RedundancyCom95.cc, Seq.h, SeqEnums.h, SeqExceptions.h:
+	updates to documentation
+
+	* Comparisons.cc, Poly.cc, RedundancyCom95.cc, TwoSubs.cc:
+	fixed the rest (I hope) of dangerous comparisons involving doubles
+
+	* Comeron95.cc, Comparisons.cc, Sites.cc, ThreeSubs.cc, Translate.cc:
+	fixed dangerous double comparisons, and fixed ThreeSubs.cc so that it works--will investigate further, may need to debug class Grantham
+
+2002-07-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc, TwoSubs.cc: added @params tags to dox
+
+2002-07-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h, BaseComp.cc, BaseComp.h, Clustalw.h, Comeron95.cc, Comparisons.cc, Comparisons.h, Fasta.cc, Fasta.h, Hudson2001.cc, Kimura80.h, Poly.cc, PolyData.cc, PolyData.h, PolySites.cc, PolySites.h, RedundancyCom95.cc, RedundancyCom95.h, Seq.cc, Seq.h, SeqExceptions.h, SimData.cc, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, ThreeSubs.h, Translate.cc, Translate.h, TwoSubs.cc, TwoSubs.h:
+	cosmetics -- changed all references to string to std::string
+
+	* AlignStream.h, Alignment.h, BaseComp.cc, Clustalw.h, Comeron95.cc, Comparisons.cc, Fasta.cc, Grantham.cc, Hudson2001.cc, Kimura80.cc, Poly.cc, PolyData.cc, PolySites.cc, Recombination.cc, RedundancyCom95.cc, Seq.cc, SeqStream.h, SimData.cc, SimParams.cc, SingleSub.cc, Sites.cc, ThreeSubs.cc, Translate.cc, TwoSubs.cc:
+	added @short to doxygen tags
+
+	* PolySites.cc, PolySites.h:
+	added capability to deal with vector<Seq *>
+
+	* Makefile.in: version 0.94
+
+2002-06-27  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Fasta.cc, Makefile.am, Makefile.in, Poly.cc, SeqStream.h:
+	added --enable-debug to configure.in
+
+	* BaseComp.cc, Comeron95.cc, Comeron95.h, Kimura80.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolySites.h, Recombination.cc, RedundancyCom95.h, Seq.cc, Seq.h, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, ThreeSubs.h, TwoSubs.cc, TwoSubs.h:
+	removed unecessary #include <iostream> from many files, lots of cleanup
+
+	* BaseComp.cc:
+	added initializer lists to constructors and doxygen tags to public interface
+
+	* BaseComp.cc, BaseComp.h:
+	new files to define a simple class to calculate base composition along a sequence
+
+2002-06-26  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SeqExceptions.h: oops--I meant to make that #pragma implementation
+
+	* SeqExceptions.h: added #pragma interface
+
+	* TwoSubs.cc: changed multiple if{}else{} to switch
+
+	* Poly.cc, Recombination.cc, Recombination.h:
+	modified Minrec to deal with data sets that contain outgroups
+
+	* Poly.cc, Poly.h: changed names of private variables for consistency
+
+	* Makefile.am, Makefile.in, Poly.cc, Poly.h: changed library revision
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Fasta.h, Grantham.cc, Kimura80.cc, Poly.cc, Poly.h, PolyData.h, Recombination.cc, Recombination.h, RedundancyCom95.cc, SimData.h, SimParams.cc, SimParams.h, Sites.cc:
+	merge package093-dev branch to trunk
+
+2002-06-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h: added #include <fstream>
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Fasta.h, Grantham.cc, Kimura80.cc, Poly.cc, Poly.h, PolyData.h, Recombination.cc, Recombination.h, RedundancyCom95.cc, SimData.h, SimParams.cc, SimParams.h, Sites.cc:
+	more madness with unsigned int, removed unecessary #include directives, and lots of code cleanup
+
+	* AlignStream.h: fixed mistake in Alignstream.h
+
+	* AlignStream.h, Alignment.h:
+	modifief AlignStream.h and Alignment.h to use unsigned int where appropriate
+
+	* Poly.cc, Poly.h, Recombination.cc, Recombination.h, Seq.cc, Seq.h:
+	went on a rampage changing int to unsigned int
+
+	* ChangeLog: updated changelog
+
+	* Alignment.h, PolyData.h, SimData.cc, ThreeSubs.cc: code cleanup
+
+	* Alignment.h: fixed typo in throw statement
+
+	* ChangeLog, Clustalw.h, Comparisons.h, Hudson2001.cc, PolySites.h, RedundancyCom95.cc, RedundancyCom95.h, SeqEnums.h, SimData.h, ThreeSubs.h:
+	New file.
+
+	* ChangeLog, Clustalw.h, Comparisons.h, Hudson2001.cc, PolySites.h, RedundancyCom95.cc, RedundancyCom95.h, SeqEnums.h, SimData.h, ThreeSubs.h:
+	initial commit to CVS
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, Recombination.cc, Recombination.h, Seq.cc, Seq.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, Translate.cc, Translate.h, TwoSubs.cc, TwoSubs.h:
+	New file.
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, Recombination.cc, Recombination.h, Seq.cc, Seq.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, Translate.cc, Translate.h, TwoSubs.cc, TwoSubs.h:
+	initial commit to CVS
+
+2002-06-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h, PolyData.h, SimData.cc, ThreeSubs.cc: code cleanup
+
+	* Alignment.h: fixed typo in throw statement
+
+	* ChangeLog, Clustalw.h, Comparisons.h, Hudson2001.cc, PolySites.h, RedundancyCom95.cc, RedundancyCom95.h, SeqEnums.h, SimData.h, ThreeSubs.h:
+	New file.
+
+	* ChangeLog, Clustalw.h, Comparisons.h, Hudson2001.cc, PolySites.h, RedundancyCom95.cc, RedundancyCom95.h, SeqEnums.h, SimData.h, ThreeSubs.h:
+	initial commit to CVS
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, Recombination.cc, Recombination.h, Seq.cc, Seq.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, Translate.cc, Translate.h, TwoSubs.cc, TwoSubs.h:
+	New file.
+
+	* AlignStream.h, Alignment.h, Comeron95.cc, Comeron95.h, Comparisons.cc, Fasta.cc, Fasta.h, Grantham.cc, Grantham.h, Hudson2001.h, Kimura80.cc, Kimura80.h, Makefile.am, Makefile.in, Poly.cc, Poly.h, PolyData.cc, PolyData.h, PolySites.cc, Recombination.cc, Recombination.h, Seq.cc, Seq.h, SeqExceptions.h, SeqStream.h, SimData.cc, SimParams.cc, SimParams.h, SingleSub.cc, SingleSub.h, Sites.cc, Sites.h, ThreeSubs.cc, Translate.cc, Translate.h, TwoSubs.cc, TwoSubs.h:
+	initial commit to CVS
+
+2002-06-13  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Sites.cc, RedundancyCom95.cc, Poly.cc, Recombination.cc, SimParams.h:
+	pedantic-clean
+
+	* Grantham.h: New file.
+
+	* PolySites.cc, Translate.cc: pedantic-clean
+
+	* Comeron95.cc: now pedantic-clean
+
+	* Recombination.cc: changed C-style casts to C++-style
+
+	* AnalyzeExceptions.h: added virtual destructor for exception classes
+
+	* Poly.cc: changed C-style casts to C++-style
+
+	* SeqExceptions.h: fixed typos, errors related to -Weffc++
+
+	* SeqExceptions.h: added virtual descructors to all exception classes
+
+	* AnalyzeEnums.h, AnalyzeExceptions.h, Comeron95.h:
+	now compiles with g++ 3.1
+
+	* Comeron95.h: New file.
+
+	* Kimura80.h: now compiles with g++ 3.1
+
+	* Kimura80.h: New file.
+
+	* Poly.h, Recombination.h, RedundancyCom95.h, SingleSub.h, Sites.h:
+	now compiles with g++ 3.1
+
+	* Sites.h: New file.
+
+	* ThreeSubs.h: now compiles with g++ 3.1
+
+	* ThreeSubs.h: New file.
+
+	* TwoSubs.h: now compiles with g++ 3.1
+
+	* TwoSubs.h: New file.
+
+	* Alignment.h, Comparisons.h, PolyData.h, SeqStream.h, SeqExceptions.h, Seq.h:
+	now compiles with g++ 3.1
+
+2002-06-11  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Recombination.cc:
+	moved several "implementation-detail"-type functions to storage class static
+
+	* Recombination.h: New file.
+
+2002-06-10  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimParams.h: New file.
+
+2002-06-07  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SimData.h: removed useless SimData:: declaration in segsites
+
+2002-06-05  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Kimura80.cc:
+	fixed a bug where the order in which gapped sites vs. sites that differ between the two sequences was causing the number of sites compared to be incorrectly counted
+
+2002-06-04  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* SeqExceptions.h: added operator<< capability to SeqException
+
+2002-06-03  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h:
+	GetData now throws an exception if the char *infilename is NULL
+
+	* Alignment.h:
+	fixed compiler warning due to comparison of signed to unsigned int
+
+2002-06-02  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Alignment.h:
+	changed Trim and Trim complement to take const vector<T*>&data as args, to reinforce the notion that the data itself is not modified, but that a copy of the modified data are returned.  Updated documentation tags to reflect this
+
+	* Fasta.h: fixed typo
+
+	* Fasta.cc, Fasta.h: added constructor for const string &
+
+2002-06-01  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc:
+	fixed bug where, if you are only filling a table w/bi-allelic sites, the position of the i-th site was offset starting from 0, rather than from 1
+
+2002-05-31  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.h: ugh, another typo.  TGIF
+
+	* Seq.cc: fixed typo in definition of substr
+
+	* Seq.h: fixed type in declaration of substr
+
+	* Seq.cc, Seq.h:
+	added substr member function to mimic that of the standard string class
+
+	* PolyData.h:
+	changed floats to doubles, size() now returns unsigned int
+
+	* Alignment.h: fixed compiler warning
+
+	* Seq.cc, Seq.h:
+	changed length and UngappedLength to return unsigned int
+
+	* AlignStream.h:
+	changed Trim and TrimComplement to reflect the versions in Alignment.h
+
+	* Alignment.h:
+	fixed another bug where the sites vector was passed by reference to Trim and TrimComplement.  It is better in this case to pass by value, because they are modified
+
+	* Alignment.h:
+	fixed 2 bugs.  The first was that the sites vector being passed to Trim and TrimComplement was declared const, which was wrong, because the routine needs to modify the vector. The second was saying -> when I meant =
+
+2002-05-30  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* AlignStream.h, SeqStream.h: documented include
+
+	* SeqStream.h: New file.
+
+	* Clustalw.h, Alignment.h, Comparisons.cc, Fasta.cc, Grantham.cc:
+	documented include
+
+	* Hudson2001.cc: *** empty log message ***
+
+	* Hudson2001.cc, PolyData.cc, PolySites.cc, Seq.cc, SimData.cc, SimParams.cc, Translate.cc:
+	documented include
+
+	* Poly.cc:
+	fixed typo in documentation for functions related to Depaulis and Veuille stats
+
+	* Poly.cc: fixed bug in documentation tags for DandVK and DandVK
+
+	* SimData.cc: eliminated a char[]
+
+	* SimData.cc: removed the need for a string in read()
+
+	* SimData.cc: cleanup
+
+	* SimData.cc: vastly sped up performance of the read function
+
+	* Poly.cc: changed all floats to doubles, and updated documentation
+
+	* Poly.h:
+	made many of the functions virtual so that the class can be extended easily
+
+	* Poly.h: New file.
+
+2002-05-29  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: now, revcom actually works
+
+	* Seq.cc: fixed bug in reverse and revcom
+
+2002-05-28  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.h:
+	made numseqs,seqlen, and fillit protected, so that they can be inherited
+
+2002-05-27  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc:
+	fixed bug where, when making a polymorphism table (using fillit, with strict = 0), a site would still be considered polymorphic if there were 2 states segregating with a gap
+
+	* PolySites.cc: fixed bug in checking for IDENTICAL when strict ==0
+
+	* PolyData.h: added documentation for read and print
+
+	* PolyData.cc: updated includes
+
+	* SimData.h: cleanup
+
+	* Hudson2001.h:
+	made virtual ostream & print(ostream &0) a private function
+
+	* PolyData.h: added operator<< and pure virtual function print
+
+	* PolySites.h:
+		removed definition of operator<< in favor of ostream & print(ostream &), so provide a definition of the pure virtual function declared in PolyData
+
+	* PolySites.cc:
+	removed definition of operator<< in favor of ostream & print(ostream &), so provide a definition of the pure virtual function declared in PolyData
+
+	* SimData.h:
+	made 	virtual ostream & print(ostream &o){return o;} private and fixed bug where read was not virtual
+
+	* PolyData.h:
+	made  virtual istream & read(istream &s); a pure virtual function
+
+	* PolySites.h:
+	made  virtual istream & read(istream &s){return s;} private
+
+	* PolySites.h: New file.
+
+	* Hudson2001.h, SimData.h:
+	removed operator>> in favor of placing it in the base class
+
+	* PolyData.h:
+	added ability to read in objects derived from PolyData using operator>>
+
+	* SimData.h, PolyData.h: New file.
+
+	* Poly.cc: updated documentation to Depaulis and Veuille statistics
+
+	* RedundancyCom95.cc: fixed bug in documentation
+
+	* Poly.cc:
+	updated Depaulis and Veuills statistics to be more robust to missing data, by using libSequence::Comparisons::Different to test if 2 strings are identical
+
+	* Comparisons.cc: removed abort() from switch statements
+
+	* Comparisons.cc: removed debugging cout and cerr statements
+
+	* SingleSub.cc: removed debugging << statements
+
+	* RedundancyCom95.cc: removed debugging cerr statement
+
+	* Comparisons.cc: fixed ambiguity in calls to TsTv
+
+	* Seq.h: brought back range-checking
+
+	* Fasta.cc: cleanup
+
+	* Fasta.h: New file.
+
+	* Seq.cc: brought back range checking to operator[]
+
+2002-05-25  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* PolySites.cc: removed a lot of debugging code that I was messing with
+
+	* Alignment.h:
+	fixed lots of bugs in making new objects derived from Seq.  oops.  damn templates.
+
+	* Alignment.h:
+	fixed bug where, in the gap removal routines, I was deleting the objects being modified
+
+	* Alignment.h, Seq.h, Comparisons.h: New file.
+
+	* SeqExceptions.h: formatting
+
+	* Seq.cc: made many of the member functions return const values
+
+	* Hudson2001.cc: documented that the class can also throw exceptions
+
+	* Hudson2001.cc:
+	added clarification to documentation with respect to how outgroup information is treated
+
+2002-05-24  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Recombination.cc: updated documentation
+
+	* Poly.cc: added \namespace libanalyze to doxygen
+
+	* Comparisons.cc, Seq.cc: removed \file from doxygen tags
+
+	* Clustalw.h, AlignStream.h: added proper doxygen tags
+
+	* Fasta.cc: removed \file tag to doxygen
+
+	* SimParams.cc: added \class documentation
+
+	* SimData.cc: documented read function
+
+	* SimData.cc: fixed bug in doxygen tags
+
+	* SimData.cc: added doxygen tags
+
+	* Grantham.cc: New file.
+
+	* PolySites.cc: added documentation and examples of constructor useage
+
+	* PolySites.cc: *** empty log message ***
+
+	* PolyData.cc, Hudson2001.h, Hudson2001.cc: added documentation tags
+
+	* Hudson2001.cc, PolyData.cc: New file.
+
+	* Translate.cc: added documentation
+
+	* Translate.cc:
+	changed using namespace SeqEnums; to using namespace libSequence::SeqEnums;
+
+	* AlignStream.h: updated documentation
+
+	* Clustalw.h:
+	made changes to work with new constructors for class Fasta
+
+	* Clustalw.h: New file.
+
+	* SimData.cc: formatted code nicely
+
+	* SimData.cc: New file.
+
+	* AlignStream.h: added documentation
+
+	* AlignStream.h: New file.
+
+	* SimParams.cc: added documentation
+
+	* SimParams.cc: New file.
+
+	* Hudson2001.h: fixed typo in docs
+
+	* PolySites.cc: added documentation
+
+	* PolySites.cc: New file.
+
+	* Hudson2001.h: added documentation
+
+	* Hudson2001.h: New file.
+
+2002-05-23  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* AnalyzeExceptions.h, SeqExceptions.h, Sites.cc:
+	added class documentation
+
+	* RedundancyCom95.cc:
+	changed some subscripting calls for portability reasons
+
+	* Comeron95.cc: general cleanup and formatting
+
+	* Translate.cc: New file.
+
+2002-05-22  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Seq.cc: added operator=
+
+	* Fasta.cc: added constructor for (const char *, const char *)
+
+	* Fasta.cc: more documentation
+
+	* Fasta.cc: fixed typo in docs
+
+	* Fasta.cc: added doxygen tags
+
+	* Fasta.cc: New file.
+
+	* Seq.cc: added doxygen tags
+
+	* Kimura80.cc: updated documentation
+
+	* Poly.cc: update to work better with doxygen
+
+	* ThreeSubs.cc: changed to take references to strings in constructor
+
+2002-05-21  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc: fixed typo in doc
+
+	* SingleSub.cc: fixed another typo in doc
+
+	* TwoSubs.cc: fixed type in doc
+
+	* SingleSub.cc: fixed typo in doc
+
+	* TwoSubs.cc, ThreeSubs.cc: updated documentation
+
+	* ThreeSubs.cc: added detailed documentation for doxygen
+
+	* SingleSub.cc: fixed a mistake in documentation tags
+
+	* TwoSubs.cc, SingleSub.cc, RedundancyCom95.cc:
+	added detailed documentation for doxygen
+
+	* Comeron95.cc: more documentation
+
+	* Comeron95.cc: added detailed description to doxygen tags
+
+	* Poly.cc: added more documentation
+
+	* Comparisons.cc:
+	updated Different and NumDiffs to skip missing data, and to be able to deal with protein sequences
+
+	* Comparisons.cc: replace assertions with throwing exceptions
+
+	* SeqExceptions.h, Comparisons.cc: New file.
+
+	* Seq.cc: cleanup & indentation
+
+	* Seq.cc: replace asserts with throwing exceptions
+
+	* Seq.cc: New file.
+
+	* Poly.cc:
+	fixed bug in Theta H where anc_is_present was not being reset for each site
+
+2002-05-20  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Poly.cc: cleaned up documentation tags
+
+	* Poly.cc: added doc tags for Fu and Li statistics
+
+	* Poly.cc: clean up code and doxygen tags
+
+	* Poly.cc: fixed typo in docs
+
+	* TwoSubs.cc: updated some doxygen comment
+
+	* ThreeSubs.cc: removed compiler warning
+
+	* Recombination.cc, Poly.cc: more documentation added
+
+	* Poly.cc: fixed typo in documentation
+
+	* Poly.cc: updated to use enum PolyChars {...}
+
+	* AnalyzeEnums.h, SeqEnums.h: New file.
+
+	* Kimura80.cc, ThreeSubs.cc, Comeron95.cc, TwoSubs.cc, SingleSub.cc:
+	doxygen tags added
+
+	* TwoSubs.cc: namespace wrapped the code
+
+	* Kimura80.cc: added doxygen tags
+
+	* Poly.cc: more doxygen tags added
+
+	* Poly.cc: *** empty log message ***
+
+	* Poly.cc: fixed typos in documentation
+
+	* Poly.cc: added lots of doxygen tags
+
+	* Poly.cc:
+	simplified and fixed bugs in Theta(const libSequence::PolyData *,...)
+
+2002-05-19  Kevin Thornton  <kevin@krthornt.uchicago.edu>
+
+	* Kimura80.cc: added #include "AnalyzeExceptions.h"
+
+	* Kimura80.cc: updated exception handling procedure
+
+	* Poly.cc: updated exception handling procedures
+
+	* Poly.cc: code cleanup
+
+	* RedundancyCom95.h, SingleSub.h, AnalyzeExceptions.h, Kimura80.cc, Comeron95.cc, Poly.cc, Recombination.cc, RedundancyCom95.cc, SingleSub.cc, Sites.cc, ThreeSubs.cc, TwoSubs.cc:
+	New file.
+
