@@ -1,4 +1,4 @@
-#libsequence - a library for various sequence I/O operations
+#libsequence - A C++ class library for evolutionary genetic analysis
 
 
 
