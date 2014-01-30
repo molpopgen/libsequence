@@ -1,4 +1,4 @@
-	libsequence2 - a library for various sequence I/O operations
+#libsequence - a library for various sequence I/O operations
 
 
 
@@ -20,4 +20,21 @@
 
 Comments are welcome.
 
-	- Kevin Thornton <k-thornton@uchicago.edu>
+	- Kevin Thornton <krthornt@uci.edu>
+
+#Citation
+
+If you use the library for your research, please cite:
+
+@article{libsequence,
+author = {Thornton, Kevin},
+title = {{Libsequence: a C++ class library for evolutionary genetic analysis.}},
+journal = {Bioinformatics (Oxford, England)},
+year = {2003},
+volume = {19},
+number = {17},
+pages = {2325--2327},
+month = nov
+}
+
+The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
