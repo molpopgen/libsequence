@@ -43,7 +43,9 @@ The manuscript is available online at http://bioinformatics.oxfordjournals.org/c
 
 ##Dependencies
 GNU Scientific Library: http://gnu.org/software/gsl
+
 Boost C++ libraries: http://www.boost.org
+
 zlib: http://zlib.net
 
 ##Simplest installation instructions
