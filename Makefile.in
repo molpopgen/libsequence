@@ -232,7 +232,7 @@ top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = src Sequence
-EXTRA_DIST = LICENSE doc/libsequence.doxygen doc/Makefile doc/images/* examples/Makefile examples/*.cc examples/*.h examples/*.hpp examples/*.c debian/*
+EXTRA_DIST = LICENSE doc/libsequence.doxygen doc/Makefile doc/images/* examples/Makefile examples/*.cc examples/*.h examples/*.hpp examples/*.c README.md
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
 
