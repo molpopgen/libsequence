@@ -50,5 +50,7 @@ zlib: http://zlib.net
 
 ##Simplest installation instructions
 ./configure
+
 make
+
 sudo make install
