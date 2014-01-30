@@ -38,3 +38,15 @@ month = nov
 }
 
 The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
+
+#Installation
+
+##Dependencies
+GNU Scientific Library: http://gnu.org/software/gsl
+Boost C++ libraries: http://www.boost.org
+zlib: http://zlib.net
+
+##Simplest installation instructions
+./configure
+make
+sudo make install
