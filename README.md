@@ -49,8 +49,11 @@ Boost C++ libraries: http://www.boost.org
 zlib: http://zlib.net
 
 ##Simplest installation instructions
-./configure
 
-make
+The "CXXFLAGS= " part of the command is to over-ride ./configure's desire to add -g -O2 to the compile options
+
+CXXFLAGS= ./configure
+
+CXXFLAGS= make
 
 sudo make install
