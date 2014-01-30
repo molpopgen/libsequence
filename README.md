@@ -39,16 +39,16 @@ month = nov
 
 The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
 
-#Installation
+##Installation
 
-##Dependencies
+###Dependencies
 GNU Scientific Library: http://gnu.org/software/gsl
 
 Boost C++ libraries: http://www.boost.org
 
 zlib: http://zlib.net
 
-##Simplest installation instructions
+###Simplest installation instructions
 
 The "CXXFLAGS= " part of the command is to over-ride ./configure's desire to add -g -O2 to the compile options
 
@@ -57,3 +57,29 @@ CXXFLAGS= ./configure
 CXXFLAGS= make
 
 sudo make install
+
+###More complex installation scenarios
+
+Some users may not have the dependent libraries installed in the standard locations on their systems.  Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking.  This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly.  In order to accomodate such situations, the user must provide the correct path to the include and lib directories.  For example, assume that the dependend libraries are in /opt on your system.  You would install libsequence as follows:
+
+CXXFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib ./configure
+
+make
+
+sudo make install
+
+Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists.  This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable.  (One could also do the same with CXXFLAGS, FYI.)
+
+###Installing libsequence locally
+
+If you do not have permission to "sudo make install", you can install the library in your $HOME:
+
+./configure --prefix=$HOME
+
+##Using libsequence to compile other programs
+
+If libsequence is not installed in a standard path, then you must provide the appropriate include (-I) and link path (-L) commands to your compiler.  This may be done in various ways, e.g., via a configure script or your own Makefile.
+
+A program that depends on libsequence must provide at least the following libraries to the linker:
+
+-lsequence -lz -lgsl -lgslcblas
