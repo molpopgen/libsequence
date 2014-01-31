@@ -62,7 +62,7 @@ sudo make install
 
 Some users may not have the dependent libraries installed in the standard locations on their systems.  Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking.  This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly.  In order to accomodate such situations, the user must provide the correct path to the include and lib directories.  For example, assume that the dependend libraries are in /opt on your system.  You would install libsequence as follows:
 
-CXXFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib ./configure
+CXXFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib" ./configure
 
 make
 
