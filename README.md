@@ -76,6 +76,17 @@ If you do not have permission to "sudo make install", you can install the librar
 
 ./configure --prefix=$HOME
 
+###A "master" script for local installation
+
+If you want the library installed in your home, and are starting "from scratch" (e.g., you need GSL and boost, too), then there is a script for you online [here](https://gist.github.com/molpopgen/9160680).  You need git installed on your machine.
+
+You may either [download](https://gist.github.com/molpopgen/9160680) the script yourself, edit it (necessary for OS X userss), and then execute it.  Or, you can do it all via git:
+
+> git clone https://gist.github.com/molpopgen/9160680
+> cd 9160680
+> #Edit the script if you are an OS X user
+> sh libseq _ local.sh
+
 ##Using libsequence to compile other programs
 
 If libsequence is not installed in a standard path, then you must provide the appropriate include (-I) and link path (-L) commands to your compiler.  This may be done in various ways, e.g., via a configure script or your own Makefile.
