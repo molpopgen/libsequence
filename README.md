@@ -85,7 +85,8 @@ You may either [download](https://gist.github.com/molpopgen/9160680) the script 
 > git clone https://gist.github.com/molpopgen/9160680<br>
 > cd 9160680<br>
 > (At this point, edit the script if you are an OS X user)<br>
-> sh libseq _ local.sh<br>
+> bash libseq _ local.sh<br>
+
 
 ##Using libsequence to compile other programs
 
