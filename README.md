@@ -82,10 +82,10 @@ If you want the library installed in your home, and are starting "from scratch" 
 
 You may either [download](https://gist.github.com/molpopgen/9160680) the script yourself, edit it (necessary for OS X userss), and then execute it.  Or, you can do it all via git:
 
-> git clone https://gist.github.com/molpopgen/9160680
-> cd 9160680
-> (At this point, edit the script if you are an OS X user)
-> sh libseq _ local.sh
+> git clone https://gist.github.com/molpopgen/9160680<br>
+> cd 9160680<br>
+> (At this point, edit the script if you are an OS X user)<br>
+> sh libseq _ local.sh<br>
 
 ##Using libsequence to compile other programs
 
