@@ -85,7 +85,19 @@ You may either [download](https://gist.github.com/molpopgen/9160680) the script 
 > git clone https://gist.github.com/molpopgen/9160680<br>
 > cd 9160680<br>
 > (At this point, edit the script if you are an OS X user)<br>
-> sh libseq _ local.sh<br>
+> bash libseq _ local.sh<br>
+
+Then, when compiling any program using libsequence, gsl, and/or boost, you need to add
+
+> -I$HOME/include
+
+to any compilation commands and
+
+> -L$HOME/lib
+
+to any linking commands.
+
+When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD _ LIBRARY _ PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
 
 ##Using libsequence to compile other programs
 
