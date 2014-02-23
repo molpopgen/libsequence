@@ -80,11 +80,10 @@ If you do not have permission to "sudo make install", you can install the librar
 
 If you want the library installed in your home, and are starting "from scratch" (e.g., you need GSL and boost, too), then there is a script for you online [here](https://gist.github.com/molpopgen/9160680).  You need git installed on your machine.
 
-You may either [download](https://gist.github.com/molpopgen/9160680) the script yourself, edit it (necessary for OS X userss), and then execute it.  Or, you can do it all via git:
+You may either [download](https://gist.github.com/molpopgen/9160680) the script yourself and then execute it.  Or, you can do it all via git:
 
 > git clone https://gist.github.com/molpopgen/9160680<br>
 > cd 9160680<br>
-> (At this point, edit the script if you are an OS X user)<br>
 > bash libseq _ local.sh<br>
 
 Then, when compiling any program using libsequence, gsl, and/or boost, you need to add
