@@ -108,5 +108,5 @@ endif
 
 #some bits for the compile
 #CXXLINK = 
-AM_CXXFLAGS = $(CXXOTHERFLAGS) $(GFIVEFLAGS) $(GFOURFLAGS) $(PROFILE) $(STRSTREAM) $(SSTREAM) $(LIMITS) $(CLIMITS) $(IEEEFPH)  -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops -ansi
+AM_CXXFLAGS = $(CXXOTHERFLAGS) $(GFIVEFLAGS) $(GFOURFLAGS) $(PROFILE) $(STRSTREAM) $(SSTREAM) $(LIMITS) $(CLIMITS) $(IEEEFPH)  -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops -ansi
 CFLAGS =  $(COTHERFLAGS) $(PROFILE) -Wall $(INCLUDES) -pedantic -ansi
