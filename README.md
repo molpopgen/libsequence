@@ -78,13 +78,9 @@ If you do not have permission to "sudo make install", you can install the librar
 
 ###A "master" script for local installation
 
-If you want the library installed in your home, and are starting "from scratch" (e.g., you need GSL and boost, too), then there is a script for you online [here](https://gist.github.com/molpopgen/9160680).  You need git installed on your machine.
+If you want the library installed in your home, and are starting "from scratch" (e.g., you need GSL and boost, too), then there is a script for you online [here](https://github.com/molpopgen/install_libseq).  You need git installed on your machine.
 
-You may either [download](https://gist.github.com/molpopgen/9160680) the script yourself and then execute it.  Or, you can do it all via git:
-
-> git clone https://gist.github.com/molpopgen/9160680<br>
-> cd 9160680<br>
-> bash libseq _ local.sh<br>
+Please read the README in detail for how to use that script.
 
 Then, when compiling any program using libsequence, gsl, and/or boost, you need to add
 
@@ -98,6 +94,9 @@ to any linking commands.
 
 When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD _ LIBRARY _ PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
 
+###Another installation option (not supported by the libsequence author)
+
+I've recently been made aware that there is a method for installing libsequence using the [brew.sh](http://brew.sh/) system.  This system allows the [homebrew-science](https://github.com/Homebrew/homebrew-science) git repo to be used to obtain libsequence.  
 ##Using libsequence to compile other programs
 
 If libsequence is not installed in a standard path, then you must provide the appropriate include (-I) and link path (-L) commands to your compiler.  This may be done in various ways, e.g., via a configure script or your own Makefile.
