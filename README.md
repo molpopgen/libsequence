@@ -39,6 +39,26 @@ month = nov
 
 The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
 
+##Obtaining the source code
+
+###Obtaining the master branch
+You have a few options:
+<ol>
+<li> Clone the repo (best option): git clone https://github.com/molpopgen/libsequence.git</li>
+<li> Click on "Download Zip" at https://github.com/molpopgen/libsequence </li>
+</ol>
+
+###Obtaining a specific release
+Again, a few options:
+<ol>
+<li> Click on "Releases" at https://github.com/molpopgen/libsequence, then download the one you want </li>
+<li> Clone the repo (see previous section)</li>
+<ol>
+<li> Get a list of releases by saying "git tag -l" </li>
+<li> Checkout the release you want.  For example "git checkout 1.8.0"</li>
+</ol>
+</ol>
+
 ##Installation
 
 ###Dependencies
