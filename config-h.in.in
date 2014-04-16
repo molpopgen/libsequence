@@ -1,4 +1,4 @@
-/* config.h.in.  Generated from configure.in by autoheader.  */
+/* config-h.in.in.  Generated from configure.ac by autoheader.  */
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #undef HAVE_DLFCN_H
@@ -21,10 +21,6 @@
 /* Define to 1 if you have the <string.h> header file. */
 #undef HAVE_STRING_H
 
-/* Define if struct utimbuf is declared -- usually in <utime.h>. Some systems
-   have utime.h but don't declare the struct anywhere. */
-#undef HAVE_STRUCT_UTIMBUF
-
 /* Define to 1 if you have the <sys/stat.h> header file. */
 #undef HAVE_SYS_STAT_H
 
@@ -33,9 +29,6 @@
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #undef HAVE_UNISTD_H
-
-/* Define to 1 if you have the <utime.h> header file. */
-#undef HAVE_UTIME_H
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */
@@ -65,17 +58,8 @@
 /* Define to 1 if you have the ANSI C header files. */
 #undef STDC_HEADERS
 
-/* Define to 1 if you can safely include both <sys/time.h> and <time.h>. */
-#undef TIME_WITH_SYS_TIME
-
 /* Version number of package */
 #undef VERSION
 
 /* Define to empty if `const' does not conform to ANSI C. */
 #undef const
-
-/* Define to `__inline__' or `__inline' if that's what the C compiler
-   calls it, or to nothing if 'inline' is not supported under any name.  */
-#ifndef __cplusplus
-#undef inline
-#endif

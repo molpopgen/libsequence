@@ -64,47 +64,47 @@ else
 PROFILE=
 endif
 
-if GFIVEOPT
-GFIVEFLAGS= -mcpu=G5 -mtune=G5 -mpowerpc64 -mpowerpc-gpopt
-else
-GFIVEFLAGS=
-endif
+#if GFIVEOPT
+#GFIVEFLAGS= -mcpu=G5 -mtune=G5 -mpowerpc64 -mpowerpc-gpopt
+#else
+#GFIVEFLAGS=
+#endif
 
-if GFOUROPT
-GFOURFLAGS= -mcpu=G4 -mtune=G4 -mpowerpc -mpowerpc-gpopt
-else
-GFOURFLAGS=
-endif
+#if GFOUROPT
+#GFOURFLAGS= -mcpu=G4 -mtune=G4 -mpowerpc -mpowerpc-gpopt
+#else
+#GFOURFLAGS=
+#endif
 
-if HAVE_STRSTREAM
-STRSTREAM = -DHAVE_STRSTREAM
-else
-STRSTREAM =
-endif
+#if HAVE_STRSTREAM
+#STRSTREAM = -DHAVE_STRSTREAM
+#else
+#STRSTREAM =
+#endif
 
-if HAVE_SSTREAM
-SSTREAM = -DHAVE_SSTREAM
-else
-SSTREAM =
-endif
+#if HAVE_SSTREAM
+#SSTREAM = -DHAVE_SSTREAM
+#else
+#SSTREAM =
+#endif
 
-if HAVE_LIMITS
-LIMITS= -DHAVE_LIMITS
-else
-LIMITS =
-endif
+#if HAVE_LIMITS
+#LIMITS= -DHAVE_LIMITS
+#else
+#LIMITS =
+#endif
 
-if HAVE_CLIMITS
-CLIMITS= -DHAVE_CLIMITS
-else
-CLIMITS =
-endif
+#if HAVE_CLIMITS
+#CLIMITS= -DHAVE_CLIMITS
+#else
+#CLIMITS =
+#endif
 
-if HAVE_IEEEFP
-IEEEFPH= -DHAVE_IEEEFP_H
-else
-IEEEFPH=
-endif
+#if HAVE_IEEEFP
+#IEEEFPH= -DHAVE_IEEEFP_H
+#else
+#IEEEFPH=
+#endif
 
 #some bits for the compile
 #CXXLINK = 
