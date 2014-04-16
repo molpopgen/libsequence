@@ -51,11 +51,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <string>
 
-class Sequence::Seq;
-class Sequence::RedundancyCom95;
-
 namespace Sequence
   {
+    class Seq;
+    class RedundancyCom95;
+
     class Sites
     {
     private:
