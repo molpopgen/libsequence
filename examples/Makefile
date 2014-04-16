@@ -1,7 +1,7 @@
 CC=cc
 CXX=c++
 CFLAGS = -O3 -Wall -pedantic -ansi -Wtraditional -I..
-CXXFLAGS = -O3 -Wall -W -ansi -I..
+CXXFLAGS = -O3 -Wall -W -I..
 LIBS = -L/usr/local/lib -lsequence -lz
 REGEX= -lboost_regex
 #all: codons.o gestimator.o msstats.o int_handler.o getopt.o getopt1.o baseComp.o valid_dna.o FastaExplicit.o translateTest.o slidingWindow.o slidingWindow2.o PolyTableIterators.o correlations.o critical_values.o ufs.o ms--.o msbeta.o freerec.o bottleneck.o fragments.o test_SimDataIO.o
