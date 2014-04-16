@@ -125,3 +125,25 @@ If libsequence is not installed in a standard path, then you must provide the ap
 A program that depends on libsequence must provide at least the following libraries to the linker:
 
 -lsequence -lz -lgsl -lgslcblas
+
+#Compiling the examples
+
+There are several example programs in the examples subdirectory.  If you have installed libsequence in a standard path (e.g., /usr/local/lib and /usr/local/include), then you compile the examples by saying
+
+```
+make
+```
+
+If you have installed the library elsewhere, such as $HOME, then you need to adjust LDFLAGS as follows:
+
+```
+LDFLAGS=-L$HOME/lib make
+```
+
+If you have dependencies like boost, gsl, in locations other than /usr/local (or their moral equivalent on your system, then you will likely need to manually edit CXXFLAGS in the Makefile to add a -I flag to the folder containing header files.  For example, you may change the variable from
+
+> CXXFLAGS = -O3 -Wall -W -I..
+
+to
+
+> CXXFLAGS = -O3 -Wall -W -I.. -I$(HOME)/include
