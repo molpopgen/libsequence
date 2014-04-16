@@ -1,5 +1,5 @@
 #!sh
-libtoolize --force
+libtoolize --force --copy
 autoreconf -fis
 autoheader
-automake --add-missing
+automake --add-missing --copy
