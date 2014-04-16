@@ -4,7 +4,7 @@ AC_INIT
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([src/Seq.cc])
 dnl Every other copy of the package version number gets its value from here
-AM_INIT_AUTOMAKE(libsequence, 1.8.0)
+AM_INIT_AUTOMAKE(libsequence, 1.8.1)
 
 AC_ARG_ENABLE(G5,
 [  --enable-G5    Turn on G5 optimizatons (default no)],
