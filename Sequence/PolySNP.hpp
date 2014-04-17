@@ -78,9 +78,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <boost/utility.hpp>
 namespace Sequence 
   {
-  class PolyTable;
-  class _PolySNPImpl;
-  class PolySNP : boost::noncopyable
+    class PolyTable;
+    struct _PolySNPImpl;
+    class PolySNP : boost::noncopyable
     {
     private:
     protected:

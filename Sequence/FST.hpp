@@ -35,7 +35,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
   class PolyTable;
-  class FSTimpl;
+  struct FSTimpl;
   class FST : boost::noncopyable
   {
   private:

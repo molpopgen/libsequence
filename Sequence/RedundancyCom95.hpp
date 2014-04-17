@@ -53,7 +53,7 @@ using Sequence::GeneticCodes;
 
 namespace Sequence
 {
-  class  RedundancyCom95impl;
+  struct RedundancyCom95impl;
   class RedundancyCom95
   {
   private:
