@@ -45,9 +45,11 @@ AC_CHECK_HEADER(boost/tuple/tuple.hpp,,[AC_MSG_ERROR([boot::tuple required - eit
 dnl gsl
 AC_CHECK_HEADER(gsl/gsl_rng.h, LIBSEQUENCE_USE_GSL=1 , [AC_MSG_ERROR([gsl/gsl_rng.h not found.  Please install GSL from http://www.gnu.org/software/gsl])])
 
-dnl zlip
+dnl zlib header
 AC_CHECK_HEADER(zlib.h,,[AC_MSG_ERROR([zlib headers missing - cannot continue])])
 
+dnl zlib runtime
+AC_CHECK_LIB([z],gzungetc,,[echo "zlib run time library not found";exit 1])
 dnl AM_CONFIG_HEADER(config.h)
 
 AC_OUTPUT
