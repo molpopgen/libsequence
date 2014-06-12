@@ -125,9 +125,9 @@ namespace Sequence
       //summary statistics of haplotypes
       double DandVH (void);                                    //Depaulis & Veuille (1998) Haplotype diversity
       unsigned DandVK (void);                                  //Depaulis & Veuille (1998) number of haplotypes
-      virtual double WallsB(void);                             //Jeff Wall's (2000) B  statistic
-      virtual unsigned WallsBprime(void);                      //Jeff Wall's (2000) B' statistic
-      virtual double WallsQ(void);                             //Jeff Wall's (2000) Q  statistic
+      virtual double WallsB(void);                             //Jeff Wall's (1999) B  statistic
+      virtual unsigned WallsBprime(void);                      //Jeff Wall's (1999) B' statistic
+      virtual double WallsQ(void);                             //Jeff Wall's (1999) Q  statistic
       //recombination
       double HudsonsC (void);                                  //Dick Hudson's (1987) Chat = 4Nr
       virtual unsigned Minrec (void);                          //Hudson & Kaplan's (1985) min # of recombination events
