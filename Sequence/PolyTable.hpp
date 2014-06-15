@@ -122,6 +122,9 @@ namespace Sequence
     explicit PolyTable(const size_t & nsam = 0, const size_t nsnps = 0);   
     explicit PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end);
+    /*!
+      Template constructors simplify compatibility with external data sources.
+     */
     template<typename double_type,
 	     typename string_type>
     explicit PolyTable( const double_type & pbeg,
