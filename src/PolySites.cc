@@ -121,7 +121,7 @@ namespace Sequence
   {}
 
   PolySites::PolySites (const std::vector < double > &List, const std::vector <std::string > &stringList):
-    PolyTable()
+    PolyTable(List.begin(),List.end(),stringList.begin(),stringList.end())
     /*!
       Use this constructor if you already have a list of positions and characters
       \param List a list of doubles representing positions of polymorphic positions
@@ -130,7 +130,6 @@ namespace Sequence
   {
     seqlen = stringList[0].length();
     numseqs = stringList.size();
-    PolyTable::assign(&List[0],List.size(),&stringList[0],stringList.size());
   }
 
   PolySites::PolySites (PolyTable::const_site_iterator beg,
