@@ -122,6 +122,15 @@ namespace Sequence
     explicit PolyTable(const size_t & nsam = 0, const size_t nsnps = 0);   
     explicit PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end);
+    template<typename double_type,
+	     typename string_type>
+    explicit PolyTable( const double_type & pbeg,
+			const double_type & pend,
+			const string_type & dbeg,
+			const string_type & dend ) : positions(std::vector<double>(pbeg,pend)),
+						     data( std::vector<std::string>(dbeg,dend) )
+    {
+    }
     virtual ~ PolyTable (void);
 
     
