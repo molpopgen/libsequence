@@ -39,6 +39,10 @@ month = nov
 
 The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
 
+##Revision history.
+
+The revision history of the library is [here](REVISION_HISTORY.md).  The document describes what changed for a given release.
+
 ##Obtaining the source code
 
 ###Obtaining the master branch
