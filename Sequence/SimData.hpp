@@ -73,9 +73,11 @@ namespace Sequence
     public:
       explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
       explicit SimData(double *pos, char **sample, int nsam, int S);
-      explicit SimData(const std::vector<double> & pos, const std::vector<std::string> & data)
+      explicit SimData(const std::vector<double> & pos, const std::vector<std::string> & data) : PolyTable(pos.begin(),
+													   pos.end(),
+													   data.begin(),
+													   data.end())
       {
-        assign(&pos[0],unsigned(pos.size()),&data[0],unsigned(data.size()));
       }
       explicit SimData(const SimData::const_site_iterator beg, 
 		       const SimData::const_site_iterator end) : PolyTable(beg,end)
