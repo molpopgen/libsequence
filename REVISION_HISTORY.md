@@ -6,5 +6,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 
 ##libsequence 1.8.3
 
-1.  This release _breaks binary compatibility_ with previous releases.  Programs depending on libsequence will likely need to be recompiled. 
-2.  New constructor functions were added to Sequence::PolyTable, which breaks binary compatibility.  These new constructors are needed for easier [Rcpp](http://www.rcpp.org/) integration.  Derived classes have been updated to use these new constructors whenever possible.
+(1.8.3 is unreleased.  The list below may be incomplete, suffer from wishful thinking, etc.)
+
+1.  This release _breaks binary compatibility_ with previous releases.  Programs depending on libsequence will likely need to be recompiled.
+3.  New constructor functions were added to Sequence::PolyTable, which breaks binary compatibility.  These new constructors are needed for easier [Rcpp](http://www.rcpp.org/) integration.  Derived classes have been updated to use these new constructors whenever possible.
