@@ -124,6 +124,12 @@ namespace Sequence
 		       PolyTable::const_site_iterator end);
     /*!
       Template constructors simplify compatibility with external data sources.
+      \param pbeg Pointer to start of positions
+      \param pend Pointer to end of positions in "C++-ese", meaning 1 past the last value.
+      \param dbeg Pointer to start of data
+      \param dend Pointer to end of data
+
+      \note pbeg/pend must have value types convertible to double.  dbed/dend must have value types convertible to std::string
      */
     template<typename double_type,
 	     typename string_type>
@@ -134,6 +140,35 @@ namespace Sequence
 						     data( std::vector<std::string>(dbeg,dend) )
     {
     }
+    /*!
+      Constructor for data coming from C data structures.
+      \param pbeg Pointer to start of positions
+      \param pend Pointer to end of positions in "C++-ese", meaning 1 past the last value.
+      \param __data Data matrix
+      \param nsam Number of haplotypes in __data
+
+      \note pbeg/pend must have value types convertible to double. 
+
+      Rough guide to usage:
+      double * pos = new double[npos];
+      char ** dmatrix = new char *[nsam];
+      //fill pos and dmatrix with the right stuff...
+      //This assignment fails b/c PolyTable is pure virtual class, but you'll get the idea
+      PolyTable p(pos,pos+npos,dmatrix,nsam);
+     */
+    template<typename double_type>
+    explicit PolyTable( const double_type & pbeg,
+			const double_type & pend,
+			const char ** __data,
+			const size_t & nsam ) : positions(std::vector<double>(pbeg,pend)),
+						data( std::vector<std::string>(nsam) )
+    {
+      for( size_t i = 0 ; i < nsam ; ++i )
+	{
+	  data[i] = std::string( __data[i] );
+	}
+    }
+	     
     virtual ~ PolyTable (void);
 
     
