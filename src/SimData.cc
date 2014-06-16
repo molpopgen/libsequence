@@ -39,10 +39,10 @@ namespace Sequence
   {
   }
 
-  SimData::SimData(double *pos, char **sample, int nsam, int S):
-    PolyTable(),totsam(nsam)
+  SimData::SimData(double *pos, const char **sample, int nsam, int S):
+    PolyTable(pos,pos+S,sample,nsam),totsam(nsam)
   {
-    PolyTable::assign(pos,S,sample,nsam);
+    //PolyTable::assign(pos,S,sample,nsam);
   }
 
   std::istream & SimData::read (std::istream & stream) 
