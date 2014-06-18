@@ -303,26 +303,19 @@ namespace Sequence
     virtual std::ostream & print(std::ostream &h) const =0 ;
   };
 
-  inline std::istream & operator>> (std::istream & s, PolyTable & c)
-    /*!
-      \ingroup operators
-      Allows objects derived from Sequence::PolyTable
-      to be read in from streams
-    */
-  {
-    return c.read (s);
-  }
+  /*!
+    \ingroup operators
+    Allows objects derived from Sequence::PolyTable
+    to be read in from streams
+  */
+  std::istream & operator>> (std::istream & s, PolyTable & c);
 
-  inline std::ostream & operator<< (std::ostream & o, const PolyTable & c)
-    /*!
-      \ingroup operators
-      Allows objects derived from Sequence::PolyTable
-      to be written out to streams
-    */
-  {
-    return c.print (o);
-  }
-
+  /*!
+    \ingroup operators
+    Allows objects derived from Sequence::PolyTable
+    to be written out to streams
+  */  
+  std::ostream & operator<< (std::ostream & o, const PolyTable & c);
 }
 #include <Sequence/bits/PolyTable.tcc>
 #endif

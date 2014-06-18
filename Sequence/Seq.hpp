@@ -99,28 +99,19 @@ namespace Sequence
       virtual std::ostream & print (std::ostream & s) const = 0;
     };
 
-  inline std::ostream &
-  operator<< (std::ostream & s, const Seq & c)
-  /*!
-    \ingroup operators
-    Allows objects derived from Sequence::Seq
-    to be written to output streams.  This operator
-    acts by a call to the virtual funtion Sequence::Seq::print
-  */
-  {
-    return c.print (s);
-  }
-
-  inline std::istream &
-  operator>> (std::istream & s, Seq &c)
-  /*!
-    \ingroup operators
-    Allows objects derived from Sequence::Seq
-    to be read from output streams.  This operator
-    acts by a call to the virtual funtion Sequence::Seq::read
-  */
-  {
-    return c.read (s);
-  }
+    /*!
+      \ingroup operators
+      Allows objects derived from Sequence::Seq
+      to be written to output streams.  This operator
+      acts by a call to the virtual funtion Sequence::Seq::print
+    */
+    inline std::ostream & operator<< (std::ostream & s, const Seq & c);
+    /*!
+      \ingroup operators
+      Allows objects derived from Sequence::Seq
+      to be read from output streams.  This operator
+      acts by a call to the virtual funtion Sequence::Seq::read
+    */
+    inline std::istream & operator>> (std::istream & s, Seq &c);
 }
 #endif

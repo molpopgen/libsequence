@@ -535,5 +535,16 @@ namespace Sequence
   {
     return data;
   }
+  
+  //non-member functions
+  std::istream & operator>> (std::istream & s, PolyTable & c)
+  {
+    return c.read (s);
+  }
+  
+  std::ostream & operator<< (std::ostream & o, const PolyTable & c)
+  {
+    return c.print (o);
+  }
+} //ns Sequence
 
-}

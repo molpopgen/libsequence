@@ -230,7 +230,20 @@ namespace Sequence
   {
     return second.c_str();
   }
-}
+
+  //non-member functions
+  std::ostream &
+  operator<< (std::ostream & s, const Seq & c)
+  {
+    return c.print (s);
+  }
+
+  std::istream &
+  operator>> (std::istream & s, Seq &c)
+  {
+    return c.read (s);
+  }
+} //ns Sequence
 
 /*! \mainpage Introduction
   \section purpose Purpose and Intent
