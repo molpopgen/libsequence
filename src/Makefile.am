@@ -46,7 +46,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	CoalescentFragmentsRescaling.cc\
 	samrecord.cc\
 	samflag.cc\
-	samfunctions.cc
+	samfunctions.cc\
+	PolyData.cc
 
 AM_LDFLAGS = -version-info 19:0:0
 

@@ -90,7 +90,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	CoalescentRecombination.lo CoalescentSimTypes.lo \
 	CoalescentTreeOperations.lo CoalescentInitialize.lo \
 	CoalescentCoalesce.lo CoalescentFragmentsRescaling.lo \
-	samrecord.lo samflag.lo samfunctions.lo
+	samrecord.lo samflag.lo samfunctions.lo PolyData.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -276,7 +276,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	CoalescentFragmentsRescaling.cc\
 	samrecord.cc\
 	samflag.cc\
-	samfunctions.cc
+	samfunctions.cc\
+	PolyData.cc
 
 AM_LDFLAGS = -version-info 19:0:0
 @DEBUG_FALSE@CXXOTHERFLAGS = -DNDEBUG -O2
@@ -344,9 +345,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --foreign src/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --foreign src/Makefile
+	  $(AUTOMAKE) --gnu src/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -424,6 +425,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/HKA.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PathwayHelper.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyData.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIM.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@

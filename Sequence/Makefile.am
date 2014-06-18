@@ -63,4 +63,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	samrecord.hpp\
 	samflag.hpp\
 	samfunctions.hpp\
-	typedefs.hpp
+	typedefs.hpp \
+	PolyData.hpp
