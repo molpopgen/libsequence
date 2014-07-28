@@ -10,6 +10,7 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_PROG_CC
 AC_C_CONST
 AC_PROG_CXX
+AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])
 
 AM_MAINTAINER_MODE([enable])
 
@@ -38,14 +39,14 @@ AM_CONDITIONAL(PROFILING, test x$profiling = xtrue)
 
 dnl check for things that we need
 
-dnl boost
-AC_CHECK_HEADER(boost/type_traits.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([boost::type_traits required - either install boost (see http://www.boost.org) or write a replacement])])
-AC_CHECK_HEADER(boost/utility.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([boost::noncopyable required (boost/utility.hpp) - either install boost (see http://www.boost.org) or write a replacement])])
-AC_CHECK_HEADER(boost/static_assert.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([BOOST_STATIC_ASSERT required - either install boost (see http://www.boost.org) or write a replacement])])
-AC_CHECK_HEADER(boost/tuple/tuple.hpp,,[AC_MSG_ERROR([boot::tuple required - either install boost (see http://www.boost.org) or write a replacement])])
+dnl boost (only needed prior to 1.8.3)
+dnl AC_CHECK_HEADER(boost/type_traits.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([boost::type_traits required - either install boost (see http://www.boost.org) or write a replacement])])
+dnl AC_CHECK_HEADER(boost/utility.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([boost::noncopyable required (boost/utility.hpp) - either install boost (see http://www.boost.org) or write a replacement])])
+dnl AC_CHECK_HEADER(boost/static_assert.hpp, LIBSEQUENCE_USE_BOOST=1 , [AC_MSG_ERROR([BOOST_STATIC_ASSERT required - either install boost (see http://www.boost.org) or write a replacement])])
+dnl AC_CHECK_HEADER(boost/tuple/tuple.hpp,,[AC_MSG_ERROR([boot::tuple required - either install boost (see http://www.boost.org) or write a replacement])])
 
-dnl gsl
-AC_CHECK_HEADER(gsl/gsl_rng.h, LIBSEQUENCE_USE_GSL=1 , [AC_MSG_ERROR([gsl/gsl_rng.h not found.  Please install GSL from http://www.gnu.org/software/gsl])])
+dnl gsl.  dependency removed in 1.8.3
+dnl AC_CHECK_HEADER(gsl/gsl_rng.h, LIBSEQUENCE_USE_GSL=1 , [AC_MSG_ERROR([gsl/gsl_rng.h not found.  Please install GSL from http://www.gnu.org/software/gsl])])
 
 dnl zlib header
 AC_CHECK_HEADER(zlib.h,,[AC_MSG_ERROR([zlib headers missing - cannot continue])])
