@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __SEQ_REGEXES_H__
 
 #include <regex>
+#include <type_traits>
 /*! \file SeqRegexes.hpp
   This file declares various functions using regular expressions.
   @short various useful rexex-based functions for dealing with data.
@@ -65,11 +66,13 @@ namespace Sequence
       part of the set of characters that complement the pattern)
     */
   {
-    std::regex in_alphabet(_pattern,icase);
-    std::match_results<Iter> match;
+    static_assert( false ,"Regular expressions not yet implemented: awaiting GCC support" );
+    return false;
+    //std::regex in_alphabet(_pattern,icase);
+    //std::match_results<Iter> match;
     //return !( std::regex_search(beg,end,in_alphabet) );
     //return !(std::regex_search(beg, end, match, in_alphabet, std::match_default));
-    return std::regex_match(beg,end,match,in_alphabet);
+    //return std::regex_match(beg,end,match,in_alphabet);
   }
 }
 
