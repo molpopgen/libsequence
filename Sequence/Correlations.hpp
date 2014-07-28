@@ -32,8 +32,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example correlations.cc */
 #include <iterator>
 #include <functional>
-#include <Sequence/ensureFloating.hpp>
 #include <Sequence/Portability/random_shuffle.hpp>
+
 namespace Sequence
 {
   struct ProductMoment
