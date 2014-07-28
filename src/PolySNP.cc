@@ -29,7 +29,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <set>
 #include <algorithm>
-#include <boost/bind.hpp>
+#include <functional>
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/Recombination.hpp>
@@ -156,7 +156,7 @@ namespace Sequence
 
   PolySNP::PolySNP (const Sequence::PolyTable * data, bool haveOutgroup ,
                     unsigned outgroup, bool totMuts):
-    rep(std::auto_ptr<_PolySNPImpl>(new _PolySNPImpl(data,haveOutgroup,outgroup,totMuts)))
+    rep(std::unique_ptr<_PolySNPImpl>(new _PolySNPImpl(data,haveOutgroup,outgroup,totMuts)))
     /*!
       \param data a valid object of type Sequence::PolyTable
       \param haveOutgroup \c true if an outgroup is present, \c false otherwise
@@ -801,19 +801,19 @@ namespace Sequence
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->begin()+rep->_outgroup,
-					    boost::bind(notDifferent<string>,
-							_1,*beg,false,true));
+					    std::bind(notDifferent<string>,
+						      std::placeholders::_1,*beg,false,true));
 		    _count += std::count_if(rep->_data->begin()+rep->_outgroup+1,
 					    rep->_data->end(),
-					    boost::bind(notDifferent<string>,
-							_1,*beg,false,true));
+					    std::bind(notDifferent<string>,
+						      std::placeholders::_1,*beg,false,true));
 		  }
 		else
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->end(),
-					    boost::bind(notDifferent<string>,
-							_1,*beg,false,true));
+					    std::bind(notDifferent<string>,
+						      std::placeholders::_1,*beg,false,true));
 		  }
 		rep->_DVH -= pow (double (_count) / rep->_totsam, 2.0);
 		++beg;

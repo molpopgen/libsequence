@@ -8,7 +8,6 @@
 */
 
 #include <Sequence/Coalescent/Coalescent.hpp>
-#include <Sequence/RNG/gsl_rng_wrappers.hpp>
 #include <ctime>
 #include <limits>
 #include <iostream>
@@ -16,10 +15,7 @@
 #include <stdexcept>
 #include <cassert>
 #include <numeric>
-#include <gsl/gsl_rng.h>
-#include <gsl/gsl_randist.h>
-#include <gsl/gsl_cdf.h>
-
+#include <random>
 using namespace std;
 
 //need to define these
@@ -43,7 +39,6 @@ Sequence::marginal init_marginal( const int & nsam , const int & begin)
     }
   return Sequence::marginal(begin,nsam,nsam-1,tree);
 }
-
 
 int main(int argc, char ** argv)
 {
@@ -75,13 +70,13 @@ int main(int argc, char ** argv)
   if(argc==9)
     seed=atoi(argv[8]);
 
-  gsl_rng * r = gsl_rng_alloc(gsl_rng_mt19937);
-  gsl_rng_set(r,(seed!=std::numeric_limits<unsigned>::max())?seed:time(0));
+  std::mt19937 generator(seed);
 
-  Sequence::gsl_uniform01 uni01(r);
-  Sequence::gsl_uniform uni(r);
-  Sequence::gsl_poisson poiss(r);
-  Sequence::gsl_exponential expo(r);
+  //Make our RNG types via lambda expressions
+  auto poiss = [&generator](const double & mean){ return std::poisson_distribution<int>(mean)(generator); };
+  auto expo = [&generator](const double & mean){ return std::exponential_distribution<double>(1/mean)(generator); };
+  auto uni01 = [&generator](){ return std::uniform_real_distribution<double>(0.,1.)(generator); };
+  auto uni = [&generator](const double & a, const double & b){ return std::uniform_real_distribution<double>(a,b)(generator); };
 
   const double DMAX = std::numeric_limits<double>::max();
   vector<Sequence::chromosome> initialized_sample = 

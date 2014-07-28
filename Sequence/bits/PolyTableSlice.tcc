@@ -1,5 +1,6 @@
-/*
+// Code for the -*- C++ -*- namespace Sequence::PolyTableSlice<T>
 
+/*
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
 Remove the brackets to email me.
@@ -21,7 +22,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-// Code for the -*- C++ -*- namespace Sequence::PolyTableSlice<T>
 #include <Sequence/stateCounter.hpp>
 #include <algorithm>
 

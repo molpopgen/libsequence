@@ -23,9 +23,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __DESCRIPTIVE_STATS_H__
 #define __DESCRIPTIVE_STATS_H__
-#include <Sequence/ensureFloating.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits.hpp>
+
+#include <type_traits>
 #include <utility>
 
 /*! \file descriptiveStats.hpp 
@@ -38,6 +37,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
 {
+
   /*!
     \param beg an iterator
     \param end an iterator
@@ -95,9 +95,9 @@ namespace Sequence
   class Sums
   {
   public:
-    typedef typename ensureFloating<T,T>::type floating_type;
     //T must be convertible to floating_type via a typecast
-    BOOST_STATIC_ASSERT( (boost::is_convertible<T,floating_type>::value) );
+    static_assert( std::is_convertible<T,double>::value,
+		   "T must be convertible to double");
   private:
     T __sum,__sumsq;
     unsigned __n;
@@ -107,8 +107,8 @@ namespace Sequence
     Sums<T> & operator+=(const Sums<T> &);
     const T & sum() const;
     const T & sumSquares() const;
-    floating_type mean() const;
-    floating_type variance() const;
+    double mean() const;
+    double variance() const;
   };
 
   template<typename T>

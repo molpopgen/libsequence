@@ -1,5 +1,4 @@
 #include <Sequence/Correlations.hpp>
-#include <Sequence/RNG/gsl_rng_wrappers.hpp>
 #include <Sequence/Portability/randomShuffleAdaptor.hpp>
 #include <string>
 #include <iostream>
@@ -9,12 +8,10 @@
 #include <ctime>
 #include <cstdlib>
 #include <cstdio>
+#include <random>
 
 int main()
 {
-  gsl_rng * r = gsl_rng_alloc(gsl_rng_mt19937);
-  gsl_rng_set(r,std::time(0));
-
   std::vector<int> x(12);
   std::vector<double> y(12);
       
@@ -43,36 +40,52 @@ int main()
   y[10]=17.25;
   y[11]=9.52;
 
+  std::mt19937 generator(std::time(0));
+
   std::cout << "original data:\n";
-  std::copy(x.begin(),x.end(),std::ostream_iterator<int>(std::cout," "));
+  for( const auto _x : x )
+    {
+      std::cout << _x << ' ';
+    }
   std::cout << std::endl;
-  std::copy(y.begin(),y.end(),std::ostream_iterator<double>(std::cout," "));
+  for ( const auto _y : y ) 
+    {
+      std::cerr << _y << ' ';
+    }
   std::cout << std::endl;
   std::cout << "Product-moment correlation: "
 	    << Sequence::ProductMoment()( x.begin(),x.end(),y.begin() )
 	    <<std::endl
 	    << "Spearman's rank correlation: "
 	    << Sequence::SpearmansRank()( x.begin(),x.end(),y.begin() )<<std::endl;
-  Sequence::gsl_uniform01 uni01(r);
-  Sequence::randomShuffleAdaptor<Sequence::gsl_uniform01> ru(&uni01);
+
   std::cout << "(all pvalues are one-tailed tests of observing a more extreme,\n"
 	    << "i.e. larger correlation than the observe dvalue)\n"
 	    << "pval of P-M correlation, seed with time: "
 	    << Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),
  					    Sequence::ProductMoment(),
-					    std::greater_equal<double>(),ru)<<std::endl
+					    std::greater_equal<double>(),
+					    generator) << '\n'
 	    << "pval of rank correlation, default seed: "
 	    << Sequence::PermuteCorrelation(x.begin(),x.end(),
-  					    y.begin(),
+					    y.begin(),
 					    Sequence::SpearmansRank(),
-					    std::greater_equal<double>(),ru) << std::endl
+					    std::greater_equal<double>(),
+					    generator) << std::endl
 	    << "pval of rank correlation, seed with time: "
     	    << Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),
  					    Sequence::SpearmansRank(),
-					    std::greater_equal<double>(),ru)<<std::endl;
+					    std::greater_equal<double>(),
+					    generator) <<std::endl;
   std::cout << "original data are intact:\n";
-  std::copy(x.begin(),x.end(),std::ostream_iterator<int>(std::cout," "));
+  for( const auto _x : x )
+    {
+      std::cout << _x << ' ';
+    }
   std::cout << std::endl;
-  std::copy(y.begin(),y.end(),std::ostream_iterator<double>(std::cout," "));
+ for( const auto _y : y )
+    {
+      std::cout << _y << ' ';
+    }
   std::cout << std::endl;
 }

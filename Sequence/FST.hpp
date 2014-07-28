@@ -23,12 +23,13 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __FST_H__
 #define __FST_H__
+
 #include <utility>
 #include <set>
 #include <memory>
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqExceptions.hpp>
-#include <boost/utility.hpp>
+
 /*! \file FST.hpp
   @brief delcaration of a class (Sequence::FST) to analyze population structure
 */
@@ -36,15 +37,17 @@ namespace Sequence
 {
   class PolyTable;
   struct FSTimpl;
-  class FST : boost::noncopyable
+  class FST 
   {
   private:
     void doCalcs(void) const;
-    mutable std::auto_ptr<FSTimpl> impl;
+    mutable std::unique_ptr<FSTimpl> impl;
   public:
     explicit FST(const PolyTable *data, unsigned npop, const unsigned *config=NULL,
 		 const double *weights=NULL, bool haveOutgroup = false,
-		 unsigned outgroup = 0) ;
+		 unsigned outgroup = 0);
+    FST(const FST &) = delete;
+    FST operator=(const FST &) = delete;
     ~FST(void);
     double HSM(void) const;
     double Slatkin(void) const;

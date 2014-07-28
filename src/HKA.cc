@@ -170,7 +170,7 @@ namespace Sequence
 	xsqB_t += sp2; //this will be not finite if n=1 in species 2, which is the desired behavior
 	const double d = (data[i].D-ED)*(data[i].D-ED)/VD;
 	xsq_t += d;
-	chisquareds.push_back( boost::make_tuple(xsqpoly,d,xsqA_t,xsqB_t) );
+	chisquareds.push_back( std::make_tuple(xsqpoly,d,xsqA_t,xsqB_t) );
 	xsq += xsq_t;
 	xsqA_t += d;
 	xsqB_t += d;

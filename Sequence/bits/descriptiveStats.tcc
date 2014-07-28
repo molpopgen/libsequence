@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -21,7 +22,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-// -*- C++ -*-
 #ifndef __DESCRIPTIVE_STATS_TCC__
 #define __DESCRIPTIVE_STATS_TCC__
 #include <numeric>
@@ -118,16 +118,16 @@ namespace Sequence
   }
 
   template<typename T>
-  typename Sums<T>::floating_type Sums<T>::mean() const
+  double Sums<T>::mean() const
   {
-    return floating_type(__sum)/floating_type(__n);
+    return double(__sum)/double(__n);
   }
 
   template<typename T>
-  typename Sums<T>::floating_type Sums<T>::variance() const
+  double Sums<T>::variance() const
   {
-    return ( floating_type(__sumsq)/floating_type(__n-1) -
-	     floating_type(__sum*__sum)/floating_type(__n*(__n-1)) );
+    return ( double(__sumsq)/double(__n-1) -
+	     double(__sum*__sum)/double(__n*(__n-1)) );
   }
 }
 #endif

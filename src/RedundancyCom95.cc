@@ -421,7 +421,7 @@ namespace Sequence
   }
 #endif
   RedundancyCom95::RedundancyCom95 (const GeneticCodes &code):
-    impl(std::auto_ptr<RedundancyCom95impl>(new RedundancyCom95impl(code)))
+    impl(std::unique_ptr<RedundancyCom95impl>(new RedundancyCom95impl(code)))
     /*!
       \param code see Sequence::GeneticCodes
     */

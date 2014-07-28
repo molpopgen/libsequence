@@ -1,4 +1,4 @@
-SUBDIRS = bits Portability Coalescent RNG
+SUBDIRS = bits Portability Coalescent
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -55,8 +55,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	shortestPath.hpp\
 	Correlations.hpp\
 	descriptiveStats.hpp\
-	preferFloatingTypes.hpp\
-	ensureFloating.hpp\
 	Crit.hpp\
 	HKA.hpp\
 	Snn.hpp\

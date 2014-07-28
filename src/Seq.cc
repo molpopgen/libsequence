@@ -317,9 +317,8 @@ namespace Sequence
   them.  Most important amongst these are namespaces, templates (including STL algorithms).
  
   \subsection dependencies Dependencies On Other Libraries
-  libsequence requires BOOST (http://www.boost.org) to compile. Note that there are no 
-  link-time dependencies on BOOST, only compile-time dependencies.  That means that
-  you only need to install the BOOST headers, not the run-time libraries.
+
+  libsequence requires zlib (http://zlib.net) to compile
  
   \subsection install Installation
   Installing from source is done with the standard 3 commands:\n

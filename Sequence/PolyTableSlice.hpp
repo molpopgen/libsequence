@@ -25,8 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __POLY_TABLE_SLICE_HPP__
 #include <vector>
 #include <utility>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits.hpp>
+#include <type_traits>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/SeqExceptions.hpp>
 
@@ -115,8 +114,8 @@ namespace Sequence
   template<typename T> class PolyTableSlice
   {
   private:
-    BOOST_STATIC_ASSERT( (boost::is_base_and_derived<
-			  Sequence::PolyTable,T>::value) );
+    static_assert( std::is_base_of<Sequence::PolyTable,T>::value,
+		   "T must be derived from Sequence::PolyTable" );
     mutable T currentSlice;
     typedef std::pair<PolyTable::const_site_iterator,
 		      PolyTable::const_site_iterator> range;

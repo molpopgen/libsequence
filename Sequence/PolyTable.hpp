@@ -48,8 +48,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cassert>
 #include <iosfwd>
 #include <exception>
-#include <boost/type_traits.hpp>
-#include <boost/static_assert.hpp>
+#include <type_traits>
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/PolyTableManip.hpp>
 

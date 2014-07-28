@@ -4,7 +4,6 @@
 #include <cassert>
 #include <cmath>
 #include <algorithm>
-#include <boost/static_assert.hpp>
 
 namespace Sequence
 {

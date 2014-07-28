@@ -4,25 +4,21 @@
 #include <vector>
 #include <algorithm>
 #include <ctime>
-#include <boost/random.hpp>
-#include <boost/random/uniform_01.hpp>
+#include <random>
 
 using namespace Sequence;
 using namespace std;
 
-//use BOOST random number generation schemes
-typedef boost::rand48 RNG;
-typedef boost::uniform_01< RNG > _Uni;
-
 int main()
 {
   //fill a vector<double> with 1000 random values
-  RNG generator(static_cast<int>(std::time(0)));
-  _Uni uni(generator);
+  std::mt19937 generator(std::time(0));
+  std::uniform_real_distribution<double> distribution(0.0,1.0);
+
   vector<double> x;
   for(unsigned i = 0 ; i < 100000 ; ++i)
     {
-      x.push_back( uni() );
+      x.push_back( distribution(generator) );
     }
 
   //sort the list

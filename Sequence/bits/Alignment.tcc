@@ -1,3 +1,5 @@
+// Code for the -*- C++ -*- namespace Sequence::Alignment
+
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -21,7 +23,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-// Code for the -*- C++ -*- namespace Sequence::Alignment
 /*! \file Alignment.tcc
   The static assertion that is used throughout this file
   ensures that the template type parameter T is either
@@ -32,8 +33,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Alignment.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/SeqProperties.hpp>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits.hpp>
+#include <type_traits>
 #include <iterator>
 #include <algorithm>
 namespace Sequence
@@ -165,8 +165,9 @@ namespace Sequence
       , false otherwise.
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
+      static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		     std::is_same<std::pair<std::string,std::string>,T>::value,
+		     "T must be pair<std::string,std::string> or publicly inherit from that type" );
       for (int i = 0; unsigned (i) < data.size (); ++i)
         //iterate over sequences
 	{
@@ -184,8 +185,9 @@ namespace Sequence
       \param data vector<T> to check
     */
     {
-       BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			    || boost::is_same<std::pair<std::string,std::string>,T>::value));
+     static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		    std::is_same<std::pair<std::string,std::string>,T>::value,
+		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
       for (int i = 0; unsigned (i) < data.size (); ++i)
         if (data[i].second.length () != data[0].second.length ())
           return 0;
@@ -204,14 +206,13 @@ namespace Sequence
       //ensure that Iterator is an iterator type for a container
       //containing things in the inheritance hierarchy of Sequence::Seq
       //The assertion assumes that std::iterator_traits is specialized for Iterator
-      BOOST_STATIC_ASSERT( (boost::is_base_and_derived< 
-			    std::pair<std::string,std::string>,
-			    typename std::iterator_traits<Iterator>::value_type
-			    >::value || 
-			    boost::is_same< 
-			    std::pair<std::string,std::string>,
-			    typename std::iterator_traits<Iterator>::value_type
-			    >::value));
+      static_assert( std::is_base_of<std::pair<std::string,std::string>,
+				  typename std::iterator_traits<Iterator>::value_type
+				  >::value || 
+		     std::is_same<std::pair<std::string,std::string>,
+				    typename std::iterator_traits<Iterator>::value_type
+				    >::value,
+		     "Iterator must be in the inheritance hierarchy of Sequence::Seq");
       while(beg < end)
 	{
 	  if (std::find_if(beg->second.begin(),beg->second.end(),
@@ -235,8 +236,9 @@ namespace Sequence
       \param data vector<T> to check
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
+     static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		    std::is_same<std::pair<std::string,std::string>,T>::value,
+		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
       bool site_gapped = 0;
       int len = 0;
       if (!IsAlignment(data))
@@ -268,9 +270,9 @@ namespace Sequence
       \param data vector<T> to modify
     */
     {
-
-       BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			    || boost::is_same<std::pair<std::string,std::string>,T>::value));
+      static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		     std::is_same<std::pair<std::string,std::string>,T>::value,
+		     "T must be pair<std::string,std::string> or publicly inherit from that type" );
        size_t i, j,datasize=data.size();
        size_t length = data[0].second.length ();
       std::vector < std::string > ungapped_sequences(data.size());
@@ -311,8 +313,10 @@ namespace Sequence
       \param data vector<T> to modify
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
+     static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		    std::is_same<std::pair<std::string,std::string>,T>::value,
+		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
+
       size_t i,j,length = data[0].second.length ();	//how much we have to iterate over
       std::vector < std::string > trimmed_sequences;
       size_t leftmost, rightmost, numUngapped;
@@ -377,8 +381,10 @@ namespace Sequence
       @param ref the index of the outgroup in @a data
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
+     static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		    std::is_same<std::pair<std::string,std::string>,T>::value,
+		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
+
       size_t nsam = data.size()-1;
       size_t s = data[0].second.length()-1,max=s+1;
       for(size_t i=0 ; i<max ; --s,++i)
@@ -423,8 +429,9 @@ namespace Sequence
       \exception Sequence::SeqException
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
+     static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
+		    std::is_same<std::pair<std::string,std::string>,T>::value,
+		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
       size_t i, j, numseqs = data.size (), numIntervals =  sites.size ();
       unsigned start, stop;
       std::vector < T >trimmedData(numseqs);
@@ -478,8 +485,6 @@ namespace Sequence
       \exception Sequence::SeqException
     */
     {
-      BOOST_STATIC_ASSERT((boost::is_base_and_derived<std::pair<std::string,std::string>,T>::value
-			   || boost::is_same<std::pair<std::string,std::string>,T>::value));
       std::vector < int >newSites;
       size_t i, j, start, stop, numseqs = data.size (), numIntervals = sites.size (), lastval;
 

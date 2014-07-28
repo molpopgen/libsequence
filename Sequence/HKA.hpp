@@ -25,7 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __HKA_HPP__
 
 #include <vector>
-#include <boost/tuple/tuple.hpp>
+#include <tuple>
 
 namespace Sequence
 {
@@ -76,7 +76,7 @@ namespace Sequence
       The tuple represents the contribution of a locus
       to the total value of the HKA chi-squared statistic
     */
-    typedef boost::tuple<double,double,double,double> chisq_tuple;
+    typedef std::tuple<double,double,double,double> chisq_tuple;
     /*!
       The enum documents the order in which the deviations
       are stored in chisq_tuple
@@ -85,14 +85,14 @@ namespace Sequence
     /*!
       The order of elements is the same as the loci that were 
       placed in the std::vector< HKAdata > passed to calcHKA.
-      Members of the tuple are accessed via the boost::get<int>
+      Members of the tuple are accessed via the std::get<int>
       template function.  For example, if you have an HKAresults
       object called hkares, and you want to retrieve the deviation
       in divergence of the first locus:
       \code
-      boost::get< DIV >(hkares.chisquareds[0]);
+      std::get< DIV >(hkares.chisquareds[0]);
       \endcode
-      The template argument to boost::get can be taken from 
+      The template argument to std::get can be taken from 
       chisq_tuple_elements so that it's readable.
     */
     std::vector< chisq_tuple > chisquareds;

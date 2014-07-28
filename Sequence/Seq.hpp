@@ -105,13 +105,13 @@ namespace Sequence
       to be written to output streams.  This operator
       acts by a call to the virtual funtion Sequence::Seq::print
     */
-    inline std::ostream & operator<< (std::ostream & s, const Seq & c);
+    std::ostream & operator<< (std::ostream & s, const Seq & c);
     /*!
       \ingroup operators
       Allows objects derived from Sequence::Seq
       to be read from output streams.  This operator
       acts by a call to the virtual funtion Sequence::Seq::read
     */
-    inline std::istream & operator>> (std::istream & s, Seq &c);
+    std::istream & operator>> (std::istream & s, Seq &c);
 }
 #endif

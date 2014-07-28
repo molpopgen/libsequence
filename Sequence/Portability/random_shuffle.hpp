@@ -1,7 +1,8 @@
 #ifndef __SEQUENCE_PORTABILITY_RANDOM_SHUFFLE_HPP__
 #define __SEQUENCE_PORTABILITY_RANDOM_SHUFFLE_HPP__
+
 #include <iterator>
-#include <boost/ref.hpp>
+#include <functional>
 
 namespace Sequence
 {
@@ -12,7 +13,7 @@ namespace Sequence
     if(__first==__last)return;
     for( iterator __i = __first + 1 ; __i != __last ; ++__i )
       {  
-	std::iter_swap(__i,__first+__dt(__g(boost::cref(((__i -__first)+1)))));
+	std::iter_swap(__i,__first+__dt(__g(std::cref(((__i -__first)+1)))));
       }
   }
 
@@ -23,7 +24,7 @@ namespace Sequence
     if(__first==__last)return;
     for( iterator __i = __first + 1 ; __i != __last ; ++__i )
       {  
-	std::iter_swap(__i,__first+__dt(__g(boost::cref(((__i -__first)+1)))));
+	std::iter_swap(__i,__first+__dt(__g(std::cref(((__i -__first)+1)))));
       }
   }
 }

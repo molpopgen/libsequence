@@ -3,7 +3,8 @@
 
 #include <Sequence/Coalescent/SimTypes.hpp>
 #include <utility>
-#include <boost/ref.hpp>
+#include <functional>
+
 namespace Sequence
 {
   template<typename uniform_generator>

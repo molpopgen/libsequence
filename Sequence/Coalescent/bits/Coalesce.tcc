@@ -33,9 +33,10 @@ namespace Sequence
   template<typename uniform_generator>
   std::pair<int,int> pick2_details(uniform_generator & uni, const int & nsam)
   {
-    int i = int(uni(boost::cref(0.),boost::cref(nsam)));
+    //int i = int(uni(std::cref(0),std::cref(nsam)));
+    int i = int(uni(0,std::cref(nsam)));
     int j;
-    while( (j = int(uni(boost::cref(0.),boost::cref(nsam)))) == i )
+    while( (j = int(uni(0,std::cref(nsam)))) == i )
       {
       }
     if(i>j) std::swap(i,j);

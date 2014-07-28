@@ -26,8 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <iterator>
 #include <algorithm>
 #include <map>
-#include <boost/type_traits.hpp>
-#include <boost/static_assert.hpp>
+#include <type_traits>
 
 /*! \file SeqUtilities.hpp
   This file declares various functions (mostly templates) that may be useful in programs.
@@ -89,7 +88,9 @@ namespace Sequence
 		   const unsigned & mod = 3)
   {
     //the value type of the iterator must be convertible to a char
-    BOOST_STATIC_ASSERT( (boost::is_convertible<typename std::iterator_traits<Iterator>::value_type,char>::value) );
+    static_assert( std::is_convertible<typename std::iterator_traits<Iterator>::value_type,char>::value,
+		   "Iterator's value_type must be convertible to char");
+
     if(beg==end) return false;
     Iterator itr,effective_end=end-1;
     //find the first non-gap at the end of range

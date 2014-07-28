@@ -1,3 +1,5 @@
+// Code for the -*- C++ -*- namespace Sequence::AlignStream<T>
+
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -20,8 +22,6 @@ You should have received a copy of the GNU General Public License
 long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
-// Code for the -*- C++ -*- namespace Sequence::AlignStream<T>
 
 /*! \file AlignStream.tcc
   @brief implementation of AlignStream.hpp

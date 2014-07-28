@@ -1,10 +1,9 @@
 #include <Sequence/Coalescent/Coalescent.hpp>
-#include <Sequence/RNG/gsl_rng_wrappers.hpp>
-#include <boost/bind.hpp>
-#include <boost/static_assert.hpp>
 #include <algorithm>
 #include <numeric>
 #include <functional>
+#include <ctime>
+#include <iostream>
 
 int main(int argc, char **argv)
 {
@@ -50,13 +49,14 @@ int main(int argc, char **argv)
 		 std::bind2nd(std::divides<double>(),total_rho));
   const int total_size = genetic_map.size()-1;
 
-  gsl_rng * r =  gsl_rng_alloc(gsl_rng_mt19937);
-  gsl_rng_set(r,time(0));
+  unsigned seed = std::time(0);
+  std::mt19937 generator(seed);
 
-  Sequence::gsl_uniform01 uni01(r); 
-  Sequence::gsl_uniform uni(r);     
-  Sequence::gsl_exponential expo(r);
-  Sequence::gsl_poisson poiss(r);   
+  //Make our RNG types via lambda expressions
+  auto poiss = [&generator](const double & mean){ return std::poisson_distribution<int>(mean)(generator); };
+  auto expo = [&generator](const double & mean){ return std::exponential_distribution<double>(1/mean)(generator); };
+  auto uni01 = [&generator](){ return std::uniform_real_distribution<double>(0.,1.)(generator); };
+  auto uni = [&generator](const double & a, const double & b){ return std::uniform_real_distribution<double>(a,b)(generator); }; 
 
   const int nsam = 10;
   const int NRUNS = 1000;

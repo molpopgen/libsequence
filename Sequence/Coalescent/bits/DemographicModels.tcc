@@ -5,7 +5,7 @@
 #include <Sequence/Coalescent/Coalesce.hpp>
 #include <Sequence/Coalescent/Recombination.hpp>
 #include <Sequence/SeqConstants.hpp>
-#include <boost/ref.hpp>
+#include <functional>
 #include <limits>
 #include <cmath>
 #include <cassert>
@@ -55,7 +55,7 @@ namespace Sequence
 	    assert(rcoal>0.);
 	    if(t<tr)
 	      {
-		tcoal = expo(boost::cref(recovered_size/rcoal));
+		tcoal = expo(recovered_size/rcoal);
 	      }
 	    if(t >= tr && t < (tr+d))
 	      {
@@ -67,7 +67,7 @@ namespace Sequence
 	      }
 	    else
 	      {
-		tcoal = expo(boost::cref(1./rcoal));
+		tcoal = expo(1./rcoal);
 	      }
 	  }
 	else
@@ -75,18 +75,18 @@ namespace Sequence
 	    assert(rcoal > 0.);
 	    if(t<tr)
 	      {
-		tcoal = expo(boost::cref(recovered_size/rcoal));
+		tcoal = expo(recovered_size/rcoal);
 	      }
 	    if(t >= tr && t < (tr+d))
 	      {
-		tcoal = expo(boost::cref(f/rcoal));
+		tcoal = expo(f/rcoal);
 	      }
 	    else
 	      {
-		tcoal = expo(boost::cref( 1./rcoal));
+		tcoal = expo(1./rcoal);
 	      }
 	  }
-	trec = (rrec>0.) ? expo(boost::cref(1./rrec)) : SEQMAXDOUBLE;
+	trec = (rrec>0.) ? expo(1./rrec) : SEQMAXDOUBLE;
 	assert(std::isfinite(trec));
 	tmin = std::min(tcoal,trec);
 	event = true;
@@ -161,11 +161,11 @@ namespace Sequence
 	assert( std::isfinite(t) );
 	rcoal = double(NSAM*(NSAM-1));
 	rrec = littler*(nlinks);
-	trec = (rrec>0.) ? expo(boost::cref(1./rrec)) : SEQMAXDOUBLE;
+	trec = (rrec>0.) ? expo((1./rrec)) : SEQMAXDOUBLE;
 	assert(std::isfinite(trec));
 	if ( t < t_begin || G == 0.)
 	  {
-	    tcoal = expo(boost::cref(1./rcoal));
+	    tcoal = expo((1./rcoal));
 	    assert( std::isfinite(tcoal) );
 	  }
 	else if ( t >= t_begin && t < t_end )
@@ -177,8 +177,8 @@ namespace Sequence
 	  }
 	else
 	  {
-	    tcoal = (size_at_end > 0.) ? expo(boost::cref(size_at_end/rcoal)): 
-	      expo(boost::cref(std::exp(-G*(t_end-t_begin))/rcoal));
+	    tcoal = (size_at_end > 0.) ? expo((size_at_end/rcoal)): 
+	      expo((std::exp(-G*(t_end-t_begin))/rcoal));
 	    assert( std::isfinite(tcoal) );
 	  }
 	tmin = std::min(tcoal,trec);

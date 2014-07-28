@@ -36,10 +36,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <string>
 #include <algorithm>
-#include <boost/static_assert.hpp>
-#include <boost/type_traits.hpp>
+#include <type_traits>
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/SeqEnums.hpp>
+
 namespace Sequence
 {
   Mutations TsTv(char i, char j);
@@ -53,7 +53,8 @@ namespace Sequence
 					 const bool & skip_missing = 1,
 					 const bool & nucleic_acid = 1)
   {
-    BOOST_STATIC_ASSERT( (boost::is_convertible<T,std::string>::value) );
+    static_assert( std::is_convertible<T,std::string>::value,
+		   "T must be convertible to std::string>");
     return !Different(std::string(l),std::string(r),
 		      skip_missing,nucleic_acid);
   }

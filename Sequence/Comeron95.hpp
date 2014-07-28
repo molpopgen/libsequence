@@ -114,16 +114,15 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example gestimator.cc
  */
 #include <Sequence/SeqEnums.hpp>
-#include <boost/utility.hpp>
 
 namespace Sequence
   {
-  class Seq;
-  class Sites;
-  class RedundancyCom95;
-  class WeightingScheme2;
-  class WeightingScheme3;
-    class Comeron95 : boost::noncopyable
+    class Seq;
+    class Sites;
+    class RedundancyCom95;
+    class WeightingScheme2;
+    class WeightingScheme3;
+    class Comeron95 
     {
     private:
       bool __2wasNULL,__3wasNULL,__red_was_NULL;
@@ -148,6 +147,8 @@ namespace Sequence
 			  GeneticCodes code = UNIVERSAL,
                           WeightingScheme2 *weights2 = NULL,
                           WeightingScheme3 *weights3 = NULL);
+      Comeron95( const Comeron95 & ) = delete;
+      Comeron95 & operator=(const Comeron95 & ) = delete;
       ~Comeron95 (void);
       double ka (void) const;
       double ks (void) const;

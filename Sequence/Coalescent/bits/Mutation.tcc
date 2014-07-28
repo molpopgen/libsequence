@@ -3,13 +3,11 @@
 #define __SEQUENCE_COALESCENT_BITS_MUTATION_TCC__
 
 #include <Sequence/Coalescent/TreeOperations.hpp>
-#include <boost/ref.hpp>
 #include <algorithm>
 #include <numeric>
 #include <functional>
 #include <cassert>
 #include <string>
-#include <iostream>
 
 namespace Sequence
 {
@@ -32,7 +30,7 @@ namespace Sequence
       {
 	double pos = uni(beg,end)/double(nsites);
 	gametes->first[snp]=pos;
-	int branch = pick_branch(history,nsam,uni(boost::cref(0.),tt));
+	int branch = pick_branch(history,nsam,uni(0.,tt));
 	for(int ind=0;ind<nsam;++ind)
 	  {
 	    if( is_descendant(history,ind,branch) )
@@ -166,7 +164,8 @@ namespace Sequence
 	int end = (seg<nsegs-1) ? j->beg : nsites;
 	int beg = i->beg;
 	total_times[seg] = total_time(i->begin(),i->nsam);
-	segsites[seg] = unsigned(poiss(boost::cref(total_times[seg]*theta*double(end-beg)/double(nsites))));
+	//segsites[seg] = unsigned(poiss(std::cref(total_times[seg]*theta*double(end-beg)/double(nsites))));
+	segsites[seg] = unsigned(poiss(total_times[seg]*theta*double(end-beg)/double(nsites)));
       }
     return infinite_sites_sim_data(uni,nsites,history,&total_times[0],&segsites[0]);
   }
@@ -203,7 +202,7 @@ namespace Sequence
 	      {
 		double pos = uni(beg,end)/double(nsites);
 		*(pos_i+snp)=pos;
-		int branch = pick_branch(i->begin(),nsam,uni(boost::cref(0.),tt));
+		int branch = pick_branch(i->begin(),nsam,uni(0.,tt));
 		for(int ind=0;ind<nsam;++ind)
 		  {
 		    if( is_descendant(i->begin(),ind,branch) )

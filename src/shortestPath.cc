@@ -266,7 +266,7 @@ namespace Sequence
   {
     try
       {
-	impl = std::auto_ptr<shortestPathImpl>(new shortestPathImpl(codon1,codon2,code));
+	impl = std::unique_ptr<shortestPathImpl>(new shortestPathImpl(codon1,codon2,code));
       }
     catch(Sequence::SeqException &e)
       {
@@ -476,7 +476,7 @@ namespace Sequence
       }
   }
 
-  boost::tuple<shortestPath::pathType,shortestPath::pathType,shortestPath::pathType>
+  std::tuple<shortestPath::pathType,shortestPath::pathType,shortestPath::pathType>
   diffTypeMulti(const std::string &codon1,
 		const std::string &codon2,
 		const Sequence::GeneticCodes &code)
@@ -512,7 +512,7 @@ namespace Sequence
 	    //swap back...
 	    std::swap(t1[i],t2[i]);
 	  }
-	return boost::make_tuple(p[0],p[1],p[2]);
+	return std::make_tuple(p[0],p[1],p[2]);
       }
     catch(Sequence::SeqException &e)
       {

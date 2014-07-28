@@ -75,16 +75,16 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 #include <memory>
 #include <limits>
-#include <boost/utility.hpp>
+
 namespace Sequence 
   {
     class PolyTable;
     struct _PolySNPImpl;
-    class PolySNP : boost::noncopyable
+    class PolySNP 
     {
     private:
     protected:
-      std::auto_ptr<_PolySNPImpl> rep;
+      std::unique_ptr<_PolySNPImpl> rep;
       void DepaulisVeuilleStatistics (void);
       virtual void WallStats(void);
       //various things one needs to know to calculate the summary statistics
@@ -97,6 +97,8 @@ namespace Sequence
     public:
       explicit PolySNP (const Sequence::PolyTable * data, bool haveOutgroup = false,
                         unsigned outgroup = 0, bool totMuts = true);
+      PolySNP( const PolySNP & ) = delete;
+      PolySNP operator=(const PolySNP &) = delete;
       virtual ~ PolySNP (void);
       //estimators of 4Nu
       virtual double ThetaPi (void);                           //Nucleotide diversity (Tajima 1983)

@@ -23,12 +23,14 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __SHORTEST_PATH_HPP__
 #define __SHORTEST_PATH_HPP__
+
 #include <vector>
 #include <utility>
 #include <memory>
+#include <tuple>
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/SeqExceptions.hpp>
-#include <boost/tuple/tuple.hpp>
+
 /*! \file shortestPath.hpp
   @short Routines to find the shortest distance between any 2 codons, using
   Grantham's distance. Declares the class Sequence::shortestPath, and the
@@ -54,7 +56,7 @@ namespace Sequence
   class shortestPath 
   {
   private:
-    std::auto_ptr<shortestPathImpl> impl;
+    std::unique_ptr<shortestPathImpl> impl;
   public:
     /*!
       An enum type to describe the shortest path between 2 codons.
@@ -90,7 +92,7 @@ namespace Sequence
 						      & code = Sequence::UNIVERSAL)
     ;
 
-  boost::tuple<shortestPath::pathType,shortestPath::pathType,shortestPath::pathType>
+  std::tuple<shortestPath::pathType,shortestPath::pathType,shortestPath::pathType>
   diffTypeMulti(const std::string &codon1,
 		const std::string &codon2,
 		const Sequence::GeneticCodes 

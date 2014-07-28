@@ -57,7 +57,7 @@ namespace Sequence
   class RedundancyCom95
   {
   private:
-    std::auto_ptr<RedundancyCom95impl> impl;
+    std::unique_ptr<RedundancyCom95impl> impl;
   public:
     explicit RedundancyCom95 (const Sequence::GeneticCodes &genetic_code = Sequence::UNIVERSAL);
     ~RedundancyCom95(void);

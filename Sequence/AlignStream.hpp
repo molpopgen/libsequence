@@ -26,10 +26,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/Alignment.hpp>
 #include <Sequence/SeqExceptions.hpp>
-#include <boost/type_traits.hpp>
-#include <boost/static_assert.hpp>
+#include <type_traits>
 #include <utility>
 #include <string>
+
 /*! \file AlignStream.hpp
   @brief declaration of virtual base class for alignment streams (Sequence::AlignStream)
 */
@@ -62,8 +62,9 @@ namespace Sequence
     private:
       //only compile these templates with types in the class hierarchy of Sequence::Seq
       typedef std::pair<std::string,std::string> baseType;
-      BOOST_STATIC_ASSERT( (boost::is_base_and_derived<baseType,T>::value
-			    || boost::is_same<baseType,T>::value) );
+      static_assert( (std::is_base_of<baseType,T>::value
+		      || std::is_same<baseType,T>::value),
+		     "T must be std::pair<std::string,std::string> or publicly inherit from that type");
       /*!
       data is where we store the  objects
       of type T in the alignment.

@@ -179,7 +179,7 @@ namespace Sequence
   {
     try
       {
-	impl = std::auto_ptr<FSTimpl>(new FSTimpl(data,npop,config,weights,haveOutgroup,outgroup));
+	impl = std::unique_ptr<FSTimpl>(new FSTimpl(data,npop,config,weights,haveOutgroup,outgroup));
       }
     catch(Sequence::SeqException &e)
       { 

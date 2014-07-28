@@ -21,17 +21,14 @@
 #include <Sequence/Coalescent/Mutation.hpp>
 #include <Sequence/PolySIM.hpp>
 #include <iostream>
-#include <boost/bind.hpp>
-#include <gsl/gsl_rng.h>
-#include <gsl/gsl_randist.h>
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
 
 int main(int argc, char **argv)
 {
-  gsl_rng * r = gsl_rng_alloc (gsl_rng_mt19937);
-  gsl_rng_set(r,std::time(0));
+  unsigned seed = std::time(0);
+  std::mt19937 generator(seed);
 
   const unsigned n = 10;
   std::vector<Sequence::chromosome> sample = Sequence::init_sample(std::vector<int>(1,n),1000);
@@ -39,13 +36,13 @@ int main(int argc, char **argv)
   for(unsigned i=0;i<10000;++i)
     {
       //simulate the ancestral recombination graph for the sample
-      Sequence::arg hist = Sequence::bottleneck(boost::bind(gsl_ran_flat,r,_1,_2),
-						boost::bind(gsl_rng_uniform,r),
-						boost::bind(gsl_ran_exponential,r,_1),
+      Sequence::arg hist = Sequence::bottleneck([&generator](const double a, const double b){ return std::uniform_real_distribution<double>(a,b)(generator); },
+						[&generator](){ return std::uniform_real_distribution<double>(0.,1.)(generator); },
+						[&generator](const double  mean){ return std::exponential_distribution<double>(1./mean)(generator); },
 						sample,imarg,0.1,0.2,0.2,10.,true,1.);
       //Apply mutations according to the infinitely-many sites scheme
-      Sequence::SimData d = Sequence::infinite_sites_sim_data(boost::bind(gsl_ran_poisson,r,_1),
-							      boost::bind(gsl_ran_flat,r,_1,_2),
+      Sequence::SimData d = Sequence::infinite_sites_sim_data([&generator](const double  mean){ return std::poisson_distribution<int>(mean)(generator); },
+							      [&generator](const double  a, const double  b){ return std::uniform_real_distribution<double>(a,b)(generator); },
 							      1000,hist,10.);
       Sequence::PolySIM ad(&d);
       std::cout << d.numsites() << ' ' << ad.ThetaPi() << ' '

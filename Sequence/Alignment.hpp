@@ -48,7 +48,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   \note Valid types for instantiation of these templates are the following:
   std::pair<std::string,std::string>, or anything derived from there, which 
   include Sequence::Seq, etc.  This requirment is checked at compile time 
-  via compile-time assertions using the <A HREF="http://www.boost.org">boost library</A>.
+  via compile-time assertions using the static_assert function.
   There are also specializations such that std::string is also a valid type.
   @short Routines fundamental to aligned data
 */
