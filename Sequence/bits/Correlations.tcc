@@ -50,13 +50,9 @@ namespace Sequence
      @note the square of the return value is the well-know coefficient of determination, r^2
   */
   template<typename iter1, typename iter2>
-  typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-			  typename std::iterator_traits<iter2>::value_type>::type
-  ProductMoment::operator()(iter1 beg_x, iter1 end_x, iter2 beg_y) const
+  double ProductMoment::operator()(iter1 beg_x, iter1 end_x, iter2 beg_y) const
   {
-    typedef typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-      typename std::iterator_traits<iter2>::value_type>::type rtype;
-
+    typedef double rtype;
     if (beg_x >= end_x) return std::numeric_limits<rtype>::min();
 
     unsigned nsam = 0;
@@ -88,12 +84,9 @@ namespace Sequence
   }
 
   template<typename iter1, typename iter2>
-  typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-			  typename std::iterator_traits<iter2>::value_type>::type
-  SpearmansRank::operator()(iter1 beg_x, iter1 end_x, iter2 beg_y) const
+  double SpearmansRank::operator()(iter1 beg_x, iter1 end_x, iter2 beg_y) const
   {
-    typedef typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-      typename std::iterator_traits<iter2>::value_type>::type rtype;
+    typedef double rtype;
   
   if(beg_x>=end_x) return std::numeric_limits<rtype>::min();
   
@@ -169,16 +162,13 @@ namespace Sequence
 	   typename correlation_type,
 	   typename comparison_function,
 	   typename UniformIntGenerator>
-  typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-			  typename std::iterator_traits<iter2>::value_type>::type
-  PermuteCorrelation_details(iter1 beg_x, iter1 end_x, iter2 beg_y,
-			     const correlation_type &  corr,
-			     const comparison_function & comp,
-			     UniformIntGenerator & rand,
-			     const unsigned & NPERM)
+  double PermuteCorrelation_details(iter1 beg_x, iter1 end_x, iter2 beg_y,
+				    const correlation_type &  corr,
+				    const comparison_function & comp,
+				    UniformIntGenerator & rand,
+				    const unsigned & NPERM)
   {
-    typedef typename  ensureFloating<typename std::iterator_traits<iter1>::value_type,
-      typename std::iterator_traits<iter2>::value_type>::type rtype;
+    typedef double  rtype;
     typedef typename std::iterator_traits<iter1>::value_type type1;
 
     rtype _obs = corr(beg_x,end_x,beg_y);
@@ -204,13 +194,11 @@ namespace Sequence
 	   typename correlation_type,
 	   typename comparison_function,
 	   typename UniformIntGenerator>
-  typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-			  typename std::iterator_traits<iter2>::value_type>::type
-  PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
-		     const correlation_type &  corr,
-		     const comparison_function & comp,
-		     UniformIntGenerator & rand,
-		     const unsigned & NPERM)
+  double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
+			    const correlation_type &  corr,
+			    const comparison_function & comp,
+			    UniformIntGenerator & rand,
+			    const unsigned & NPERM)
   /*! 
     Obtain the p-value of a correlation coefficient by permutation.  This function
     can be used to get 1- or 2- tailed p-values by using different comparison_function
@@ -233,13 +221,11 @@ namespace Sequence
 	   typename correlation_type,
 	   typename comparison_function,
 	   typename UniformIntGenerator>
-  typename ensureFloating<typename std::iterator_traits<iter1>::value_type,
-			  typename std::iterator_traits<iter2>::value_type>::type
-  PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
-		     const correlation_type &  corr,
-		     const comparison_function & comp,
-		     const UniformIntGenerator & rand,
-		     const unsigned & NPERM)
+  double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
+			    const correlation_type &  corr,
+			    const comparison_function & comp,
+			    const UniformIntGenerator & rand,
+			    const unsigned & NPERM)
   /*! 
     Obtain the p-value of a correlation coefficient by permutation.  This function
     can be used to get 1- or 2- tailed p-values by using different comparison_function
