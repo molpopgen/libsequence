@@ -168,7 +168,7 @@ namespace Sequence
       static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
 		     std::is_same<std::pair<std::string,std::string>,T>::value,
 		     "T must be pair<std::string,std::string> or publicly inherit from that type" );
-      for (int i = 0; unsigned (i) < data.size (); ++i)
+      for (typename std::vector<T>::size_type i = 0; i < data.size (); ++i)
         //iterate over sequences
 	{
 	  if( data[i].second.find('-') != std::string::npos )
@@ -188,9 +188,13 @@ namespace Sequence
      static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
 		    std::is_same<std::pair<std::string,std::string>,T>::value,
 		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
-      for (int i = 0; unsigned (i) < data.size (); ++i)
-        if (data[i].second.length () != data[0].second.length ())
-          return 0;
+     for (typename std::vector<T>::size_type i = 0; i < data.size (); ++i)
+	{
+	  if (data[i].second.length () != data[0].second.length ())
+	    {
+	      return 0;
+	    }
+	}
 
       return 1;
     }

@@ -1,3 +1,4 @@
+//  -*- C++ -*-
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -21,7 +22,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-//  -*- C++ -*-
 #ifndef __SEQUENCE_BITS_SNN_TCC__
 #define __SEQUENCE_BITS_SNN_TCC__
 #include <Sequence/Portability/random_shuffle.hpp>
@@ -54,7 +54,7 @@ namespace Sequence
     const double observed = Snn_statistic(&__individuals[0],
 					  dkj,
 					  config,
-					  npop,__individuals.size());
+					  npop,unsigned(__individuals.size()));
     unsigned perm = nperms;
     unsigned pv = 0;
     while( perm-- )
@@ -67,7 +67,7 @@ namespace Sequence
 	double permuted_stat = Snn_statistic(&__individuals[0],
 					     dkj,
 					     config,
-					     npop,__individuals.size());
+					     npop,unsigned(__individuals.size()));
 	pv += (permuted_stat >= observed) ? 1 : 0;
       }
     return std::make_pair(observed,double(pv)/double(nperms));

@@ -23,7 +23,7 @@ namespace Sequence
     while( (sample_begin+recombinant) < 
 	   (sample_begin+current_nsam) && ! flag)
       {
-	sum += reclens[recombinant];
+	sum += reclens[std::vector<double>::size_type(recombinant)];
 	if ( ran <= sum/total_reclen )
 	  {
 	    int beg = (sample_begin+recombinant)->segs->beg;

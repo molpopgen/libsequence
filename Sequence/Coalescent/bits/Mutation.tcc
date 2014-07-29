@@ -26,14 +26,17 @@ namespace Sequence
     assert(tt >= 0.);
     assert(nsam > 0);
     assert(nsites > 0);
-    for(int snp = first_snp_index ; snp < first_snp_index+S ; ++snp)
+    for(std::vector<std::string>::size_type snp = std::vector<std::string>::size_type(first_snp_index) ; 
+	snp < std::vector<std::string>::size_type(first_snp_index+S) ; ++snp)
       {
 	double pos = uni(beg,end)/double(nsites);
 	gametes->first[snp]=pos;
 	int branch = pick_branch(history,nsam,uni(0.,tt));
-	for(int ind=0;ind<nsam;++ind)
+	for(std::vector<std::string>::size_type ind=0;
+	    ind<std::vector<std::string>::size_type(nsam);
+	    ++ind)
 	  {
-	    if( is_descendant(history,ind,branch) )
+	    if( is_descendant(history,int(ind),branch) )
 	      {
 		gametes->second[ind][snp] = '1';
 	      }
@@ -47,17 +50,18 @@ namespace Sequence
 
   template<typename poisson_generator,
 	   typename uniform_generator>
-  int infinite_sites_details( poisson_generator & poiss,
-			      uniform_generator & uni,
-			      gamete_storage_type * gametes,
-			      const int & nsites,
-			      const arg & history,
-			      const double & theta)
+  std::vector<std::string>::size_type infinite_sites_details( poisson_generator & poiss,
+							      uniform_generator & uni,
+							      gamete_storage_type * gametes,
+							      const int & nsites,
+							      const arg & history,
+							      const double & theta)
   {
+    typedef std::vector<std::string>::size_type RTYPE;
     assert(theta >= 0.);
     int snp_index_i=0;
-    int ttlS=0;
-    unsigned seg=0,nsegs=history.size();
+    RTYPE ttlS=0;
+    arg::size_type seg=0,nsegs=history.size();
     arg::const_iterator i = history.begin(),j=i;
     j++;
     for( ; seg < nsegs ; ++i,++j,++seg)
@@ -69,7 +73,7 @@ namespace Sequence
 	int S = poiss(mean);
 	if(S>0)
 	  {
-	    ttlS+=S;
+	    ttlS+=RTYPE(S);
 	    bool add=false;
 	    while(ttlS >= MAX_SEGSITES)
 	      {
@@ -93,29 +97,30 @@ namespace Sequence
 	  }
       }
     std::sort(gametes->first.begin(),
-	      gametes->first.begin()+ttlS);
+	      gametes->first.begin()+std::vector<std::string>::difference_type(ttlS));
     return ttlS;
   }
 
   template<typename uniform_generator>
-  int infinite_sites_details( uniform_generator & uni,
-			      gamete_storage_type * gametes,
-			      const int & nsites,
-			      const arg & history,
-			      const double * total_times,
-			      const unsigned * segsites )  
+  std::vector<std::string>::size_type infinite_sites_details( uniform_generator & uni,
+							      gamete_storage_type * gametes,
+							      const int & nsites,
+							      const arg & history,
+							      const double * total_times,
+							      const unsigned * segsites )  
   {
-    unsigned seg=0,nsegs = history.size();
+    typedef std::vector<std::string>::size_type RTYPE;
+    arg::size_type seg=0,nsegs = history.size();
     arg::const_iterator i=history.begin(),
       j = history.begin();
     j++;
-    int ttlS = 0;
+    RTYPE ttlS = 0;
     for( ; seg < nsegs ; ++seg,++i,++j )
       {
 	if( *(segsites+seg) > 0 )
 	  {
 	    bool add = false;
-	    while(ttlS + int(*(segsites+seg)) > MAX_SEGSITES)
+	    while(ttlS + RTYPE(*(segsites+seg)) > MAX_SEGSITES)
 	      {
 		MAX_SEGSITES += MAX_SEGS_INC;
 		add=true;
@@ -140,7 +145,7 @@ namespace Sequence
 	ttlS += *(segsites+seg);
       }
     std::sort(gametes->first.begin(),
-	      gametes->first.begin()+ttlS);
+	      gametes->first.begin()+std::vector<std::string>::difference_type(ttlS));
     return ttlS;
   }
 
@@ -182,10 +187,10 @@ namespace Sequence
     const unsigned S = std::accumulate(segsites,segsites+history.size(),0u);
     if(S==0)
       return SimData();
-    int nsam = history.begin()->nsam;
+    unsigned nsam = unsigned(history.begin()->nsam);
     SimData d(nsam,S);
     SimData::pos_iterator pos_i = d.pbegin();
-    unsigned seg=0,nsegs = history.size();
+    unsigned seg=0,nsegs = unsigned(history.size());
     arg::const_iterator i=history.begin(),
       j = history.begin();
     j++;
@@ -198,14 +203,14 @@ namespace Sequence
 	    int end = (seg<nsegs-1) ? j->beg : nsites;
 	    int beg = i->beg;
 	    const double tt = *(total_times+seg);
-	    for(unsigned snp = ttlS ; snp < ttlS+*(segsites+seg) ; ++snp)
+	    for(unsigned snp = unsigned(ttlS) ; snp < unsigned(ttlS)+*(segsites+seg) ; ++snp)
 	      {
 		double pos = uni(beg,end)/double(nsites);
 		*(pos_i+snp)=pos;
 		int branch = pick_branch(i->begin(),nsam,uni(0.,tt));
-		for(int ind=0;ind<nsam;++ind)
+		for(unsigned ind=0;ind<nsam;++ind)
 		  {
-		    if( is_descendant(i->begin(),ind,branch) )
+		    if( is_descendant(i->begin(),int(ind),branch) )
 		      {
 			d[ind][snp] = '1';
 		      }

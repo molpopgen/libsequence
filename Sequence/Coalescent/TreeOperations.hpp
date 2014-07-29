@@ -33,7 +33,7 @@ namespace Sequence
   class sfs_times
   {
   private:
-    std::auto_ptr<sfs_times_impl> impl;
+    std::unique_ptr<sfs_times_impl> impl;
   public:
     sfs_times();
     sfs_times(arg::const_iterator sample_history_beg,

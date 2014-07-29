@@ -1,3 +1,5 @@
+// Code for the -*- C++ -*- namespace Sequence::ClustalW<T>
+
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -21,7 +23,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-// Code for the -*- C++ -*- namespace Sequence::ClustalW<T>
+
 
 /*! \file Clustalw.tcc
   @brief code for Clustalw.hpp
@@ -118,17 +120,17 @@ namespace Sequence
   {
     typename ClustalW<T>::const_iterator i=this->begin(),
       j=this->end();
-    size_t len = i->second.length(),k=0;
+    unsigned k=0,offset, len = unsigned(i->second.length());
     s << "CLUSTAL W" << "\n\n";
     while (k<len)
       {
-	size_t offset = (k+60 < len) ? k+60 : k+(len-k);
+	offset = (k+60 < len) ? k+60 : k+(len-k);
 	for(i=this->begin() ; i < j ; ++i)
 	  {
 	    s << i->first
 	      << '\t';
-	    std::copy(i->second.begin()+k,
-		      i->second.begin()+offset,
+	    std::copy(i->second.begin()+std::string::difference_type(k),
+		      i->second.begin()+std::string::difference_type(offset),
 		      std::ostream_iterator<char>(s,""));
 	    s << '\n';
 	  }

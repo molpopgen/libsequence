@@ -1,3 +1,5 @@
+// Code for the -*- C++ -*- namespace Sequence::phylipData<T>
+
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -20,8 +22,6 @@ You should have received a copy of the GNU General Public License
 long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
-
-// Code for the -*- C++ -*- namespace Sequence::phylipData<T>
 
 #include <Sequence/phylipData.hpp>
 #include <string>
@@ -96,7 +96,7 @@ namespace Sequence
 	    if (beg->first.length() == _namelen)
 	      {
 		std::string::const_iterator b = beg->first.begin();
-		std::copy(b,b+_namelen,
+		std::copy(b,b+std::string::difference_type(_namelen),
 			  std::ostream_iterator<char>(s,""));
 	      }
 	    else
@@ -106,7 +106,7 @@ namespace Sequence
 		std::string newName(beg->first + 
 				    std::string(len,' '));
 		std::string::const_iterator b = newName.begin();
-		std::copy(b,b+_namelen,
+		std::copy(b,b+std::string::difference_type(_namelen),
 			  std::ostream_iterator<char>(s,""));
 	      }
 	    s << beg->second
@@ -126,7 +126,7 @@ namespace Sequence
 	if (beg->first.length() == _namelen)
 	  {
 	    std::string::const_iterator b = beg->first.begin();
-	    std::copy(b,b+_namelen,
+	    std::copy(b,b+std::string::difference_type(_namelen),
 		      std::ostream_iterator<char>(s,""));
 	  }
 	else
