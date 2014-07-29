@@ -30,7 +30,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __CORRELATIONS_TCC__
 #define __CORRELATIONS_TCC__
 
-				    //#include <Sequence/Portability/random_shuffle.hpp>
 #include <algorithm>
 #include <vector>
 #include <map>
@@ -180,7 +179,6 @@ namespace Sequence
     for(unsigned i = 0 ; i < NPERM ; ++i)
       {
 	std::shuffle(copy_x,copy_x+(end_x-beg_x),rand);
-	//Sequence::random_shuffle(copy_x,copy_x+(end_x-beg_x),rand);
 	if ( comp(std::fabs(corr(copy_x,copy_x+(end_x-beg_x),beg_y)),
 		  std::fabs(_obs)) == true )
 	  {
