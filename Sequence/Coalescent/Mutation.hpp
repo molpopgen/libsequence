@@ -10,20 +10,21 @@
 
 namespace Sequence
 {
+  typedef std::vector<std::string>::size_type MAX_SEG_T;
   /*! 
     @brief controls allocation of simulated gametes
     You must define this in namespace Sequence in your program.
     A value of 200 works well.
     \ingroup coalescent
   */
-  extern std::vector<std::string>::size_type MAX_SEGSITES;
+  extern MAX_SEG_T MAX_SEGSITES;
   /*! 
     @brief controls (re)allocation of simulated gametes
     You must define this in namespace Sequence in your program.
     A value of 100 works well
     \ingroup coalescent
   */
-  extern std::vector<std::string>::size_type MAX_SEGS_INC;
+  extern MAX_SEG_T MAX_SEGS_INC;
 
   /*!
     @brief an object to store simulated gametes
