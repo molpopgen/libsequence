@@ -66,13 +66,15 @@ namespace Sequence
       part of the set of characters that complement the pattern)
     */
   {
-    static_assert( false ,"Regular expressions not yet implemented: awaiting GCC support" );
-    return false;
-    //std::regex in_alphabet(_pattern,icase);
-    //std::match_results<Iter> match;
-    //return !( std::regex_search(beg,end,in_alphabet) );
-    //return !(std::regex_search(beg, end, match, in_alphabet, std::match_default));
-    //return std::regex_match(beg,end,match,in_alphabet);
+    for( ; beg != end ; ++beg )
+      {
+	char ch = std::toupper(*beg);
+	if( ch != 'A' && ch != 'C' && ch != 'G' && ch != 'T' && ch != 'N' && ch != '-' )
+	  {
+	    return false;
+	  }
+      }
+    return true;
   }
 }
 
