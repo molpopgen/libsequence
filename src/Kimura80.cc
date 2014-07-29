@@ -25,9 +25,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 #include <cfloat>
 #include <cctype>
-#ifdef HAVE_IEEEFP_H
-#include <ieeefp.h>
-#endif
 #include <Sequence/Seq.hpp>
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/SeqEnums.hpp>

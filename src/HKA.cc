@@ -23,9 +23,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/HKA.hpp>
 #include <cmath>
-#ifdef HAVE_IEEEFP_H
-#include <ieeefp.h>
-#endif
 
 using std::isfinite;
 

@@ -27,9 +27,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <memory>
 #include <cassert>
 #include <algorithm>
-#ifdef HAVE_IEEEFP_H
-#include <ieeefp.h>
-#endif
 #include <Sequence/Seq.hpp>
 #include <Sequence/SeqProperties.hpp>
 #include <Sequence/Grantham.hpp>
