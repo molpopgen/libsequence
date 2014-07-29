@@ -119,7 +119,7 @@ namespace Sequence
     chromosome & operator=(const chromosome & ch);
     void swap_with( chromosome & ch );
     void assign_allocated_segs( segment * newsegs,
-				const int & new_nsegs );
+				const unsigned & new_nsegs );
     int first() const
     /*!
       \return the first position in the chromosome

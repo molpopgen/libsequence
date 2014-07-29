@@ -27,8 +27,8 @@ namespace Sequence
   template<typename uniform_generator>
   std::pair<int,int> pick2( const uniform_generator & uni, const int & nsam);
 
-  bool isseg( chromosome::const_iterator seg, const int nsegs,
-	      const int pos, int * offset );
+  bool isseg( chromosome::const_iterator seg, const unsigned & nsegs,
+	      const int & pos, unsigned * offset );
 
   int coalesce(const double & time,
 	       const int & ttl_nsam,

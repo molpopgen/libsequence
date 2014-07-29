@@ -45,9 +45,9 @@ namespace Sequence
     {
     private:
       //functions for Hudson's Partition Test
-      int poly (int *subslist,  int ss,
-                int subsize, int subss, int *seq);
-      int nextsample (int *subslist, int subsize, int nsam, int seq);
+      int poly (int *subslist,  const int & ss,
+                const int & subsize, const int & subss, int *seq);
+      int nextsample (int *subslist, const int &  subsize, const int & nsam, int seq);
     protected:
       void WallStats(void);
     public:
@@ -65,7 +65,7 @@ namespace Sequence
       unsigned NumExternalMutations (void);
       //summary statistics of the site frequency spectrum
       double TajimasD (void);
-      double Hprime (bool likeThorntonAndolfatto = false);
+      double Hprime (const bool & likeThorntonAndolfatto = false);
       double Dnominator (void);
       double FuLiD (void);
       double FuLiF (void);
@@ -75,7 +75,7 @@ namespace Sequence
       unsigned WallsBprime(void);
       double WallsQ(void);
       //Hudson's Haplotype Partition Test
-      int HudsonsHaplotypeTest (int subsize, int subss);
+      int HudsonsHaplotypeTest (const int & subsize,const int & subss);
 
       //recombination
       unsigned Minrec (void);

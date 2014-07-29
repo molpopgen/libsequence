@@ -117,7 +117,7 @@ namespace Sequence
       virtual unsigned NumExternalMutations (void);            //number of derived mutations 
       //summary statistics of the site frequency spectrum
       virtual double TajimasD (void);                          //Tajima's (1989) D
-      virtual double Hprime (bool likeThorntonAndolfatto = false);  //A normalized statistic 
+      virtual double Hprime (const bool & likeThorntonAndolfatto = false);  //A normalized statistic 
                                                                     //related to Fay and Wu's H
       virtual double Dnominator (void);                        //Denominator of Tajima's D
       virtual double FuLiD (void);                             //Fu & Li's (1996) D

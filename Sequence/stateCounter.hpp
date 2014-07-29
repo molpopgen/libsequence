@@ -41,11 +41,12 @@ namespace Sequence
     private:
       mutable char _gap;
     public:
-      mutable unsigned a,g,c,t,zero,one,gap,n;
+      typedef unsigned size_type;
+      mutable size_type a,g,c,t,zero,one,gap,n;
       mutable bool ndna;
       stateCounter(const char &gapchar = '-');
       void operator()(const char &ch) const;
-      unsigned nStates(void) const;
+      size_type nStates(void) const;
     };
 }
 #endif

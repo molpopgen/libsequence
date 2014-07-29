@@ -61,7 +61,7 @@ namespace Sequence
     nsites_i unsigned values representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
    */
-  int write_SimData_binary( int fd , const SimData & d );
+  long int write_SimData_binary( int fd , const SimData & d );
 
   /*!
     Write a SimData object in binary format to a C-style file pointer
@@ -75,7 +75,7 @@ namespace Sequence
     nsites_i unsigned values representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
    */
-  int write_SimData_binary( FILE * fp , const SimData & d );
+  long int write_SimData_binary( FILE * fp , const SimData & d );
 }
 
 #endif

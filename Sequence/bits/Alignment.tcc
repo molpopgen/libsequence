@@ -240,7 +240,7 @@ namespace Sequence
 		    std::is_same<std::pair<std::string,std::string>,T>::value,
 		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
       bool site_gapped = 0;
-      int len = 0;
+      unsigned len = 0;
       if (!IsAlignment(data))
 	return Sequence::SEQMAXUNSIGNED;
 
@@ -358,9 +358,9 @@ namespace Sequence
         }
 
       //now, fill the array of trimmed sequences
-      offset = rightmost - leftmost;
+      offset = rightmost - leftmost + 1;
       for (j = 0; j != data.size (); ++j)
-        trimmed_sequences.push_back (data[j].second.substr  (leftmost, rightmost-leftmost+1));
+        trimmed_sequences.push_back (data[j].second.substr  (leftmost, offset));
 
       //now, redo the seq array for the current object
       for ( j = 0; j != data.size (); ++j)
@@ -447,8 +447,8 @@ namespace Sequence
 
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = sites[i];
-          stop = sites[i + 1];
+          start = unsigned(sites[i]);
+          stop = unsigned(sites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] += data[j].second.substr (start, stop - start + 1);
@@ -533,13 +533,13 @@ namespace Sequence
             }
         }
 
-      lastval = newSites[newSites.size () - 1];
+      lastval = size_t(newSites[newSites.size () - 1]);
       newSites.pop_back ();
       numIntervals = newSites.size ();
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = newSites[i];
-          stop = newSites[i + 1];
+          start = size_t(newSites[i]);
+          stop = size_t(newSites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] +=

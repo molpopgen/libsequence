@@ -72,7 +72,7 @@ namespace Sequence
       size_t totsam;
     public:
       explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
-      explicit SimData(double *pos, const char **sample, const int &  nsam, const int & S);
+      explicit SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
       explicit SimData(const std::vector<double> & pos, const std::vector<std::string> & data) : PolyTable(pos.begin(),
 													   pos.end(),
 													   data.begin(),
