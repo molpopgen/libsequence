@@ -857,7 +857,7 @@ namespace Sequence
 	//std::ptrdiff_t nhap_curr, nhap_left;
 	std::set<std::basic_string<char>, Sequence::uniqueSeq>::size_type nhap_curr, nhap_left;
 
-	nhap_left = std::ptrdiff_t(SEQMAXUNSIGNED);
+	nhap_left = SEQMAXUNSIGNED;
 
 	unsigned A = 0;//number of partitions with D' = 1 (see Wall 1999)
 	//iterate over sites (actually, adjacent pairs of sites)

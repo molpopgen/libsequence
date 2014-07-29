@@ -302,11 +302,12 @@ namespace Sequence
     return s;
   }
 
-  struct newick_stream_marginal_tree_impl
+  class newick_stream_marginal_tree_impl
   /*!
     Implementation details of newick_stream_marginal_tree
   */
   {
+  public:
     marginal::const_iterator mi;
     const int nsam;
     std::vector<int> left,right;

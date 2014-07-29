@@ -32,8 +32,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
 #ifndef DOXYGEN_SKIP //doxygen should skip this
-  struct shortestPathImpl
+  class shortestPathImpl
   {
+  public:
     shortestPath::pathType _type;
     Sequence::Grantham distances;
     double _distance;

@@ -205,8 +205,9 @@ namespace Sequence
   }
 
 #ifndef DOXYGEN_SKIP
-  struct sfs_times_impl
+  class sfs_times_impl
   {
+  public:
     std::vector<double> times;
     double tt;
     size_t nbins;
@@ -270,7 +271,7 @@ namespace Sequence
 #endif
 
   sfs_times::sfs_times() : 
-    impl(std::auto_ptr<sfs_times_impl>(new sfs_times_impl()))
+    impl(std::unique_ptr<sfs_times_impl>(new sfs_times_impl()))
 		      /*! Construct empty object */
   {
   }

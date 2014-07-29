@@ -81,8 +81,9 @@ namespace Sequence
   }
 
 #ifndef DOXYGEN_SKIP
-  struct samrecord_private
+  class samrecord_private
   {
+  public:
     string record;
     string::const_iterator qname_beg,qname_end,
       rname_beg,rname_end,cigar_beg,cigar_end,

@@ -482,8 +482,8 @@ namespace Sequence
 			      //don't continue unless minor/derived
 			      //allele counts are greater than mincount
 			      //at both sites
-			      if ( counts1.first >= std::ptrdiff_t(mincount) &&
-				   counts2.first >= std::ptrdiff_t(mincount) )
+			      if ( counts1.first >= mincount &&
+				   counts2.first >= mincount )
 				{
 				  //now we can actually do the work...
 				  std::vector<double> temp(5);
@@ -739,8 +739,8 @@ namespace Sequence
 		      //don't continue unless minor/derived
 		      //allele counts are greater than mincount
 		      //at both sites
-		      if ( counts1.first >= std::ptrdiff_t(mincount) &&
-			   counts2.first >= std::ptrdiff_t(mincount) )
+		      if ( counts1.first >= mincount &&
+			   counts2.first >= mincount )
 			{
 			  //now we can actually do the work...
 			  assert(pos1==op1);
