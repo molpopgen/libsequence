@@ -23,11 +23,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/SimpleSNP.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <Sequence/Portability/StringStreams.hpp>
 #include <cstring>
 #include <cctype>
 #include <cassert>
 #include <iostream>
+#include <sstream>
 
 using std::vector;
 using std::string;
@@ -55,7 +55,7 @@ namespace Sequence
       }
     std::string outgroup,temp,temp2;
     std::getline(s,temp);
-    istr check(temp),check2(temp);
+    std::istringstream check(temp),check2(temp);
     unsigned nc = 0;
     while (! check.eof() )
       {

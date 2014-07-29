@@ -22,9 +22,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Sequence/SimParams.hpp>
-#include <Sequence/Portability/StringStreams.hpp>
 #include <iostream>
 #include <cctype>
+#include <sstream>
 
 namespace Sequence
 {
@@ -50,7 +50,7 @@ namespace Sequence
         if ((!isdigit(ch)&&!isspace(ch))|| ch=='\n')
 	  break;
       }
-    istr in(_command_line.c_str());
+    std::istringstream in(_command_line.c_str());
     std::string ms;//for the program name...
     in >> ms >> tsam >> _howmany;
     return (ch);
@@ -90,7 +90,7 @@ namespace Sequence
 
     //open a stringstream to read the sample size and # runs
     //from the command-line args
-    istr in(_command_line.c_str());
+    std::istringstream in(_command_line.c_str());
     std::string ms;//for the program name...
     in >> ms >> tsam >> _howmany;
     return s;

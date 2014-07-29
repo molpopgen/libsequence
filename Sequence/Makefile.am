@@ -1,4 +1,4 @@
-SUBDIRS = bits Portability Coalescent
+SUBDIRS = bits Coalescent
 
 pkgincludedir=$(prefix)/include/Sequence
 

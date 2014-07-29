@@ -15266,7 +15266,7 @@ ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
-ac_config_files="$ac_config_files Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Portability/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile"
+ac_config_files="$ac_config_files Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile"
 
 
 # Check whether --enable-debug was given.
@@ -16497,7 +16497,6 @@ do
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "Sequence/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/Makefile" ;;
     "Sequence/bits/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/bits/Makefile" ;;
-    "Sequence/Portability/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/Portability/Makefile" ;;
     "Sequence/Coalescent/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/Coalescent/Makefile" ;;
     "Sequence/Coalescent/bits/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/Coalescent/bits/Makefile" ;;
 

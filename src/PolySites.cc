@@ -23,7 +23,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/Fasta.hpp>
-#include <Sequence/Portability/StringStreams.hpp>
+#include <sstream>
 #include <iterator>
 #include <algorithm>
 #include <iostream>
@@ -147,14 +147,14 @@ namespace Sequence
     std::string temp;
     //get positions--which is the first line of input
     std::getline(s,temp);
-    istr i(temp);
+    std::istringstream i(temp);
     std::copy(std::istream_iterator<double>(i),std::istream_iterator<double>(),
 	      std::back_inserter(_pos));
 
     while (std::getline(s,temp))
       {
 	std::string temp2;
-	istr i(temp);
+	std::istringstream i(temp);
 	std::copy(std::istream_iterator<char>(i),std::istream_iterator<char>(),
 		  std::back_inserter(temp2));
 	_ind.push_back(temp2);
