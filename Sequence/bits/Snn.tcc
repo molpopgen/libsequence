@@ -24,7 +24,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef __SEQUENCE_BITS_SNN_TCC__
 #define __SEQUENCE_BITS_SNN_TCC__
-#include <Sequence/Portability/random_shuffle.hpp>
+
 #include <algorithm>
 
 namespace Sequence
@@ -59,11 +59,7 @@ namespace Sequence
     unsigned pv = 0;
     while( perm-- )
       {
-#ifdef FORCE_STD_RANDOM_SHUFFLE
 	std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
-#else
-	Sequence::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
-#endif
 	double permuted_stat = Snn_statistic(&__individuals[0],
 					     dkj,
 					     config,
@@ -119,13 +115,7 @@ namespace Sequence
 	    unsigned p =0, _nperms = nperms;
 	    while(_nperms>0)
 	      {
-#ifdef FORCE_STD_RANDOM_SHUFFLE
 		std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
-#else
-		Sequence::random_shuffle(individuals.begin(),
-					 individuals.end(),
-					 uni_int);
-#endif
 		double perm = Snn_statistic( &individuals[0],dkj,_config,2,
 					     _config[0]+_config[1]); 
 		if(perm>=observed) ++p;
