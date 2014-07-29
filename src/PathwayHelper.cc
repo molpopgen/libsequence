@@ -45,7 +45,7 @@ namespace Sequence
     intermediates[1].resize(3);
 
     unsigned i,j;
-    int pos[2];
+    unsigned pos[2];
 
     for (i = 0, j = 0; i <= 2; ++i)
       if (char(std::toupper(codon1[i])) != char(std::toupper(codon2[i])))

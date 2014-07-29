@@ -268,7 +268,7 @@ namespace Sequence
       {			//iterate over sitesvv
 	if ( rep->_counts[i].gap == 0)
 	  {
-	    int nstates = rep->_counts[i].nStates();
+	    unsigned nstates = rep->_counts[i].nStates();
 	    unsigned nsam_site = rep->_totsam - rep->_counts[i].n;
 	    double denom=0.0;
 	    if(rep->_totMuts==true&&nstates>=2)
@@ -353,7 +353,7 @@ namespace Sequence
 	    if (anc_is_present) //ancestral state must be present
 	      {
 		//number of derived states seen at this site
-		int numDer = rep->_derivedCounts[i].second.nStates();	
+		unsigned numDer = rep->_derivedCounts[i].second.nStates();	
 		if (numDer == 1)
 		  {	//simple if there is only one derived state inferred
 		    samplesize -= rep->_derivedCounts[i].second.n;
@@ -375,7 +375,7 @@ namespace Sequence
 		else if (numDer == 2 && rep->_haveOutgroup)	//MUST have outgroup--else can't proceed
 		  {	//use a "missing data" scheme if there is >1 derived state
 		    //iterate over derived states
-		    int config[2];
+		    unsigned config[2];
 		    unsigned k = 0;
 		    if(rep->_derivedCounts[i].second.a > 0)
 		      {
@@ -483,7 +483,7 @@ namespace Sequence
 	    if (anc_is_present) //ancestral state must be present
 	      {
 		//number of derived states seen at this site
-		int numDer = rep->_derivedCounts[i].second.nStates();	
+		unsigned numDer = rep->_derivedCounts[i].second.nStates();	
 		if (numDer == 1)
 		  {	//simple if there is only one derived state inferred
 		    samplesize -= rep->_derivedCounts[i].second.n;
@@ -504,7 +504,7 @@ namespace Sequence
 		else if (numDer == 2 && rep->_haveOutgroup)	//MUST have outgroup--else can't proceed
 		  {	//use a "missing data" scheme if there is >1 derived state
 		    //iterate over derived states
-		    int config[2];
+		    unsigned config[2];
 		    unsigned k = 0;
 		    if(rep->_derivedCounts[i].second.a > 0)
 		      {
@@ -572,7 +572,7 @@ namespace Sequence
 
     for (unsigned i = 0;  i < rep->_nsites; ++i)
       {			//iterate over sites
-        int nstates = (rep->_counts[i].gap==0) ? rep->_counts[i].nStates() : 0;
+        unsigned nstates = (rep->_counts[i].gap==0) ? rep->_counts[i].nStates() : 0;
         if (nstates > 1)
           nmut += nstates - 1;
       }
@@ -598,12 +598,12 @@ namespace Sequence
 	      curr_nsing=1;
 	    else
 	      {
-		curr_nsing += (rep->_counts[i].a == 1) ? 1 : 0;
-		curr_nsing += (rep->_counts[i].g == 1) ? 1 : 0;
-		curr_nsing += (rep->_counts[i].c == 1) ? 1 : 0;
-		curr_nsing += (rep->_counts[i].t == 1) ? 1 : 0;
-		curr_nsing += (rep->_counts[i].zero == 1) ? 1 : 0;
-		curr_nsing += (rep->_counts[i].one == 1) ? 1 : 0;
+		curr_nsing += (rep->_counts[i].a == 1) ? 1u : 0u;
+		curr_nsing += (rep->_counts[i].g == 1) ? 1u : 0u;
+		curr_nsing += (rep->_counts[i].c == 1) ? 1u : 0u;
+		curr_nsing += (rep->_counts[i].t == 1) ? 1u : 0u;
+		curr_nsing += (rep->_counts[i].zero == 1) ? 1u : 0u;
+		curr_nsing += (rep->_counts[i].one == 1) ? 1u : 0u;
 	      }
 	  }
 	nsing += curr_nsing;
@@ -621,7 +621,7 @@ namespace Sequence
   {
     if(!rep->_haveOutgroup) return SEQMAXUNSIGNED;
     assert ( rep->_preprocessed );
-    int next = 0;
+    unsigned next = 0;
     for (unsigned i = 0;  i < rep->_nsites ; ++i)
       {			//iterate over sites
 	unsigned nsam=rep->_totsam;
@@ -630,14 +630,14 @@ namespace Sequence
 	   rep->_derivedCounts[i].second.gap == 0)
 	  {
 	    nsam -= rep->_derivedCounts[i].second.n;
-	    curr_next += (rep->_derivedCounts[i].second.a == 1) ? 1 : 0;
-	    curr_next += (rep->_derivedCounts[i].second.g == 1) ? 1 : 0;
-	    curr_next += (rep->_derivedCounts[i].second.c == 1) ? 1 : 0;
-	    curr_next += (rep->_derivedCounts[i].second.t == 1) ? 1 : 0;
-	    curr_next += (rep->_derivedCounts[i].second.zero == 1) ? 1 : 0;
-	    curr_next += (rep->_derivedCounts[i].second.one == 1) ? 1 : 0;
+	    curr_next += (rep->_derivedCounts[i].second.a == 1) ? 1u : 0u;
+	    curr_next += (rep->_derivedCounts[i].second.g == 1) ? 1u : 0u;
+	    curr_next += (rep->_derivedCounts[i].second.c == 1) ? 1u : 0u;
+	    curr_next += (rep->_derivedCounts[i].second.t == 1) ? 1u : 0u;
+	    curr_next += (rep->_derivedCounts[i].second.zero == 1) ? 1u : 0u;
+	    curr_next += (rep->_derivedCounts[i].second.one == 1) ? 1u : 0u;
 	  }
-	next += (nsam>1) ? curr_next : 0;
+	next += (nsam>1) ? curr_next : 0u;
       }
     return next;
   }
@@ -665,7 +665,7 @@ namespace Sequence
     return D;
   }
 
-  double PolySNP::Hprime (bool likeThorntonAndolfatto)
+  double PolySNP::Hprime (const bool & likeThorntonAndolfatto)
   /*!
     \return ThetaPi-ThetaH/(~Var(ThetaPi-ThetaH)).  This corresponds to Equation 5 in 
     Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence 
@@ -854,7 +854,8 @@ namespace Sequence
       }
     if (S > 1)
       {
-	std::ptrdiff_t nhap_curr, nhap_left;
+	//std::ptrdiff_t nhap_curr, nhap_left;
+	std::set<std::basic_string<char>, Sequence::uniqueSeq>::size_type nhap_curr, nhap_left;
 
 	nhap_left = std::ptrdiff_t(SEQMAXUNSIGNED);
 

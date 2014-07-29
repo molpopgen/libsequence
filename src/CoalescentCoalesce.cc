@@ -24,8 +24,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Coalescent/Coalesce.hpp>
 namespace Sequence
 {
-  bool isseg( chromosome::const_iterator seg, const int nsegs,
-	      const int pos, int * offset )
+  bool isseg( chromosome::const_iterator seg, const unsigned & nsegs,
+	      const int & pos, unsigned * offset )
   /*!
     @brief ask if a chromosome beginning at seg and containing nsegs
     contains a segment containing the position pos
@@ -95,7 +95,7 @@ namespace Sequence
 
     chromosome::iterator ch1beg = (sbegin+ch1)->begin(),
       ch2beg=(sbegin+ch2)->begin();
-    int seg1=0,seg2=0;
+    unsigned seg1=0,seg2=0;
 
     segment * tsp = (segment *)malloc(sample_history->size()*sizeof(segment));
     int tseg = -1;
@@ -159,7 +159,7 @@ namespace Sequence
     else
       {
 	assert( (sbegin+ch1) < sample->end() );
-	(sbegin+ch1)->assign_allocated_segs(tsp,tseg+1);
+	(sbegin+ch1)->assign_allocated_segs(tsp,unsigned(tseg+1));
 	*nlinks += (sbegin+ch1)->links();
       }
 

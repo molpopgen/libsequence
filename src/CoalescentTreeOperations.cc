@@ -229,10 +229,10 @@ namespace Sequence
 				 const arg::size_type & nsegs,
 				 const int & total_nsites_simulated,
 				 bool folded)
-    : times(std::vector<double>(((folded==false) ? sample_history_beg->nsam-1 : 
-				 (sample_history_beg->nsam/2)),0.)),
-	    tt(0.),
-	    nbins(((folded==false) ? sample_history_beg->nsam-1 : 
+    : times(std::vector<double>(std::vector<double>::size_type((folded==false) ? sample_history_beg->nsam-1 : 
+							       (sample_history_beg->nsam/2)),0.)),
+      tt(0.),
+      nbins(size_t((folded==false) ? sample_history_beg->nsam-1 : 
 		   (sample_history_beg->nsam/2)))
   {
     arg::const_iterator i = sample_history_beg,j=i;
@@ -260,8 +260,8 @@ namespace Sequence
 	    std::vector<int> descendants = get_all_descendants(treebeg,i->nsam,node);
 	    t = ( (treebeg+((treebeg+node )->abv))->time - 
 		  (treebeg+node)->time)*scale;
-	    std::vector<double>::size_type index = (folded==false) ? descendants.size()-1 : 
-	      std::min(descendants.size(),i->nsam-descendants.size())-1;
+	    std::vector<int>::size_type index = (folded==false) ? descendants.size()-1 : 
+	      std::min(descendants.size(),std::vector<int>::size_type(i->nsam)-descendants.size())-1;
 	    times[index] += t;
 	    tt+=t;
 	  }

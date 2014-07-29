@@ -188,7 +188,7 @@ namespace Sequence
   {
     assert(current_nsam > 0);
     assert(!genetic_map.empty());
-    reclens->resize(current_nsam);
+    reclens->resize(std::vector<double>::size_type(current_nsam));
     std::vector<double>::iterator ri = reclens->begin();
     double rrec=0.;
     for(std::vector<chromosome>::const_iterator chrom = sample.begin() ;

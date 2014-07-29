@@ -64,7 +64,7 @@ namespace Sequence
     segs((segment *)malloc(initial_segs.size()*
 			   sizeof(segment))), 
     pop(population),
-    nsegs(int(initial_segs.size()))
+    nsegs(unsigned(initial_segs.size()))
 			/*!
 			  @brief constructor
 			  \param initial_segs a vector of segments
@@ -128,7 +128,7 @@ namespace Sequence
   }
 
   void chromosome::assign_allocated_segs( segment * newsegs,
-					  const int & new_nsegs )
+					  const unsigned & new_nsegs )
   /*!
     Replaces the current segs with those pointed to by newsegs
     \param newsegs an array of segments allocated with malloc
@@ -322,7 +322,7 @@ namespace Sequence
 
   newick_stream_marginal_tree_impl::newick_stream_marginal_tree_impl(const marginal & m) :
     mi(m.begin()),nsam(m.nsam),
-    left(2*nsam-1,-1),right(left),
+    left(std::vector<int>::size_type(2*nsam-1),-1),right(left),
     tree(std::vector<node>())
   {
     init();
@@ -330,7 +330,7 @@ namespace Sequence
 
   newick_stream_marginal_tree_impl::newick_stream_marginal_tree_impl(const marginal * m) :
     mi(m->begin()),nsam(m->nsam),
-    left(2*nsam-1,-1),right(left),
+    left(std::vector<int>::size_type(2*nsam-1),-1),right(left),
     tree(std::vector<node>())
   {
     init();
@@ -338,7 +338,7 @@ namespace Sequence
 
   newick_stream_marginal_tree_impl::newick_stream_marginal_tree_impl(arg::const_iterator m) :
     mi(m->begin()),nsam(m->nsam),
-    left(2*nsam-1,-1),right(left),
+    left(std::vector<int>::size_type(2*nsam-1),-1),right(left),
     tree(std::vector<node>())
   {
     init();
@@ -346,7 +346,7 @@ namespace Sequence
 
   newick_stream_marginal_tree_impl::newick_stream_marginal_tree_impl(arg::iterator m) :
     mi(m->begin()),nsam(m->nsam),
-    left(2*nsam-1,-1),right(left),
+    left(std::vector<int>::size_type(2*nsam-1),-1),right(left),
     tree(std::vector<node>())
   {
     init();
@@ -361,7 +361,7 @@ namespace Sequence
   {
     double time;
 
-    if( left[noden] == -1 ) 
+    if( left[std::vector<int>::size_type(noden)] == -1 ) 
       {
 	assert( (mi+((mi+noden)->abv))->time >= 0. );
 	o << noden+1 << ':' <<(mi+((mi+noden)->abv))->time;
@@ -369,9 +369,9 @@ namespace Sequence
     else
       {
 	o << '(';
-	parens( left[noden], o ) ;
+	parens( left[std::vector<int>::size_type(noden)], o ) ;
 	o << ',';
-	parens( right[noden], o ) ;
+	parens( right[std::vector<int>::size_type(noden)], o ) ;
 	if( (mi+noden)->abv == -1 ) 
 	  {
 	    o << ");";
@@ -393,13 +393,13 @@ namespace Sequence
   {
     for(int i=0;i<2*nsam-2;++i)
       {
-	if( left[ (mi+i)->abv ] == -1 ) 
+	if( left[ std::vector<int>::size_type( (mi+i)->abv ) ] == -1 ) 
 	  {
-	    left[(mi+i)->abv] = i;
+	    left[std::vector<int>::size_type( (mi+i)->abv ) ] = i;
 	  }
 	else 
 	  {
-	    right[ (mi+i)->abv] = i;
+	    right[ std::vector<int>::size_type( (mi+i)->abv ) ] = i;
 	  }
       }
 

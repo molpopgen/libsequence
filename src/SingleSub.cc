@@ -125,7 +125,7 @@ namespace Sequence
     count up mutations between the codons
   */
   {
-    int pos = 0, k = 0, type = 0;
+    unsigned pos = 0, k = 0, type = 0;
     double d;
     for (k = 0; k <= 2; ++k)
       {

@@ -135,14 +135,15 @@ namespace Sequence
 						 const unsigned &pop2,
 						 const unsigned & site)
   {
-    size_t beg1 = std::accumulate(_config.begin(),
-				  _config.begin()+pop1,
-				  0u);
-    size_t size1 = *(_config.begin()+pop1);
-    size_t beg2 = std::accumulate(_config.begin(),
+    typedef std::string::difference_type UTYPE;
+    UTYPE beg1 = std::accumulate(_config.begin(),
+				 _config.begin()+pop1,
+				 0u);
+    UTYPE size1 = *(_config.begin()+pop1);
+    UTYPE beg2 = std::accumulate(_config.begin(),
 				  _config.begin()+pop2,
 				  0u);
-    size_t size2 = *(_config.begin()+pop2);
+    UTYPE size2 = *(_config.begin()+pop2);
     
     //we need some rigamarole here to skip missing data
     vector<char> ch1(pv[site].second.begin()+beg1,

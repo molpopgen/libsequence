@@ -68,7 +68,7 @@ namespace Sequence
                       const RedundancyCom95 * sitesObj)
   {				//now, it is correct
     size_t i = 0, j = 0;
-    int nc;
+    unsigned nc;
     std::string codon1,codon2;
     codon1.resize(3);
     codon2.resize(3);

@@ -105,7 +105,7 @@ namespace Sequence
       {
 	if ( i->tag() == "NM" )
 	  {
-	    sum = atoi( i->value().c_str() );
+	    sum = unsigned (std::stoul( i->value() ) );
 	  }
       }
     unsigned ng = ngaps(b);

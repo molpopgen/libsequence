@@ -22,6 +22,7 @@
 #include <cmath>
 #include <cfloat>
 #include <algorithm>
+#include <limits>
 #include <cctype>
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/SimData.hpp>
@@ -36,14 +37,6 @@ namespace Sequence
 {
   namespace Recombination
   {
-
-    /*!
-      The degree of numeric precision desired in calculating \f$\rho_{87}\f$
-      \c FLT_EPSILON from cfloat is used, which has a precision of
-      about 10^-7 on my machine.  I tried \c DBL_EPSILON, but the numerical routines
-      never seemed to finish...
-    */
-    const double PRECISION = FLT_EPSILON;
     /*!
       The max value that can be taken by \f$\rho_{87}\f$
     */
@@ -56,26 +49,26 @@ namespace Sequence
       //which is the C++ equivalent of a function declared with storage
       //class static
       double CalcSamplingVariance (const Sequence::PolyTable * data,
-                                   const bool haveOutgroup,
-                                   const int outrgoup,
-                                   int totsam, int ss);
+                                   const bool & haveOutgroup,
+                                   const unsigned & outrgoup,
+                                   const int & totsam, const int & ss);
       void GetPairDiffs (const Sequence::PolyTable * data,
-                         const bool haveOutgroup,
-                         const int outgroup,
-                         const int totsam, vector<int> &list,
-                         const int ss);
-      void get_h_vals (const int ss, const int totsam,
-                       const Sequence::PolyTable * data, const bool haveOutgroup,
-                       const int outgroup, double *sumhi, double *sumhisq);
-      double chatsub (const int totsam, const double sksq,
-                      const double sumhi, const double sumhisq);
-      double solveit (const int nsam, const double stat);
-      double g (const int nsam, const double c);
+                         const bool & haveOutgroup,
+                         const unsigned & outgroup,
+                         const int & totsam, vector<int> &list,
+                         const int & ss);
+      void get_h_vals (const int & ss, const int & totsam,
+                       const Sequence::PolyTable * data, const bool & haveOutgroup,
+                       const unsigned & outgroup, double *sumhi, double *sumhisq);
+      double chatsub (const int & totsam, const  double & sksq,
+                      const double & sumhi, const  double & sumhisq);
+      double solveit (const int & nsam, const double & stat);
+      double g (const int & nsam, const double & c);
 
       double
       CalcSamplingVariance (const Sequence::PolyTable *data,
-                            const bool haveOutgroup,
-                            const int outgroup, int totsam, int ss)
+                            const bool & haveOutgroup,
+                            const unsigned & outgroup,const int & totsam,const int & ss)
       /*!
         Calculate the sampling variance of the segregating sites. Called by Recombination::HudsonsC
         @author Dick Hudson
@@ -83,15 +76,16 @@ namespace Sequence
       {
         unsigned i;
         double Svar = 0.0, meandiffs = 0.0;
-        unsigned __meandiffs=0;
         double nsam = double (totsam);
         vector < int >pairdiffs;
         GetPairDiffs (data, haveOutgroup, outgroup, totsam, pairdiffs,
                       ss);
         //increment __meandiffs to avoid loss of precision when incrementing doubles
         for (i = 0; unsigned(i) < pairdiffs.size (); ++i)
-          __meandiffs += pairdiffs[i];
-        meandiffs = double(__meandiffs)/pow (nsam, 2.0);
+	  {
+	    meandiffs += double(pairdiffs[i]);
+	  }
+        meandiffs /= pow (nsam, 2.0);
         for (i = 0; unsigned(i) < pairdiffs.size (); ++i)
           Svar += pow ((double(pairdiffs[i]) - meandiffs), 2);
         Svar /= pow (nsam, 2.);
@@ -99,9 +93,9 @@ namespace Sequence
       }
 
       void
-      GetPairDiffs (const Sequence::PolyTable *data, const bool haveOutgroup,
-                    const int outgroup, const int totsam,
-                    vector < int > &list, const int ss)
+      GetPairDiffs (const Sequence::PolyTable *data, const bool & haveOutgroup,
+                    const unsigned & outgroup, const int & totsam,
+                    vector < int > &list, const int & ss)
       /*!
         Fill &list with the number of pairwise differences between sequences in the data.
         Called by Recombination::CalcSamplingVariance
@@ -139,9 +133,9 @@ namespace Sequence
 
 
       void
-      get_h_vals (const int ss, const int totsam,
+      get_h_vals (const int & ss, const int & totsam,
                   const Sequence::PolyTable *data,
-                  const bool haveOutgroup, const int outgroup,
+                  const bool & haveOutgroup, const unsigned & outgroup,
                   double *sumhi, double *sumhisq)
       /*!
         Calculate \f$\widehat\theta_\pi\f$ and \f$\widehat\theta_\pi^2\f$ from the data
@@ -160,18 +154,18 @@ namespace Sequence
           }
         else
           {
-            for (unsigned i = 0; i < ss; ++i)
+            for (int i = 0; i < ss; ++i)
               {
                 stateCounter Counts;
                 //samplesize is counted per site, and is adjusted if missing data is encountere
-                unsigned samplesize = unsigned(totsam);
+                int samplesize = totsam;
                 for (unsigned j = 0; j < data->size (); ++j)
                   {
                     if ((!(haveOutgroup))
                         || (haveOutgroup && j != unsigned(outgroup)))
                       {
-                        samplesize -= (std::toupper((*data)[j][i]) == 'N') ? 1 : 0;
-                        Counts ((*data)[j][i]);
+                        samplesize -= (std::toupper((*data)[j][unsigned(i)]) == 'N') ? 1 : 0;
+                        Counts ((*data)[j][unsigned(i)]);
                       }
                   }
 
@@ -192,8 +186,8 @@ namespace Sequence
 
 
       double
-      chatsub (const int totsam, const double sksq,
-               const double sumhi, const double sumhisq)
+      chatsub (const int & totsam, const double & sksq,
+               const double & sumhi, const double & sumhisq)
       /*!
         Estimate Hudson's C.
         @author Dick Hudson.
@@ -208,7 +202,7 @@ namespace Sequence
 
 
       double
-      solveit (const int totsam, const double stat)
+      solveit (const int & totsam, const double & stat)
       /*!
         A routine to handle numerically solving g(C,n).
         Called by Recombination::chatsub
@@ -218,22 +212,22 @@ namespace Sequence
         double xbig, xsmall, xtemp;
 
         xbig = 10.;
-        xsmall = PRECISION;
+        xsmall = std::numeric_limits<float>::epsilon();
 
-        if(fabs(g(totsam,xsmall))-stat<=DBL_EPSILON)
+        if(fabs(g(totsam,xsmall))-stat<=std::numeric_limits<double>::epsilon())
           return (xsmall);
 
-        while (fabs(g (totsam, xbig))-stat >= DBL_EPSILON && xbig<CMAX)
+        while (fabs(g (totsam, xbig))-stat >= std::numeric_limits<double>::epsilon() && xbig<CMAX)
           xbig += 10.;
-        if ((xbig >= CMAX) && fabs(g (totsam, xbig)-stat) > DBL_EPSILON)
+        if ((xbig >= CMAX) && fabs(g (totsam, xbig)-stat) > std::numeric_limits<double>::epsilon())
           return (CMAX);
         if (xbig > 10.)
           xsmall = xbig - 10.;
 
-        while ((xbig - xsmall) > PRECISION)
+        while ((xbig - xsmall) > std::numeric_limits<float>::epsilon())
           {
             xtemp = (xbig + xsmall) / 2.;
-            if (fabs(g (totsam, xtemp))-stat > DBL_EPSILON)
+            if (fabs(g (totsam, xtemp))-stat > std::numeric_limits<double>::epsilon())
               xsmall = xtemp;
             else
               xbig = xtemp;
@@ -244,7 +238,7 @@ namespace Sequence
 
 
       double
-      g (const int totsam, const double c)
+      g (const int & totsam, const double & c)
       /*!
         Solve g(C,n) for a particular C value.
         Called by Recombination::solveit.
@@ -282,7 +276,7 @@ namespace Sequence
       or McVean et al. (2002) Genetics 160: 1231-1241
     */
     {
-      unsigned totsam = unsigned(data->size());
+      int totsam = int(data->size());
       if (haveOutgroup)
         --totsam;
       int ss = int((*data)[0].length ());
@@ -299,13 +293,15 @@ namespace Sequence
     {
       enum {SITEI,SITEJ,RSQ,D,DPRIME};
 
+      typedef Sequence::PolyTable::size_type USIZE;
+
       const char _alphabet[10] = {'A','G','C','T','0','1','a','g','c','t'};
       static const unsigned alphsize = 6;
       PolyTable::const_site_iterator beg = data->sbegin();
 
       unsigned ss = data->numsites();
-      const size_t datasize = data->size();
-      const size_t nsam = datasize-haveOutgroup;
+      const USIZE datasize = data->size();
+      const USIZE nsam = datasize-USIZE(haveOutgroup);
 
       //chars1.first is the character state of the low-frequency/derived allele at site i
       //chars1.second is the character state of the high-frequency/ancestral allele at site i
@@ -314,7 +310,8 @@ namespace Sequence
       //counts2.first is the # occurences of the low-frequency/derived allele at site j
       //counts2.second is the # occurences of the high-frequency/anecstral allele at site j
       //counts2 is for site j
-      std::pair<std::ptrdiff_t,std::ptrdiff_t> counts1,counts2;
+      //std::pair<std::ptrdiff_t,std::ptrdiff_t> counts1,counts2;
+      std::pair<USIZE,USIZE> counts1,counts2;
       
       std::vector< std::vector<double> > returnList;
       
@@ -416,14 +413,14 @@ namespace Sequence
 				{
 				  //count the # occurences of chars1.first
 				  //at site i
-				  size_t x = std::count(site1.begin(),
-							site1.end(),
-							chars1.first);
+				  unsigned x = unsigned(std::count(site1.begin(),
+								   site1.end(),
+								   chars1.first));
 				  //count the # occurences of chars2.first
 				  //at site j
-				  size_t y = std::count(site2.begin(),
-							site2.end(),
-							chars2.first);
+				  unsigned y = unsigned(std::count(site2.begin(),
+								   site2.end(),
+								   chars2.first));
 				  
 				  if ( x > nsam-x )
 				    {
@@ -464,9 +461,9 @@ namespace Sequence
 				    {
 				      std::swap(chars1.first,chars1.second);
 				    }
-				  counts1.first = std::count(site1.begin(),
-							     site1.end(),
-							     chars1.first);
+				  counts1.first = USIZE(std::count(site1.begin(),
+								   site1.end(),
+								   chars1.first));
 				  counts1.second = nsam-counts1.first;
 				  
 				  //if chars2.first is ancestral, swap chars2.first
@@ -476,9 +473,9 @@ namespace Sequence
 				    {
 				      std::swap(chars2.first,chars2.second);
 				    }
-				  counts2.first = std::count(site2.begin(),
-							     site2.end(),
-							     chars2.first);
+				  counts2.first = USIZE(std::count(site2.begin(),
+								   site2.end(),
+								   chars2.first));
 				  counts2.second = nsam-counts2.first;
 				}
 			      
@@ -555,6 +552,7 @@ namespace Sequence
       \return a list of 6 doubles: sitei sitej rsq D D', and the 6th element is 1 if the site pair was skipped (in which case the other 5 elements are meaningless), and 0 otherwise
     */
     {
+      typedef Sequence::PolyTable::size_type USIZE;
       unsigned ss = data->numsites();
       if ( ! (*i < ss - 1 ) ) return false;
       enum {SITEI,SITEJ,RSQ,D,DPRIME,SKIP};
@@ -563,9 +561,11 @@ namespace Sequence
       static const unsigned alphsize = 6;
       PolyTable::const_site_iterator beg = data->sbegin();
       const double pos1=(beg + *i)->first,pos2=(beg + *j)->first;
+#ifndef NDEBUG
       const double op1=pos1,op2=pos2;
-      const size_t datasize = data->size();
-      const size_t nsam = datasize-haveOutgroup;
+#endif
+      const USIZE datasize = data->size();
+      const USIZE nsam = datasize-USIZE(haveOutgroup);
 
       //chars1.first is the character state of the low-frequency/derived allele at site i
       //chars1.second is the character state of the high-frequency/ancestral allele at site i
@@ -574,7 +574,7 @@ namespace Sequence
       //counts2.first is the # occurences of the low-frequency/derived allele at site j
       //counts2.second is the # occurences of the high-frequency/anecstral allele at site j
       //counts2 is for site j
-      std::pair<std::ptrdiff_t,std::ptrdiff_t> counts1,counts2;
+      std::pair<USIZE,USIZE> counts1,counts2;
       
       unsigned states1=0,states2=0;
 
@@ -670,14 +670,14 @@ namespace Sequence
 			{
 			  //count the # occurences of chars1.first
 			  //at site i
-			  size_t x = std::count(site1.begin(),
-						site1.end(),
-						chars1.first);
+			  size_t x = unsigned(std::count(site1.begin(),
+						      site1.end(),
+						      chars1.first));
 			  //count the # occurences of chars2.first
 			  //at site j
-			  size_t y = std::count(site2.begin(),
-						site2.end(),
-						chars2.first);
+			  size_t y = unsigned(std::count(site2.begin(),
+						      site2.end(),
+						      chars2.first));
 			  
 			  if ( x > nsam-x )
 			    {
@@ -718,9 +718,9 @@ namespace Sequence
 			    {
 			      std::swap(chars1.first,chars1.second);
 			    }
-			  counts1.first = std::count(site1.begin(),
-						     site1.end(),
-						     chars1.first);
+			  counts1.first = unsigned(std::count(site1.begin(),
+							   site1.end(),
+							   chars1.first));
 			  counts1.second = nsam-counts1.first;
 			  
 			  //if chars2.first is ancestral, swap chars2.first
@@ -730,9 +730,9 @@ namespace Sequence
 			    {
 			      std::swap(chars2.first,chars2.second);
 			    }
-			  counts2.first = std::count(site2.begin(),
-						     site2.end(),
-						     chars2.first);
+			  counts2.first = unsigned(std::count(site2.begin(),
+							   site2.end(),
+							   chars2.first));
 			  counts2.second = nsam-counts2.first;
 			}
 		      

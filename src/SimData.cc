@@ -39,7 +39,7 @@ namespace Sequence
   {
   }
 
-  SimData::SimData(double *pos, const char **sample, const int & nsam, const int & S):
+  SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
     PolyTable(pos,pos+S,sample,nsam),totsam(nsam)
   {
     //PolyTable::assign(pos,S,sample,nsam);

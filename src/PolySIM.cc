@@ -139,7 +139,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::Hprime (bool likeThorntonAndolfatto)
+  PolySIM::Hprime (const bool & likeThorntonAndolfatto)
   /*!
     Redefinition of PolySNP::Hprime
     @author Joshua Shapiro
@@ -199,7 +199,7 @@ namespace Sequence
 
 
   int
-  PolySIM::HudsonsHaplotypeTest (int subsize, int subss)
+  PolySIM::HudsonsHaplotypeTest (const int & subsize, const int & subss)
   /*!
     From Hudson et al (1994) on polymorphism at sod. For simulated data only.
     The function returns a 1 if the number of polymorphisms in a randomly generated subsample
@@ -222,7 +222,7 @@ namespace Sequence
 
     while (sflag)
       {
-        npoly = poly (subslist, rep->_nsites,
+        npoly = poly (subslist, int(rep->_nsites),
                       subsize, subss, &seq);
         if (npoly > subss)
           sflag = nextsample (subslist, subsize, int(rep->_nsam), seq);
@@ -245,8 +245,8 @@ namespace Sequence
   }
 
   int
-  PolySIM::poly (int *subslist, int ss,
-                 int subsize, int subss, int *seq)
+  PolySIM::poly (int *subslist, const int & ss,
+                 const int & subsize, const int & subss, int * seq)
   /*!
     Count the number of polymorphisms in a sample of size subsize.
     Part of the Hudson Haplotype Test. Called by 
@@ -263,8 +263,8 @@ namespace Sequence
 
     for (i = 1; i < subsize; ++i)
       for (j = 0; j < ss; ++j)
-        if ((*rep->_data)[subslist[i]][j] !=
-            (*rep->_data)[subslist[0]][j])
+        if ((*rep->_data)[PolyTable::size_type(subslist[i])][std::string::size_type(j)] !=
+            (*rep->_data)[PolyTable::size_type(subslist[0])][std::string::size_type(j)])
           {
             if (polyvector[j] == 0)
               {
@@ -279,7 +279,7 @@ namespace Sequence
   }
 
   int
-  PolySIM::nextsample (int *subslist, int subsize, int nsam, int seq)
+  PolySIM::nextsample (int *subslist, const int & subsize, const int &  nsam, int seq)
   /*!
     Get the next subsample for the HHT.
     Part of the Hudson Haplotype Test.
@@ -429,13 +429,12 @@ namespace Sequence
   {
     if (rep->_counted_singletons == false)
       {
-        unsigned singletonCount=0;//, changes, j;
-	//        unsigned i;
+        unsigned singletonCount=0;
         singletonCount = 0;
 	for(std::vector<stateCounter>::const_iterator i = rep->_counts.begin() ;
 	    i != rep->_counts.end() ; ++i)
 	  {
-	    singletonCount += (i->one == 1 || i->zero == 1) ? 1 : 0;
+	    singletonCount += (i->one == 1 || i->zero == 1) ? 1u : 0u;
 	  }
         rep->_counted_singletons = true;
         rep->_singletons = singletonCount;

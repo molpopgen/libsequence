@@ -107,7 +107,7 @@ namespace Sequence
     int numN, numTsS, numTvS;	//numbers of changes of various types, N = nonsynon, S = synon
     int codonState;
     int type;		//type refers to Ts or Tv
-    int numPossChanges, numPossTs, numPossTv;
+    int numPossTs, numPossTv;
     double FirstN, First2S, First2V;
     std::string codonTrans;
     std::string mutationTrans;
@@ -123,7 +123,7 @@ namespace Sequence
             for (k = Nucleotides (A); k <= Nucleotides (C); ++k)
               {
                 numN = numTsS = numTvS = 0;	//initialize
-                numPossChanges = numPossTs = numPossTv = 0;
+                numPossTs = numPossTv = 0;
                 S = N = 0;
                 codon[0] = intToNuc[i];
                 codon[1] = intToNuc[j];
@@ -252,7 +252,7 @@ namespace Sequence
     int numN, numTsS, numTvS;	//numbers of changes of various types, N = nonsynon, S = synon
     int codonState;
     int type;		//type refers to Ts or Tv
-    int numPossChanges, numPossTs, numPossTv;
+    int numPossTs, numPossTv;
     double ThirdN, Third2S, Third2V, Third4;
     std::string codonTrans;
     std::string mutationTrans;
@@ -267,7 +267,7 @@ namespace Sequence
             for (k = Nucleotides (A); k <= Nucleotides (C); ++k)
               {
                 numN = numTsS = numTvS = 0;	//initialize
-                numPossChanges = numPossTs = numPossTv = 0;
+                numPossTs = numPossTv = 0;
                 S = N = 0;
                 codon[0] = intToNuc[i];
                 codon[1] = intToNuc[j];

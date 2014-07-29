@@ -46,7 +46,7 @@ namespace Sequence
   SimData read_SimData_gz( gzFile & file )
   {
     char * buffer1 = new char[13];
-    char * endptr;
+    //char * endptr;
 
     gzgets(file,buffer1,100);
     if( string(buffer1) != string("//\n") ) 
@@ -61,13 +61,13 @@ namespace Sequence
       {
 	if ( !isspace(ch) )
 	  {
-	    buffer2 += ch;
+	    buffer2 += char(ch);
 	  }
 	ch = gzgetc(file);
       }
 
-    unsigned segsites = unsigned(strtoul(buffer2.c_str(), &endptr, 10));
-
+    //unsigned segsites = unsigned(strtoul(buffer2.c_str(), &endptr, 10));
+    unsigned segsites = unsigned(stoul(buffer2));
     if( segsites )
       {
 	gzgets(file,buffer1,12);
@@ -82,12 +82,14 @@ namespace Sequence
 	      }
 	    else
 	      {
-		pos.push_back(strtod(buffer2.c_str(),&endptr));
+		//pos.push_back(strtod(buffer2.c_str(),&endptr));
+		pos.push_back(stod(buffer2));
 		buffer2.clear();
 	      }
 	    ch = gzgetc(file);
 	  }
-	pos.push_back(strtod(buffer2.c_str(),&endptr));
+	//pos.push_back(strtod(buffer2.c_str(),&endptr));
+	pos.push_back(stod(buffer2));
 	//read the positions
 	vector<string> data;
 	ch = gzgetc(file);
@@ -95,7 +97,7 @@ namespace Sequence
 	while( char(ch) != '/' && ch != EOF )
 	  {
 	    gzungetc(ch,file);
-	    gzgets( file,&buffer3[0], segsites+2);
+	    gzgets( file,&buffer3[0], int(segsites)+2);
 	    string temp(&buffer3[0]);
 	    data.push_back( string(temp.begin(),temp.end()-1) );
 	    ch = gzgetc(file);	
@@ -114,7 +116,7 @@ namespace Sequence
 
   void write_SimData_binary( std::ostream & o, const SimData & d )
   {
-    unsigned n = d.size(),numsites=d.numsites();
+    SimData::size_type n = d.size(),numsites=d.numsites();
     o.write( reinterpret_cast<char *>(&n),sizeof(unsigned) );
     o.write( reinterpret_cast<char *>(&numsites),sizeof(unsigned) );
     for( SimData::const_pos_iterator p = d.pbegin() ; p < d.pend() ; ++p )
@@ -124,7 +126,7 @@ namespace Sequence
       }
     for( unsigned i=0;i<d.size();++i )
       {
-	unsigned c = count(d[i].begin(),d[i].end(),'1');
+	unsigned c = unsigned(count(d[i].begin(),d[i].end(),'1'));
 	o.write(reinterpret_cast<char*>(&c),sizeof(unsigned));
 	for(unsigned j=0;j<d.numsites();++j)
 	  {
@@ -167,14 +169,14 @@ namespace Sequence
     return SimData(pos,data);
   }
 
-  int write_SimData_binary( int fd , const SimData & d )
+  long int write_SimData_binary( int fd , const SimData & d )
   {
     ostringstream o;
     write_SimData_binary( o, d );
-    return write( fd, o.str().c_str(), o.str().size() );
+    return write( fd, o.str().c_str(), size_t(o.str().size()) );
   }
 
-  int write_SimData_binary( FILE * fp, const SimData & d )
+  long int write_SimData_binary( FILE * fp, const SimData & d )
   {
     return write_SimData_binary( fileno(fp), d );
   }

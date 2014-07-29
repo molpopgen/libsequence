@@ -41,17 +41,18 @@ namespace Sequence
   */
   {
     assert (! pop_config.empty() );
-    int nsam = std::accumulate(pop_config.begin(),pop_config.end(),0);
+    std::vector<chromosome>::size_type nsam = 
+      std::vector<chromosome>::size_type(std::accumulate(pop_config.begin(),pop_config.end(),0));
     std::vector<chromosome> sample(nsam);
-    int k=0;
+    std::vector<chromosome>::size_type k=0;
     for(unsigned i = 0 ; i < pop_config.size() ; ++i)
       {
 	int popsize = pop_config[i];
 	assert(popsize >= 0);
 	for(int j=0;j<popsize;++j)
 	  {
-	    std::vector<segment> initial_segments(1,segment(0,(nsites>0 ? nsites-1 : 0),k));
-	    sample[k++] = chromosome(initial_segments,i);
+	    std::vector<segment> initial_segments(1,segment(0,(nsites>0 ? nsites-1 : 0),int(k)));
+	    sample[k++] = chromosome(initial_segments,int(i));
 	  }
       }
     return sample;
@@ -64,10 +65,10 @@ namespace Sequence
     \ingroup coalescent
   */
   {
-    std::vector<node> tree(2*nsam-1);
+    std::vector<node> tree(std::vector<node>::size_type(2*nsam-1));
     for(int i=0;i<nsam;++i)
       {
-	tree[i] = node(0.);
+	tree[std::vector<node>::size_type(i)] = node(0.);
       }
     return marginal(0,nsam,nsam-1,tree);
   } 

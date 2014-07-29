@@ -126,7 +126,7 @@ namespace Sequence
 	cnb += (data[i].nB > 1) ? Cn(data[i].nB) : 0.;
 	sumTheta += double(data[i].SA)/cna;
 	sumSb += data[i].SB;
-	n += (data[i].nB>1)?1:0;
+	n += (data[i].nB>1)?1u:0u;
 	//double f = (data[i].nB>1 && data[i].SA>0) ? (double(data[i].SB)*cna)/(double(data[i].SA)*cnb): 1.;
 	//	n += (data[i].nB>=1 && data[i].SA>0) ? 1 : 0;
 	//	fhat += f;

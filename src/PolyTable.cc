@@ -85,14 +85,16 @@ namespace Sequence
     positions.clear();
     data.clear();
     if(std::distance(beg,end) < 1) return true;
-    positions.resize(end-beg);
-    pv.resize(end-beg);
+    positions.resize(std::vector<double>::size_type(end-beg));
+    pv.resize(std::vector<double>::size_type(end-beg));
     data.resize(beg->second.length());
-    size_t nsam = beg->second.length(),i=0,j=0;
+    size_t nsam = beg->second.length();
     std::string::const_iterator sb,se;
+    typedef PolyTable::const_site_iterator::difference_type DTYPE;
+    DTYPE i=0,j=0;
     while((beg+i)<end)
       {
-	pv[i]=*(beg+i);
+	pv[unsigned(i)]=*(beg+i);
 	if ((beg+i)->second.length() != nsam)
 	  {
 	    //If we toss an exception, let's make sure we leave an empty object.
@@ -100,13 +102,13 @@ namespace Sequence
 	    data.clear();
 	    return false;
 	  }
-	positions[i] = (beg+i)->first;
+	positions[unsigned(i)] = (beg+i)->first;
 	sb = (beg+i)->second.begin();
 	se = (beg+i)->second.end();
 	j = 0;
 	while( (sb+j) < se )
 	  {
-	    data[j] += *(sb+j);
+	    data[unsigned(j)] += *(sb+j);
 	    ++j;
 	  }
 	++i;

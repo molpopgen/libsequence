@@ -69,7 +69,7 @@ namespace Sequence
 	std::string::iterator si1=itr->begin(),si2;
 	while( (si2 = std::find(si1,itr->end(),identical)) != itr->end() )
 	  {
-	    size_t offset = si2 - itr->begin();
+	    std::string::iterator::difference_type offset = si2 - itr->begin();
 	    *si2 = *((t->begin()+refseq)->begin()+offset);
 	    si1 = si2+1;
 	  }
@@ -90,7 +90,7 @@ namespace Sequence
 	 itr < t->end() ;
 	 ++itr)
       {
-	size_t offset_data = itr-t->begin();
+	PolyTable::const_data_iterator::difference_type offset_data = itr-t->begin();
 	if ( offset_data != refseq )
 	  {
 	    for (unsigned i = 0 ; i < (*itr).length() ; ++i)

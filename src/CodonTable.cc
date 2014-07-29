@@ -59,7 +59,7 @@ namespace
             codon += alphabet[i];
             codon += alphabet[j];
             codon += alphabet[k];
-            size_t pos = 0;
+	    std::string::const_iterator::difference_type pos = 0;
             unsigned count = 0;
 	    for( ; (beg+pos) < end ; pos += 3 )
 	      {

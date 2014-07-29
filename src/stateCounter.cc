@@ -26,28 +26,28 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
   {
-  /*! \var unsigned Sequence::stateCounter::a
+  /*! \var stateCounter::size_type Sequence::stateCounter::a
     the number of times the character 'a' or 'A' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::g
+  /*! \var stateCounter::size_type Sequence::stateCounter::g
     the number of times the character 'g' or 'G' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::c
+  /*! \var stateCounter::size_type Sequence::stateCounter::c
     the number of times the character 'c' or 'C' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::t
+  /*! \var stateCounter::size_type Sequence::stateCounter::t
     the number of times the character 't' or 'T' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::zero
+  /*! \var stateCounter::size_type Sequence::stateCounter::zero
     the number of times the character '0' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::one
+  /*! \var stateCounter::size_type Sequence::stateCounter::one
     the number of times the character '1' has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::gap
+  /*! \var stateCounter::size_type Sequence::stateCounter::gap
     the number of times the gap character  has been counted
   */
-  /*! \var unsigned Sequence::stateCounter::n
+  /*! \var stateCounter::size_type Sequence::stateCounter::n
     the number of times the missing data character 'N'  has been counted
   */
 
@@ -103,13 +103,13 @@ namespace Sequence
         }
     }
 
-  unsigned stateCounter::nStates(void) const
+  stateCounter::size_type stateCounter::nStates(void) const
   /*!
     \return the number of states counted, excluding gaps
     and missing data
   */
     {
-      unsigned nstates = (a > 0) ? 1 : 0;
+      stateCounter::size_type nstates = (a > 0) ? 1 : 0;
       nstates += (g > 0) ? 1 : 0;
       nstates += (c > 0) ? 1 : 0;
       nstates += (t > 0) ? 1 : 0;

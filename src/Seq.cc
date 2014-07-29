@@ -138,7 +138,7 @@ namespace Sequence
       Return length of sequence, excluding the gap character '-'
     */
   {
-    size_type ngap = std::count(second.begin(),second.end(),'-');
+    size_type ngap = size_type(std::count(second.begin(),second.end(),'-'));
     return (second.length () - ngap);
   }
 

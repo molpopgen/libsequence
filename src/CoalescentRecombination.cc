@@ -108,11 +108,11 @@ namespace Sequence
     within = (pos>=seg->beg) ? true:false;
 
     //2. make new chromosome segments for right-hand end
-    size_t ns = (sbegin+chromo)->nsegs - (seg-(sbegin+chromo)->begin());
+    size_t ns = (sbegin+chromo)->nsegs - size_t(seg-(sbegin+chromo)->begin());
     std::vector<segment> rtsegs(seg,seg+ns);
 
     //3. edit vector of segments for left-hand end
-    (sbegin+chromo)->nsegs = (int((seg)-(sbegin+chromo)->begin())) + int(within);
+    (sbegin+chromo)->nsegs = unsigned((int((seg)-(sbegin+chromo)->begin())) + int(within));
     assert( (sbegin+chromo)->nsegs > 0 );
 
     //4. make sure begs and ends are happy

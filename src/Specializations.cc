@@ -38,7 +38,7 @@ namespace Sequence
       specialization for std::string
     */
     {
-      for (int i = 0; unsigned (i) < data.size (); ++i)
+      for (std::vector<std::string>::size_type i = 0; i < data.size (); ++i)
         //iterate over sequences
 	{
 	  if( data[i].find('-') != std::string::npos )
@@ -53,7 +53,7 @@ namespace Sequence
       specialization for std::string
     */
     {
-      for (int i = 0; unsigned (i) < data.size (); ++i)
+      for (std::vector<std::string>::size_type i = 0; i < data.size (); ++i)
         if (data[i].length () != data[0].length ())
           return 0;
       
@@ -105,15 +105,14 @@ namespace Sequence
     */
     {
       bool site_gapped = 0;
-      int len = 0;
+      unsigned len = 0;
       if (!IsAlignment(data))
 	return Sequence::SEQMAXUNSIGNED;
 
-      for (size_t j = 0; j < data[0].length (); ++j)
-
+      for (std::string::size_type j = 0; j < data[0].length (); ++j)
         {
           site_gapped = 0;
-          for (size_t i = 0;  i < data.size ();  ++i)
+          for (std::vector<std::string>::size_type i = 0;  i < data.size ();  ++i)
             {
               if (data[i][j] == '-')
                 {
@@ -206,9 +205,9 @@ namespace Sequence
         }
 
       //now, fill the array of trimmed sequences
-      offset = rightmost - leftmost;
+      offset = rightmost - leftmost + 1;
       for (j = 0; j != data.size (); ++j)
-        trimmed_sequences.push_back (data[j].substr  (leftmost, rightmost-leftmost+1));
+        trimmed_sequences.push_back (data[j].substr  (leftmost, offset));
 
       //now, redo the seq array for the current object
       data.assign(trimmed_sequences.begin(),trimmed_sequences.end());
@@ -227,7 +226,7 @@ namespace Sequence
 	    {
 	      if (ind != ref)
 		{
-		  ngap += (data[ind][site] == '-') ? 1 : 0;
+		  ngap += (data[ind][site] == '-') ? 1u : 0u;
 		}
 	    }
 	  if(ngap==nsam)
@@ -252,7 +251,7 @@ namespace Sequence
     */
     {
       size_t i, j, numseqs = data.size (), numIntervals =  sites.size ();
-      unsigned start, stop;
+      std::string::size_type start, stop;
       std::vector < std::string >trimmedData(numseqs);
       std::vector < std::string > trimmedTemp(numseqs);
       if (sites.empty ())
@@ -266,8 +265,8 @@ namespace Sequence
 
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = sites[i];
-          stop = sites[i + 1];
+          start = std::string::size_type(sites[i]);
+          stop = std::string::size_type(sites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] += data[j].substr (start, stop - start + 1);
@@ -334,13 +333,13 @@ namespace Sequence
             }
         }
 
-      lastval = newSites[newSites.size () - 1];
+      lastval = size_t(newSites[newSites.size () - 1]);
       newSites.pop_back ();
       numIntervals = newSites.size ();
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = newSites[i];
-          stop = newSites[i + 1];
+          start = size_t(newSites[i]);
+          stop = size_t(newSites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] +=

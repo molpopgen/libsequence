@@ -173,7 +173,7 @@ namespace Sequence
       char MISSING = 'N';
       if (!nucleic_acid)
 	MISSING = 'X';//for peptide sequences
-      for (int i = 0; unsigned (i) < len; ++i)
+      for (unsigned i = 0; i < len; ++i)
         {
 	  const char _ch1 = char(std::toupper(seq1[i])), 
 	    _ch2 = char(std::toupper(seq2[i]));
