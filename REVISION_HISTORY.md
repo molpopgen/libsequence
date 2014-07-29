@@ -19,4 +19,4 @@ If you see a section below referring to libseqeunce version X, and no version X 
 
 ###ISSUES:
 
-1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>
+1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
