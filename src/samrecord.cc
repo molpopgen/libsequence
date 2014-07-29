@@ -155,9 +155,8 @@ namespace Sequence
     string::const_iterator piend = find_if( pibeg+1,cigar_end,::isalpha );
     while( pibeg != cigar_end )
       {
-	//cigar_data.push_back( make_pair( *piend, atoi( string(pibeg,piend).c_str() ) ) );
 	cigar_data.push_back( make_pair( *piend, 
-					 strtoul( string(pibeg,piend).c_str(),&endptr,10 ) ) );
+					 stoul( string(pibeg,piend).c_str()) ) );
 	pibeg = find_if( piend+1, cigar_end, ::isdigit );
 	piend = find_if( pibeg+1,cigar_end,::isalpha);
       }
@@ -266,8 +265,7 @@ namespace Sequence
     \return the POS field
   */
   {
-    return strtoul( string(impl->pos_beg,impl->pos_end).c_str(), &impl->endptr, 10 );
-    //return unsigned(atoi(string(impl->pos_beg,impl->pos_end).c_str()));;
+    return stoul( string(impl->pos_beg,impl->pos_end) );
   }
 
   unsigned long samrecord::mapq() const
@@ -275,8 +273,7 @@ namespace Sequence
     \return the MAPQ field
   */
   {
-    return strtoul(string(impl->mapq_beg,impl->mapq_end).c_str(),&impl->endptr,10);
-    //return unsigned(atoi(string(impl->mapq_beg,impl->mapq_end).c_str()));
+    return stoul(string(impl->mapq_beg,impl->mapq_end));
   }
 
   std::string samrecord::cigar() const
@@ -300,7 +297,7 @@ namespace Sequence
     \return the MPOS field
   */
   {
-    return strtoul( string(impl->mpos_beg,impl->mpos_end).c_str(),&impl->endptr,10);
+    return stoul( string(impl->mpos_beg,impl->mpos_end) );
   }
 
   int samrecord::isize() const
@@ -308,7 +305,7 @@ namespace Sequence
     \return the ISIZE field
   */
   {
-    return atoi(string(impl->isize_beg,impl->isize_end).c_str());;
+    return stoi(string(impl->isize_beg,impl->isize_end));
   }
 
   std::string samrecord::seq() const

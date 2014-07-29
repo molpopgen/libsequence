@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cfloat>
 #include <cassert>
 #include <cstdlib>
+#include <limits>
 #include <Sequence/SimData.hpp>
 #include <Sequence/Recombination.hpp>
 #include <Sequence/PolySIM.hpp>
@@ -110,7 +111,7 @@ namespace Sequence
     @author Joshua Shapiro
   */
   {
-    if(rep->_NumPoly ==0) return 0.;//strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return 0.;
     const char state = '1';
     unsigned site;
     unsigned seq;
@@ -132,7 +133,7 @@ namespace Sequence
   double
   PolySIM::TajimasD (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double W = ThetaW ();
     return ((Pi - W) / Dnominator ());
@@ -145,7 +146,7 @@ namespace Sequence
     @author Joshua Shapiro
   */
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Hpr = 0.0;
     double pi = ThetaPi ();
     double theta = ThetaW();
@@ -180,7 +181,7 @@ namespace Sequence
   double
   PolySIM::Dnominator (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double S = rep->_NumPoly;
     double a1, a2, b1, b2, c1, c2, e1, e2;
 
@@ -308,7 +309,7 @@ namespace Sequence
   double
   PolySIM::FuLiD (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double D = 0.0;
     double ExternalMutations = double (NumExternalMutations ());
     double NumMut = double (NumMutations ());
@@ -328,7 +329,7 @@ namespace Sequence
   double
   PolySIM::FuLiF (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations ());
@@ -356,7 +357,7 @@ namespace Sequence
   double
   PolySIM::FuLiDStar (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double DStar = 0.0;
     double Singletons = double (NumSingletons ());
     double NumMut = double (NumMutations ());
@@ -383,7 +384,7 @@ namespace Sequence
   double
   PolySIM::FuLiFStar (void)
   {
-    if(rep->_NumPoly ==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double FStar = 0.0;
     double Singletons = double (NumSingletons ());
     double Pi = ThetaPi ();
@@ -622,9 +623,9 @@ namespace Sequence
       }
     else
       {
-	rep->_walls_B = strtod("NAN",NULL);
+	rep->_walls_B = std::numeric_limits<double>::quiet_NaN();
 	rep->_walls_Bprime=0;
-	rep->_walls_Q = strtod("NAN",NULL);
+	rep->_walls_Q = std::numeric_limits<double>::quiet_NaN();
       }
     rep->_calculated_wall_stats=true;
   }

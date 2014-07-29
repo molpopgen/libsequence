@@ -66,7 +66,6 @@ namespace Sequence
 	ch = gzgetc(file);
       }
 
-    //unsigned segsites = unsigned(strtoul(buffer2.c_str(), &endptr, 10));
     unsigned segsites = unsigned(stoul(buffer2));
     if( segsites )
       {
@@ -82,13 +81,11 @@ namespace Sequence
 	      }
 	    else
 	      {
-		//pos.push_back(strtod(buffer2.c_str(),&endptr));
 		pos.push_back(stod(buffer2));
 		buffer2.clear();
 	      }
 	    ch = gzgetc(file);
 	  }
-	//pos.push_back(strtod(buffer2.c_str(),&endptr));
 	pos.push_back(stod(buffer2));
 	//read the positions
 	vector<string> data;

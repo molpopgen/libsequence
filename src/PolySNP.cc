@@ -28,6 +28,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cstdlib>
 #include <cctype>
 #include <set>
+#include <limits>
 #include <algorithm>
 #include <functional>
 #include <Sequence/PolyTable.hpp>
@@ -326,7 +327,7 @@ namespace Sequence
     if (rep->_NumPoly==0)
       return 0.;
     if( !rep->_haveOutgroup)
-      return strtod("NAN",NULL);
+      return std::numeric_limits<double>::quiet_NaN();
     double H = 0.0;
     bool anc_is_present = 0;   //is ancestral state present in the ingroup?
 
@@ -654,7 +655,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     double D = 0.0;
     double Pi = ThetaPi ();
     double W = ThetaW ();
@@ -680,7 +681,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     assert(rep->_haveOutgroup==true);
     double Hpr = 0.0;
     double a = a_sub_n ();
@@ -723,7 +724,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     double S = 0.0;
     if (rep->_totMuts)
       {
@@ -907,9 +908,9 @@ namespace Sequence
       }
     else 
       {
-	rep->_walls_B = strtod("NAN",NULL);
+	rep->_walls_B = std::numeric_limits<double>::quiet_NaN();
 	rep->_walls_Bprime = 0;
-	rep->_walls_Q = strtod("NAN",NULL);
+	rep->_walls_Q = std::numeric_limits<double>::quiet_NaN();
       }
     rep->_calculated_wall_stats=true;
   }
@@ -1016,7 +1017,7 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     //    assert(rep->_haveOutgroup == true);
-    if(rep->_NumPoly==0 || !rep->_haveOutgroup) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
     double D = 0.0;
     double ExternalMutations =
       double (NumExternalMutations ());
@@ -1044,7 +1045,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0 || !rep->_haveOutgroup) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
     double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations());
@@ -1079,7 +1080,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     double DStar = 0.0;
     double Singletons =
       double (NumSingletons ());
@@ -1115,7 +1116,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     double FStar = 0.0;
     double Singletons =
       double (NumSingletons ());
@@ -1298,7 +1299,7 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    if(rep->_NumPoly==0) return strtod("NAN",NULL);
+    if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     return(Recombination::HudsonsC (rep->_data, rep->_haveOutgroup, rep->_outgroup));
   }
 
