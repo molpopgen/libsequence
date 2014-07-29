@@ -21,8 +21,8 @@ using namespace std;
 //need to define these
 namespace Sequence
 {
-  int MAX_SEGSITES=200;
-  int MAX_SEGS_INC=200;
+  MAX_SEG_T MAX_SEGSITES=200;
+  MAX_SEG_T MAX_SEGS_INC=200;
 }
 
 //overload of the libsequence function in the global namespace

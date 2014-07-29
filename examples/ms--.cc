@@ -13,8 +13,8 @@
   You need to set their value here.  In practice, the values below work well.
 */
 namespace Sequence{
-  int MAX_SEGSITES = 200;
-  int MAX_SEGS_INC = 100;
+  MAX_SEG_T MAX_SEGSITES = 200;
+  MAX_SEG_T MAX_SEGS_INC = 100;
 }
 
 int main(int argc, char **argv)
