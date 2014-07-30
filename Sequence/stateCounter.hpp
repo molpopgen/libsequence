@@ -36,7 +36,7 @@ in an alignment, or along a sequence
 */
 namespace Sequence
   {
-  class stateCounter : public std::unary_function<char,void>
+    class stateCounter : public std::unary_function<char,void>
     {
     private:
       mutable char _gap;

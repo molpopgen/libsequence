@@ -32,7 +32,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example correlations.cc */
 #include <iterator>
 #include <functional>
-				    //#include <Sequence/Portability/random_shuffle.hpp>
 
 namespace Sequence
 {
@@ -62,21 +61,21 @@ namespace Sequence
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
-	   typename UniformIntGenerator>
+	   typename shuffler>
   double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
 			    const correlation_type &  c,
 			    const comparison_function & comp,
-			    UniformIntGenerator & rand,
+			    shuffler & s,
 			    const unsigned & NPERM=10000);
 
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
-	   typename UniformIntGenerator>
+	   typename shuffler>
   double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
 			    const correlation_type &  c,
 			    const comparison_function & comp,
-			    const UniformIntGenerator & rand,
+			    shuffler & s,
 			    const unsigned & NPERM=10000);
 
 }//namespace Sequence

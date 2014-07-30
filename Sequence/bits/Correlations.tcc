@@ -92,7 +92,7 @@ namespace Sequence
   typedef typename std::iterator_traits<iter1>::value_type t1;
   typedef typename std::iterator_traits<iter2>::value_type t2;
   typedef typename std::iterator_traits<iter1>::difference_type dtype1;
-  typedef typename std::iterator_traits<iter2>::difference_type dtype2;
+  //typedef typename std::iterator_traits<iter2>::difference_type dtype2;
   dtype1 d = end_x-beg_x;
   std::vector<t1> xranks;
   std::vector<t2> yranks;
@@ -160,11 +160,11 @@ namespace Sequence
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
-	   typename UniformIntGenerator>
+	   typename shuffler>
   double PermuteCorrelation_details(iter1 beg_x, iter1 end_x, iter2 beg_y,
 				    const correlation_type &  corr,
 				    const comparison_function & comp,
-				    UniformIntGenerator & rand,
+				    shuffler & s,
 				    const unsigned & NPERM)
   {
     typedef double  rtype;
@@ -173,30 +173,31 @@ namespace Sequence
     rtype _obs = corr(beg_x,end_x,beg_y);
     unsigned _prob=0;
 
-    type1 *copy_x = new type1[end_x-beg_x+1];
-    std::copy(beg_x,end_x,copy_x);
-
+    //type1 *copy_x = new type1[end_x-beg_x+1];
+    //std::copy(beg_x,end_x,copy_x);
+    std::vector<type1> copy_x(beg_x,end_x);
     for(unsigned i = 0 ; i < NPERM ; ++i)
       {
-	std::shuffle(copy_x,copy_x+(end_x-beg_x),rand);
-	if ( comp(std::fabs(corr(copy_x,copy_x+(end_x-beg_x),beg_y)),
+	//std::shuffle(copy_x,copy_x+(end_x-beg_x),rand);
+	s(copy_x.begin(),copy_x.end());
+	if ( comp(std::fabs(corr(copy_x.begin(),copy_x.end(),beg_y)),
 		  std::fabs(_obs)) == true )
 	  {
 	    ++_prob;
 	  }
       }
-    delete [] copy_x;
+    //delete [] copy_x;
     return rtype(_prob)/rtype(NPERM);
   }
 
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
-	   typename UniformIntGenerator>
+	   typename shuffler>
   double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
 			    const correlation_type &  corr,
 			    const comparison_function & comp,
-			    UniformIntGenerator & rand,
+			    shuffler & s,
 			    const unsigned & NPERM)
   /*! 
     Obtain the p-value of a correlation coefficient by permutation.  This function
@@ -213,17 +214,17 @@ namespace Sequence
     @note This function keeps the order of the 2 containers intact.
   */
   {
-    return PermuteCorrelation_details(beg_x,end_x,beg_y,corr,comp,rand,NPERM);
+    return PermuteCorrelation_details(beg_x,end_x,beg_y,corr,comp,s,NPERM);
   }
 
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
-	   typename UniformIntGenerator>
+	   typename shuffler>
   double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
 			    const correlation_type &  corr,
 			    const comparison_function & comp,
-			    const UniformIntGenerator & rand,
+			    const shuffler & s,
 			    const unsigned & NPERM)
   /*! 
     Obtain the p-value of a correlation coefficient by permutation.  This function
@@ -240,7 +241,7 @@ namespace Sequence
     @note This function keeps the order of the 2 containers intact.
   */
   {
-    return PermuteCorrelation_details(beg_x,end_x,beg_y,corr,comp,rand,NPERM);
+    return PermuteCorrelation_details(beg_x,end_x,beg_y,corr,comp,s,NPERM);
   }
 
 }//namespace Sequence

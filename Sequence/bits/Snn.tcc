@@ -25,16 +25,16 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __SEQUENCE_BITS_SNN_TCC__
 #define __SEQUENCE_BITS_SNN_TCC__
 
-#include <algorithm>
+				    //#include <algorithm>
 
 namespace Sequence
 {
-  template< typename uniform_int_generator >
+  template< typename shuffler >
   std::pair<double,double>
   Snn_test_details(const PolyTable & snpTable,
 		   const unsigned config[],
 		   const size_t & npop,
-		   uniform_int_generator & uni_int,
+		   shuffler & s,
 		   const unsigned & nperms)
   {
     std::vector < std::vector<double> > dkj(snpTable.size(),
@@ -59,7 +59,8 @@ namespace Sequence
     unsigned pv = 0;
     while( perm-- )
       {
-	std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
+	//std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
+	s(__individuals.begin(),__individuals.end());
 	double permuted_stat = Snn_statistic(&__individuals[0],
 					     dkj,
 					     config,
@@ -69,12 +70,12 @@ namespace Sequence
     return std::make_pair(observed,double(pv)/double(nperms));
   }
 
-  template< typename uniform_int_generator >
+  template< typename shuffler >
   std::vector< std::vector<double> >
   Snn_test_pairwise_details(const PolyTable & snpTable,
 			    const unsigned config[],
 			    const size_t & npop,
-			    uniform_int_generator uni_int,
+			    shuffler & s,
 			    const unsigned & nperms)
   {
     std::vector<unsigned> offsets(npop+1);
@@ -115,7 +116,8 @@ namespace Sequence
 	    unsigned p =0, _nperms = nperms;
 	    while(_nperms>0)
 	      {
-		std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
+		//std::random_shuffle(__individuals.begin(),__individuals.end(),uni_int);
+		s(__individuals.begin(),__individuals.end());
 		double perm = Snn_statistic( &individuals[0],dkj,_config,2,
 					     _config[0]+_config[1]); 
 		if(perm>=observed) ++p;
@@ -132,12 +134,12 @@ namespace Sequence
     return rv;
   }
 
-  template< typename uniform_int_generator >
+  template< typename shuffler >
   std::pair<double,double>
   Snn_test(const PolyTable & snpTable,
 	   const unsigned config[],
 	   const size_t & npop,
-	   uniform_int_generator & uni_int,
+	   shuffler & s,
 	   const unsigned & nperms)
   /*!
     @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic 
@@ -151,15 +153,15 @@ namespace Sequence
     \ingroup popgenanalysis
   */
   {
-    return Snn_test_details(snpTable,config,npop,uni_int,nperms);
+    return Snn_test_details(snpTable,config,npop,s,nperms);
   }
 
-  template< typename uniform_int_generator >
+  template< typename shuffler >
   std::vector< std::vector<double> >
   Snn_test_pairwise(const PolyTable & snpTable,
 		    const unsigned config[],
 		    const size_t & npop,
-		    uniform_int_generator & uni_int,
+		    shuffler & s,
 		    const unsigned & nperms)
   /*!
     @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic,
@@ -176,54 +178,54 @@ namespace Sequence
     \ingroup popgenanalysis
   */
   {
-    return Snn_test_pairwise_details(snpTable,config,npop,uni_int,nperms);
+    return Snn_test_pairwise_details(snpTable,config,npop,s,nperms);
   }
 
-  template< typename uniform_int_generator >
-  std::pair<double,double>
-  Snn_test(const PolyTable & snpTable,
-	   const unsigned config[],
-	   const size_t & npop,
-	   const uniform_int_generator & uni_int,
-	   const unsigned & nperms)
-  /*!
-    @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic 
-    \param snpTable The data on which we wish to perform the test.
-    \param config An array of the sample sizes in each deme.
-    \param npop The number of populations.  For example, npop could equal config.size() if config were a vector
-    \param uni_int A random number generator whose operator() takes one argument, n, and returns a value uniformly-distributed on the half-open interval [0,N)
-    \param nperms The number of permutations to do for the test
-    \return A pair of doubles (std::pair<double,double>).  the first member of the pair is
-    the observed value of the statistic, and the second member is the estimated p-value
-    \ingroup popgenanalysis
-  */
-  {
-    return Snn_test_details(snpTable,config,npop,uni_int,nperms);
-  }
+  // template< typename shuffler >
+  // std::pair<double,double>
+  // Snn_test(const PolyTable & snpTable,
+  // 	   const unsigned config[],
+  // 	   const size_t & npop,
+  // 	   shuffler & s,
+  // 	   const unsigned & nperms)
+  // /*!
+  //   @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic 
+  //   \param snpTable The data on which we wish to perform the test.
+  //   \param config An array of the sample sizes in each deme.
+  //   \param npop The number of populations.  For example, npop could equal config.size() if config were a vector
+  //   \param uni_int A random number generator whose operator() takes one argument, n, and returns a value uniformly-distributed on the half-open interval [0,N)
+  //   \param nperms The number of permutations to do for the test
+  //   \return A pair of doubles (std::pair<double,double>).  the first member of the pair is
+  //   the observed value of the statistic, and the second member is the estimated p-value
+  //   \ingroup popgenanalysis
+  // */
+  // {
+  //   return Snn_test_details(snpTable,config,npop,s,nperms);
+  // }
 
-  template< typename uniform_int_generator >
-  std::vector< std::vector<double> >
-  Snn_test_pairwise(const PolyTable & snpTable,
-		    const unsigned config[],
-		    const size_t & npop,
-		    const uniform_int_generator & uni_int,
-		    const unsigned & nperms)
-  /*!
-    @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic,
-    for all pairwise combinations of populations
-    \param snpTable The data on which we wish to perform the test.
-    \param config An array of the sample sizes in each deme.
-    \param npop The number of populations.  For example, npop could equal config.size() if config were a vector
-    \param uni_int A random number generator whose operator() takes one argument, n, 
-    and returns a value uniformly-distributed on the half-open interval [0,N)
-    \param nperms The number of permutations to do for the test
-    \return A vector of vector<double>.  Each vector contains 4 elements, indexed 0 to 3.  Elements 0 and 1
-    are the indexes of the i-th and j-th population.  Element 2 is the observed Snn between the i-th and j-th
-    population, and element 3 is the p-value estimated by permutation
-    \ingroup popgenanalysis
-  */
-  {
-    return Snn_test_pairwise_details(snpTable,config,npop,uni_int,nperms);
-  }
+  // template< typename shuffler >
+  // std::vector< std::vector<double> >
+  // Snn_test_pairwise(const PolyTable & snpTable,
+  // 		    const unsigned config[],
+  // 		    const size_t & npop,
+  // 		    shuffler & s,
+  // 		    const unsigned & nperms)
+  // /*!
+  //   @brief Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic,
+  //   for all pairwise combinations of populations
+  //   \param snpTable The data on which we wish to perform the test.
+  //   \param config An array of the sample sizes in each deme.
+  //   \param npop The number of populations.  For example, npop could equal config.size() if config were a vector
+  //   \param uni_int A random number generator whose operator() takes one argument, n, 
+  //   and returns a value uniformly-distributed on the half-open interval [0,N)
+  //   \param nperms The number of permutations to do for the test
+  //   \return A vector of vector<double>.  Each vector contains 4 elements, indexed 0 to 3.  Elements 0 and 1
+  //   are the indexes of the i-th and j-th population.  Element 2 is the observed Snn between the i-th and j-th
+  //   population, and element 3 is the p-value estimated by permutation
+  //   \ingroup popgenanalysis
+  // */
+  // {
+  //   return Snn_test_pairwise_details(snpTable,config,npop,s,nperms);
+  // }
 }//ns Sequence
 #endif

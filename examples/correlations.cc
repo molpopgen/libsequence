@@ -1,5 +1,4 @@
 #include <Sequence/Correlations.hpp>
-#include <Sequence/Portability/randomShuffleAdaptor.hpp>
 #include <string>
 #include <iostream>
 #include <iterator>
@@ -9,6 +8,14 @@
 #include <cstdlib>
 #include <cstdio>
 #include <random>
+
+//simple wrapper for us to use
+void shuffle_it( std::vector<int>::iterator beg,
+		 std::vector<int>::iterator end,
+		 std::mt19937 & generator )
+{
+  std::shuffle(beg,end,generator);
+}
 
 int main()
 {
@@ -59,24 +66,30 @@ int main()
 	    << "Spearman's rank correlation: "
 	    << Sequence::SpearmansRank()( x.begin(),x.end(),y.begin() )<<std::endl;
 
+
+  std::function<void(std::vector<int>::iterator,
+		     std::vector<int>::iterator)> __x = [&generator](std::vector<int>::iterator  a,
+								     std::vector<int>::iterator  b) { return shuffle_it(a,b,generator); };
+
   std::cout << "(all pvalues are one-tailed tests of observing a more extreme,\n"
 	    << "i.e. larger correlation than the observe dvalue)\n"
 	    << "pval of P-M correlation, seed with time: "
 	    << Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),
  					    Sequence::ProductMoment(),
 					    std::greater_equal<double>(),
-					    generator) << '\n'
+					    __x) << '\n'
 	    << "pval of rank correlation, default seed: "
 	    << Sequence::PermuteCorrelation(x.begin(),x.end(),
 					    y.begin(),
 					    Sequence::SpearmansRank(),
 					    std::greater_equal<double>(),
-					    generator) << std::endl
+					    __x) << std::endl
 	    << "pval of rank correlation, seed with time: "
     	    << Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),
  					    Sequence::SpearmansRank(),
 					    std::greater_equal<double>(),
-					    generator) <<std::endl;
+					    __x) <<std::endl;
+
   std::cout << "original data are intact:\n";
   for( const auto _x : x )
     {

@@ -22,3 +22,9 @@ If you see a section below referring to libseqeunce version X, and no version X 
 ###ISSUES:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
+
+###TODO:
+
+1. H12 from Petrov, Messer, et al.
+2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
+3. iHH?
