@@ -28,3 +28,4 @@ If you see a section below referring to libseqeunce version X, and no version X 
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
 3. iHH?
+4. http://mbe.oxfordjournals.org/content/31/5/1275.abstract
