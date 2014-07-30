@@ -11,6 +11,7 @@
 using namespace std;
 using namespace Sequence;
 
+//uses the "classic" stateCounter to determine MAF
 double local_maf( const polymorphicSite & p )
 {
   stateCounter sc = for_each(p.second.begin(),
@@ -27,7 +28,7 @@ int main( int argc, char ** argv )
 {
   //Can use C++11 initializer lists
   //polymorphicSite is a typedef for pair<double,string>
-  Ptable x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GAGG") };
+  Ptable x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GAAG") };
 
   //Print the data
   cout << "The data:\n";
@@ -56,10 +57,10 @@ int main( int argc, char ** argv )
       cout << _x.first << ' ' << _x.second << '\n';
     }
   
-  //Delete sites (this means that you can use algorithms + function objects on all polymorphic sites!)
-  x.erase(x.begin());
+  //Delete sites with MAF <= 0.25
+  x.erase( remove_if(x.begin(),x.end(),[](const polymorphicSite & __p){ return local_maf(__p) <= 0.25; } ),x.end() );
 
-  cout << "The data after erasing:\n";
+  cout << "The data after applying MAF filter:\n";
   for( auto _x : x )
     {
       cout << _x.first << ' ' << _x.second << '\n';
