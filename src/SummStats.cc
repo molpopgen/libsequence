@@ -5,7 +5,7 @@ using namespace std;
 
 namespace Sequence
 {
-  unsigned Dij(const polymorphicSite & p, const std::vector< unsigned > & config, const unsigned & i, const unsigned & j)
+  double Dij(const polymorphicSite & p, const std::vector< unsigned > & config, const unsigned & i, const unsigned & j)
   {
     unsigned rv = 0;
     unsigned N = 0;
@@ -26,7 +26,7 @@ namespace Sequence
 	      }
 	  }
       }
-    return rv - N;
+    return double(rv)/(double(config[i]+config[j]-N));
   }
   
   double Gmin(const Ptable & pt, const std::vector< unsigned > & config)
