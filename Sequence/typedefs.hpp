@@ -30,7 +30,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __SEQUENCE_TYPEDEFS_HPP
 #define __SEQUENCE_TYPEDEFS_HPP
 #include <vector>
-
+#include <utility>
+#include <string>
 namespace Sequence
 {
   /*! 
