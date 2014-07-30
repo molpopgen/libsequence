@@ -90,7 +90,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	CoalescentRecombination.lo CoalescentSimTypes.lo \
 	CoalescentTreeOperations.lo CoalescentInitialize.lo \
 	CoalescentCoalesce.lo CoalescentFragmentsRescaling.lo \
-	samrecord.lo samflag.lo samfunctions.lo PolyData.lo
+	samrecord.lo samflag.lo samfunctions.lo Ptable.lo PolyData.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
@@ -278,6 +278,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	samrecord.cc\
 	samflag.cc\
 	samfunctions.cc\
+	Ptable.cc \
 	PolyData.cc
 
 AM_LDFLAGS = -version-info 19:0:0
@@ -433,6 +434,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableManip.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Recombination.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Seq.Plo@am__quote@

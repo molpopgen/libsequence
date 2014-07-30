@@ -5,7 +5,7 @@ CXXFLAGS = -O3 -Wall -W -I.. -std=c++11
 LIBS = -L/usr/local/lib -lsequence -lz
 #all: codons.o gestimator.o msstats.o int_handler.o getopt.o getopt1.o baseComp.o valid_dna.o FastaExplicit.o translateTest.o slidingWindow.o slidingWindow2.o PolyTableIterators.o correlations.o critical_values.o ufs.o ms--.o msbeta.o freerec.o bottleneck.o fragments.o test_SimDataIO.o
 #all: codons.o msstats.o int_handler.o baseComp.o valid_dna.o FastaExplicit.o translateTest.o slidingWindow.o slidingWindow2.o PolyTableIterators.o correlations.o critical_values.o ufs.o ms--.o msbeta.o freerec.o bottleneck.o fragments.o test_SimDataIO.o
-all: codons.o msstats.o int_handler.o baseComp.o FastaExplicit.o translateTest.o slidingWindow.o slidingWindow2.o PolyTableIterators.o correlations.o critical_values.o ufs.o ms--.o freerec.o bottleneck.o fragments.o test_SimDataIO.o valid_dna.o
+all: codons.o msstats.o int_handler.o baseComp.o FastaExplicit.o translateTest.o slidingWindow.o slidingWindow2.o PolyTableIterators.o correlations.o critical_values.o ufs.o ms--.o freerec.o bottleneck.o fragments.o test_SimDataIO.o valid_dna.o Ptable_test.o
 	$(CXX) $(CXXFLAGS)   ufs.o -o ufs $(LDFLAGS) $(LIBS)
 	$(CXX) $(CXXFLAGS)   codons.o -o codons $(LDFLAGS) $(LIBS)
 	$(CXX) $(CXXFLAGS)   msstats.o -o msstats $(LDFLAGS) $(LIBS)
@@ -25,6 +25,7 @@ all: codons.o msstats.o int_handler.o baseComp.o FastaExplicit.o translateTest.o
 	$(CXX) $(CXXFLAGS)   fragments.o -o fragments $(LDFLAGS) $(LIBS) 
 	$(CXX) $(CXXFLAGS)   valid_dna.o -o valid_dna $(LDFLAGS) $(LIBS) 
 	$(CXX) $(CXXFLAGS)   test_SimDataIO.o -o test_SimDataIO $(LDFLAGS) $(LIBS)
+	$(CXX) $(CXXFLAGS)   Ptable_test.o -o Ptable_test $(LDFLAGS) $(LIBS)
 
 clean:
 	rm -f *.o codons msstats baseComp valid_dna FastaExplicit translateTest \

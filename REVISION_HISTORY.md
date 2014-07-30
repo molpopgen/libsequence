@@ -16,6 +16,8 @@ If you see a section below referring to libseqeunce version X, and no version X 
 6.  All auto_ptr usage has been replaced with unique_ptr 
 7.  All function from boost that are now part of C++11 have been replaced with the C++11 function calls.  This mostly includes replacing boost::bind with std::bind and BOOST_STATIC_ASSERT (and the correspponding use of boost/type_traits.hpp) with the C++11 <type_traits> equivalent 
 8.  All examples have been updated to C++11, with no dependencies on external libraries like [GSL](http://gnu.org/software/gsl).  Importantly, the GSL is still probably a better way to do random numbers than the C++11 "random" header.  (I personally don't like the design of the C++ random number system).  
+9.  Lots of function prototypes have changed. There were some leftover foo(int x) that are now foo(const int & x).  When called many times, the latter may be noticeably faster.
+10. A new class, Sequence::Ptable : public std::vector<Sequence::polymorhpicSite> is added.  This is a very powerful class for maninpulating polymorphism data in a general way.
 
 ###ISSUES:
 
