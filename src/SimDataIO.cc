@@ -45,8 +45,9 @@ namespace Sequence
 
   SimData read_SimData_gz( gzFile & file )
   {
+    if( gzeof(file) ) return SimData();
+
     char * buffer1 = new char[13];
-    //char * endptr;
 
     gzgets(file,buffer1,100);
     if( string(buffer1) != string("//\n") ) 
@@ -67,6 +68,13 @@ namespace Sequence
       }
 
     unsigned segsites = unsigned(stoul(buffer2));
+    do
+      {
+	ch = gzgetc(file);
+      }
+    while(std::isspace(ch) && char(ch) != '\n');
+    gzungetc(ch,file);
+    //cout << segsites << '\n';
     if( segsites )
       {
 	gzgets(file,buffer1,12);
@@ -89,21 +97,42 @@ namespace Sequence
 	pos.push_back(stod(buffer2));
 	//read the positions
 	vector<string> data;
-	ch = gzgetc(file);
-	char * buffer3 = new char[segsites];
-	while( char(ch) != '/' && ch != EOF )
+	char * buffer3 = new char[segsites+1];
+	bool reading = true;
+	while( reading && !gzeof(file))
 	  {
-	    gzungetc(ch,file);
-	    gzgets( file,&buffer3[0], int(segsites)+2);
-	    string temp(&buffer3[0]);
-	    data.push_back( string(temp.begin(),temp.end()-1) );
-	    ch = gzgetc(file);	
+	    ch = gzgetc(file);
+	    if( char(ch) == '/' )
+	      {
+		gzungetc(ch,file);
+		reading = false;
+	      }
+	    else if (ch == EOF)
+	      {
+		reading = false;
+	      }
+	    else if ( std::isspace(ch) )
+	      {
+		reading = false;
+	      }
+	    else
+	      {
+		gzungetc(ch,file);
+		gzgets( file, &buffer3[0], int(segsites)+1 );
+		ch = gzgetc(file); //read newline
+		if( ch == '/') 
+		  { 
+		    gzungetc(ch,file);
+		    reading = false; 
+		  }
+		else if (ch == EOF)
+		  {
+		    reading = false;
+		  }
+		data.push_back( string(buffer3) );
+	      }
 	  }
 	delete [] buffer3;
-	if(char(ch) == '/')
-	  {
-	    gzungetc(ch,file);
-	  }
 	delete [] buffer1;
 	return SimData(pos,data);
       }

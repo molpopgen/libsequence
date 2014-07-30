@@ -18,7 +18,9 @@ namespace Sequence
     Read a SimData object from a gzFile object (from the C-language zlib library)
 
     \note Only guaranteed compatible with compressed data written using
-    write_SimData_gz
+    write_SimData_gz.  In other words, if you say ms [params] | gzip > file.gz,
+    then you cannot expect to use this function to read in the data, and you 
+    should use a boost filtering_istream instead.
    */
   SimData read_SimData_gz( gzFile & file );
   /*!
