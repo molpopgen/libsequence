@@ -59,8 +59,8 @@ namespace Sequence
       return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
     }
   };
-  _PolySNPImpl::_PolySNPImpl (const Sequence::PolyTable * data, bool haveOutgroup ,
-			      unsigned outgroup, bool totMuts):
+  _PolySNPImpl::_PolySNPImpl (const Sequence::PolyTable * data, const bool & haveOutgroup ,
+			      const unsigned & outgroup, const bool & totMuts):
     _data(data),
     _nsites(data->numsites()),
     _nsam(unsigned(data->size())),

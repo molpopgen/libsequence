@@ -54,7 +54,7 @@ namespace Sequence
     bool _preprocessed;
     void preprocess(void);
 
-    _PolySNPImpl (const Sequence::PolyTable * data, bool haveOutgroup ,
-		  unsigned outgroup, bool totMuts);
+    _PolySNPImpl (const Sequence::PolyTable * data, const bool & haveOutgroup ,
+		  const unsigned & outgroup, const bool & totMuts);
   };
 }
