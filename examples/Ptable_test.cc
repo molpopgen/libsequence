@@ -24,11 +24,26 @@ double local_maf( const polymorphicSite & p )
   return double(mcount)/double(p.second.size()-sc.n);
 }
 
+std::vector<std::string::size_type> local_has_missing( const polymorphicSite & p )
+//case-insensitive!
+{
+  typedef std::vector<std::string::size_type> rvtype;
+  rvtype rv;
+
+  string::size_type f = p.second.find('N');
+  while (f != string::npos)
+    {
+      rv.push_back(f);
+      f = p.second.find('N',f+1);
+    }
+  return rv;
+}
+
 int main( int argc, char ** argv )
 {
   //Can use C++11 initializer lists
   //polymorphicSite is a typedef for pair<double,string>
-  Ptable x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GAAG") };
+  Ptable x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GANG") };
 
   //Print the data
   cout << "The data:\n";
@@ -56,7 +71,21 @@ int main( int argc, char ** argv )
     {
       cout << _x.first << ' ' << _x.second << '\n';
     }
-  
+
+  //Who has missing data?
+  std::vector<std::string::size_type> missing;
+  for_each(x.begin(),x.end(),[&missing](const polymorphicSite & __p) { 
+      std::vector<std::string::size_type> __temp = local_has_missing(__p);
+      copy(__temp.begin(),__temp.end(),back_inserter(missing));
+    });
+
+  cout << "Index of individuals with missing data:\n";
+  for( auto __m : missing )
+    {
+      cout << __m << '\n';
+    }
+
+
   //Delete sites with MAF <= 0.25
   x.erase( remove_if(x.begin(),x.end(),[](const polymorphicSite & __p){ return local_maf(__p) <= 0.25; } ),x.end() );
 
