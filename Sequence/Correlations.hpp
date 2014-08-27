@@ -68,6 +68,7 @@ namespace Sequence
 			    shuffler & s,
 			    const unsigned & NPERM=10000);
 
+  
   template<typename iter1, typename iter2,  
 	   typename correlation_type,
 	   typename comparison_function,
@@ -75,9 +76,9 @@ namespace Sequence
   double PermuteCorrelation(iter1 beg_x, iter1 end_x, iter2 beg_y,
 			    const correlation_type &  c,
 			    const comparison_function & comp,
-			    shuffler & s,
+			    const shuffler & s,
 			    const unsigned & NPERM=10000);
-
+  
 }//namespace Sequence
 #include <Sequence/bits/Correlations.tcc>
 #endif
