@@ -13,7 +13,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SingleSub.cc\
 	TwoSubs.cc\
 	stateCounter.cc\
-	FST.cc\
+	SummStats/FST.cc\
 	Comparisons.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
