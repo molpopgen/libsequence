@@ -6,7 +6,7 @@ namespace
 {
   double __nSLsum(const unsigned & core,
                   const Sequence::SimData & d,
-                  const std::vector<size_t> coretype)
+                  const std::vector<size_t> & coretype)
   {
     unsigned s = 0,nc=0;
     for( unsigned i = 0 ; i < coretype.size() ; ++i )
