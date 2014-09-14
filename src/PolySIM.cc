@@ -41,9 +41,9 @@ namespace Sequence
 {
   PolySIM::PolySIM (const Sequence::SimData * data):
     PolySNP(data,false,0,true)
-		   /*!
-		     \param data a valid object of type Sequence::SimData
-		   */
+    /*!
+      \param data a valid object of type Sequence::SimData
+    */
   {
     rep->_NumPoly = NumPoly();
   }

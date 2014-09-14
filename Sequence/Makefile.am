@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent
+SUBDIRS = bits Coalescent SummStats
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -63,4 +63,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	samfunctions.hpp\
 	typedefs.hpp \
 	Ptable.hpp \
-	PolyData.hpp
+	PolyData.hpp \
+	SummStats.hpp
