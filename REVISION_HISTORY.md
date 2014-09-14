@@ -18,6 +18,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 8.  All examples have been updated to C++11, with no dependencies on external libraries like [GSL](http://gnu.org/software/gsl).  Importantly, the GSL is still probably a better way to do random numbers than the C++11 "random" header.  (I personally don't like the design of the C++ random number system).  
 9.  Lots of function prototypes have changed. There were some leftover foo(int x) that are now foo(const int & x).  When called many times, the latter may be noticeably faster.
 10. A new class, Sequence::Ptable : public std::vector<Sequence::polymorhpicSite> is added.  This is a very powerful class for maninpulating polymorphism data in a general way.
+11. The build system has been rebuilt around automake-1.14
 
 ###ISSUES:
 
@@ -28,4 +29,4 @@ If you see a section below referring to libseqeunce version X, and no version X 
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
 3. iHH?
-4. http://mbe.oxfordjournals.org/content/31/5/1275.abstract
+4. http://mbe.oxfordjournals.org/content/31/5/1275.abstract -- DONE
