@@ -2,13 +2,13 @@ lib_LTLIBRARIES=libsequence.la
 
 libsequence_la_SOURCES=  Grantham.cc\
 	PathwayHelper.cc\
-	Recombination.cc\
+	SummStats/Recombination.cc\
 	SimParams.cc\
 	Translate.cc\
 	Comeron95.cc\
 	GranthamWeights.cc\
-	PolySNP.cc\
-	PolySIM.cc\
+	SummStats/PolySNP.cc\
+	SummStats/PolySIM.cc\
 	RedundancyCom95.cc\
 	SingleSub.cc\
 	TwoSubs.cc\
@@ -19,11 +19,11 @@ libsequence_la_SOURCES=  Grantham.cc\
 	PolyTable.cc\
 	PolyTableFunctions.cc\
 	PolyTableManip.cc\
-	Seq.cc\
+	Seq/Seq.cc\
 	ComplementBase.cc\
 	Sites.cc\
 	Unweighted.cc\
-	Fasta.cc\
+	Seq/Fasta.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
@@ -31,22 +31,22 @@ libsequence_la_SOURCES=  Grantham.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
-	FastaExplicit.cc\
+	Seq/FastaExplicit.cc\
 	SeqExceptions.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
-	HKA.cc\
-	Snn.cc\
-	CoalescentMutation.cc\
-	CoalescentRecombination.cc\
-	CoalescentSimTypes.cc\
-	CoalescentTreeOperations.cc\
-	CoalescentInitialize.cc\
-	CoalescentCoalesce.cc\
-	CoalescentFragmentsRescaling.cc\
-	samrecord.cc\
-	samflag.cc\
-	samfunctions.cc\
+	SummStats/HKA.cc\
+	SummStats/Snn.cc\
+	Coalescent/CoalescentMutation.cc\
+	Coalescent/CoalescentRecombination.cc\
+	Coalescent/CoalescentSimTypes.cc\
+	Coalescent/CoalescentTreeOperations.cc\
+	Coalescent/CoalescentInitialize.cc\
+	Coalescent/CoalescentCoalesce.cc\
+	Coalescent/CoalescentFragmentsRescaling.cc\
+	sam/samrecord.cc\
+	sam/samflag.cc\
+	sam/samfunctions.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
