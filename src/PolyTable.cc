@@ -181,6 +181,15 @@ namespace Sequence
     return data.begin();
   }
 
+  PolyTable::const_data_iterator PolyTable::cbegin() const
+  /*!
+    \return a const iterator pointing to the beginning of the std::vector<string> containing
+    the data
+  */
+  {
+    return data.cbegin();
+  }
+
   PolyTable::const_data_iterator PolyTable::end() const
   /*!
     \return a const iterator pointing to the end of the std::vector<string> containing
@@ -188,6 +197,15 @@ namespace Sequence
   */
   {
     return data.end();
+  }
+
+  PolyTable::const_data_iterator PolyTable::cend() const
+  /*!
+    \return a const iterator pointing to the end of the std::vector<string> containing
+    the data
+  */
+  {
+    return data.cend();
   }
 
   PolyTable::pos_iterator PolyTable::pbegin()
@@ -225,6 +243,23 @@ namespace Sequence
     return positions.end();
   }
 
+  PolyTable::const_pos_iterator PolyTable::pcbegin() const
+  /*!
+    \return a const iterator pointing to the beginning of the list of positions
+  */
+  {
+    return positions.cbegin();
+  }
+
+  PolyTable::const_pos_iterator PolyTable::pcend() const
+  /*!
+    \return a const iterator pointing to the beginning of the list of positions
+  */
+  {
+
+    return positions.cend();
+  }
+
   PolyTable::const_site_iterator PolyTable::sbegin() const
   /*!
     \return an object of type Sequence::PolyTable::const_site_iterator
@@ -253,6 +288,36 @@ namespace Sequence
 	non_const_access=false;
       }
     return pv.end();
+  }
+
+  PolyTable::const_site_iterator PolyTable::scbegin() const
+  /*!
+    \return an object of type Sequence::PolyTable::const_site_iterator
+    These iterators allow access to the columns (segregating sites) of
+    polymorphism tables
+  */
+  {
+    if(non_const_access == true)
+      {
+	pv = Sequence::rotatePolyTable(this);
+	non_const_access=false;
+      }
+    return pv.cbegin();
+  }
+  
+  PolyTable::const_site_iterator PolyTable::scend() const
+  /*!
+    \return an object of type Sequence::PolyTable::const_site_iterator
+    These iterators allow access to the columns (segregating sites) of
+    polymorphism tables
+  */
+  {
+    if(non_const_access == true)
+      {
+	pv = Sequence::rotatePolyTable(this);
+	non_const_access=false;
+      }
+    return pv.cend();
   }
 
   void PolyTable::ApplyFreqFilter(unsigned mincount,bool haveOutgroup,

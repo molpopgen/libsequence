@@ -110,12 +110,18 @@ namespace Sequence
     data_iterator end();
     const_data_iterator begin() const;
     const_data_iterator end() const;
+    const_data_iterator cbegin() const;
+    const_data_iterator cend() const;
     pos_iterator pbegin();
     pos_iterator pend();
     const_pos_iterator pbegin() const;
     const_pos_iterator pend() const;
+    const_pos_iterator pcbegin() const;
+    const_pos_iterator pcend() const;
     const_site_iterator sbegin() const;
     const_site_iterator send() const;
+    const_site_iterator scbegin() const;
+    const_site_iterator scend() const;
 
     //constructor types
     explicit PolyTable(const size_t & nsam = 0, const size_t nsnps = 0);   
