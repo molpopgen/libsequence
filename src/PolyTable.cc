@@ -320,8 +320,9 @@ namespace Sequence
     return pv.cend();
   }
 
-  void PolyTable::ApplyFreqFilter(unsigned mincount,bool haveOutgroup,
-                                  unsigned outgroup)
+  void PolyTable::ApplyFreqFilter(const unsigned & mincount,
+				  const bool & haveOutgroup,
+                                  const unsigned & outgroup)
   /*!
     go through the data and remove all positions where there is a
     variant at count (# of occurences in the sample) < minfreq
@@ -385,8 +386,8 @@ namespace Sequence
     assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
-  void PolyTable::RemoveMultiHits(bool skipOutgroup,
-                                  unsigned outgroup)
+  void PolyTable::RemoveMultiHits(const bool & skipOutgroup,
+                                  const unsigned & outgroup)
   /*!
     go through the data and remove all the sites with more
     than 2 states segregating.  By default, this routine also removes sites
@@ -424,8 +425,8 @@ namespace Sequence
     assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
-  void PolyTable::RemoveMissing(bool skipOutgroup,
-                                unsigned outgroup)
+  void PolyTable::RemoveMissing(const bool & skipOutgroup,
+                                const unsigned & outgroup)
   /*!
     go through the data and remove all the sites with 
     missing data (the character N).
@@ -466,8 +467,8 @@ namespace Sequence
     assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
-  void PolyTable::RemoveAmbiguous(bool skipOutgroup,
-				  unsigned outgroup)
+  void PolyTable::RemoveAmbiguous(const bool & skipOutgroup,
+				  const unsigned & outgroup)
   /*!
     go through the data and remove all the sites with 
     states other than {A,G,C,T,N,-}
@@ -504,7 +505,9 @@ namespace Sequence
   }
   
   void
-  PolyTable::Binary (bool haveOutgroup, unsigned outgroup, bool strictInfSites )
+  PolyTable::Binary (const bool & haveOutgroup, 
+		     const unsigned & outgroup, 
+		     const bool & strictInfSites )
   /*!
     Recode the polymorphism table in 0,1 (binary notation)
     \param haveOutgroup use \c true if an outgroup is present, \c false otherwise

@@ -181,17 +181,18 @@ namespace Sequence
     std::vector < std::string > GetData (void) const;
 
     //operations on the data (non-const)
-    virtual void ApplyFreqFilter(unsigned mincount,bool haveOutgroup=false,
-				 unsigned outgroup = 0);
-    virtual void RemoveMultiHits(bool skipOutgroup=false,
-				 unsigned outgroup=0);
-    virtual void RemoveMissing(bool skipOutgroup=false,
-			       unsigned outgroup=0);
-    virtual void RemoveAmbiguous(bool skipOutgroup=false,
-				 unsigned outgroup=0);
-    virtual void Binary (bool haveOutgroup = false,
-			 unsigned outgroup = 0,
-       		 bool strictInfSites = true);
+    virtual void ApplyFreqFilter(const unsigned & mincount,
+				 const bool & haveOutgroup=false,
+				 const unsigned & outgroup = 0);
+    virtual void RemoveMultiHits(const bool & skipOutgroup=false,
+				 const unsigned & outgroup=0);
+    virtual void RemoveMissing(const bool & skipOutgroup=false,
+			       const unsigned & outgroup=0);
+    virtual void RemoveAmbiguous(const bool & skipOutgroup=false,
+				 const unsigned & outgroup=0);
+    virtual void Binary (const bool & haveOutgroup = false,
+			 const unsigned & outgroup = 0,
+			 const bool & strictInfSites = true);
 
     //operators and implicit typecasts
     virtual bool operator==(const PolyTable &rhs) const;

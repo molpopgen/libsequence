@@ -88,9 +88,9 @@ namespace Sequence
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;
 
-      void Binary (bool haveOutgroup = false,
-                   unsigned outgroup = 0,
-                   bool strictInfSites = true)
+      void Binary (const bool & haveOutgroup = false,
+                   const unsigned & outgroup = 0,
+                   const bool & strictInfSites = true)
       {
         //no need to do anything...
         return;
