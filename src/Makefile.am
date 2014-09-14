@@ -48,7 +48,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	samflag.cc\
 	samfunctions.cc\
 	Ptable.cc \
-	SummStats.cc \
+	SummStats/SummStats.cc \
+	SummStats/nSL.cc \
 	PolyData.cc
 
 AM_LDFLAGS = -version-info 19:0:0
