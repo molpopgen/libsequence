@@ -127,11 +127,11 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/Recombination.lo SimParams.lo Translate.lo \
 	Comeron95.lo GranthamWeights.lo SummStats/PolySNP.lo \
 	SummStats/PolySIM.lo RedundancyCom95.lo SingleSub.lo \
-	TwoSubs.lo stateCounter.lo FST.lo Comparisons.lo SimpleSNP.lo \
-	PolyTable.lo PolyTableFunctions.lo PolyTableManip.lo \
-	Seq/Seq.lo ComplementBase.lo Sites.lo Unweighted.lo \
-	Seq/Fasta.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
-	ThreeSubs.lo CodonTable.lo Specializations.lo \
+	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
+	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo \
+	PolyTableManip.lo Seq/Seq.lo ComplementBase.lo Sites.lo \
+	Unweighted.lo Seq/Fasta.lo Kimura80.lo PolySites.lo SimData.lo \
+	SimDataIO.lo ThreeSubs.lo CodonTable.lo Specializations.lo \
 	Seq/FastaExplicit.lo SeqExceptions.lo SeqConstants.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	Coalescent/CoalescentMutation.lo \
@@ -344,7 +344,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	SingleSub.cc\
 	TwoSubs.cc\
 	stateCounter.cc\
-	FST.cc\
+	SummStats/FST.cc\
 	Comparisons.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
@@ -517,6 +517,8 @@ SummStats/PolySNP.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/PolySIM.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
+SummStats/FST.lo: SummStats/$(am__dirstamp) \
+	SummStats/$(DEPDIR)/$(am__dirstamp)
 Seq/$(am__dirstamp):
 	@$(MKDIR_P) Seq
 	@: > Seq/$(am__dirstamp)
@@ -587,7 +589,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Comeron95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Comparisons.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComplementBase.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FST.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Grantham.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GranthamWeights.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
@@ -624,6 +625,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/FastaExplicit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/FST.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/HKA.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/PolySIM.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/PolySNP.Plo@am__quote@

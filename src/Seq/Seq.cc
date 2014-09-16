@@ -222,6 +222,22 @@ namespace Sequence
     return second.end();
   }
 
+  Seq::const_iterator Seq::cbegin() const
+    /*!
+      \return a const iterator to the beginning of the sequence
+    */
+  {
+    return second.cbegin();
+  }
+
+  Seq::const_iterator Seq::cend() const
+    /*!
+      \return a const iterator to the end of the sequence
+    */
+  {
+    return second.cend();
+  }
+
   const char *Seq::c_str(void) const
     /*!
       \return the the C-style string representing the 
