@@ -104,22 +104,22 @@ namespace Sequence
   void write_SimData_binary( std::ostream & o, const SimData & d )
   {
     uint32_t n = uint32_t(d.size()),numsites=uint32_t(d.numsites());
-    o.write( reinterpret_cast<char *>(&n),sizeof(uint32_t) );
-    o.write( reinterpret_cast<char *>(&numsites),sizeof(uint32_t) );
+    IOhelp::writeBin(o,&n,1);
+    IOhelp::writeBin(o,&numsites,1);
     for( SimData::const_pos_iterator p = d.pbegin() ; p < d.pend() ; ++p )
       {
 	double pos = *p;
-	o.write( reinterpret_cast<char*>(&pos),sizeof(double) );
+	IOhelp::writeBin(o,&pos,1);
       }
     for( uint32_t i=0;i<d.size();++i )
       {
 	uint32_t c = uint32_t(count(d[i].begin(),d[i].end(),'1'));
-	o.write(reinterpret_cast<char*>(&c),sizeof(uint32_t));
+	IOhelp::writeBin(o,&c,1);
 	for(uint32_t j=0;j<d.numsites();++j)
 	  {
 	    if( d[i][j]=='1')
 	      {
-		o.write( reinterpret_cast<char *>(&j),sizeof(uint32_t) );
+		IOhelp::writeBin(o,&j,1);
 	      }
 	  }
       }
@@ -128,8 +128,8 @@ namespace Sequence
   SimData read_SimData_binary( std::istream & in )
   {
     uint32_t nsam,nsites;
-    in.read ( reinterpret_cast<char *>(&nsam), sizeof(uint32_t) );
-    in.read ( reinterpret_cast<char *>(&nsites), sizeof(uint32_t) );
+    IOhelp::readBin(in,&nsam,1);
+    IOhelp::readBin(in,&nsites,1);
     if( ! nsites ) { return SimData(); }
     
     vector<double> pos;
@@ -137,7 +137,7 @@ namespace Sequence
     double p;
     for (uint32_t i = 0 ; i < nsites ; ++i )
       {
-	in.read( reinterpret_cast<char *>(&p),sizeof(double) );
+	IOhelp::readBin(in,&p,1);
 	pos.push_back(p);
       }
 
@@ -145,10 +145,10 @@ namespace Sequence
     for(uint32_t i = 0 ; i < nsam ; ++i )
       {
 	string d(nsites,'0');
-	in.read( reinterpret_cast<char *>(&nsites_i), sizeof(uint32_t) );
+	IOhelp::readBin(in,&nsites_i,1);
 	for( uint32_t j = 0 ; j < nsites_i ; ++j )
 	  {
-	    in.read( reinterpret_cast<char *>(&index_i), sizeof(uint32_t) );
+	    IOhelp::readBin(in,&index_i,1);
 	    d[index_i]='1';
 	  }
 	data.push_back(d);

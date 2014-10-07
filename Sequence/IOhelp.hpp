@@ -40,7 +40,7 @@ namespace Sequence
     void readBin(std::istream & i, T * rv, const size_t & howmany)
     {
       if ( rv == nullptr ) return;
-      i.read(reinterpret_cast<char *>(rv),howmany*sizeof(T));
+      i.read(reinterpret_cast<char *>(rv),std::streamsize(howmany*sizeof(T)));
     }
 
     /*!
@@ -50,10 +50,10 @@ namespace Sequence
       \note Returns without readin if t == nullptr
      */
     template<typename T> 
-    void writeBin(std::ostream & o, T const * t, const size_t & howmany= 1)
+    void writeBin(std::ostream & o, T const * t, const size_t & howmany = 1)
     {
       if(t == nullptr) return;
-      o.write( reinterpret_cast<const char *>(t), howmany*sizeof(T) );
+      o.write( reinterpret_cast<const char *>(t), std::streamsize(howmany*sizeof(T)));
     }
     
     /*!
