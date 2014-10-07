@@ -53,7 +53,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	PolyData.cc \
 	IOhelp.cc
 
-AM_LDFLAGS = -version-info 19:0:0
+AM_LDFLAGS = -version-info 20:0:0
 
 if DEBUG
 CXXOTHERFLAGS = -g

@@ -384,7 +384,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	PolyData.cc \
 	IOhelp.cc
 
-AM_LDFLAGS = -version-info 19:0:0
+AM_LDFLAGS = -version-info 20:0:0
 @DEBUG_FALSE@CXXOTHERFLAGS = -DNDEBUG -O2
 @DEBUG_TRUE@CXXOTHERFLAGS = -g
 @DEBUG_FALSE@COTHERFLAGS = -DNDEBUG -O2
