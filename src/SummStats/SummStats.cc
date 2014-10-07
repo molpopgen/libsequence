@@ -1,6 +1,7 @@
 #include <Sequence/Ptable.hpp>
 #include <Sequence/SimData.hpp>
 #include <algorithm>
+#include <numeric>
 #include <cctype>
 using namespace std;
 
