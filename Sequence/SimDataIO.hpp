@@ -13,7 +13,7 @@ namespace Sequence
   /*!
     Write a SimData object to a gzFile object (from the C-language zlib library)
    */
-  long long write_SimData_gz( gzFile & file, const SimData & d);
+  long long write_SimData_gz( gzFile & file, const SimData & d, const bool & binary = false);
   /*!
     Read a SimData object from a gzFile object (from the C-language zlib library)
 
@@ -22,7 +22,7 @@ namespace Sequence
     then you cannot expect to use this function to read in the data, and you 
     should use a boost filtering_istream instead.
    */
-  SimData read_SimData_gz( gzFile & file );
+  SimData read_SimData_gz( gzFile & file, const bool & binary = false );
   /*!
     Write a SimData object in binary format to an ostream.
 

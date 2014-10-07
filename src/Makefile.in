@@ -142,7 +142,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentCoalesce.lo \
 	Coalescent/CoalescentFragmentsRescaling.lo sam/samrecord.lo \
 	sam/samflag.lo sam/samfunctions.lo Ptable.lo \
-	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo
+	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo IOhelp.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -381,7 +381,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
-	PolyData.cc
+	PolyData.cc \
+	IOhelp.cc
 
 AM_LDFLAGS = -version-info 19:0:0
 @DEBUG_FALSE@CXXOTHERFLAGS = -DNDEBUG -O2
@@ -591,6 +592,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComplementBase.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Grantham.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GranthamWeights.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IOhelp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PathwayHelper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyData.Plo@am__quote@

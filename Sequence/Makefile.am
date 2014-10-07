@@ -64,4 +64,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	typedefs.hpp \
 	Ptable.hpp \
 	PolyData.hpp \
-	SummStats.hpp
+	SummStats.hpp \
+	IOhelp.hpp

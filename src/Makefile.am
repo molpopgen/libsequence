@@ -50,7 +50,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
-	PolyData.cc
+	PolyData.cc \
+	IOhelp.cc
 
 AM_LDFLAGS = -version-info 19:0:0
 

@@ -1,164 +1,125 @@
 #include <Sequence/SimDataIO.hpp>
+#include <Sequence/IOhelp.hpp>
 #include <algorithm>
 #include <string>
 #include <vector>
 #include <sstream>
+#include <cstdint>
 
 using namespace std;
 
 namespace Sequence
 {
-  long long write_SimData_gz( gzFile & file , const SimData & d )
+  long long write_SimData_gz( gzFile & file , const SimData & d, const bool & binary )
   {
     long long ttl = 0;
-    int w = gzwrite( file, "//\nsegsites: ", 13 );
-    if(w < 0) { return w; }
-    ttl += w;
-
-    w = gzprintf( file, "%u\n", d.numsites() );
-    if ( w < 0 ) { return w; }
-    ttl += w;
-
-    if (! d.empty() )
+    ostringstream buffer;
+    if ( binary )
       {
-	int w = gzwrite( file, "positions: ", 11 );
-	SimData::const_pos_iterator pi = d.pbegin();
-	for( ; pi < d.pend()-1 ; ++pi )
-	  {
-	    w = gzprintf( file, "%lf ", *pi );
-	    if ( w < 0 ) { return w; }
-	    ttl += w;
-	  }
-	w = gzprintf( file, "%lf\n", *pi );
-	if ( w < 0 ) { return w; }
-	ttl += w;
-      
-	for(unsigned ind = 0 ; ind < d.size() ; ++ind)
-	  {
-	    w = gzprintf( file, "%s\n", d[ind].c_str() );
-	    if ( w < 0 ) { return w; }
-	    ttl += w;
-	  }
+	write_SimData_binary(buffer,d);
+	ttl = gzwrite( file, buffer.str().c_str(), buffer.str().size() );
+      }
+    else
+      {
+	buffer << d << '\n';
+	ttl = gzwrite(file, buffer.str().c_str(),buffer.str().size());
       }
     return ttl;
   }
-
-  SimData read_SimData_gz( gzFile & file )
+  
+  SimData read_SimData_gz( gzFile & file, const bool & binary )
   {
-    if( gzeof(file) ) return SimData();
-
-    char * buffer1 = new char[13];
-
-    gzgets(file,buffer1,100);
-    if( string(buffer1) != string("//\n") ) 
+    vector<double> pos;
+    vector<string>data;
+    if (binary)
       {
-	delete[] buffer1;
-	return SimData();
-      }
-    gzgets(file,buffer1,10);
-    string buffer2;
-    int ch = gzgetc(file);
-    while( char(ch) != '\n' )
-      {
-	if ( !isspace(ch) )
+	uint32_t nsam,nsites,nsites_i,one;
+	gzread(file,&nsam,sizeof(uint32_t));
+	gzread(file,&nsites,sizeof(uint32_t));
+	if(!nsites) return SimData();
+	pos.resize(nsites);
+	gzread(file,&pos[0],nsites*sizeof(double));
+	data = vector<string>(nsam,string(nsites,'0'));
+	for(unsigned i = 0 ; i < nsam ; ++i)
 	  {
-	    buffer2 += char(ch);
+	    gzread(file,&nsites_i,sizeof(uint32_t));
+	    for( decltype(nsites_i) j = 0 ; j < nsites_i ; ++j )
+	      {
+		gzread(file,&one,sizeof(uint32_t));
+		data[i][one]='1';
+	      }
 	  }
-	ch = gzgetc(file);
       }
-
-    unsigned segsites = unsigned(stoul(buffer2));
-    do
+    else
       {
-	ch = gzgetc(file);
-      }
-    while(std::isspace(ch) && char(ch) != '\n');
-    gzungetc(ch,file);
-    //cout << segsites << '\n';
-    if( segsites )
-      {
-	gzgets(file,buffer1,12);
+	IOhelp::gzreaduntil(file,'/');
+	string temp; //this is our buffer
+	IOhelp::gzread2ws(file,temp);
+	if( temp != "//" ) return SimData(); //Something is amiss with the input!
+	temp.clear();
+	IOhelp::gzreadws(file);
+	IOhelp::gzread2ws(file,temp); //segsites: 
+	IOhelp::gzreadws(file);
+	temp.clear();
+	IOhelp::gzread2ws(file,temp); //The number of seg sites
+	unsigned long S = stoul(temp);
+	IOhelp::gzreadws(file);
+	IOhelp::gzread2ws(file,temp); //positions: 
+	IOhelp::gzreadws(file);
+	temp.clear();
 	vector<double> pos;
-	buffer2.clear();
-	ch = gzgetc(file);
-	while( char(ch) != '\n' )
+	for( decltype(S) i = 0 ; i < S ; ++i )
 	  {
-	    if( ! isspace(ch) )
-	      {
-		buffer2 += char(ch);
-	      }
-	    else
-	      {
-		pos.push_back(stod(buffer2));
-		buffer2.clear();
-	      }
-	    ch = gzgetc(file);
+	    IOhelp::gzread2ws(file,temp); //positions: 
+	    pos.push_back( stod(temp) );
+	    IOhelp::gzreadws(file);
+	    temp.clear();
 	  }
-	pos.push_back(stod(buffer2));
-	//read the positions
+	IOhelp::gzreadws(file);
+	char * haplotype = new char[S+1];
+	temp.resize(S);
 	vector<string> data;
-	char * buffer3 = new char[segsites+1];
+	gzgets(file,&haplotype[0],int(S)+1);
+	data.push_back(string(haplotype));
+	char ch;
+	gzread(file,&ch,sizeof(char)); //read the newline
 	bool reading = true;
-	while( reading && !gzeof(file))
+	while( reading )
 	  {
-	    ch = gzgetc(file);
-	    if( char(ch) == '/' )
-	      {
-		gzungetc(ch,file);
-		reading = false;
-	      }
-	    else if (ch == EOF)
-	      {
-		reading = false;
-	      }
-	    else if ( std::isspace(ch) )
-	      {
-		reading = false;
-	      }
-	    else
-	      {
-		gzungetc(ch,file);
-		gzgets( file, &buffer3[0], int(segsites)+1 );
-		ch = gzgetc(file); //read newline
-		if( ch == '/') 
-		  { 
-		    gzungetc(ch,file);
-		    reading = false; 
-		  }
-		else if (ch == EOF)
-		  {
-		    reading = false;
-		  }
-		data.push_back( string(buffer3) );
-	      }
+	    int rv = gzread(file,&ch,sizeof(char)); 
+	    if( rv == 0 || rv == -1 || isspace(ch) ) { 
+	      delete[]haplotype;return SimData(pos,data); 
+	    } //we hit eof or an error or an empty line
+	    gzungetc(ch,file);
+	    gzgets(file,&haplotype[0],int(S)+1);
+	    data.push_back(string(haplotype));
+	    rv = gzread(file,&ch,sizeof(char)); 
+	    if( rv == 0 || rv == -1 || ch != '\n' ) { reading = false; }
 	  }
-	delete [] buffer3;
-	delete [] buffer1;
-	return SimData(pos,data);
+	delete [] haplotype;
       }
-    delete [] buffer1;
-    return SimData();
+    return SimData(pos,data);
   }
 
   void write_SimData_binary( std::ostream & o, const SimData & d )
   {
-    SimData::size_type n = d.size(),numsites=d.numsites();
-    o.write( reinterpret_cast<char *>(&n),sizeof(unsigned) );
-    o.write( reinterpret_cast<char *>(&numsites),sizeof(unsigned) );
+    uint32_t n = uint32_t(d.size()),numsites=uint32_t(d.numsites());
+    o.write( reinterpret_cast<char *>(&n),sizeof(uint32_t) );
+    o.write( reinterpret_cast<char *>(&numsites),sizeof(uint32_t) );
     for( SimData::const_pos_iterator p = d.pbegin() ; p < d.pend() ; ++p )
       {
 	double pos = *p;
 	o.write( reinterpret_cast<char*>(&pos),sizeof(double) );
       }
-    for( unsigned i=0;i<d.size();++i )
+    for( uint32_t i=0;i<d.size();++i )
       {
-	unsigned c = unsigned(count(d[i].begin(),d[i].end(),'1'));
-	o.write(reinterpret_cast<char*>(&c),sizeof(unsigned));
-	for(unsigned j=0;j<d.numsites();++j)
+	uint32_t c = uint32_t(count(d[i].begin(),d[i].end(),'1'));
+	o.write(reinterpret_cast<char*>(&c),sizeof(uint32_t));
+	for(uint32_t j=0;j<d.numsites();++j)
 	  {
 	    if( d[i][j]=='1')
 	      {
-		o.write( reinterpret_cast<char *>(&j),sizeof(unsigned) );
+		o.write( reinterpret_cast<char *>(&j),sizeof(uint32_t) );
 	      }
 	  }
       }
@@ -166,28 +127,28 @@ namespace Sequence
 
   SimData read_SimData_binary( std::istream & in )
   {
-    unsigned nsam,nsites;
-    in.read ( reinterpret_cast<char *>(&nsam), sizeof(unsigned) );
-    in.read ( reinterpret_cast<char *>(&nsites), sizeof(unsigned) );
+    uint32_t nsam,nsites;
+    in.read ( reinterpret_cast<char *>(&nsam), sizeof(uint32_t) );
+    in.read ( reinterpret_cast<char *>(&nsites), sizeof(uint32_t) );
     if( ! nsites ) { return SimData(); }
     
     vector<double> pos;
     vector<string> data;
     double p;
-    for (unsigned i = 0 ; i < nsites ; ++i )
+    for (uint32_t i = 0 ; i < nsites ; ++i )
       {
 	in.read( reinterpret_cast<char *>(&p),sizeof(double) );
 	pos.push_back(p);
       }
 
-    unsigned nsites_i,index_i;
-    for(unsigned i = 0 ; i < nsam ; ++i )
+    uint32_t nsites_i,index_i;
+    for(uint32_t i = 0 ; i < nsam ; ++i )
       {
 	string d(nsites,'0');
-	in.read( reinterpret_cast<char *>(&nsites_i), sizeof(unsigned) );
-	for( unsigned j = 0 ; j < nsites_i ; ++j )
+	in.read( reinterpret_cast<char *>(&nsites_i), sizeof(uint32_t) );
+	for( uint32_t j = 0 ; j < nsites_i ; ++j )
 	  {
-	    in.read( reinterpret_cast<char *>(&index_i), sizeof(unsigned) );
+	    in.read( reinterpret_cast<char *>(&index_i), sizeof(uint32_t) );
 	    d[index_i]='1';
 	  }
 	data.push_back(d);
