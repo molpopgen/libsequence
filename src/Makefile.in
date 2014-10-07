@@ -78,6 +78,10 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
+@DEBUG_TRUE@am__append_1 = -g
+#CXXOTHERFLAGS = -g
+#COTHERFLAGS = -g
+@DEBUG_FALSE@am__append_2 = -DNDEBUG
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp ChangeLog
@@ -219,7 +223,7 @@ AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
 CC = @CC@
 CCDEPMODE = @CCDEPMODE@
-CFLAGS = $(COTHERFLAGS) $(PROFILE) -Wall $(INCLUDES) -pedantic -ansi
+CFLAGS = @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@
@@ -385,58 +389,12 @@ libsequence_la_SOURCES = Grantham.cc\
 	IOhelp.cc
 
 AM_LDFLAGS = -version-info 20:0:0
-@DEBUG_FALSE@CXXOTHERFLAGS = -DNDEBUG -O2
-@DEBUG_TRUE@CXXOTHERFLAGS = -g
-@DEBUG_FALSE@COTHERFLAGS = -DNDEBUG -O2
-@DEBUG_TRUE@COTHERFLAGS = -g
+AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
+	-Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion \
+	-Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops \
+	-ansi $(am__append_1) $(am__append_2)
 @PROFILING_FALSE@PROFILE = 
 @PROFILING_TRUE@PROFILE = -pg
-
-#if GFIVEOPT
-#GFIVEFLAGS= -mcpu=G5 -mtune=G5 -mpowerpc64 -mpowerpc-gpopt
-#else
-#GFIVEFLAGS=
-#endif
-
-#if GFOUROPT
-#GFOURFLAGS= -mcpu=G4 -mtune=G4 -mpowerpc -mpowerpc-gpopt
-#else
-#GFOURFLAGS=
-#endif
-
-#if HAVE_STRSTREAM
-#STRSTREAM = -DHAVE_STRSTREAM
-#else
-#STRSTREAM =
-#endif
-
-#if HAVE_SSTREAM
-#SSTREAM = -DHAVE_SSTREAM
-#else
-#SSTREAM =
-#endif
-
-#if HAVE_LIMITS
-#LIMITS= -DHAVE_LIMITS
-#else
-#LIMITS =
-#endif
-
-#if HAVE_CLIMITS
-#CLIMITS= -DHAVE_CLIMITS
-#else
-#CLIMITS =
-#endif
-
-#if HAVE_IEEEFP
-#IEEEFPH= -DHAVE_IEEEFP_H
-#else
-#IEEEFPH=
-#endif
-
-#some bits for the compile
-#CXXLINK = 
-AM_CXXFLAGS = $(CXXOTHERFLAGS) $(GFIVEFLAGS) $(GFOURFLAGS) $(PROFILE) $(STRSTREAM) $(SSTREAM) $(LIMITS) $(CLIMITS) $(IEEEFPH)  -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops -ansi
 all: all-am
 
 .SUFFIXES:
@@ -887,6 +845,9 @@ uninstall-am: uninstall-libLTLIBRARIES
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
 
+
+#AM_CXXFLAGS = $(CXXOTHERFLAGS) $(GFIVEFLAGS) $(GFOURFLAGS) $(PROFILE) $(STRSTREAM) $(SSTREAM) $(LIMITS) $(CLIMITS) $(IEEEFPH)  
+#AM_CFLAGS =  $(COTHERFLAGS) $(PROFILE) -Wall $(INCLUDES) -pedantic -ansi
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -595,7 +595,7 @@ PACKAGE_STRING='libsequence 1.8.3'
 PACKAGE_BUGREPORT='https://github.com/molpopgen/libsequence'
 PACKAGE_URL=''
 
-ac_unique_file="src/Seq.cc"
+ac_unique_file="src/Seq/Seq.cc"
 # Factoring default headers for most tests.
 ac_includes_default="\
 #include <stdio.h>

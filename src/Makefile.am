@@ -55,12 +55,14 @@ libsequence_la_SOURCES=  Grantham.cc\
 
 AM_LDFLAGS = -version-info 20:0:0
 
+AM_CXXFLAGS=$(CXXFLAGS) -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops -ansi
+
 if DEBUG
-CXXOTHERFLAGS = -g
-COTHERFLAGS = -g
+AM_CXXFLAGS+=-g
+#CXXOTHERFLAGS = -g
+#COTHERFLAGS = -g
 else
-CXXOTHERFLAGS = -DNDEBUG -O2
-COTHERFLAGS = -DNDEBUG -O2
+AM_CXXFLAGS+=-DNDEBUG
 endif
 
 if PROFILING
@@ -69,49 +71,4 @@ else
 PROFILE=
 endif
 
-#if GFIVEOPT
-#GFIVEFLAGS= -mcpu=G5 -mtune=G5 -mpowerpc64 -mpowerpc-gpopt
-#else
-#GFIVEFLAGS=
-#endif
 
-#if GFOUROPT
-#GFOURFLAGS= -mcpu=G4 -mtune=G4 -mpowerpc -mpowerpc-gpopt
-#else
-#GFOURFLAGS=
-#endif
-
-#if HAVE_STRSTREAM
-#STRSTREAM = -DHAVE_STRSTREAM
-#else
-#STRSTREAM =
-#endif
-
-#if HAVE_SSTREAM
-#SSTREAM = -DHAVE_SSTREAM
-#else
-#SSTREAM =
-#endif
-
-#if HAVE_LIMITS
-#LIMITS= -DHAVE_LIMITS
-#else
-#LIMITS =
-#endif
-
-#if HAVE_CLIMITS
-#CLIMITS= -DHAVE_CLIMITS
-#else
-#CLIMITS =
-#endif
-
-#if HAVE_IEEEFP
-#IEEEFPH= -DHAVE_IEEEFP_H
-#else
-#IEEEFPH=
-#endif
-
-#some bits for the compile
-#CXXLINK = 
-AM_CXXFLAGS = $(CXXOTHERFLAGS) $(GFIVEFLAGS) $(GFOURFLAGS) $(PROFILE) $(STRSTREAM) $(SSTREAM) $(LIMITS) $(CLIMITS) $(IEEEFPH)  -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops -ansi
-CFLAGS =  $(COTHERFLAGS) $(PROFILE) -Wall $(INCLUDES) -pedantic -ansi
