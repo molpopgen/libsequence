@@ -1,9 +1,8 @@
 //! Various functions for simplifying IO operations
-#include <string>
-#include <cctype>
-#include <zlib.h>
+#include <Sequence/IOhelp.hpp>
 
 using namespace std;
+
 namespace Sequence
 {
   namespace IOhelp
@@ -50,6 +49,12 @@ namespace Sequence
 	    }
 	}
       return gzrv;
+    }
+
+    template<>
+    void writeBin<std::string>(ostream & o, std::string const & s)
+    {
+      o.write(s.c_str(),s.size());
     }
   }
 }
