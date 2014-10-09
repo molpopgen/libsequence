@@ -1,4 +1,4 @@
-##The fwdpp home page
+##The libsequence home page
 
 This is the homepage for __libsequence__, which is a C++ library for evolutionary genetics.
 
