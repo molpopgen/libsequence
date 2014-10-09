@@ -14,6 +14,14 @@ The library code is [here](https://github.com/molpopgen/libsequence)
 
 [Reference manual](doc/html/index.html)
 
+###Programs using the library
+
+There are lots of these:
+
+* [Thornton lab software page](http://molpopgen.org/software.html)
+* [Kevin Thornton](https://github.com/molpopgen)'s GitHub account
+* [Thornton lab](https://github.com/ThorntonLab) GitHub account
+
 ###Citation
 
 If you use __libsequence__ for yor research, or programs depending up on it, please cite the following paper:
