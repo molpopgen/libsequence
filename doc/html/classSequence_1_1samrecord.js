@@ -1,0 +1,27 @@
+var classSequence_1_1samrecord =
+[
+    [ "cigar_iterator", "classSequence_1_1samrecord.html#aa46340551319823cff916d1634ec0f41", null ],
+    [ "tag_iterator", "classSequence_1_1samrecord.html#a046d2c27ddf6591e323e092d26ba27ca", null ],
+    [ "samrecord", "classSequence_1_1samrecord.html#a4d6589c9c8ffc8e599f2309917701831", null ],
+    [ "samrecord", "classSequence_1_1samrecord.html#af5404223191fdae480ec9cd3bba8ac4d", null ],
+    [ "samrecord", "classSequence_1_1samrecord.html#a9847f74f9b96a52cebd7890db554f1de", null ],
+    [ "~samrecord", "classSequence_1_1samrecord.html#a6ee39125b87a2a629bfab265964540a3", null ],
+    [ "cig_begin", "classSequence_1_1samrecord.html#aa2c1ef06542e145fe8e16fe4f21ad44d", null ],
+    [ "cig_end", "classSequence_1_1samrecord.html#a89708c335a522a46a9649b47f817a4a4", null ],
+    [ "cigar", "classSequence_1_1samrecord.html#a3b3c06c06264764e2ceec2b57a9a00c9", null ],
+    [ "flag", "classSequence_1_1samrecord.html#a35310321ada737ea9f3ad99c0ba89397", null ],
+    [ "isize", "classSequence_1_1samrecord.html#adb7fc5614c78d9c87fdcef285a111cfb", null ],
+    [ "mapq", "classSequence_1_1samrecord.html#aab9070870b1435433f7fc785a79c9339", null ],
+    [ "mpos", "classSequence_1_1samrecord.html#ae5703d81f34e37a2184efa098bdf3ee1", null ],
+    [ "mrnm", "classSequence_1_1samrecord.html#ad0ecee3609900ecc7d8fbbc28a854d77", null ],
+    [ "pos", "classSequence_1_1samrecord.html#a2e396659983ffaebf1b66632f0a74706", null ],
+    [ "print", "classSequence_1_1samrecord.html#a4a869977544ff430c0c6c3aabf920b9a", null ],
+    [ "qname", "classSequence_1_1samrecord.html#aa3d1794e8cf0e03d7a765e1f73965991", null ],
+    [ "qual", "classSequence_1_1samrecord.html#a00f4c8ab7220838afabeda86f5ce604b", null ],
+    [ "read", "classSequence_1_1samrecord.html#a9d195c2e39b0156c179393cf484038a8", null ],
+    [ "rname", "classSequence_1_1samrecord.html#ae7c1dfb2cbe710e0d31d423078e0afa4", null ],
+    [ "seq", "classSequence_1_1samrecord.html#a54ccf9589075d0dcec852e8ec218d855", null ],
+    [ "tag_begin", "classSequence_1_1samrecord.html#a3f1e2cc0d5c7886a300b96eda8449122", null ],
+    [ "tag_end", "classSequence_1_1samrecord.html#a81cf9e0886c08c6c6f55b7a13575faa9", null ],
+    [ "tags", "classSequence_1_1samrecord.html#a158949f779c1db612f6b37adadabc845", null ]
+];

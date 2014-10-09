@@ -1,0 +1,26 @@
+var Alignment_8hpp =
+[
+    [ "EmptyVector", "Alignment_8hpp.html#a586461b850f3e6df96bc27cd79993352", null ],
+    [ "Gapped", "Alignment_8hpp.html#a4084883c9810848f2e7e5ae549eb3c8e", null ],
+    [ "Gapped", "Alignment_8hpp.html#a33d5a07667bc2645600f8b7ca2882d3a", null ],
+    [ "GetData", "Alignment_8hpp.html#a27f1d75d0ac948dab690542f574b792e", null ],
+    [ "GetData", "Alignment_8hpp.html#a0419492baef914d83295dd87e9a4a849", null ],
+    [ "IsAlignment", "Alignment_8hpp.html#a8708fff82c60479f67ef4a53743ab097", null ],
+    [ "IsAlignment", "Alignment_8hpp.html#a5ab64478af8efead7e80ada3722d0342", null ],
+    [ "ReadNObjects", "Alignment_8hpp.html#aa262acf81c087cced3f5bc2c3a2c345b", null ],
+    [ "RemoveFixedOutgroupInsertions", "Alignment_8hpp.html#a6a7aa923f4997b5c65061a5aba39a665", null ],
+    [ "RemoveFixedOutgroupInsertions", "Alignment_8hpp.html#a5eff1d0eb5694bccf6cf2850ef5c3b5b", null ],
+    [ "RemoveGaps", "Alignment_8hpp.html#a735e740b8c8fd1d4925404ca6b812da4", null ],
+    [ "RemoveGaps", "Alignment_8hpp.html#a717e6e1ed2a525b262cd4b6711b27d84", null ],
+    [ "RemoveTerminalGaps", "Alignment_8hpp.html#a873d7abdf6bf1a915b20f48c29cc60ce", null ],
+    [ "RemoveTerminalGaps", "Alignment_8hpp.html#a5c97799d32bb988ebcb44500c4d91351", null ],
+    [ "Trim", "Alignment_8hpp.html#a6c6226427b76211aea24a1616334d57b", null ],
+    [ "Trim", "Alignment_8hpp.html#a38d801124a67a766558bd1b1ff913056", null ],
+    [ "TrimComplement", "Alignment_8hpp.html#a369589b5966a6ded569e4e5072a5740d", null ],
+    [ "TrimComplement", "Alignment_8hpp.html#a5475c61d9f574929d1903a240428dccc", null ],
+    [ "UnGappedLength", "Alignment_8hpp.html#a56398c1a8445799d20968dc59d198496", null ],
+    [ "UnGappedLength", "Alignment_8hpp.html#ae165140264657646d644e1ba8ba5318b", null ],
+    [ "validForPolyAnalysis", "Alignment_8hpp.html#ac034d5598a885fae09f0356b84e1febe", null ],
+    [ "validForPolyAnalysis", "Alignment_8hpp.html#ae60cbc30ba0c28af28b3eda2a162e823", null ],
+    [ "validForPolyAnalysis", "Alignment_8hpp.html#aee01ec1cb3f0886c0609ac7291113045", null ]
+];
