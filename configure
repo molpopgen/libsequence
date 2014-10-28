@@ -636,6 +636,8 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
+HAVE_HTSLIB_FALSE
+HAVE_HTSLIB_TRUE
 PROFILING_FALSE
 PROFILING_TRUE
 DEBUG_FALSE
@@ -15494,6 +15496,23 @@ fi
 
 
 
+ac_fn_cxx_check_header_mongrel "$LINENO" "htslib/bgzf.h" "ac_cv_header_htslib_bgzf_h" "$ac_includes_default"
+if test "x$ac_cv_header_htslib_bgzf_h" = xyes; then :
+  FOUND_HTSLIB_HEADERS=1
+else
+  { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: htslib/bgzf.h not found.  We will not be compiling features depending on this library" >&5
+$as_echo "$as_me: WARNING: htslib/bgzf.h not found.  We will not be compiling features depending on this library" >&2;}
+fi
+
+
+ if test x$FOUND_HTSLIB_HEADERS = x1 ; then
+  HAVE_HTSLIB_TRUE=
+  HAVE_HTSLIB_FALSE='#'
+else
+  HAVE_HTSLIB_TRUE='#'
+  HAVE_HTSLIB_FALSE=
+fi
+
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking for gzungetc in -lz" >&5
 $as_echo_n "checking for gzungetc in -lz... " >&6; }
 if ${ac_cv_lib_z_gzungetc+:} false; then :
@@ -15539,6 +15558,55 @@ _ACEOF
 
 else
   echo "zlib run time library not found";exit 1
+fi
+
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for bgzf_read in -lhts" >&5
+$as_echo_n "checking for bgzf_read in -lhts... " >&6; }
+if ${ac_cv_lib_hts_bgzf_read+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-lhts  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+/* Override any GCC internal prototype to avoid an error.
+   Use char because int might match the return type of a GCC
+   builtin and then its argument prototype would still apply.  */
+#ifdef __cplusplus
+extern "C"
+#endif
+char bgzf_read ();
+int
+main ()
+{
+return bgzf_read ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  ac_cv_lib_hts_bgzf_read=yes
+else
+  ac_cv_lib_hts_bgzf_read=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_hts_bgzf_read" >&5
+$as_echo "$ac_cv_lib_hts_bgzf_read" >&6; }
+if test "x$ac_cv_lib_hts_bgzf_read" = xyes; then :
+  FOUND_HTSLIB_RUNTIME=1
+fi
+
+ if test x$FOUND_HTSLIB_RUNTIME = x1 ; then
+  HAVE_HTSLIB_TRUE=
+  HAVE_HTSLIB_FALSE='#'
+else
+  HAVE_HTSLIB_TRUE='#'
+  HAVE_HTSLIB_FALSE=
 fi
 
 
@@ -15689,6 +15757,14 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${PROFILING_TRUE}" && test -z "${PROFILING_FALSE}"; then
   as_fn_error $? "conditional \"PROFILING\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HAVE_HTSLIB_TRUE}" && test -z "${HAVE_HTSLIB_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_HTSLIB\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HAVE_HTSLIB_TRUE}" && test -z "${HAVE_HTSLIB_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_HTSLIB\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

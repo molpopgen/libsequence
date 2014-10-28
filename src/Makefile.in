@@ -78,10 +78,11 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-@DEBUG_TRUE@am__append_1 = -g
+@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
+@DEBUG_TRUE@am__append_2 = -g
 #CXXOTHERFLAGS = -g
 #COTHERFLAGS = -g
-@DEBUG_FALSE@am__append_2 = -DNDEBUG
+@DEBUG_FALSE@am__append_3 = -DNDEBUG
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp ChangeLog
@@ -391,8 +392,8 @@ libsequence_la_SOURCES = Grantham.cc\
 AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
 	-Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion \
-	-Wsign-promo -Wsynth -ffor-scope -pedantic -funroll-loops \
-	-ansi $(am__append_1) $(am__append_2)
+	-Wsign-promo -Wsynth -ffor-scope $(am__append_1) \
+	$(am__append_2) $(am__append_3)
 @PROFILING_FALSE@PROFILE = 
 @PROFILING_TRUE@PROFILE = -pg
 all: all-am

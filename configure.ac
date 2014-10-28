@@ -51,8 +51,15 @@ dnl AC_CHECK_HEADER(gsl/gsl_rng.h, LIBSEQUENCE_USE_GSL=1 , [AC_MSG_ERROR([gsl/gs
 dnl zlib header
 AC_CHECK_HEADER(zlib.h,,[AC_MSG_ERROR([zlib headers missing - cannot continue])])
 
+dnl htslib, http://www.htslib.org/
+AC_CHECK_HEADER(htslib/bgzf.h,FOUND_HTSLIB_HEADERS=1,[AC_MSG_WARN([htslib/bgzf.h not found.  We will not be compiling features depending on this library])])
+AM_CONDITIONAL([HAVE_HTSLIB],test x$FOUND_HTSLIB_HEADERS = x1 )
 dnl zlib runtime
 AC_CHECK_LIB([z],gzungetc,,[echo "zlib run time library not found";exit 1])
+
+dnl htslib runtime
+AC_CHECK_LIB([hts],bgzf_read,FOUND_HTSLIB_RUNTIME=1,)
+AM_CONDITIONAL([HAVE_HTSLIB],test x$FOUND_HTSLIB_RUNTIME = x1 )
 dnl AM_CONFIG_HEADER(config.h)
 
 AC_OUTPUT
