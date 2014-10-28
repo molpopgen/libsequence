@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cstdio>
-
+#include <cstdint>
 namespace Sequence
 {
   /*!
@@ -46,7 +46,7 @@ namespace Sequence
     /*!
       The flag value
     */
-    mutable int flag;
+    mutable std::int32_t flag;
     mutable bool is_paired,is_proper_pair,query_unmapped,
       mate_unmapped,qstrand,mstrand,first_read,
       second_read,not_primary,qcfail,duplicate;
