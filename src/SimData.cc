@@ -64,45 +64,24 @@ namespace Sequence
         if (ch == ':')
           break;
       }
-    unsigned ss;
-    stream >> ss;
-    std::vector<double> _positions;
-    std::vector<std::string> _data;
-    if (ss > 0)
+    std::string temp;
+    unsigned S;
+    stream >> S >> std::ws;
+    stream >> temp >> std::ws; 
+    std::vector<double> pos(S);
+    for( unsigned i = 0 ; i < S ; ++i )
       {
-	_positions.resize(ss);
-        while(1)
-          {
-	    stream>>ch;
-            if (ch == ':')
-              break;
-          }
-        for (unsigned i = 0; i < ss; ++i)
-          {
-	    stream >> _positions[i];
-          }
-	std::string temp;
-	while(1)
-	  {
-	    if (! (stream >> temp))
-	      break;
-	    else if (temp == "//")
-	      {
-		break;
-	      }
-	    else
-	      {
-		_data.push_back(temp);
-	      }
-	  }
+	stream >> pos[i] >> std::ws;
       }
-    else if (ss == 0)
-      {
-        _positions.resize(0);
-	_data.resize(0);
-      }
-    //assign data into base class
-    PolyTable::assign(&_positions[0],ss,&_data[0],_data.size());
+    //Read in the haplotypes until the next // and the stream is still ok
+    std::vector<std::string> haps;
+    while( stream.peek() != '/' && !stream.eof() && !stream.fail() ) {
+      stream >> std::ws;
+      getline(stream,temp);
+      stream >> std::ws;
+      haps.emplace_back(temp);
+    } 
+    this->assign(&pos[0],S,&haps[0],haps.size());
     return stream;
   }
 
