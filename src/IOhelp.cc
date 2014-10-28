@@ -51,6 +51,26 @@ namespace Sequence
       return gzrv;
     }
 
+    string gzreadline(  gzFile gzfile )
+    {
+      char ch;
+      string rv;
+      int gzrv;
+      while( (gzrv = gzread(gzfile,&ch,sizeof(char))) != 0 )
+	{
+	  
+	  if(ch == '\n')
+	    {
+	      return rv;
+	    }
+	  else
+	    {
+	      rv += ch;
+	    }
+	}
+      return rv;
+    }
+
     template<>
     void writeBin<std::string>(ostream & o, std::string const & s)
     {

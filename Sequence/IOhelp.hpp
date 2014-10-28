@@ -31,6 +31,14 @@ namespace Sequence
     int gzreaduntil( gzFile file, const char & until );
 
     /*!
+      Reads until newline character is encountered or EOF/error, whichever 
+      comes first, and returns what was read in a string.
+
+      An empty string occurs when EOF was hit.
+    */
+    std::string gzreadline(  gzFile gzfile );
+
+    /*!
       Reads from a binary stream by calling
       i.read(reinterpret_cast<char *>(rv),howmany*sizeof(T));
 
