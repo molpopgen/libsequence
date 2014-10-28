@@ -22,6 +22,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 12. SimDataIO.hpp/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.
 13. A new namespace, Sequence::IOhelp, is declared in Sequence/IOhelp.hpp.  It contains some functions to reduce the tedium of some IO conversions.
 14. A new, faster implementation of Sequence::SimData::read
+15. The configure script how checks for the existence of [htslib](http://www.htslib.org)
 
 ###ISSUES:
 
