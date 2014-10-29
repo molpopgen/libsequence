@@ -52,7 +52,7 @@ namespace Sequence
       }
     else
       {
-	IOhelp::gzreaduntil(file,'/');
+	IOhelp::gzreaduntil()(file,[](const char & ch){ return ch == '/'; });
 	string temp; //this is our buffer
 	IOhelp::gzread2ws(file,temp);
 	if( temp != "//" ) return SimData(); //Something is amiss with the input!

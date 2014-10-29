@@ -10,25 +10,79 @@ namespace Sequence
 {
   namespace IOhelp
   {
+
+    struct gzfillbuffer
+    {
+      template<typename policy>
+      std::pair<std::string,int> operator()( gzFile gzfile, const policy & p )
+      {
+	char ch;
+	std::string rv;
+	int gzrv;
+	while( (gzrv = gzread(gzfile,&ch,sizeof(char))) != 0 )
+	  {
+	    if(p(ch))
+	      {
+		return std::make_pair(rv,gzrv);
+	      }
+	    else
+	      {
+		rv += ch;
+	      }
+	  }
+	return std::make_pair(rv,gzrv);
+      }
+    };
+
+    struct gzreaduntil
+    {
+      /*!
+	Reads data char-by-char until the policy is satisfied or EOF/error
+	are encountered, whichever comes first.
+	\param gzfile A gzFile
+	\param p A function taking a const char & as an argument and returning bool.
+	\return The total number of bytes read from the file and the last value returned by gzread;
+      */
+      template<typename policy>
+      std::pair<int,int> operator()( gzFile gzfile, const policy & p )
+      {
+	char ch;
+	int rv = 0;
+	int gzrv;
+	while( (gzrv = gzread(gzfile,&ch,sizeof(char))) != 0 )
+	  {
+	    rv += gzrv;
+	    if(p(ch))
+		{
+		  gzungetc(ch,gzfile);
+		  return std::make_pair(rv,gzrv);
+		}
+	  }
+	return std::make_pair(rv,gzrv);
+      }
+    };
+
+
     /*!
       Reads from a gzipped stream of ASCI data until whitespace is encountered.
       \return The return value of gzread(gzfile,&ch,sizeof(char))
       \note The buffer is not cleared/emptied by this routine.
     */
-    int gzread2ws( gzFile gzfile, std::string & buffer );
+    std::pair<int,int> gzread2ws( gzFile gzfile, std::string & buffer );
 
     /*!
       Chews through white space is a gzipped stream of ASCI data.
       \return The return value of gzread(gzfile,&ch,sizeof(char))
      */
-    int gzreadws( gzFile gzfile );
+    std::pair<int,int> gzreadws( gzFile gzfile );
+
 
     /*!
       Reads until a character is met, or EOF/error are encountered,
       whichever comes first
       \return The return value of gzread(gzfile,&ch,sizeof(char))
     */
-    int gzreaduntil( gzFile file, const char & until );
+    //std::pair<int,int> gzreaduntil( gzFile file, const char & until );
 
     /*!
       Reads until newline character is encountered or EOF/error, whichever 
@@ -36,7 +90,7 @@ namespace Sequence
 
       An empty string occurs when EOF was hit.
     */
-    std::string gzreadline(  gzFile gzfile );
+    std::pair<std::string,int> gzreadline(  gzFile gzfile );
 
     /*!
       Reads from a binary stream by calling
