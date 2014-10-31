@@ -23,6 +23,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 13. A new namespace, Sequence::IOhelp, is declared in Sequence/IOhelp.hpp.  It contains some functions to reduce the tedium of some IO conversions.
 14. A new, faster implementation of Sequence::SimData::read
 15. The configure script how checks for the existence of [htslib](http://www.htslib.org)
+16. Sequence/bamreader.hpp and Sequence/bamrecord.hpp added for direct reading from bam files.  Will only compile if [htslib](http://htslib.org) is detected by the configure script
 
 ###ISSUES:
 
