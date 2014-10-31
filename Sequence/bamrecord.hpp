@@ -63,9 +63,6 @@ namespace Sequence
   private:
     std::unique_ptr<bamrecordImpl> __impl;
   public:
-    using U32 = std::uint32_t;
-    using I32 = std::int32_t;
-    using U8 = std::uint8_t;
     //constructors
     //bamrecord( BGZF * in );
     bamrecord( std::int32_t blocksize,

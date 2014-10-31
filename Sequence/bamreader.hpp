@@ -8,7 +8,7 @@
 #include <string>
 #include <vector>
 #include <utility>
-#include <bamrecord.hpp>
+#include <Sequence/bamrecord.hpp>
 
 namespace Sequence 
 {
@@ -18,8 +18,6 @@ namespace Sequence
 
   class bamreader
   {
-  public:
-    using I32 = std::int32_t;
   private:
     std::unique_ptr<bamreaderImpl> __impl;
   public:
@@ -49,12 +47,12 @@ namespace Sequence
       Rewinds bam file to the beginning (position 0L)
       \return The return value of bgzf_seek
     */
-    int rewind();
+    std::int64_t rewind();
     /*!
       Calls bgzf_seek on the input file
       \return The return value of bgzf_seek
     */
-    int seek( std::int64_t offset, int whence );
+    std::int64_t seek( std::int64_t offset, int whence );
     /*!
       Calls bgzf_close on the input file
       \return The return value of bgzf_close
@@ -68,11 +66,11 @@ namespace Sequence
     std::int64_t tell();
 
     //! Iterator type (const only!)
-    using refdata_citr = std::vector< std::pair<std::string,I32> >::const_iterator;
+    using refdata_citr = std::vector< std::pair<std::string,std::int32_t> >::const_iterator;
     //! size_type for the container of reference data
-    using size_type = std::vector< std::pair<std::string,I32> >::size_type;
+    using size_type = std::vector< std::pair<std::string,std::int32_t> >::size_type;
     //! Typedef for reference data (sequence name, length)
-    using refdataObj = std::pair<std::string,I32>;
+    using refdataObj = std::pair<std::string,std::int32_t>;
     //! \return Const iterator pointing to info for first reference sequence
     refdata_citr ref_cbegin() const;
     //! \return Const iterator to end of reference data
@@ -82,7 +80,7 @@ namespace Sequence
     //! \return The complete header
     std::string header() const;
     //! \return The number of sequences in the reference
-    std::uint32_t n_ref() const;
+    std::int32_t n_ref() const;
   };
 
 }
