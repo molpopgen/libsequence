@@ -44,14 +44,16 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Coalescent/CoalescentInitialize.cc\
 	Coalescent/CoalescentCoalesce.cc\
 	Coalescent/CoalescentFragmentsRescaling.cc\
-	sam/samrecord.cc\
-	sam/samflag.cc\
-	sam/samfunctions.cc\
+	hts/samrecord.cc\
+	hts/samflag.cc\
+	hts/samfunctions.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	PolyData.cc \
-	IOhelp.cc
+	IOhelp.cc \
+	hts/bamrecord.cc
+	hts/bamreader.cc
 
 AM_LDFLAGS = -version-info 20:0:0
 

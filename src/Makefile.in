@@ -145,9 +145,10 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentTreeOperations.lo \
 	Coalescent/CoalescentInitialize.lo \
 	Coalescent/CoalescentCoalesce.lo \
-	Coalescent/CoalescentFragmentsRescaling.lo sam/samrecord.lo \
-	sam/samflag.lo sam/samfunctions.lo Ptable.lo \
-	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo IOhelp.lo
+	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
+	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
+	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo IOhelp.lo \
+	hts/bamrecord.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -380,14 +381,15 @@ libsequence_la_SOURCES = Grantham.cc\
 	Coalescent/CoalescentInitialize.cc\
 	Coalescent/CoalescentCoalesce.cc\
 	Coalescent/CoalescentFragmentsRescaling.cc\
-	sam/samrecord.cc\
-	sam/samflag.cc\
-	sam/samfunctions.cc\
+	hts/samrecord.cc\
+	hts/samflag.cc\
+	hts/samfunctions.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	PolyData.cc \
-	IOhelp.cc
+	IOhelp.cc \
+	hts/bamrecord.cc
 
 AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
@@ -514,19 +516,20 @@ Coalescent/CoalescentCoalesce.lo: Coalescent/$(am__dirstamp) \
 Coalescent/CoalescentFragmentsRescaling.lo:  \
 	Coalescent/$(am__dirstamp) \
 	Coalescent/$(DEPDIR)/$(am__dirstamp)
-sam/$(am__dirstamp):
-	@$(MKDIR_P) sam
-	@: > sam/$(am__dirstamp)
-sam/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) sam/$(DEPDIR)
-	@: > sam/$(DEPDIR)/$(am__dirstamp)
-sam/samrecord.lo: sam/$(am__dirstamp) sam/$(DEPDIR)/$(am__dirstamp)
-sam/samflag.lo: sam/$(am__dirstamp) sam/$(DEPDIR)/$(am__dirstamp)
-sam/samfunctions.lo: sam/$(am__dirstamp) sam/$(DEPDIR)/$(am__dirstamp)
+hts/$(am__dirstamp):
+	@$(MKDIR_P) hts
+	@: > hts/$(am__dirstamp)
+hts/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) hts/$(DEPDIR)
+	@: > hts/$(DEPDIR)/$(am__dirstamp)
+hts/samrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
+hts/samflag.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
+hts/samfunctions.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 SummStats/SummStats.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
+hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -539,8 +542,8 @@ mostlyclean-compile:
 	-rm -f Seq/*.lo
 	-rm -f SummStats/*.$(OBJEXT)
 	-rm -f SummStats/*.lo
-	-rm -f sam/*.$(OBJEXT)
-	-rm -f sam/*.lo
+	-rm -f hts/*.$(OBJEXT)
+	-rm -f hts/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -594,9 +597,10 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@sam/$(DEPDIR)/samflag.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@sam/$(DEPDIR)/samfunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@sam/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -630,7 +634,7 @@ clean-libtool:
 	-rm -rf Coalescent/.libs Coalescent/_libs
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
-	-rm -rf sam/.libs sam/_libs
+	-rm -rf hts/.libs hts/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -753,8 +757,8 @@ distclean-generic:
 	-rm -f Seq/$(am__dirstamp)
 	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
 	-rm -f SummStats/$(am__dirstamp)
-	-rm -f sam/$(DEPDIR)/$(am__dirstamp)
-	-rm -f sam/$(am__dirstamp)
+	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
+	-rm -f hts/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -765,7 +769,7 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) sam/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -811,7 +815,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) sam/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -846,6 +850,7 @@ uninstall-am: uninstall-libLTLIBRARIES
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
 
+	hts/bamreader.cc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
