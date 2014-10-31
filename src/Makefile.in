@@ -148,7 +148,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
 	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo IOhelp.lo \
-	hts/bamrecord.lo
+	hts/bamrecord.lo hts/bamreader.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -389,7 +389,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/nSL.cc \
 	PolyData.cc \
 	IOhelp.cc \
-	hts/bamrecord.cc
+	hts/bamrecord.cc \
+	hts/bamreader.cc
 
 AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
@@ -530,6 +531,7 @@ SummStats/SummStats.lo: SummStats/$(am__dirstamp) \
 SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
+hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -597,6 +599,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
@@ -850,7 +853,6 @@ uninstall-am: uninstall-libLTLIBRARIES
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
 
-	hts/bamreader.cc
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

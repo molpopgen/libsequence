@@ -52,7 +52,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SummStats/nSL.cc \
 	PolyData.cc \
 	IOhelp.cc \
-	hts/bamrecord.cc
+	hts/bamrecord.cc \
 	hts/bamreader.cc
 
 AM_LDFLAGS = -version-info 20:0:0
