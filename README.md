@@ -121,7 +121,15 @@ If libsequence is not installed in a standard path, then you must provide the ap
 
 A program that depends on libsequence must provide at least the following libraries to the linker:
 
+```
 -lsequence -lz 
+```
+
+If you are using features depending on htslib, the linking options become
+
+```
+-lsequence -lz -lhts
+```
 
 #Compiling the examples
 
