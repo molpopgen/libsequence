@@ -58,6 +58,9 @@ namespace Sequence
       \return The return value of bgzf_close
     */
     int close();
+    
+    //! \return true if file handle is not NULL
+    operator bool() const;
 
     /*!
       Calls bgzf_tell on input file

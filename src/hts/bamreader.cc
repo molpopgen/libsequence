@@ -152,6 +152,11 @@ namespace Sequence
     return bgzf_tell(__impl->in);
   }
 
+  bamreader::operator bool() const 
+  {
+    return __impl->in != NULL;
+  }
+
   bamreader::refdataObj bamreader::operator[](const size_type & i) {
     return __impl->__refdata[i];
   }
