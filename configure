@@ -15599,6 +15599,8 @@ fi
 $as_echo "$ac_cv_lib_hts_bgzf_read" >&6; }
 if test "x$ac_cv_lib_hts_bgzf_read" = xyes; then :
   FOUND_HTSLIB_RUNTIME=1
+else
+  echo "htslib runtime not found.  Will not compile features requiring htslib"
 fi
 
  if test x$FOUND_HTSLIB_RUNTIME = x1 ; then

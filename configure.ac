@@ -58,7 +58,7 @@ dnl zlib runtime
 AC_CHECK_LIB([z],gzungetc,,[echo "zlib run time library not found";exit 1])
 
 dnl htslib runtime
-AC_CHECK_LIB([hts],bgzf_read,FOUND_HTSLIB_RUNTIME=1,)
+AC_CHECK_LIB([hts],bgzf_read,FOUND_HTSLIB_RUNTIME=1,[echo "htslib runtime not found.  Will not compile features requiring htslib"])
 AM_CONDITIONAL([HAVE_HTSLIB],test x$FOUND_HTSLIB_RUNTIME = x1 )
 dnl AM_CONFIG_HEADER(config.h)
 
