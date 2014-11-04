@@ -226,9 +226,7 @@ namespace Sequence
   */
   {
     bamaux xNM = b.aux("NM");
-    if(!xNM.size) return numeric_limits<unsigned>::max();
-
-    unsigned sum = *reinterpret_cast<unsigned*>(xNM.value.get());
+    unsigned sum = *reinterpret_cast<uint8_t*>(xNM.value.get());
     unsigned ng = ngaps(b);
     if( ng > sum ) return numeric_limits<unsigned>::max();
     return sum - ng;
