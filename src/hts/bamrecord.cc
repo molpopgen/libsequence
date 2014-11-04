@@ -9,6 +9,13 @@ using namespace std;
 
 namespace {
 
+  template<typename T> 
+  inline T toItype(const char * beg)
+  {
+    return *reinterpret_cast<const T*>(beg);
+    //return *(const T*)(beg);
+  }
+
   //The valid tag types and the number
   static size_t nValTypes = 12; //C++ 1 extra tradition so we have a test-for-end with std::find
   static const char ValTypes[12] = {'A','c','C','s','S','i','I','f','Z','H','B',char(255)}; //char(255) is not an allowed value, and terminates the array
@@ -118,10 +125,6 @@ namespace Sequence
   class bamrecordImpl
   {
   private:
-    template<typename T> T toItype(const char * beg)
-    {
-      return *(const T*)(beg);
-    }
     void parse_block();
   public:
     bool __empty;
@@ -165,9 +168,10 @@ namespace Sequence
 	this->__block = std::unique_ptr<char[]>(new char[__block_size]);
 	std::copy(bI.__block.get(),bI.__block.get()+__block_size,
 		  __block.get());
+	this->parse_block();
       }
     else this->__block == nullptr;
-    this->parse_block();
+
     return *this;
   }
 
@@ -246,7 +250,7 @@ namespace Sequence
   
   std::string bamrecord::read_name() const
   {
-    return std::string(__impl->__rname_beg,__impl->__rname_end);
+    return std::string(__impl->__rname_beg,__impl->__rname_end-1);
   }
 
   std::string bamrecord::seq() const 
