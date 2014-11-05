@@ -43,7 +43,6 @@ namespace Sequence
     //! For non-empty data
     bamaux( size_t,
 	    char[3],
-	    //std::unique_ptr<char[]> &,
 	    char,
 	    std::unique_ptr<char[]> & );
     //! Move constructor
