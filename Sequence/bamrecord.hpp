@@ -32,7 +32,7 @@ namespace Sequence
     //mutable std::unique_ptr<char[]> tag;
     mutable char tag[3];
     //! The value of the aux data, in raw bits
-    mutable std::unique_ptr<char[]> value;
+    mutable std::string value;
     //Constructors
 
     /*! For an empty data set.  

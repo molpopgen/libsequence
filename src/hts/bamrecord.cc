@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <cstring>
 #include <cassert>
+#include <sstream>
 
 using namespace std;
 
@@ -13,7 +14,6 @@ namespace {
   inline T toItype(const char * beg)
   {
     return *reinterpret_cast<const T*>(beg);
-    //return *(const T*)(beg);
   }
 
   //The valid tag types and the number
@@ -64,7 +64,7 @@ namespace {
     else if (valtype == 'B' ) //Experimental/untested
       {
 	char Btype = *auxpos;
-	std::int32_t Bsize = *(const std::int32_t*)(auxpos+1);
+	std::int32_t Bsize = *reinterpret_cast<const std::int32_t*>(auxpos+1);//*(const std::int32_t*)(auxpos+1);
 	return size_t(sizeof(char) + sizeof(std::int32_t) + size_t(Bsize)*sizeof(auxTagSize(Btype)));
       }
     else if (valtype == 'H')
@@ -94,22 +94,95 @@ namespace Sequence
   using bamutil::bamCig;
   bamaux::bamaux( ) : size(0),
 		      value_type(char()),
-		      //tag(),
-		      value(nullptr)
+		      value(string())
   {
   }
 
   bamaux::bamaux( size_t __size,
-		  //std::unique_ptr<char[]> & __tag,
 		  char __tag[3],
 		  char __value_type,
 		  std::unique_ptr<char[]> & __value) : size(std::move(__size)),
-						       value_type(std::move(__value_type)),
-						       value(std::move(__value))
+						       value_type(std::move(__value_type))
+						       //value(std::move(__value))
   {
     tag[0]=__tag[0];
     tag[2]=__tag[1];
     tag[1]=__tag[2];
+    if( __value_type == 'Z' || __value_type == 'A')
+      {
+	value = std::string(__value.get());
+      }
+    else if (__value_type == 'H')
+      {
+	value = std::string("Value type H is not implemented");
+      }
+    else if (__value_type == 'B')
+      {
+	const char *start = __value.get();
+	char Btype = (*start++);
+	I32 Bsize = *reinterpret_cast<const I32*>(start++);//*(const I32*)(start++);
+	for( auto i = 0 ; i < Bsize ; ++i )
+	  {
+	    if ( Btype == 'c' )
+	      {
+		I32 v = toItype<I8>(start++);
+		value += to_string(v);
+	      }
+	    else if (Btype == 'C')
+	      {
+		I32 v = toItype<U8>(start++);
+		value += to_string(v);
+	      }
+	    else if (Btype == 's')
+	      {
+		I32 v = toItype<I16>(start++);
+		value += to_string(v);
+	      }
+	    else if (Btype == 'S')
+	      {
+		I32 v = toItype<U16>(start++);
+		value += to_string(v);
+	      }
+	    else if (Btype == 'i')
+	      {
+		I32 v = toItype<I32>(start++);
+		value += to_string(v);
+	      }
+	    else if (Btype == 'I')
+	      {
+		U32 v = toItype<U32>(start++);
+		value += to_string(v);
+	      }
+	    if(i<Bsize-1) value += ',';
+	  }
+      }
+    else 
+      {
+	switch(__value_type)
+	  {
+	  case 'c':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const int8_t*>(__value.get()) ) );
+	    break;
+	  case 'C':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const uint8_t*>(__value.get()) ) );
+	    break;
+	  case 's':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const int16_t*>(__value.get()) ) );
+	    break;
+	  case 'S':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const uint16_t*>(__value.get()) ) );
+	    break;
+	  case 'i':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const int32_t*>(__value.get()) ) );
+	    break;
+	  case 'I':
+	    value = to_string( static_cast<int32_t>( *reinterpret_cast<const uint32_t*>(__value.get()) ) );
+	    break;
+	  default:
+	    value = "undefined";
+	    break;
+	  }
+      }
   }
 
   bamaux::bamaux( bamaux && ba ) : size(std::move(ba.size)),
@@ -397,32 +470,32 @@ namespace Sequence
 	  }
 	else if ( val_type == 'c' )
 	  {
-	    I32 v = *(const I8*)(start++);
+	    I32 v = toItype<I8>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'C')
 	  {
-	    I32 v = *(const U8*)(start++);
+	    I32 v = toItype<U8>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 's')
 	  {
-	    I32 v = *(const I16*)(start++);
+	    I32 v = toItype<I16>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'S')
 	  {
-	    I32 v = *(const U16*)(start++);
+	    I32 v = toItype<U16>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'i')
 	  {
-	    I32 v = *(const I32*)(start++);
+	    I32 v = toItype<I32>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'I')
 	  {
-	    U32 v = *(const U32*)(start++);
+	    U32 v = toItype<U32>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'B')//EXPERIMENTAL
@@ -433,32 +506,32 @@ namespace Sequence
 	      {
 		if ( Btype == 'c' )
 		  {
-		    I32 v = *(const I8*)(start++);
+		    I32 v = toItype<I8>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'C')
 		  {
-		    I32 v = *(const U8*)(start++);
+		    I32 v = toItype<U8>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 's')
 		  {
-		    I32 v = *(const I16*)(start++);
+		    I32 v = toItype<I16>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'S')
 		  {
-		    I32 v = *(const U16*)(start++);
+		    I32 v = toItype<U16>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'i')
 		  {
-		    I32 v = *(const I32*)(start++);
+		    I32 v = toItype<I32>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'I')
 		  {
-		    U32 v = *(const U32*)(start++);
+		    U32 v = toItype<U32>(start++);
 		    rv += to_string(v);
 		  }
 		if(i<Bsize-1)

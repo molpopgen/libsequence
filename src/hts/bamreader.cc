@@ -134,12 +134,20 @@ namespace Sequence
 
   std::int64_t bamreader::rewind() 
   {
-    return bgzf_seek(__impl->in,0L,SEEK_SET);
+    __impl->__EOF = false;
+    __impl->__errorstate = false;
+    int64_t rv = bgzf_seek(__impl->in,0L,SEEK_SET);
+    if(rv == -1 )    __impl->__errorstate = true;
+    return rv;
   }
 
   std::int64_t bamreader::seek( std::int64_t offset, int whence )
   {
-    return bgzf_seek(__impl->in,std::move(offset),std::move(whence));
+    __impl->__EOF = false;
+    __impl->__errorstate = false;
+    int64_t rv = bgzf_seek(__impl->in,std::move(offset),std::move(whence));
+    if(rv == -1 )    __impl->__errorstate = true;
+    return rv;
   }
 
   int bamreader::close()
