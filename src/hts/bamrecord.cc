@@ -9,7 +9,6 @@
 using namespace std;
 
 namespace {
-
   template<typename T> 
   inline T toItype(const char * beg)
   {
@@ -64,7 +63,7 @@ namespace {
     else if (valtype == 'B' ) //Experimental/untested
       {
 	char Btype = *auxpos;
-	std::int32_t Bsize = *reinterpret_cast<const std::int32_t*>(auxpos+1);//*(const std::int32_t*)(auxpos+1);
+	std::int32_t Bsize = *reinterpret_cast<const std::int32_t*>(auxpos+1);
 	return size_t(sizeof(char) + sizeof(std::int32_t) + size_t(Bsize)*sizeof(auxTagSize(Btype)));
       }
     else if (valtype == 'H')
@@ -76,13 +75,6 @@ namespace {
     return auxTagSize(valtype);
   }
 }
-
-using U32 = std::uint32_t;
-using I32 = std::int32_t;
-using U16 = std::uint16_t;
-using I16 = std::int16_t;
-using U8 = std::uint8_t;
-using I8 = std::int8_t;
 
 namespace Sequence 
 {
@@ -120,37 +112,37 @@ namespace Sequence
       {
 	const char *start = __value.get();
 	char Btype = (*start++);
-	I32 Bsize = *reinterpret_cast<const I32*>(start++);//*(const I32*)(start++);
+	int32_t Bsize = *reinterpret_cast<const int32_t*>(start++);//*(const int32_t*)(start++);
 	for( auto i = 0 ; i < Bsize ; ++i )
 	  {
 	    if ( Btype == 'c' )
 	      {
-		I32 v = toItype<I8>(start++);
+		int32_t v = toItype<int8_t>(start++);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'C')
 	      {
-		I32 v = toItype<U8>(start++);
+		int32_t v = toItype<uint8_t>(start++);
 		value += to_string(v);
 	      }
 	    else if (Btype == 's')
 	      {
-		I32 v = toItype<I16>(start++);
+		int32_t v = toItype<int16_t>(start++);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'S')
 	      {
-		I32 v = toItype<U16>(start++);
+		int32_t v = toItype<uint16_t>(start++);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'i')
 	      {
-		I32 v = toItype<I32>(start++);
+		int32_t v = toItype<int32_t>(start++);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'I')
 	      {
-		U32 v = toItype<U32>(start++);
+		uint32_t v = toItype<uint32_t>(start++);
 		value += to_string(v);
 	      }
 	    if(i<Bsize-1) value += ',';
@@ -201,14 +193,14 @@ namespace Sequence
     void parse_block();
   public:
     bool __empty;
-    I32 __block_size;
+    int32_t __block_size;
     std::unique_ptr<char[]> __block;
-    I32 __refID,__pos;
-    U32 __bin_mq_nl,__bin,__mq,__nl,__flag_nc,__flag,__nc;
-    I32 __l_seq,__next_refID,__next_pos,__tlen;
+    int32_t __refID,__pos;
+    uint32_t __bin_mq_nl,__bin,__mq,__nl,__flag_nc,__flag,__nc;
+    int32_t __l_seq,__next_refID,__next_pos,__tlen;
     const char * __rname_beg, * __rname_end;
-    const U32 * __cig_beg, * __cig_end;
-    const U8 * __seq_beg, * __seq_end;
+    const uint32_t * __cig_beg, * __cig_end;
+    const uint8_t * __seq_beg, * __seq_end;
     const char * __qual_beg, * __qual_end, * __aux_beg, *__aux_end;
     bamrecordImpl(  );
     bamrecordImpl( std::int32_t blocksize,
@@ -250,28 +242,28 @@ namespace Sequence
 
   void bamrecordImpl::parse_block() 
   {
-    __refID= std::move(toItype<I32>(__block.get()));
-    __pos = std::move(toItype<I32>(__block.get()+sizeof(I32)));
-    __bin_mq_nl = std::move(toItype<U32>(__block.get()+2*sizeof(I32)));
+    __refID= std::move(toItype<int32_t>(__block.get()));
+    __pos = std::move(toItype<int32_t>(__block.get()+sizeof(int32_t)));
+    __bin_mq_nl = std::move(toItype<uint32_t>(__block.get()+2*sizeof(int32_t)));
     __bin = __bin_mq_nl>>16;
     __mq = ((__bin_mq_nl ^ __bin<<16)>>8 );
     __nl= __bin_mq_nl ^ __bin<<16 ^ __mq << 8 ;
-    __flag_nc = std::move(toItype<U32>(__block.get()+2*sizeof(I32)+sizeof(U32)));
+    __flag_nc = std::move(toItype<uint32_t>(__block.get()+2*sizeof(int32_t)+sizeof(uint32_t)));
     __flag =  __flag_nc >> 16;
     __nc = __flag_nc ^ __flag << 16;
-    __l_seq = std::move(toItype<I32>(__block.get()+2*(sizeof(I32)+sizeof(U32))));
-    __next_refID = std::move(toItype<I32>(__block.get()+3*sizeof(I32)+2*sizeof(U32)));
-    __next_pos = std::move(toItype<I32>(__block.get()+4*sizeof(I32)+2*sizeof(U32)));
-    __tlen = std::move(toItype<I32>(__block.get()+5*sizeof(I32)+2*sizeof(U32)));
-    __rname_beg = __block.get()+6*sizeof(I32)+2*sizeof(U32);
-    __rname_end  = __block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl;
-    __cig_beg = (U32*)(__block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl);
-    __cig_end = (U32*)(__block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32));
-    __seq_beg = (U8*)(__block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32));
-    __seq_end = (U8*)(__block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32) + (__l_seq+1)/2);
-    __qual_beg =__block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32) + (__l_seq+1)/2;
-    __qual_end = __block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32) + (__l_seq+1)/2 + __l_seq;
-    __aux_beg = __block.get()+6*sizeof(I32)+2*sizeof(U32)+__nl + __nc*sizeof(U32) + (__l_seq+1)/2 + __l_seq;
+    __l_seq = std::move(toItype<int32_t>(__block.get()+2*(sizeof(int32_t)+sizeof(uint32_t))));
+    __next_refID = std::move(toItype<int32_t>(__block.get()+3*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __next_pos = std::move(toItype<int32_t>(__block.get()+4*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __tlen = std::move(toItype<int32_t>(__block.get()+5*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __rname_beg = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t);
+    __rname_end  = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl;
+    __cig_beg = (uint32_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl);
+    __cig_end = (uint32_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
+    __seq_beg = (uint8_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
+    __seq_end = (uint8_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2);
+    __qual_beg =__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2;
+    __qual_end = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
+    __aux_beg = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
     __aux_end = __block.get()+__block_size;
   }
 
@@ -331,7 +323,7 @@ namespace Sequence
     std::string rv;
     std::for_each(this->seq_cbeg(),
      		  this->seq_cend(),
-     		  [&](const U8 & i) {
+     		  [&](const uint8_t & i) {
      		    rv += int2seq[ (((i) >> 4) & 0x0F) ];
      		    rv += int2seq[ (((i)) & 0x0F) ];
      		  });
@@ -353,9 +345,9 @@ namespace Sequence
     std::string rv;
     std::for_each( __impl->__cig_beg,
      		   __impl->__cig_end,
-     		   [&](const U32 & i )
+     		   [&](const uint32_t & i )
      		   {
-     		     U32 __op = (i>>4);
+     		     uint32_t __op = (i>>4);
      		     rv += to_string(__op) + bamCig[i^(__op<<4)];
      		   } );
     return rv;
@@ -385,7 +377,7 @@ namespace Sequence
 
   samflag bamrecord::flag() const
   {
-    return samflag(I32(__impl->__flag));
+    return samflag(int32_t(__impl->__flag));
   }
  
   std::uint32_t bamrecord::mapq() const
@@ -470,68 +462,68 @@ namespace Sequence
 	  }
 	else if ( val_type == 'c' )
 	  {
-	    I32 v = toItype<I8>(start++);
+	    int32_t v = toItype<int8_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'C')
 	  {
-	    I32 v = toItype<U8>(start++);
+	    int32_t v = toItype<uint8_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 's')
 	  {
-	    I32 v = toItype<I16>(start++);
+	    int32_t v = toItype<int16_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'S')
 	  {
-	    I32 v = toItype<U16>(start++);
+	    int32_t v = toItype<uint16_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'i')
 	  {
-	    I32 v = toItype<I32>(start++);
+	    int32_t v = toItype<int32_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'I')
 	  {
-	    U32 v = toItype<U32>(start++);
+	    uint32_t v = toItype<uint32_t>(start++);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'B')//EXPERIMENTAL
 	  {
 	    char Btype = (*start++);
-	    I32 Bsize = *(const I32*)(start++);
+	    int32_t Bsize = *(const int32_t*)(start++);
 	    for( auto i = 0 ; i < Bsize ; ++i )
 	      {
 		if ( Btype == 'c' )
 		  {
-		    I32 v = toItype<I8>(start++);
+		    int32_t v = toItype<int8_t>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'C')
 		  {
-		    I32 v = toItype<U8>(start++);
+		    int32_t v = toItype<uint8_t>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 's')
 		  {
-		    I32 v = toItype<I16>(start++);
+		    int32_t v = toItype<int16_t>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'S')
 		  {
-		    I32 v = toItype<U16>(start++);
+		    int32_t v = toItype<uint16_t>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'i')
 		  {
-		    I32 v = toItype<I32>(start++);
+		    int32_t v = toItype<int32_t>(start++);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'I')
 		  {
-		    U32 v = toItype<U32>(start++);
+		    uint32_t v = toItype<uint32_t>(start++);
 		    rv += to_string(v);
 		  }
 		if(i<Bsize-1)
