@@ -117,32 +117,38 @@ namespace Sequence
 	  {
 	    if ( Btype == 'c' )
 	      {
-		int32_t v = toItype<int8_t>(start++);
+		int32_t v = toItype<int8_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'C')
 	      {
-		int32_t v = toItype<uint8_t>(start++);
+		int32_t v = toItype<uint8_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    else if (Btype == 's')
 	      {
-		int32_t v = toItype<int16_t>(start++);
+		int32_t v = toItype<int16_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'S')
 	      {
-		int32_t v = toItype<uint16_t>(start++);
+		int32_t v = toItype<uint16_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'i')
 	      {
-		int32_t v = toItype<int32_t>(start++);
+		int32_t v = toItype<int32_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    else if (Btype == 'I')
 	      {
-		uint32_t v = toItype<uint32_t>(start++);
+		uint32_t v = toItype<uint32_t>(start);
+		start += auxTagSize(Btype);
 		value += to_string(v);
 	      }
 	    if(i<Bsize-1) value += ',';
@@ -462,32 +468,38 @@ namespace Sequence
 	  }
 	else if ( val_type == 'c' )
 	  {
-	    int32_t v = toItype<int8_t>(start++);
+	    int32_t v = toItype<int8_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'C')
 	  {
-	    int32_t v = toItype<uint8_t>(start++);
+	    uint32_t v = toItype<uint8_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 's')
 	  {
-	    int32_t v = toItype<int16_t>(start++);
+	    int32_t v = toItype<int16_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'S')
 	  {
-	    int32_t v = toItype<uint16_t>(start++);
+	    uint32_t v = toItype<uint16_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'i')
 	  {
-	    int32_t v = toItype<int32_t>(start++);
+	    int32_t v = toItype<int32_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'I')
 	  {
-	    uint32_t v = toItype<uint32_t>(start++);
+	    uint32_t v = toItype<uint32_t>(start);
+	    start += auxTagSize(val_type);
 	    rv += to_string(v);
 	  }
 	else if (val_type == 'B')//EXPERIMENTAL
@@ -498,32 +510,38 @@ namespace Sequence
 	      {
 		if ( Btype == 'c' )
 		  {
-		    int32_t v = toItype<int8_t>(start++);
+		    int32_t v = toItype<int8_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'C')
 		  {
-		    int32_t v = toItype<uint8_t>(start++);
+		    uint32_t v = toItype<uint8_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 's')
 		  {
-		    int32_t v = toItype<int16_t>(start++);
+		    int32_t v = toItype<int16_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'S')
 		  {
-		    int32_t v = toItype<uint16_t>(start++);
+		    int32_t v = toItype<uint16_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'i')
 		  {
-		    int32_t v = toItype<int32_t>(start++);
+		    int32_t v = toItype<int32_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		else if (Btype == 'I')
 		  {
-		    uint32_t v = toItype<uint32_t>(start++);
+		    uint32_t v = toItype<uint32_t>(start);
+		    start += auxTagSize(Btype);
 		    rv += to_string(v);
 		  }
 		if(i<Bsize-1)
