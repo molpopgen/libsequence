@@ -1,4 +1,5 @@
 #include <Sequence/samflag.hpp>
+#include <iostream>
 
 namespace Sequence
 {

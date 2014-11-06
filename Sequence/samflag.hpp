@@ -1,7 +1,7 @@
 #ifndef __LIBSEQ_SAMFLAG_HPP__
 #define __LIBSEQ_SAMFLAG_HPP__
 
-#include <iostream>
+#include <iosfwd>
 #include <cstdio>
 #include <cstdint>
 namespace Sequence
