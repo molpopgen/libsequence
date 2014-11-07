@@ -162,7 +162,7 @@ namespace Sequence
 
   bamreader::operator bool() const 
   {
-    return __impl->in != NULL;
+    return __impl->in != NULL && !__impl->__errorstate && !__impl->__EOF;
   }
 
   bamreader::refdataObj bamreader::operator[](const size_type & i) {
