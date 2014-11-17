@@ -113,11 +113,11 @@ namespace Sequence
     std::string allaux() const;
     //Iterator member functions
     //! Beginning of encoded sequence data. Each integer contains 2 bases, with first base stored in the "high nibble"
-    const std::uint8_t * seq_cbeg() const;
+    const std::uint8_t * seq_cbegin() const;
     //! One past end of encoded sequence data.
     const std::uint8_t * seq_cend() const;
     //! Beginning of quality data
-    const char * qual_cbeg() const;
+    const char * qual_cbegin() const;
     //! One past end of quality data
     const char * qual_cend() const;
     //! Returns the record in a raw format

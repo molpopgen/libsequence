@@ -327,7 +327,7 @@ namespace Sequence
   std::string bamrecord::seq() const 
   {
     std::string rv;
-    std::for_each(this->seq_cbeg(),
+    std::for_each(this->seq_cbegin(),
      		  this->seq_cend(),
      		  [&](const uint8_t & i) {
      		    rv += int2seq[ (((i) >> 4) & 0x0F) ];
@@ -336,7 +336,7 @@ namespace Sequence
     return rv;
   }
 
-  const std::uint8_t * bamrecord::seq_cbeg() const
+  const std::uint8_t * bamrecord::seq_cbegin() const
   {
     return __impl->__seq_beg;
   }
@@ -361,11 +361,11 @@ namespace Sequence
 
   std::string bamrecord::qual() const 
   {
-    return std::string(this->qual_cbeg(),
+    return std::string(this->qual_cbegin(),
      		       this->qual_cend());
   }
 
-  const char * bamrecord::qual_cbeg() const 
+  const char * bamrecord::qual_cbegin() const 
   {
     return __impl->__qual_beg;
   }
