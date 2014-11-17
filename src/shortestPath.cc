@@ -94,10 +94,6 @@ namespace Sequence
 	  {
 	    std::string intermediates[2];
 	    Sequence::Intermediates2(intermediates,codon1,codon2);
-	    std::string t_int1 = Sequence::Translate(intermediates[0].begin(),
-						     intermediates[0].end());
-	    std::string t_int2 = Sequence::Translate(intermediates[1].begin(),
-						     intermediates[1].end());
 
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::AMBIG));
