@@ -68,7 +68,6 @@ namespace Sequence
                       const RedundancyCom95 * sitesObj)
   {				//now, it is correct
     size_t i = 0, j = 0;
-    unsigned nc;
     std::string codon1,codon2;
     codon1.resize(3);
     codon2.resize(3);
@@ -79,7 +78,7 @@ namespace Sequence
             codon1[j] = char(std::toupper((*sequence1)[i + j]));
             codon2[j] = char(std::toupper((*sequence2)[i + j]));
           }
-        nc = NumDiffs (codon1, codon2);
+        unsigned nc = NumDiffs (codon1, codon2);
 
         if (nc == 0)	//still need to count if there are 0 changes
           siteinc (sitesObj,codon1, codon2);
