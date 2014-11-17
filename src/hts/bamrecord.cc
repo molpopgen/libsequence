@@ -222,7 +222,17 @@ namespace Sequence
 				   __bin_mq_nl(0),__flag_nc(0),
 				   __l_seq(0),__next_refID(0),
 				   __next_pos(0),
-				   __tlen(0)
+				   __tlen(0),
+				   __rname_beg(nullptr),
+				   __rname_end(nullptr),
+				   __cig_beg(nullptr),
+				   __cig_end(nullptr),
+				   __seq_beg(nullptr),
+				   __seq_end(nullptr),
+				   __qual_beg(nullptr),
+				   __qual_end(nullptr),
+				   __aux_beg(nullptr),
+				   __aux_end(nullptr)
   {
   }
   
