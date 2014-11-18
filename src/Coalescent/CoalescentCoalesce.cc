@@ -96,7 +96,8 @@ namespace Sequence
       ch2beg=(sbegin+ch2)->begin();
     unsigned seg1=0,seg2=0;
 
-    segment * tsp = (segment *)malloc(sample_history->size()*sizeof(segment));
+    //segment * tsp = (segment *)malloc(sample_history->size()*sizeof(segment));
+    segment * tsp = static_cast<segment*>(malloc(sample_history->size()*sizeof(segment)));
     int tseg = -1;
 
     //iterate over marginal histories

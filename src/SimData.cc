@@ -45,6 +45,18 @@ namespace Sequence
     //PolyTable::assign(pos,S,sample,nsam);
   }
 
+  SimData::SimData(const std::vector<double> & pos, 
+		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
+								      pos.end(),
+								      data.begin(),
+								      data.end())
+  {
+  }
+
+  SimData::SimData(const SimData::const_site_iterator & beg, 
+		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
+  {
+  }
   std::istream & SimData::read (std::istream & stream) 
 
   /*!
