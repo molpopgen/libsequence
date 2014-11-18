@@ -351,6 +351,7 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
+    std::pair<unsigned,unsigned> rv;
     try
       {
 	shortestPath sp(codon1,codon2,code);
@@ -359,57 +360,57 @@ namespace Sequence
 	  {
 	  case shortestPath::S :
 	    {
-	      return std::make_pair(1,0);
+	      rv = std::make_pair(1,0);
 	      break;
 	    }
 	  case shortestPath::N :
 	    {
-	      return std::make_pair(0,1);
+	      rv = std::make_pair(0,1);
 	      break;
 	    }
 	  case shortestPath::SS :
 	    {
-	      return std::make_pair(2,0);
+	      rv = std::make_pair(2,0);
 	      break;
 	    }
 	  case shortestPath::SN :
 	    {
-	      return std::make_pair(1,1);
+	      rv = std::make_pair(1,1);
 	      break;
 	    }
 	  case shortestPath::NN :
 	    {
-	      return std::make_pair(0,2);
+	      rv = std::make_pair(0,2);
 	      break;
 	    }
 	  case shortestPath::SSS :
 	    {
-	      return std::make_pair(3,0);
+	      rv =  std::make_pair(3,0);
 	      break;
 	    }
 	  case shortestPath::SSN :
 	    {
-	      return std::make_pair(2,1);
+	      rv = std::make_pair(2,1);
 	      break;
 	    }
 	  case shortestPath::SNN :
 	    {
-	      return std::make_pair(1,2);
+	      rv = std::make_pair(1,2);
 	      break;
 	    }
 	  case shortestPath::NNN :
 	    {
-	      return std::make_pair(0,3);
+	      rv = std::make_pair(0,3);
 	      break;
 	    }
 	  case shortestPath::NONE :
 	    {
-	      return std::make_pair(0,0);
+	      rv = std::make_pair(0,0);
 	      break;
 	    }
 	  case shortestPath::AMBIG :
 	    {
-	      return std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
+	      rv = std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
 	      break;
 	    }
 	  }
@@ -419,6 +420,7 @@ namespace Sequence
       {
 	throw;
       }
+    return rv;
   }
 
   std::pair<unsigned,shortestPath::pathType> diffType(const std::string &codon1,
