@@ -85,7 +85,6 @@ namespace Sequence
     \ingroup coalescent
   */
   {
-    bool yes1,yes2;
     int ch1=(c1<c2)?c1:c2, ch2=(c2>c1)?c2:c1;
 
     assert( (sample->begin()+ch1)->nsegs>0 );
@@ -104,13 +103,13 @@ namespace Sequence
     int k=0,nsegs=int(sample_history->size());
     arg::iterator imarg = sample_history->begin(),
       jmarg=imarg;
-    jmarg++;
+    ++jmarg;
     for ( ; k<nsegs ; ++imarg,++jmarg,++k )
       {
 	//ask if chromosomes ch1 and ch2 have segments
 	//that are part of the i-th marginal history
-	yes1 = isseg(ch1beg,(sbegin+ch1)->nsegs,imarg->beg,&seg1);
-	yes2 = isseg(ch2beg,(sbegin+ch2)->nsegs,imarg->beg,&seg2);
+	bool yes1 = isseg(ch1beg,(sbegin+ch1)->nsegs,imarg->beg,&seg1);
+	bool yes2 = isseg(ch2beg,(sbegin+ch2)->nsegs,imarg->beg,&seg2);
 	if( yes1 || yes2 )
 	  {
 	    tseg++;

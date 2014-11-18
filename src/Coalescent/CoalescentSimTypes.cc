@@ -360,8 +360,6 @@ namespace Sequence
     Outputs the marginal tree in Newick format
   */
   {
-    double time;
-
     if( left[std::vector<int>::size_type(noden)] == -1 ) 
       {
 	assert( (mi+((mi+noden)->abv))->time >= 0. );
@@ -379,7 +377,7 @@ namespace Sequence
 	  }
 	else 
 	  {
-	    time = (mi + (mi+noden)->abv )->time - (mi+noden)->time ;
+	    double time = (mi + (mi+noden)->abv )->time - (mi+noden)->time ;
 	    assert(time >= 0.);
 	    o << "):"<<time;
 	  }
