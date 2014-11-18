@@ -165,7 +165,7 @@ namespace Sequence
     return __impl->in != NULL && !__impl->__errorstate && !__impl->__EOF;
   }
 
-  bamreader::refdataObj bamreader::operator[](const size_type & i) {
+  bamreader::refdataObj bamreader::operator[](const size_type & i) const {
     return __impl->__refdata[i];
   }
 

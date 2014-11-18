@@ -79,7 +79,7 @@ namespace Sequence
     //! \return Const iterator to end of reference data
     refdata_citr ref_cend() const;
     //! \return the i-th reference name/length pair
-    refdataObj operator[](const size_type & i);
+    refdataObj operator[](const size_type & i) const;
     //! \return The complete header
     std::string header() const;
     //! \return The number of sequences in the reference
