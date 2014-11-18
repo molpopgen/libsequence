@@ -63,7 +63,7 @@ namespace Sequence
     RTYPE ttlS=0;
     arg::size_type seg=0,nsegs=history.size();
     arg::const_iterator i = history.begin(),j=i;
-    j++;
+    ++j;
     for( ; seg < nsegs ; ++i,++j,++seg)
       {
 	double tt = total_time(i->begin(),i->nsam);
@@ -113,7 +113,7 @@ namespace Sequence
     arg::size_type seg=0,nsegs = history.size();
     arg::const_iterator i=history.begin(),
       j = history.begin();
-    j++;
+    ++j;
     RTYPE ttlS = 0;
     for( ; seg < nsegs ; ++seg,++i,++j )
       {
@@ -162,7 +162,7 @@ namespace Sequence
     std::vector<unsigned> segsites(history.size());
     std::vector<double> total_times(history.size());
     arg::const_iterator i = history.begin(),j=i;
-    j++;
+    ++j;
     size_t nsegs = history.size();
     for(size_t seg = 0 ; seg < nsegs ; ++seg,++i,++j)
       {
@@ -193,7 +193,7 @@ namespace Sequence
     unsigned seg=0,nsegs = unsigned(history.size());
     arg::const_iterator i=history.begin(),
       j = history.begin();
-    j++;
+    ++j;
     int ttlS = 0;
     //const double zero=0.;
     for( ; seg < nsegs ; ++seg,++i,++j )
