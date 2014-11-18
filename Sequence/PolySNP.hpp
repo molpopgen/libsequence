@@ -98,7 +98,7 @@ namespace Sequence
       explicit PolySNP (const Sequence::PolyTable * data, bool haveOutgroup = false,
                         unsigned outgroup = 0, bool totMuts = true);
       PolySNP( const PolySNP & ) = delete;
-      PolySNP operator=(const PolySNP &) = delete;
+      PolySNP & operator=(const PolySNP &) = delete;
       virtual ~ PolySNP (void);
       //estimators of 4Nu
       virtual double ThetaPi (void);                           //Nucleotide diversity (Tajima 1983)

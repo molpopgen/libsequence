@@ -30,7 +30,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
   SimData::SimData (const size_t & nsam, const size_t & nsnps):
-    PolyTable(nsam,nsnps),totsam(nsam)
+    PolyTable(nsam,nsnps)
     /*!
       The constructor needs to know the sample size simulated.
       This is easily obtainted using Sequence::SimParams.  An example
@@ -40,7 +40,7 @@ namespace Sequence
   }
 
   SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
-    PolyTable(pos,pos+S,sample,nsam),totsam(nsam)
+    PolyTable(pos,pos+S,sample,nsam)
   {
     //PolyTable::assign(pos,S,sample,nsam);
   }

@@ -68,8 +68,6 @@ namespace Sequence
   {
   class SimData:public PolyTable
     {
-    private:
-      size_t totsam;
     public:
       explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
       explicit SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);

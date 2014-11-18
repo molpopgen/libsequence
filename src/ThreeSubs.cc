@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -32,7 +32,12 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 using std::string;
 //handle cases where codons are fully substituted
 namespace Sequence
+{
+
+  ThreeSubs::ThreeSubs() : p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.), q4(0.)
   {
+  }
+
   ThreeSubs::~ThreeSubs (void)
   /*!
     does nothing
@@ -50,7 +55,7 @@ namespace Sequence
     \param codon2 a std::string of length 3
     \param weights3 a weighting scheme for the pathways
     \note length of codons is checked by assert()
-   */
+  */
   {
     assert(codon1.length() == 3 && codon2.length() == 3);
     string intermediates[9];
@@ -159,60 +164,60 @@ namespace Sequence
     //sum up changes along each branch, weighting by the
     //weight factor for each path
     p0 = (p0_b[0] + p0_b[1] + p0_b[2]) * w_path1
-         + (p0_b[0] + p0_b[3] +  p0_b[4]) * w_path2
-         + (p0_b[5] + p0_b[6] + p0_b[7]) * w_path3
-         + (p0_b[5] + p0_b[8] + p0_b[9]) * w_path4
-         + (p0_b[10] + p0_b[11] + p0_b[12]) * w_path5
-         + (p0_b[10] + p0_b[13] + p0_b[14]) * w_path6;
+      + (p0_b[0] + p0_b[3] +  p0_b[4]) * w_path2
+      + (p0_b[5] + p0_b[6] + p0_b[7]) * w_path3
+      + (p0_b[5] + p0_b[8] + p0_b[9]) * w_path4
+      + (p0_b[10] + p0_b[11] + p0_b[12]) * w_path5
+      + (p0_b[10] + p0_b[13] + p0_b[14]) * w_path6;
 
     p2S = (p2S_b[0] + p2S_b[1] + p2S_b[2]) * w_path1
-          + (p2S_b[0] + p2S_b[3] + p2S_b[4]) * w_path2
-          + (p2S_b[5] + p2S_b[6] + p2S_b[7]) * w_path3
-          + (p2S_b[5] + p2S_b[8] + p2S_b[9]) * w_path4
-          + (p2S_b[10] + p2S_b[11] + p2S_b[12]) * w_path5
-          + (p2S_b[10] + p2S_b[13] + p2S_b[14]) * w_path6;
+      + (p2S_b[0] + p2S_b[3] + p2S_b[4]) * w_path2
+      + (p2S_b[5] + p2S_b[6] + p2S_b[7]) * w_path3
+      + (p2S_b[5] + p2S_b[8] + p2S_b[9]) * w_path4
+      + (p2S_b[10] + p2S_b[11] + p2S_b[12]) * w_path5
+      + (p2S_b[10] + p2S_b[13] + p2S_b[14]) * w_path6;
 
     p2V = (p2V_b[0] + p2V_b[1] + p2V_b[2]) * w_path1
-          + (p2V_b[0] + p2V_b[3] + p2V_b[4]) *   w_path2
-          + (p2V_b[5] + p2V_b[6] + p2V_b[7]) * w_path3
-          + (p2V_b[5] + p2V_b[8] + p2V_b[9]) * w_path4
-          + (p2V_b[10] + p2V_b[11] + p2V_b[12]) * w_path5
-          + (p2V_b[10] + p2V_b[13] + p2V_b[14]) * w_path6;
+      + (p2V_b[0] + p2V_b[3] + p2V_b[4]) *   w_path2
+      + (p2V_b[5] + p2V_b[6] + p2V_b[7]) * w_path3
+      + (p2V_b[5] + p2V_b[8] + p2V_b[9]) * w_path4
+      + (p2V_b[10] + p2V_b[11] + p2V_b[12]) * w_path5
+      + (p2V_b[10] + p2V_b[13] + p2V_b[14]) * w_path6;
 
     p4 = (p4_b[0] + p4_b[1] + p4_b[2]) * w_path1
-         + (p4_b[0] + p4_b[3] +  p4_b[4]) * w_path2
-         + (p4_b[5] + p4_b[6] + p4_b[7]) * w_path3
-         + (p4_b[5] + p4_b[8] +  p4_b[9]) * w_path4
-         + (p4_b[10] + p4_b[11] + p4_b[12]) * w_path5
-         + (p4_b[10] + p4_b[13] + p4_b[14]) * w_path6;
+      + (p4_b[0] + p4_b[3] +  p4_b[4]) * w_path2
+      + (p4_b[5] + p4_b[6] + p4_b[7]) * w_path3
+      + (p4_b[5] + p4_b[8] +  p4_b[9]) * w_path4
+      + (p4_b[10] + p4_b[11] + p4_b[12]) * w_path5
+      + (p4_b[10] + p4_b[13] + p4_b[14]) * w_path6;
 
     q0 = (q0_b[0] + q0_b[1] + q0_b[2]) * w_path1
-         + (q0_b[0] + q0_b[3] +  q0_b[4]) * w_path2
-         + (q0_b[5] + q0_b[6] + q0_b[7]) * w_path3
-         + (q0_b[5] + q0_b[8] + q0_b[9]) *  w_path4
-         + (q0_b[10] + q0_b[11] + q0_b[12]) * w_path5
-         +  (q0_b[10] + q0_b[13] + q0_b[14]) * w_path6;
+      + (q0_b[0] + q0_b[3] +  q0_b[4]) * w_path2
+      + (q0_b[5] + q0_b[6] + q0_b[7]) * w_path3
+      + (q0_b[5] + q0_b[8] + q0_b[9]) *  w_path4
+      + (q0_b[10] + q0_b[11] + q0_b[12]) * w_path5
+      +  (q0_b[10] + q0_b[13] + q0_b[14]) * w_path6;
 
     q2S = (q2S_b[0] + q2S_b[1] + q2S_b[2]) * w_path1
-          + (q2S_b[0] + q2S_b[3] + q2S_b[4]) *   w_path2
-          + (q2S_b[5] + q2S_b[6] + q2S_b[7]) * w_path3
-          + (q2S_b[5] + q2S_b[8] + q2S_b[9]) * w_path4
-          + (q2S_b[10] +q2S_b[11] + q2S_b[12]) * w_path5
-          + (q2S_b[10] + q2S_b[13] + q2S_b[14]) * w_path6;
+      + (q2S_b[0] + q2S_b[3] + q2S_b[4]) *   w_path2
+      + (q2S_b[5] + q2S_b[6] + q2S_b[7]) * w_path3
+      + (q2S_b[5] + q2S_b[8] + q2S_b[9]) * w_path4
+      + (q2S_b[10] +q2S_b[11] + q2S_b[12]) * w_path5
+      + (q2S_b[10] + q2S_b[13] + q2S_b[14]) * w_path6;
 
     q2V = (q2V_b[0] + q2V_b[1] + q2V_b[2]) * w_path1
-          + (q2V_b[0] + q2V_b[3] +	q2V_b[4]) *  w_path2
-          + (q2V_b[5] + q2V_b[6] + q2V_b[7]) * w_path3
-          + (q2V_b[5] + q2V_b[8] + q2V_b[9]) * w_path4
-          + (q2V_b[10] +  q2V_b[11] + q2V_b[12]) * w_path5
-          + (q2V_b[10] + q2V_b[13] + q2V_b[14]) * w_path6;
+      + (q2V_b[0] + q2V_b[3] +	q2V_b[4]) *  w_path2
+      + (q2V_b[5] + q2V_b[6] + q2V_b[7]) * w_path3
+      + (q2V_b[5] + q2V_b[8] + q2V_b[9]) * w_path4
+      + (q2V_b[10] +  q2V_b[11] + q2V_b[12]) * w_path5
+      + (q2V_b[10] + q2V_b[13] + q2V_b[14]) * w_path6;
 
     q4 = (q4_b[0] + q4_b[1] + q4_b[2]) * w_path1
-         + (q4_b[0] + q4_b[3] +  q4_b[4]) * w_path2
-         + (q4_b[5] + q4_b[6] + q4_b[7]) * w_path3
-         + (q4_b[5] + q4_b[8] + q4_b[9]) *  w_path4
-         + (q4_b[10] + q4_b[11] + q4_b[12]) * w_path5
-         +  (q4_b[10] + q4_b[13] + q4_b[14]) * w_path6;
+      + (q4_b[0] + q4_b[3] +  q4_b[4]) * w_path2
+      + (q4_b[5] + q4_b[6] + q4_b[7]) * w_path3
+      + (q4_b[5] + q4_b[8] + q4_b[9]) *  w_path4
+      + (q4_b[10] + q4_b[11] + q4_b[12]) * w_path5
+      +  (q4_b[10] + q4_b[13] + q4_b[14]) * w_path6;
   }
 
 }

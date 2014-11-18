@@ -58,8 +58,7 @@ namespace Sequence
                       double w_path1,double w_path2, double w_path3,
                       double w_path4,double w_path5,double w_path6);
     public:
-      explicit ThreeSubs(void)
-      {}
+      explicit ThreeSubs(void);
       void operator() (const RedundancyCom95 * sitesObj,
                        const std::string &codon1, const std::string &codon2,
                        const Sequence::WeightingScheme3 *weights3);

@@ -49,12 +49,8 @@ namespace Sequence
     private:
       mutable double __weights[2];//logical const
     public:
-      explicit Unweighted2(void)
-      {}
-      ;
-      ~Unweighted2(void)
-      {}
-      ;
+      explicit Unweighted2(void);
+      ~Unweighted2(void);
       void Calculate(const std::string &codon1, const std::string &codon2) const;
       double *weights(void) const;
     };
@@ -64,12 +60,8 @@ namespace Sequence
     private:
       mutable double __weights[6];//logical const
     public:
-      explicit Unweighted3(void)
-      {}
-      ;
-      ~Unweighted3(void)
-      {}
-      ;
+      explicit Unweighted3(void);
+      ~Unweighted3(void);
       void Calculate(const std::string &codon1, const std::string &codon2) const;
       double *weights(void) const;
     };

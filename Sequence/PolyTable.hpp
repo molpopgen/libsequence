@@ -142,7 +142,8 @@ namespace Sequence
 			const double_type & pend,
 			const string_type & dbeg,
 			const string_type & dend ) : positions(std::vector<double>(pbeg,pend)),
-						     data( std::vector<std::string>(dbeg,dend) )
+						     data( std::vector<std::string>(dbeg,dend) ),
+						     non_const_access(true)
     {
     }
     /*!
@@ -166,14 +167,15 @@ namespace Sequence
 			const double_type & pend,
 			const char ** __data,
 			const size_t & nsam ) : positions(std::vector<double>(pbeg,pend)),
-						data( std::vector<std::string>(nsam) )
+						data( std::vector<std::string>(nsam) ),
+						non_const_access(true)
     {
       for( size_t i = 0 ; i < nsam ; ++i )
 	{
 	  data[i] = std::string( __data[i] );
 	}
     }
-	     
+
     virtual ~ PolyTable (void);
 
     

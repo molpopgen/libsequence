@@ -47,7 +47,7 @@ namespace Sequence
 		 const double *weights=NULL, bool haveOutgroup = false,
 		 unsigned outgroup = 0);
     FST(const FST &) = delete;
-    FST operator=(const FST &) = delete;
+    FST & operator=(const FST &) = delete;
     ~FST(void);
     double HSM(void) const;
     double Slatkin(void) const;

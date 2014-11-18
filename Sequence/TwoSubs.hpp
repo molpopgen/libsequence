@@ -70,8 +70,7 @@ namespace Sequence
                       const std::string &codon2, const double w_path1,
                       const double w_path2);
     public:
-      explicit TwoSubs(void)
-      {}
+      explicit TwoSubs(void);
       void operator() (const RedundancyCom95 * sitesObj,
                        const std::string &cod1, const std::string &cod2,
                        const Sequence::WeightingScheme2 *weights2);

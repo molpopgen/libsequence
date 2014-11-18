@@ -38,7 +38,6 @@ namespace Sequence
     unsigned nsam,nsites;
     s >> nsam >> nsites;
     std::vector<T> _data(nsam);
-    unsigned site;
     char ch;
     std::string name,seq(nsites,'0');
 
@@ -57,7 +56,7 @@ namespace Sequence
 		name+=ch;
 	      }
 	  }
-	site = 0;
+	unsigned site = 0;
 	while(site<nsites)
 	  {
 	    s >> ch;
@@ -158,12 +157,11 @@ phylipData<T> & phylipData<T>::operator=( const AlignStream<T> & rhs)
   bool change_namelen=false;
   if (_namelen == 0)
     change_namelen=true;
-  size_t l=0;
   for(typename phylipData<T>::const_iterator i = this->begin() ;
       i != this->end();
       ++i)
     {
-      l = i->first.length();
+      auto l = i->first.length();
       if (change_namelen)
 	_namelen = (l > _namelen ) ? l : _namelen;
     }

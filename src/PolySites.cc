@@ -134,7 +134,9 @@ namespace Sequence
 
   PolySites::PolySites (PolyTable::const_site_iterator beg,
 			PolyTable::const_site_iterator end):
-    PolyTable(beg,end)
+    PolyTable(beg,end),
+    numseqs(beg->second.size()),
+    seqlen(size_t(end-beg))
   {
   }
 

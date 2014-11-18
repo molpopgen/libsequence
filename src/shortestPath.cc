@@ -494,10 +494,10 @@ namespace Sequence
     all sites can be assigned as N or S.  For such applications, use Sequence::shortestPath.
    */
   {
-    shortestPath::pathType p[3]; //one for each codon position
-    std::string t1(codon1),t2(codon2);
     try
       {
+	shortestPath::pathType p[3]; //one for each codon position
+	std::string t1(codon1),t2(codon2);
 	for(unsigned i = 0; i < 3 ; ++i)
 	  {
 	    //make codons that only differ at one position each
