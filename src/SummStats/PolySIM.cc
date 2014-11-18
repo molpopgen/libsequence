@@ -116,7 +116,7 @@ namespace Sequence
     unsigned site;
     unsigned seq;
     int num_changes;
-    double thetal = 0.0, nc, nsam = double(rep->_nsam);
+    double thetal = 0.0, nsam = double(rep->_nsam);
     
     for (site = 0; site < rep->_data->numsites (); ++site)
       {
@@ -124,7 +124,7 @@ namespace Sequence
 	  {
 	    num_changes += (*rep->_data)[seq][site] == state ? 1 : 0;
 	  }
-	nc = double (num_changes);
+	double nc = double (num_changes);
 	thetal +=  nc / (nsam - 1.0);
       }
     return thetal;
@@ -147,7 +147,6 @@ namespace Sequence
   */
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double Hpr = 0.0;
     double pi = ThetaPi ();
     double theta = ThetaW();
     double thetal = ThetaL();
@@ -172,7 +171,7 @@ namespace Sequence
 	  rep->_nsam *( rep->_nsam + 1.0) * b_n_plus1)
       * thetasq / (2.0 * pow ((rep->_nsam - 1.0), 2.0));
 		  
-    Hpr = pi - thetal;
+    double Hpr = pi - thetal;
     Hpr /= pow ( (vThetal + vPi - 2.0 * cov), 0.5);
     return (Hpr); 
 		  
@@ -211,7 +210,7 @@ namespace Sequence
     @author Kevin Thornton
   */
   {
-    int *subslist, i, npoly, seq;
+    int *subslist, i, seq;
     bool sflag, flag;
     flag = 0;
     sflag = 1;
@@ -223,7 +222,7 @@ namespace Sequence
 
     while (sflag)
       {
-        npoly = poly (subslist, int(rep->_nsites),
+        int npoly = poly (subslist, int(rep->_nsites),
                       subsize, subss, &seq);
         if (npoly > subss)
           sflag = nextsample (subslist, subsize, int(rep->_nsam), seq);
@@ -310,7 +309,6 @@ namespace Sequence
   PolySIM::FuLiD (void)
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double D = 0.0;
     double ExternalMutations = double (NumExternalMutations ());
     double NumMut = double (NumMutations ());
     double a = a_sub_n ();
@@ -321,7 +319,7 @@ namespace Sequence
       (pow (a, 2.0) / (b + pow (a, 2.0)) *
        (c - (rep->_nsam + 1.0) / (rep->_nsam - 1.0)));
     double uD = a - 1.0 - vD;
-    D = NumMut - a * double (ExternalMutations);
+    double D = NumMut - a * double (ExternalMutations);
     D /= pow ((uD * NumMut + vD * pow (NumMut, 2.0)), 0.5);
     return (D);
   }
@@ -330,7 +328,6 @@ namespace Sequence
   PolySIM::FuLiF (void)
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations ());
     double ExternalMutations = double (NumExternalMutations ());
@@ -349,7 +346,7 @@ namespace Sequence
     uF /= a;
     uF -= vF;
 
-    F = Pi - ExternalMutations;
+    double F = Pi - ExternalMutations;
     F /= pow (uF * NumMut + vF * pow (NumMut, 2.0), 0.5);
     return (F);
   }
@@ -358,7 +355,6 @@ namespace Sequence
   PolySIM::FuLiDStar (void)
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double DStar = 0.0;
     double Singletons = double (NumSingletons ());
     double NumMut = double (NumMutations ());
 
@@ -376,7 +372,7 @@ namespace Sequence
       (rep->_nsam / (rep->_nsam - 1.0)) * (a -
                                            (rep->_nsam / (rep->_nsam - 1.0))) - vD;
 
-    DStar = (rep->_nsam / (rep->_nsam - 1.0)) * NumMut - a * double (Singletons);
+    double DStar = (rep->_nsam / (rep->_nsam - 1.0)) * NumMut - a * double (Singletons);
     DStar /= pow (uD * NumMut + vD * pow (NumMut, 2.0), 0.5);
     return (DStar);
   }
@@ -385,7 +381,6 @@ namespace Sequence
   PolySIM::FuLiFStar (void)
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double FStar = 0.0;
     double Singletons = double (NumSingletons ());
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations ());
@@ -404,7 +399,7 @@ namespace Sequence
     uF /= (3.0 * rep->_nsam * (rep->_nsam - 1.0));
     uF /= a;
     uF -= vF;
-    FStar = Pi - (((rep->_nsam - 1.0) / rep->_nsam)) * double (Singletons);
+    double FStar = Pi - (((rep->_nsam - 1.0) / rep->_nsam)) * double (Singletons);
     FStar /= pow ((uF * NumMut + vF * pow (NumMut, 2.0)), 0.5);
     return (FStar);
   }
@@ -542,15 +537,14 @@ namespace Sequence
 
   void PolySIM::WallStats(void)
   {
-    unsigned n00 ,n01 ,n10, n11;
-    unsigned nhap_curr, nhap_left;
-    unsigned n0site1,n0site2;
-    nhap_left = SEQMAXUNSIGNED;
-
-    unsigned A = 0;//number of partitions with D' = 1 (see Wall 1999)
     unsigned S = rep->_NumPoly;
     if (S > 1)
       {
+	unsigned n00 ,n01 ,n10, n11;
+	unsigned nhap_curr, nhap_left;
+	unsigned n0site1,n0site2;
+	nhap_left = SEQMAXUNSIGNED;
+	unsigned A = 0;//number of partitions with D' = 1 (see Wall 1999)
 	for (unsigned site1 = 0 ; site1 < rep->_nsites-1 ; ++site1)
 	  //iterate over sites (actually, adjacent pairs of sites)
 	  {

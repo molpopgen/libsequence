@@ -118,7 +118,7 @@ namespace Sequence
                           {
                             //comparison to 'N' has the effect of skipping missing data
 			    char ch1 = char(std::toupper((*data)[i][k])), ch2 = char(std::toupper((*data)[j][k]));
-                            if( ch2 !='N' && ch2 != 'N' )
+                            if( ch1 !='N' && ch2 != 'N' )
                               if ( ch1 != ch2 )
                                 ++ndiffs;
                           }
@@ -209,7 +209,7 @@ namespace Sequence
         @author Dick Hudson.
       */
       {
-        double xbig, xsmall, xtemp;
+        double xbig, xsmall;
 
         xbig = 10.;
         xsmall = std::numeric_limits<float>::epsilon();
@@ -226,7 +226,7 @@ namespace Sequence
 
         while ((xbig - xsmall) > std::numeric_limits<float>::epsilon())
           {
-            xtemp = (xbig + xsmall) / 2.;
+            double xtemp = (xbig + xsmall) / 2.;
             if (fabs(g (totsam, xtemp))-stat > std::numeric_limits<double>::epsilon())
               xsmall = xtemp;
             else
@@ -280,9 +280,9 @@ namespace Sequence
       if (haveOutgroup)
         --totsam;
       int ss = int((*data)[0].length ());
-      double sumhi = 0.0, sumhisq = 0.0, sksq = 0.0;
+      double sumhi = 0.0, sumhisq = 0.0;
       get_h_vals (ss, totsam, data, haveOutgroup, outgroup, &sumhi, &sumhisq);
-      sksq = CalcSamplingVariance (data, haveOutgroup, outgroup, totsam, ss);
+      double sksq = CalcSamplingVariance (data, haveOutgroup, outgroup, totsam, ss);
       return( chatsub (totsam, sksq, sumhi, sumhisq) );
     }
 
@@ -315,15 +315,13 @@ namespace Sequence
       
       std::vector< std::vector<double> > returnList;
       
-      unsigned states1=0,states2=0;
-
       for(unsigned i = 0 ; i < ss-1 ; ++i)
         {
           chars1.first = 'Z';//assign to a dummy character not in the alphabet
           chars1.second = 'Z';
           counts1.first=0;
           counts1.second=0;
-          states1=0;
+          unsigned states1=0;
 	  std::string site1((beg+i)->second);
           for(unsigned letter = 0 ; letter < alphsize ; ++letter)
             {
@@ -366,7 +364,7 @@ namespace Sequence
 		      chars2.second = 'Z';
 		      counts2.first=0;
 		      counts2.second=0;
-		      states2=0;
+		      unsigned states2=0;
 		      for(unsigned letter = 0 ; letter < alphsize ; ++letter)
 			{
 			  if(std::find(site2.begin(),
@@ -576,13 +574,12 @@ namespace Sequence
       //counts2 is for site j
       std::pair<USIZE,USIZE> counts1,counts2;
       
-      unsigned states1=0,states2=0;
 
       chars1.first = 'Z';//assign to a dummy character not in the alphabet
       chars1.second = 'Z';
       counts1.first=0;
       counts1.second=0;
-      states1=0;
+      unsigned states1=0;
       std::string site1((beg+*i)->second);
       for(unsigned letter = 0 ; letter < alphsize ; ++letter)
 	{
@@ -623,7 +620,7 @@ namespace Sequence
 	      chars2.second = 'Z';
 	      counts2.first=0;
 	      counts2.second=0;
-	      states2=0;
+	      unsigned states2=0;
 	      for(unsigned letter = 0 ; letter < alphsize ; ++letter)
 		{
 		  if(std::find(site2.begin(),

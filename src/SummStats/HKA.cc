@@ -137,7 +137,6 @@ namespace Sequence
     //now, get the theta estimates for each locus,
     //and count up the xsq statistic
 
-    double ESA,VSA,ESB,VSB,ED,VD;
     for(unsigned i=0;i<data.size();++i)
       {
 	cna = Cn(data[i].nA);
@@ -147,17 +146,17 @@ namespace Sequence
 			   data[i].D)/
 	  (that+0.5*(1+fhat)+cna+fhat*cnb);
 	
-	ESA = thetas[i]*cna; 
-	VSA = ESA + thetas[i]*thetas[i]*Cnsq(data[i].nA);
-	ESB =  fhat*thetas[i]*cnb;
-	VSB =  ESB + fhat*fhat*thetas[i]*thetas[i]*Cnsq(data[i].nB);
-	ED = thetas[i]*(that + 0.5*(1.+fhat));
-	VD = ED + (thetas[i]*0.5*(1.+fhat))*(thetas[i]*0.5*(1.+fhat));
-	double xsq_t=0.,xsqA_t=0.,xsqB_t=0.,xsqpoly=0.;
+	double ESA = thetas[i]*cna; 
+	double VSA = ESA + thetas[i]*thetas[i]*Cnsq(data[i].nA);
+	double ESB =  fhat*thetas[i]*cnb;
+	double VSB =  ESB + fhat*fhat*thetas[i]*thetas[i]*Cnsq(data[i].nB);
+	double ED = thetas[i]*(that + 0.5*(1.+fhat));
+	double VD = ED + (thetas[i]*0.5*(1.+fhat))*(thetas[i]*0.5*(1.+fhat));
+	double xsq_t=0.,xsqA_t=0.,xsqB_t=0.;
 	const double spA = (double(data[i].SA)-ESA)*(double(data[i].SA)-ESA)/VSA;
 	xsq_t += spA;
 	xsqA_t += spA;
-	xsqpoly = xsqA_t;
+	double xsqpoly = xsqA_t;
 	const double sp2 = (double(data[i].SB)-ESB)*(double(data[i].SB)-ESB)/VSB;
 	if (isfinite(sp2)) 
 	  {

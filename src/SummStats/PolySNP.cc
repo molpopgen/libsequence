@@ -212,10 +212,10 @@ namespace Sequence
 		 rep->_counts[i].nStates() > 1 )
 	      {
 		unsigned samplesize = rep->_totsam;
-		double SSH = 0.0;	//sum of site homozygosity
 		samplesize -= rep->_counts[i].n; //adjust sample size for missing data
 		if (samplesize > 1)
 		  {
+		    double SSH = 0.0;	//sum of site homozygosity
 		    double denom = (double(samplesize)* (double(samplesize) - 1.0));
 		    SSH += (rep->_counts[i].a > 0) ? double(rep->_counts[i].a) * 
 		      double (rep->_counts[i].a-1) /denom : 0. ;
@@ -587,14 +587,14 @@ namespace Sequence
   */
   {
     assert ( rep->_preprocessed );
-    unsigned nsing = 0,nstates;
+    unsigned nsing = 0;
     for (unsigned i = 0;  i < rep->_nsites; ++i)
       {			//iterate over sites
-	unsigned curr_nsing=0,nsam=0;
-	nstates = rep->_counts[i].nStates();
+	unsigned curr_nsing=0;
+	unsigned nstates = rep->_counts[i].nStates();
 	if (rep->_counts[i].gap == 0 && nstates>1)
 	  {
-	    nsam = rep->_totsam - rep->_counts[i].n;
+	    unsigned nsam = rep->_totsam - rep->_counts[i].n;
 	    if(nsam==2 && nstates ==2) //if n = 2 and there are 2 states, there must be 1 singleton
 	      curr_nsing=1;
 	    else
@@ -683,7 +683,6 @@ namespace Sequence
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     assert(rep->_haveOutgroup==true);
-    double Hpr = 0.0;
     double a = a_sub_n ();
     double b = b_sub_n ();
     double pi = ThetaPi ();
@@ -709,8 +708,7 @@ namespace Sequence
 	/ (2.0 * pow ((rep->_totsam - 1.0), 2.0)))
       * thetasq	 ;
 		  
-    //    Hpr = pi - omega;
-    Hpr = pi - thetal;
+    double Hpr = pi - thetal;
     Hpr /= pow ( (vThetal + vPi - 2.0 * cov), 0.5);
     return (Hpr); 
   }
@@ -1018,7 +1016,6 @@ namespace Sequence
     assert ( rep->_preprocessed );
     //    assert(rep->_haveOutgroup == true);
     if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
-    double D = 0.0;
     double ExternalMutations =
       double (NumExternalMutations ());
     double NumMut = double (NumMutations ());
@@ -1029,7 +1026,7 @@ namespace Sequence
       (pow (a, 2.0) / (b + pow (a, 2.0)) *
        (c - (rep->_totsam + 1.0) / (rep->_totsam - 1.0)));
     double uD = a - 1.0 - vD;
-    D = NumMut - a * double (ExternalMutations);
+    double D = NumMut - a * double (ExternalMutations);
     D /= pow ((uD * NumMut + vD * pow (NumMut, 2.0)), 0.5);
     return (D);
   }
@@ -1046,7 +1043,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
-    double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations());
     double ExternalMutations =
@@ -1066,7 +1062,7 @@ namespace Sequence
     uF /= a;
     uF -= vF;
 
-    F = Pi - ExternalMutations;
+    double F = Pi - ExternalMutations;
     F /= pow (uF * NumMut + vF * pow (NumMut, 2.0), 0.5);
     return (F);
   }
@@ -1081,7 +1077,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
-    double DStar = 0.0;
     double Singletons =
       double (NumSingletons ());
     double NumMut = double (NumMutations ());
@@ -1100,7 +1095,7 @@ namespace Sequence
       (rep->_totsam / (rep->_totsam - 1.0)) * (a -
 					       (rep->_totsam / (rep->_totsam - 1.0))) - vD;
 
-    DStar = (rep->_totsam / (rep->_totsam - 1.0)) * NumMut - a * double (Singletons);
+    double DStar = (rep->_totsam / (rep->_totsam - 1.0)) * NumMut - a * double (Singletons);
     DStar /= pow (uD * NumMut + vD * pow (NumMut, 2.0), 0.5);
     return (DStar);
   }
@@ -1117,7 +1112,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
-    double FStar = 0.0;
     double Singletons =
       double (NumSingletons ());
     double Pi = ThetaPi ();
@@ -1142,7 +1136,7 @@ namespace Sequence
     uF /= (3.0 * rep->_totsam * (rep->_totsam - 1.0));
     uF /= a;
     uF -= vF;
-    FStar = Pi - (((rep->_totsam - 1.0) / rep->_totsam)) * double (Singletons);
+    double FStar = Pi - (((rep->_totsam - 1.0) / rep->_totsam)) * double (Singletons);
     FStar /= pow ((uF * NumMut + vF * pow (NumMut, 2.0)), 0.5);
     return (FStar);
   }
@@ -1317,12 +1311,11 @@ namespace Sequence
     if(rep->_NumPoly<2) return SEQMAXUNSIGNED;
     unsigned a,b,e,numgametes,Rmin=0,x=0;
     bool flag=false;
-    
-    char c11,c12,c21,c22;
-    unsigned states1=0,states2=0;
-    
+        
     for (a=x+1 ; a < rep->_nsites ; ++a)
       {
+	char c11,c12;
+	unsigned states1=0;
 	c11 = c12 = 'Z'; //Z is a dummy value
 	//count # states in site a
 	states1 = rep->_counts[a].nStates();
@@ -1345,11 +1338,11 @@ namespace Sequence
 	  {
 	    flag = false;
 	    numgametes = 0;
-	    c21=c22='Z';
-	    states2 = rep->_counts[b].nStates();
+	    unsigned states2 = rep->_counts[b].nStates();
 	    //need to skip sites with > 2 states
 	    if(states1==2&&states2==2)
 	      {
+		char c21='Z',c22='Z';
 		c21 = (c21 == 'Z' && rep->_counts[b].a > 0 ) ? 'A' : 'Z';
 		c21 = (c21 == 'Z' && rep->_counts[b].g > 0 ) ? 'G' : c21;
 		c21 = (c21 == 'Z' && rep->_counts[b].c > 0 ) ? 'C' : c21;
