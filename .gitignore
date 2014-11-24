@@ -16,3 +16,5 @@ compile
 autom4te.cache
 .libs
 libsequence.la
+configure
+aclocal.m4
