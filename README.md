@@ -78,6 +78,7 @@ Again, a few options:
 
 ```
 ./configure
+automake --add-missing
 make
 sudo make install
 ```
