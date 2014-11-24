@@ -14,3 +14,5 @@ config.log
 config-h.in
 compile
 autom4te.cache
+.libs
+libsequence.la
