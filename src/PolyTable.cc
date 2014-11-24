@@ -507,7 +507,7 @@ namespace Sequence
   void
   PolyTable::Binary (const bool & haveOutgroup, 
 		     const unsigned & outgroup, 
-		     const bool & strictInfSites )
+         const bool & /* strictInfSites */)
   /*!
     Recode the polymorphism table in 0,1 (binary notation)
     \param haveOutgroup use \c true if an outgroup is present, \c false otherwise

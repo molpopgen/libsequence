@@ -91,7 +91,7 @@ namespace Sequence
 	 ++itr)
       {
 	PolyTable::const_data_iterator::difference_type offset_data = itr-t->begin();
-	if ( offset_data != refseq )
+  if ( offset_data != static_cast<int>( refseq ) )
 	  {
 	    for (unsigned i = 0 ; i < (*itr).length() ; ++i)
 	      {
