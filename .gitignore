@@ -3,4 +3,14 @@
 *~
 MakefileMakefile.in
 aclocal.m4
-configure
+configureMakefile
+stamp-h1
+.dirstamp
+.deps
+Makefile
+libtool
+config.status
+config.log
+config-h.in
+compile
+autom4te.cache
