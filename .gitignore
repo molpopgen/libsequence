@@ -1,4 +1,6 @@
 *.o
 *.lo
 *~
-Makefile
+MakefileMakefile.in
+aclocal.m4
+configure
