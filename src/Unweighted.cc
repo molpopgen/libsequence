@@ -36,7 +36,7 @@ namespace Sequence
   {
   }
 
-  void Unweighted2::Calculate(const std::string &codon1, const std::string &codon2) const
+  void Unweighted2::Calculate(const std::string & /* codon1 */, const std::string & /* codon2 */) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
@@ -69,7 +69,7 @@ namespace Sequence
   {
   }
 
-  void Unweighted3::Calculate(const std::string &codon1, const std::string &codon2) const
+  void Unweighted3::Calculate(const std::string & /* codon1 */, const std::string & /* codon2 */) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
