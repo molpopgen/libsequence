@@ -49,6 +49,7 @@ namespace Sequence
     not_primary = (flag & sambits::not_primary);
     qcfail = (flag & sambits::qcfail);
     duplicate = (flag & sambits::duplicate);
+    supp_alignment = (flag & sambits::suppalign);
   }
 
   std::ostream & operator<<(std::ostream & o, const samflag & s)
