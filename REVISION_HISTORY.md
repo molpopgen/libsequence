@@ -24,6 +24,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 14. A new, faster implementation of Sequence::SimData::read
 15. The configure script how checks for the existence of [htslib](http://www.htslib.org)
 16. Sequence/bamreader.hpp and Sequence/bamrecord.hpp added for direct reading from bam files.  Will only compile if [htslib](http://htslib.org) is detected by the configure script
+17. I've performed extensive code auditing using cppcheck.  Many issues were resolved.  Most were stylistic, but they do make the code more idiomatic.
 
 ###ISSUES:
 
