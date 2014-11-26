@@ -28,12 +28,12 @@ namespace Sequence
     Write a SimData object in binary format to an ostream.
 
     The format of the binary data is:
-    nsam (unsigned)
-    nsites (unsigned)
+    nsam (uint32_t)
+    nsites (uint32_t)
     nsites doubles representing the mutation positions
     Then, there are nsam records containing:
-    nsites_i (unsigned) = # mutations on haplotype i, followed by
-    nsites_i unsigned values representing the indexes (from 0 to nsites-1) where the derived mutations are
+    nsites_i (uint32_t) = # mutations on haplotype i, followed by
+    nsites_i values (uint32_t) representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
   */
   void write_SimData_binary( std::ostream & o, const SimData & d );
