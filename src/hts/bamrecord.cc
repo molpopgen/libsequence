@@ -201,7 +201,7 @@ namespace Sequence
   public:
     bool __empty;
     int32_t __block_size;
-    std::unique_ptr<char[]> __block;
+    std::unique_ptr<char[]> __alnblock;
     int32_t __refID,__pos;
     uint32_t __bin_mq_nl,__bin,__mq,__nl,__flag_nc,__flag,__nc;
     int32_t __l_seq,__next_refID,__next_pos,__tlen;
@@ -218,7 +218,7 @@ namespace Sequence
 
   bamrecordImpl::bamrecordImpl() : __empty(true),
 				   __block_size(0),
-				   __block(nullptr),
+				   __alnblock(nullptr),
 				   __refID(-1),__pos(-1),
 				   __bin_mq_nl(0),__flag_nc(0),
 				   __l_seq(0),__next_refID(0),
@@ -247,47 +247,47 @@ namespace Sequence
     this->__block_size = bI.__block_size;
     if(this->__block_size)
       {
-	this->__block = std::unique_ptr<char[]>(new char[__block_size]);
-	std::copy(bI.__block.get(),bI.__block.get()+__block_size,
-		  __block.get());
+	this->__alnblock = std::unique_ptr<char[]>(new char[__block_size]);
+	std::copy(bI.__alnblock.get(),bI.__alnblock.get()+__block_size,
+		  __alnblock.get());
 	this->parse_block();
       }
-    else this->__block == nullptr;
+    else this->__alnblock = nullptr;
 
     return *this;
   }
 
   void bamrecordImpl::parse_block() 
   {
-    __refID= std::move(toItype<int32_t>(__block.get()));
-    __pos = std::move(toItype<int32_t>(__block.get()+sizeof(int32_t)));
-    __bin_mq_nl = std::move(toItype<uint32_t>(__block.get()+2*sizeof(int32_t)));
+    __refID= std::move(toItype<int32_t>(__alnblock.get()));
+    __pos = std::move(toItype<int32_t>(__alnblock.get()+sizeof(int32_t)));
+    __bin_mq_nl = std::move(toItype<uint32_t>(__alnblock.get()+2*sizeof(int32_t)));
     __bin = __bin_mq_nl>>16;
     __mq = ((__bin_mq_nl ^ __bin<<16)>>8 );
     __nl= __bin_mq_nl ^ __bin<<16 ^ __mq << 8 ;
-    __flag_nc = std::move(toItype<uint32_t>(__block.get()+2*sizeof(int32_t)+sizeof(uint32_t)));
+    __flag_nc = std::move(toItype<uint32_t>(__alnblock.get()+2*sizeof(int32_t)+sizeof(uint32_t)));
     __flag =  __flag_nc >> 16;
     __nc = __flag_nc ^ __flag << 16;
-    __l_seq = std::move(toItype<int32_t>(__block.get()+2*(sizeof(int32_t)+sizeof(uint32_t))));
-    __next_refID = std::move(toItype<int32_t>(__block.get()+3*sizeof(int32_t)+2*sizeof(uint32_t)));
-    __next_pos = std::move(toItype<int32_t>(__block.get()+4*sizeof(int32_t)+2*sizeof(uint32_t)));
-    __tlen = std::move(toItype<int32_t>(__block.get()+5*sizeof(int32_t)+2*sizeof(uint32_t)));
-    __rname_beg = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t);
-    __rname_end  = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl;
-    __cig_beg = (uint32_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl);
-    __cig_end = (uint32_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
-    __seq_beg = (uint8_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
-    __seq_end = (uint8_t*)(__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2);
-    __qual_beg =__block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2;
-    __qual_end = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
-    __aux_beg = __block.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
-    __aux_end = __block.get()+__block_size;
+    __l_seq = std::move(toItype<int32_t>(__alnblock.get()+2*(sizeof(int32_t)+sizeof(uint32_t))));
+    __next_refID = std::move(toItype<int32_t>(__alnblock.get()+3*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __next_pos = std::move(toItype<int32_t>(__alnblock.get()+4*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __tlen = std::move(toItype<int32_t>(__alnblock.get()+5*sizeof(int32_t)+2*sizeof(uint32_t)));
+    __rname_beg = __alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t);
+    __rname_end  = __alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl;
+    __cig_beg = (uint32_t*)(__alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl);
+    __cig_end = (uint32_t*)(__alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
+    __seq_beg = (uint8_t*)(__alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t));
+    __seq_end = (uint8_t*)(__alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2);
+    __qual_beg =__alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2;
+    __qual_end = __alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
+    __aux_beg = __alnblock.get()+6*sizeof(int32_t)+2*sizeof(uint32_t)+__nl + __nc*sizeof(uint32_t) + (__l_seq+1)/2 + __l_seq;
+    __aux_end = __alnblock.get()+__block_size;
   }
 
   bamrecordImpl::bamrecordImpl( std::int32_t blocksize,
 				std::unique_ptr<char[]> && block) : __empty(blocksize>0 ? false : true),
 								    __block_size(std::move(blocksize)),
-								    __block(std::move(block))															  
+								    __alnblock(std::move(block))															  
   {
     parse_block();
   }
@@ -389,7 +389,7 @@ namespace Sequence
   std::pair< std::int32_t, const char * >
   bamrecord::raw() const
   {
-    return std::make_pair(__impl->__block_size,__impl->__block.get());
+    return std::make_pair(__impl->__block_size,__impl->__alnblock.get());
   }
 
   samflag bamrecord::flag() const
