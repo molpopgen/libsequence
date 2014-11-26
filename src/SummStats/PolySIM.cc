@@ -53,7 +53,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaPi (void)
+  PolySIM::ThetaPi (void) const
   /*!
     For simulated data, assuming 0 is ancenstral, 1 derived.\n
     A simpler version of PolySNP::ThetaPi
@@ -74,7 +74,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaW (void)
+  PolySIM::ThetaW (void) const
   /*!
     For coalescent simulation data, the number of segregating 
     sites equals the number of mutations
@@ -86,7 +86,7 @@ namespace Sequence
 
 
   double
-  PolySIM::ThetaH (void)
+  PolySIM::ThetaH (void) const
   /*!
     For simulated data, where 0 is ancenstral, 1 derived.\n
     A simpler version of PolySIM::ThetaH (const Sequence::PolyTable * data,
@@ -104,7 +104,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaL (void)
+  PolySIM::ThetaL (void) const
   /*!
     For simulated data, where 0 is ancenstral, 1 derived.\n
     A simpler version of PolySIM::ThetaL()
@@ -131,7 +131,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::TajimasD (void)
+  PolySIM::TajimasD (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
@@ -140,7 +140,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::Hprime (const bool & likeThorntonAndolfatto)
+  PolySIM::Hprime (const bool & likeThorntonAndolfatto) const
   /*!
     Redefinition of PolySNP::Hprime
     @author Joshua Shapiro
@@ -178,7 +178,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::Dnominator (void)
+  PolySIM::Dnominator (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double S = rep->_NumPoly;
@@ -306,7 +306,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::FuLiD (void)
+  PolySIM::FuLiD (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double ExternalMutations = double (NumExternalMutations ());
@@ -325,7 +325,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::FuLiF (void)
+  PolySIM::FuLiF (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
@@ -352,7 +352,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::FuLiDStar (void)
+  PolySIM::FuLiDStar (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Singletons = double (NumSingletons ());
@@ -378,7 +378,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::FuLiFStar (void)
+  PolySIM::FuLiFStar (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Singletons = double (NumSingletons ());
@@ -405,7 +405,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySIM::NumMutations (void)
+  PolySIM::NumMutations (void) const
   /*!
     \return number of mutations in the sample
   */
@@ -416,7 +416,7 @@ namespace Sequence
   //count the number of singletons
   //only works for infinite sites
   unsigned
-  PolySIM::NumSingletons (void)
+  PolySIM::NumSingletons (void) const
   /*!
     A version optimized for simulated data where
     character states take on the values 0 or 1.
@@ -444,7 +444,7 @@ namespace Sequence
 
 
   unsigned
-  PolySIM::NumExternalMutations (void)
+  PolySIM::NumExternalMutations (void) const
   /*!
     similar to num singletons, but it assumes strict
     ancestral vs. derived in the data->
@@ -468,7 +468,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySIM::Minrec (void)
+  PolySIM::Minrec (void) const
   /*!
     \return the minimum number of recombination events observed
     in the sample (Hudson and Kaplan 1985). Will return SEQMAXUNSIGNED 
@@ -535,7 +535,7 @@ namespace Sequence
     return Rmin;
   }
 
-  void PolySIM::WallStats(void)
+  void PolySIM::WallStats(void) const
   {
     unsigned S = rep->_NumPoly;
     if (S > 1)
@@ -624,19 +624,19 @@ namespace Sequence
     rep->_calculated_wall_stats=true;
   }
 
-  double PolySIM::WallsB(void)
+  double PolySIM::WallsB(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();
     return rep->_walls_B;
   }
-  unsigned PolySIM::WallsBprime(void)
+  unsigned PolySIM::WallsBprime(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();
     return rep->_walls_Bprime;
   }
-  double PolySIM::WallsQ(void)
+  double PolySIM::WallsQ(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();

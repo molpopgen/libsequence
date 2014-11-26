@@ -49,36 +49,36 @@ namespace Sequence
                 const int & subsize, const int & subss, int *seq) const;
       int nextsample (int *subslist, const int &  subsize, const int & nsam, int seq) const;
     protected:
-      void WallStats(void);
+      void WallStats(void) const;
     public:
       explicit PolySIM (const Sequence::SimData * data);
       virtual ~ PolySIM(void);
       //estimators of 4Nu
-      double ThetaPi (void);
-      double ThetaW (void);
-      double ThetaH (void);
-      double ThetaL (void);
+      double ThetaPi (void) const;
+      double ThetaW (void) const;
+      double ThetaH (void) const;
+      double ThetaL (void) const;
 
       //calculate various numbers related to polymorphism
-      unsigned NumMutations (void);
-      unsigned NumSingletons (void);
-      unsigned NumExternalMutations (void);
+      unsigned NumMutations (void) const;
+      unsigned NumSingletons (void) const;
+      unsigned NumExternalMutations (void) const;
       //summary statistics of the site frequency spectrum
-      double TajimasD (void);
-      double Hprime (const bool & likeThorntonAndolfatto = false);
-      double Dnominator (void);
-      double FuLiD (void);
-      double FuLiF (void);
-      double FuLiDStar (void);
-      double FuLiFStar (void);
-      double WallsB(void);
-      unsigned WallsBprime(void);
-      double WallsQ(void);
+      double TajimasD (void) const;
+      double Hprime (const bool & likeThorntonAndolfatto = false) const;
+      double Dnominator (void) const;
+      double FuLiD (void) const;
+      double FuLiF (void) const;
+      double FuLiDStar (void) const;
+      double FuLiFStar (void) const;
+      double WallsB(void) const;
+      unsigned WallsBprime(void) const;
+      double WallsQ(void) const;
       //Hudson's Haplotype Partition Test
       int HudsonsHaplotypeTest (const int & subsize,const int & subss) const;
 
       //recombination
-      unsigned Minrec (void);
+      unsigned Minrec (void) const;
     };
 }
 #endif

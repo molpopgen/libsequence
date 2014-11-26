@@ -85,15 +85,15 @@ namespace Sequence
     private:
     protected:
       std::unique_ptr<_PolySNPImpl> rep;
-      void DepaulisVeuilleStatistics (void);
-      virtual void WallStats(void);
+      void DepaulisVeuilleStatistics (void) const;
+      virtual void WallStats(void) const;
       //various things one needs to know to calculate the summary statistics
-      double a_sub_n (void) ;
-      double a_sub_n_plus1 (void) ;
-      double b_sub_n (void) ;
-      double b_sub_n_plus1 (void) ;
-      double c_sub_n (void) ;
-      double d_sub_n (void) ;
+      double a_sub_n (void) const ;
+      double a_sub_n_plus1 (void) const;
+      double b_sub_n (void) const;
+      double b_sub_n_plus1 (void) const;
+      double c_sub_n (void) const;
+      double d_sub_n (void) const;
     public:
       explicit PolySNP (const Sequence::PolyTable * data, bool haveOutgroup = false,
                         unsigned outgroup = 0, bool totMuts = true);
@@ -101,41 +101,41 @@ namespace Sequence
       PolySNP & operator=(const PolySNP &) = delete;
       virtual ~ PolySNP (void);
       //estimators of 4Nu
-      virtual double ThetaPi (void);                           //Nucleotide diversity (Tajima 1983)
-      virtual double ThetaW (void);                            //Watterson's (1975) Theta
-      virtual double ThetaH (void);                            //Theta from homozygosity (Fay and Wu 2001)
-      virtual double ThetaL (void);                            //A variant on Fay and Wu's H
+      virtual double ThetaPi (void) const;                           //Nucleotide diversity (Tajima 1983)
+      virtual double ThetaW (void) const;                            //Watterson's (1975) Theta
+      virtual double ThetaH (void) const;                            //Theta from homozygosity (Fay and Wu 2001)
+      virtual double ThetaL (void) const;                            //A variant on Fay and Wu's H
       //variances of estimators of 4Nu
-      double VarPi (void);
-      double StochasticVarPi(void);
-      double SamplingVarPi (void);
-      double VarThetaW (void);
+      double VarPi (void) const;
+      double StochasticVarPi(void) const;
+      double SamplingVarPi (void) const;
+      double VarThetaW (void) const;
       //calculate various numbers related to polymorphism
-      unsigned NumPoly (void);                                 //number of polymorphic sites in data
-      virtual unsigned NumMutations (void);                    //number of inferred mutations 
-      virtual unsigned NumSingletons (void);                   //number of mutants at frequency 1
-      virtual unsigned NumExternalMutations (void);            //number of derived mutations 
+      unsigned NumPoly (void) const;                                 //number of polymorphic sites in data
+      virtual unsigned NumMutations (void) const;                    //number of inferred mutations 
+      virtual unsigned NumSingletons (void) const;                   //number of mutants at frequency 1
+      virtual unsigned NumExternalMutations (void) const;            //number of derived mutations 
       //summary statistics of the site frequency spectrum
-      virtual double TajimasD (void);                          //Tajima's (1989) D
-      virtual double Hprime (const bool & likeThorntonAndolfatto = false);  //A normalized statistic 
+      virtual double TajimasD (void) const;                          //Tajima's (1989) D
+      virtual double Hprime (const bool & likeThorntonAndolfatto = false) const;  //A normalized statistic 
                                                                     //related to Fay and Wu's H
-      virtual double Dnominator (void);                        //Denominator of Tajima's D
-      virtual double FuLiD (void);                             //Fu & Li's (1996) D
-      virtual double FuLiF (void);                             //Fu & Li's (1996) F
-      virtual double FuLiDStar (void);                         //Fu & Li's (1996) D*
-      virtual double FuLiFStar (void);                         //Fu & Li's (1996) F*
+      virtual double Dnominator (void) const;                        //Denominator of Tajima's D
+      virtual double FuLiD (void) const;                             //Fu & Li's (1996) D
+      virtual double FuLiF (void) const;                             //Fu & Li's (1996) F
+      virtual double FuLiDStar (void) const;                         //Fu & Li's (1996) D*
+      virtual double FuLiFStar (void) const;                         //Fu & Li's (1996) F*
       //summary statistics of haplotypes
-      double DandVH (void);                                    //Depaulis & Veuille (1998) Haplotype diversity
-      unsigned DandVK (void);                                  //Depaulis & Veuille (1998) number of haplotypes
-      virtual double WallsB(void);                             //Jeff Wall's (1999) B  statistic
-      virtual unsigned WallsBprime(void);                      //Jeff Wall's (1999) B' statistic
-      virtual double WallsQ(void);                             //Jeff Wall's (1999) Q  statistic
+      double DandVH (void) const;                                    //Depaulis & Veuille (1998) Haplotype diversity
+      unsigned DandVK (void) const;                                  //Depaulis & Veuille (1998) number of haplotypes
+      virtual double WallsB(void) const;                             //Jeff Wall's (1999) B  statistic
+      virtual unsigned WallsBprime(void) const;                      //Jeff Wall's (1999) B' statistic
+      virtual double WallsQ(void) const;                             //Jeff Wall's (1999) Q  statistic
       //recombination
-      double HudsonsC (void);                                  //Dick Hudson's (1987) Chat = 4Nr
-      virtual unsigned Minrec (void);                          //Hudson & Kaplan's (1985) min # of recombination events
+      double HudsonsC (void) const;                                  //Dick Hudson's (1987) Chat = 4Nr
+      virtual unsigned Minrec (void) const;                          //Hudson & Kaplan's (1985) min # of recombination events
       std::vector < std::vector < double > >
       Disequilibrium( const unsigned & mincount = 1,
-		      const double & max_marker_distance = std::numeric_limits<double>::max()) ;                 //summary stats of pairwise LD
+		      const double & max_marker_distance = std::numeric_limits<double>::max()) const;                 //summary stats of pairwise LD
     };
 }
 #endif
