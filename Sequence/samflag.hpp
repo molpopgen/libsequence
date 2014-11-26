@@ -79,7 +79,8 @@ namespace Sequence
       second_read( false ),
       not_primary( false ),
       qcfail( false ),
-      duplicate( false ) 
+      duplicate( false ) ,
+      supp_alignment( false )
     {
     }
     operator int();
