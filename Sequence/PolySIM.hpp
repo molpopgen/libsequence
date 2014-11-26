@@ -46,8 +46,8 @@ namespace Sequence
     private:
       //functions for Hudson's Partition Test
       int poly (int *subslist,  const int & ss,
-                const int & subsize, const int & subss, int *seq);
-      int nextsample (int *subslist, const int &  subsize, const int & nsam, int seq);
+                const int & subsize, const int & subss, int *seq) const;
+      int nextsample (int *subslist, const int &  subsize, const int & nsam, int seq) const;
     protected:
       void WallStats(void);
     public:
@@ -75,7 +75,7 @@ namespace Sequence
       unsigned WallsBprime(void);
       double WallsQ(void);
       //Hudson's Haplotype Partition Test
-      int HudsonsHaplotypeTest (const int & subsize,const int & subss);
+      int HudsonsHaplotypeTest (const int & subsize,const int & subss) const;
 
       //recombination
       unsigned Minrec (void);

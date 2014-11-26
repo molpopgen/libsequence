@@ -199,7 +199,7 @@ namespace Sequence
 
 
   int
-  PolySIM::HudsonsHaplotypeTest (const int & subsize, const int & subss)
+  PolySIM::HudsonsHaplotypeTest (const int & subsize, const int & subss) const
   /*!
     From Hudson et al (1994) on polymorphism at sod. For simulated data only.
     The function returns a 1 if the number of polymorphisms in a randomly generated subsample
@@ -246,7 +246,7 @@ namespace Sequence
 
   int
   PolySIM::poly (int *subslist, const int & ss,
-                 const int & subsize, const int & subss, int * seq)
+                 const int & subsize, const int & subss, int * seq) const
   /*!
     Count the number of polymorphisms in a sample of size subsize.
     Part of the Hudson Haplotype Test. Called by 
@@ -279,7 +279,7 @@ namespace Sequence
   }
 
   int
-  PolySIM::nextsample (int *subslist, const int & subsize, const int &  nsam, int seq)
+  PolySIM::nextsample (int *subslist, const int & subsize, const int &  nsam, int seq) const
   /*!
     Get the next subsample for the HHT.
     Part of the Hudson Haplotype Test.
