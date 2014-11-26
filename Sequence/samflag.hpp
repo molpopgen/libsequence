@@ -51,38 +51,8 @@ namespace Sequence
     mutable bool is_paired,is_proper_pair,query_unmapped,
       mate_unmapped,qstrand,mstrand,first_read,
       second_read,not_primary,qcfail,duplicate,supp_alignment;
-    samflag(const int & __flag) : 
-      flag(__flag),
-      is_paired( (__flag & sambits::is_paired) ),
-      is_proper_pair( (__flag & sambits::is_proper_pair) ),
-      query_unmapped( (__flag & sambits::query_unmapped) ),
-      mate_unmapped( ( __flag & sambits::mate_unmapped) ),
-      qstrand( (__flag & sambits::qstrand) ),
-      mstrand( (__flag & sambits::mstrand) ),
-      first_read( (__flag & sambits::first_read) ),
-      second_read( (__flag & sambits::second_read) ),
-      not_primary( (__flag & sambits::not_primary) ),
-      qcfail( (__flag & sambits::qcfail) ),
-      duplicate( (__flag & sambits::duplicate) ),
-      supp_alignment( (__flag & sambits::suppalign) )
-    {
-    }
-    samflag() :
-      flag(0),
-      is_paired( false ),
-      is_proper_pair( false ),
-      query_unmapped( false ),
-      mate_unmapped( false ),
-      qstrand( false ),
-      mstrand( false ),
-      first_read( false ),
-      second_read( false ),
-      not_primary( false ),
-      qcfail( false ),
-      duplicate( false ) ,
-      supp_alignment( false )
-    {
-    }
+    samflag(const std::int32_t & __flag);
+    samflag();
     operator int();
     operator int() const;
     std::istream & read( std::istream & i);
