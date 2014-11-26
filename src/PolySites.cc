@@ -117,7 +117,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  PolySites::PolySites (void)
+  PolySites::PolySites (void) : numseqs(0),seqlen(0)
   {}
 
   PolySites::PolySites (const std::vector < double > &List, const std::vector <std::string > &stringList):
@@ -141,8 +141,6 @@ namespace Sequence
   }
 
   std::istream & PolySites::read(std::istream &s) 
-    
-
   {
     std::vector<double> _pos;
     std::vector<std::string> _ind;
