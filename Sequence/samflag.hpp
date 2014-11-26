@@ -42,7 +42,7 @@ namespace Sequence
   class samflag
   {
   private:
-    void process_bits();
+    void process_bits() const;
   public:
     /*!
       The flag value
