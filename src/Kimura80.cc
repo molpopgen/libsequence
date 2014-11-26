@@ -109,7 +109,7 @@ namespace Sequence
   }
 
   double
-  Kimura80::K (void)
+  Kimura80::K (void) const
   /*!
     \return the distance between the two sequences.
     \note 999.0 is returned as a warning value.
@@ -123,7 +123,7 @@ namespace Sequence
   }
 
     size_t
-    Kimura80::sites (void)
+    Kimura80::sites (void) const
     /*!
       \return the number of sites compared, excluding gaps, missing data, etc.
     */

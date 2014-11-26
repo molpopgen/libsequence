@@ -58,8 +58,8 @@ namespace Sequence
       double divergence, P, Q;
     public:
       explicit Kimura80 (const Sequence::Seq * seqa,const  Sequence::Seq * seqb);
-      double K ();
-      size_t sites (void);
+      double K() const;
+      size_t sites (void) const;
     };
 }
 #endif
