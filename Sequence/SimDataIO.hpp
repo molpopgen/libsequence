@@ -12,6 +12,7 @@ namespace Sequence
 {
   /*!
     Write a SimData object to a gzFile object (from the C-language zlib library)
+    Returns the amount of data written, or -1 on error.
    */
   long long write_SimData_gz( gzFile & file, const SimData & d, const bool & binary = false);
   /*!
