@@ -14,7 +14,7 @@ namespace Sequence
     struct gzfillbuffer
     {
       template<typename policy>
-      std::pair<std::string,int> operator()( gzFile gzfile, const policy & p )
+      std::pair<std::string,int> operator()( gzFile gzfile, const policy & p ) const
       {
 	char ch;
 	std::string rv;
@@ -44,7 +44,7 @@ namespace Sequence
 	\return The total number of bytes read from the file and the last value returned by gzread;
       */
       template<typename policy>
-      std::pair<int,int> operator()( gzFile gzfile, const policy & p )
+      std::pair<int,int> operator()( gzFile gzfile, const policy & p ) const
       {
 	char ch;
 	int rv = 0;
