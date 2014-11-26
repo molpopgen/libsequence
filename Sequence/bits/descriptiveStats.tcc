@@ -39,7 +39,7 @@ namespace Sequence
   {
     double _result(0);
     double _nsam(end-beg);
-    for( ; beg != end ; beg++)
+    for( ; beg != end ; ++beg)
       {
 	_result += *beg;
       }
@@ -52,7 +52,7 @@ namespace Sequence
     double _mean(0);
     double _xsq(0);
     double _nsam(end-beg);
-    for( ; beg != end ; beg++)
+    for( ; beg != end ; ++beg)
       {
 	_mean += *beg;
 	_xsq += (*beg)*(*beg);

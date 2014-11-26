@@ -97,12 +97,11 @@ namespace Sequence
 		PolyTable::const_site_iterator b=beg,e=end;
 		if (alignment_length>0. && physical_scale > 0.)
 		  {
-		    double currLen=0.,endOfWindow=0.;
 		    unsigned i = 0;
-		    currLen = double(i*step_len);
+		    double currLen = double(i*step_len);
 		    while(currLen < alignment_length)
 		      {
-			endOfWindow = currLen + double(window_size);
+			double endOfWindow = currLen + double(window_size);
 			unsigned off1=Sequence::SEQMAXUNSIGNED,
 			  off2=Sequence::SEQMAXUNSIGNED;
 			size_t j=0;
@@ -141,14 +140,15 @@ namespace Sequence
 	      }
 	    else
 	      {
-		unsigned jump=0,k=0;
+		unsigned jump=0;
 		for (unsigned i=0 ; i<nsites ; i += jump)
 		  {
 		    //A check is necessary here--
 		    //We are trying to guarantee that there are exactly k polymorphisms
 		    //in each window.  However, SNP tables can be constructed/manipulated
 		    //such that each column is not neccessarily polymorphic.
-		    jump=k=0;
+		    jump=0;
+		    unsigned k = 0;
 		    while(jump < step_len && i+k<nsites)
 		      {
 			stateCounter counts = std::for_each( (beg+i+k)->second.begin(),
