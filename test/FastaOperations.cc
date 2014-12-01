@@ -73,6 +73,8 @@ BOOST_AUTO_TEST_CASE( fasta_operations )
   f3.Complement();
 
   BOOST_REQUIRE( f3.second == "CGC" );
+
+  BOOST_REQUIRE( std::string(f3) == "CGC" ); //operator string()
 }
 
 //EOF
