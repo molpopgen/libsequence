@@ -45,10 +45,10 @@ namespace Sequence
 	pos.resize(nsites);
 	gzread(file,&pos[0],nsites*sizeof(double));
 	data = vector<string>(nsam,string(nsites,'0'));
-	for(unsigned i = 0 ; i < nsam ; ++i)
+	for(uint32_t i = 0 ; i < nsam ; ++i)
 	  {
 	    gzread(file,&nsites_i,sizeof(uint32_t));
-	    for( decltype(nsites_i) j = 0 ; j < nsites_i ; ++j )
+	    for( uint32_t j = 0 ; j < nsites_i ; ++j )
 	      {
 		gzread(file,&one,sizeof(uint32_t));
 		data[i][one]='1';
