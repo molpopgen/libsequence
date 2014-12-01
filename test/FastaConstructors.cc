@@ -3,29 +3,32 @@
 
 #include <Sequence/Fasta.hpp>
 #include <string>
-#include <iostream>
 #include <boost/test/unit_test.hpp>
 
+std::string name("seqname"),seq("AGCGTAGACAGTAGAGTGAT");
 
-BOOST_AUTO_TEST_CASE( fasta_constructors )
+BOOST_AUTO_TEST_CASE( empty )
 {
-  std::string name("seqname"),seq("AGCGTAGACAGTAGAGTGAT");
-
-  Sequence::Fasta f; //empty constructor
+  Sequence::Fasta f;
   BOOST_REQUIRE(f.first.empty());
   BOOST_REQUIRE(f.second.empty());
+}
 
-  f = Sequence::Fasta(name,seq);
+BOOST_AUTO_TEST_CASE( string_con )
+{
+  Sequence::Fasta f = Sequence::Fasta(name,seq);
   BOOST_CHECK( f.first == name );
   BOOST_CHECK( f.second == seq );
+}
 
-  f = Sequence::Fasta(name.c_str(),seq.c_str());
+BOOST_AUTO_TEST_CASE( copy_con )
+{
+  Sequence::Fasta f = Sequence::Fasta(name.c_str(),seq.c_str());
   BOOST_CHECK( f.first == name );
   BOOST_CHECK( f.second == seq );
-
+  
   Sequence::Fasta f2(f);
   BOOST_REQUIRE(f == f2);
-
 }
 
 //EOF
