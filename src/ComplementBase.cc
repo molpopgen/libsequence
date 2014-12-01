@@ -139,6 +139,5 @@ namespace Sequence
           break;
         }
     }
-
 }
 
