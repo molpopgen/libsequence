@@ -298,6 +298,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 BOOST_LIBS = -lboost_unit_test_framework
 SEQUENCE = -lsequence
+AM_LDFLAGS = -L../src/.libs
 LDADD = $(BOOST_LIBS) $(SEQUENCE) -lz
 FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaConstructors.cc
