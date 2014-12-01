@@ -103,11 +103,11 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_FastaIO_OBJECTS = FastaConstructors.$(OBJEXT)
+am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
 FastaIO_LDADD = $(LDADD)
 FastaIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
-am_FastaOperations_OBJECTS = FastaConstructors.$(OBJEXT)
+am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
 FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
 FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
@@ -301,8 +301,8 @@ SEQUENCE = -lsequence
 AM_LDFLAGS = -L../src/.libs -static
 LDADD = $(BOOST_LIBS) $(SEQUENCE)
 FastaConstructors_SOURCES = FastaConstructors.cc
-FastaIO_SOURCES = FastaConstructors.cc
-FastaOperations_SOURCES = FastaConstructors.cc
+FastaIO_SOURCES = FastaIO.cc
+FastaOperations_SOURCES = FastaOperations.cc
 all: all-am
 
 .SUFFIXES:
@@ -366,6 +366,8 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

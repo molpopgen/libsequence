@@ -7,8 +7,8 @@ AM_LDFLAGS=-L../src/.libs -static
 LDADD=$(BOOST_LIBS) $(SEQUENCE)
 
 FastaConstructors_SOURCES=FastaConstructors.cc
-FastaIO_SOURCES=FastaConstructors.cc
-FastaOperations_SOURCES=FastaConstructors.cc
+FastaIO_SOURCES=FastaIO.cc
+FastaOperations_SOURCES=FastaOperations.cc
 
 
 
