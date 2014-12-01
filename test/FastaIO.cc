@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE FastaConstructors
+#define BOOST_TEST_MODULE FastaIO
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
