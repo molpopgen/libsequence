@@ -174,7 +174,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::ThetaPi (void)
+  PolySNP::ThetaPi (void) const
   /*!
     Calculated here as the sum of 1.0 - sum of site homozygosity accross sites.\n 
     \f[
@@ -212,10 +212,10 @@ namespace Sequence
 		 rep->_counts[i].nStates() > 1 )
 	      {
 		unsigned samplesize = rep->_totsam;
-		double SSH = 0.0;	//sum of site homozygosity
 		samplesize -= rep->_counts[i].n; //adjust sample size for missing data
 		if (samplesize > 1)
 		  {
+		    double SSH = 0.0;	//sum of site homozygosity
 		    double denom = (double(samplesize)* (double(samplesize) - 1.0));
 		    SSH += (rep->_counts[i].a > 0) ? double(rep->_counts[i].a) * 
 		      double (rep->_counts[i].a-1) /denom : 0. ;
@@ -244,7 +244,7 @@ namespace Sequence
 
 
   double
-  PolySNP::ThetaW (void)
+  PolySNP::ThetaW (void) const
   /*!
     The classic "Watterson's Theta" statistic, generalized to missing data
     and multiple mutations per site:
@@ -290,7 +290,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::ThetaH (void)
+  PolySNP::ThetaH (void) const
   /*!
     Calculate Theta ( = 4Nu) from site homozygosity, a la Fay and Wu (2000).
     This statistic is problematic in general to calculate when there are multiple hits.
@@ -421,7 +421,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::ThetaL (void)
+  PolySNP::ThetaL (void) const
   /*!
     Calculate Theta ( = 4Nu) from site homozygosity, corresponding to equation 1 in 
     Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence 
@@ -545,7 +545,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySNP::NumPoly (void)
+  PolySNP::NumPoly (void) const
   /*!
     \return the number of polymorphic (segregating) sites in data
   */
@@ -562,7 +562,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySNP::NumMutations (void)
+  PolySNP::NumMutations (void) const
   /*!
     \return the total number of mutations in the data. The number of 
     mutations per site = number of states per site - 1
@@ -581,20 +581,20 @@ namespace Sequence
   }
 
   unsigned
-  PolySNP::NumSingletons (void)
+  PolySNP::NumSingletons (void) const
   /*!
     \return number of polymorphisms that appear once in the data, without respect to ancestral/derived
   */
   {
     assert ( rep->_preprocessed );
-    unsigned nsing = 0,nstates;
+    unsigned nsing = 0;
     for (unsigned i = 0;  i < rep->_nsites; ++i)
       {			//iterate over sites
-	unsigned curr_nsing=0,nsam=0;
-	nstates = rep->_counts[i].nStates();
+	unsigned curr_nsing=0;
+	unsigned nstates = rep->_counts[i].nStates();
 	if (rep->_counts[i].gap == 0 && nstates>1)
 	  {
-	    nsam = rep->_totsam - rep->_counts[i].n;
+	    unsigned nsam = rep->_totsam - rep->_counts[i].n;
 	    if(nsam==2 && nstates ==2) //if n = 2 and there are 2 states, there must be 1 singleton
 	      curr_nsing=1;
 	    else
@@ -614,7 +614,7 @@ namespace Sequence
 
 
   unsigned
-  PolySNP::NumExternalMutations (void)
+  PolySNP::NumExternalMutations (void) const
   /*!
     \return the number of derived singletons.
     \note For sequence data, an outgroup is required. Will return SEQMAXUNSIGNED if that is not the case.  
@@ -645,7 +645,7 @@ namespace Sequence
 
 
   double
-  PolySNP::TajimasD (void)
+  PolySNP::TajimasD (void) const
   /*!
     A common summary of the site frequency spectrum.  
     Proportional to \f$\widehat\theta_\pi-\widehat\theta_W\f$.
@@ -666,7 +666,7 @@ namespace Sequence
     return D;
   }
 
-  double PolySNP::Hprime (const bool & likeThorntonAndolfatto)
+  double PolySNP::Hprime (const bool & likeThorntonAndolfatto) const
   /*!
     \return ThetaPi-ThetaH/(~Var(ThetaPi-ThetaH)).  This corresponds to Equation 5 in 
     Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence 
@@ -683,7 +683,6 @@ namespace Sequence
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
     assert(rep->_haveOutgroup==true);
-    double Hpr = 0.0;
     double a = a_sub_n ();
     double b = b_sub_n ();
     double pi = ThetaPi ();
@@ -709,15 +708,14 @@ namespace Sequence
 	/ (2.0 * pow ((rep->_totsam - 1.0), 2.0)))
       * thetasq	 ;
 		  
-    //    Hpr = pi - omega;
-    Hpr = pi - thetal;
+    double Hpr = pi - thetal;
     Hpr /= pow ( (vThetal + vPi - 2.0 * cov), 0.5);
     return (Hpr); 
   }
 
 
   double
-  PolySNP::Dnominator (void)
+  PolySNP::Dnominator (void) const
   /*!
     \warning statistic undefined if there are untyped SNPs
     \return Denominator of Tajima's D, or nan if there are no polymorphic sites
@@ -751,7 +749,7 @@ namespace Sequence
   }
 
   void
-  PolySNP::DepaulisVeuilleStatistics (void)
+  PolySNP::DepaulisVeuilleStatistics (void) const
   /*!
     Calculate the number of haplotypes in the sample, and haplotype diversity.  
     Unlike Depaulis and Veuille's
@@ -825,7 +823,7 @@ namespace Sequence
       }
   }
 
-  double PolySNP::WallsB(void)
+  double PolySNP::WallsB(void) const
   /*!
     \return Wall's B Statistic. Wall, J. (1999) Genetical Research
     74, pp 65-79
@@ -840,7 +838,7 @@ namespace Sequence
     return rep->_walls_B;
   }
 
-  void PolySNP::WallStats(void)
+  void PolySNP::WallStats(void) const
   {
     assert ( rep->_preprocessed );
     unsigned S = 0;
@@ -916,7 +914,7 @@ namespace Sequence
   }
 
 
-  unsigned PolySNP::WallsBprime(void)
+  unsigned PolySNP::WallsBprime(void) const
   /*!
     \return Wall's B' Statistic. Wall, J. (1999) Genetical Research
     74, pp 65-79
@@ -931,7 +929,7 @@ namespace Sequence
     return rep->_walls_Bprime;
   }
 
-  double PolySNP::WallsQ(void)
+  double PolySNP::WallsQ(void) const
   /*!
     \return Wall's Q Statistic. Wall, J. (1999) Genetical Research
     74, pp 65-79
@@ -947,7 +945,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::VarPi (void)
+  PolySNP::VarPi (void) const
   /*!
     Total variance of mean pairwise differences. Tajima in Takahata/Clark book, (13).
     \warning statistic undefined if there are untyped SNPs
@@ -961,7 +959,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::StochasticVarPi (void)
+  PolySNP::StochasticVarPi (void) const
   /*!
     Stochastic variance of mean pairwise differences. Tajima in Takahata/Clark book, (14).
     \warning statistic undefined if there are untyped SNPs
@@ -975,7 +973,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::SamplingVarPi (void)
+  PolySNP::SamplingVarPi (void) const
   /*!
     Component of variance of mean pairwise differences from sampling. 
     Tajima in Takahata/Clark book, (15)
@@ -992,7 +990,7 @@ namespace Sequence
 
 
   double
-  PolySNP::VarThetaW (void)
+  PolySNP::VarThetaW (void) const
   /*!
     \return Variance of Watterson's Theta (ThetaW()).
     \warning statistic undefined if there are untyped SNPs
@@ -1008,7 +1006,7 @@ namespace Sequence
 
   //correct
   double
-  PolySNP::FuLiD (void)
+  PolySNP::FuLiD (void) const
   /*!
     \return The Fu and Li (1993) D statistic, or nan if there are no polymorphic sites.
     \note For sequence data, an outgroup is required.  This requirement is checked by assert()
@@ -1018,7 +1016,6 @@ namespace Sequence
     assert ( rep->_preprocessed );
     //    assert(rep->_haveOutgroup == true);
     if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
-    double D = 0.0;
     double ExternalMutations =
       double (NumExternalMutations ());
     double NumMut = double (NumMutations ());
@@ -1029,7 +1026,7 @@ namespace Sequence
       (pow (a, 2.0) / (b + pow (a, 2.0)) *
        (c - (rep->_totsam + 1.0) / (rep->_totsam - 1.0)));
     double uD = a - 1.0 - vD;
-    D = NumMut - a * double (ExternalMutations);
+    double D = NumMut - a * double (ExternalMutations);
     D /= pow ((uD * NumMut + vD * pow (NumMut, 2.0)), 0.5);
     return (D);
   }
@@ -1037,7 +1034,7 @@ namespace Sequence
 
   //correct
   double
-  PolySNP::FuLiF (void)
+  PolySNP::FuLiF (void) const
   /*!
     \return Fu and Li (1993) F statistic, or nan if there are no polymorphic sites
     \note For sequence data, an outgroup is required, else undefined
@@ -1046,7 +1043,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0 || !rep->_haveOutgroup) return std::numeric_limits<double>::quiet_NaN();
-    double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations());
     double ExternalMutations =
@@ -1066,14 +1062,14 @@ namespace Sequence
     uF /= a;
     uF -= vF;
 
-    F = Pi - ExternalMutations;
+    double F = Pi - ExternalMutations;
     F /= pow (uF * NumMut + vF * pow (NumMut, 2.0), 0.5);
     return (F);
   }
 
   //correct
   double
-  PolySNP::FuLiDStar (void)
+  PolySNP::FuLiDStar (void) const
   /*!
     \warning statistic undefined if there are untyped SNPs
     \return Fu and Li (1993) D*, or nan if there are no polymorphic sites
@@ -1081,7 +1077,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
-    double DStar = 0.0;
     double Singletons =
       double (NumSingletons ());
     double NumMut = double (NumMutations ());
@@ -1100,14 +1095,14 @@ namespace Sequence
       (rep->_totsam / (rep->_totsam - 1.0)) * (a -
 					       (rep->_totsam / (rep->_totsam - 1.0))) - vD;
 
-    DStar = (rep->_totsam / (rep->_totsam - 1.0)) * NumMut - a * double (Singletons);
+    double DStar = (rep->_totsam / (rep->_totsam - 1.0)) * NumMut - a * double (Singletons);
     DStar /= pow (uD * NumMut + vD * pow (NumMut, 2.0), 0.5);
     return (DStar);
   }
 
   //correct
   double
-  PolySNP::FuLiFStar (void)
+  PolySNP::FuLiFStar (void) const
   /*!
     Fu and Li (1993) F* statistic. Incorporates correction from
     Simonsen et al.  (1995) Genetics 141: 413, eqn A5.
@@ -1117,7 +1112,6 @@ namespace Sequence
   {
     assert ( rep->_preprocessed );
     if(rep->_NumPoly==0) return std::numeric_limits<double>::quiet_NaN();
-    double FStar = 0.0;
     double Singletons =
       double (NumSingletons ());
     double Pi = ThetaPi ();
@@ -1142,13 +1136,13 @@ namespace Sequence
     uF /= (3.0 * rep->_totsam * (rep->_totsam - 1.0));
     uF /= a;
     uF -= vF;
-    FStar = Pi - (((rep->_totsam - 1.0) / rep->_totsam)) * double (Singletons);
+    double FStar = Pi - (((rep->_totsam - 1.0) / rep->_totsam)) * double (Singletons);
     FStar /= pow ((uF * NumMut + vF * pow (NumMut, 2.0)), 0.5);
     return (FStar);
   }
 
   double
-  PolySNP::a_sub_n (void)
+  PolySNP::a_sub_n (void) const
   /*!
     \f[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \f]
     This is the denominator of Watterson's Theta (see PolySNP::ThetaW)
@@ -1164,7 +1158,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::a_sub_n_plus1 (void)
+  PolySNP::a_sub_n_plus1 (void) const
   /*!
     \f[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \f]
     \warning statistic undefined if there are untyped SNPs
@@ -1181,7 +1175,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::b_sub_n (void)
+  PolySNP::b_sub_n (void) const
   /*!
     \f[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \f]
     \warning statistic undefined if there are untyped SNPs
@@ -1196,7 +1190,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::b_sub_n_plus1(void)
+  PolySNP::b_sub_n_plus1(void) const
   /*!
     \f[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \f]
     \warning statistic undefined if there are untyped SNPs
@@ -1212,7 +1206,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::c_sub_n (void)
+  PolySNP::c_sub_n (void) const
   /*!
     \f[
     c_n=\left\{\begin{array}{cl}
@@ -1238,7 +1232,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::d_sub_n (void)
+  PolySNP::d_sub_n (void) const
   /*!
     \f[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \f]
     \warning statistic undefined if there are untyped SNPs
@@ -1255,7 +1249,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::DandVH (void)
+  PolySNP::DandVH (void) const
   /*!
     To check if two sequences are unique, Sequence::Comparisons::Different
     is used, which does not
@@ -1272,7 +1266,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySNP::DandVK (void)
+  PolySNP::DandVK (void) const
   /*!
     To check if two sequences are unique, Sequence::Comparisons::Different
     is used, which does not
@@ -1289,7 +1283,7 @@ namespace Sequence
   }
 
   double
-  PolySNP::HudsonsC (void)
+  PolySNP::HudsonsC (void) const
   /*!
     \return Hudson's (1987) estimator of \f$\rho=4Nc\f$, 
     an estimator of the population recombination rate that 
@@ -1305,7 +1299,7 @@ namespace Sequence
 
 
   unsigned
-  PolySNP::Minrec (void)
+  PolySNP::Minrec (void) const
   /*!
     \return The minimum number of recombination events observed
     in the sample (Hudson and Kaplan 1985). Will return SEQMAXUNSIGNED 
@@ -1317,12 +1311,11 @@ namespace Sequence
     if(rep->_NumPoly<2) return SEQMAXUNSIGNED;
     unsigned a,b,e,numgametes,Rmin=0,x=0;
     bool flag=false;
-    
-    char c11,c12,c21,c22;
-    unsigned states1=0,states2=0;
-    
+        
     for (a=x+1 ; a < rep->_nsites ; ++a)
       {
+	char c11,c12;
+	unsigned states1=0;
 	c11 = c12 = 'Z'; //Z is a dummy value
 	//count # states in site a
 	states1 = rep->_counts[a].nStates();
@@ -1345,11 +1338,11 @@ namespace Sequence
 	  {
 	    flag = false;
 	    numgametes = 0;
-	    c21=c22='Z';
-	    states2 = rep->_counts[b].nStates();
+	    unsigned states2 = rep->_counts[b].nStates();
 	    //need to skip sites with > 2 states
 	    if(states1==2&&states2==2)
 	      {
+		char c21='Z',c22='Z';
 		c21 = (c21 == 'Z' && rep->_counts[b].a > 0 ) ? 'A' : 'Z';
 		c21 = (c21 == 'Z' && rep->_counts[b].g > 0 ) ? 'G' : c21;
 		c21 = (c21 == 'Z' && rep->_counts[b].c > 0 ) ? 'C' : c21;
@@ -1420,7 +1413,7 @@ namespace Sequence
 
   std::vector < std::vector < double > >
   PolySNP::Disequilibrium ( const unsigned & mincount,
-			    const double & max_marker_distance)
+			    const double & max_marker_distance) const
   /*!
     \return A vector of statistics related to LD and distance in the sample. An empty vector is returned if there are < 2 polymorphic sites in the sample.
     See the documentation for Recombination::Disequilibrium for a 

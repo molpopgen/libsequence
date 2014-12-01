@@ -70,6 +70,10 @@ Again, a few options:
 1. zlib: http://zlib.net
 2. A C++11-compliant compiler
 
+###Optional dependencies
+
+1. [htslib](http://htslib.org) The configure script will attempt to detect the presence of htslib on your system.  If the library is present, then libsequence will compile with support for features like direct reading from BAM files.  If htslib is not present, those features will not be compiled.
+   
 ###Simplest installation instructions
 
 ```
@@ -95,7 +99,7 @@ If you do not have permission to "sudo make install", you can install the librar
 
 ./configure --prefix=$HOME
 
-Then, when compiling any program using libsequence, gsl, and/or boost, you need to add
+Then, when compiling any program using libsequence, you need to add
 
 > -I$HOME/include
 
@@ -117,7 +121,15 @@ If libsequence is not installed in a standard path, then you must provide the ap
 
 A program that depends on libsequence must provide at least the following libraries to the linker:
 
--lsequence -lz -lgsl -lgslcblas
+```
+-lsequence -lz 
+```
+
+If you are using features depending on htslib, the linking options become
+
+```
+-lsequence -lz -lhts
+```
 
 #Compiling the examples
 
@@ -133,7 +145,7 @@ If you have installed the library elsewhere, such as $HOME, then you need to adj
 LDFLAGS=-L$HOME/lib make
 ```
 
-If you have dependencies like boost, gsl, in locations other than /usr/local (or their moral equivalent on your system, then you will likely need to manually edit CXXFLAGS in the Makefile to add a -I flag to the folder containing header files.  For example, you may change the variable from
+If you have dependencies in locations other than /usr/local (or their equivalent on your system), then you will likely need to manually edit CXXFLAGS in the Makefile to add a -I flag to the folder containing header files.  For example, you may change the variable from
 
 > CXXFLAGS = -O3 -Wall -W -I..
 

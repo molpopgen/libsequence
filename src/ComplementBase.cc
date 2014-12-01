@@ -70,6 +70,7 @@ namespace Sequence
           break;
 	case 'k':
 	  ch = 'm';
+	  break;
         case 'R':
           ch = 'Y';
           break;
@@ -129,6 +130,7 @@ namespace Sequence
           break;
 	case 'n':
 	  ch = 'n';
+	  break;
         case '-':
           ch = '-';
           break;
@@ -137,6 +139,5 @@ namespace Sequence
           break;
         }
     }
-
 }
 

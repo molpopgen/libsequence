@@ -43,7 +43,7 @@ namespace Sequence
     fprintf(fp,"//\n");
     if ( segsites > 0 )
       {
-	fprintf(fp,"segsites: %d\npositions: ",segsites);
+	fprintf(fp,"segsites: %u\npositions: ",segsites);
 	for(unsigned i=0;i<segsites;++i)
 	  {
 	    fprintf(fp,"%f ",gametes.first[i]);

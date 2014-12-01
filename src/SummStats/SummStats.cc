@@ -9,7 +9,7 @@ namespace { //prototypes for non-exported functions
   //Implementation details for nSL statistic
   double __nSLsum(const unsigned & core,
                   const Sequence::SimData & d,
-                  const std::vector<size_t> coretype);
+                  const std::vector<size_t> & coretype);
 }
 namespace Sequence
 {

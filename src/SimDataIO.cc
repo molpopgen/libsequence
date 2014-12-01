@@ -5,6 +5,7 @@
 #include <vector>
 #include <sstream>
 #include <cstdint>
+#include <limits> 
 
 using namespace std;
 
@@ -17,12 +18,16 @@ namespace Sequence
     if ( binary )
       {
 	write_SimData_binary(buffer,d);
-	ttl = gzwrite( file, buffer.str().c_str(), buffer.str().size() );
+	//We cannot write a buffer this big, but it is hard to imagine this situation actually happening...
+	if(buffer.str().size() > numeric_limits<unsigned>::max()) return -1; 
+	ttl = gzwrite( file, buffer.str().c_str(), unsigned(buffer.str().size()) );
       }
     else
       {
 	buffer << d << '\n';
-	ttl = gzwrite(file, buffer.str().c_str(),buffer.str().size());
+	//We cannot write a buffer this big, but it is hard to imagine this situation actually happening...
+	if(buffer.str().size() > numeric_limits<unsigned>::max()) return -1;
+	ttl = gzwrite(file, buffer.str().c_str(),unsigned(buffer.str().size()));
       }
     return ttl;
   }
@@ -40,10 +45,10 @@ namespace Sequence
 	pos.resize(nsites);
 	gzread(file,&pos[0],nsites*sizeof(double));
 	data = vector<string>(nsam,string(nsites,'0'));
-	for(unsigned i = 0 ; i < nsam ; ++i)
+	for(uint32_t i = 0 ; i < nsam ; ++i)
 	  {
 	    gzread(file,&nsites_i,sizeof(uint32_t));
-	    for( decltype(nsites_i) j = 0 ; j < nsites_i ; ++j )
+	    for( uint32_t j = 0 ; j < nsites_i ; ++j )
 	      {
 		gzread(file,&one,sizeof(uint32_t));
 		data[i][one]='1';
@@ -52,7 +57,7 @@ namespace Sequence
       }
     else
       {
-	IOhelp::gzreaduntil(file,'/');
+	IOhelp::gzreaduntil()(file,[](const char & ch){ return ch == '/'; });
 	string temp; //this is our buffer
 	IOhelp::gzread2ws(file,temp);
 	if( temp != "//" ) return SimData(); //Something is amiss with the input!

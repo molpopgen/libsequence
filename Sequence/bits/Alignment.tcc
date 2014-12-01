@@ -75,7 +75,7 @@ namespace Sequence
       \note if \a infilename is NULL, the function returns, having done nothing
     */
     {
-      if(!infilename || infilename == NULL)
+      if(infilename == nullptr)
 	return;
 
       std::ifstream infile(infilename);
@@ -243,15 +243,13 @@ namespace Sequence
      static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
 		    std::is_same<std::pair<std::string,std::string>,T>::value,
 		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
-      bool site_gapped = 0;
       unsigned len = 0;
       if (!IsAlignment(data))
 	return Sequence::SEQMAXUNSIGNED;
 
       for (size_t j = 0; j < data[0].second.length (); ++j)
-
         {
-          site_gapped = 0;
+          bool site_gapped = 0;
           for (size_t i = 0;  i < data.size ();  ++i)
             {
               if (data[i][j] == '-')
@@ -437,7 +435,6 @@ namespace Sequence
 		    std::is_same<std::pair<std::string,std::string>,T>::value,
 		    "T must be pair<std::string,std::string> or publicly inherit from that type" );
       size_t i, j, numseqs = data.size (), numIntervals =  sites.size ();
-      unsigned start, stop;
       std::vector < T >trimmedData(numseqs);
       std::vector < std::string > trimmedTemp(numseqs);
       if (sites.empty ())
@@ -451,8 +448,8 @@ namespace Sequence
 
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = unsigned(sites[i]);
-          stop = unsigned(sites[i + 1]);
+          unsigned start = unsigned(sites[i]);
+          unsigned stop = unsigned(sites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] += data[j].second.substr (start, stop - start + 1);
@@ -490,8 +487,8 @@ namespace Sequence
     */
     {
       std::vector < int >newSites;
-      size_t i, j, start, stop, numseqs = data.size (), numIntervals = sites.size (), lastval;
-
+      size_t i, j, numseqs = data.size (), numIntervals = sites.size (), lastval;
+      
       if (sites.empty ())
         {
           throw SeqException ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
@@ -542,8 +539,8 @@ namespace Sequence
       numIntervals = newSites.size ();
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = size_t(newSites[i]);
-          stop = size_t(newSites[i + 1]);
+          auto start = size_t(newSites[i]);
+          auto stop = size_t(newSites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] +=

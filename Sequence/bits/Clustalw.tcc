@@ -120,11 +120,11 @@ namespace Sequence
   {
     typename ClustalW<T>::const_iterator i=this->begin(),
       j=this->end();
-    unsigned k=0,offset, len = unsigned(i->second.length());
+    unsigned k=0, len = unsigned(i->second.length());
     s << "CLUSTAL W" << "\n\n";
     while (k<len)
       {
-	offset = (k+60 < len) ? k+60 : k+(len-k);
+	unsigned offset = (k+60 < len) ? k+60 : k+(len-k);
 	for(i=this->begin() ; i < j ; ++i)
 	  {
 	    s << i->first

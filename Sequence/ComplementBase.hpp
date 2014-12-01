@@ -50,9 +50,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
   {
-  struct ComplementBase : public std::unary_function<char,void>
-  {
-    void operator()(char &ch) const;
-  };
+    struct ComplementBase : public std::unary_function<char,void>
+    {
+      void operator()(char &ch) const;
+    };
 }
 #endif

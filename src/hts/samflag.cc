@@ -1,8 +1,44 @@
 #include <Sequence/samflag.hpp>
+#include <iostream>
 
 namespace Sequence
 {
-  samflag::operator int()
+
+  samflag::samflag(const std::int32_t & __flag) :
+    flag(__flag),
+    is_paired( (__flag & sambits::is_paired) ),
+    is_proper_pair( (__flag & sambits::is_proper_pair) ),
+    query_unmapped( (__flag & sambits::query_unmapped) ),
+    mate_unmapped( ( __flag & sambits::mate_unmapped) ),
+    qstrand( (__flag & sambits::qstrand) ),
+    mstrand( (__flag & sambits::mstrand) ),
+    first_read( (__flag & sambits::first_read) ),
+    second_read( (__flag & sambits::second_read) ),
+    not_primary( (__flag & sambits::not_primary) ),
+    qcfail( (__flag & sambits::qcfail) ),
+    duplicate( (__flag & sambits::duplicate) ),
+    supp_alignment( (__flag & sambits::suppalign) )
+  {
+  }
+
+  samflag::samflag() :
+    flag(0),
+    is_paired( false ),
+    is_proper_pair( false ),
+    query_unmapped( false ),
+    mate_unmapped( false ),
+    qstrand( false ),
+    mstrand( false ),
+    first_read( false ),
+    second_read( false ),
+    not_primary( false ),
+    qcfail( false ),
+    duplicate( false ) ,
+    supp_alignment( false )
+  {
+  }
+
+  samflag::operator std::int32_t()
   /*!
     typecast to integer
     \return The value of the SAM flag
@@ -11,7 +47,7 @@ namespace Sequence
     return flag;
   }
 
-  samflag::operator int() const
+  samflag::operator std::int32_t() const
   /*!
     typecast to integer
     \return The value of the SAM flag
@@ -31,7 +67,7 @@ namespace Sequence
     return i;
   }
 
-  void samflag::process_bits()
+  void samflag::process_bits() const
   /*!
     Takes the integer value of a flag
     and assigns to the boolean members of this class
@@ -48,6 +84,7 @@ namespace Sequence
     not_primary = (flag & sambits::not_primary);
     qcfail = (flag & sambits::qcfail);
     duplicate = (flag & sambits::duplicate);
+    supp_alignment = (flag & sambits::suppalign);
   }
 
   std::ostream & operator<<(std::ostream & o, const samflag & s)

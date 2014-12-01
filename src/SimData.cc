@@ -30,7 +30,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
   SimData::SimData (const size_t & nsam, const size_t & nsnps):
-    PolyTable(nsam,nsnps),totsam(nsam)
+    PolyTable(nsam,nsnps)
     /*!
       The constructor needs to know the sample size simulated.
       This is easily obtainted using Sequence::SimParams.  An example
@@ -40,11 +40,23 @@ namespace Sequence
   }
 
   SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
-    PolyTable(pos,pos+S,sample,nsam),totsam(nsam)
+    PolyTable(pos,pos+S,sample,nsam)
   {
     //PolyTable::assign(pos,S,sample,nsam);
   }
 
+  SimData::SimData(const std::vector<double> & pos, 
+		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
+								      pos.end(),
+								      data.begin(),
+								      data.end())
+  {
+  }
+
+  SimData::SimData(const SimData::const_site_iterator & beg, 
+		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
+  {
+  }
   std::istream & SimData::read (std::istream & stream) 
 
   /*!
@@ -64,45 +76,24 @@ namespace Sequence
         if (ch == ':')
           break;
       }
-    unsigned ss;
-    stream >> ss;
-    std::vector<double> _positions;
-    std::vector<std::string> _data;
-    if (ss > 0)
+    std::string temp;
+    unsigned S;
+    stream >> S >> std::ws;
+    stream >> temp >> std::ws; 
+    std::vector<double> pos(S);
+    for( unsigned i = 0 ; i < S ; ++i )
       {
-	_positions.resize(ss);
-        while(1)
-          {
-	    stream>>ch;
-            if (ch == ':')
-              break;
-          }
-        for (unsigned i = 0; i < ss; ++i)
-          {
-	    stream >> _positions[i];
-          }
-	std::string temp;
-	while(1)
-	  {
-	    if (! (stream >> temp))
-	      break;
-	    else if (temp == "//")
-	      {
-		break;
-	      }
-	    else
-	      {
-		_data.push_back(temp);
-	      }
-	  }
+	stream >> pos[i] >> std::ws;
       }
-    else if (ss == 0)
-      {
-        _positions.resize(0);
-	_data.resize(0);
-      }
-    //assign data into base class
-    PolyTable::assign(&_positions[0],ss,&_data[0],_data.size());
+    //Read in the haplotypes until the next // and the stream is still ok
+    std::vector<std::string> haps;
+    while( stream.peek() != '/' && !stream.eof() && !stream.fail() ) {
+      stream >> std::ws;
+      getline(stream,temp);
+      stream >> std::ws;
+      haps.emplace_back(temp);
+    } 
+    this->assign(&pos[0],S,&haps[0],haps.size());
     return stream;
   }
 

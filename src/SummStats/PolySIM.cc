@@ -53,7 +53,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaPi (void)
+  PolySIM::ThetaPi (void) const
   /*!
     For simulated data, assuming 0 is ancenstral, 1 derived.\n
     A simpler version of PolySNP::ThetaPi
@@ -74,7 +74,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaW (void)
+  PolySIM::ThetaW (void) const
   /*!
     For coalescent simulation data, the number of segregating 
     sites equals the number of mutations
@@ -86,7 +86,7 @@ namespace Sequence
 
 
   double
-  PolySIM::ThetaH (void)
+  PolySIM::ThetaH (void) const
   /*!
     For simulated data, where 0 is ancenstral, 1 derived.\n
     A simpler version of PolySIM::ThetaH (const Sequence::PolyTable * data,
@@ -104,7 +104,7 @@ namespace Sequence
   }
 
   double
-  PolySIM::ThetaL (void)
+  PolySIM::ThetaL (void) const
   /*!
     For simulated data, where 0 is ancenstral, 1 derived.\n
     A simpler version of PolySIM::ThetaL()
@@ -116,7 +116,7 @@ namespace Sequence
     unsigned site;
     unsigned seq;
     int num_changes;
-    double thetal = 0.0, nc, nsam = double(rep->_nsam);
+    double thetal = 0.0, nsam = double(rep->_nsam);
     
     for (site = 0; site < rep->_data->numsites (); ++site)
       {
@@ -124,14 +124,14 @@ namespace Sequence
 	  {
 	    num_changes += (*rep->_data)[seq][site] == state ? 1 : 0;
 	  }
-	nc = double (num_changes);
+	double nc = double (num_changes);
 	thetal +=  nc / (nsam - 1.0);
       }
     return thetal;
   }
 
   double
-  PolySIM::TajimasD (void)
+  PolySIM::TajimasD (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
@@ -140,14 +140,13 @@ namespace Sequence
   }
 
   double
-  PolySIM::Hprime (const bool & likeThorntonAndolfatto)
+  PolySIM::Hprime (const bool & likeThorntonAndolfatto) const
   /*!
     Redefinition of PolySNP::Hprime
     @author Joshua Shapiro
   */
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double Hpr = 0.0;
     double pi = ThetaPi ();
     double theta = ThetaW();
     double thetal = ThetaL();
@@ -172,14 +171,14 @@ namespace Sequence
 	  rep->_nsam *( rep->_nsam + 1.0) * b_n_plus1)
       * thetasq / (2.0 * pow ((rep->_nsam - 1.0), 2.0));
 		  
-    Hpr = pi - thetal;
+    double Hpr = pi - thetal;
     Hpr /= pow ( (vThetal + vPi - 2.0 * cov), 0.5);
     return (Hpr); 
 		  
   }
 
   double
-  PolySIM::Dnominator (void)
+  PolySIM::Dnominator (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
     double S = rep->_NumPoly;
@@ -200,7 +199,7 @@ namespace Sequence
 
 
   int
-  PolySIM::HudsonsHaplotypeTest (const int & subsize, const int & subss)
+  PolySIM::HudsonsHaplotypeTest (const int & subsize, const int & subss) const
   /*!
     From Hudson et al (1994) on polymorphism at sod. For simulated data only.
     The function returns a 1 if the number of polymorphisms in a randomly generated subsample
@@ -211,7 +210,7 @@ namespace Sequence
     @author Kevin Thornton
   */
   {
-    int *subslist, i, npoly, seq;
+    int *subslist, i, seq;
     bool sflag, flag;
     flag = 0;
     sflag = 1;
@@ -223,7 +222,7 @@ namespace Sequence
 
     while (sflag)
       {
-        npoly = poly (subslist, int(rep->_nsites),
+        int npoly = poly (subslist, int(rep->_nsites),
                       subsize, subss, &seq);
         if (npoly > subss)
           sflag = nextsample (subslist, subsize, int(rep->_nsam), seq);
@@ -247,7 +246,7 @@ namespace Sequence
 
   int
   PolySIM::poly (int *subslist, const int & ss,
-                 const int & subsize, const int & subss, int * seq)
+                 const int & subsize, const int & subss, int * seq) const
   /*!
     Count the number of polymorphisms in a sample of size subsize.
     Part of the Hudson Haplotype Test. Called by 
@@ -280,7 +279,7 @@ namespace Sequence
   }
 
   int
-  PolySIM::nextsample (int *subslist, const int & subsize, const int &  nsam, int seq)
+  PolySIM::nextsample (int *subslist, const int & subsize, const int &  nsam, int seq) const
   /*!
     Get the next subsample for the HHT.
     Part of the Hudson Haplotype Test.
@@ -307,10 +306,9 @@ namespace Sequence
   }
 
   double
-  PolySIM::FuLiD (void)
+  PolySIM::FuLiD (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double D = 0.0;
     double ExternalMutations = double (NumExternalMutations ());
     double NumMut = double (NumMutations ());
     double a = a_sub_n ();
@@ -321,16 +319,15 @@ namespace Sequence
       (pow (a, 2.0) / (b + pow (a, 2.0)) *
        (c - (rep->_nsam + 1.0) / (rep->_nsam - 1.0)));
     double uD = a - 1.0 - vD;
-    D = NumMut - a * double (ExternalMutations);
+    double D = NumMut - a * double (ExternalMutations);
     D /= pow ((uD * NumMut + vD * pow (NumMut, 2.0)), 0.5);
     return (D);
   }
 
   double
-  PolySIM::FuLiF (void)
+  PolySIM::FuLiF (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double F = 0.0;
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations ());
     double ExternalMutations = double (NumExternalMutations ());
@@ -349,16 +346,15 @@ namespace Sequence
     uF /= a;
     uF -= vF;
 
-    F = Pi - ExternalMutations;
+    double F = Pi - ExternalMutations;
     F /= pow (uF * NumMut + vF * pow (NumMut, 2.0), 0.5);
     return (F);
   }
 
   double
-  PolySIM::FuLiDStar (void)
+  PolySIM::FuLiDStar (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double DStar = 0.0;
     double Singletons = double (NumSingletons ());
     double NumMut = double (NumMutations ());
 
@@ -376,16 +372,15 @@ namespace Sequence
       (rep->_nsam / (rep->_nsam - 1.0)) * (a -
                                            (rep->_nsam / (rep->_nsam - 1.0))) - vD;
 
-    DStar = (rep->_nsam / (rep->_nsam - 1.0)) * NumMut - a * double (Singletons);
+    double DStar = (rep->_nsam / (rep->_nsam - 1.0)) * NumMut - a * double (Singletons);
     DStar /= pow (uD * NumMut + vD * pow (NumMut, 2.0), 0.5);
     return (DStar);
   }
 
   double
-  PolySIM::FuLiFStar (void)
+  PolySIM::FuLiFStar (void) const
   {
     if(rep->_NumPoly ==0) return std::numeric_limits<double>::quiet_NaN();
-    double FStar = 0.0;
     double Singletons = double (NumSingletons ());
     double Pi = ThetaPi ();
     double NumMut = double (NumMutations ());
@@ -404,13 +399,13 @@ namespace Sequence
     uF /= (3.0 * rep->_nsam * (rep->_nsam - 1.0));
     uF /= a;
     uF -= vF;
-    FStar = Pi - (((rep->_nsam - 1.0) / rep->_nsam)) * double (Singletons);
+    double FStar = Pi - (((rep->_nsam - 1.0) / rep->_nsam)) * double (Singletons);
     FStar /= pow ((uF * NumMut + vF * pow (NumMut, 2.0)), 0.5);
     return (FStar);
   }
 
   unsigned
-  PolySIM::NumMutations (void)
+  PolySIM::NumMutations (void) const
   /*!
     \return number of mutations in the sample
   */
@@ -421,7 +416,7 @@ namespace Sequence
   //count the number of singletons
   //only works for infinite sites
   unsigned
-  PolySIM::NumSingletons (void)
+  PolySIM::NumSingletons (void) const
   /*!
     A version optimized for simulated data where
     character states take on the values 0 or 1.
@@ -449,7 +444,7 @@ namespace Sequence
 
 
   unsigned
-  PolySIM::NumExternalMutations (void)
+  PolySIM::NumExternalMutations (void) const
   /*!
     similar to num singletons, but it assumes strict
     ancestral vs. derived in the data->
@@ -473,7 +468,7 @@ namespace Sequence
   }
 
   unsigned
-  PolySIM::Minrec (void)
+  PolySIM::Minrec (void) const
   /*!
     \return the minimum number of recombination events observed
     in the sample (Hudson and Kaplan 1985). Will return SEQMAXUNSIGNED 
@@ -540,17 +535,16 @@ namespace Sequence
     return Rmin;
   }
 
-  void PolySIM::WallStats(void)
+  void PolySIM::WallStats(void) const
   {
-    unsigned n00 ,n01 ,n10, n11;
-    unsigned nhap_curr, nhap_left;
-    unsigned n0site1,n0site2;
-    nhap_left = SEQMAXUNSIGNED;
-
-    unsigned A = 0;//number of partitions with D' = 1 (see Wall 1999)
     unsigned S = rep->_NumPoly;
     if (S > 1)
       {
+	unsigned n00 ,n01 ,n10, n11;
+	unsigned nhap_curr, nhap_left;
+	unsigned n0site1,n0site2;
+	nhap_left = SEQMAXUNSIGNED;
+	unsigned A = 0;//number of partitions with D' = 1 (see Wall 1999)
 	for (unsigned site1 = 0 ; site1 < rep->_nsites-1 ; ++site1)
 	  //iterate over sites (actually, adjacent pairs of sites)
 	  {
@@ -630,19 +624,19 @@ namespace Sequence
     rep->_calculated_wall_stats=true;
   }
 
-  double PolySIM::WallsB(void)
+  double PolySIM::WallsB(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();
     return rep->_walls_B;
   }
-  unsigned PolySIM::WallsBprime(void)
+  unsigned PolySIM::WallsBprime(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();
     return rep->_walls_Bprime;
   }
-  double PolySIM::WallsQ(void)
+  double PolySIM::WallsQ(void) const
   {
     if (rep->_calculated_wall_stats == false)
       WallStats();

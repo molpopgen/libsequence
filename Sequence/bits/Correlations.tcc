@@ -132,12 +132,11 @@ namespace Sequence
   rtype xy=rtype();
   typename std::vector<t1>::const_iterator a;
   typename std::vector<t2>::const_iterator b;
-  rtype ra,rb;
   for( ; beg_x != end_x ; ++beg_x,++beg_y )
     {
       //find where each element is in the ranks vector
-      ra = mx[*beg_x];
-      rb = my[*beg_y];
+      rtype ra = mx[*beg_x];
+      rtype rb = my[*beg_y];
       x_bar += ra;
       x_squared += ra*ra;
       y_bar += rb;

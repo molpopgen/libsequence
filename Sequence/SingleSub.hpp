@@ -49,8 +49,7 @@ namespace Sequence
       void Calculate (const RedundancyCom95 * sitesObj, const std::string & cod1,
                       const std::string & cod2);
     public:
-      explicit SingleSub(void)
-      {}
+      explicit SingleSub(void);
       void operator()(const RedundancyCom95 * sitesObj,
                       const std::string &cod1,
                       const std::string &cod2);

@@ -104,14 +104,13 @@ namespace Sequence
       specialization for std::string
     */
     {
-      bool site_gapped = 0;
       unsigned len = 0;
       if (!IsAlignment(data))
 	return Sequence::SEQMAXUNSIGNED;
 
       for (std::string::size_type j = 0; j < data[0].length (); ++j)
         {
-          site_gapped = 0;
+          bool site_gapped = 0;
           for (std::vector<std::string>::size_type i = 0;  i < data.size ();  ++i)
             {
               if (data[i][j] == '-')
@@ -286,8 +285,8 @@ namespace Sequence
     */
     {
       std::vector < int >newSites;
-      size_t i, j, start, stop, numseqs = data.size (), numIntervals = sites.size (), lastval;
-
+      size_t i, j, numseqs = data.size (), numIntervals = sites.size (), lastval;
+      
       if (sites.empty ())
         {
           throw SeqException ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
@@ -338,8 +337,8 @@ namespace Sequence
       numIntervals = newSites.size ();
       for (i = 0; i < numIntervals; i += 2)
         {
-          start = size_t(newSites[i]);
-          stop = size_t(newSites[i + 1]);
+          size_t start = size_t(newSites[i]);
+          size_t stop = size_t(newSites[i + 1]);
           for (j = 0; j < numseqs; ++j)
             {
               trimmedTemp[j] +=

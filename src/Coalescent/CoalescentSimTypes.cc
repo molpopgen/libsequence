@@ -61,8 +61,8 @@ namespace Sequence
 
   chromosome::chromosome( const std::vector<segment> & initial_segs,
 			  const int & population ) : 
-    segs((segment *)malloc(initial_segs.size()*
-			   sizeof(segment))), 
+    //segs((segment *)(malloc(initial_segs.size()*sizeof(segment)))), 
+    segs( static_cast<segment*>(malloc(initial_segs.size()*sizeof(segment)))), 
     pop(population),
     nsegs(unsigned(initial_segs.size()))
 			/*!
@@ -84,7 +84,8 @@ namespace Sequence
   }
 
   chromosome::chromosome( const chromosome & ch ) :
-    segs((segment *)malloc(ch.nsegs*sizeof(segment))),
+    //segs((segment *)malloc(ch.nsegs*sizeof(segment))),
+    segs(static_cast<segment *>(malloc(ch.nsegs*sizeof(segment)))),
     pop(ch.pop),
     nsegs(ch.nsegs)
 			/*!
@@ -102,7 +103,8 @@ namespace Sequence
     if(this == &ch) return *this;
     if(ch.nsegs>this->nsegs)
       {
-	this->segs = (segment *)realloc(this->segs,ch.nsegs*sizeof(segment));
+	//this->segs = (segment *)realloc(this->segs,ch.nsegs*sizeof(segment));
+	this->segs = static_cast<segment *>(realloc(this->segs,ch.nsegs*sizeof(segment)));
       }
     std::copy(ch.segs,ch.segs+ch.nsegs,segs);
     this->nsegs = ch.nsegs;
@@ -360,8 +362,6 @@ namespace Sequence
     Outputs the marginal tree in Newick format
   */
   {
-    double time;
-
     if( left[std::vector<int>::size_type(noden)] == -1 ) 
       {
 	assert( (mi+((mi+noden)->abv))->time >= 0. );
@@ -379,7 +379,7 @@ namespace Sequence
 	  }
 	else 
 	  {
-	    time = (mi + (mi+noden)->abv )->time - (mi+noden)->time ;
+	    double time = (mi + (mi+noden)->abv )->time - (mi+noden)->time ;
 	    assert(time >= 0.);
 	    o << "):"<<time;
 	  }
@@ -428,7 +428,6 @@ namespace Sequence
 
   newick_stream_marginal_tree::~newick_stream_marginal_tree( )
   {
-    delete impl;
   }
 
   std::vector<node> newick_stream_marginal_tree::get_tree() const

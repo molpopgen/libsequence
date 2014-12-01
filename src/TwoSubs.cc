@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -30,10 +30,18 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/TwoSubs.hpp>
 
 namespace Sequence
+{
+  TwoSubs:: TwoSubs(void) : p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.),q4(0.),
+			    p0_b1(0.), p2S_b1(0.), p2V_b1(0.), p4_b1(0.), q0_b1(0.), q2S_b1(0.), q2V_b1(0.), q4_b1(0.),
+			    p0_b2(0.), p2S_b2(0.), p2V_b2(0.), p4_b2(0.), q0_b2(0.), q2S_b2(0.), q2V_b2(0.), q4_b2(0.),
+			    p0_b3(0.), p2S_b3(0.), p2V_b3(0.), p4_b3(0.), q0_b3(0.), q2S_b3(0.), q2V_b3(0.), q4_b3(0.),
+			    p0_b4(0.), p2S_b4(0.), p2V_b4(0.), p4_b4(0.), q0_b4(0.), q2S_b4(0.), q2V_b4(0.), q4_b4(0.)
   {
+  }
+
   void TwoSubs::operator() (const RedundancyCom95 * sitesObj,
-                            const std::string & codon1, const std::string & codon2,
-                            const Sequence::WeightingScheme2 *weights2)
+			    const std::string & codon1, const std::string & codon2,
+			    const Sequence::WeightingScheme2 *weights2)
   /*!
     \param sitesObj an initialized object of type Sequence::RedundancyCom95
     \param code genetic code, see Sequence::GeneticCodes for valid values
@@ -114,21 +122,21 @@ namespace Sequence
 
 
     p0  = (p0_b1  + p0_b2)  * w_path1
-          + (p0_b3  + p0_b4) * w_path2;
+      + (p0_b3  + p0_b4) * w_path2;
     p2S = (p2S_b1 + p2S_b2) * w_path1
-          + (p2S_b3 + p2S_b4) * w_path2;
+      + (p2S_b3 + p2S_b4) * w_path2;
     p2V = (p2V_b1 + p2V_b2) * w_path1
-          + (p2V_b3 + p2V_b4) * w_path2;
+      + (p2V_b3 + p2V_b4) * w_path2;
     p4  = (p4_b1  + p4_b2)  * w_path1
-          + (p4_b3  + p4_b4) * w_path2;
+      + (p4_b3  + p4_b4) * w_path2;
     q0  = (q0_b1  + q0_b2)  * w_path1
-          + (q0_b3  + q0_b4) * w_path2;
+      + (q0_b3  + q0_b4) * w_path2;
     q2S = (q2S_b1 + q2S_b2) * w_path1
-          + (q2S_b3 + q2S_b4) * w_path2;
+      + (q2S_b3 + q2S_b4) * w_path2;
     q2V = (q2V_b1 + q2V_b2) * w_path1
-          + (q2V_b3 + q2V_b4) * w_path2;
+      + (q2V_b3 + q2V_b4) * w_path2;
     q4  = (q4_b1  + q4_b2)  * w_path1
-          + (q4_b3  + q4_b4) * w_path2;
+      + (q4_b3  + q4_b4) * w_path2;
   }
 
 
@@ -154,8 +162,8 @@ namespace Sequence
   double
   TwoSubs::P2V (void) const
   /*!
-     \return number of transitions at transversional-degenerate sites in the codon
-   */
+    \return number of transitions at transversional-degenerate sites in the codon
+  */
   {
     return p2V;
   }

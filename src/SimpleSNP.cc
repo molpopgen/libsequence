@@ -126,7 +126,7 @@ namespace Sequence
         //_names[i-(haveOG+haveOGlabel)] = name;
 	_names[i-haveOG+1] = name;
         char *temp = new char[nsites+1];
-        char *temp2 = NULL;
+        char *temp2 = nullptr;
         if (Diploid)
           {
             //_names[i-(haveOG+haveOGlabel)+1] = name;
@@ -136,7 +136,11 @@ namespace Sequence
         for (j = 0; j < nsites; ++j)
           {
             if(!(s >> ch))
-              throw badFormat("SimpleSNP.cc: error processing sequenes");
+	      {
+		delete [] temp;
+		if(temp2 != nullptr) delete [] temp2;
+		throw badFormat("SimpleSNP.cc: error processing sequenes");
+	      }
             ch = char(toupper(ch));
             if (Diploid)
               {

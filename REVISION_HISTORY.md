@@ -21,6 +21,11 @@ If you see a section below referring to libseqeunce version X, and no version X 
 11. The build system has been rebuilt around automake-1.14
 12. SimDataIO.hpp/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.
 13. A new namespace, Sequence::IOhelp, is declared in Sequence/IOhelp.hpp.  It contains some functions to reduce the tedium of some IO conversions.
+14. A new, faster implementation of Sequence::SimData::read
+15. The configure script how checks for the existence of [htslib](http://www.htslib.org)
+16. Sequence/bamreader.hpp and Sequence/bamrecord.hpp added for direct reading from bam files.  Will only compile if [htslib](http://htslib.org) is detected by the configure script
+17. I've performed extensive code auditing using cppcheck.  Many issues were resolved.  Most were stylistic, but they do make the code more idiomatic.
+18. A unit test suite is starting to take shape in the test/ subdirectory.  These test programs depend on the [boost](http://www.boost.org) "test" library.  Future tests could add future dependencies.
 
 ###ISSUES:
 

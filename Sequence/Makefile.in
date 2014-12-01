@@ -387,7 +387,9 @@ pkginclude_HEADERS = AlignStream.hpp\
 	Ptable.hpp \
 	PolyData.hpp \
 	SummStats.hpp \
-	IOhelp.hpp
+	IOhelp.hpp \
+	bamrecord.hpp \
+	bamreader.hpp 
 
 all: all-recursive
 

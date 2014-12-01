@@ -1,9 +1,9 @@
 #ifndef __LIBSEQ_SAMFLAG_HPP__
 #define __LIBSEQ_SAMFLAG_HPP__
 
-#include <iostream>
+#include <iosfwd>
 #include <cstdio>
-
+#include <cstdint>
 namespace Sequence
 {
   /*!
@@ -26,6 +26,7 @@ namespace Sequence
     static const int not_primary = 0x0100;
     static const int qcfail = 0x0200;
     static const int duplicate = 0x0400;
+    static const int suppalign = 0x0800;  //Supplementary alignment
   }
 
   /*!
@@ -41,46 +42,19 @@ namespace Sequence
   class samflag
   {
   private:
-    void process_bits();
+    void process_bits() const;
   public:
     /*!
       The flag value
     */
-    mutable int flag;
+    mutable std::int32_t flag;
     mutable bool is_paired,is_proper_pair,query_unmapped,
       mate_unmapped,qstrand,mstrand,first_read,
-      second_read,not_primary,qcfail,duplicate;
-    samflag(const int & __flag) : flag(__flag),
-				  is_paired( (__flag & sambits::is_paired) ),
-				  is_proper_pair( (__flag & sambits::is_proper_pair) ),
-				  query_unmapped( (__flag & sambits::query_unmapped) ),
-				  mate_unmapped( ( __flag & sambits::mate_unmapped) ),
-				  qstrand( (__flag & sambits::qstrand) ),
-				  mstrand( (__flag & sambits::mstrand) ),
-				  first_read( (__flag & sambits::first_read) ),
-				  second_read( (__flag & sambits::second_read) ),
-				  not_primary( (__flag & sambits::not_primary) ),
-				  qcfail( (__flag & sambits::qcfail) ),
-				  duplicate( (__flag & sambits::duplicate) )
-    {
-    }
-    samflag() :
-      flag(0),
-      is_paired( false ),
-      is_proper_pair( false ),
-      query_unmapped( false ),
-      mate_unmapped( false ),
-      qstrand( false ),
-      mstrand( false ),
-      first_read( false ),
-      second_read( false ),
-      not_primary( false ),
-      qcfail( false ),
-      duplicate( false ) 
-    {
-    }
-    operator int();
-    operator int() const;
+      second_read,not_primary,qcfail,duplicate,supp_alignment;
+    samflag(const std::int32_t & __flag);
+    samflag();
+    operator std::int32_t();
+    operator std::int32_t() const;
     std::istream & read( std::istream & i);
   };
 

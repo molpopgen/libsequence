@@ -5,7 +5,8 @@
 #include <list>
 #include <iosfwd>
 #include <cassert>
-//#include <memory>
+#include <memory>
+
 /*! \file SimTypes.hpp
   @brief declaration of types for coalescent simulation
  */
@@ -219,7 +220,8 @@ namespace Sequence
   class newick_stream_marginal_tree
   {
   private:
-    newick_stream_marginal_tree_impl * impl;
+    //newick_stream_marginal_tree_impl * impl;
+    std::unique_ptr<newick_stream_marginal_tree_impl> impl;
     /*
     marginal::const_iterator mi;
     const int nsam;

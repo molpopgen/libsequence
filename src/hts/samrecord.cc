@@ -98,11 +98,13 @@ namespace Sequence
     void parse_cigar();
     void parse_tags();
 
-    samrecord_private()
+    samrecord_private() : cigar_data(vector<pair<char,unsigned> >()),
+			  samtags( vector<samtag>() ),
+			  endptr(nullptr)
     {
     }
 
-    samrecord_private(const std::string & s) : record(s)
+    samrecord_private(const std::string & s) : record(s), endptr(nullptr)
     {
       parse_record();
     }

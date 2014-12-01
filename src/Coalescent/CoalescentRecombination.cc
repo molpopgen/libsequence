@@ -34,7 +34,7 @@ namespace
 	 ++i )
       {
 	Sequence::arg::const_iterator j=i;
-	j++;
+	++j;
 	if( j != sample_history->end() )
 	  {
 	    if(i->beg > j->beg)
@@ -67,11 +67,11 @@ namespace Sequence
   */
   {
     int pos = int(random_01*double(nlinks))+1;
-    int recombinant = 0,len=0;
+    int recombinant = 0;
     while( (sample_begin+recombinant) <
 	   (sample_begin+current_nsam) )
       {
-	len = (sample_begin+recombinant)->links();
+	int len = (sample_begin+recombinant)->links();
 	if(pos <= len)break;
 	pos -= len;
 	recombinant++;
@@ -152,9 +152,9 @@ namespace Sequence
 	//find place in arg that is affected
 	arg::iterator argbeg = sample_history->begin();
 	arg::iterator titr=argbeg;
-	titr++;
+	++titr;
 	for( ; titr != sample_history->end()
-	       && beg_new_marg > titr->beg-1 ; argbeg++,titr++ ){};
+	       && beg_new_marg > titr->beg-1 ; ++argbeg,++titr ){};
 	assert(argbeg!=sample_history->end());
 	if(argbeg->beg != beg_new_marg)
 	  {

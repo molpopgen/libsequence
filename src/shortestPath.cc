@@ -94,10 +94,6 @@ namespace Sequence
 	  {
 	    std::string intermediates[2];
 	    Sequence::Intermediates2(intermediates,codon1,codon2);
-	    std::string t_int1 = Sequence::Translate(intermediates[0].begin(),
-						     intermediates[0].end());
-	    std::string t_int2 = Sequence::Translate(intermediates[1].begin(),
-						     intermediates[1].end());
 
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::AMBIG));
@@ -355,6 +351,7 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
+    std::pair<unsigned,unsigned> rv;
     try
       {
 	shortestPath sp(codon1,codon2,code);
@@ -363,57 +360,57 @@ namespace Sequence
 	  {
 	  case shortestPath::S :
 	    {
-	      return std::make_pair(1,0);
+	      rv = std::make_pair(1,0);
 	      break;
 	    }
 	  case shortestPath::N :
 	    {
-	      return std::make_pair(0,1);
+	      rv = std::make_pair(0,1);
 	      break;
 	    }
 	  case shortestPath::SS :
 	    {
-	      return std::make_pair(2,0);
+	      rv = std::make_pair(2,0);
 	      break;
 	    }
 	  case shortestPath::SN :
 	    {
-	      return std::make_pair(1,1);
+	      rv = std::make_pair(1,1);
 	      break;
 	    }
 	  case shortestPath::NN :
 	    {
-	      return std::make_pair(0,2);
+	      rv = std::make_pair(0,2);
 	      break;
 	    }
 	  case shortestPath::SSS :
 	    {
-	      return std::make_pair(3,0);
+	      rv =  std::make_pair(3,0);
 	      break;
 	    }
 	  case shortestPath::SSN :
 	    {
-	      return std::make_pair(2,1);
+	      rv = std::make_pair(2,1);
 	      break;
 	    }
 	  case shortestPath::SNN :
 	    {
-	      return std::make_pair(1,2);
+	      rv = std::make_pair(1,2);
 	      break;
 	    }
 	  case shortestPath::NNN :
 	    {
-	      return std::make_pair(0,3);
+	      rv = std::make_pair(0,3);
 	      break;
 	    }
 	  case shortestPath::NONE :
 	    {
-	      return std::make_pair(0,0);
+	      rv = std::make_pair(0,0);
 	      break;
 	    }
 	  case shortestPath::AMBIG :
 	    {
-	      return std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
+	      rv = std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
 	      break;
 	    }
 	  }
@@ -423,6 +420,7 @@ namespace Sequence
       {
 	throw;
       }
+    return rv;
   }
 
   std::pair<unsigned,shortestPath::pathType> diffType(const std::string &codon1,
@@ -496,10 +494,10 @@ namespace Sequence
     all sites can be assigned as N or S.  For such applications, use Sequence::shortestPath.
    */
   {
-    shortestPath::pathType p[3]; //one for each codon position
-    std::string t1(codon1),t2(codon2);
     try
       {
+	shortestPath::pathType p[3]; //one for each codon position
+	std::string t1(codon1),t2(codon2);
 	for(unsigned i = 0; i < 3 ; ++i)
 	  {
 	    //make codons that only differ at one position each

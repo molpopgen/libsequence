@@ -59,7 +59,6 @@ namespace Sequence
       BwdIter i,j,crit;
       crit=end;
       double new_alpha=0.;
-      double temp=0.;
     
       i=beg;
       j=end;
@@ -90,7 +89,7 @@ namespace Sequence
 	      --j;
 	    }
 
-	  temp=(double)prob/(double)n;
+	  double temp=(double)prob/(double)n;
 
 	  if(1.-temp>=alpha+std::numeric_limits<double>::epsilon())
 	    {
@@ -128,7 +127,6 @@ namespace Sequence
       crit=end;
 
       double new_alpha=0.;
-      double temp=0.;
     
       i=beg;
       j=end;
@@ -160,7 +158,7 @@ namespace Sequence
 	      ++j;
 	    }
 
-	  temp=(double)prob/(double)n;
+	  double temp=(double)prob/(double)n;
 
 	  if(temp<=alpha-std::numeric_limits<double>::epsilon())
 	    {

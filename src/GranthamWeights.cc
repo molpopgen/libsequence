@@ -129,11 +129,10 @@ namespace Sequence
       Intermediates3(intermediates,codon1,codon2);
       double len_path_1 = 0.0, len_path_2 = 0.0, len_path_3 =
                                               0., len_path_4 = 0., len_path_5 = 0., len_path_6 = 0.;
-      double dist = 0.;
 
       string t1 = Translate (codon1.begin(), codon1.end(),code);
       string t2 = Translate (intermediates[0].begin(), intermediates[0].end(),code);
-      dist = gdist ((t1)[0],(t2)[0]);
+      double dist = gdist ((t1)[0],(t2)[0]);
       len_path_1 += dist;
 
 

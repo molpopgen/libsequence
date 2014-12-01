@@ -13,7 +13,6 @@
 # PARTICULAR PURPOSE.
 
 @SET_MAKE@
-
 VPATH = @srcdir@
 am__is_gnu_make = test -n '$(MAKEFILE_LIST)' && test -n '$(MAKELEVEL)'
 am__make_running_with_option = \
@@ -78,15 +77,11 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
-@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
-@DEBUG_TRUE@am__append_3 = -g
-#CXXOTHERFLAGS = -g
-#COTHERFLAGS = -g
-@DEBUG_FALSE@am__append_4 = -DNDEBUG
-subdir = src
+check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
+	FastaOperations$(EXEEXT)
+subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
-	$(top_srcdir)/depcomp ChangeLog
+	$(top_srcdir)/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
 	$(top_srcdir)/m4/libtool.m4 $(top_srcdir)/m4/ltoptions.m4 \
@@ -98,63 +93,25 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config-h.in
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;
-am__vpath_adj = case $$p in \
-    $(srcdir)/*) f=`echo "$$p" | sed "s|^$$srcdirstrip/||"`;; \
-    *) f=$$p;; \
-  esac;
-am__strip_dir = f=`echo $$p | sed -e 's|^.*/||'`;
-am__install_max = 40
-am__nobase_strip_setup = \
-  srcdirstrip=`echo "$(srcdir)" | sed 's/[].[^$$\\*|]/\\\\&/g'`
-am__nobase_strip = \
-  for p in $$list; do echo "$$p"; done | sed -e "s|$$srcdirstrip/||"
-am__nobase_list = $(am__nobase_strip_setup); \
-  for p in $$list; do echo "$$p $$p"; done | \
-  sed "s| $$srcdirstrip/| |;"' / .*\//!s/ .*/ ./; s,\( .*\)/[^/]*$$,\1,' | \
-  $(AWK) 'BEGIN { files["."] = "" } { files[$$2] = files[$$2] " " $$1; \
-    if (++n[$$2] == $(am__install_max)) \
-      { print $$2, files[$$2]; n[$$2] = 0; files[$$2] = "" } } \
-    END { for (dir in files) print dir, files[dir] }'
-am__base_list = \
-  sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\n/ /g' | \
-  sed '$$!N;$$!N;$$!N;$$!N;s/\n/ /g'
-am__uninstall_files_from_dir = { \
-  test -z "$$files" \
-    || { test ! -d "$$dir" && test ! -f "$$dir" && test ! -r "$$dir"; } \
-    || { echo " ( cd '$$dir' && rm -f" $$files ")"; \
-         $(am__cd) "$$dir" && rm -f $$files; }; \
-  }
-am__installdirs = "$(DESTDIR)$(libdir)"
-LTLIBRARIES = $(lib_LTLIBRARIES)
-libsequence_la_LIBADD =
-am__dirstamp = $(am__leading_dot)dirstamp
-am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
-	SummStats/Recombination.lo SimParams.lo Translate.lo \
-	Comeron95.lo GranthamWeights.lo SummStats/PolySNP.lo \
-	SummStats/PolySIM.lo RedundancyCom95.lo SingleSub.lo \
-	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
-	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo \
-	PolyTableManip.lo Seq/Seq.lo ComplementBase.lo Sites.lo \
-	Unweighted.lo Seq/Fasta.lo Kimura80.lo PolySites.lo SimData.lo \
-	SimDataIO.lo ThreeSubs.lo CodonTable.lo Specializations.lo \
-	Seq/FastaExplicit.lo SeqExceptions.lo SeqConstants.lo \
-	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
-	Coalescent/CoalescentMutation.lo \
-	Coalescent/CoalescentRecombination.lo \
-	Coalescent/CoalescentSimTypes.lo \
-	Coalescent/CoalescentTreeOperations.lo \
-	Coalescent/CoalescentInitialize.lo \
-	Coalescent/CoalescentCoalesce.lo \
-	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
-	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
-	SummStats/SummStats.lo SummStats/nSL.lo PolyData.lo IOhelp.lo \
-	hts/bamrecord.lo hts/bamreader.lo
-libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
+am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
+FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
+FastaConstructors_LDADD = $(LDADD)
+am__DEPENDENCIES_1 =
+FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
+FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
+FastaIO_LDADD = $(LDADD)
+FastaIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
+FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
+FastaOperations_LDADD = $(LDADD)
+FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -189,8 +146,10 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(libsequence_la_SOURCES)
-DIST_SOURCES = $(libsequence_la_SOURCES)
+SOURCES = $(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES)
+DIST_SOURCES = $(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -337,69 +296,13 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-lib_LTLIBRARIES = libsequence.la
-libsequence_la_SOURCES = Grantham.cc\
-	PathwayHelper.cc\
-	SummStats/Recombination.cc\
-	SimParams.cc\
-	Translate.cc\
-	Comeron95.cc\
-	GranthamWeights.cc\
-	SummStats/PolySNP.cc\
-	SummStats/PolySIM.cc\
-	RedundancyCom95.cc\
-	SingleSub.cc\
-	TwoSubs.cc\
-	stateCounter.cc\
-	SummStats/FST.cc\
-	Comparisons.cc\
-	SimpleSNP.cc\
-	PolyTable.cc\
-	PolyTableFunctions.cc\
-	PolyTableManip.cc\
-	Seq/Seq.cc\
-	ComplementBase.cc\
-	Sites.cc\
-	Unweighted.cc\
-	Seq/Fasta.cc\
-	Kimura80.cc\
-	PolySites.cc\
-	SimData.cc\
-	SimDataIO.cc\
-	ThreeSubs.cc\
-	CodonTable.cc\
-	Specializations.cc\
-	Seq/FastaExplicit.cc\
-	SeqExceptions.cc\
-	SeqConstants.cc\
-	shortestPath.cc\
-	SummStats/HKA.cc\
-	SummStats/Snn.cc\
-	Coalescent/CoalescentMutation.cc\
-	Coalescent/CoalescentRecombination.cc\
-	Coalescent/CoalescentSimTypes.cc\
-	Coalescent/CoalescentTreeOperations.cc\
-	Coalescent/CoalescentInitialize.cc\
-	Coalescent/CoalescentCoalesce.cc\
-	Coalescent/CoalescentFragmentsRescaling.cc\
-	hts/samrecord.cc\
-	hts/samflag.cc\
-	hts/samfunctions.cc\
-	Ptable.cc \
-	SummStats/SummStats.cc \
-	SummStats/nSL.cc \
-	PolyData.cc \
-	IOhelp.cc \
-	hts/bamrecord.cc \
-	hts/bamreader.cc
-
-AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
-AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
-	-Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion \
-	-Wsign-promo -Wsynth -ffor-scope $(am__append_1) \
-	$(am__append_3) $(am__append_4)
-@PROFILING_FALSE@PROFILE = 
-@PROFILING_TRUE@PROFILE = -pg
+BOOST_LIBS = -lboost_unit_test_framework
+SEQUENCE = -lsequence
+AM_LDFLAGS = -L../src/.libs -static
+LDADD = $(BOOST_LIBS) $(SEQUENCE)
+FastaConstructors_SOURCES = FastaConstructors.cc
+FastaIO_SOURCES = FastaIO.cc
+FastaOperations_SOURCES = FastaOperations.cc
 all: all-am
 
 .SUFFIXES:
@@ -413,9 +316,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu src/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu test/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu src/Makefile
+	  $(AUTOMAKE) --gnu test/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -435,176 +338,36 @@ $(ACLOCAL_M4): @MAINTAINER_MODE_TRUE@ $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(am__aclocal_m4_deps):
 
-install-libLTLIBRARIES: $(lib_LTLIBRARIES)
-	@$(NORMAL_INSTALL)
-	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
-	list2=; for p in $$list; do \
-	  if test -f $$p; then \
-	    list2="$$list2 $$p"; \
-	  else :; fi; \
-	done; \
-	test -z "$$list2" || { \
-	  echo " $(MKDIR_P) '$(DESTDIR)$(libdir)'"; \
-	  $(MKDIR_P) "$(DESTDIR)$(libdir)" || exit 1; \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 '$(DESTDIR)$(libdir)'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=install $(INSTALL) $(INSTALL_STRIP_FLAG) $$list2 "$(DESTDIR)$(libdir)"; \
-	}
+clean-checkPROGRAMS:
+	@list='$(check_PROGRAMS)'; test -n "$$list" || exit 0; \
+	echo " rm -f" $$list; \
+	rm -f $$list || exit $$?; \
+	test -n "$(EXEEXT)" || exit 0; \
+	list=`for p in $$list; do echo "$$p"; done | sed 's/$(EXEEXT)$$//'`; \
+	echo " rm -f" $$list; \
+	rm -f $$list
 
-uninstall-libLTLIBRARIES:
-	@$(NORMAL_UNINSTALL)
-	@list='$(lib_LTLIBRARIES)'; test -n "$(libdir)" || list=; \
-	for p in $$list; do \
-	  $(am__strip_dir) \
-	  echo " $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f '$(DESTDIR)$(libdir)/$$f'"; \
-	  $(LIBTOOL) $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=uninstall rm -f "$(DESTDIR)$(libdir)/$$f"; \
-	done
+FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
+	@rm -f FastaConstructors$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
 
-clean-libLTLIBRARIES:
-	-test -z "$(lib_LTLIBRARIES)" || rm -f $(lib_LTLIBRARIES)
-	@list='$(lib_LTLIBRARIES)'; \
-	locs=`for p in $$list; do echo $$p; done | \
-	      sed 's|^[^/]*$$|.|; s|/[^/]*$$||; s|$$|/so_locations|' | \
-	      sort -u`; \
-	test -z "$$locs" || { \
-	  echo rm -f $${locs}; \
-	  rm -f $${locs}; \
-	}
-SummStats/$(am__dirstamp):
-	@$(MKDIR_P) SummStats
-	@: > SummStats/$(am__dirstamp)
-SummStats/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) SummStats/$(DEPDIR)
-	@: > SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/Recombination.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/PolySNP.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/PolySIM.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/FST.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-Seq/$(am__dirstamp):
-	@$(MKDIR_P) Seq
-	@: > Seq/$(am__dirstamp)
-Seq/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) Seq/$(DEPDIR)
-	@: > Seq/$(DEPDIR)/$(am__dirstamp)
-Seq/Seq.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
-Seq/Fasta.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
-Seq/FastaExplicit.lo: Seq/$(am__dirstamp) \
-	Seq/$(DEPDIR)/$(am__dirstamp)
-SummStats/HKA.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/Snn.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-Coalescent/$(am__dirstamp):
-	@$(MKDIR_P) Coalescent
-	@: > Coalescent/$(am__dirstamp)
-Coalescent/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) Coalescent/$(DEPDIR)
-	@: > Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentMutation.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentRecombination.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentSimTypes.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentTreeOperations.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentInitialize.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentCoalesce.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentFragmentsRescaling.lo:  \
-	Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-hts/$(am__dirstamp):
-	@$(MKDIR_P) hts
-	@: > hts/$(am__dirstamp)
-hts/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) hts/$(DEPDIR)
-	@: > hts/$(DEPDIR)/$(am__dirstamp)
-hts/samrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/samflag.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/samfunctions.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-SummStats/SummStats.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/nSL.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
+FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEPENDENCIES) 
+	@rm -f FastaIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(FastaIO_OBJECTS) $(FastaIO_LDADD) $(LIBS)
 
-libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
-	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
+FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENCIES) $(EXTRA_FastaOperations_DEPENDENCIES) 
+	@rm -f FastaOperations$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f Coalescent/*.$(OBJEXT)
-	-rm -f Coalescent/*.lo
-	-rm -f Seq/*.$(OBJEXT)
-	-rm -f Seq/*.lo
-	-rm -f SummStats/*.$(OBJEXT)
-	-rm -f SummStats/*.lo
-	-rm -f hts/*.$(OBJEXT)
-	-rm -f hts/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CodonTable.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Comeron95.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Comparisons.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComplementBase.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Grantham.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GranthamWeights.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IOhelp.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PathwayHelper.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyData.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTable.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableManip.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqExceptions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimData.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimDataIO.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimParams.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNP.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SingleSub.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Sites.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Specializations.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ThreeSubs.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Translate.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TwoSubs.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Unweighted.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentFragmentsRescaling.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentInitialize.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentMutation.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentRecombination.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentSimTypes.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentTreeOperations.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/FastaExplicit.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/FST.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/HKA.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/PolySIM.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/PolySNP.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Recombination.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -635,10 +398,6 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-	-rm -rf Coalescent/.libs Coalescent/_libs
-	-rm -rf Seq/.libs Seq/_libs
-	-rm -rf SummStats/.libs SummStats/_libs
-	-rm -rf hts/.libs hts/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -723,12 +482,10 @@ distdir: $(DISTFILES)
 	  fi; \
 	done
 check-am: all-am
+	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
 check: check-am
-all-am: Makefile $(LTLIBRARIES)
+all-am: Makefile
 installdirs:
-	for dir in "$(DESTDIR)$(libdir)"; do \
-	  test -z "$$dir" || $(MKDIR_P) "$$dir"; \
-	done
 install: install-am
 install-exec: install-exec-am
 install-data: install-data-am
@@ -755,25 +512,17 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f Coalescent/$(DEPDIR)/$(am__dirstamp)
-	-rm -f Coalescent/$(am__dirstamp)
-	-rm -f Seq/$(DEPDIR)/$(am__dirstamp)
-	-rm -f Seq/$(am__dirstamp)
-	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
-	-rm -f SummStats/$(am__dirstamp)
-	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
-	-rm -f hts/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
+clean-am: clean-checkPROGRAMS clean-generic clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -796,7 +545,7 @@ install-dvi: install-dvi-am
 
 install-dvi-am:
 
-install-exec-am: install-libLTLIBRARIES
+install-exec-am:
 
 install-html: install-html-am
 
@@ -819,7 +568,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -836,23 +585,23 @@ ps: ps-am
 
 ps-am:
 
-uninstall-am: uninstall-libLTLIBRARIES
+uninstall-am:
 
-.MAKE: install-am install-strip
+.MAKE: check-am install-am install-strip
 
-.PHONY: CTAGS GTAGS TAGS all all-am check check-am clean clean-generic \
-	clean-libLTLIBRARIES clean-libtool cscopelist-am ctags \
-	ctags-am distclean distclean-compile distclean-generic \
+.PHONY: CTAGS GTAGS TAGS all all-am check check-am clean \
+	clean-checkPROGRAMS clean-generic clean-libtool cscopelist-am \
+	ctags ctags-am distclean distclean-compile distclean-generic \
 	distclean-libtool distclean-tags distdir dvi dvi-am html \
 	html-am info info-am install install-am install-data \
 	install-data-am install-dvi install-dvi-am install-exec \
 	install-exec-am install-html install-html-am install-info \
-	install-info-am install-libLTLIBRARIES install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
+	install-info-am install-man install-pdf install-pdf-am \
+	install-ps install-ps-am install-strip installcheck \
+	installcheck-am installdirs maintainer-clean \
 	maintainer-clean-generic mostlyclean mostlyclean-compile \
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
-	tags tags-am uninstall uninstall-am uninstall-libLTLIBRARIES
+	tags tags-am uninstall uninstall-am
 
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

@@ -142,7 +142,7 @@ namespace Sequence
     
     size_t seg=0,nsegs=sample_history.size();
     Sequence::arg::const_iterator i = sample_history.begin(),j=i;
-    j++;
+    ++j;
     
     double tt = 0.;
     
@@ -198,7 +198,7 @@ namespace Sequence
 	    sample_history->erase(j);
 	    nsegs--;
 	    j=i;
-	    i--;
+	    --i;
 	    seg--;
 	}
       }
@@ -237,13 +237,12 @@ namespace Sequence
 		   (sample_history_beg->nsam/2)))
   {
     arg::const_iterator i = sample_history_beg,j=i;
-    j++;
-    int beg,end;
+    ++j;
     double t;
     for(unsigned seg = 0; seg < nsegs ; ++seg,++i,++j)
       {
-	end = (seg<nsegs-1) ? j->beg : total_nsites_simulated;
-	beg = i->beg;
+	int end = (seg<nsegs-1) ? j->beg : total_nsites_simulated;
+	int beg = i->beg;
 	const double scale = double(end-beg)/double(total_nsites_simulated);
 	//iterate over tips
 	const marginal::const_iterator treebeg = i->begin();
