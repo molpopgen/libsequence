@@ -69,6 +69,10 @@ BOOST_AUTO_TEST_CASE( fasta_operations )
   BOOST_REQUIRE( f3.length() == 3 );
 
   BOOST_REQUIRE( f3.UngappedLength() == 3 );
+
+  f3.Complement();
+
+  BOOST_REQUIRE( f3.second == "CGC" );
 }
 
 //EOF
