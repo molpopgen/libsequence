@@ -25,6 +25,7 @@ If you see a section below referring to libseqeunce version X, and no version X 
 15. The configure script how checks for the existence of [htslib](http://www.htslib.org)
 16. Sequence/bamreader.hpp and Sequence/bamrecord.hpp added for direct reading from bam files.  Will only compile if [htslib](http://htslib.org) is detected by the configure script
 17. I've performed extensive code auditing using cppcheck.  Many issues were resolved.  Most were stylistic, but they do make the code more idiomatic.
+18. A unit test suite is starting to take shape in the test/ subdirectory.  These test programs depend on the [boost](http://www.boost.org) "test" library.  Future tests could add future dependencies.
 
 ###ISSUES:
 
