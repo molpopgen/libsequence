@@ -9,7 +9,7 @@ namespace Sequence
   {
     pair<int,int> gzread2ws( gzFile gzfile, string & buffer )
     {
-      return gzreaduntil()(gzfile,[](const char & ch){ return std::isspace(ch); } );
+      return gzreaduntil()(gzfile,buffer,[](const char & ch){ return std::isspace(ch); } );
     }
 
     pair<int,int> gzreadws( gzFile gzfile )

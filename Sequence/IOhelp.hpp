@@ -60,6 +60,25 @@ namespace Sequence
 	  }
 	return std::make_pair(rv,gzrv);
       }
+      template<typename policy>
+      std::pair<int,int> operator()( gzFile gzfile, std::string & buffer, const policy & p ) const
+      {
+	char ch;
+	int rv = 0;
+	int gzrv;
+	while( (gzrv = gzread(gzfile,&ch,sizeof(char))) != 0 )
+	  {
+	    rv += gzrv;
+	    if(p(ch))
+		{
+		  gzungetc(ch,gzfile);
+		  return std::make_pair(rv,gzrv);
+		}
+	    else
+	      buffer += ch;
+	  }
+	return std::make_pair(rv,gzrv);
+      }
     };
 
 
