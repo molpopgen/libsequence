@@ -86,10 +86,10 @@ $(document).ready(function(){initNavTree('classSequence_1_1Kimura80.html','');})
 Public Member Functions</h2></td></tr>
 <tr class="memitem:afd42998079763d43af88873724e2c7bd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#afd42998079763d43af88873724e2c7bd">Kimura80</a> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqa, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqb)</td></tr>
 <tr class="separator:afd42998079763d43af88873724e2c7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a333474a90318dd53217448a7a5b5a5db"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#a333474a90318dd53217448a7a5b5a5db">K</a> ()</td></tr>
-<tr class="separator:a333474a90318dd53217448a7a5b5a5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f3818e3b21b5cdb0e8e6138c071968c"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#a1f3818e3b21b5cdb0e8e6138c071968c">sites</a> (void)</td></tr>
-<tr class="separator:a1f3818e3b21b5cdb0e8e6138c071968c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">K</a> () const </td></tr>
+<tr class="separator:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa987104cbb72653f423c0d550e9be33b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">sites</a> (void) const </td></tr>
+<tr class="separator:aa987104cbb72653f423c0d550e9be33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Kimura's 2-parameter distance. </p>
@@ -164,7 +164,7 @@ The implementation of this class does the following:<br/>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a333474a90318dd53217448a7a5b5a5db"></a>
+<a class="anchor" id="aab7daa2ca6bb6ddc39051818c133eb6e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -173,18 +173,18 @@ The implementation of this class does the following:<br/>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the distance between the two sequences. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>999.0 is returned as a warning value. This can be necessary if sites are saturated, which implies that divergence cannot be calculated </dd></dl>
 
-<p>Definition at line <a class="el" href="Kimura80_8cc_source.html#l00113">113</a> of file <a class="el" href="Kimura80_8cc_source.html">Kimura80.cc</a>.</p>
+<p>Definition at line <a class="el" href="Kimura80_8cc_source.html#l00112">112</a> of file <a class="el" href="Kimura80_8cc_source.html">Kimura80.cc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1f3818e3b21b5cdb0e8e6138c071968c"></a>
+<a class="anchor" id="aa987104cbb72653f423c0d550e9be33b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -193,13 +193,13 @@ The implementation of this class does the following:<br/>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the number of sites compared, excluding gaps, missing data, etc. </dd></dl>
 
-<p>Definition at line <a class="el" href="Kimura80_8cc_source.html#l00127">127</a> of file <a class="el" href="Kimura80_8cc_source.html">Kimura80.cc</a>.</p>
+<p>Definition at line <a class="el" href="Kimura80_8cc_source.html#l00126">126</a> of file <a class="el" href="Kimura80_8cc_source.html">Kimura80.cc</a>.</p>
 
 </div>
 </div>
@@ -213,7 +213,7 @@ The implementation of this class does the following:<br/>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1Kimura80.html">Kimura80</a></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:17 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:13 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

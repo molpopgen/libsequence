@@ -4,6 +4,8 @@ var files =
     [ "Alignment.tcc", "Alignment_8tcc.html", "Alignment_8tcc" ],
     [ "AlignStream.hpp", "AlignStream_8hpp.html", "AlignStream_8hpp" ],
     [ "AlignStream.tcc", "AlignStream_8tcc.html", null ],
+    [ "bamreader.hpp", "bamreader_8hpp_source.html", null ],
+    [ "bamrecord.hpp", "bamrecord_8hpp_source.html", null ],
     [ "Clustalw.hpp", "Clustalw_8hpp.html", null ],
     [ "Clustalw.tcc", "Clustalw_8tcc.html", null ],
     [ "Coalesce.hpp", "Coalesce_8hpp_source.html", null ],

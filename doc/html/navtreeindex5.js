@@ -1,5 +1,8 @@
 var NAVTREEINDEX5 =
 {
+"structSequence_1_1chromosome.html#a95f420ca4f1b2d5af43d33fa074cfc76":[2,1,1,3,7],
+"structSequence_1_1chromosome.html#a99e92724eb75dda2b3bc4260f8e6fb2f":[2,1,1,3,8],
+"structSequence_1_1chromosome.html#a9edab5dbc16e67bfe67379ff347015ac":[2,1,1,3,11],
 "structSequence_1_1chromosome.html#aa6e12af4bef705bc1d4404c142e098a0":[2,1,1,3,17],
 "structSequence_1_1chromosome.html#aacb169252980f584427649e26b4e22f8":[2,1,1,3,18],
 "structSequence_1_1chromosome.html#aacba79ac7fe27d1a3592519c7ddc8f04":[2,1,1,3,14],
@@ -54,10 +57,10 @@ var NAVTREEINDEX5 =
 "structfirst__is__equal.html":[4,0,2],
 "structinvalidPolyChar.html":[4,0,3],
 "todo.html":[0],
-"typedefs_8hpp.html":[5,0,118],
-"typedefs_8hpp.html#a32ee74454170cd8bfd22d7515405149c":[5,0,118,2],
-"typedefs_8hpp.html#aa11ceda37fe03bcacea2e98c49723f90":[5,0,118,0],
-"typedefs_8hpp.html#afaaf89009878664a009249c537dc802a":[5,0,118,1],
-"typedefs_8hpp_source.html":[5,0,118],
+"typedefs_8hpp.html":[5,0,120],
+"typedefs_8hpp.html#a32ee74454170cd8bfd22d7515405149c":[5,0,120,2],
+"typedefs_8hpp.html#aa11ceda37fe03bcacea2e98c49723f90":[5,0,120,0],
+"typedefs_8hpp.html#afaaf89009878664a009249c537dc802a":[5,0,120,1],
+"typedefs_8hpp_source.html":[5,0,120],
 "valid_dna_8cc-example.html":[6,14]
 };

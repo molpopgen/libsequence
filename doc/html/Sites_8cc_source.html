@@ -132,47 +132,46 @@ $(document).ready(function(){initNavTree('Sites_8cc_source.html','');});
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                      <span class="keyword">const</span> RedundancyCom95 * sitesObj)</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {                             <span class="comment">//now, it is correct</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">size_t</span> i = 0, j = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">unsigned</span> nc;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    std::string codon1,codon2;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    codon1.resize(3);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    codon2.resize(3);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt;= seqlen - 3; i += 3)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">for</span> (j = 0; j &lt;= 2; ++j)</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            codon1[j] = char(std::toupper((*sequence1)[i + j]));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            codon2[j] = char(std::toupper((*sequence2)[i + j]));</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        nc = NumDiffs (codon1, codon2);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (nc == 0)    <span class="comment">//still need to count if there are 0 changes</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits &lt;= 3 &amp;&amp; nc == 1)</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits == 2 &amp;&amp; nc &lt;= 2)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits == 3 &amp;&amp; nc &lt;= 3)</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  Sites::siteinc (<span class="keyword">const</span> RedundancyCom95 * sitesObj,</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                  <span class="keyword">const</span> std::string &amp; codon1,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                  <span class="keyword">const</span> std::string &amp; codon2)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">//skip ambiguous</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> ( std::find_if(codon1.begin(),codon1.end(),<a class="code" href="structambiguousNucleotide.html">ambiguousNucleotide</a>()) == codon1.end() &amp;&amp;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;         std::find_if(codon2.begin(),codon2.end(),<a class="code" href="structambiguousNucleotide.html">ambiguousNucleotide</a>()) == codon2.end() )</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        _L0 += (sitesObj-&gt;L0_vals(codon1) + sitesObj-&gt;L0_vals(codon2))/2.0;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        _L2S += (sitesObj-&gt;L2S_vals(codon1) + sitesObj-&gt;L2S_vals(codon2))/2.0;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        _L2V += (sitesObj-&gt;L2V_vals(codon1) + sitesObj-&gt;L2V_vals(codon2))/2.0;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        _L4 += (sitesObj-&gt;L4_vals(codon1) + sitesObj-&gt;L4_vals(codon2))/2.0;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    std::string codon1,codon2;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    codon1.resize(3);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    codon2.resize(3);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt;= seqlen - 3; i += 3)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">for</span> (j = 0; j &lt;= 2; ++j)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;          {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            codon1[j] = char(std::toupper((*sequence1)[i + j]));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            codon2[j] = char(std::toupper((*sequence2)[i + j]));</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;          }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">unsigned</span> nc = NumDiffs (codon1, codon2);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (nc == 0)    <span class="comment">//still need to count if there are 0 changes</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits &lt;= 3 &amp;&amp; nc == 1)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits == 2 &amp;&amp; nc &lt;= 2)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (maxhits == 3 &amp;&amp; nc &lt;= 3)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;          siteinc (sitesObj,codon1, codon2);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  Sites::siteinc (<span class="keyword">const</span> RedundancyCom95 * sitesObj,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                  <span class="keyword">const</span> std::string &amp; codon1,</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                  <span class="keyword">const</span> std::string &amp; codon2)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//skip ambiguous</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> ( std::find_if(codon1.begin(),codon1.end(),<a class="code" href="structambiguousNucleotide.html">ambiguousNucleotide</a>()) == codon1.end() &amp;&amp;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;         std::find_if(codon2.begin(),codon2.end(),<a class="code" href="structambiguousNucleotide.html">ambiguousNucleotide</a>()) == codon2.end() )</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        _L0 += (sitesObj-&gt;L0_vals(codon1) + sitesObj-&gt;L0_vals(codon2))/2.0;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        _L2S += (sitesObj-&gt;L2S_vals(codon1) + sitesObj-&gt;L2S_vals(codon2))/2.0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        _L2V += (sitesObj-&gt;L2V_vals(codon1) + sitesObj-&gt;L2V_vals(codon2))/2.0;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        _L4 += (sitesObj-&gt;L4_vals(codon1) + sitesObj-&gt;L4_vals(codon2))/2.0;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 <div class="ttc" id="Seq_8hpp_html"><div class="ttname"><a href="Seq_8hpp.html">Seq.hpp</a></div><div class="ttdoc">class Sequence::Seq, an abstract base class for Sequences </div></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
 <div class="ttc" id="Sites_8hpp_html"><div class="ttname"><a href="Sites_8hpp.html">Sites.hpp</a></div><div class="ttdoc">class Sequence::Sites calculates the length of a pairwise alignment between coding sequences in terms...</div></div>
@@ -188,7 +187,7 @@ $(document).ready(function(){initNavTree('Sites_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>Sites.cc</b></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:16 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

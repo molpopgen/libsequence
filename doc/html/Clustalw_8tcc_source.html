@@ -185,11 +185,11 @@ $(document).ready(function(){initNavTree('Clustalw_8tcc_source.html','');});
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">  </span>{</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">typename</span> <a class="code" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">ClustalW&lt;T&gt;::const_iterator</a> i=this-&gt;begin(),</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      j=this-&gt;end();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">unsigned</span> k=0,offset, len = unsigned(i-&gt;second.length());</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">unsigned</span> k=0, len = unsigned(i-&gt;second.length());</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    s &lt;&lt; <span class="stringliteral">&quot;CLUSTAL W&quot;</span> &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">while</span> (k&lt;len)</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;      {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        offset = (k+60 &lt; len) ? k+60 : k+(len-k);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordtype">unsigned</span> offset = (k+60 &lt; len) ? k+60 : k+(len-k);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">for</span>(i=this-&gt;begin() ; i &lt; j ; ++i)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;          {</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            s &lt;&lt; i-&gt;first</div>
@@ -230,7 +230,7 @@ $(document).ready(function(){initNavTree('Clustalw_8tcc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><a class="el" href="Clustalw_8tcc.html">Clustalw.tcc</a></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:16 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

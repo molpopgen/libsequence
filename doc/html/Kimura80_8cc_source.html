@@ -131,79 +131,78 @@ $(document).ready(function(){initNavTree('Kimura80_8cc_source.html','');});
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">unsigned</span> ungapped_sites = 0;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; seqlen; ++i)        <span class="comment">//iterate over the sequence</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;      {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">int</span> type = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (NotAGap((*seq1)[i]) &amp;&amp; NotAGap((*seq2)[i]))</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;          {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            ++ungapped_sites;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">if</span> (std::toupper((*seq1)[i]) != </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                std::toupper((*seq2)[i]))       <span class="comment">//if the sites differ at that position</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;              {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                type = TsTv ((*seq1)[i], (*seq2)[i]);   <span class="comment">//check if difference is Ts or Tv</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;              </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordflow">if</span> (type == Mutations(Ts))</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                  {     <span class="comment">//Ts</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    ++num_Ts;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                  }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == Mutations(Tv))</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                  {     <span class="comment">//Tv</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    ++num_Tv;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                  }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">//make sure we use the right denominator</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    sites_compared = (ungapped_sites &lt; seqlen) ? ungapped_sites : seqlen;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">//P and Q are the proportions of Ts and Tv changes observed</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    P = double (num_Ts) / double (sites_compared);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    Q = double (num_Tv) / double (sites_compared);</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//Kimura&#39;s formula</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (fabs(1.0 - 2.0 * P - Q) &gt; DBL_EPSILON)</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        divergence = -1.0 * 0.5 * log ((1.0 - 2.0 * P - Q)</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                       *  pow ((1 - 2.0 * Q), 0.5));</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        divergence = 0.;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">//a correction for extremely low observed values</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> (divergence &lt;= 0.0-DBL_EPSILON)</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      divergence = 0.0;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="classSequence_1_1Kimura80.html#a333474a90318dd53217448a7a5b5a5db">  113</a></span>&#160;  <a class="code" href="classSequence_1_1Kimura80.html#a333474a90318dd53217448a7a5b5a5db">Kimura80::K</a> (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (!isfinite(divergence))</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;      <span class="keywordflow">return</span> (999.0);</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> (divergence);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordtype">size_t</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="classSequence_1_1Kimura80.html#a1f3818e3b21b5cdb0e8e6138c071968c">  127</a></span>&#160;    <a class="code" href="classSequence_1_1Kimura80.html#a1f3818e3b21b5cdb0e8e6138c071968c">Kimura80::sites</a> (<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;      <span class="keywordflow">return</span> (sites_compared);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> (NotAGap((*seq1)[i]) &amp;&amp; NotAGap((*seq2)[i]))</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;          {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            ++ungapped_sites;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (std::toupper((*seq1)[i]) != </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                std::toupper((*seq2)[i]))       <span class="comment">//if the sites differ at that position</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;              {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordtype">int</span> type = TsTv ((*seq1)[i], (*seq2)[i]);       <span class="comment">//check if difference is Ts or Tv</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;              </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">if</span> (type == Mutations(Ts))</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                  {     <span class="comment">//Ts</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    ++num_Ts;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                  }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == Mutations(Tv))</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                  {     <span class="comment">//Tv</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    ++num_Tv;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                  }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;              }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;          }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//make sure we use the right denominator</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    sites_compared = (ungapped_sites &lt; seqlen) ? ungapped_sites : seqlen;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">//P and Q are the proportions of Ts and Tv changes observed</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    P = double (num_Ts) / double (sites_compared);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    Q = double (num_Tv) / double (sites_compared);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">//Kimura&#39;s formula</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">if</span> (fabs(1.0 - 2.0 * P - Q) &gt; DBL_EPSILON)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        divergence = -1.0 * 0.5 * log ((1.0 - 2.0 * P - Q)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                       *  pow ((1 - 2.0 * Q), 0.5));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        divergence = 0.;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">//a correction for extremely low observed values</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (divergence &lt;= 0.0-DBL_EPSILON)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;      divergence = 0.0;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">double</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">  112</a></span>&#160;  <a class="code" href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">Kimura80::K</a> (<span class="keywordtype">void</span>) const</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span> (!isfinite(divergence))</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">return</span> (999.0);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> (divergence);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordtype">size_t</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">  126</a></span>&#160;    <a class="code" href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">Kimura80::sites</a> (<span class="keywordtype">void</span>) const</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      <span class="keywordflow">return</span> (sites_compared);</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1Kimura80_html_afd42998079763d43af88873724e2c7bd"><div class="ttname"><a href="classSequence_1_1Kimura80.html#afd42998079763d43af88873724e2c7bd">Sequence::Kimura80::Kimura80</a></div><div class="ttdeci">Kimura80(const Sequence::Seq *seqa, const Sequence::Seq *seqb)</div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00044">Kimura80.cc:44</a></div></div>
 <div class="ttc" id="SeqExceptions_8hpp_html"><div class="ttname"><a href="SeqExceptions_8hpp.html">SeqExceptions.hpp</a></div><div class="ttdoc">declaration of exception classes used in namespace Sequence, including class Sequence::SeqException ...</div></div>
 <div class="ttc" id="Kimura80_8hpp_html"><div class="ttname"><a href="Kimura80_8hpp.html">Kimura80.hpp</a></div><div class="ttdoc">declaration of Sequence::Kimura80 </div></div>
 <div class="ttc" id="Seq_8hpp_html"><div class="ttname"><a href="Seq_8hpp.html">Seq.hpp</a></div><div class="ttdoc">class Sequence::Seq, an abstract base class for Sequences </div></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
-<div class="ttc" id="classSequence_1_1Kimura80_html_a333474a90318dd53217448a7a5b5a5db"><div class="ttname"><a href="classSequence_1_1Kimura80.html#a333474a90318dd53217448a7a5b5a5db">Sequence::Kimura80::K</a></div><div class="ttdeci">double K()</div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00113">Kimura80.cc:113</a></div></div>
+<div class="ttc" id="classSequence_1_1Kimura80_html_aab7daa2ca6bb6ddc39051818c133eb6e"><div class="ttname"><a href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">Sequence::Kimura80::K</a></div><div class="ttdeci">double K() const </div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00112">Kimura80.cc:112</a></div></div>
+<div class="ttc" id="classSequence_1_1Kimura80_html_aa987104cbb72653f423c0d550e9be33b"><div class="ttname"><a href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">Sequence::Kimura80::sites</a></div><div class="ttdeci">size_t sites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00126">Kimura80.cc:126</a></div></div>
 <div class="ttc" id="classSequence_1_1SeqException_html"><div class="ttname"><a href="classSequence_1_1SeqException.html">Sequence::SeqException</a></div><div class="ttdoc">Base class for exceptions that may be thrown. </div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00052">SeqExceptions.hpp:52</a></div></div>
 <div class="ttc" id="Comparisons_8hpp_html"><div class="ttname"><a href="Comparisons_8hpp.html">Comparisons.hpp</a></div><div class="ttdoc">delcaration of routines for comparing DNA sequences This file declares a set of functions useful for ...</div></div>
 <div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
-<div class="ttc" id="classSequence_1_1Kimura80_html_a1f3818e3b21b5cdb0e8e6138c071968c"><div class="ttname"><a href="classSequence_1_1Kimura80.html#a1f3818e3b21b5cdb0e8e6138c071968c">Sequence::Kimura80::sites</a></div><div class="ttdeci">size_t sites(void)</div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00127">Kimura80.cc:127</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>Kimura80.cc</b></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:16 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

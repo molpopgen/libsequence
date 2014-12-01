@@ -131,9 +131,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adb5868b92ac4e3e7b280f8bbb0d1c924"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb5868b92ac4e3e7b280f8bbb0d1c924"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SimData</b> (const std::vector&lt; double &gt; &amp;pos, const std::vector&lt; std::string &gt; &amp;data)</td></tr>
 <tr class="separator:adb5868b92ac4e3e7b280f8bbb0d1c924"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00cd75e2323dedc9e93fb934bd259200"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a00cd75e2323dedc9e93fb934bd259200"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>SimData</b> (const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">SimData::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">SimData::const_site_iterator</a> <a class="el" href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">end</a>)</td></tr>
-<tr class="separator:a00cd75e2323dedc9e93fb934bd259200"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a979a649e3ad555b66cf4fc9a4b396186"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a979a649e3ad555b66cf4fc9a4b396186"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SimData</b> (const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">SimData::const_site_iterator</a> &amp;beg, const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">SimData::const_site_iterator</a> &amp;<a class="el" href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">end</a>)</td></tr>
+<tr class="separator:a979a649e3ad555b66cf4fc9a4b396186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a984f64dd6e55c1c54f0cb8b2bc543813"><td class="memItemLeft" align="right" valign="top">virtual std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimData.html#a984f64dd6e55c1c54f0cb8b2bc543813">read</a> (std::istream &amp;s)</td></tr>
 <tr class="separator:a984f64dd6e55c1c54f0cb8b2bc543813"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d7d62ab96557f12e604abda78be2d12"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimData.html#a0d7d62ab96557f12e604abda78be2d12">print</a> (std::ostream &amp;o) const </td></tr>
@@ -658,7 +658,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 
 <p>Reimplemented from <a class="el" href="classSequence_1_1PolyTable.html#a39ef36f95bc5a85cb3478d9ff33813c5">Sequence::PolyTable</a>.</p>
 
-<p>Definition at line <a class="el" href="SimData_8hpp_source.html#l00091">91</a> of file <a class="el" href="SimData_8hpp_source.html">SimData.hpp</a>.</p>
+<p>Definition at line <a class="el" href="SimData_8hpp_source.html#l00083">83</a> of file <a class="el" href="SimData_8hpp_source.html">SimData.hpp</a>.</p>
 
 </div>
 </div>
@@ -818,7 +818,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>In practice, simulation analysis is I/O intensive. This method provies a routine to read in objects of type <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> using C-style I/O routines, rather than the C++ operator&gt;&gt;. This can result in huge efficiency gains </p>
 <dl class="section return"><dt>Returns</dt><dd>an integer that is the the return value from fscanf, so that you can check for EOF, etc... </dd></dl>
 
-<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00135">135</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00126">126</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
 
 </div>
 </div>
@@ -900,7 +900,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return how many positions are stored in PolyTable::positions </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="bottleneck_8cc-example.html#a6">bottleneck.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00286">286</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00288">288</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -954,7 +954,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th element of PolyTable::data. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00203">203</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00205">205</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -982,7 +982,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th element of PolyTable::data. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00213">213</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00215">215</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1168,7 +1168,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th position from the PolyTable::positions. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00276">276</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00278">278</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1197,7 +1197,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 
 <p>Implements <a class="el" href="classSequence_1_1PolyTable.html#ab3750df4d791c24e87815a29fbac77f4">Sequence::PolyTable</a>.</p>
 
-<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00109">109</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00100">100</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
 
 </div>
 </div>
@@ -1226,7 +1226,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 
 <p>Implements <a class="el" href="classSequence_1_1PolyTable.html#a27a62e9ee28d31f4b386c79a7af167a0">Sequence::PolyTable</a>.</p>
 
-<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00048">48</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
+<p>Definition at line <a class="el" href="SimData_8cc_source.html#l00060">60</a> of file <a class="el" href="SimData_8cc_source.html">SimData.cc</a>.</p>
 
 </div>
 </div>
@@ -1464,7 +1464,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 </div><div class="memdoc">
 <p>Returns the number of segregating sites in the data block. </p>
 
-<p>Definition at line <a class="el" href="SimData_8hpp_source.html#l00099">99</a> of file <a class="el" href="SimData_8hpp_source.html">SimData.hpp</a>.</p>
+<p>Definition at line <a class="el" href="SimData_8hpp_source.html#l00091">91</a> of file <a class="el" href="SimData_8hpp_source.html">SimData.hpp</a>.</p>
 
 </div>
 </div>
@@ -1518,7 +1518,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 </div><div class="memdoc">
 <p>Return how many std::strings are stored in PolyTable::data. </p>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00267">267</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00269">269</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1532,7 +1532,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1SimData.html">SimData</a></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:18 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

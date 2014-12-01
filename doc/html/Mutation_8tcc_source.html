@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    RTYPE ttlS=0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    arg::size_type seg=0,nsegs=history.size();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    arg::const_iterator i = history.begin(),j=i;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    j++;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ++j;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span>( ; seg &lt; nsegs ; ++i,++j,++seg)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">double</span> tt = total_time(i-&gt;begin(),i-&gt;nsam);</div>
@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    arg::size_type seg=0,nsegs = history.size();</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    arg::const_iterator i=history.begin(),</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      j = history.begin();</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    j++;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    ++j;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    RTYPE ttlS = 0;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span>( ; seg &lt; nsegs ; ++seg,++i,++j )</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;      {</div>
@@ -235,7 +235,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    std::vector&lt;unsigned&gt; segsites(history.size());</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    std::vector&lt;double&gt; total_times(history.size());</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    arg::const_iterator i = history.begin(),j=i;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    j++;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    ++j;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordtype">size_t</span> nsegs = history.size();</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">size_t</span> seg = 0 ; seg &lt; nsegs ; ++seg,++i,++j)</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;      {</div>
@@ -266,7 +266,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">unsigned</span> seg=0,nsegs = unsigned(history.size());</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    arg::const_iterator i=history.begin(),</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;      j = history.begin();</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    j++;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    ++j;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordtype">int</span> ttlS = 0;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">//const double zero=0.;</span></div>
 <div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span>( ; seg &lt; nsegs ; ++seg,++i,++j )</div>
@@ -427,7 +427,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div class="ttc" id="classSequence_1_1SimData_html"><div class="ttname"><a href="classSequence_1_1SimData.html">Sequence::SimData</a></div><div class="ttdoc">Data from coalescent simulations. </div><div class="ttdef"><b>Definition:</b> <a href="SimData_8hpp_source.html#l00069">SimData.hpp:69</a></div></div>
 <div class="ttc" id="group__coalescent_html_gaaa678e49901c1ef90b470ec226ac8f71"><div class="ttname"><a href="group__coalescent.html#gaaa678e49901c1ef90b470ec226ac8f71">Sequence::MAX_SEGSITES</a></div><div class="ttdeci">MAX_SEG_T MAX_SEGSITES</div><div class="ttdoc">controls allocation of simulated gametes You must define this in namespace Sequence in your program...</div></div>
 <div class="ttc" id="group__coalescent_html_ga48c093934ec4ec1c477415f86a2ffed3"><div class="ttname"><a href="group__coalescent.html#ga48c093934ec4ec1c477415f86a2ffed3">Sequence::gamete_storage_type</a></div><div class="ttdeci">std::pair&lt; std::vector&lt; double &gt;, std::vector&lt; std::string &gt; &gt; gamete_storage_type</div><div class="ttdoc">an object to store simulated gametes An object of this type will tend to exist in the calling environ...</div><div class="ttdef"><b>Definition:</b> <a href="Mutation_8hpp_source.html#l00041">Mutation.hpp:41</a></div></div>
-<div class="ttc" id="group__coalescent_html_ga1116020585e7246433b28c69b0623a20"><div class="ttname"><a href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a></div><div class="ttdeci">std::list&lt; marginal &gt; arg</div><div class="ttdoc">Ancestral Recombination Graph. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00215">SimTypes.hpp:215</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga1116020585e7246433b28c69b0623a20"><div class="ttname"><a href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a></div><div class="ttdeci">std::list&lt; marginal &gt; arg</div><div class="ttdoc">Ancestral Recombination Graph. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00216">SimTypes.hpp:216</a></div></div>
 <div class="ttc" id="group__coalescent_html_ga65bfd963d90840b88f3b9c81e0598a59"><div class="ttname"><a href="group__coalescent.html#ga65bfd963d90840b88f3b9c81e0598a59">Sequence::infinite_sites_sim_data</a></div><div class="ttdeci">SimData infinite_sites_sim_data(poisson_generator &amp;poiss, uniform_generator &amp;uni, const int &amp;nsites, const arg &amp;history, const double &amp;theta)</div><div class="ttdoc">Apply the infinitely-many sites mutation model to an ancetral recombination graph. </div><div class="ttdef"><b>Definition:</b> <a href="Mutation_8tcc_source.html#l00399">Mutation.tcc:399</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -435,7 +435,7 @@ $(document).ready(function(){initNavTree('Mutation_8tcc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><a class="el" href="dir_ce29cd4bc0234b00848bbc91a84a041e.html">bits</a></li><li class="navelem"><b>Mutation.tcc</b></li>
-    <li class="footer">Generated on Thu Oct 9 2014 13:01:16 for libsequence by
+    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

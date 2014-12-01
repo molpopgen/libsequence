@@ -12,7 +12,7 @@ var group__coalescent =
       [ "SimData", "classSequence_1_1SimData.html#a55d3d8ca5811e9a66e144f44c87526df", null ],
       [ "SimData", "classSequence_1_1SimData.html#a4b2ac1c623f86bedb8176c4072ed20a9", null ],
       [ "SimData", "classSequence_1_1SimData.html#adb5868b92ac4e3e7b280f8bbb0d1c924", null ],
-      [ "SimData", "classSequence_1_1SimData.html#a00cd75e2323dedc9e93fb934bd259200", null ],
+      [ "SimData", "classSequence_1_1SimData.html#a979a649e3ad555b66cf4fc9a4b396186", null ],
       [ "~SimData", "classSequence_1_1SimData.html#a4d076bea7595376e721f4353776eb1f3", null ],
       [ "ApplyFreqFilter", "classSequence_1_1SimData.html#a97a105bcdbaff6298ecde778a7d5fe49", null ],
       [ "assign", "classSequence_1_1SimData.html#a05f17c6ed162084fb6c1d48d6354b432", null ],

@@ -39,10 +39,10 @@ var NAVTREEINDEX =
 [
 ".html",
 "SingleSub_8hpp_source.html",
-"classSequence_1_1PolySNP.html#aa76ef9584f9b54c82f27708ab99674a5",
+"classSequence_1_1PolySNP.html#a870b149c9bc7c3cd566e69fa9b6d6e55",
 "classSequence_1_1SimData.html#a82788b1309402a63335c034c0dc5aadf",
-"classSequence_1_1samrecord.html#adb7fc5614c78d9c87fdcef285a111cfb",
-"structSequence_1_1chromosome.html#aa6e12af4bef705bc1d4404c142e098a0"
+"classSequence_1_1samrecord.html#aa46340551319823cff916d1634ec0f41",
+"structSequence_1_1chromosome.html#a95f420ca4f1b2d5af43d33fa074cfc76"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
