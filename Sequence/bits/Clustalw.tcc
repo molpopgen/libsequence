@@ -62,7 +62,7 @@ namespace Sequence
         ReadThroughLine (s);
       }
     std::string temp, temp2;
-    while (!s.eof ())
+    while (!s.eof())
       {
         s.get (ch);
         bool putback = 0;
@@ -91,6 +91,7 @@ namespace Sequence
                 order[temp] = nseqs++;
               }
           }
+	s >> std::ws;
       }
 
     typename std::vector<T> _data;
