@@ -25,6 +25,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <iostream>
 #include <cctype>
+#include <algorithm>
+
 /*! \defgroup popgen Molecular Population Genetics
  */
 /*!
@@ -114,6 +116,28 @@ namespace Sequence
 	++i;
       }
     non_const_access = false;  //everything worked, all private data are assigned, so set to false
+    return true;
+  }
+
+  bool PolyTable::assign( std::vector<double> && __positions,
+			  std::vector<std::string> && __data )
+  {
+    non_const_access = true;
+    if ( (!__positions.empty() && __data.empty()) ||
+	 (!__data.empty() && positions.empty() ) ) return false;
+    positions.clear();
+    data.clear();
+    std::swap(positions,__positions);
+    std::swap(data,__data);
+    if( std::find_if( data.cbegin(),data.cend(),
+		      [this](const std::string __s) {
+			return __s.size() != positions.size();
+		      } ) != data.cend() )
+      {
+	positions.clear();
+	data.clear();
+	return false;
+      }
     return true;
   }
 
