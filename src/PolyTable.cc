@@ -149,6 +149,10 @@ namespace Sequence
   }
 
   bool PolyTable::operator==(const PolyTable &rhs) const
+  /*!
+    \return true if *this == rhs, false otherwise
+    \warning case-sensitive
+   */
   {
     if (positions.size() != rhs.positions.size()
         || data.size() != rhs.data.size())
@@ -618,7 +622,6 @@ namespace Sequence
       }
     //assign takes care of setting non_const_access = true
     assign(std::move(newpositions),std::move(newdata));
-    //assign(&newpositions[0],newpositions.size(),&newdata[0],newdata.size());
   }
 
      
