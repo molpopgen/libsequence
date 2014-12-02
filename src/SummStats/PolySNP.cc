@@ -800,18 +800,18 @@ namespace Sequence
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->begin()+rep->_outgroup,
-					    std::bind(notDifferent<string>,
+					    std::bind(&notDifferent<string>,
 						      std::placeholders::_1,*beg,false,true));
 		    _count += std::count_if(rep->_data->begin()+rep->_outgroup+1,
 					    rep->_data->end(),
-					    std::bind(notDifferent<string>,
+					    std::bind(&notDifferent<string>,
 						      std::placeholders::_1,*beg,false,true));
 		  }
 		else
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->end(),
-					    std::bind(notDifferent<string>,
+					    std::bind(&notDifferent<string>,
 						      std::placeholders::_1,*beg,false,true));
 		  }
 		rep->_DVH -= pow (double (_count) / rep->_totsam, 2.0);
