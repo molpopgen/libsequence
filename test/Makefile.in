@@ -80,7 +80,8 @@ host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
 	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
-	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT)
+	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
+	PolySitesIO$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -124,6 +125,10 @@ FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
 FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
+am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
+PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
+PolySitesIO_LDADD = $(LDADD)
+PolySitesIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolyTableConversions_OBJECTS = PolyTableConversions.$(OBJEXT)
 PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
 PolyTableConversions_LDADD = $(LDADD)
@@ -175,12 +180,14 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(testSimDataIO_SOURCES)
+	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(testSimDataIO_SOURCES)
+	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -339,6 +346,7 @@ testSimDataIO_SOURCES = testSimDataIO.cc
 CountingOperators_SOURCES = CountingOperators.cc
 PolyTableConversions_SOURCES = PolyTableConversions.cc
 PolyTableTweaking_SOURCES = PolyTableTweaking.cc
+PolySitesIO_SOURCES = PolySitesIO.cc
 all: all-am
 
 .SUFFIXES:
@@ -403,6 +411,10 @@ FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENC
 	@rm -f FastaOperations$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
 
+PolySitesIO$(EXEEXT): $(PolySitesIO_OBJECTS) $(PolySitesIO_DEPENDENCIES) $(EXTRA_PolySitesIO_DEPENDENCIES) 
+	@rm -f PolySitesIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolySitesIO_OBJECTS) $(PolySitesIO_LDADD) $(LIBS)
+
 PolyTableConversions$(EXEEXT): $(PolyTableConversions_OBJECTS) $(PolyTableConversions_DEPENDENCIES) $(EXTRA_PolyTableConversions_DEPENDENCIES) 
 	@rm -f PolyTableConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableConversions_OBJECTS) $(PolyTableConversions_LDADD) $(LIBS)
@@ -426,6 +438,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@

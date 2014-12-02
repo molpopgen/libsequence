@@ -166,7 +166,6 @@ namespace Sequence
 		  std::back_inserter(temp2));
 	_ind.push_back(temp2);
       }
-    //if (! assign(&_pos[0],_pos.size(),&_ind[0],_ind.size()) )
     if (! assign( std::move(_pos), std::move(_ind) ) )
       {
 	throw badFormat("PolySites::read() -- format error, unable to assign data");

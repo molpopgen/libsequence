@@ -3,7 +3,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	testSimDataIO \
 	CountingOperators \
 	PolyTableConversions \
-	PolyTableTweaking
+	PolyTableTweaking \
+	PolySitesIO
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -25,4 +26,4 @@ PolyTableConversions_SOURCES=PolyTableConversions.cc
 
 PolyTableTweaking_SOURCES=PolyTableTweaking.cc
 
-
+PolySitesIO_SOURCES=PolySitesIO.cc
