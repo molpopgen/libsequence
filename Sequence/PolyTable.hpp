@@ -176,6 +176,9 @@ namespace Sequence
 	}
     }
 
+    explicit PolyTable( std::vector<double> && __positions,
+			std::vector<std::string> && __data );
+
     virtual ~ PolyTable (void);
 
     

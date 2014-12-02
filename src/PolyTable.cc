@@ -49,6 +49,15 @@ namespace Sequence
       non_const_access(true)
   {}
 
+  PolyTable::PolyTable( std::vector<double> && __positions,
+			std::vector<std::string> && __data ) : positions( std::vector<double>() ),
+							       data( std::vector<std::string>() ),
+							       non_const_access(true)
+  {
+    std::swap(__positions,positions);
+    std::swap(__data,data);
+  }
+
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : 
     pv(Sequence::polySiteVector()),
