@@ -24,8 +24,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/HKA.hpp>
 #include <cmath>
 
-using std::isfinite;
-
 namespace 
 {
   double Cn(unsigned n)
@@ -129,7 +127,7 @@ namespace Sequence
 	//	fhat += f;
       }
     cnb /= n;
-    fhat = ( isfinite(cnb) && cnb > 0. ) ? double(sumSb)/(sumTheta*cnb) : 1.;
+    fhat = ( std::isfinite(cnb) && cnb > 0. ) ? double(sumSb)/(sumTheta*cnb) : 1.;
     that = double(sumD)/sumTheta - (0.5*(1.+fhat));
     std::vector<double> thetas(data.size());
     std::vector< HKAresults::chisq_tuple > chisquareds;
@@ -158,7 +156,7 @@ namespace Sequence
 	xsqA_t += spA;
 	double xsqpoly = xsqA_t;
 	const double sp2 = (double(data[i].SB)-ESB)*(double(data[i].SB)-ESB)/VSB;
-	if (isfinite(sp2)) 
+	if (std::isfinite(sp2)) 
 	  {
 	    xsq_t += sp2;
 	    xsqpoly += sp2;
