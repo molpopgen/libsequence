@@ -81,7 +81,7 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
 	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
 	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
-	PolySitesIO$(EXEEXT)
+	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -139,6 +139,10 @@ PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
 PolyTableTweaking_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
+am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
+SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
+SimpleSNPIO_LDADD = $(LDADD)
+SimpleSNPIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
 testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
 testSimDataIO_LDADD = $(LDADD)
@@ -182,12 +186,12 @@ SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
 	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
 	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -347,6 +351,7 @@ CountingOperators_SOURCES = CountingOperators.cc
 PolyTableConversions_SOURCES = PolyTableConversions.cc
 PolyTableTweaking_SOURCES = PolyTableTweaking.cc
 PolySitesIO_SOURCES = PolySitesIO.cc
+SimpleSNPIO_SOURCES = SimpleSNPIO.cc
 all: all-am
 
 .SUFFIXES:
@@ -423,6 +428,10 @@ PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEP
 	@rm -f PolyTableTweaking$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
 
+SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA_SimpleSNPIO_DEPENDENCIES) 
+	@rm -f SimpleSNPIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
+
 testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
 	@rm -f testSimDataIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
@@ -441,6 +450,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:
