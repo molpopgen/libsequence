@@ -414,7 +414,8 @@ namespace Sequence
           }
       }
     //Assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
+    //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
   void PolyTable::RemoveMultiHits(const bool & skipOutgroup,
@@ -453,7 +454,8 @@ namespace Sequence
           }
       }
     //Assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
+    //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
   void PolyTable::RemoveMissing(const bool & skipOutgroup,
@@ -495,7 +497,8 @@ namespace Sequence
           }
       }
     //assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
+    //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
 
   void PolyTable::RemoveAmbiguous(const bool & skipOutgroup,
@@ -532,7 +535,8 @@ namespace Sequence
 	  }
       }
     //assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
+    //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
   }
   
   void
@@ -613,7 +617,8 @@ namespace Sequence
           }
       }
     //assign takes care of setting non_const_access = true
-    assign(&newpositions[0],newpositions.size(),&newdata[0],newdata.size());
+    assign(std::move(newpositions),std::move(newdata));
+    //assign(&newpositions[0],newpositions.size(),&newdata[0],newdata.size());
   }
 
      
