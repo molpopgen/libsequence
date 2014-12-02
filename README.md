@@ -89,11 +89,18 @@ The Intel compiler suffers from the following issues:
 ###Optional dependencies
 
 1. [htslib](http://htslib.org) The configure script will attempt to detect the presence of htslib on your system.  If the library is present, then libsequence will compile with support for features like direct reading from BAM files.  If htslib is not present, those features will not be compiled.
-   
+
+```
+git clone https://github.com/samtools/htslib.git
+cd htslib 
+sudo make install
+```
+
 ###Simplest installation instructions
 
 ```
 ./configure
+automake --add-missing
 make
 sudo make install
 ```
