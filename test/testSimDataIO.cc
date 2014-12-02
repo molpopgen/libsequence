@@ -14,8 +14,8 @@ BOOST_AUTO_TEST_CASE( SimData_read_stream )
 {
   std::ifstream in(infile);
   Sequence::SimData d;
-  in >> d >> std::ws;
 
+  in >> d >> std::ws; 
   BOOST_REQUIRE_EQUAL(d.size(),100);
   BOOST_REQUIRE_EQUAL(d.numsites(),196);
 }

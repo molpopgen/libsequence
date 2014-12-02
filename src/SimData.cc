@@ -53,6 +53,12 @@ namespace Sequence
   {
   }
 
+  SimData::SimData( std::vector<double> && pos,  
+		    std::vector<std::string> && data) : PolyTable(std::move(pos),
+								  std::move(data))
+  {
+  }
+
   SimData::SimData(const SimData::const_site_iterator & beg, 
 		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
   {

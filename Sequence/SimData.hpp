@@ -72,6 +72,7 @@ namespace Sequence
       explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
       explicit SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
       explicit SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
+      explicit SimData( std::vector<double> && pos,  std::vector<std::string> && data);
       explicit SimData(const SimData::const_site_iterator & beg, 
 		       const SimData::const_site_iterator & end);
 

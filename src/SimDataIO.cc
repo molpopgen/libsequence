@@ -103,7 +103,7 @@ namespace Sequence
 	  }
 	delete [] haplotype;
       }
-    return SimData(pos,data);
+    return SimData(std::move(pos),std::move(data));
   }
 
   void write_SimData_binary( std::ostream & o, const SimData & d )
@@ -158,7 +158,7 @@ namespace Sequence
 	  }
 	data.push_back(d);
       }
-    return SimData(pos,data);
+    return SimData(std::move(pos),std::move(data));
   }
 
   long int write_SimData_binary( int fd , const SimData & d )
