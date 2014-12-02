@@ -22,4 +22,18 @@ BOOST_AUTO_TEST_CASE( ostream_test )
   unlink(filename);
 }
 
+BOOST_AUTO_TEST_CASE( exception_test )
+{
+  const char * filename = "fasta_ostream_test_out.fasta";
+  std::ofstream out(filename);
+  //Write a badly-formatted FASTA record (we forgot the >)
+  out << name << '\n' << seq;
+  out.close();
+
+  std::ifstream in(filename);
+  Sequence::Fasta f;
+  BOOST_CHECK_THROW( in >> f >> std::ws, Sequence::badFormat );
+  unlink(filename);
+}
+
 //EOF
