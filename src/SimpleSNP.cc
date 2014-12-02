@@ -44,7 +44,9 @@ namespace Sequence
     unsigned nsam, nsites, i, j;
     char ch;
     if(!(s >> nsam >> nsites))
-      throw badFormat("SimpleSNP.cc: file did not start with s nsam nsites");
+      {
+	throw badFormat("SimpleSNP.cc: file did not start with nsam nsites");
+      }
     if (Diploid)
       nsam *= 2;
     std::vector<double> _positions(nsites);
