@@ -68,7 +68,23 @@ Again, a few options:
 ###Dependencies
 
 1. zlib: http://zlib.net
-2. A C++11-compliant compiler
+2. A C++11-compliant compiler (see next section)
+
+###Compilers
+
+I support the following compilers:
+
+* [GCC](http://gcc.gnu.org)
+* [clang](http://clang.llvm.org)
+
+The following compilers are not supported:
+
+* [Intel](https://software.intel.com/en-us/intel-compilers)
+
+The Intel compiler suffers from the following issues:
+
+* It appears to no longer be free for academic use. (boo!)
+* It appears to be based on a version of libstdc++ that is too old to be compatible with libsequence (see [here](https://github.com/molpopgen/libsequence/pull/4) for some discussion of the issue)
 
 ###Optional dependencies
 
