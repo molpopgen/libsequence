@@ -2,7 +2,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	AlignStreamTest \
 	testSimDataIO \
 	CountingOperators \
-	PolyTableConversions
+	PolyTableConversions \
+	PolyTableTweaking
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -21,5 +22,7 @@ testSimDataIO_SOURCES=testSimDataIO.cc
 CountingOperators_SOURCES=CountingOperators.cc
 
 PolyTableConversions_SOURCES=PolyTableConversions.cc
+
+PolyTableTweaking_SOURCES=PolyTableTweaking.cc
 
 

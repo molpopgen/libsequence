@@ -80,7 +80,7 @@ host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
 	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
-	PolyTableConversions$(EXEEXT)
+	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -129,6 +129,11 @@ PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
 PolyTableConversions_LDADD = $(LDADD)
 PolyTableConversions_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
+am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
+PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
+PolyTableTweaking_LDADD = $(LDADD)
+PolyTableTweaking_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
 testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
 testSimDataIO_LDADD = $(LDADD)
@@ -171,11 +176,11 @@ am__v_CXXLD_1 =
 SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
 	$(FastaOperations_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(PolyTableTweaking_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
 	$(FastaOperations_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(PolyTableTweaking_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -333,6 +338,7 @@ AlignStreamTest_SOURCES = AlignStreamTest.cc
 testSimDataIO_SOURCES = testSimDataIO.cc
 CountingOperators_SOURCES = CountingOperators.cc
 PolyTableConversions_SOURCES = PolyTableConversions.cc
+PolyTableTweaking_SOURCES = PolyTableTweaking.cc
 all: all-am
 
 .SUFFIXES:
@@ -401,6 +407,10 @@ PolyTableConversions$(EXEEXT): $(PolyTableConversions_OBJECTS) $(PolyTableConver
 	@rm -f PolyTableConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableConversions_OBJECTS) $(PolyTableConversions_LDADD) $(LIBS)
 
+PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEPENDENCIES) $(EXTRA_PolyTableTweaking_DEPENDENCIES) 
+	@rm -f PolyTableTweaking$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
+
 testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
 	@rm -f testSimDataIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
@@ -417,6 +427,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:
