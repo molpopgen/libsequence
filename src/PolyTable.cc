@@ -23,7 +23,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/stateCounter.hpp>
-#include <iostream>
 #include <cctype>
 #include <algorithm>
 
@@ -132,12 +131,11 @@ namespace Sequence
 			  std::vector<std::string> && __data )
   {
     non_const_access = true;
-    if ( (!__positions.empty() && __data.empty()) ||
-	 (!__data.empty() && positions.empty() ) ) return false;
     positions.clear();
     data.clear();
     std::swap(positions,__positions);
     std::swap(data,__data);
+
     if( std::find_if( data.cbegin(),data.cend(),
 		      [this](const std::string __s) {
 			return __s.size() != positions.size();
