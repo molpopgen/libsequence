@@ -28,6 +28,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cassert>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 using std::vector;
 using std::string;
@@ -294,10 +295,17 @@ namespace Sequence
       \return the label the i-th individual in the data
     */
   {
-    assert(i<_names.size());
+    if(i >= this->size() )
+      {
+	throw std::out_of_range("Sequence::SimpleSNP::label(), i out of range");
+      }
     if (haveOutgroup && i==0)
       {
-        return string("outgroup");
+        return string("anc");
+      }
+    if( _names.empty() )
+      {
+	return string("seq" + std::to_string(i));
       }
     return _names[i-unsigned(haveOutgroup)];
   }
