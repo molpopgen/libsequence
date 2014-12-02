@@ -1,3 +1,5 @@
+//Code for the -*- C++ -*- namespace Sequence::PolSites template members
+
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
@@ -24,12 +26,14 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 // Code for the -*- C++ -*- namespace Sequence::PolySites template members
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
+#include <Sequence/Seq.hpp>
 #if (!__STRICT_ANSI__)
 #include <Sequence/FastaExplicit.hpp>
 #else
 #include <Sequence/Alignment.hpp>
 #endif
 #include <cctype>
+#include <type_traits>
 namespace
 {
   /*!
@@ -75,9 +79,12 @@ namespace Sequence
       \warning when ignoregaps=false, this class does not do the right thing
     */
   {
+    static_assert( std::is_same<__DataType,std::string>::value ||
+		   std::is_base_of<Sequence::Seq,__DataType>::value,
+		   "__DataType must be std::string or derived from Sequence::Seq");
     if (Alignment::IsAlignment(alignment) == true)
       {
-        seqlen = alignment[0].length ();
+        seqlen = alignment[0].length();
         numseqs = alignment.size ();
         fillIt<__DataType> (alignment, strictInfSites, ignoregaps,skipMissing,freqfilter);
         if(skipAdjSNP == true)
@@ -90,6 +97,9 @@ namespace Sequence
   PolySites::fillIt (const std::vector < __DataType >&alignment, bool strict, bool ignoregaps,
                      bool skipMissing,unsigned freqfilter)
   {
+    static_assert( std::is_same<__DataType,std::string>::value ||
+		   std::is_base_of<Sequence::Seq,__DataType>::value,
+		   "__DataType must be std::string or derived from Sequence::Seq");
     std::vector<double> _positions;
 
     for(unsigned j =0 ; j < seqlen ; ++j)
