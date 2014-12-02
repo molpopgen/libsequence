@@ -1,4 +1,5 @@
-check_PROGRAMS=FastaConstructors FastaIO FastaOperations
+check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
+	AlignStreamTest
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -9,6 +10,8 @@ LDADD=$(BOOST_LIBS) $(SEQUENCE)
 FastaConstructors_SOURCES=FastaConstructors.cc
 FastaIO_SOURCES=FastaIO.cc
 FastaOperations_SOURCES=FastaOperations.cc
+
+AlignStreamTest_SOURCES=AlignStreamTest.cc
 
 
 

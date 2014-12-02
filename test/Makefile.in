@@ -78,7 +78,7 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaOperations$(EXEEXT)
+	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -93,16 +93,21 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config-h.in
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
-FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
-FastaConstructors_LDADD = $(LDADD)
+am_AlignStreamTest_OBJECTS = AlignStreamTest.$(OBJEXT)
+AlignStreamTest_OBJECTS = $(am_AlignStreamTest_OBJECTS)
+AlignStreamTest_LDADD = $(LDADD)
 am__DEPENDENCIES_1 =
-FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+AlignStreamTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
+FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
+FastaConstructors_LDADD = $(LDADD)
+FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
 FastaIO_LDADD = $(LDADD)
@@ -146,10 +151,10 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES)
-DIST_SOURCES = $(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES)
+SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES)
+DIST_SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -303,6 +308,7 @@ LDADD = $(BOOST_LIBS) $(SEQUENCE)
 FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaIO.cc
 FastaOperations_SOURCES = FastaOperations.cc
+AlignStreamTest_SOURCES = AlignStreamTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -347,6 +353,10 @@ clean-checkPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
+AlignStreamTest$(EXEEXT): $(AlignStreamTest_OBJECTS) $(AlignStreamTest_DEPENDENCIES) $(EXTRA_AlignStreamTest_DEPENDENCIES) 
+	@rm -f AlignStreamTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(AlignStreamTest_OBJECTS) $(AlignStreamTest_LDADD) $(LIBS)
+
 FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
 	@rm -f FastaConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
@@ -365,6 +375,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignStreamTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
