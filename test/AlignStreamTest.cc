@@ -108,12 +108,12 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   
   const char * outfile = "phylip_test.txt";
   std::ofstream out(outfile);
-  out << p << '\n';
+  BOOST_REQUIRE_NO_THROW( out << p << '\n'; );
   out.close();
 
   in.open(outfile);
   phylip p2;
-  in >> p2 >> std::ws;
+  BOOST_REQUIRE_NO_THROW( in >> p2 >> std::ws );
 
   BOOST_REQUIRE(!p2.empty());
   BOOST_REQUIRE_EQUAL(p.size() , p2.size());
