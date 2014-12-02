@@ -20,7 +20,7 @@ BOOST_AUTO_TEST_CASE( clustalw_in )
   std::ifstream in(input_data);
   std::string check;
   clustal c;
-  in >> c >> std::ws;
+  BOOST_REQUIRE_NO_THROW( in >> c >> std::ws; );
 
   BOOST_REQUIRE( !c.empty() );
   BOOST_REQUIRE_EQUAL( c.size() , 10 );
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE( clustalw_convert )
   std::ifstream in(input_data);
   std::string check;
   clustal c;
-  in >> c >> std::ws;
+  BOOST_REQUIRE_NO_THROW( in >> c >> std::ws; );
 
   BOOST_REQUIRE( !c.empty() );
   BOOST_REQUIRE_EQUAL( c.size() , 10 );
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( clustalw_convert2 )
   std::ifstream in(input_data);
   std::string check;
   clustal c;
-  in >> c >> std::ws;
+  BOOST_REQUIRE_NO_THROW( in >> c >> std::ws; );
 
   BOOST_REQUIRE( !c.empty() );
   BOOST_REQUIRE_EQUAL( c.size() , 10 );
