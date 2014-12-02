@@ -215,7 +215,7 @@ namespace Sequence
       {
 	throw (Sequence::badFormat("SimpleSNP::read() -- number of sequences does not match input value"));
       }     
-    PolyTable::assign(&_positions[0],_positions.size(),&_data[0],_data.size());
+    this->assign(std::move(_positions),std::move(_data));
     RemoveInvariantColumns(this);
     return s;
   }
