@@ -75,7 +75,7 @@ namespace Sequence
 
   bool PolyTable::empty() const
   {
-    return data.empty()||positions.empty();
+    return data.empty()&&positions.empty();
   }
 
   bool PolyTable::assign(PolyTable::const_site_iterator beg,
@@ -417,6 +417,8 @@ namespace Sequence
               }
           }
       }
+    //take care of case where new data are empty
+    if( newpos.empty()) newdata.clear();
     //Assign takes care of setting non_const_access = true
     assign(std::move(newpos),std::move(newdata));
     //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
@@ -500,6 +502,7 @@ namespace Sequence
               }
           }
       }
+    if(newpos.empty()) newdata.clear();
     //assign takes care of setting non_const_access = true
     assign(std::move(newpos),std::move(newdata));
     //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
@@ -538,6 +541,7 @@ namespace Sequence
               }
 	  }
       }
+    if(newpos.empty()) newdata.clear();
     //assign takes care of setting non_const_access = true
     assign(std::move(newpos),std::move(newdata));
     //assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());

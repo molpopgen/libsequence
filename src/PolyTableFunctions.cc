@@ -137,6 +137,7 @@ namespace Sequence
 	      }
 	  }
       }
+    if(newpos.empty())newdata.clear();
     if (table->assign(std::move(newpos),std::move(newdata))==false)
       {
 	throw (SeqException("Sequence::RemoveGaps -- error: could not assign data to object"));
@@ -180,6 +181,7 @@ namespace Sequence
 	      }
 	  }
       }
+    if(_newpos.empty())_newdata.clear();
     if (table->assign(std::move(_newpos),std::move(_newdata))==false)
       {
 	throw (SeqException("Sequence::RemoveGaps -- error: could not assign data to object"));
