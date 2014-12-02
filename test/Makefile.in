@@ -78,7 +78,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT)
+	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
+	testSimDataIO$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -117,6 +118,11 @@ FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
 FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
+am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
+testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
+testSimDataIO_LDADD = $(LDADD)
+testSimDataIO_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -152,9 +158,11 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES)
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES)
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
+	$(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -309,6 +317,7 @@ FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaIO.cc
 FastaOperations_SOURCES = FastaOperations.cc
 AlignStreamTest_SOURCES = AlignStreamTest.cc
+testSimDataIO_SOURCES = testSimDataIO.cc
 all: all-am
 
 .SUFFIXES:
@@ -369,6 +378,10 @@ FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENC
 	@rm -f FastaOperations$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
 
+testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
+	@rm -f testSimDataIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
+
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
 
@@ -379,6 +392,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

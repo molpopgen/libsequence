@@ -1,5 +1,6 @@
 check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
-	AlignStreamTest
+	AlignStreamTest \
+	testSimDataIO
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -12,6 +13,8 @@ FastaIO_SOURCES=FastaIO.cc
 FastaOperations_SOURCES=FastaOperations.cc
 
 AlignStreamTest_SOURCES=AlignStreamTest.cc
+
+testSimDataIO_SOURCES=testSimDataIO.cc
 
 
 
