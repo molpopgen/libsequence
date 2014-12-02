@@ -79,7 +79,7 @@ build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
-	testSimDataIO$(EXEEXT)
+	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -104,6 +104,11 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_CountingOperators_OBJECTS = CountingOperators.$(OBJEXT)
+CountingOperators_OBJECTS = $(am_CountingOperators_OBJECTS)
+CountingOperators_LDADD = $(LDADD)
+CountingOperators_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
@@ -157,12 +162,12 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(testSimDataIO_SOURCES)
-DIST_SOURCES = $(AlignStreamTest_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(testSimDataIO_SOURCES)
+SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(testSimDataIO_SOURCES)
+DIST_SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -311,6 +316,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 BOOST_LIBS = -lboost_unit_test_framework
 SEQUENCE = -lsequence
+AM_CXXFLAGS = -std=c++11
 AM_LDFLAGS = -L../src/.libs -static
 LDADD = $(BOOST_LIBS) $(SEQUENCE)
 FastaConstructors_SOURCES = FastaConstructors.cc
@@ -318,6 +324,7 @@ FastaIO_SOURCES = FastaIO.cc
 FastaOperations_SOURCES = FastaOperations.cc
 AlignStreamTest_SOURCES = AlignStreamTest.cc
 testSimDataIO_SOURCES = testSimDataIO.cc
+CountingOperators_SOURCES = CountingOperators.cc
 all: all-am
 
 .SUFFIXES:
@@ -366,6 +373,10 @@ AlignStreamTest$(EXEEXT): $(AlignStreamTest_OBJECTS) $(AlignStreamTest_DEPENDENC
 	@rm -f AlignStreamTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(AlignStreamTest_OBJECTS) $(AlignStreamTest_LDADD) $(LIBS)
 
+CountingOperators$(EXEEXT): $(CountingOperators_OBJECTS) $(CountingOperators_DEPENDENCIES) $(EXTRA_CountingOperators_DEPENDENCIES) 
+	@rm -f CountingOperators$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(CountingOperators_OBJECTS) $(CountingOperators_LDADD) $(LIBS)
+
 FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
 	@rm -f FastaConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
@@ -389,6 +400,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignStreamTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CountingOperators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
