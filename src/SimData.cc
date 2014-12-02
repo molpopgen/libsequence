@@ -94,7 +94,8 @@ namespace Sequence
       stream >> std::ws;
       haps.emplace_back(temp);
     } 
-    this->assign(&pos[0],S,&haps[0],haps.size());
+    this->assign( std::move(pos),
+		  std::move(haps) );
     return stream;
   }
 
@@ -195,7 +196,8 @@ namespace Sequence
 	_data.resize(0);
       }
     //assign data into base class
-    this->assign(&_positions[0],ss,&_data[0],_data.size());
+    this->assign(std::move(_positions),
+		 std::move(_data));
     return rv;
   }
 }
