@@ -42,7 +42,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 using std::log;
 using std::toupper;
-using std::isfinite;
 /*!
   \defgroup kaks Classes related to the calculation of Ka and Ks
   \ingroup divergence
@@ -50,6 +49,7 @@ using std::isfinite;
 
 namespace Sequence
   {
+  using std::isfinite;
   Comeron95::Comeron95 (const Sequence::Seq * seqa,
                         const Sequence::Seq * seqb, 
 			int max, 

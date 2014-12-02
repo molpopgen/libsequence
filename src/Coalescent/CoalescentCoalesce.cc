@@ -21,6 +21,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#include <stdlib.h>
+
 #include <Sequence/Coalescent/Coalesce.hpp>
 namespace Sequence
 {

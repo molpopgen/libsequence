@@ -24,8 +24,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/HKA.hpp>
 #include <cmath>
 
-using std::isfinite;
-
 namespace 
 {
   double Cn(unsigned n)
@@ -51,6 +49,7 @@ namespace
 
 namespace Sequence
 {
+  using std::isfinite;
   HKAdata::HKAdata() : SA(0),SB(0),D(0),nA(0),nB(0)
 		  /*!
 		    default constructor

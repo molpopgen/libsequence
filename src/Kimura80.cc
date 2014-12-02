@@ -37,10 +37,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 //using std::isnan;
 using std::log;
-using std::isfinite;
 
 namespace Sequence
   {
+  using std::isfinite;
   Kimura80::Kimura80 (const Sequence::Seq * seqa, const Sequence::Seq * seqb):
     seqlen (seqa->length())
       /*!
