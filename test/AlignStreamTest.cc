@@ -106,8 +106,11 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   in >> c >> std::ws;
   phylip p = c;
   
-  std::ofstream out("phylip_test.txt");
+  const char * outfile = "phylip_test.txt";
+  std::ofstream out(outfile);
   out << p << '\n';
+
+  unlink(outfile);
 }
 
 //EOF
