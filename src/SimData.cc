@@ -57,6 +57,7 @@ namespace Sequence
 		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
   {
   }
+
   std::istream & SimData::read (std::istream & stream) 
 
   /*!
@@ -194,7 +195,7 @@ namespace Sequence
 	_data.resize(0);
       }
     //assign data into base class
-    PolyTable::assign(&_positions[0],ss,&_data[0],_data.size());
+    this->assign(&_positions[0],ss,&_data[0],_data.size());
     return rv;
   }
 }
