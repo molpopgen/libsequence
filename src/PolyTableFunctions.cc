@@ -110,8 +110,6 @@ namespace Sequence
 
   /*!
     Removes all positions containing \a gapchar from \a table
-    \
-
   */
   {
     if(table->empty()) return;
