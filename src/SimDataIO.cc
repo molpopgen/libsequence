@@ -43,7 +43,7 @@ namespace Sequence
 	gzread(file,&nsites,sizeof(uint32_t));
 	if(!nsites) return SimData();
 	pos.resize(nsites);
-	gzread(file,&pos[0],nsites*sizeof(double));
+	gzread(file,&pos[0],unsigned(nsites*sizeof(double)));
 	data = vector<string>(nsam,string(nsites,'0'));
 	for(uint32_t i = 0 ; i < nsam ; ++i)
 	  {
