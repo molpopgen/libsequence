@@ -187,7 +187,31 @@ BOOST_AUTO_TEST_CASE( to_lower )
   BOOST_REQUIRE( ps == ps2 );
 }
 
-//Remove sites based on minor allele freq
+
+BOOST_AUTO_TEST_CASE( remove_maf_with_outgroup )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "AAGAA",
+				   "CAGAA",
+				   "CTGAA",
+				   "NAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  //The outgroup is the first sequence
+  ps.ApplyFreqFilter(2,true,0);
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 1 );
+  BOOST_REQUIRE( !ps.empty() );
+
+  ps.ApplyFreqFilter(3,true,0);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 0 );
+  BOOST_REQUIRE_EQUAL( ps.size(), 0 );
+  BOOST_REQUIRE( ps.empty() );
+}
+
 BOOST_AUTO_TEST_CASE( remove_maf )
 {
   std::vector<double> pos = {1,2,3,4,5};
@@ -208,4 +232,61 @@ BOOST_AUTO_TEST_CASE( remove_maf )
   BOOST_REQUIRE_EQUAL( ps.numsites(), 0 );
   BOOST_REQUIRE_EQUAL( ps.size(), 0 );
   BOOST_REQUIRE( ps.empty() );
+}
+
+BOOST_AUTO_TEST_CASE( remove_multi )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"TAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  ps.RemoveMultiHits();
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
+}
+
+/*
+  Now, we only consider the ingroup for removing multiple
+  hits.  In this test, site 1 has 3 states, but we 
+  will treat the first sequence as the outgroup.  Thus,
+  the ingroup has only 2 states and thus the site
+  won't be filtered.
+*/
+BOOST_AUTO_TEST_CASE( remove_multi_ingroup )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"CAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  ps.RemoveMultiHits(true,0);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 5 );
+}
+
+/*
+  In this case, we'll take the second sequence
+  as the outgroup, and now site 1 will 
+  get filtered out
+*/
+BOOST_AUTO_TEST_CASE( remove_multi_ingroup2 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"CAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  ps.RemoveMultiHits(true,1);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
 }
