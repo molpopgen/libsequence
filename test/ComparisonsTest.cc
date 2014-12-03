@@ -62,7 +62,7 @@ BOOST_AUTO_TEST_CASE( numdiffs2 )
   std::string seq1("ATGATG---ACA"),
     seq2(seq1);
 
-  std::remove(seq2.begin(),seq2.end(),'-');
+  seq2.erase(std::remove(seq2.begin(),seq2.end(),'-'),seq2.end());
 
   /*
     With the gaps removed, the two sequences are:
