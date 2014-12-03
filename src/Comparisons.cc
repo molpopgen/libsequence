@@ -159,6 +159,10 @@ namespace Sequence
 		       const bool & skip_missing,
 		       const bool & nucleic_acid)
     /*!
+      \param seq1 A string representing a sequence
+      \param seq2 A string representing a sequence
+      \param skip_missing If true, missing data characters will not be counted as differences
+      \param nucleic_acid.  If true, n/N are the missing data symbol.  If false, x/X.
       \return the number of differences between two std::strings.  Can skip missing
       data in the same fashion as Comparisons::Different.  If one sequence is shorter
       than the other, the number of positions compared is the length of the shorter 
