@@ -42,8 +42,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  Mutations TsTv(char i, char j);
-  Mutations TsTv(int i, int j);
+  Mutations TsTv(const char & i, const char & j);
+  Mutations TsTv(const int & i,const int & j);
   bool Different (const std::string & seq1,
 		  const std::string & seq2,
 		  const bool & skip_missing = true,

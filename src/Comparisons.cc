@@ -29,7 +29,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
   {
-    Mutations TsTv (char i, char j)
+    Mutations TsTv (const char & i,const  char & j)
     /*!
       Takes two chars, assumed to be nucleotides. The integer returned by this function
       is a member of the enumeration type Sequence::Mutations.
@@ -87,7 +87,7 @@ namespace Sequence
       return (Mutations(Unknown));	//can be used for error checking
     }
 
-    Mutations TsTv (int i, int j)
+    Mutations TsTv (const int & i, const int & j)
     /*!
     Takes two ints, assumed to be integer representations of nucleotides. 
     The way to ensure that the int represents a nucleotide in a valid way is
@@ -173,7 +173,6 @@ namespace Sequence
       if (seq1.length() != seq2.length())
 	{
 	  return -1;
-	  //len = (seq1.length() < seq2.length()) ? seq1.length() : seq2.length();
 	}
       char MISSING = 'N';
       if (!nucleic_acid)
