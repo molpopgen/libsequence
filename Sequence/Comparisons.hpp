@@ -46,8 +46,8 @@ namespace Sequence
   Mutations TsTv(int i, int j);
   bool Different (const std::string & seq1,
 		  const std::string & seq2,
-		  bool skip_missing = 1 ,
-		  bool nucleic_acid = 1);
+		  const bool & skip_missing = true,
+		  const bool & nucleic_acid = true);
   
   template<typename T> bool notDifferent(const T &l,const T &r,
 					 const bool & skip_missing = 1,
@@ -61,8 +61,8 @@ namespace Sequence
 
   unsigned NumDiffs(const std::string & seq1,
 		    const std::string & seq2,
-		    bool skip_missing =1 ,
-		    bool nucleic_acid = 1);
+		    const bool & skip_missing = true ,
+		    const bool & nucleic_acid = true);
 
   bool Gapped(const std::string &s);
 

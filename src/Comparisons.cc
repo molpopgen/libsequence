@@ -113,7 +113,8 @@ namespace Sequence
 
     bool Different (const std::string & seq1,
 		    const std::string & seq2,
-		    bool skip_missing,bool nucleic_acid)
+		    const bool & skip_missing,
+		    const bool & nucleic_acid)
     /*!
     Ask if two strings are different.  While this can normally be done by asking
     if (seq1 != seq2) {}, missing data poses a problem here.  If skip-missing == 1,
@@ -155,8 +156,8 @@ namespace Sequence
 
     unsigned NumDiffs (const std::string & seq1,
 		       const std::string & seq2,
-		       bool skip_missing
-		       ,bool nucleic_acid)
+		       const bool & skip_missing,
+		       const bool & nucleic_acid)
     /*!
       \return the number of differences between two std::strings.  Can skip missing
       data in the same fashion as Comparisons::Different.  If one sequence is shorter
