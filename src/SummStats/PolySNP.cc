@@ -38,7 +38,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/PolySNPimpl.hpp>
-#include <Sequence/StringComp.hpp>
 
 /*!
   \defgroup popgenanalysis Analysis of molecular population genetic data
@@ -56,7 +55,13 @@ namespace Sequence
     {
       //use Sequence::Different to prevent missing sites 
       //causing 2 sequences to be labelled as distinct
-      return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
+      //return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
+      return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),
+							       [](const char & __a, const char __b)
+							       {
+								 return (std::toupper(static_cast<unsigned char>(__a)) 
+									 < std::toupper(static_cast<unsigned char>(__b)));
+							       }) );
     }
   };
   _PolySNPImpl::_PolySNPImpl (const Sequence::PolyTable * data, const bool & haveOutgroup ,
