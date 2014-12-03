@@ -25,8 +25,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef __SEQUENCE_BITS_SNN_TCC__
 #define __SEQUENCE_BITS_SNN_TCC__
 
-				    //#include <algorithm>
-
 namespace Sequence
 {
   template< typename shuffler >
