@@ -367,6 +367,7 @@ namespace Sequence
     \c false otherwise
     \param outgroup the index in the data array containing the outgroup
     (if present)
+    \note This is only a frequency filter based on minor allele counts.
   */
   {
     std::vector<double> newpos;
