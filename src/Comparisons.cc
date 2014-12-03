@@ -166,7 +166,8 @@ namespace Sequence
       \return the number of differences between two std::strings.  Can skip missing
       data in the same fashion as Comparisons::Different.  If one sequence is shorter
       than the other, the number of positions compared is the length of the shorter 
-      sequence.
+      sequence.  See test/ComparisonsTest.cc, module numdiffs2 for a concrete example
+      of sequences differing by length.
     */
     {
       unsigned ndiff = 0;
