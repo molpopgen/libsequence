@@ -35,6 +35,30 @@ double pi( const Sequence::SimData & d )
   return double(ndiffs)/double(ncomps);
 }
 
+unsigned nsingletons( const Sequence::SimData & d )
+{
+  if(d.empty())return 0;
+  unsigned nsing = 0;
+  std::for_each(d.sbegin(),d.send(),
+		[&nsing,&d](const Sequence::polymorphicSite & __ps) {
+		  auto c = std::count(__ps.second.begin(),__ps.second.end(),'1');
+		  nsing += ( c == 1 || c == d.size() - 1 ) ? 1 : 0;
+		});
+  return nsing;
+}
+
+unsigned nexternal( const Sequence::SimData & d )
+{
+  if(d.empty())return 0;
+  unsigned next = 0;
+  std::for_each(d.sbegin(),d.send(),
+		[&next,&d](const Sequence::polymorphicSite & __ps) {
+		  //In "Fu-ese", an external mutation is a derived singleton
+		  next += ( std::count(__ps.second.begin(),__ps.second.end(),'1')==1 ) ? 1 : 0;
+		});
+  return next;
+}
+
 //What do we do for no data?
 BOOST_AUTO_TEST_CASE( check_empty_table )
 {
@@ -108,6 +132,30 @@ BOOST_AUTO_TEST_CASE( S1 )
   Sequence::PolySIM ad(&d);
 
   BOOST_REQUIRE_EQUAL( ad.NumPoly(), d.numsites() ); //true by definition of the ms format
+}
+
+BOOST_AUTO_TEST_CASE( singletons1 )
+{
+  Sequence::SimData d;
+  std::ifstream in(testfile);
+  BOOST_REQUIRE_NO_THROW(in >> d >> std::ws);
+  in.close();
+
+  Sequence::PolySIM ad(&d);
+
+  BOOST_REQUIRE_EQUAL( ad.NumSingletons(), nsingletons(d) ); //true by definition of the ms format
+}
+
+BOOST_AUTO_TEST_CASE( external1 )
+{
+  Sequence::SimData d;
+  std::ifstream in(testfile);
+  BOOST_REQUIRE_NO_THROW(in >> d >> std::ws);
+  in.close();
+
+  Sequence::PolySIM ad(&d);
+
+  BOOST_REQUIRE_EQUAL( ad.NumExternalMutations(), nexternal(d) ); //true by definition of the ms format
 }
 
 //number of unique haps
