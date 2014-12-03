@@ -46,7 +46,7 @@ namespace Sequence
   Mutations TsTv(int i, int j);
   bool Different (const std::string & seq1,
 		  const std::string & seq2,
-		  bool skip_missing =1 ,
+		  bool skip_missing = 1 ,
 		  bool nucleic_acid = 1);
   
   template<typename T> bool notDifferent(const T &l,const T &r,
@@ -67,7 +67,7 @@ namespace Sequence
   bool Gapped(const std::string &s);
 
   template<typename Iterator> bool Gapped(Iterator beg,Iterator end,
-					  const char &gapchar = '-')
+					  const char & gapchar = '-')
     /*!
       \param beg an iterator
       \param end an iterator
