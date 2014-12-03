@@ -66,7 +66,9 @@ namespace Sequence
 
     _path.push_back(codon1);
 
-    unsigned ndiffs = Sequence::NumDiffs(codon1,codon2);
+    //We have already thrown an exception if codons are not the same length
+    decltype(Sequence::NumDiffs(codon1,codon2)) ndiffs = Sequence::NumDiffs(codon1,codon2);
+
     if (ndiffs == 0)
       {
 	_type = shortestPath::NONE;

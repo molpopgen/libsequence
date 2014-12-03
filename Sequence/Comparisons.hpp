@@ -59,10 +59,10 @@ namespace Sequence
 		      skip_missing,nucleic_acid);
   }
 
-  unsigned NumDiffs(const std::string & seq1,
-		    const std::string & seq2,
-		    const bool & skip_missing = true ,
-		    const bool & nucleic_acid = true);
+  int NumDiffs(const std::string & seq1,
+	       const std::string & seq2,
+	       const bool & skip_missing = true ,
+	       const bool & nucleic_acid = true);
 
   bool Gapped(const std::string &s);
 

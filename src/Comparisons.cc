@@ -154,10 +154,10 @@ namespace Sequence
     }
 
 
-    unsigned NumDiffs (const std::string & seq1,
-		       const std::string & seq2,
-		       const bool & skip_missing,
-		       const bool & nucleic_acid)
+    int NumDiffs (const std::string & seq1,
+		  const std::string & seq2,
+		  const bool & skip_missing,
+		  const bool & nucleic_acid)
     /*!
       \param seq1 A string representing a sequence
       \param seq2 A string representing a sequence
@@ -165,16 +165,15 @@ namespace Sequence
       \param nucleic_acid.  If true, n/N are the missing data symbol.  If false, x/X.
       \return the number of differences between two std::strings.  Can skip missing
       data in the same fashion as Comparisons::Different.  If one sequence is shorter
-      than the other, the number of positions compared is the length of the shorter 
-      sequence.  See test/ComparisonsTest.cc, module numdiffs2 for a concrete example
-      of sequences differing by length.
+      than the other, -1 is returned
     */
     {
-      unsigned ndiff = 0;
+      int ndiff = 0;
       size_t len = seq1.length();
       if (seq1.length() != seq2.length())
 	{
-	  len = (seq1.length() < seq2.length()) ? seq1.length() : seq2.length();
+	  return -1;
+	  //len = (seq1.length() < seq2.length()) ? seq1.length() : seq2.length();
 	}
       char MISSING = 'N';
       if (!nucleic_acid)

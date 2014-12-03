@@ -41,7 +41,7 @@ namespace Sequence
       {
 	for(unsigned j=i+1;j<snpTable.size();++j)
 	  {
-	    dkj[i][j] = Sequence::NumDiffs(snpTable[i],snpTable[j]);
+	    dkj[i][j] = double(NumDiffs(snpTable[i],snpTable[j]));
 	  }
       }
     std::vector <unsigned> __individuals(snpTable.size(),0u);

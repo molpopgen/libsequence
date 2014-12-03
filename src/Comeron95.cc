@@ -274,7 +274,7 @@ namespace Sequence
     statistics stored a private data to the class
   */
   {
-    size_t i, j, ndiff;
+    size_t i, j;
     size_t length = seq1->length ();
 
     //the for loop iterates over codons (block of 3 sites)
@@ -297,7 +297,7 @@ namespace Sequence
             if (Different (codon1, codon2))
               {
                 //find out how many changes there are between the codons
-                ndiff = NumDiffs (codon1, codon2);
+                int ndiff = NumDiffs (codon1, codon2);
                 if (ndiff == 1)	//if there is just one difference, use the rules for
                   //codons that only differ at 1 site
                   {
