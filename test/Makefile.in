@@ -81,7 +81,8 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
 	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
 	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
-	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT)
+	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) \
+	PolySNPtest$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -125,6 +126,14 @@ FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
 FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
+am_PolySIMtest_OBJECTS = PolySIMtest.$(OBJEXT)
+PolySIMtest_OBJECTS = $(am_PolySIMtest_OBJECTS)
+PolySIMtest_LDADD = $(LDADD)
+PolySIMtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+am_PolySNPtest_OBJECTS = PolySNPtest.$(OBJEXT)
+PolySNPtest_OBJECTS = $(am_PolySNPtest_OBJECTS)
+PolySNPtest_LDADD = $(LDADD)
+PolySNPtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
 PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
 PolySitesIO_LDADD = $(LDADD)
@@ -184,12 +193,14 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
+	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
 	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolySitesIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
+	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
 	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
@@ -352,6 +363,8 @@ PolyTableConversions_SOURCES = PolyTableConversions.cc
 PolyTableTweaking_SOURCES = PolyTableTweaking.cc
 PolySitesIO_SOURCES = PolySitesIO.cc
 SimpleSNPIO_SOURCES = SimpleSNPIO.cc
+PolySIMtest_SOURCES = PolySIMtest.cc
+PolySNPtest_SOURCES = PolySNPtest.cc
 all: all-am
 
 .SUFFIXES:
@@ -416,6 +429,14 @@ FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENC
 	@rm -f FastaOperations$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
 
+PolySIMtest$(EXEEXT): $(PolySIMtest_OBJECTS) $(PolySIMtest_DEPENDENCIES) $(EXTRA_PolySIMtest_DEPENDENCIES) 
+	@rm -f PolySIMtest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolySIMtest_OBJECTS) $(PolySIMtest_LDADD) $(LIBS)
+
+PolySNPtest$(EXEEXT): $(PolySNPtest_OBJECTS) $(PolySNPtest_DEPENDENCIES) $(EXTRA_PolySNPtest_DEPENDENCIES) 
+	@rm -f PolySNPtest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolySNPtest_OBJECTS) $(PolySNPtest_LDADD) $(LIBS)
+
 PolySitesIO$(EXEEXT): $(PolySitesIO_OBJECTS) $(PolySitesIO_DEPENDENCIES) $(EXTRA_PolySitesIO_DEPENDENCIES) 
 	@rm -f PolySitesIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolySitesIO_OBJECTS) $(PolySitesIO_LDADD) $(LIBS)
@@ -447,6 +468,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIMtest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNPtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@

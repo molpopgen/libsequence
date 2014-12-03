@@ -5,7 +5,9 @@ check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	PolyTableConversions \
 	PolyTableTweaking \
 	PolySitesIO \
-	SimpleSNPIO
+	SimpleSNPIO \
+	PolySIMtest \
+	PolySNPtest
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -30,3 +32,7 @@ PolyTableTweaking_SOURCES=PolyTableTweaking.cc
 PolySitesIO_SOURCES=PolySitesIO.cc
 
 SimpleSNPIO_SOURCES=SimpleSNPIO.cc
+
+PolySIMtest_SOURCES=PolySIMtest.cc
+
+PolySNPtest_SOURCES=PolySNPtest.cc
