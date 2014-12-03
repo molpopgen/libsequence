@@ -956,6 +956,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance = 3.0 * rep->_totsam * (rep->_totsam + 1.0) * Pi +
       2.0 * (pow (rep->_totsam, 2.0) + rep->_totsam + 3.0) * pow (Pi, 2.0);
@@ -970,6 +971,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance = (3.0 * pow (rep->_totsam, 2.0) - 3.0 * rep->_totsam + 2.0) * Pi +
       2.0 * rep->_totsam * (rep->_totsam - 1.0) * pow (Pi, 2.0);
@@ -985,6 +987,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance =
       2.0 * (3.0 * rep->_totsam - 1.0) * Pi + 2.0 * (2.0 * rep->_totsam +
@@ -1001,6 +1004,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double a1 = a_sub_n ();
     double a2 = b_sub_n ();
     double S = (rep->_totMuts) ? NumMutations() : NumPoly();
