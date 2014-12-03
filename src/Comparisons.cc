@@ -211,16 +211,7 @@ namespace Sequence
     \note Currently, only '-' is considered to be a gap character
     */
     {
-      switch(c)
-        {
-        case '-':
-          return 0;//false, it is a gap...
-          break;
-        default:
-          return 1;
-          break;
-        }
-      return 1;
+      return c != '-';
     }
 }
 
