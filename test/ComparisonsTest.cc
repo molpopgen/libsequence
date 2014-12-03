@@ -74,4 +74,35 @@ BOOST_AUTO_TEST_CASE( numdiffs2 )
   BOOST_REQUIRE_EQUAL( Sequence::NumDiffs(seq1,seq2), -1 );
 }
 
+BOOST_AUTO_TEST_CASE( tstv1 )
+{
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','A'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','a'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('a','a'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','G'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','G'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('g','a'), Sequence::Mutations::Ts );
 
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','t'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('c','t'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','c'), Sequence::Mutations::Ts );
+
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','T'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','C'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','A'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','A'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','a'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','a'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('c','A'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('t','A'), Sequence::Mutations::Tv );
+
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','T'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','t'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('g','t'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','C'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','c'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','g'), Sequence::Mutations::Tv );
+}
