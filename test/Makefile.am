@@ -7,7 +7,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	PolySitesIO \
 	SimpleSNPIO \
 	PolySIMtest \
-	PolySNPtest
+	PolySNPtest \
+	ComparisonsTest
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -36,3 +37,5 @@ SimpleSNPIO_SOURCES=SimpleSNPIO.cc
 PolySIMtest_SOURCES=PolySIMtest.cc
 
 PolySNPtest_SOURCES=PolySNPtest.cc
+
+ComparisonsTest_SOURCES=ComparisonsTest.cc
