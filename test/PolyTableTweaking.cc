@@ -290,3 +290,53 @@ BOOST_AUTO_TEST_CASE( remove_multi_ingroup2 )
 
   BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
 }
+
+BOOST_AUTO_TEST_CASE( remove_ambig )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"QAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  ps.RemoveAmbiguous();
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
+}
+
+BOOST_AUTO_TEST_CASE( remove_ambig2 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"QAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  //Site will not get removed b/c we don't consider the outgroup
+  ps.RemoveAmbiguous(true,0);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 5 );
+}
+
+BOOST_AUTO_TEST_CASE( remove_ambig3 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"QAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  //Site will get removed b/c if we use a different outgroup
+  ps.RemoveAmbiguous(true,1);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
+}
