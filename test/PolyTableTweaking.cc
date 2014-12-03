@@ -340,3 +340,112 @@ BOOST_AUTO_TEST_CASE( remove_ambig3 )
 
   BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
 }
+
+//Test functions in Sequence/PolyTableFunctions.hpp
+
+BOOST_AUTO_TEST_CASE( contains_char )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"QAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  //test for things in the poly table
+  for( auto c : { 'Q','A','G','T','C' } )
+    {
+      BOOST_REQUIRE_EQUAL( Sequence::containsCharacter(&ps,c), true );
+    }
+
+  //make sure that it does't think other stuff is there
+  for( auto c : { '-','N','K','?' } )
+    {
+      BOOST_REQUIRE_EQUAL( Sequence::containsCharacter(&ps,c), false );
+    }
+}
+
+//A table is valid if it contains onlt A,G,C,T,N,- as characters
+BOOST_AUTO_TEST_CASE( is_valid )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"QAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  BOOST_REQUIRE_EQUAL( Sequence::PolyTableValid(&ps), false );
+
+  ps.RemoveAmbiguous();
+
+  BOOST_REQUIRE_EQUAL( Sequence::PolyTableValid(&ps), true );
+}
+
+BOOST_AUTO_TEST_CASE( identity_chars )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+  Sequence::PolySites ps(std::move(pos),std::move(data)),
+    ps2(ps);
+
+  //Fill in a K where seqs 1-3 match seq 0
+  Sequence::addIdentityChar(&ps2,0,'K');
+
+  BOOST_REQUIRE_EQUAL( Sequence::containsCharacter(&ps2,'K'), true );
+
+  //Reverse what we just did
+  
+  Sequence::fillIn(&ps2,0,'K');
+  
+  BOOST_REQUIRE_EQUAL( Sequence::containsCharacter(&ps2,'K'), false );
+  BOOST_REQUIRE( ps==ps2 );
+}
+
+BOOST_AUTO_TEST_CASE( remove_gaps )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"-AAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  Sequence::RemoveGaps(&ps);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 4 );
+}
+
+BOOST_AUTO_TEST_CASE( remove_invariant )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  //Q is not a DNA character.
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "ATGAA",
+				   "TAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  //This will remove nothing
+  Sequence::RemoveInvariantColumns(&ps);
+
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 5 );
+
+  //This will remove sites 0,3,4
+  Sequence::RemoveInvariantColumns(&ps,true,3);
+  BOOST_REQUIRE_EQUAL( ps.numsites(), 2 );
+}
+
+
+
