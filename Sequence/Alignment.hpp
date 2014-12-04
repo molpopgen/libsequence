@@ -90,8 +90,8 @@ namespace Sequence
     void RemoveTerminalGaps (std::vector < T >&data);
     template < typename T >
     void RemoveFixedOutgroupInsertions( std::vector<T> & data,
-				unsigned site,
-				const unsigned & ref );
+					unsigned site,
+					const unsigned & ref );
     //see manual
     template < typename T >
     std::vector < T >Trim (const std::vector < T >&data,
