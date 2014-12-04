@@ -176,6 +176,18 @@ BOOST_AUTO_TEST_CASE( should_throw2 )
   BOOST_REQUIRE_THROW( clustal c2(c), Sequence::SeqException );
 }
 
+BOOST_AUTO_TEST_CASE( should_throw3 )
+{
+  //Sequences of unequal length = bad mojo
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATCAA") };
+  clustal c;
+  BOOST_REQUIRE_THROW( c.assign(vf.begin(),
+				vf.end()), Sequence::SeqException );
+  //And make sure it works with c++11-style iterator fxns
+  BOOST_REQUIRE_THROW( c.assign(vf.cbegin(),
+				vf.cend()), Sequence::SeqException );
+}
 
 //Test IO routines
 
