@@ -106,3 +106,83 @@ BOOST_AUTO_TEST_CASE( GetDataStringStream )
 			    unlink(fn);
 			    );
 }
+
+BOOST_AUTO_TEST_CASE( ReadNFasta )
+{
+  const char * fn = "GetDataText.txt";
+
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","AGC") ,
+					Sequence::Fasta("seq3","GTC") ,
+					Sequence::Fasta("seq4","ATT") ,
+					Sequence::Fasta("seq5","AAC") },
+    vf2;
+    
+    BOOST_REQUIRE_NO_THROW (
+			    std::ofstream o(fn);
+			    std::copy(vf.begin(),vf.end(),
+				      std::ostream_iterator<Sequence::Fasta>(o,"\n"));
+			    o.close();
+			    
+			    for(auto n = 0 ; n < vf.size() ; ++n )
+			      {
+				vf2.clear();
+				std::ifstream in(fn);
+				Sequence::Alignment::ReadNObjects<Sequence::Fasta>(vf2,n,in);
+				BOOST_REQUIRE_EQUAL(vf2.size(),n);
+			      }
+			    unlink(fn);
+			    );
+    
+    //What happens if you try to read too much in?
+    std::ofstream o(fn);
+    std::copy(vf.begin(),vf.end(),
+	      std::ostream_iterator<Sequence::Fasta>(o,"\n"));
+    o.close();
+    vf2.clear();
+    std::ifstream in(fn);
+    BOOST_CHECK_NO_THROW(Sequence::Alignment::ReadNObjects<Sequence::Fasta>(vf2,vf.size()+1,in));
+    BOOST_CHECK_EQUAL(vf2.size(),vf.size());
+    in.close();
+    unlink(fn);
+}
+
+BOOST_AUTO_TEST_CASE( ReadNString )
+{
+  const char * fn = "GetDataText.txt";
+
+  std::vector< std::string > vf = { std::string("ATG"),
+				    std::string("AGC") ,
+				    std::string("GTC") ,
+				    std::string("ATT") ,
+				    std::string("AAC") },
+    vf2;
+    
+    BOOST_REQUIRE_NO_THROW (
+			    std::ofstream o(fn);
+			    std::copy(vf.begin(),vf.end(),
+				      std::ostream_iterator<std::string>(o,"\n"));
+			    o.close();
+			    
+			    for(auto n = 0 ; n < vf.size() ; ++n )
+			      {
+				vf2.clear();
+				std::ifstream in(fn);
+				Sequence::Alignment::ReadNObjects<std::string>(vf2,n,in);
+				BOOST_REQUIRE_EQUAL(vf2.size(),n);
+			      }
+			    unlink(fn);
+			    );
+    
+    //What happens if you try to read too much in?
+    std::ofstream o(fn);
+    std::copy(vf.begin(),vf.end(),
+	      std::ostream_iterator<std::string>(o,"\n"));
+    o.close();
+    vf2.clear();
+    std::ifstream in(fn);
+    BOOST_CHECK_NO_THROW(Sequence::Alignment::ReadNObjects<std::string>(vf2,vf.size()+1,in));
+    BOOST_CHECK_EQUAL(vf2.size(),vf.size());
+    in.close();
+    unlink(fn);
+}

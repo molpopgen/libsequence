@@ -128,15 +128,16 @@ namespace Sequence
       \param seqarray an empty vector<T> that you want filled
       \param n number of objects of type T to read
       \param input_stream name of istream from which fo fill seqarray
-      \note the stream is not closed after each read of n records!!
+      \note The stream is not closed after each read of n records, and 
+      seqarray is appended to, and thus grows each time.
     */
     {
-      for(unsigned i = 0 ; i < n ; ++i)
+      for(unsigned i = 0 ; !input_stream.eof() && i < n ; ++i)
         {
           if (!input_stream || input_stream.eof())
             return input_stream;
           T temp;
-          input_stream >> temp;
+          input_stream >> temp >> std::ws;
           seqarray.push_back(temp);
         }
       return input_stream;
