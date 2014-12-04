@@ -235,7 +235,7 @@ namespace Sequence
   */
   {
     bamaux xNM = b.aux("NM");
-    unsigned sum = stoul(xNM.value);
+    unsigned sum = unsigned(stoul(xNM.value));
     unsigned ng = ngaps(b);
     if( ng > sum ) return numeric_limits<unsigned>::max();
     return sum - ng;
