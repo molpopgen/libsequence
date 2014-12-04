@@ -47,10 +47,14 @@ namespace Sequence
     public:
       PolySites (void);
       template<typename __DataType>
-      PolySites (const std::vector < __DataType >&alignment, bool strictInfSites =
-                   0, bool ignoregaps = 1,bool skipMissing=false,
-                 bool skipAdjSNP=false, unsigned freqfilter=0);
+      PolySites (const std::vector < __DataType >&alignment,
+		 bool strictInfSites = 0,
+		 bool ignoregaps = 1,
+		 bool skipMissing=false,
+                 bool skipAdjSNP=false, 
+		 unsigned freqfilter=0);
       PolySites (const std::vector < double > &List, const std::vector < std::string > &stringList);
+      PolySites ( std::vector < double > && List, std::vector < std::string > && stringList);
       PolySites (PolyTable::const_site_iterator beg,
 		 PolyTable::const_site_iterator end);
       ~PolySites(void)

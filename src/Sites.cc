@@ -78,7 +78,9 @@ namespace Sequence
             codon1[j] = char(std::toupper((*sequence1)[i + j]));
             codon2[j] = char(std::toupper((*sequence2)[i + j]));
           }
-        unsigned nc = NumDiffs (codon1, codon2);
+	//We won't check the r.v. of NumDiffs here b/c we have made the 2 seqs the
+	//same lenght.
+        decltype(NumDiffs(codon1,codon2)) nc = NumDiffs (codon1, codon2);
 
         if (nc == 0)	//still need to count if there are 0 changes
           siteinc (sitesObj,codon1, codon2);

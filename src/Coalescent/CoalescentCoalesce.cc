@@ -22,6 +22,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Sequence/Coalescent/Coalesce.hpp>
+#include <cstdlib>
+
 namespace Sequence
 {
   bool isseg( chromosome::const_iterator seg, const unsigned & nsegs,

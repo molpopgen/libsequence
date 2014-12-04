@@ -44,7 +44,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SimParams.hpp\
 	SingleSub.hpp\
 	Sites.hpp\
-	StringComp.hpp\
 	ThreeSubs.hpp\
 	Translate.hpp\
 	Translate2.hpp\

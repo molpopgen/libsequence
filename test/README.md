@@ -17,6 +17,12 @@ make check
 sh runTests.sh
 ```
 
+If you really want all the details, then execute this instead:
+
+```
+BOOST_TEST_LOG_LEVEL=all sh runTests.sh
+```
+
 The boost unit testing library will report any errors in any testing modules.
 
 Note that some tests may intentionally cause errors.  When that it the case, a message stating that the error is intentional will appear on screen along with the error.

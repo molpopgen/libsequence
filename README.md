@@ -68,7 +68,23 @@ Again, a few options:
 ###Dependencies
 
 1. zlib: http://zlib.net
-2. A C++11-compliant compiler
+2. A C++11-compliant compiler (see next section)
+
+###Compilers
+
+I support the following compilers:
+
+* [GCC](http://gcc.gnu.org)
+* [clang](http://clang.llvm.org)
+
+The following compilers are not supported:
+
+* [Intel](https://software.intel.com/en-us/intel-compilers)
+
+The Intel compiler suffers from the following issues:
+
+* It appears to no longer be free for academic use. (boo!)
+* It appears to be based on a version of libstdc++ that is too old to be compatible with libsequence (see [here](https://github.com/molpopgen/libsequence/pull/4) for some discussion of the issue)
 
 ###Optional dependencies
 
@@ -81,6 +97,7 @@ Again, a few options:
 make
 sudo make install
 ```
+
 ###More complex installation scenarios
 
 Some users may not have the dependent libraries installed in the standard locations on their systems.  Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking.  This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly.  In order to accomodate such situations, the user must provide the correct path to the include and lib directories.  For example, assume that the dependend libraries are in /opt on your system.  You would install libsequence as follows:

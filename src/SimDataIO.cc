@@ -43,7 +43,7 @@ namespace Sequence
 	gzread(file,&nsites,sizeof(uint32_t));
 	if(!nsites) return SimData();
 	pos.resize(nsites);
-	gzread(file,&pos[0],nsites*sizeof(double));
+	gzread(file,&pos[0],unsigned(nsites*sizeof(double)));
 	data = vector<string>(nsam,string(nsites,'0'));
 	for(uint32_t i = 0 ; i < nsam ; ++i)
 	  {
@@ -103,7 +103,7 @@ namespace Sequence
 	  }
 	delete [] haplotype;
       }
-    return SimData(pos,data);
+    return SimData(std::move(pos),std::move(data));
   }
 
   void write_SimData_binary( std::ostream & o, const SimData & d )
@@ -158,7 +158,7 @@ namespace Sequence
 	  }
 	data.push_back(d);
       }
-    return SimData(pos,data);
+    return SimData(std::move(pos),std::move(data));
   }
 
   long int write_SimData_binary( int fd , const SimData & d )

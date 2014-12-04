@@ -55,6 +55,7 @@ namespace Sequence
     return sum;
   }
 
+#ifdef HAVE_HTSLIB
   unsigned alignment_length(const bamrecord & b)
   /*!
     \param b A Sequence::bamrecord
@@ -84,6 +85,7 @@ namespace Sequence
 		  });
     return sum;
   }
+#endif
 
   unsigned insertion_distance( const samrecord & b )
   /*!
@@ -103,6 +105,7 @@ namespace Sequence
     return sum;
   }
 
+#ifdef HAVE_HTSLIB
   unsigned insertion_distance( const bamrecord & b )
   /*!
     \param b A Sequence::bamrecord
@@ -118,6 +121,7 @@ namespace Sequence
 		    }});
     return sum;
   }
+#endif
 
   unsigned deletion_distance( const samrecord & b )
   /*!
@@ -137,6 +141,7 @@ namespace Sequence
     return sum;
   }
 
+#ifdef HAVE_HTSLIB
   unsigned deletion_distance( const bamrecord & b )
   /*!
     \param b A Sequence::bamrecord
@@ -153,6 +158,7 @@ namespace Sequence
 	     });
     return sum;
   }
+#endif
 
   unsigned ngaps( const samrecord & b )
   /*!
@@ -163,6 +169,7 @@ namespace Sequence
     return ( deletion_distance(b) + insertion_distance(b) );
   }
 
+#ifdef HAVE_HTSLIB
   unsigned ngaps( const bamrecord & b )
   /*!
     \param b A Sequence::bamrecord
@@ -171,6 +178,7 @@ namespace Sequence
   {
     return ( deletion_distance(b) + insertion_distance(b) );
   }
+#endif
 
   unsigned mismatches( const samrecord & b )
   /*!
@@ -206,6 +214,7 @@ namespace Sequence
     return sum - ng;
   }
 
+#ifdef HAVE_HTSLIB
   unsigned mismatches( const bamrecord & b )
   /*!
     \param b A Sequence::bamrecord
@@ -226,9 +235,10 @@ namespace Sequence
   */
   {
     bamaux xNM = b.aux("NM");
-    unsigned sum = stoul(xNM.value);
+    unsigned sum = unsigned(stoul(xNM.value));
     unsigned ng = ngaps(b);
     if( ng > sum ) return numeric_limits<unsigned>::max();
     return sum - ng;
   }
+#endif
 }

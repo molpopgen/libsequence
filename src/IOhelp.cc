@@ -25,7 +25,7 @@ namespace Sequence
     template<>
     void writeBin<std::string>(ostream & o, std::string const & s)
     {
-      o.write(s.c_str(),s.size());
+      o.write(s.c_str(),streamsize(s.size()));
     }
   }
 }

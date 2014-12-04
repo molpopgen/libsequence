@@ -42,12 +42,12 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  Mutations TsTv(char i, char j);
-  Mutations TsTv(int i, int j);
+  Mutations TsTv(const char & i, const char & j);
+  Mutations TsTv(const int & i,const int & j);
   bool Different (const std::string & seq1,
 		  const std::string & seq2,
-		  bool skip_missing =1 ,
-		  bool nucleic_acid = 1);
+		  const bool & skip_missing = true,
+		  const bool & nucleic_acid = true);
   
   template<typename T> bool notDifferent(const T &l,const T &r,
 					 const bool & skip_missing = 1,
@@ -59,15 +59,15 @@ namespace Sequence
 		      skip_missing,nucleic_acid);
   }
 
-  unsigned NumDiffs(const std::string & seq1,
-		    const std::string & seq2,
-		    bool skip_missing =1 ,
-		    bool nucleic_acid = 1);
+  int NumDiffs(const std::string & seq1,
+	       const std::string & seq2,
+	       const bool & skip_missing = true ,
+	       const bool & nucleic_acid = true);
 
   bool Gapped(const std::string &s);
 
   template<typename Iterator> bool Gapped(Iterator beg,Iterator end,
-					  const char &gapchar = '-')
+					  const char & gapchar = '-')
     /*!
       \param beg an iterator
       \param end an iterator

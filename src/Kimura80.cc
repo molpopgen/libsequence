@@ -35,10 +35,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   \defgroup divergence Divergence Statistics
 */
 
-//using std::isnan;
-using std::log;
-using std::isfinite;
-
 namespace Sequence
   {
   Kimura80::Kimura80 (const Sequence::Seq * seqa, const Sequence::Seq * seqb):
@@ -96,7 +92,7 @@ namespace Sequence
     //Kimura's formula
     if (fabs(1.0 - 2.0 * P - Q) > DBL_EPSILON)
       {
-        divergence = -1.0 * 0.5 * log ((1.0 - 2.0 * P - Q)
+        divergence = -1.0 * 0.5 * std::log ((1.0 - 2.0 * P - Q)
                                        *  pow ((1 - 2.0 * Q), 0.5));
       }
     else
@@ -117,7 +113,7 @@ namespace Sequence
     which implies that divergence cannot be calculated
   */
   {
-    if (!isfinite(divergence))
+    if (!std::isfinite(divergence))
       return (999.0);
     return (divergence);
   }

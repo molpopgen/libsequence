@@ -131,6 +131,13 @@ namespace Sequence
     seqlen = stringList[0].length();
     numseqs = stringList.size();
   }
+  
+  PolySites::PolySites ( std::vector < double > && List, std::vector < std::string > && stringList) :
+    PolyTable(std::move(List),std::move(stringList)),
+    seqlen(0)
+  {
+    seqlen = this->numsites();
+  }
 
   PolySites::PolySites (PolyTable::const_site_iterator beg,
 			PolyTable::const_site_iterator end):
@@ -159,7 +166,7 @@ namespace Sequence
 		  std::back_inserter(temp2));
 	_ind.push_back(temp2);
       }
-    if (! assign(&_pos[0],_pos.size(),&_ind[0],_ind.size()) )
+    if (! assign( std::move(_pos), std::move(_ind) ) )
       {
 	throw badFormat("PolySites::read() -- format error, unable to assign data");
       }

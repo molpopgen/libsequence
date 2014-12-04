@@ -29,7 +29,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
   {
-    Mutations TsTv (char i, char j)
+    Mutations TsTv (const char & i,const  char & j)
     /*!
       Takes two chars, assumed to be nucleotides. The integer returned by this function
       is a member of the enumeration type Sequence::Mutations.
@@ -87,7 +87,7 @@ namespace Sequence
       return (Mutations(Unknown));	//can be used for error checking
     }
 
-    Mutations TsTv (int i, int j)
+    Mutations TsTv (const int & i, const int & j)
     /*!
     Takes two ints, assumed to be integer representations of nucleotides. 
     The way to ensure that the int represents a nucleotide in a valid way is
@@ -113,7 +113,8 @@ namespace Sequence
 
     bool Different (const std::string & seq1,
 		    const std::string & seq2,
-		    bool skip_missing,bool nucleic_acid)
+		    const bool & skip_missing,
+		    const bool & nucleic_acid)
     /*!
     Ask if two strings are different.  While this can normally be done by asking
     if (seq1 != seq2) {}, missing data poses a problem here.  If skip-missing == 1,
@@ -153,22 +154,25 @@ namespace Sequence
     }
 
 
-    unsigned NumDiffs (const std::string & seq1,
-		       const std::string & seq2,
-		       bool skip_missing
-		       ,bool nucleic_acid)
+    int NumDiffs (const std::string & seq1,
+		  const std::string & seq2,
+		  const bool & skip_missing,
+		  const bool & nucleic_acid)
     /*!
+      \param seq1 A string representing a sequence
+      \param seq2 A string representing a sequence
+      \param skip_missing If true, missing data characters will not be counted as differences
+      \param nucleic_acid.  If true, n/N are the missing data symbol.  If false, x/X.
       \return the number of differences between two std::strings.  Can skip missing
       data in the same fashion as Comparisons::Different.  If one sequence is shorter
-      than the other, the number of positions compared is the length of the shorter 
-      sequence.
+      than the other, -1 is returned
     */
     {
-      unsigned ndiff = 0;
+      int ndiff = 0;
       size_t len = seq1.length();
       if (seq1.length() != seq2.length())
 	{
-	  len = (seq1.length() < seq2.length()) ? seq1.length() : seq2.length();
+	  return -1;
 	}
       char MISSING = 'N';
       if (!nucleic_acid)
@@ -211,16 +215,7 @@ namespace Sequence
     \note Currently, only '-' is considered to be a gap character
     */
     {
-      switch(c)
-        {
-        case '-':
-          return 0;//false, it is a gap...
-          break;
-        default:
-          return 1;
-          break;
-        }
-      return 1;
+      return c != '-';
     }
 }
 

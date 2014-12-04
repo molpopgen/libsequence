@@ -20,7 +20,7 @@ namespace
 	    auto left = std::mismatch(ri1,d[coretype[i]].crend(),ri2);
 	    if(left.first != d[coretype[i]].rend() && right.first != d[coretype[i]].end())
 	      {
-		s += std::distance(left.first.base(),right.first) + 1;
+		s += unsigned(std::distance(left.first.base(),right.first)) + 1;
 		++nc;
 	      }
 	  }

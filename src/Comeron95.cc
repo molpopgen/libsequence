@@ -40,9 +40,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/Comeron95.hpp>
 
-using std::log;
-using std::toupper;
-using std::isfinite;
 /*!
   \defgroup kaks Classes related to the calculation of Ka and Ks
   \ingroup divergence
@@ -162,7 +159,7 @@ namespace Sequence
 
     Qs = (q2V + q4) / (sites->L2V() + sites->L4());
 
-    if (!isfinite (Qs))
+    if (!std::isfinite (Qs))
       Qs = 0.0;
 
     Bs = (-0.5) * log (1.0 - (2.0 * Qs));
@@ -181,11 +178,11 @@ namespace Sequence
 
     Qa = (q0 + q2S) / (sites->L0() + sites->L2S());
 
-    if (!isfinite (Qa))
+    if (!std::isfinite (Qa))
       Qa = 0.0;
 
-    Ba = (-0.5) * log (1.0 - (2.0 * Qa));
-    if (!isfinite (Ba))// && !isinf(Ba))
+    Ba = (-0.5) * std::log (1.0 - (2.0 * Qa));
+    if (!std::isfinite (Ba))// && !isinf(Ba))
       {
         //if sites aren't saturated in general (i.e. Kimura's distance < 1.0)
         //it is likely that Ba is nan due to too few changes, and thus Ba should equal 0.0
@@ -204,22 +201,22 @@ namespace Sequence
     double P4_site = p4 / sites->L4();
     double Q4_site = q4 / sites->L4();
 
-    log1 = log (1.0 - (2.0 * P2S_site) - Qa);
-    log2 = log (1.0 - (2.0 * Qa));
+    log1 = std::log (1.0 - (2.0 * P2S_site) - Qa);
+    log2 = std::log (1.0 - (2.0 * Qa));
 
-    if (!isfinite (log1))	//set value to 0 if nan
+    if (!std::isfinite (log1))	//set value to 0 if nan
       log1 = 0.0;
-    if (!isfinite (log2))
+    if (!std::isfinite (log2))
       log2 = 0.0;
 
     A2S = (-0.5) * log1 + (0.25) * log2;
 
-    log1 = log (1.0 - (2.0 * P4_site) - Q4_site);
-    log2 = log (1.0 - (2.0 * Q4_site));
+    log1 = std::log (1.0 - (2.0 * P4_site) - Q4_site);
+    log2 = std::log (1.0 - (2.0 * Q4_site));
 
-    if (!isfinite (log1))
+    if (!std::isfinite (log1))
       log1 = 0.0;
-    if (!isfinite (log2))
+    if (!std::isfinite (log2))
       log2 = 0.0;
 
     A4 = (-0.5) * log1 + (0.25) * log2;
@@ -227,21 +224,21 @@ namespace Sequence
     As = (sites->L2S() * A2S + sites->L4() * A4) / (sites->L2S() +
          sites->L4());
 
-    log1 = log (1.0 - (2.0 * P2V_site) - Qs);
-    log2 = log (1.0 - (2.0 * Qs));
+    log1 = std::log (1.0 - (2.0 * P2V_site) - Qs);
+    log2 = std::log (1.0 - (2.0 * Qs));
 
-    if (!isfinite (log1))
+    if (!std::isfinite (log1))
       log1 = 0.0;
-    if (!isfinite (log2))
+    if (!std::isfinite (log2))
       log2 = 0.0;
 
     A2V = (-0.5) * log1 + (0.25) * log2;
 
-    log1 = log (1.0 - (2.0 * P0_site) - Q0_site);
-    log2 = log (1.0 - (2.0 * Q0_site));
-    if (!isfinite (log1))
+    log1 = std::log (1.0 - (2.0 * P0_site) - Q0_site);
+    log2 = std::log (1.0 - (2.0 * Q0_site));
+    if (!std::isfinite (log1))
       log1 = 0.;
-    if (!isfinite (log2))
+    if (!std::isfinite (log2))
       log2 = 0.0;
 
     A0 = (-0.5) * log1 + (0.25) * log2;
@@ -261,9 +258,9 @@ namespace Sequence
     Ks = As + Bs;
     Ka = Aa + Ba;
 
-    if (!isfinite (Ks))
+    if (!std::isfinite (Ks))
       Ks = 999;
-    if (!isfinite (Ka))
+    if (!std::isfinite (Ka))
       Ka = 999;
   }
 
@@ -277,7 +274,7 @@ namespace Sequence
     statistics stored a private data to the class
   */
   {
-    size_t i, j, ndiff;
+    size_t i, j;
     size_t length = seq1->length ();
 
     //the for loop iterates over codons (block of 3 sites)
@@ -300,7 +297,7 @@ namespace Sequence
             if (Different (codon1, codon2))
               {
                 //find out how many changes there are between the codons
-                ndiff = NumDiffs (codon1, codon2);
+                int ndiff = NumDiffs (codon1, codon2);
                 if (ndiff == 1)	//if there is just one difference, use the rules for
                   //codons that only differ at 1 site
                   {
@@ -361,21 +358,21 @@ namespace Sequence
           }
       }
 
-    if (!isfinite (p0))
+    if (!std::isfinite (p0))
       p0 = 0.0;
-    if (!isfinite (p2S) )
+    if (!std::isfinite (p2S) )
       p2S = 0.0;
-    if (!isfinite (p2V) )
+    if (!std::isfinite (p2V) )
       p2V = 0.0;
-    if (!isfinite (p4) )
+    if (!std::isfinite (p4) )
       p4 = 0.0;
-    if (!isfinite (q0) )
+    if (!std::isfinite (q0) )
       q0 = 0.0;
-    if (!isfinite (q2S) )
+    if (!std::isfinite (q2S) )
       q2S = 0.0;
-    if (!isfinite (q2V) )
+    if (!std::isfinite (q2V) )
       q2V = 0.0;
-    if (!isfinite (q4) )
+    if (!std::isfinite (q4) )
       q4 = 0.0;
   }
 
@@ -413,7 +410,7 @@ namespace Sequence
     \return corrected synonymous divergence at transitional-degenerate sites
   */
   {
-    if (!isfinite (As))
+    if (!std::isfinite (As))
       return 999.;
     return As;
   }
@@ -422,7 +419,7 @@ namespace Sequence
     \return corrected nonsynonymous divergence at tranversioal- and non- degenerate sites
   */
   {
-    if (!isfinite (Aa))
+    if (!std::isfinite (Aa))
       return 999.;
     return Aa;
   }
@@ -431,7 +428,7 @@ namespace Sequence
     \return corrected synonymous divergence at transversional- and fourfold-  degenerate sites
   */
   {
-    if (!isfinite (Bs))
+    if (!std::isfinite (Bs))
       return 999.;
     return Bs;
   }
@@ -440,7 +437,7 @@ namespace Sequence
     \return corrected nonsynonymous divergence at transitional- and non- degenerate sites
   */
   {
-    if (!isfinite (Ba))
+    if (!std::isfinite (Ba))
       return 999.;
     return Ba;
   }

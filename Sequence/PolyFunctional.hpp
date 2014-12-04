@@ -126,7 +126,7 @@ namespace Sequence
     #include <numeric>
     #include <algorithm>
     #include <iostream>
-    #include <boost/bind.hpp>
+    #include <functional>
     #include <Sequence/FastaExplicit.hpp>
     #include <Sequence/PolySites.hpp>
     #include <Sequence/PolySNP.hpp>
@@ -191,12 +191,12 @@ namespace Sequence
     in a range of polymorphic sites. The template argument
     specifies the counting behavior, i.e. countStates
     or countDerivedStates.  It is designed to be used with
-    std::accumulate, and will need boost::bind for the necessary arguments
+    std::accumulate, and will need std::bind for the necessary arguments
     \code
     #include <numeric>
     #include <algorithm>
     #include <iostream>
-    #include <boost/bind.hpp>
+    #include <functional>
     #include <Sequence/FastaExplicit.hpp>
     #include <Sequence/PolySites.hpp>
     #include <Sequence/PolySNP.hpp>
@@ -210,7 +210,7 @@ namespace Sequence
     Sequence::PolySites p(data);
     //calculate # mutations via algorithm
     unsigned nm = std::accumulate(p.sbegin(),p.send(),0u,
-    boost::bind(nmuts<countStates>(),_1,_2,
+    std::bind(nmuts<countStates>(),std::placeholders::_1,std::placeholders::_2,
     false,0));
     std::cout << nm
     << '\n';
@@ -225,7 +225,7 @@ namespace Sequence
   struct nmuts 
   {
     /*!
-      allows boost::bind to be used in a simple way
+      allows std::bind to be used in a simple way
     */
     typedef unsigned result_type;
     inline unsigned operator()(unsigned & nm,

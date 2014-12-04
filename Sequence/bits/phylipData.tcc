@@ -35,39 +35,38 @@ namespace Sequence
   template < typename T >
   std::istream & phylipData < T >::read (std::istream & s)
   {
+    std::string notAllowed = {"()[]:;,"}; //characters not allowed in sequence name
     unsigned nsam,nsites;
-    s >> nsam >> nsites;
+    s >> nsam >> nsites >> std::ws;
     std::vector<T> _data(nsam);
-    char ch;
-    std::string name,seq(nsites,'0');
+    std::string name(10,' '),temp;
 
     for(unsigned i = 0 ; i < nsam ; ++i)
       {
-	if (_namelen > 0)
+	s.read( &name[0], 10*sizeof(char) ); //A name is 10 characters
+	for( auto c : notAllowed )
 	  {
-	    s >> name;
-	  }
-	else
-	  {
-	    name.clear();
-	    for(unsigned nchar=0;nchar<_namelen;++nchar)
+	    if(name.find(c) != std::string::npos)
 	      {
-		s>>ch;
-		name+=ch;
+		throw badFormat("Sequence::phylipData::read -- invalid character found in sequence name");
 	      }
 	  }
-	unsigned site = 0;
-	while(site<nsites)
-	  {
-	    s >> ch;
-	    if (! std::isspace(ch) )
-	      {
-		seq[site++]=ch;
-	      }
-	  }
-	_data[i] = T(name,seq);
+	std::getline(s,temp);
+	temp.erase( std::remove_if(temp.begin(),temp.end(),[](const char & __ch){ return std::isspace(__ch);}), temp.end() );
+	_data[i] = T(name,temp);
       }
-      this->assign(_data.begin(),_data.end());
+    s >> std::ws;
+    while(!s.eof())
+      {
+	for ( unsigned i = 0 ; !s.eof() && i < nsam ; ++i )
+	  {
+	    std::getline(s,temp);
+	    s >> std::ws;
+	    temp.erase( std::remove_if(temp.begin(),temp.end(),[](const char & __ch){ return std::isspace(__ch);}), temp.end() );
+	    _data[i].second+=temp;
+	  }
+      }
+    this->assign(_data.begin(),_data.end());
     return s;
   }
 
@@ -76,67 +75,29 @@ namespace Sequence
   {
     size_t nsam = this->size();
     s << nsam 
-      << '\t' 
-      << (*this)[0].length() 
-      << '\n';
-    typename phylipData<T>::const_iterator beg = this->begin(),
-      end = this->end();
-    while(beg<end-1)
+      << '\t'
+      << (*this)[0].second.size() << '\n';
+
+    for( auto __t = this->begin() ; __t != this->end() ; ++__t )
       {
-	if (_namelen > 0)
+	if ( __t->first.length() >= 10 ) 
 	  {
-	    s<< beg->first
-	     << '\t'
-	     << beg->second
-	     << '\n';
+	    std::copy( __t->first.begin(),
+		       __t->first.begin()+10,
+		       std::ostream_iterator<char>(s,""));
 	  }
-	else
+	else  //it is too short
 	  {
-	    if (beg->first.length() == _namelen)
+	    std::copy( __t->first.begin(),
+		       __t->first.end(),
+		       std::ostream_iterator<char>(s,""));
+	    for( decltype(__t->first.size()) i = __t->first.size() ; i < 10 ; ++i )
 	      {
-		std::string::const_iterator b = beg->first.begin();
-		std::copy(b,b+std::string::difference_type(_namelen),
-			  std::ostream_iterator<char>(s,""));
+		s << ' ';
 	      }
-	    else
-	      {
-		//need to pad the name with spaces
-		size_t len = _namelen - beg->first.length();
-		std::string newName(beg->first + 
-				    std::string(len,' '));
-		std::string::const_iterator b = newName.begin();
-		std::copy(b,b+std::string::difference_type(_namelen),
-			  std::ostream_iterator<char>(s,""));
-	      }
-	    s << beg->second
-	      << '\n';
 	  }
-	++beg;
-      }
-    //don't print a newline for the last record
-    if (_namelen>0)
-      {
-	s<< beg->first
-	 << '\t'
-	 << beg->second;
-      }
-    else
-      {
-	if (beg->first.length() == _namelen)
-	  {
-	    std::string::const_iterator b = beg->first.begin();
-	    std::copy(b,b+std::string::difference_type(_namelen),
-		      std::ostream_iterator<char>(s,""));
-	  }
-	else
-	  {
-	    //need to pad the name with spaces
-	    size_t len = _namelen - beg->first.length();
-	    std::string newName(beg->first + 
-				std::string(len,' '));
-	    s << newName;
-	  }
-	s << beg->second;
+	s << __t->second;
+	if( __t < this->end() - 1 ) s << '\n';
       }
     return s;
   }
@@ -154,17 +115,6 @@ phylipData<T> & phylipData<T>::operator=( const AlignStream<T> & rhs)
 */
 {
   this->assign(rhs.begin(),rhs.end());
-  bool change_namelen=false;
-  if (_namelen == 0)
-    change_namelen=true;
-  for(typename phylipData<T>::const_iterator i = this->begin() ;
-      i != this->end();
-      ++i)
-    {
-      auto l = i->first.length();
-      if (change_namelen)
-	_namelen = (l > _namelen ) ? l : _namelen;
-    }
   return *this;
 }
 

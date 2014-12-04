@@ -110,8 +110,6 @@ namespace Sequence
 
   /*!
     Removes all positions containing \a gapchar from \a table
-    \
-
   */
   {
     if(table->empty()) return;
@@ -137,7 +135,8 @@ namespace Sequence
 	      }
 	  }
       }
-    if (table->assign(&newpos[0],newpos.size(),&newdata[0],newdata.size()) == false)
+    if(newpos.empty())newdata.clear();
+    if (table->assign(std::move(newpos),std::move(newdata))==false)
       {
 	throw (SeqException("Sequence::RemoveGaps -- error: could not assign data to object"));
       }
@@ -180,7 +179,8 @@ namespace Sequence
 	      }
 	  }
       }
-    if (table->assign(&_newpos[0],_newpos.size(),&_newdata[0],_newdata.size()) == false)
+    if(_newpos.empty())_newdata.clear();
+    if (table->assign(std::move(_newpos),std::move(_newdata))==false)
       {
 	throw (SeqException("Sequence::RemoveGaps -- error: could not assign data to object"));
       }

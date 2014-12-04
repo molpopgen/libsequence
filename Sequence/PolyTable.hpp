@@ -176,6 +176,9 @@ namespace Sequence
 	}
     }
 
+    explicit PolyTable( std::vector<double> && __positions,
+			std::vector<std::string> && __data );
+
     virtual ~ PolyTable (void);
 
     
@@ -261,6 +264,9 @@ namespace Sequence
 		 const size_t & _num_positions,
 		 const string_type * _data,
 		 const size_t & _num_individuals );
+
+    bool assign( std::vector<double> && __positions,
+		 std::vector<std::string> && __data );
 
 //     template<typename iterator>
 //     bool rear_insert( const iterator beg,

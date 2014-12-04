@@ -28,6 +28,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cassert>
 #include <iostream>
 #include <sstream>
+#include <stdexcept>
 
 using std::vector;
 using std::string;
@@ -43,7 +44,9 @@ namespace Sequence
     unsigned nsam, nsites, i, j;
     char ch;
     if(!(s >> nsam >> nsites))
-      throw badFormat("SimpleSNP.cc: file did not start with s nsam nsites");
+      {
+	throw badFormat("SimpleSNP.cc: file did not start with nsam nsites");
+      }
     if (Diploid)
       nsam *= 2;
     std::vector<double> _positions(nsites);
@@ -214,7 +217,7 @@ namespace Sequence
       {
 	throw (Sequence::badFormat("SimpleSNP::read() -- number of sequences does not match input value"));
       }     
-    PolyTable::assign(&_positions[0],_positions.size(),&_data[0],_data.size());
+    this->assign(std::move(_positions),std::move(_data));
     RemoveInvariantColumns(this);
     return s;
   }
@@ -294,10 +297,17 @@ namespace Sequence
       \return the label the i-th individual in the data
     */
   {
-    assert(i<_names.size());
+    if(i >= this->size() )
+      {
+	throw std::out_of_range("Sequence::SimpleSNP::label(), i out of range");
+      }
     if (haveOutgroup && i==0)
       {
-        return string("outgroup");
+        return string("anc");
+      }
+    if( _names.empty() )
+      {
+	return string("seq" + std::to_string(i));
       }
     return _names[i-unsigned(haveOutgroup)];
   }

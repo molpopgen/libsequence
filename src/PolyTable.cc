@@ -23,8 +23,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/stateCounter.hpp>
-#include <iostream>
 #include <cctype>
+#include <algorithm>
+
 /*! \defgroup popgen Molecular Population Genetics
  */
 /*!
@@ -47,6 +48,15 @@ namespace Sequence
       non_const_access(true)
   {}
 
+  PolyTable::PolyTable( std::vector<double> && __positions,
+			std::vector<std::string> && __data ) : positions( std::vector<double>() ),
+							       data( std::vector<std::string>() ),
+							       non_const_access(true)
+  {
+    std::swap(__positions,positions);
+    std::swap(__data,data);
+  }
+
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : 
     pv(Sequence::polySiteVector()),
@@ -65,7 +75,7 @@ namespace Sequence
 
   bool PolyTable::empty() const
   {
-    return data.empty()||positions.empty();
+    return data.empty()&&positions.empty();
   }
 
   bool PolyTable::assign(PolyTable::const_site_iterator beg,
@@ -117,7 +127,32 @@ namespace Sequence
     return true;
   }
 
+  bool PolyTable::assign( std::vector<double> && __positions,
+			  std::vector<std::string> && __data )
+  {
+    non_const_access = true;
+    positions.clear();
+    data.clear();
+    std::swap(positions,__positions);
+    std::swap(data,__data);
+
+    if( std::find_if( data.cbegin(),data.cend(),
+		      [this](const std::string __s) {
+			return __s.size() != positions.size();
+		      } ) != data.cend() )
+      {
+	positions.clear();
+	data.clear();
+	return false;
+      }
+    return true;
+  }
+
   bool PolyTable::operator==(const PolyTable &rhs) const
+  /*!
+    \return true if *this == rhs, false otherwise
+    \warning case-sensitive
+   */
   {
     if (positions.size() != rhs.positions.size()
         || data.size() != rhs.data.size())
@@ -332,6 +367,7 @@ namespace Sequence
     \c false otherwise
     \param outgroup the index in the data array containing the outgroup
     (if present)
+    \note This is only a frequency filter based on minor allele counts.
   */
   {
     std::vector<double> newpos;
@@ -382,8 +418,10 @@ namespace Sequence
               }
           }
       }
+    //take care of case where new data are empty
+    if( newpos.empty()) newdata.clear();
     //Assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
   }
 
   void PolyTable::RemoveMultiHits(const bool & skipOutgroup,
@@ -422,7 +460,7 @@ namespace Sequence
           }
       }
     //Assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
   }
 
   void PolyTable::RemoveMissing(const bool & skipOutgroup,
@@ -463,8 +501,9 @@ namespace Sequence
               }
           }
       }
+    if(newpos.empty()) newdata.clear();
     //assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
   }
 
   void PolyTable::RemoveAmbiguous(const bool & skipOutgroup,
@@ -500,8 +539,9 @@ namespace Sequence
               }
 	  }
       }
+    if(newpos.empty()) newdata.clear();
     //assign takes care of setting non_const_access = true
-    assign(&newpos[0],newpos.size(),&newdata[0],newdata.size());
+    assign(std::move(newpos),std::move(newdata));
   }
   
   void
@@ -582,7 +622,7 @@ namespace Sequence
           }
       }
     //assign takes care of setting non_const_access = true
-    assign(&newpositions[0],newpositions.size(),&newdata[0],newdata.size());
+    assign(std::move(newpositions),std::move(newdata));
   }
 
      

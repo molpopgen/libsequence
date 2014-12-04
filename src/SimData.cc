@@ -53,10 +53,17 @@ namespace Sequence
   {
   }
 
+  SimData::SimData( std::vector<double> && pos,  
+		    std::vector<std::string> && data) : PolyTable(std::move(pos),
+								  std::move(data))
+  {
+  }
+
   SimData::SimData(const SimData::const_site_iterator & beg, 
 		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
   {
   }
+
   std::istream & SimData::read (std::istream & stream) 
 
   /*!
@@ -93,7 +100,8 @@ namespace Sequence
       stream >> std::ws;
       haps.emplace_back(temp);
     } 
-    this->assign(&pos[0],S,&haps[0],haps.size());
+    this->assign( std::move(pos),
+		  std::move(haps) );
     return stream;
   }
 
@@ -194,7 +202,8 @@ namespace Sequence
 	_data.resize(0);
       }
     //assign data into base class
-    PolyTable::assign(&_positions[0],ss,&_data[0],_data.size());
+    this->assign(std::move(_positions),
+		 std::move(_data));
     return rv;
   }
 }

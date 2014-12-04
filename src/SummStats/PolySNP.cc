@@ -38,7 +38,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/PolySNPimpl.hpp>
-#include <Sequence/StringComp.hpp>
 
 /*!
   \defgroup popgenanalysis Analysis of molecular population genetic data
@@ -56,7 +55,13 @@ namespace Sequence
     {
       //use Sequence::Different to prevent missing sites 
       //causing 2 sequences to be labelled as distinct
-      return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
+      //return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
+      return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),
+							       [](const char & __a, const char __b)
+							       {
+								 return (std::toupper(static_cast<unsigned char>(__a)) 
+									 < std::toupper(static_cast<unsigned char>(__b)));
+							       }) );
     }
   };
   _PolySNPImpl::_PolySNPImpl (const Sequence::PolyTable * data, const bool & haveOutgroup ,
@@ -800,18 +805,18 @@ namespace Sequence
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->begin()+rep->_outgroup,
-					    std::bind(notDifferent<string>,
+					    std::bind(std::ref(notDifferent<string>),
 						      std::placeholders::_1,*beg,false,true));
 		    _count += std::count_if(rep->_data->begin()+rep->_outgroup+1,
 					    rep->_data->end(),
-					    std::bind(notDifferent<string>,
+					    std::bind(std::ref(notDifferent<string>),
 						      std::placeholders::_1,*beg,false,true));
 		  }
 		else
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->end(),
-					    std::bind(notDifferent<string>,
+					    std::bind(std::ref(notDifferent<string>),
 						      std::placeholders::_1,*beg,false,true));
 		  }
 		rep->_DVH -= pow (double (_count) / rep->_totsam, 2.0);
@@ -951,6 +956,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance = 3.0 * rep->_totsam * (rep->_totsam + 1.0) * Pi +
       2.0 * (pow (rep->_totsam, 2.0) + rep->_totsam + 3.0) * pow (Pi, 2.0);
@@ -965,6 +971,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance = (3.0 * pow (rep->_totsam, 2.0) - 3.0 * rep->_totsam + 2.0) * Pi +
       2.0 * rep->_totsam * (rep->_totsam - 1.0) * pow (Pi, 2.0);
@@ -980,6 +987,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double Pi = ThetaPi ();
     double variance =
       2.0 * (3.0 * rep->_totsam - 1.0) * Pi + 2.0 * (2.0 * rep->_totsam +
@@ -996,6 +1004,7 @@ namespace Sequence
     \warning statistic undefined if there are untyped SNPs
   */
   {
+    if( rep->_data->empty() || !NumPoly() ) return std::numeric_limits<double>::quiet_NaN();
     double a1 = a_sub_n ();
     double a2 = b_sub_n ();
     double S = (rep->_totMuts) ? NumMutations() : NumPoly();

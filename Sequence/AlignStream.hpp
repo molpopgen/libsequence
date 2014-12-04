@@ -79,6 +79,15 @@ namespace Sequence
       typedef typename std::vector<T>::size_type size_type;
       typedef typename std::vector<T>::reference reference;
       typedef typename std::vector<T>::const_reference const_reference;
+
+      bool empty() const
+      /*!
+	Returns data.empty()
+      */
+      {
+	return data.empty();
+      }
+
       size_type size(void) const
       /*!
         Returns data.size()
@@ -86,6 +95,7 @@ namespace Sequence
         {
           return data.size();
         }
+
       reference operator[](const size_type & i) 
       /*!
         Returns the i-th object of type T
