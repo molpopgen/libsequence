@@ -144,19 +144,6 @@ namespace Sequence
     }
 
     template < typename T >
-    void EmptyVector (std::vector< T * > &seqarray)
-    /*!
-      Free all the memory in seqarray by deleting every objet,
-      and resize() seqarray to 0
-      \param seqarray the vector<T*> you want emptied
-    */
-    {
-      for(unsigned i = 0 ; i < seqarray.size() ; ++i)
-        delete seqarray[i];
-      seqarray.resize(0);
-    }
-
-    template < typename T >
     bool Gapped (const std::vector < T >&data)
     /*!
       \param data vector<T> containing sequence data

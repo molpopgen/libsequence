@@ -68,9 +68,6 @@ namespace Sequence
     template < typename T >
     std::istream & ReadNObjects ( std::vector < T > &seqarray,  const unsigned & n,
 				  std::istream & input_stream);
-    //delete a vector of pointers
-    template < typename T >
-    void EmptyVector (std::vector< T * > &seqarray);
     //check if elements of data contain a gap character '-'
     template < typename T >
     bool Gapped (const std::vector < T >&data);
