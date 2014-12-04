@@ -84,7 +84,7 @@ namespace Sequence
 	  T temp;
 	  while (!(infile.eof ()))
 	    {
-	      infile >> temp;
+	      infile >> temp >> std::ws;
 	      seqarray.push_back(temp);
 	    }
 	}
@@ -109,7 +109,7 @@ namespace Sequence
 	{
 	  while (!(input_stream.eof ()))
 	    {
-	      input_stream >> temp;
+	      input_stream >> temp >> std::ws;
 	      seqarray.push_back(temp);
 	    }
 	}
