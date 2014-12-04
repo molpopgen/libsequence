@@ -15,6 +15,15 @@ const char * phylip_input_data = "data/phylip_input.txt";
 using clustal = Sequence::ClustalW<Sequence::Fasta>;
 using phylip  = Sequence::phylipData<Sequence::Fasta>;
 
+
+/*
+  First, make sure that these use cases compile,
+  To check that the static_assert in AlignStream<T>
+  is correct
+*/
+Sequence::ClustalW< std::pair<std::string,std::string > >  clustal_pairs;
+Sequence::phylipData< std::pair<std::string,std::string > >  phylip_pairs;
+
 //Simple reading clustalw
 BOOST_AUTO_TEST_CASE( clustalw_in )
 {
