@@ -82,7 +82,8 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
 	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
 	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) \
-	PolySNPtest$(EXEEXT) ComparisonsTest$(EXEEXT)
+	PolySNPtest$(EXEEXT) ComparisonsTest$(EXEEXT) \
+	AlignmentTest$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -107,6 +108,11 @@ AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_AlignmentTest_OBJECTS = AlignmentTest.$(OBJEXT)
+AlignmentTest_OBJECTS = $(am_AlignmentTest_OBJECTS)
+AlignmentTest_LDADD = $(LDADD)
+AlignmentTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
 am_ComparisonsTest_OBJECTS = ComparisonsTest.$(OBJEXT)
 ComparisonsTest_OBJECTS = $(am_ComparisonsTest_OBJECTS)
 ComparisonsTest_LDADD = $(LDADD)
@@ -196,20 +202,20 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(AlignStreamTest_SOURCES) $(ComparisonsTest_SOURCES) \
-	$(CountingOperators_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
-DIST_SOURCES = $(AlignStreamTest_SOURCES) $(ComparisonsTest_SOURCES) \
-	$(CountingOperators_SOURCES) $(FastaConstructors_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
+	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
+	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
+DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
+	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
+	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -373,6 +379,7 @@ SimpleSNPIO_SOURCES = SimpleSNPIO.cc
 PolySIMtest_SOURCES = PolySIMtest.cc
 PolySNPtest_SOURCES = PolySNPtest.cc
 ComparisonsTest_SOURCES = ComparisonsTest.cc
+AlignmentTest_SOURCES = AlignmentTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -420,6 +427,10 @@ clean-checkPROGRAMS:
 AlignStreamTest$(EXEEXT): $(AlignStreamTest_OBJECTS) $(AlignStreamTest_DEPENDENCIES) $(EXTRA_AlignStreamTest_DEPENDENCIES) 
 	@rm -f AlignStreamTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(AlignStreamTest_OBJECTS) $(AlignStreamTest_LDADD) $(LIBS)
+
+AlignmentTest$(EXEEXT): $(AlignmentTest_OBJECTS) $(AlignmentTest_DEPENDENCIES) $(EXTRA_AlignmentTest_DEPENDENCIES) 
+	@rm -f AlignmentTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(AlignmentTest_OBJECTS) $(AlignmentTest_LDADD) $(LIBS)
 
 ComparisonsTest$(EXEEXT): $(ComparisonsTest_OBJECTS) $(ComparisonsTest_DEPENDENCIES) $(EXTRA_ComparisonsTest_DEPENDENCIES) 
 	@rm -f ComparisonsTest$(EXEEXT)
@@ -476,6 +487,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignStreamTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignmentTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComparisonsTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CountingOperators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
