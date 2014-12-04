@@ -66,7 +66,7 @@ namespace Sequence
 			    std::istream & input_stream);
     //fill a vector<T> with N objects from a stream
     template < typename T >
-    std::istream & ReadNObjects ( std::vector < T > &seqarray,   unsigned n,
+    std::istream & ReadNObjects ( std::vector < T > &seqarray,  const unsigned & n,
 				  std::istream & input_stream);
     //delete a vector of pointers
     template < typename T >

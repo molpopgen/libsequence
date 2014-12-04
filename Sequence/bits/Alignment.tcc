@@ -116,7 +116,7 @@ namespace Sequence
 
     template < typename T >
     std::istream & ReadNObjects ( std::vector < T > &seqarray,
-				  unsigned n,
+				  const unsigned & n,
 				  std::istream & input_stream)
     /*!
       Read a fixed number n of objects of type T and put 
