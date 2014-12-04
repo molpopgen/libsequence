@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __ALIGNSTREAM_H__
 
 #include <Sequence/Alignment.hpp>
+#include <Sequence/Seq.hpp>
 #include <Sequence/SeqExceptions.hpp>
 #include <type_traits>
 #include <utility>
@@ -60,11 +61,11 @@ namespace Sequence
   class AlignStream
     {
     private:
-      //only compile these templates with types in the class hierarchy of Sequence::Seq
-      typedef std::pair<std::string,std::string> baseType;
-      static_assert( (std::is_base_of<baseType,T>::value
-		      || std::is_same<baseType,T>::value),
-		     "T must be std::pair<std::string,std::string> or publicly inherit from that type");
+      //only compile these templates with types in the class hierarchy of Sequence::Seq.  Allow pair<string,string>, too
+      static_assert( std::is_same< std::pair<std::string,std::string >, T>::value ||
+		     std::is_base_of< Sequence::Seq, T>::value ,
+		     "T must be std::pair<std::string,std::string> or derived from Sequence::Seq");
+		     
       /*!
       data is where we store the  objects
       of type T in the alignment.
@@ -129,10 +130,8 @@ namespace Sequence
       unsigned UnGappedLength (void);
       void RemoveGaps (void);
       void RemoveTerminalGaps (void);
-      std::vector < T >Trim ( std::vector < int >sites) 
-	;
-      std::vector < T >TrimComplement ( std::vector < int >sites) 
-	;
+      std::vector < T >Trim ( std::vector < int >sites);
+      std::vector < T >TrimComplement ( std::vector < int >sites);
       const std::vector< T > Data(void);
       /*!
 	To define a non-abstract AlignStream, read must be defined
@@ -152,8 +151,14 @@ namespace Sequence
 	if all data elements in the range (beg,end]
 	are not of the same length
       */
-      void assign(const_iterator beg,const_iterator end)
-	;
+      void assign(const_iterator beg,const_iterator end);
+      /*!
+	Assign via a move operation
+
+	\exception Sequence::SeqException is thrown
+	if all data elements are not of the same length
+      */
+      void assign( std::vector<T> && _data);
     };
 
 
