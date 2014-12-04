@@ -91,9 +91,7 @@ namespace Sequence
     }
 
     template < typename T >
-    std::istream & GetData (std::vector <
-			    T >&seqarray,
-			    std::istream & input_stream) 
+    std::istream & GetData (std::vector <  T >&seqarray,std::istream & input_stream) 
     /*!
       Read objects of type T and put them into the vector seqarray.
       Note that seqarray is not const, so that's where the data go.
