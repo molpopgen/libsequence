@@ -24,6 +24,161 @@ using phylip  = Sequence::phylipData<Sequence::Fasta>;
 Sequence::ClustalW< std::pair<std::string,std::string > >  clustal_pairs;
 Sequence::phylipData< std::pair<std::string,std::string > >  phylip_pairs;
 
+//Test object construction
+BOOST_AUTO_TEST_CASE( from_vector1 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+
+  BOOST_REQUIRE_NO_THROW( clustal c(vf);
+			  BOOST_CHECK_EQUAL(vf.size(),c.size());
+			  );
+}
+
+BOOST_AUTO_TEST_CASE( from_vector2 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+
+  BOOST_REQUIRE_NO_THROW( phylip c(vf);
+			  BOOST_CHECK_EQUAL(vf.size(),c.size());
+			  );
+}
+
+BOOST_AUTO_TEST_CASE( from_vector3 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  BOOST_REQUIRE_NO_THROW (
+			  clustal c(std::move(vf));
+			  BOOST_CHECK(vf.empty());
+			  BOOST_REQUIRE_EQUAL(c.size(),2);
+			  );
+}
+
+BOOST_AUTO_TEST_CASE( from_vector4 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  BOOST_REQUIRE_NO_THROW (
+			  phylip c(std::move(vf));
+			  BOOST_CHECK(vf.empty());
+			  BOOST_REQUIRE_EQUAL(c.size(),2);
+			  );
+}
+
+BOOST_AUTO_TEST_CASE( copy_construct1 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  clustal c(std::move(vf));
+  BOOST_REQUIRE_NO_THROW(clustal c2(c);
+			 BOOST_REQUIRE_EQUAL(c.size(),c2.size());
+			 for( decltype(c.size()) i = 0 ; i < c.size() ; ++i )
+			   {
+			     BOOST_REQUIRE( c[i]==c2[i] );
+			   }
+			 );
+}
+
+BOOST_AUTO_TEST_CASE( copy_construct2 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  phylip c(std::move(vf));
+  BOOST_REQUIRE_NO_THROW(phylip c2(c);
+			 BOOST_REQUIRE_EQUAL(c.size(),c2.size());
+			 for( decltype(c.size()) i = 0 ; i < c.size() ; ++i )
+			   {
+			     BOOST_REQUIRE( c[i]==c2[i] );
+			   }
+			 );
+}
+
+//Check that forwarding is working.
+BOOST_AUTO_TEST_CASE( move_construct1 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  clustal c(std::move(vf));
+  BOOST_CHECK_EQUAL(vf.size(),0);
+  clustal c2(std::move(c));
+  BOOST_REQUIRE_EQUAL(c2.size(),2);
+  BOOST_CHECK_EQUAL(c.size(),0);
+}
+
+//Check that forwarding is working
+BOOST_AUTO_TEST_CASE( move_construct2 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  phylip c(std::move(vf));
+  BOOST_CHECK_EQUAL(vf.size(),0);
+  phylip c2(std::move(c));
+  BOOST_REQUIRE_EQUAL(c2.size(),2);
+  BOOST_CHECK_EQUAL(c.size(),0);
+}
+
+//Check that forwarding works b/w types
+BOOST_AUTO_TEST_CASE( move_construct3 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  clustal c(std::move(vf));
+  BOOST_CHECK_EQUAL(vf.size(),0);
+  phylip c2(std::move(c));
+  BOOST_REQUIRE_EQUAL(c2.size(),2);
+  BOOST_CHECK_EQUAL(c.size(),0);
+}
+
+//Opposite direction to previous test
+BOOST_AUTO_TEST_CASE( move_construct4 )
+{
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  phylip c(std::move(vf));
+  BOOST_CHECK_EQUAL(vf.size(),0);
+  clustal c2(std::move(c));
+  BOOST_REQUIRE_EQUAL(c2.size(),2);
+  BOOST_CHECK_EQUAL(c.size(),0);
+}
+
+BOOST_AUTO_TEST_CASE( should_throw1 )
+{
+  //Sequences of unequal length = bad mojo
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATCAA") };
+
+  BOOST_REQUIRE_THROW( clustal c(vf), Sequence::SeqException );
+  BOOST_REQUIRE_THROW( phylip  c(vf), Sequence::SeqException );
+  BOOST_REQUIRE_THROW( clustal c( std::vector< Sequence::Fasta >({ Sequence::Fasta("seq1","ATG"),
+	    Sequence::Fasta("seq2","ATCAA") })),
+    Sequence::SeqException );
+  BOOST_REQUIRE_THROW( clustal c( std::move(std::vector< Sequence::Fasta >({ Sequence::Fasta("seq1","ATG"),
+	      Sequence::Fasta("seq2","ATCAA") }))),
+    Sequence::SeqException );
+}
+
+BOOST_AUTO_TEST_CASE( should_throw2 ) 
+{
+  //The data are good
+  std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
+					Sequence::Fasta("seq2","ATC") };
+  clustal c(std::move(vf));
+
+  //The user does domething dumb...
+  c[1].second += std::string("ATGC");
+
+  //The data are not valid
+  BOOST_REQUIRE_EQUAL( c.IsAlignment(),false );
+
+  //And the user did not check and then tries to copy
+  BOOST_REQUIRE_THROW( clustal c2(c), Sequence::SeqException );
+}
+
+
+//Test IO routines
+
 //Simple reading clustalw
 BOOST_AUTO_TEST_CASE( clustalw_in )
 {
@@ -37,12 +192,12 @@ BOOST_AUTO_TEST_CASE( clustalw_in )
 }
 
 //simple reading phylip
-// BOOST_AUTO_TEST_CASE( phylip_in )
-// {
-//   std::ifstream in(phylip_input_data);
-//   phylip p;
-//   BOOST_REQUIRE_NO_THROW(in >> p >> std::ws;);
-// }
+BOOST_AUTO_TEST_CASE( phylip_in )
+{
+  std::ifstream in(phylip_input_data);
+  phylip p;
+  BOOST_REQUIRE_NO_THROW(in >> p >> std::ws;);
+}
 
 BOOST_AUTO_TEST_CASE( clustalw_convert )
 {
@@ -131,12 +286,7 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   out.close();
 
   in.open(outfile);
-  if( !in )
-    {
-      std::cerr <<"oops\n";
-      exit(1);
-    }
-  
+
   phylip p2;
   BOOST_REQUIRE_NO_THROW( in >> p2 >> std::ws );
   BOOST_REQUIRE_EQUAL(p.size() , p2.size());

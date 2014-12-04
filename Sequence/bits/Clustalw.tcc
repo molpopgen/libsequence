@@ -112,7 +112,7 @@ namespace Sequence
               ++iter;
           }
       }
-    this->assign(_data.begin(),_data.end());
+    this->assign(std::move(_data));
     return s;
   }
 

@@ -72,9 +72,10 @@ namespace Sequence
       */
       std::vector < T >data;
     public:
-      AlignStream(const std::vector<T> & _data);
-      AlignStream(const AlignStream<T> &a)
-      {this->assign(a.begin(),a.end());}
+      AlignStream(const std::vector<T> &  _data);
+      AlignStream( std::vector<T> &&  _data);
+      AlignStream(const AlignStream<T> &a);
+      AlignStream( AlignStream<T> && a);
       AlignStream(void){}
       virtual ~ AlignStream (void);
       typedef typename std::vector<T>::size_type size_type;

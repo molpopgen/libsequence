@@ -66,7 +66,7 @@ namespace Sequence
 	    _data[i].second+=temp;
 	  }
       }
-    this->assign(_data.begin(),_data.end());
+    this->assign(std::move(_data));
     return s;
   }
 
