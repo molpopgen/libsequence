@@ -122,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adde61086bae6670ee579dd474229d639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adde61086bae6670ee579dd474229d639"></a>
 <a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1AlignStream.html">AlignStream</a>&lt; T &gt; &amp;rhs)</td></tr>
 <tr class="separator:adde61086bae6670ee579dd474229d639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad226680da084db3314b34dd215bf0c9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#ad226680da084db3314b34dd215bf0c9d">empty</a> () const </td></tr>
+<tr class="separator:ad226680da084db3314b34dd215bf0c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51a20ae5dba14cb93954658a8b472c47"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a51a20ae5dba14cb93954658a8b472c47">size</a> (void) const </td></tr>
 <tr class="separator:a51a20ae5dba14cb93954658a8b472c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ffb12214e3c0d5bf9d30bfee1849c9"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a23ffb12214e3c0d5bf9d30bfee1849c9">operator[]</a> (const size_type &amp;i)</td></tr>
@@ -217,7 +219,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>value type is std::vector&lt;T&gt;::const_iterator </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00112">112</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00122">122</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +244,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>value type is std::vector&lt;T&gt;::iterator </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00108">108</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00118">118</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -319,6 +321,34 @@ template&lt;typename T &gt; </div>
 <p>Returns the std::vector &lt; T* &gt; data </p>
 
 <p>Definition at line <a class="el" href="AlignStream_8tcc_source.html#l00157">157</a> of file <a class="el" href="AlignStream_8tcc_source.html">AlignStream.tcc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad226680da084db3314b34dd215bf0c9d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns data.empty() </p>
+
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00083">83</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -405,7 +435,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns the i-th object of type T in the vector data </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00089">89</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00099">99</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -434,7 +464,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns the i-th object of type T in the vector data </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00097">97</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00107">107</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -465,7 +495,7 @@ template&lt;typename T &gt; </div>
 
 <p>Implements <a class="el" href="classSequence_1_1AlignStream.html#af9e369a5a6100e20961bd4b6f75768bd">Sequence::AlignStream&lt; T &gt;</a>.</p>
 
-<p>Definition at line <a class="el" href="Clustalw_8tcc_source.html#l00119">119</a> of file <a class="el" href="Clustalw_8tcc_source.html">Clustalw.tcc</a>.</p>
+<p>Definition at line <a class="el" href="Clustalw_8tcc_source.html#l00120">120</a> of file <a class="el" href="Clustalw_8tcc_source.html">Clustalw.tcc</a>.</p>
 
 </div>
 </div>
@@ -583,7 +613,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns data.size() </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00082">82</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00091">91</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -684,7 +714,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a></li>
-    <li class="footer">Generated on Mon Dec 1 2014 15:12:13 for libsequence by
+    <li class="footer">Generated on Wed Dec 3 2014 17:45:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

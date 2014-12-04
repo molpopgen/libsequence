@@ -98,11 +98,11 @@ Public Member Functions</h2></td></tr>
 class Sequence::nmuts&lt; counter &gt;</h3>
 
 <p>Calculate the number of mutations at a polymorphic site. </p>
-<p>Function object to keep track of the number of mutations in a range of polymorphic sites. The template argument specifies the counting behavior, i.e. <a class="el" href="structSequence_1_1countStates.html" title="Functor to count the number of states, excluding gaps and missing data, in a range of characters...">countStates</a> or <a class="el" href="structSequence_1_1countDerivedStates.html" title="Functor to count the number of derived states, excluding gaps and missing data, in a range of charact...">countDerivedStates</a>. It is designed to be used with std::accumulate, and will need boost::bind for the necessary arguments </p>
+<p>Function object to keep track of the number of mutations in a range of polymorphic sites. The template argument specifies the counting behavior, i.e. <a class="el" href="structSequence_1_1countStates.html" title="Functor to count the number of states, excluding gaps and missing data, in a range of characters...">countStates</a> or <a class="el" href="structSequence_1_1countDerivedStates.html" title="Functor to count the number of derived states, excluding gaps and missing data, in a range of charact...">countDerivedStates</a>. It is designed to be used with std::accumulate, and will need std::bind for the necessary arguments </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;numeric&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;boost/bind.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;functional&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="FastaExplicit_8hpp.html">Sequence/FastaExplicit.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PolySites_8hpp.html">Sequence/PolySites.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PolySNP_8hpp.html">Sequence/PolySNP.hpp</a>&gt;</span></div>
@@ -116,7 +116,7 @@ class Sequence::nmuts&lt; counter &gt;</h3>
 <div class="line"><a class="code" href="classSequence_1_1PolySites.html">Sequence::PolySites</a> p(data);</div>
 <div class="line"><span class="comment">//calculate # mutations via algorithm</span></div>
 <div class="line"><span class="keywordtype">unsigned</span> nm = std::accumulate(p.sbegin(),p.send(),0u,</div>
-<div class="line">boost::bind(nmuts&lt;countStates&gt;(),_1,_2,</div>
+<div class="line">std::bind(nmuts&lt;countStates&gt;(),std::placeholders::_1,std::placeholders::_2,</div>
 <div class="line"><span class="keyword">false</span>,0));</div>
 <div class="line">std::cout &lt;&lt; nm</div>
 <div class="line">&lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
@@ -138,7 +138,7 @@ template&lt;typename counter &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>allows boost::bind to be used in a simple way </p>
+<p>allows std::bind to be used in a simple way </p>
 
 <p>Definition at line <a class="el" href="PolyFunctional_8hpp_source.html#l00230">230</a> of file <a class="el" href="PolyFunctional_8hpp_source.html">PolyFunctional.hpp</a>.</p>
 
@@ -213,7 +213,7 @@ template&lt;typename counter &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="structSequence_1_1nmuts.html">nmuts</a></li>
-    <li class="footer">Generated on Mon Dec 1 2014 15:12:13 for libsequence by
+    <li class="footer">Generated on Wed Dec 3 2014 17:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

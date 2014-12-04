@@ -105,12 +105,12 @@ $(document).ready(function(){initNavTree('Comparisons_8hpp_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Mutations TsTv(<span class="keywordtype">char</span> i, <span class="keywordtype">char</span> j);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Mutations TsTv(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  Mutations TsTv(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; j);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  Mutations TsTv(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; i,<span class="keyword">const</span> <span class="keywordtype">int</span> &amp; j);</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">bool</span> Different (<span class="keyword">const</span> std::string &amp; seq1,</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                  <span class="keyword">const</span> std::string &amp; seq2,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                  <span class="keywordtype">bool</span> skip_missing =1 ,</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                  <span class="keywordtype">bool</span> nucleic_acid = 1);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                  <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; skip_missing = <span class="keyword">true</span>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                  <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; nucleic_acid = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="keywordtype">bool</span> notDifferent(<span class="keyword">const</span> T &amp;l,<span class="keyword">const</span> T &amp;r,</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                         <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; skip_missing = 1,</div>
@@ -122,15 +122,15 @@ $(document).ready(function(){initNavTree('Comparisons_8hpp_source.html','');});
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                      skip_missing,nucleic_acid);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">unsigned</span> NumDiffs(<span class="keyword">const</span> std::string &amp; seq1,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    <span class="keyword">const</span> std::string &amp; seq2,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    <span class="keywordtype">bool</span> skip_missing =1 ,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    <span class="keywordtype">bool</span> nucleic_acid = 1);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">int</span> NumDiffs(<span class="keyword">const</span> std::string &amp; seq1,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;               <span class="keyword">const</span> std::string &amp; seq2,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;               <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; skip_missing = <span class="keyword">true</span> ,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;               <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; nucleic_acid = <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">bool</span> Gapped(<span class="keyword">const</span> std::string &amp;s);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt; <span class="keywordtype">bool</span> Gapped(Iterator beg,Iterator end,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                          <span class="keyword">const</span> <span class="keywordtype">char</span> &amp;gapchar = <span class="charliteral">&#39;-&#39;</span>)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                          <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; gapchar = <span class="charliteral">&#39;-&#39;</span>)</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  {</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    Iterator itr = std::find(beg,end,gapchar);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> (itr!=end);</div>
@@ -147,7 +147,7 @@ $(document).ready(function(){initNavTree('Comparisons_8hpp_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="Comparisons_8hpp.html">Comparisons.hpp</a></li>
-    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
+    <li class="footer">Generated on Wed Dec 3 2014 17:45:51 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

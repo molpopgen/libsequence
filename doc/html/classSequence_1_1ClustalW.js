@@ -12,6 +12,7 @@ var classSequence_1_1ClustalW =
     [ "begin", "classSequence_1_1ClustalW.html#a5b5b3438d69167cf52dd3b7b10393044", null ],
     [ "begin", "classSequence_1_1ClustalW.html#a01f0fe1590c8e6971b5f3e125db2efae", null ],
     [ "Data", "classSequence_1_1ClustalW.html#a4fb540638431be57c23f4de0631ecb24", null ],
+    [ "empty", "classSequence_1_1ClustalW.html#ad226680da084db3314b34dd215bf0c9d", null ],
     [ "end", "classSequence_1_1ClustalW.html#a2eaf42bbf2b947c5075b92903bd9825a", null ],
     [ "end", "classSequence_1_1ClustalW.html#a68b14d782087af4ff31d7a7cf1f7ad17", null ],
     [ "Gapped", "classSequence_1_1ClustalW.html#ac53aa680cdb83ea8e07f28139110fb18", null ],

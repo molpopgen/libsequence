@@ -13,6 +13,7 @@ var classSequence_1_1SimpleSNP =
     [ "ApplyFreqFilter", "classSequence_1_1SimpleSNP.html#a97a105bcdbaff6298ecde778a7d5fe49", null ],
     [ "assign", "classSequence_1_1SimpleSNP.html#a05f17c6ed162084fb6c1d48d6354b432", null ],
     [ "assign", "classSequence_1_1SimpleSNP.html#a1e55f1ce36513d86a00dbb789fb6636a", null ],
+    [ "assign", "classSequence_1_1SimpleSNP.html#a1b045ca2ad9b55679c9570ff40ec8ca7", null ],
     [ "begin", "classSequence_1_1SimpleSNP.html#a195d5e98a644b375422da1a41c0004bc", null ],
     [ "begin", "classSequence_1_1SimpleSNP.html#a037df2aa220abff8302b8f8cc2ff7ef8", null ],
     [ "Binary", "classSequence_1_1SimpleSNP.html#a39ef36f95bc5a85cb3478d9ff33813c5", null ],

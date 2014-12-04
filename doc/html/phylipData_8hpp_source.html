@@ -105,45 +105,40 @@ $(document).ready(function(){initNavTree('phylipData_8hpp_source.html','');});
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
 <div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classSequence_1_1phylipData.html">   36</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1phylipData.html">phylipData</a>: <span class="keyword">public</span> <a class="code" href="classSequence_1_1AlignStream.html">AlignStream</a> &lt; T &gt;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">mutable</span> <span class="keywordtype">size_t</span> _namelen;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a> (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> namelen = 0)</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      :<a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>(),</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;       _namelen(namelen)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {}</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp; _data,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;               <span class="keyword">const</span> <span class="keywordtype">unsigned</span> namelen=0)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      :<a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>(_data),</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;       _namelen(namelen)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a> (<span class="keyword">const</span> <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a> &amp;a) :</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>(a),_namelen(0)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    ~<a class="code" href="classSequence_1_1phylipData.html">phylipData</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    std::istream &amp; <a class="code" href="classSequence_1_1phylipData.html#a4e3d85dfd3fdcd2a48009802824d1380">read</a> (std::istream &amp; s);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    std::ostream &amp; <a class="code" href="classSequence_1_1phylipData.html#a42a53627bbc379ad7e467111f5e0d3a5">print</a> (std::ostream &amp; s) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData&lt;T&gt;</a> &amp; <a class="code" href="classSequence_1_1phylipData.html#a7c5e050bfb777ecd0192d6d374191cec">operator=</a>( <span class="keyword">const</span> <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a> &amp; rhs);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  };</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include &lt;Sequence/bits/phylipData.tcc&gt;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a> ()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      :<a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>()</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a>(<span class="keyword">const</span> std::vector&lt;T&gt; &amp; _data)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      :<a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>(_data)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData</a> (<span class="keyword">const</span> <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a> &amp;a) :</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a>(a)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    ~<a class="code" href="classSequence_1_1phylipData.html">phylipData</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    std::istream &amp; <a class="code" href="classSequence_1_1phylipData.html#a4e3d85dfd3fdcd2a48009802824d1380">read</a> (std::istream &amp; s);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::ostream &amp; <a class="code" href="classSequence_1_1phylipData.html#a42a53627bbc379ad7e467111f5e0d3a5">print</a> (std::ostream &amp; s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classSequence_1_1phylipData.html">phylipData&lt;T&gt;</a> &amp; <a class="code" href="classSequence_1_1phylipData.html#a7c5e050bfb777ecd0192d6d374191cec">operator=</a>( <span class="keyword">const</span> <a class="code" href="classSequence_1_1AlignStream.html">AlignStream&lt;T&gt;</a> &amp; rhs);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  };</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &lt;Sequence/bits/phylipData.tcc&gt;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classSequence_1_1phylipData_html"><div class="ttname"><a href="classSequence_1_1phylipData.html">Sequence::phylipData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8hpp_source.html#l00036">phylipData.hpp:36</a></div></div>
-<div class="ttc" id="classSequence_1_1phylipData_html_a42a53627bbc379ad7e467111f5e0d3a5"><div class="ttname"><a href="classSequence_1_1phylipData.html#a42a53627bbc379ad7e467111f5e0d3a5">Sequence::phylipData::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00075">phylipData.tcc:75</a></div></div>
+<div class="ttc" id="classSequence_1_1phylipData_html_a42a53627bbc379ad7e467111f5e0d3a5"><div class="ttname"><a href="classSequence_1_1phylipData.html#a42a53627bbc379ad7e467111f5e0d3a5">Sequence::phylipData::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00074">phylipData.tcc:74</a></div></div>
 <div class="ttc" id="classSequence_1_1AlignStream_html"><div class="ttname"><a href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a></div><div class="ttdoc">Virtual interface to alignment streams. </div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00060">AlignStream.hpp:60</a></div></div>
 <div class="ttc" id="AlignStream_8hpp_html"><div class="ttname"><a href="AlignStream_8hpp.html">AlignStream.hpp</a></div><div class="ttdoc">declaration of virtual base class for alignment streams (Sequence::AlignStream) </div></div>
 <div class="ttc" id="classSequence_1_1phylipData_html_a4e3d85dfd3fdcd2a48009802824d1380"><div class="ttname"><a href="classSequence_1_1phylipData.html#a4e3d85dfd3fdcd2a48009802824d1380">Sequence::phylipData::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00036">phylipData.tcc:36</a></div></div>
-<div class="ttc" id="classSequence_1_1phylipData_html_a7c5e050bfb777ecd0192d6d374191cec"><div class="ttname"><a href="classSequence_1_1phylipData.html#a7c5e050bfb777ecd0192d6d374191cec">Sequence::phylipData::operator=</a></div><div class="ttdeci">phylipData&lt; T &gt; &amp; operator=(const AlignStream&lt; T &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00146">phylipData.tcc:146</a></div></div>
+<div class="ttc" id="classSequence_1_1phylipData_html_a7c5e050bfb777ecd0192d6d374191cec"><div class="ttname"><a href="classSequence_1_1phylipData.html#a7c5e050bfb777ecd0192d6d374191cec">Sequence::phylipData::operator=</a></div><div class="ttdeci">phylipData&lt; T &gt; &amp; operator=(const AlignStream&lt; T &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00107">phylipData.tcc:107</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="phylipData_8hpp.html">phylipData.hpp</a></li>
-    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
+    <li class="footer">Generated on Wed Dec 3 2014 17:45:51 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

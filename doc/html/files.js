@@ -125,7 +125,6 @@ var files =
     [ "Specializations.cc", "Specializations_8cc.html", "Specializations_8cc" ],
     [ "stateCounter.cc", "stateCounter_8cc_source.html", null ],
     [ "stateCounter.hpp", "stateCounter_8hpp.html", null ],
-    [ "StringComp.hpp", "StringComp_8hpp_source.html", null ],
     [ "SummStats.hpp", "SummStats_8hpp.html", null ],
     [ "ThreeSubs.cc", "ThreeSubs_8cc_source.html", null ],
     [ "ThreeSubs.hpp", "ThreeSubs_8hpp.html", null ],

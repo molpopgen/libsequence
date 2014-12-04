@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('SimDataIO_8cc_source.html','');});
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        gzread(file,&amp;nsites,<span class="keyword">sizeof</span>(uint32_t));</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">if</span>(!nsites) <span class="keywordflow">return</span> SimData();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        pos.resize(nsites);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        gzread(file,&amp;pos[0],nsites*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>));</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        gzread(file,&amp;pos[0],<span class="keywordtype">unsigned</span>(nsites*<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)));</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        data = vector&lt;string&gt;(nsam,string(nsites,<span class="charliteral">&#39;0&#39;</span>));</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">for</span>(uint32_t i = 0 ; i &lt; nsam ; ++i)</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;          {</div>
@@ -176,7 +176,7 @@ $(document).ready(function(){initNavTree('SimDataIO_8cc_source.html','');});
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keyword">delete</span> [] haplotype;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> SimData(pos,data);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> SimData(std::move(pos),std::move(data));</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> write_SimData_binary( std::ostream &amp; o, <span class="keyword">const</span> SimData &amp; d )</div>
@@ -231,7 +231,7 @@ $(document).ready(function(){initNavTree('SimDataIO_8cc_source.html','');});
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;          }</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        data.push_back(d);</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      }</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> SimData(pos,data);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">return</span> SimData(std::move(pos),std::move(data));</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordtype">long</span> <span class="keywordtype">int</span> write_SimData_binary( <span class="keywordtype">int</span> fd , <span class="keyword">const</span> SimData &amp; d )</div>
@@ -252,7 +252,7 @@ $(document).ready(function(){initNavTree('SimDataIO_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>SimDataIO.cc</b></li>
-    <li class="footer">Generated on Mon Dec 1 2014 15:12:12 for libsequence by
+    <li class="footer">Generated on Wed Dec 3 2014 17:45:51 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
