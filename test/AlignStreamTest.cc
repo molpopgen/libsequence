@@ -10,11 +10,12 @@
 #include <unistd.h>
 
 const char * input_data = "data/CG15644-Z.aln";
+const char * phylip_input_data = "data/phylip_input.txt";
 
 using clustal = Sequence::ClustalW<Sequence::Fasta>;
 using phylip  = Sequence::phylipData<Sequence::Fasta>;
 
-//Simple reading
+//Simple reading clustalw
 BOOST_AUTO_TEST_CASE( clustalw_in )
 {
   std::ifstream in(input_data);
@@ -25,6 +26,14 @@ BOOST_AUTO_TEST_CASE( clustalw_in )
   BOOST_REQUIRE( !c.empty() );
   BOOST_REQUIRE_EQUAL( c.size() , 10 );
 }
+
+//simple reading phylip
+// BOOST_AUTO_TEST_CASE( phylip_in )
+// {
+//   std::ifstream in(phylip_input_data);
+//   phylip p;
+//   BOOST_REQUIRE_NO_THROW(in >> p >> std::ws;);
+// }
 
 BOOST_AUTO_TEST_CASE( clustalw_convert )
 {
@@ -104,6 +113,7 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   std::string check;
   clustal c;
   in >> c >> std::ws;
+  in.close();
   phylip p = c;
   
   const char * outfile = "phylip_test.txt";
@@ -112,10 +122,14 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   out.close();
 
   in.open(outfile);
+  if( !in )
+    {
+      std::cerr <<"oops\n";
+      exit(1);
+    }
+  
   phylip p2;
   BOOST_REQUIRE_NO_THROW( in >> p2 >> std::ws );
-
-  BOOST_REQUIRE(!p2.empty());
   BOOST_REQUIRE_EQUAL(p.size() , p2.size());
 
   for( decltype(p.size()) i = 0 ; i < p.size() ; ++i )

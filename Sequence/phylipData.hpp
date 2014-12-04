@@ -38,21 +38,16 @@ namespace Sequence
 		     Input of phylip-format alignments
 		    */
   {
-  private:
-    mutable size_t _namelen;
   public:
-    phylipData (const unsigned namelen = 0)
-      :AlignStream<T>(),
-       _namelen(namelen)
+    phylipData ()
+      :AlignStream<T>()
     {}
-    phylipData(const std::vector<T> & _data,
-	       const unsigned namelen=0)
-      :AlignStream<T>(_data),
-       _namelen(namelen)
+    phylipData(const std::vector<T> & _data)
+      :AlignStream<T>(_data)
     {
     }
     phylipData (const AlignStream<T> &a) :
-      AlignStream<T>(a),_namelen(0)
+      AlignStream<T>(a)
     {
     }
     ~phylipData(void)
