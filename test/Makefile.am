@@ -1,4 +1,4 @@
-check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
+check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	AlignStreamTest \
 	testSimDataIO \
 	CountingOperators \
@@ -19,6 +19,7 @@ LDADD=$(BOOST_LIBS) $(SEQUENCE)
 
 FastaConstructors_SOURCES=FastaConstructors.cc
 FastaIO_SOURCES=FastaIO.cc
+FastaExplicitIO_SOURCES=FastaIO.cc
 FastaOperations_SOURCES=FastaOperations.cc
 
 AlignStreamTest_SOURCES=AlignStreamTest.cc

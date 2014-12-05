@@ -78,12 +78,12 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
-	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
-	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
-	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) \
-	PolySNPtest$(EXEEXT) ComparisonsTest$(EXEEXT) \
-	AlignmentTest$(EXEEXT)
+	FastaExplicitIO$(EXEEXT) FastaOperations$(EXEEXT) \
+	AlignStreamTest$(EXEEXT) testSimDataIO$(EXEEXT) \
+	CountingOperators$(EXEEXT) PolyTableConversions$(EXEEXT) \
+	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
+	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
+	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -127,6 +127,11 @@ am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
 FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
+	$(am__DEPENDENCIES_1)
+am_FastaExplicitIO_OBJECTS = FastaIO.$(OBJEXT)
+FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
+FastaExplicitIO_LDADD = $(LDADD)
+FastaExplicitIO_DEPENDENCIES = $(am__DEPENDENCIES_1) \
 	$(am__DEPENDENCIES_1)
 am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
@@ -204,18 +209,20 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
-	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
-	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
+	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
+	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
+	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
+	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
-	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
-	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
-	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(testSimDataIO_SOURCES)
+	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
+	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
+	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
+	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
+	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -368,6 +375,7 @@ AM_LDFLAGS = -L../src/.libs -static
 LDADD = $(BOOST_LIBS) $(SEQUENCE)
 FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaIO.cc
+FastaExplicitIO_SOURCES = FastaIO.cc
 FastaOperations_SOURCES = FastaOperations.cc
 AlignStreamTest_SOURCES = AlignStreamTest.cc
 testSimDataIO_SOURCES = testSimDataIO.cc
@@ -443,6 +451,10 @@ CountingOperators$(EXEEXT): $(CountingOperators_OBJECTS) $(CountingOperators_DEP
 FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
 	@rm -f FastaConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
+
+FastaExplicitIO$(EXEEXT): $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_DEPENDENCIES) $(EXTRA_FastaExplicitIO_DEPENDENCIES) 
+	@rm -f FastaExplicitIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_LDADD) $(LIBS)
 
 FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEPENDENCIES) 
 	@rm -f FastaIO$(EXEEXT)
