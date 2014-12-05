@@ -21,6 +21,51 @@ BOOST_AUTO_TEST_CASE( ostream_test )
   unlink(filename);
 }
 
+BOOST_AUTO_TEST_CASE( ostream_test_3recs )
+{
+  const char * filename = "fasta_ostream_test_out.fasta";
+  Sequence::Fasta f(name,seq),f2;
+  std::ofstream o(filename);
+  o << f << '\n'
+    << f << '\n'
+    << f << '\n';
+  o.close();
+  std::ifstream in(filename);
+  unsigned count = 0;
+  while(! in.eof() )
+    {
+      in >> f2 >> std::ws;
+      BOOST_REQUIRE_EQUAL(f,f2);
+      ++count;
+    }
+  BOOST_REQUIRE_EQUAL( count, 3 );
+  //in >> f2 >> std::ws;
+  
+  unlink(filename);
+}
+
+//No newline @ end of data
+BOOST_AUTO_TEST_CASE( ostream_test_no_newline )
+{
+  const char * filename = "fasta_ostream_test_out.fasta";
+  Sequence::Fasta f(name,seq),f2;
+  std::ofstream o(filename);
+  o << f << '\n'
+    << f << '\n'
+    << f;
+  o.close();
+  std::ifstream in(filename);
+  unsigned count = 0;
+  while(! in.eof() )
+    {
+      in >> f2 >> std::ws;
+      BOOST_REQUIRE_EQUAL(f,f2);
+      ++count;
+    }
+  BOOST_REQUIRE_EQUAL( count, 3 );
+  unlink(filename);
+}
+
 BOOST_AUTO_TEST_CASE( exception_test )
 {
   const char * filename = "fasta_ostream_test_out.fasta";
