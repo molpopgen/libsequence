@@ -6,7 +6,7 @@
 #include <boost/test/unit_test.hpp>
 #include <unistd.h>
 
-std::string name("seqname"),seq("AGCGTAGACAGTAGAGTGAT");
+std::string name("seqname is a seq"),seq("AGCGTAGACAGTAGAGTGAT");
 
 BOOST_AUTO_TEST_CASE( ostream_test )
 {
@@ -17,8 +17,7 @@ BOOST_AUTO_TEST_CASE( ostream_test )
   o.close();
   std::ifstream in(filename);
   in >> f2 >> std::ws;
-  BOOST_REQUIRE(f==f2);
-  
+  BOOST_REQUIRE_EQUAL(f,f2);
   unlink(filename);
 }
 
