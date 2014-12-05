@@ -77,7 +77,7 @@ namespace Sequence
     extern template std::istream & GetData( std::vector<Sequence::Fasta> &,
 					    std::istream & );
     extern template std::istream & ReadNObjects( std::vector<Sequence::Fasta> &,
-						 unsigned, std::istream &);
+						 const unsigned &, std::istream &);
     extern template bool Gapped(const std::vector<Sequence::Fasta> &);
     extern template bool IsAlignment(const std::vector<Sequence::Fasta> &);
     extern template bool validForPolyAnalysis(std::vector<Sequence::Fasta>::const_iterator beg,
