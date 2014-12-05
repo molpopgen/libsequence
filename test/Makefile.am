@@ -14,8 +14,27 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
 
+AM_CXXFLAGS=
 AM_LDFLAGS=-L../src/.libs -static
-LDADD=$(BOOST_LIBS) $(SEQUENCE)
+
+if HAVE_HTSLIB
+AM_CXXFLAGS+=-DHAVE_HTSLIB
+AM_LDFLAGS+=-lhts
+endif
+
+if DEBUG
+AM_CXXFLAGS+=-g
+else
+AM_CXXFLAGS+=-DNDEBUG
+endif
+
+if PROFILING
+PROFILE= -pg
+else
+PROFILE=
+endif
+
+AM_LDFLAGS+=$(BOOST_LIBS) $(SEQUENCE)
 
 FastaConstructors_SOURCES=FastaConstructors.cc
 FastaIO_SOURCES=FastaIO.cc

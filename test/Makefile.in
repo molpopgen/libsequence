@@ -84,6 +84,10 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
 	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
 	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT)
+@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
+@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
+@DEBUG_TRUE@am__append_3 = -g
+@DEBUG_FALSE@am__append_4 = -DNDEBUG
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -101,9 +105,6 @@ CONFIG_CLEAN_VPATH_FILES =
 am_AlignStreamTest_OBJECTS = AlignStreamTest.$(OBJEXT)
 AlignStreamTest_OBJECTS = $(am_AlignStreamTest_OBJECTS)
 AlignStreamTest_LDADD = $(LDADD)
-am__DEPENDENCIES_1 =
-AlignStreamTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
@@ -111,68 +112,45 @@ am__v_lt_1 =
 am_AlignmentTest_OBJECTS = AlignmentTest.$(OBJEXT)
 AlignmentTest_OBJECTS = $(am_AlignmentTest_OBJECTS)
 AlignmentTest_LDADD = $(LDADD)
-AlignmentTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_ComparisonsTest_OBJECTS = ComparisonsTest.$(OBJEXT)
 ComparisonsTest_OBJECTS = $(am_ComparisonsTest_OBJECTS)
 ComparisonsTest_LDADD = $(LDADD)
-ComparisonsTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_CountingOperators_OBJECTS = CountingOperators.$(OBJEXT)
 CountingOperators_OBJECTS = $(am_CountingOperators_OBJECTS)
 CountingOperators_LDADD = $(LDADD)
-CountingOperators_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
-FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_FastaExplicitIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
 FastaExplicitIO_LDADD = $(LDADD)
-FastaExplicitIO_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
 FastaIO_LDADD = $(LDADD)
-FastaIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
 FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
-FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_PolySIMtest_OBJECTS = PolySIMtest.$(OBJEXT)
 PolySIMtest_OBJECTS = $(am_PolySIMtest_OBJECTS)
 PolySIMtest_LDADD = $(LDADD)
-PolySIMtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolySNPtest_OBJECTS = PolySNPtest.$(OBJEXT)
 PolySNPtest_OBJECTS = $(am_PolySNPtest_OBJECTS)
 PolySNPtest_LDADD = $(LDADD)
-PolySNPtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
 PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
 PolySitesIO_LDADD = $(LDADD)
-PolySitesIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolyTableConversions_OBJECTS = PolyTableConversions.$(OBJEXT)
 PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
 PolyTableConversions_LDADD = $(LDADD)
-PolyTableConversions_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
-PolyTableTweaking_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
-SimpleSNPIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
 testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
 testSimDataIO_LDADD = $(LDADD)
-testSimDataIO_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -371,8 +349,11 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 BOOST_LIBS = -lboost_unit_test_framework
 SEQUENCE = -lsequence
-AM_LDFLAGS = -L../src/.libs -static
-LDADD = $(BOOST_LIBS) $(SEQUENCE)
+AM_CXXFLAGS = $(am__append_1) $(am__append_3) $(am__append_4)
+AM_LDFLAGS = -L../src/.libs -static $(am__append_2) $(BOOST_LIBS) \
+	$(SEQUENCE)
+@PROFILING_FALSE@PROFILE = 
+@PROFILING_TRUE@PROFILE = -pg
 FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaIO.cc
 FastaExplicitIO_SOURCES = FastaIO.cc

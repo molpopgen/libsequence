@@ -2,7 +2,7 @@ AC_PREREQ(2.59)
 
 AC_INIT([libsequence], [1.8.3], [https://github.com/molpopgen/libsequence])
 AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
-AC_CONFIG_TESTDIR(test)
+AC_CONFIG_SRCDIR([test/FastaIO.cc])
 AM_INIT_AUTOMAKE([subdir-objects])
 AC_CONFIG_HEADERS([config-h.in])
 

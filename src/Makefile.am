@@ -57,7 +57,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 
 AM_LDFLAGS=-version-info 20:0:0
 
-AM_CXXFLAGS=$(CXXFLAGS) -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope 
+AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope 
 
 if HAVE_HTSLIB
 AM_CXXFLAGS+=-DHAVE_HTSLIB
@@ -66,8 +66,6 @@ endif
 
 if DEBUG
 AM_CXXFLAGS+=-g
-#CXXOTHERFLAGS = -g
-#COTHERFLAGS = -g
 else
 AM_CXXFLAGS+=-DNDEBUG
 endif
