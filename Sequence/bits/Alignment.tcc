@@ -261,11 +261,11 @@ namespace Sequence
       static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
 		     std::is_same<std::pair<std::string,std::string>,T>::value,
 		     "T must be pair<std::string,std::string> or publicly inherit from that type" );
-       size_t i, j,datasize=data.size();
-       size_t length = data[0].second.length ();
+      size_t i, j,datasize=data.size();
+      size_t length = data[0].second.length ();
       std::vector < std::string > ungapped_sequences(data.size());
       bool site_is_gapped;
-
+      
       for (i = 0; i < length; ++i)
         {	//iterate over sites
           for ( j = 0, site_is_gapped = 0;
@@ -283,12 +283,12 @@ namespace Sequence
                 ungapped_sequences[j] += data[j].second[i];
             }
         }
-
+      
       //redo the data
       for (j = 0; j != datasize ; ++j)
-        {
-          data[j] = T(data[j].first,ungapped_sequences[j]);
-        }
+	{
+	  data[j].second = std::move(ungapped_sequences[j]);
+	}
     }
 
     //only remove gaps from the beginning
@@ -353,7 +353,8 @@ namespace Sequence
       //now, redo the seq array for the current object
       for ( j = 0; j != data.size (); ++j)
         {
-          data[j] =T(data[j].first,trimmed_sequences[j]);
+	  //Probably can't hurt...
+          data[j] = std::move(T(data[j].first,trimmed_sequences[j]));
         }
     }
 
