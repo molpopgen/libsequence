@@ -36,6 +36,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <type_traits>
 #include <iterator>
 #include <algorithm>
+#include <iostream>
 namespace Sequence
 {
   namespace Alignment
@@ -102,15 +103,15 @@ namespace Sequence
       \param input_stream name of istream from which fo fill seqarray
     */
     {
-      T temp;
+      T temp;      
       if (input_stream)
-	{
-	  while (!(input_stream.eof ()))
-	    {
-	      input_stream >> temp >> std::ws;
-	      seqarray.push_back(temp);
-	    }
-	}
+      	{
+      	  while (!(input_stream.eof ()))
+      	    {
+      	      input_stream >> temp >> std::ws;
+      	      seqarray.push_back(temp);
+      	    }
+      	}
       return input_stream;
     }
 

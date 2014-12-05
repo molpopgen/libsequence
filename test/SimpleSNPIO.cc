@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE PolySitesIO
+#define BOOST_TEST_MODULE SimpleSNPIO
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>

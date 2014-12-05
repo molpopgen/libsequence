@@ -42,7 +42,6 @@ namespace Sequence
   SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
     PolyTable(pos,pos+S,sample,nsam)
   {
-    //PolyTable::assign(pos,S,sample,nsam);
   }
 
   SimData::SimData(const std::vector<double> & pos, 
@@ -73,32 +72,27 @@ namespace Sequence
   */
   {
     char ch;
-    while(1)
+    while(! stream.eof() )
       {
-	if (!(stream >> ch))
-	  {
-	    stream.setstate(std::ios::failbit);
-	    return stream;
-	  }
-        if (ch == ':')
-          break;
+	stream >> ch;
+	if( ch == ':' ) break;
       }
     std::string temp;
     unsigned S;
-    stream >> S >> std::ws;
-    stream >> temp >> std::ws; 
+    stream >> S >> temp;
     std::vector<double> pos(S);
     for( unsigned i = 0 ; i < S ; ++i )
       {
-	stream >> pos[i] >> std::ws;
+	stream >> pos[i];
       }
+    stream  >> std::ws;
     //Read in the haplotypes until the next // and the stream is still ok
     std::vector<std::string> haps;
-    while( stream.peek() != '/' && !stream.eof() && !stream.fail() ) {
+    while( !stream.eof() && char(stream.peek()) != '/' ) { 
+      temp.resize(S);
+      stream.read( &temp[0], std::streamsize(S*sizeof(char)) );
       stream >> std::ws;
-      getline(stream,temp);
-      stream >> std::ws;
-      haps.emplace_back(temp);
+      haps.emplace_back(std::move(temp));      
     } 
     this->assign( std::move(pos),
 		  std::move(haps) );

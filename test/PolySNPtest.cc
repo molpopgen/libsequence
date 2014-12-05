@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE PolySIMtest
+#define BOOST_TEST_MODULE PolySNPtest
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
