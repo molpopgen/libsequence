@@ -38,6 +38,10 @@ namespace Sequence
   Seq::Seq (const char *name, const char *seq): SeqBase(name,seq)
   {
   }
+
+  Seq::Seq (const std::string & name, const std::string & seq): SeqBase(name,seq)
+  {
+  }
   
   Seq::Seq (const Seq & seq) : SeqBase(seq.first,seq.second) 
     /*! copy constructor */{}

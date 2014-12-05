@@ -13,6 +13,7 @@ pkginclude_HEADERS = AlignStream.hpp\
 	CountingOperators.hpp\
 	FST.hpp\
 	Fasta.hpp\
+	fastq.hpp\
 	FastaExplicit.hpp\
 	Grantham.hpp\
 	GranthamWeights.hpp\

@@ -24,6 +24,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Sites.cc\
 	Unweighted.cc\
 	Seq/Fasta.cc\
+	Seq/fastq.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\

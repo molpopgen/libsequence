@@ -51,6 +51,7 @@ namespace Sequence
       typedef std::pair<std::string,std::string> SeqBase;
     public:
       Seq (void);
+      Seq (const std::string & name, const std::string & seq);
       Seq (const char *name, const char *seq);
       Seq (const Seq & seq);
       virtual ~ Seq (){}
