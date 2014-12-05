@@ -23,8 +23,6 @@
 
 BOOST_AUTO_TEST_CASE( IsAlignmentFasta )
 {
-  const char * fn = "GetDataText.txt";
-
   std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
 					Sequence::Fasta("seq2","AGC") ,
 					Sequence::Fasta("seq3","GTC") ,
@@ -160,7 +158,7 @@ BOOST_AUTO_TEST_CASE( ReadNFasta )
 				      std::ostream_iterator<Sequence::Fasta>(o,"\n"));
 			    o.close();
 			    
-			    for(auto n = 0 ; n < vf.size() ; ++n )
+			    for(decltype(vf.size()) n = 0 ; n < vf.size() ; ++n )
 			      {
 				vf2.clear();
 				std::ifstream in(fn);
@@ -200,7 +198,7 @@ BOOST_AUTO_TEST_CASE( ReadNString )
 				      std::ostream_iterator<std::string>(o,"\n"));
 			    o.close();
 			    
-			    for(auto n = 0 ; n < vf.size() ; ++n )
+			    for(decltype(vf.size()) n = 0 ; n < vf.size() ; ++n )
 			      {
 				vf2.clear();
 				std::ifstream in(fn);
@@ -251,8 +249,6 @@ BOOST_AUTO_TEST_CASE( GappedString )
 
 BOOST_AUTO_TEST_CASE( UnGappedLengthFasta )
 {
-  const char * fn = "GetDataText.txt";
-
   std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
 					Sequence::Fasta("seq2","AGC") ,
 					Sequence::Fasta("seq3","GTC") ,

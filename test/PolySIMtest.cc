@@ -42,7 +42,7 @@ unsigned nsingletons( const Sequence::SimData & d )
   std::for_each(d.sbegin(),d.send(),
 		[&nsing,&d](const Sequence::polymorphicSite & __ps) {
 		  auto c = std::count(__ps.second.begin(),__ps.second.end(),'1');
-		  nsing += ( c == 1 || c == d.size() - 1 ) ? 1 : 0;
+		  nsing += ( unsigned(c) == 1 || unsigned(c) == d.size() - 1 ) ? 1 : 0;
 		});
   return nsing;
 }
