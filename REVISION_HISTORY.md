@@ -26,6 +26,13 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+##libsequence 1.8.4
+
+(There is no official 1.8.4 release yet)
+
+* fastq stream + fastq unit tests added
+* move semantics for the Sequence::Seq hierarchy + unit tests
+
 ##libsequence 1.8.3 (Dec. 5, 2014)
 
 1.  This release _breaks binary compatibility_ with previous releases.  Programs depending on libsequence will likely need to be recompiled.
