@@ -51,5 +51,6 @@ BOOST_AUTO_TEST_CASE( input_test2 )
 	 ++count;  
        }
      BOOST_CHECK_EQUAL(count,50);
+     in.close();
    ); 
 }
