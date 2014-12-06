@@ -11,7 +11,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	ComparisonsTest \
 	AlignmentTest \
 	fastqIO \
-	fastqConstructors 
+	fastqConstructors \
+	SeqConversions 
 
 BOOST_LIBS=-lboost_unit_test_framework
 SEQUENCE=-lsequence
@@ -66,4 +67,7 @@ ComparisonsTest_SOURCES=ComparisonsTest.cc
 AlignmentTest_SOURCES=AlignmentTest.cc
 
 fastqIO_SOURCES=fastqIO.cc
+
 fastqConstructors_SOURCES=fastqConstructors.cc
+
+SeqConversions_SOURCES=SeqConversions.cc

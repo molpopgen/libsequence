@@ -48,12 +48,14 @@ namespace Sequence
   {
     class Seq : public std::pair<std::string,std::string>
     {
-      typedef std::pair<std::string,std::string> SeqBase;
+      using SeqBase = std::pair<std::string,std::string>;
     public:
       Seq (void);
       Seq (const std::string & name, const std::string & seq);
+      Seq (std::string && name, std::string && seq);
       Seq (const char *name, const char *seq);
-      Seq (const Seq & seq);
+      Seq (const Seq & seq) = default;
+      Seq (Seq && seq) = default;
       virtual ~ Seq (){}
       std::string GetName (void) const;
       std::string GetSeq (void) const;
@@ -90,6 +92,8 @@ namespace Sequence
       const_reference operator[] (const size_type & i) const;
       bool operator==(const Seq & rhs) const;
       bool operator!=(const Seq & rhs) const;
+      Seq & operator=(const Seq & rhs) = default;
+      Seq & operator=( Seq && rhs) = default;
       operator std::string() const;
       const char *c_str(void) const;
       /*!

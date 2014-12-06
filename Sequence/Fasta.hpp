@@ -50,11 +50,17 @@ namespace Sequence
     {
     private:
     public:
-      Fasta():Seq()/*!Generic constructor*/ {}
+      Fasta();
       Fasta (const std::string &name, const std::string &seq);
+      Fasta ( std::string && name, const std::string && seq);
       Fasta(const char *name, const char *seq);
       Fasta (const Seq & s);
+      Fasta( Fasta && ) = default;
+      Fasta( Seq && );
+      Fasta( const Fasta & ) = default;
       ~Fasta()/*! placeholder for vtable */ {}
+      Fasta & operator=(Fasta &&) = default;
+      Fasta & operator=(const Fasta &) = default;
       /*!
 	\exception Sequence::SeqException if memory can't be allocated. 
 	(This is because the data are temporarily read into char *, 

@@ -43,8 +43,15 @@ namespace Sequence
   {
   }
   
-  Seq::Seq (const Seq & seq) : SeqBase(seq.first,seq.second) 
-    /*! copy constructor */{}
+  Seq::Seq (std::string && name, std::string && seq) : 
+    SeqBase(std::move(name),std::move(seq))
+  {
+    //this->first = std::move(name);
+    //this->second = std::move(seq);
+  }
+
+  //Seq::Seq (const Seq & seq) : SeqBase(seq.first,seq.second) 
+  ///*! copy constructor */{}
 
   std::string Seq::GetName (void) const
     /*!

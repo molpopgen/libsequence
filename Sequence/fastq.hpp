@@ -15,8 +15,11 @@ namespace Sequence
       fastq (const std::string &name, const std::string &seq,
 	     const std::string & qual);
       fastq (const Seq & s);
-      fastq (const fastq & s);
-      fastq ( fastq && s);
+      fastq (const fastq & s) = default;
+      fastq ( fastq && s) = default;
+      fastq ( Seq && s);
+      fastq & operator=(const fastq & ) = default;
+      fastq & operator=( fastq && ) = default;
       ~fastq()/*! placeholder for vtable */ {}
       /*!
 	\exception Sequence::SeqException if memory can't be allocated. 

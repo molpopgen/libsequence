@@ -16,6 +16,11 @@ namespace Sequence {
   {
   }
 
+  fastq::fastq ( Seq && s) : Seq(std::move(s)),repeat_name(true),quality(std::string())
+  {
+  }
+
+  /*
   fastq::fastq (const fastq & s) : Seq(s.first,s.second),repeat_name(true),quality(s.quality)
   {
   }
@@ -26,6 +31,7 @@ namespace Sequence {
 			       quality( std::move(s.quality) )
   {
   }
+  */
 
   std::istream & fastq::read (std::istream & stream) 
   {

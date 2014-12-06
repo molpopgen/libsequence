@@ -84,7 +84,8 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
 	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
 	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT) \
-	fastqIO$(EXEEXT) fastqConstructors$(EXEEXT)
+	fastqIO$(EXEEXT) fastqConstructors$(EXEEXT) \
+	SeqConversions$(EXEEXT)
 @HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @DEBUG_TRUE@am__append_3 = -g
@@ -146,6 +147,9 @@ PolyTableConversions_LDADD = $(LDADD)
 am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
+am_SeqConversions_OBJECTS = SeqConversions.$(OBJEXT)
+SeqConversions_OBJECTS = $(am_SeqConversions_OBJECTS)
+SeqConversions_LDADD = $(LDADD)
 am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
@@ -198,18 +202,18 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
+	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
+	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -380,6 +384,7 @@ ComparisonsTest_SOURCES = ComparisonsTest.cc
 AlignmentTest_SOURCES = AlignmentTest.cc
 fastqIO_SOURCES = fastqIO.cc
 fastqConstructors_SOURCES = fastqConstructors.cc
+SeqConversions_SOURCES = SeqConversions.cc
 all: all-am
 
 .SUFFIXES:
@@ -476,6 +481,10 @@ PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEP
 	@rm -f PolyTableTweaking$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
 
+SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES) $(EXTRA_SeqConversions_DEPENDENCIES) 
+	@rm -f SeqConversions$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(SeqConversions_OBJECTS) $(SeqConversions_LDADD) $(LIBS)
+
 SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA_SimpleSNPIO_DEPENDENCIES) 
 	@rm -f SimpleSNPIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
@@ -510,6 +519,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@

@@ -23,4 +23,6 @@ BOOST_AUTO_TEST_CASE( move_construction )
   in >> f >> std::ws;
 
   Sequence::fastq f2(std::move(f));
+
+  BOOST_CHECK_EQUAL(f.length(),0);
 }
