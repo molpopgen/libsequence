@@ -69,15 +69,26 @@ namespace Sequence
   class SimData:public PolyTable
     {
     public:
-      explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
-      explicit SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
-      explicit SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
-      explicit SimData( std::vector<double> && pos,  std::vector<std::string> && data);
-      explicit SimData(const SimData::const_site_iterator & beg, 
-		       const SimData::const_site_iterator & end);
-
+      SimData(void);
+      SimData( SimData & ) = default;
+      SimData( SimData && ) = default;
+      SimData( PolyTable & );
+      SimData( PolyTable && );
+      //SimData( SimData & );// = default;
+      //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
+      SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
+      SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
+      SimData(std::vector<double> && pos,  std::vector<std::string> && data);
+      SimData(const SimData::const_site_iterator & beg, 
+	      const SimData::const_site_iterator & end);
+      
       ~ SimData (void){}
       
+      SimData & operator=(const SimData &) = default;
+      SimData & operator=( SimData &&) = default;
+      SimData & operator=(const PolyTable &);
+      SimData & operator=( PolyTable &&);
+
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;
 

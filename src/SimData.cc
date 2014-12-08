@@ -29,13 +29,25 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  SimData::SimData (const size_t & nsam, const size_t & nsnps):
-    PolyTable(nsam,nsnps)
-    /*!
-      The constructor needs to know the sample size simulated.
-      This is easily obtainted using Sequence::SimParams.  An example
-      of this is found in the example file tajd.cc
-    */
+  // SimData::SimData (const size_t & nsam, const size_t & nsnps):
+  //   PolyTable(nsam,nsnps)
+  //   /*!
+  //     The constructor needs to know the sample size simulated.
+  //     This is easily obtainted using Sequence::SimParams.  An example
+  //     of this is found in the example file tajd.cc
+  //   */
+  // {
+  // }
+
+  SimData::SimData() : PolyTable() 
+  {
+  }
+  
+  SimData::SimData( PolyTable & pt) : PolyTable(pt)
+  {
+  }
+
+  SimData::SimData( PolyTable && pt) : PolyTable(std::move(pt))
   {
   }
 
@@ -43,6 +55,7 @@ namespace Sequence
     PolyTable(pos,pos+S,sample,nsam)
   {
   }
+  
 
   SimData::SimData(const std::vector<double> & pos, 
 		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
@@ -61,6 +74,18 @@ namespace Sequence
   SimData::SimData(const SimData::const_site_iterator & beg, 
 		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
   {
+  }
+
+  SimData & SimData::operator=( const PolyTable & pt)
+  {
+    PolyTable::operator=(pt);
+    return *this;
+  }
+
+  SimData & SimData::operator=( PolyTable && pt)
+  {
+    PolyTable::operator=(std::move(pt));
+    return *this;
   }
 
   std::istream & SimData::read (std::istream & stream) 

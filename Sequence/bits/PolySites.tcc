@@ -84,8 +84,6 @@ namespace Sequence
 		   "__DataType must be std::string or derived from Sequence::Seq");
     if (Alignment::IsAlignment(alignment) == true)
       {
-        seqlen = alignment[0].length();
-        numseqs = alignment.size ();
         fillIt<__DataType> (alignment, strictInfSites, ignoregaps,skipMissing,freqfilter);
         if(skipAdjSNP == true)
 	  {}
@@ -100,13 +98,15 @@ namespace Sequence
     static_assert( std::is_same<__DataType,std::string>::value ||
 		   std::is_base_of<Sequence::Seq,__DataType>::value,
 		   "__DataType must be std::string or derived from Sequence::Seq");
+    decltype(alignment.size()) numseqs = alignment.size();
+    if(!numseqs) return;
     std::vector<double> _positions;
-
-    for(unsigned j =0 ; j < seqlen ; ++j)
+    decltype(alignment[0].length()) seqlen = alignment[0].length();
+    for(decltype(seqlen) j = 0 ; j < seqlen ; ++j)
       {
         stateCounter Counts;
         bool haveMissing = false;
-        for(unsigned i = 0 ; i < numseqs ; ++i)
+	for(unsigned i = 0 ; i < numseqs ; ++i)
           {
             if (std::toupper(alignment[i][j]) == 'N'||
 		(alignment[i][j]==IDENTICAL && std::toupper(alignment[0][j]) == 'N'))

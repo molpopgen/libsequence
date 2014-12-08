@@ -117,7 +117,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  PolySites::PolySites (void) : numseqs(0),seqlen(0)
+  PolySites::PolySites (void) : PolyTable()
   {}
 
   PolySites::PolySites (const std::vector < double > &List, const std::vector <std::string > &stringList):
@@ -128,23 +128,37 @@ namespace Sequence
       \param stringList a vector of strings representing the polymorphic characters
     */
   {
-    seqlen = stringList[0].length();
-    numseqs = stringList.size();
   }
   
   PolySites::PolySites ( std::vector < double > && List, std::vector < std::string > && stringList) :
-    PolyTable(std::move(List),std::move(stringList)),
-    seqlen(0)
+    PolyTable(std::move(List),std::move(stringList))
   {
-    seqlen = this->numsites();
   }
 
   PolySites::PolySites (PolyTable::const_site_iterator beg,
 			PolyTable::const_site_iterator end):
-    PolyTable(beg,end),
-    numseqs(beg->second.size()),
-    seqlen(size_t(end-beg))
+    PolyTable(beg,end)
   {
+  }
+
+  PolySites::PolySites( PolyTable & pt ) : PolyTable(pt)
+  {
+  }
+
+  PolySites::PolySites( PolyTable && pt ) : PolyTable(std::move(pt))
+  {
+  }
+
+  PolySites & PolySites::operator=(PolyTable & pt)
+  {
+    PolyTable::operator=(pt);
+    return *this;
+  }
+
+  PolySites & PolySites::operator=(PolyTable && pt)
+  {
+    PolyTable::operator=(std::move(pt));
+    return *this;
   }
 
   std::istream & PolySites::read(std::istream &s) 

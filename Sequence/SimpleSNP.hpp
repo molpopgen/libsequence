@@ -71,6 +71,8 @@ namespace Sequence
       bool haveOutgroup;
       std::vector<std::string> _names;
     public:
+      SimpleSNP( SimpleSNP & ) = default;
+      SimpleSNP( SimpleSNP && ) = default;
       SimpleSNP (const bool diploid =0,const bool isofemale=0)  : PolyTable(),
           Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)
           /*!
@@ -94,6 +96,9 @@ namespace Sequence
       {}
       ~ SimpleSNP (void) {}
      
+      SimpleSNP & operator=(SimpleSNP &) = default;
+      SimpleSNP & operator=(SimpleSNP &&) = default;
+
       bool outgroup(void) const;
       void set_outgroup( const bool & b );
       std::string label(unsigned i) const;
