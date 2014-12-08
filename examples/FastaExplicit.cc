@@ -12,7 +12,7 @@ namespace Sequence
   {
      template void GetData( std::vector<Sequence::Fasta> &, const char *);
      template istream & GetData( std::vector<Sequence::Fasta> &, istream &);
-     template istream & ReadNObjects( std::vector<Sequence::Fasta> &, unsigned, istream &);
+     template istream & ReadNObjects( std::vector<Sequence::Fasta> &, const unsigned &, istream &);
      template bool Gapped(const std::vector<Sequence::Fasta> &);
      template bool IsAlignment(const std::vector<Sequence::Fasta> &);
      template unsigned UnGappedLength(const std::vector<Sequence::Fasta> &);
