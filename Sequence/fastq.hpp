@@ -26,7 +26,7 @@ namespace Sequence
       fastq & operator=( fastq && ) = default;
       ~fastq()/*! placeholder for vtable */ {}
 
-      //Set to true or false for repeating the seq name on third line of output
+      //! Set to true or false for repeating the seq name on third line of output
       void repname(const bool &);
       /*!
 	\exception Sequence::SeqException if memory can't be allocated. 
