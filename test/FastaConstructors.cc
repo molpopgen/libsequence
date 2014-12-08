@@ -4,6 +4,8 @@
 #include <Sequence/Fasta.hpp>
 #include <string>
 #include <boost/test/unit_test.hpp>
+#include <iostream>
+#include <functional>
 
 std::string name("seqname"),seq("AGCGTAGACAGTAGAGTGAT");
 
@@ -45,6 +47,7 @@ BOOST_AUTO_TEST_CASE( move_con )
 }
 
 BOOST_AUTO_TEST_CASE( move_con2 )
+//This "should" work???
 {
   std::string a(name),b(seq);
   Sequence::Fasta f = Sequence::Fasta(std::move(a),std::move(b));

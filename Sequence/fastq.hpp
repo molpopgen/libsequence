@@ -14,13 +14,20 @@ namespace Sequence
       fastq(void);
       fastq (const std::string &name, const std::string &seq,
 	     const std::string & qual);
+      fastq (std::string && name, std::string && seq,
+	     std::string && qual);
+      //! \warning Quality string will be left empty
       fastq (const Seq & s);
       fastq (const fastq & s) = default;
       fastq ( fastq && s) = default;
+      //! \warning Quality string will be left empty
       fastq ( Seq && s);
       fastq & operator=(const fastq & ) = default;
       fastq & operator=( fastq && ) = default;
       ~fastq()/*! placeholder for vtable */ {}
+
+      //Set to true or false for repeating the seq name on third line of output
+      void repname(const bool &);
       /*!
 	\exception Sequence::SeqException if memory can't be allocated. 
 	(This is because the data are temporarily read into char *, 

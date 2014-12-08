@@ -23,6 +23,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <cassert>
 #include <algorithm>
+#include <functional>
 #include <Sequence/Seq.hpp>
 #include <Sequence/SeqFunctors.hpp>
 
@@ -39,6 +40,7 @@ namespace Sequence
   {
   }
 
+
   Seq::Seq (const std::string & name, const std::string & seq): SeqBase(name,seq)
   {
   }
@@ -46,17 +48,12 @@ namespace Sequence
   Seq::Seq (std::string && name, std::string && seq) : 
     SeqBase(std::move(name),std::move(seq))
   {
-    //this->first = std::move(name);
-    //this->second = std::move(seq);
   }
 
-  //Seq::Seq (const Seq & seq) : SeqBase(seq.first,seq.second) 
-  ///*! copy constructor */{}
-
   std::string Seq::GetName (void) const
-    /*!
-      Return the sequence name
-    */
+  /*!
+    Return the sequence name
+  */
   {
     return first;
   }
@@ -69,7 +66,7 @@ namespace Sequence
     return second;
   }
 
-  std::string Seq::substr(unsigned beg,unsigned len) const
+  std::string Seq::substr(std::string::size_type beg,std::string::size_type len) const
     /*!
       Mimics the std::string member function of the same name.
     */
@@ -77,7 +74,7 @@ namespace Sequence
     return second.substr(beg,len);
   }
 
-  std::string Seq::substr(unsigned beg) const
+  std::string Seq::substr(std::string::size_type beg) const
     /*!
       Mimics the standardstd::string member function of the same name.
     */
@@ -87,10 +84,18 @@ namespace Sequence
 
   Seq::size_type Seq::length (void) const
     /*!
-      Return the total length of the sequence
+      Return the total length of the sequence in bytes
     */
   {
-    return second.length ();
+    return second.length();
+  }
+
+  Seq::size_type Seq::size (void) const
+    /*!
+      Return the total length of the sequence in bytes
+    */
+  {
+    return second.size();
   }
 
   Seq::reference
@@ -162,7 +167,7 @@ namespace Sequence
     return (second.find('-') != std::string::npos);
   }
 
-  void Seq::Subseq (unsigned beg, unsigned length)
+  void Seq::Subseq (const unsigned & beg, const unsigned & length)
     /*!
       \param beg the index along the sequence at which the substring begins
       \param length the length of the subseq

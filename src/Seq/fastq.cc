@@ -1,5 +1,6 @@
 #include <Sequence/fastq.hpp>
 #include <Sequence/SeqExceptions.hpp>
+#include <functional>
 #include <iostream>
 
 namespace Sequence {
@@ -12,6 +13,11 @@ namespace Sequence {
   {
   }
 
+  fastq::fastq ( std::string && name, std::string && seq,
+		 std::string && qual) : Seq(std::move(name),std::move(seq)),repeat_name(true),quality(std::move(qual))
+  {
+  }
+
   fastq::fastq (const Seq & s) : Seq(s.first,s.second),repeat_name(true),quality(std::string())
   {
   }
@@ -20,18 +26,10 @@ namespace Sequence {
   {
   }
 
-  /*
-  fastq::fastq (const fastq & s) : Seq(s.first,s.second),repeat_name(true),quality(s.quality)
+  void fastq::repname(const bool & b)
   {
+    repeat_name=b;
   }
-
-  fastq::fastq ( fastq && s) : Seq( std::move(s.first),
-				    std::move(s.second) ),
-			       repeat_name(true),
-			       quality( std::move(s.quality) )
-  {
-  }
-  */
 
   std::istream & fastq::read (std::istream & stream) 
   {

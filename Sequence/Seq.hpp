@@ -51,25 +51,29 @@ namespace Sequence
       using SeqBase = std::pair<std::string,std::string>;
     public:
       Seq (void);
-      Seq (const std::string & name, const std::string & seq);
       Seq (std::string && name, std::string && seq);
+      Seq (const std::string & name, const std::string & seq);
       Seq (const char *name, const char *seq);
       Seq (const Seq & seq) = default;
       Seq (Seq && seq) = default;
       virtual ~ Seq (){}
+      //! \deprecated Access first directly
       std::string GetName (void) const;
+      //! \deprecated Access second directly
       std::string GetSeq (void) const;
-      std::string substr(unsigned beg, unsigned len) const;
-      std::string substr(unsigned beg) const;
+      //! \deprecated access .second.substr directly
+      std::string substr(std::string::size_type beg, std::string::size_type len) const;
+      //! \deprecated access .second.substr directly
+      std::string substr(std::string::size_type beg) const;
       /*!
 	Iterator to sequence elements.  Iterators 
-	access the data, not the seuquence name.
+	access the data, not the sequence name.
 	Value type de-references to char
       */
       typedef std::string::iterator iterator;
       /*!
 	Const iterator to sequence elements.  Iterators 
-	access the data, not the seuquence name.
+	access the data, not the sequence name.
 	Value type de-references to char
       */
       typedef std::string::const_iterator const_iterator;
@@ -83,9 +87,10 @@ namespace Sequence
       const_iterator cbegin() const;
       const_iterator cend() const;
       void Revcom (void);
-      void Subseq (unsigned,unsigned);
+      void Subseq (const unsigned & ,const unsigned &);
       void Complement(void);
       size_type length (void) const;
+      size_type size (void) const;
       size_type UngappedLength (void) const;
       bool IsGapped (void) const;
       reference operator[] (const size_type & i);
