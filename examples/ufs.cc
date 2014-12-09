@@ -19,21 +19,17 @@
 #include <cctype>
 
 //so that you know where things come from
-// using std::map;
-// using std::vector;
-// using std::cout;
-// using std::cerr;
-// using Sequence::Fasta;
-// using Sequence::PolySites;
-// using Sequence::makeCountList; // <Sequence/SeqUtilities.hpp>
-// using Sequence::operator+=;    // <Sequence/CountingOperators.hpp> defines an operator+= for maps
-// using Sequence::Alignment::GetData;
-// using Sequence::Alignment::IsAlignment;
+using std::map;
+using std::vector;
+using std::cout;
+using std::cerr;
+using Sequence::Fasta;
+using Sequence::PolySites;
+using Sequence::makeCountList; // <Sequence/SeqUtilities.hpp>
+using Sequence::operator+=;    // <Sequence/CountingOperators.hpp> defines an operator+= for maps
+using Sequence::Alignment::GetData;
+using Sequence::Alignment::IsAlignment;
 
-using namespace std;
-using namespace Sequence;
-using namespace Sequence::Alignment;
-using Sequence::operator+=;
 bool validStates(const std::map<char,unsigned> & counts)
 /*
   counts is assumed to be a map of nucleotides and their number of occurences.
