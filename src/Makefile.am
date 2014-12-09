@@ -51,7 +51,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
-	PolyData.cc \
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc
