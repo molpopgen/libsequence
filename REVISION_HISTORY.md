@@ -32,6 +32,8 @@ However:
 
 * fastq stream + fastq unit tests added
 * move semantics for the Sequence::Seq hierarchy + unit tests
+* Programs in examples/ are now compiled via "make check"
+* The build setup for the unit tests is improved
 
 ##libsequence 1.8.3 (Dec. 5, 2014)
 

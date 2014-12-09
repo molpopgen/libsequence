@@ -14,15 +14,16 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	fastqConstructors \
 	SeqConversions 
 
-BOOST_LIBS=-lboost_unit_test_framework
-SEQUENCE=-lsequence
+#BOOST_LIBS=-lboost_unit_test_framework
+#	SEQUENCE=-lsequence
 
 AM_CXXFLAGS=
 AM_LDFLAGS=-L../src/.libs -static
+AM_LIBS=-lboost_unit_test_framework -lsequence
 
 if HAVE_HTSLIB
 AM_CXXFLAGS+=-DHAVE_HTSLIB
-AM_LDFLAGS+=-lhts
+AM_LIBS+=-lhts
 endif
 
 if DEBUG
@@ -37,7 +38,7 @@ else
 PROFILE=
 endif
 
-AM_LDFLAGS+=$(BOOST_LIBS) $(SEQUENCE)
+LIBS+=$(AM_LIBS)
 
 FastaConstructors_SOURCES=FastaConstructors.cc
 FastaIO_SOURCES=FastaIO.cc
