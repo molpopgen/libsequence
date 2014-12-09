@@ -98,7 +98,7 @@ make
 sudo make install
 ```
 
-####To #To compile unit testing suite
+####To #To compile unit testing suite and example programs
 
 ```
 make check
@@ -110,6 +110,8 @@ or
 cd test
 make check
 ```
+
+Note that the library must be built prior to "make check", but _you do not have to install the library prior ot "make check"_.  The examples and unit tests are statically-linked to the version of the library that will be found in src/.libs after a "make" command.  I do this so that one can perform unit tests without having to install the library.  I use static linking here to avoid any possible confusion with an existing libsequence installation.
 
 ####Running the unit tests
 
