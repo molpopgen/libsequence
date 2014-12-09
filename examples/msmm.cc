@@ -6,6 +6,7 @@
 #include <ctime>
 #include <iostream>
 #include <algorithm>
+#include <random>
 
 /*
   These integers are declared extern in <Sequence/Coalescent/Mutation.hpp>,
