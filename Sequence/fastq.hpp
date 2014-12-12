@@ -1,3 +1,8 @@
+/*! 
+  \file fastq.hpp
+  @brief FASTQ class
+*/
+
 #ifndef __SEQUENCE_FASTQ_HPP__
 #define __SEQUENCE_FASTQ_HPP__
 
