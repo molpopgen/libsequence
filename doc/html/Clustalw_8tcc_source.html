@@ -177,7 +177,7 @@ $(document).ready(function(){initNavTree('Clustalw_8tcc_source.html','');});
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;              ++iter;</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;          }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;      }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    this-&gt;assign(_data.begin(),_data.end());</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    this-&gt;assign(std::move(_data));</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">return</span> s;</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
@@ -220,7 +220,7 @@ $(document).ready(function(){initNavTree('Clustalw_8tcc_source.html','');});
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="ttc" id="classSequence_1_1AlignStream_html_a1a6c8259cc984ffad79fe250363bf498"><div class="ttname"><a href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">Sequence::AlignStream::const_iterator</a></div><div class="ttdeci">std::vector&lt; T &gt;::const_iterator const_iterator</div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00122">AlignStream.hpp:122</a></div></div>
+<div class="ttc" id="classSequence_1_1AlignStream_html_a1a6c8259cc984ffad79fe250363bf498"><div class="ttname"><a href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">Sequence::AlignStream::const_iterator</a></div><div class="ttdeci">std::vector&lt; T &gt;::const_iterator const_iterator</div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00124">AlignStream.hpp:124</a></div></div>
 <div class="ttc" id="AlignStream_8hpp_html"><div class="ttname"><a href="AlignStream_8hpp.html">AlignStream.hpp</a></div><div class="ttdoc">declaration of virtual base class for alignment streams (Sequence::AlignStream) </div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
 <div class="ttc" id="classSequence_1_1ClustalW_html"><div class="ttname"><a href="classSequence_1_1ClustalW.html">Sequence::ClustalW</a></div><div class="ttdoc">ClustalW streams. </div><div class="ttdef"><b>Definition:</b> <a href="Clustalw_8hpp_source.html#l00077">Clustalw.hpp:77</a></div></div>
@@ -231,7 +231,7 @@ $(document).ready(function(){initNavTree('Clustalw_8tcc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><a class="el" href="Clustalw_8tcc.html">Clustalw.tcc</a></li>
-    <li class="footer">Generated on Wed Dec 3 2014 17:45:51 for libsequence by
+    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

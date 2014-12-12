@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('phylipData_8tcc_source.html','');});
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            _data[i].second+=temp;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;          }</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;      }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    this-&gt;assign(_data.begin(),_data.end());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    this-&gt;assign(std::move(_data));</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> s;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('phylipData_8tcc_source.html','');});
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1phylipData_html"><div class="ttname"><a href="classSequence_1_1phylipData.html">Sequence::phylipData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8hpp_source.html#l00036">phylipData.hpp:36</a></div></div>
 <div class="ttc" id="phylipData_8hpp_html"><div class="ttname"><a href="phylipData_8hpp.html">phylipData.hpp</a></div><div class="ttdoc">Sequence::phylipData – read in phylip alignments. </div></div>
-<div class="ttc" id="classSequence_1_1AlignStream_html"><div class="ttname"><a href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a></div><div class="ttdoc">Virtual interface to alignment streams. </div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00060">AlignStream.hpp:60</a></div></div>
+<div class="ttc" id="classSequence_1_1AlignStream_html"><div class="ttname"><a href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a></div><div class="ttdoc">Virtual interface to alignment streams. </div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00061">AlignStream.hpp:61</a></div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
 <div class="ttc" id="classSequence_1_1phylipData_html_a7c5e050bfb777ecd0192d6d374191cec"><div class="ttname"><a href="classSequence_1_1phylipData.html#a7c5e050bfb777ecd0192d6d374191cec">Sequence::phylipData::operator=</a></div><div class="ttdeci">phylipData&lt; T &gt; &amp; operator=(const AlignStream&lt; T &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8tcc_source.html#l00107">phylipData.tcc:107</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -195,7 +195,7 @@ $(document).ready(function(){initNavTree('phylipData_8tcc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><b>phylipData.tcc</b></li>
-    <li class="footer">Generated on Wed Dec 3 2014 17:45:51 for libsequence by
+    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

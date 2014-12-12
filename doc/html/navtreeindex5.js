@@ -1,5 +1,16 @@
 var NAVTREEINDEX5 =
 {
+"structSequence_1_1__PolySNPImpl.html#a83b7c675ef6940a9bbcc2bbaf4cd2bde":[4,0,0,27,15],
+"structSequence_1_1__PolySNPImpl.html#a8c56b18747d80667c2d87c4c87382f6a":[4,0,0,27,14],
+"structSequence_1_1__PolySNPImpl.html#a8c8e42044aeaf17ee9d8e94b43fc0e41":[4,0,0,27,19],
+"structSequence_1_1__PolySNPImpl.html#a8d95b7c8be879a38ab3e65cf7bee3efa":[4,0,0,27,11],
+"structSequence_1_1__PolySNPImpl.html#a93bcae2b235d752535bc669bd894ab8d":[4,0,0,27,7],
+"structSequence_1_1__PolySNPImpl.html#a9bf54c82264b55ec6751958be38b6b4e":[4,0,0,27,16],
+"structSequence_1_1__PolySNPImpl.html#ab16da1d1baabf53c7dcfb35cf62233e1":[4,0,0,27,13],
+"structSequence_1_1__PolySNPImpl.html#ab890651a6c04eb3560115233586ad24c":[4,0,0,27,4],
+"structSequence_1_1__PolySNPImpl.html#ad9d7752392900286fc38e02c914a24c7":[4,0,0,27,12],
+"structSequence_1_1__PolySNPImpl.html#ae2bb5f9d7cfce9fa75cbff84a1292dd7":[4,0,0,27,8],
+"structSequence_1_1__PolySNPImpl.html#ae97562ac13fa829283b310f565b4fcd3":[4,0,0,27,2],
 "structSequence_1_1__PolySNPImpl.html#af1977f9b0d9c3126b53a049b1d9821db":[4,0,0,27,23],
 "structSequence_1_1__PolySNPImpl.html#afef6a6e1a860bac015e48e8bee4003b5":[4,0,0,27,21],
 "structSequence_1_1chromosome.html":[2,1,1,3],
