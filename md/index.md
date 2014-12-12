@@ -4,7 +4,7 @@ This is the homepage for __libsequence__, which is a C++ library for evolutionar
 
 ###Versions
 
-The current "master" branch of the library is a pre-release version of 1.8.3.  This version represents a major change to the code base.  The biggest change is that the library no longer requires [boost](http://www.boost.org) or the [GSL](http://gnu.org/software/gsl) libraries.  It still requires [zlib](http://zlib.net).  See the Revision History section in the README, which you can find at the [GitHub repo](https://github.com/molpopgen/libsequence) for the project.
+The current "master" branch of the library is 1.8.3.  This version represents a major change to the code base.  The biggest change is that the library no longer requires [boost](http://www.boost.org) or the [GSL](http://gnu.org/software/gsl) libraries.  It still requires [zlib](http://zlib.net).  See the Revision History section in the README, which you can find at the [GitHub repo](https://github.com/molpopgen/libsequence) for the project.
 
 ###Source code
 
