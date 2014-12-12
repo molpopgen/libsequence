@@ -3,6 +3,11 @@
   @brief FASTQ class
 */
 
+/*!
+  \class Sequence::fasta Sequence/fastq.hpp
+  \ingroup seqio
+  Publicly derived from Sequence::Seq.
+*/
 #ifndef __SEQUENCE_FASTQ_HPP__
 #define __SEQUENCE_FASTQ_HPP__
 
