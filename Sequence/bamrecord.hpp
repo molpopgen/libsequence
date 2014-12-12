@@ -1,3 +1,12 @@
+/*! \file bamrecord.hpp
+  @brief Sequence::bamaux and Sequence::bamrecord
+ */
+  /*! 
+    \struct Sequence::bamaux Sequence/bamrecord.hpp
+    \short The extra data types at the end of a bam record.
+    \ingroup HTS
+  */
+
 #ifdef HAVE_HTSLIB //Will only compile if ./configure detects htslib
 
 #ifndef __SEQUENCE__BAMRECORD_HPP__
@@ -10,11 +19,6 @@
 
 namespace Sequence
 {
-  /*! 
-    \class Sequence::bamaux Sequence/bamrecord.hpp
-    \brief The extra data types at the end of a bam record.
-    \ingroup HTS
-  */
   struct bamaux 
   {
     /*! 
@@ -62,7 +66,7 @@ namespace Sequence
 
   /*! 
     \class Sequence::bamrecord Sequence/bamrecord.hpp
-    \brief A single alignment record from a BAM file
+    \short A single alignment record from a BAM file
     \ingroup HTS
   */
   class bamrecord 

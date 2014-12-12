@@ -1,3 +1,6 @@
+/*! \file bamreader.hpp
+  @brief BAM input stream
+*/
 #ifdef HAVE_HTSLIB //Will only compile if ./configure detects htslib
 
 #ifndef __SEQUENCE__BAMREADER_HPP__
