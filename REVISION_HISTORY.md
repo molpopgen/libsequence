@@ -20,7 +20,7 @@ However:
 3. iHH?
 4. http://mbe.oxfordjournals.org/content/31/5/1275.abstract -- DONE
 5. Nucleotide, Genotype classes
-6. FASTQ stream
+6. Document: Ptable, bamrecord, bamreader, sam*
 
 ###ISSUES:
 
