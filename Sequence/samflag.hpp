@@ -53,7 +53,6 @@ namespace Sequence
       second_read,not_primary,qcfail,duplicate,supp_alignment;
     samflag(const std::int32_t & __flag);
     samflag();
-    operator std::int32_t();
     operator std::int32_t() const;
     std::istream & read( std::istream & i);
   };

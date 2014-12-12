@@ -38,15 +38,6 @@ namespace Sequence
   {
   }
 
-  samflag::operator std::int32_t()
-  /*!
-    typecast to integer
-    \return The value of the SAM flag
-  */
-  {
-    return flag;
-  }
-
   samflag::operator std::int32_t() const
   /*!
     typecast to integer
