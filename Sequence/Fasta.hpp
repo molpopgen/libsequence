@@ -68,8 +68,7 @@ namespace Sequence
 	\exception Sequence::badFormat if the input stream is not
 	in FASTA format
       */
-      std::istream&  read(std::istream &s) 
-	;
+      std::istream&  read(std::istream &s);
       /*!
 	\param stream a std::ostream
 	write the sequence in FASTA format to \a stream

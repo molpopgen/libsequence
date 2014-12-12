@@ -4,7 +4,7 @@
 */
 
 /*!
-  \class Sequence::fasta Sequence/fastq.hpp
+  \class Sequence::fastq Sequence/fastq.hpp
   \ingroup seqio
   Publicly derived from Sequence::Seq.
 */
@@ -45,8 +45,7 @@ namespace Sequence
 	\exception Sequence::badFormat if the input stream is not
 	in FASTQ format
       */
-      std::istream & read(std::istream &s) 
-	;
+      std::istream & read(std::istream &s);
       /*!
 	\param stream a std::ostream
 	write the sequence in FASTQ format to \a stream
