@@ -36,6 +36,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <type_traits>
 #include <iterator>
 #include <algorithm>
+#include <iostream>
 namespace Sequence
 {
   namespace Alignment
@@ -84,16 +85,14 @@ namespace Sequence
 	  T temp;
 	  while (!(infile.eof ()))
 	    {
-	      infile >> temp;
+	      infile >> temp >> std::ws;
 	      seqarray.push_back(temp);
 	    }
 	}
     }
 
     template < typename T >
-    std::istream & GetData (std::vector <
-			    T >&seqarray,
-			    std::istream & input_stream) 
+    std::istream & GetData (std::vector <  T >&seqarray,std::istream & input_stream) 
     /*!
       Read objects of type T and put them into the vector seqarray.
       Note that seqarray is not const, so that's where the data go.
@@ -104,21 +103,21 @@ namespace Sequence
       \param input_stream name of istream from which fo fill seqarray
     */
     {
-      T temp;
+      T temp;      
       if (input_stream)
-	{
-	  while (!(input_stream.eof ()))
-	    {
-	      input_stream >> temp;
-	      seqarray.push_back(temp);
-	    }
-	}
+      	{
+      	  while (!(input_stream.eof ()))
+      	    {
+      	      input_stream >> temp >> std::ws;
+      	      seqarray.push_back(temp);
+      	    }
+      	}
       return input_stream;
     }
 
     template < typename T >
     std::istream & ReadNObjects ( std::vector < T > &seqarray,
-				  unsigned n,
+				  const unsigned & n,
 				  std::istream & input_stream)
     /*!
       Read a fixed number n of objects of type T and put 
@@ -130,31 +129,19 @@ namespace Sequence
       \param seqarray an empty vector<T> that you want filled
       \param n number of objects of type T to read
       \param input_stream name of istream from which fo fill seqarray
-      \note the stream is not closed after each read of n records!!
+      \note The stream is not closed after each read of n records, and 
+      seqarray is appended to, and thus grows each time.
     */
     {
-      for(unsigned i = 0 ; i < n ; ++i)
+      for(unsigned i = 0 ; !input_stream.eof() && i < n ; ++i)
         {
           if (!input_stream || input_stream.eof())
             return input_stream;
           T temp;
-          input_stream >> temp;
+          input_stream >> temp >> std::ws;
           seqarray.push_back(temp);
         }
       return input_stream;
-    }
-
-    template < typename T >
-    void EmptyVector (std::vector< T * > &seqarray)
-    /*!
-      Free all the memory in seqarray by deleting every objet,
-      and resize() seqarray to 0
-      \param seqarray the vector<T*> you want emptied
-    */
-    {
-      for(unsigned i = 0 ; i < seqarray.size() ; ++i)
-        delete seqarray[i];
-      seqarray.resize(0);
     }
 
     template < typename T >
@@ -275,11 +262,11 @@ namespace Sequence
       static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
 		     std::is_same<std::pair<std::string,std::string>,T>::value,
 		     "T must be pair<std::string,std::string> or publicly inherit from that type" );
-       size_t i, j,datasize=data.size();
-       size_t length = data[0].second.length ();
+      size_t i, j,datasize=data.size();
+      size_t length = data[0].second.length ();
       std::vector < std::string > ungapped_sequences(data.size());
       bool site_is_gapped;
-
+      
       for (i = 0; i < length; ++i)
         {	//iterate over sites
           for ( j = 0, site_is_gapped = 0;
@@ -297,12 +284,12 @@ namespace Sequence
                 ungapped_sequences[j] += data[j].second[i];
             }
         }
-
+      
       //redo the data
       for (j = 0; j != datasize ; ++j)
-        {
-          data[j] = T(data[j].first,ungapped_sequences[j]);
-        }
+	{
+	  data[j].second = std::move(ungapped_sequences[j]);
+	}
     }
 
     //only remove gaps from the beginning
@@ -367,7 +354,8 @@ namespace Sequence
       //now, redo the seq array for the current object
       for ( j = 0; j != data.size (); ++j)
         {
-          data[j] =T(data[j].first,trimmed_sequences[j]);
+	  //Probably can't hurt...
+          data[j] = std::move(T(data[j].first,trimmed_sequences[j]));
         }
     }
 

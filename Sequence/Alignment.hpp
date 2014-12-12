@@ -66,17 +66,14 @@ namespace Sequence
 			    std::istream & input_stream);
     //fill a vector<T> with N objects from a stream
     template < typename T >
-    std::istream & ReadNObjects ( std::vector < T > &seqarray,   unsigned n,
+    std::istream & ReadNObjects ( std::vector < T > &seqarray,  const unsigned & n,
 				  std::istream & input_stream);
-    //delete a vector of pointers
-    template < typename T >
-    void EmptyVector (std::vector< T * > &seqarray);
     //check if elements of data contain a gap character '-'
     template < typename T >
     bool Gapped (const std::vector < T >&data);
     //verify that all elements of data are the same length
     template < typename T >
-    bool IsAlignment (const std::vector < T  >&data);
+    bool IsAlignment (const std::vector < T >&data);
     //check to make sure that an aligment contains 
     //characters that the SNP routines in this library can handle
     template<typename Iterator>
@@ -84,7 +81,7 @@ namespace Sequence
 			       Iterator end );
     //return the length of the alignment without gaps
     template < typename T >
-    unsigned UnGappedLength (const std::vector <T>&data) ;
+    unsigned UnGappedLength (const std::vector <T>&data);
     //remove all gaps from an alignment
     template <typename T>
     void RemoveGaps (std::vector <T> &data);
@@ -93,18 +90,16 @@ namespace Sequence
     void RemoveTerminalGaps (std::vector < T >&data);
     template < typename T >
     void RemoveFixedOutgroupInsertions( std::vector<T> & data,
-				unsigned site,
-				const unsigned & ref );
+					unsigned site,
+					const unsigned & ref );
     //see manual
     template < typename T >
     std::vector < T >Trim (const std::vector < T >&data,
-                           const std::vector <int> &sites) 
-      ;
+                           const std::vector <int> &sites);
     //see manual
     template < typename T >
     std::vector < T >TrimComplement (const std::vector < T >&data,
-                                     const std::vector <int> &sites) 
-      ;
+                                     const std::vector <int> &sites);
 
     //declaration of specializations
     template<> bool Gapped(const std::vector<std::string> &data);
@@ -127,11 +122,11 @@ namespace Sequence
 				       const unsigned & ref);
     template <>
     std::vector <std::string >Trim (const std::vector <std::string>&data,
-                                    const std::vector <int> &sites) ;
+                                    const std::vector <int> &sites);
     
     template <>
     std::vector <std::string> TrimComplement (const std::vector <std::string>&data,
-					      const std::vector <int> &sites) ;
+					      const std::vector <int> &sites);
 
   }
 }

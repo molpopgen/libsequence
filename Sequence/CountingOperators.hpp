@@ -71,6 +71,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <algorithm>
 #include <functional>
 #include <map>
+#include <vector>
 #include <set>
 namespace Sequence
 {

@@ -54,7 +54,7 @@ namespace Sequence
       See file documentation for FastaExplicit.hpp
     */
     template std::istream & ReadNObjects( std::vector<Sequence::Fasta> &, 
-					  unsigned, std::istream &);
+					  const unsigned &, std::istream &);
     /*! An explicit instantation for type Sequence::Fasta for GNU systems.
       See file documentation for FastaExplicit.hpp
     */

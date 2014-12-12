@@ -49,16 +49,6 @@ namespace Sequence
 		  const bool & skip_missing = true,
 		  const bool & nucleic_acid = true);
   
-  template<typename T> bool notDifferent(const T &l,const T &r,
-					 const bool & skip_missing = 1,
-					 const bool & nucleic_acid = 1)
-  {
-    static_assert( std::is_convertible<T,std::string>::value,
-		   "T must be convertible to std::string>");
-    return !Different(std::string(l),std::string(r),
-		      skip_missing,nucleic_acid);
-  }
-
   int NumDiffs(const std::string & seq1,
 	       const std::string & seq2,
 	       const bool & skip_missing = true ,

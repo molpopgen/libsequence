@@ -35,6 +35,29 @@ namespace Sequence
   AlignStream<T>::AlignStream(const std::vector<T> & _data)
   {
     data.assign(_data.begin(),_data.end());
+    if(!this->IsAlignment())
+      throw SeqException("Sequence::AlignStream: construction attempted from invalid data");
+  }
+
+  template<typename T>
+  AlignStream<T>::AlignStream( std::vector<T> && _data) : data(std::move(_data))
+  {
+    if(!this->IsAlignment())
+      throw SeqException("Sequence::AlignStream: construction attempted from invalid data");
+  }
+
+  template<typename T>
+  AlignStream<T>::AlignStream(const AlignStream<T> &a) : data( a.data )
+  {
+    if(!this->IsAlignment())
+      throw SeqException("Sequence::AlignStream: construction attempted from invalid data");
+  }
+
+  template<typename T>
+  AlignStream<T>::AlignStream( AlignStream<T> && a) : data( std::move(a.data) )
+  {
+    if(!this->IsAlignment())
+      throw SeqException("Sequence::AlignStream: construction attempted from invalid data");
   }
 
   template<typename T>
@@ -44,22 +67,23 @@ namespace Sequence
   template<typename T>
   void AlignStream<T>::assign ( const_iterator beg,
 				const_iterator end ) 
-
   /*!
     store the data
   */
   {
     data.assign(beg,end);
-    size_t len = beg->second.length();
-    for (typename AlignStream<T>::const_iterator itr = beg+1 ; 
-	 itr != end ; 
-	 ++itr)
-      {
-	if (itr->second.length() != len)
-	  {
-	    throw (SeqException("AlignStream::assign -- data elements have different lengths"));
-	  }
-      }
+    if (! this->IsAlignment() )
+      throw (SeqException("AlignStream::assign -- data elements have different lengths"));
+  }
+
+  template<typename T>
+  void AlignStream<T>::assign( std::vector<T> && _data )
+  /*
+    Implemented via std::swap
+   */
+  {
+    data.clear();
+    std::swap(data,_data);
   }
   
   template<typename T> 

@@ -23,7 +23,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 //Code for the -*- C++ -*- Template Specializations for libsequence
 #include <Sequence/Alignment.hpp>
-//#include <Sequence/PolyTableSlice.hpp>
 
 /*! \file Specializations.cc
   @brief Definitions of template specializations for library functions
@@ -135,11 +134,10 @@ namespace Sequence
       size_t length = data[0].length ();
       std::vector < std::string > ungapped_sequences(data.size());
       bool site_is_gapped;
-
       for (i = 0; i < length; ++i)
         {	//iterate over sites
           for ( j = 0, site_is_gapped = 0;
-                j != data.size();  ++j)
+                j < data.size();  ++j)
             {
               if (data[j][i] == '-')
                 {
@@ -153,9 +151,8 @@ namespace Sequence
                 ungapped_sequences[j] += data[j][i];
             }
         }
-
       //redo the data
-      data.assign(ungapped_sequences.begin(),ungapped_sequences.end());
+      data = std::move( ungapped_sequences );
     }
 
     template<>
@@ -276,10 +273,10 @@ namespace Sequence
     }
 
     template<>
-    std::vector <std::string>TrimComplement (const std::vector <std::string>&data,
-					     const std::vector < int > &sites) 
+    std::vector <std::string> TrimComplement (const std::vector <std::string> & data,
+					      const std::vector < int > &sites) 
       
-
+      
     /*!
       a specialization for std::string
     */
@@ -291,14 +288,13 @@ namespace Sequence
         {
           throw SeqException ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
         }
-      if (numIntervals % 2 != 0)
+      if (sites.size() % 2 != 0)
         {
           throw SeqException ("Sequence::Alignment::TrimComplement(): odd number of positions passed to function");
         }
 
-      std::vector < std::string >trimmedData(numseqs);
       std::vector < std::string > trimmedTemp(numseqs);
-
+      
       size_t odd_even;
       if (sites[0] == 0)
         {
@@ -352,8 +348,7 @@ namespace Sequence
           trimmedTemp[j] +=data[j].substr (lastval);
         }
 
-      trimmedData.assign(trimmedTemp.begin(),trimmedData.end());
-      return trimmedData;
+      return trimmedTemp;
     }
   }
 }

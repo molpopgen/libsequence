@@ -39,15 +39,23 @@ namespace Sequence
 		    */
   {
   public:
-    phylipData ()
-      :AlignStream<T>()
-    {}
-    phylipData(const std::vector<T> & _data)
-      :AlignStream<T>(_data)
+    phylipData (): AlignStream<T>(){}
+    phylipData(const std::vector<T> & _data): AlignStream<T>(_data)
     {
     }
-    phylipData (const AlignStream<T> &a) :
-      AlignStream<T>(a)
+    phylipData (const AlignStream<T> &a) : AlignStream<T>(a)
+    {
+    }
+    phylipData (const phylipData<T> &a) : AlignStream<T>(a)
+    {
+    }
+    phylipData( AlignStream<T> && a) : AlignStream<T>(std::move(a))
+    {
+    }
+    phylipData( phylipData<T> && a) : AlignStream<T>(std::move(a))
+    {
+    }
+    phylipData( std::vector<T> && a) : AlignStream<T>(std::move(a))
     {
     }
     ~phylipData(void)

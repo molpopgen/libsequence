@@ -81,8 +81,6 @@ host_triplet = @host@
 @HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @DEBUG_TRUE@am__append_3 = -g
-#CXXOTHERFLAGS = -g
-#COTHERFLAGS = -g
 @DEBUG_FALSE@am__append_4 = -DNDEBUG
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
@@ -394,10 +392,10 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/bamreader.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
-AM_CXXFLAGS = $(CXXFLAGS) -Wall -W -Woverloaded-virtual \
-	-Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion \
-	-Wsign-promo -Wsynth -ffor-scope $(am__append_1) \
-	$(am__append_3) $(am__append_4)
+AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
+	-Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo \
+	-Wsynth -ffor-scope $(am__append_1) $(am__append_3) \
+	$(am__append_4)
 @PROFILING_FALSE@PROFILE = 
 @PROFILING_TRUE@PROFILE = -pg
 all: all-am

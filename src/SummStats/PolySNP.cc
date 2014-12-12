@@ -805,19 +805,22 @@ namespace Sequence
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->begin()+rep->_outgroup,
-					    std::bind(std::ref(notDifferent<string>),
-						      std::placeholders::_1,*beg,false,true));
+					    [&beg](const std::string __s) {
+					      return !Different(__s,*beg,false,true);
+					    });
 		    _count += std::count_if(rep->_data->begin()+rep->_outgroup+1,
 					    rep->_data->end(),
-					    std::bind(std::ref(notDifferent<string>),
-						      std::placeholders::_1,*beg,false,true));
+					    [&beg](const std::string __s) {
+					      return !Different(__s,*beg,false,true);
+					    });
 		  }
 		else
 		  {
 		    _count += std::count_if(rep->_data->begin(),
 					    rep->_data->end(),
-					    std::bind(std::ref(notDifferent<string>),
-						      std::placeholders::_1,*beg,false,true));
+					    [&beg](const std::string __s) {
+					      return !Different(__s,*beg,false,true);
+						});
 		  }
 		rep->_DVH -= pow (double (_count) / rep->_totsam, 2.0);
 		++beg;

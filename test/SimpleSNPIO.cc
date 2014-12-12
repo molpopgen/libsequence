@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE PolySitesIO
+#define BOOST_TEST_MODULE SimpleSNPIO
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( polysites_io )
 
   BOOST_REQUIRE( ps == ps2 );
 
-  char * fn = "simplesnpio.txt";
+  const char * fn = "simplesnpio.txt";
 
   std::ofstream of(fn);
   of << ps << '\n';
@@ -40,17 +40,17 @@ BOOST_AUTO_TEST_CASE( polysites_io )
   inf.close();
   unlink(fn);
 
-  fn = "simplesnpio2.txt";
+  const char * fn2 = "simplesnpio2.txt";
   //Now, change the outgroup
   ps.set_outgroup(true);
-  of.open(fn);
+  of.open(fn2);
   of << ps << '\n';
   of.close();
-  inf.open(fn);
+  inf.open(fn2);
   BOOST_REQUIRE_NO_THROW(inf >> ps2 >> std::ws);
   inf.close();
   BOOST_REQUIRE( ps == ps2 );
   BOOST_REQUIRE( ps == ps3 );
 
-  unlink(fn);
+  unlink(fn2);
 }

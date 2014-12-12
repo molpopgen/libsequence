@@ -78,11 +78,16 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaOperations$(EXEEXT) AlignStreamTest$(EXEEXT) \
-	testSimDataIO$(EXEEXT) CountingOperators$(EXEEXT) \
-	PolyTableConversions$(EXEEXT) PolyTableTweaking$(EXEEXT) \
-	PolySitesIO$(EXEEXT) SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) \
-	PolySNPtest$(EXEEXT) ComparisonsTest$(EXEEXT)
+	FastaExplicitIO$(EXEEXT) FastaOperations$(EXEEXT) \
+	AlignStreamTest$(EXEEXT) testSimDataIO$(EXEEXT) \
+	CountingOperators$(EXEEXT) PolyTableConversions$(EXEEXT) \
+	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
+	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
+	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT)
+@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
+@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
+@DEBUG_TRUE@am__append_3 = -g
+@DEBUG_FALSE@am__append_4 = -DNDEBUG
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -100,68 +105,52 @@ CONFIG_CLEAN_VPATH_FILES =
 am_AlignStreamTest_OBJECTS = AlignStreamTest.$(OBJEXT)
 AlignStreamTest_OBJECTS = $(am_AlignStreamTest_OBJECTS)
 AlignStreamTest_LDADD = $(LDADD)
-am__DEPENDENCIES_1 =
-AlignStreamTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
+am_AlignmentTest_OBJECTS = AlignmentTest.$(OBJEXT)
+AlignmentTest_OBJECTS = $(am_AlignmentTest_OBJECTS)
+AlignmentTest_LDADD = $(LDADD)
 am_ComparisonsTest_OBJECTS = ComparisonsTest.$(OBJEXT)
 ComparisonsTest_OBJECTS = $(am_ComparisonsTest_OBJECTS)
 ComparisonsTest_LDADD = $(LDADD)
-ComparisonsTest_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_CountingOperators_OBJECTS = CountingOperators.$(OBJEXT)
 CountingOperators_OBJECTS = $(am_CountingOperators_OBJECTS)
 CountingOperators_LDADD = $(LDADD)
-CountingOperators_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
-FastaConstructors_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
+am_FastaExplicitIO_OBJECTS = FastaIO.$(OBJEXT)
+FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
+FastaExplicitIO_LDADD = $(LDADD)
 am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
 FastaIO_LDADD = $(LDADD)
-FastaIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
 FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
-FastaOperations_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_PolySIMtest_OBJECTS = PolySIMtest.$(OBJEXT)
 PolySIMtest_OBJECTS = $(am_PolySIMtest_OBJECTS)
 PolySIMtest_LDADD = $(LDADD)
-PolySIMtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolySNPtest_OBJECTS = PolySNPtest.$(OBJEXT)
 PolySNPtest_OBJECTS = $(am_PolySNPtest_OBJECTS)
 PolySNPtest_LDADD = $(LDADD)
-PolySNPtest_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
 PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
 PolySitesIO_LDADD = $(LDADD)
-PolySitesIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_PolyTableConversions_OBJECTS = PolyTableConversions.$(OBJEXT)
 PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
 PolyTableConversions_LDADD = $(LDADD)
-PolyTableConversions_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
-PolyTableTweaking_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
-SimpleSNPIO_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
 testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
 testSimDataIO_LDADD = $(LDADD)
-testSimDataIO_DEPENDENCIES = $(am__DEPENDENCIES_1) \
-	$(am__DEPENDENCIES_1)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -196,15 +185,17 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(AlignStreamTest_SOURCES) $(ComparisonsTest_SOURCES) \
-	$(CountingOperators_SOURCES) $(FastaConstructors_SOURCES) \
+SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
+	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
 	$(PolyTableTweaking_SOURCES) $(SimpleSNPIO_SOURCES) \
 	$(testSimDataIO_SOURCES)
-DIST_SOURCES = $(AlignStreamTest_SOURCES) $(ComparisonsTest_SOURCES) \
-	$(CountingOperators_SOURCES) $(FastaConstructors_SOURCES) \
+DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
+	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
@@ -358,10 +349,14 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 BOOST_LIBS = -lboost_unit_test_framework
 SEQUENCE = -lsequence
-AM_LDFLAGS = -L../src/.libs -static
-LDADD = $(BOOST_LIBS) $(SEQUENCE)
+AM_CXXFLAGS = $(am__append_1) $(am__append_3) $(am__append_4)
+AM_LDFLAGS = -L../src/.libs -static $(am__append_2) $(BOOST_LIBS) \
+	$(SEQUENCE)
+@PROFILING_FALSE@PROFILE = 
+@PROFILING_TRUE@PROFILE = -pg
 FastaConstructors_SOURCES = FastaConstructors.cc
 FastaIO_SOURCES = FastaIO.cc
+FastaExplicitIO_SOURCES = FastaIO.cc
 FastaOperations_SOURCES = FastaOperations.cc
 AlignStreamTest_SOURCES = AlignStreamTest.cc
 testSimDataIO_SOURCES = testSimDataIO.cc
@@ -373,6 +368,7 @@ SimpleSNPIO_SOURCES = SimpleSNPIO.cc
 PolySIMtest_SOURCES = PolySIMtest.cc
 PolySNPtest_SOURCES = PolySNPtest.cc
 ComparisonsTest_SOURCES = ComparisonsTest.cc
+AlignmentTest_SOURCES = AlignmentTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -421,6 +417,10 @@ AlignStreamTest$(EXEEXT): $(AlignStreamTest_OBJECTS) $(AlignStreamTest_DEPENDENC
 	@rm -f AlignStreamTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(AlignStreamTest_OBJECTS) $(AlignStreamTest_LDADD) $(LIBS)
 
+AlignmentTest$(EXEEXT): $(AlignmentTest_OBJECTS) $(AlignmentTest_DEPENDENCIES) $(EXTRA_AlignmentTest_DEPENDENCIES) 
+	@rm -f AlignmentTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(AlignmentTest_OBJECTS) $(AlignmentTest_LDADD) $(LIBS)
+
 ComparisonsTest$(EXEEXT): $(ComparisonsTest_OBJECTS) $(ComparisonsTest_DEPENDENCIES) $(EXTRA_ComparisonsTest_DEPENDENCIES) 
 	@rm -f ComparisonsTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(ComparisonsTest_OBJECTS) $(ComparisonsTest_LDADD) $(LIBS)
@@ -432,6 +432,10 @@ CountingOperators$(EXEEXT): $(CountingOperators_OBJECTS) $(CountingOperators_DEP
 FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
 	@rm -f FastaConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
+
+FastaExplicitIO$(EXEEXT): $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_DEPENDENCIES) $(EXTRA_FastaExplicitIO_DEPENDENCIES) 
+	@rm -f FastaExplicitIO$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_LDADD) $(LIBS)
 
 FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEPENDENCIES) 
 	@rm -f FastaIO$(EXEEXT)
@@ -476,6 +480,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignStreamTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignmentTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComparisonsTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CountingOperators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@

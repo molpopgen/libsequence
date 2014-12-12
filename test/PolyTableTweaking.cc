@@ -141,10 +141,9 @@ BOOST_AUTO_TEST_CASE( remove_missing_extreme )
   //convert it all to missing
   for( auto & d : ps )
     {
-      std::transform(d.begin(),
-		     d.end(),
-		     d.begin(),
-		     [](char & ch) { return 'N'; });
+      std::for_each(d.begin(),
+		    d.end(),
+		    [](char & ch) { ch = 'N'; });
     }
 
   ps.RemoveMissing();
