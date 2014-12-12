@@ -9,7 +9,7 @@ namespace Sequence
   class PolyTable;
 
   /*! \class Sequence::Ptable Sequence/Ptable.hpp
-    \ingroup seqio
+    \ingroup polytables
     A "site-major" class to manipulate SNP data.
     \example Ptable_test.cc
    */
