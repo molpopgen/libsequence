@@ -24,6 +24,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/SeqExceptions.hpp>
+#include <algorithm>
+#include <iterator>
 #include <cassert>
 #include <string>
 #include <cctype>
@@ -36,6 +38,29 @@ namespace Sequence
       is a member of the enumeration type Sequence::Mutations.
     */
     {
+      auto k = std::distance( dna_alphabet.begin(),
+			      std::find( dna_alphabet.begin(),
+					 dna_alphabet.end(),
+					 char(std::toupper(i)) ) );
+      if ( k > 3 )
+	{
+	  std::string message("Sequence::TsTv error: ");
+	  message += i;
+	  message += " is not A,G,C, nor T.";
+	  throw SeqException(message.c_str());
+	}
+      auto l = std::distance( dna_alphabet.begin(),
+			      std::find( dna_alphabet.begin(),
+					 dna_alphabet.end(),
+					 char(std::toupper(j)) ) );
+      if ( l > 3 )
+	{
+	  std::string message("Sequence::TsTv error: ");
+	  message += j;
+	  message += " is not A,G,C, nor T.";
+	  throw SeqException(message.c_str());
+	}
+      /*
       int k = 0, l = 0;
       switch (char(std::toupper(i)))
         {
@@ -80,7 +105,8 @@ namespace Sequence
           break;
         }
       assert(k<=Nucleotides(C) && l <= Nucleotides(C));
-      int type = k + l;
+      */
+      auto type = k + l;
       if (type%2 != 0.)	//if odd
         return (Mutations(Tv));	//a transversion
       else if (type%2==0.)	//if even

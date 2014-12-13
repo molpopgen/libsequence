@@ -1,3 +1,5 @@
+//! \file src/SeqAlphabets.cc
+#include <Sequence/SeqAlphabets.hpp>
 #include <array>
 
 namespace Sequence {
