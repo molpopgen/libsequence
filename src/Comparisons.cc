@@ -60,52 +60,6 @@ namespace Sequence
 	  message += " is not A,G,C, nor T.";
 	  throw SeqException(message.c_str());
 	}
-      /*
-      int k = 0, l = 0;
-      switch (char(std::toupper(i)))
-        {
-        case 'A':
-          k = Nucleotides (A);
-          break;
-        case 'T':
-          k = Nucleotides (T);
-          break;
-        case 'G':
-          k = Nucleotides (G);
-          break;
-        case 'C':
-          k = Nucleotides (C);
-          break;
-        case '-':
-          k = Nucleotides (GAP);
-          break;
-        case 'N':
-          k = Nucleotides (N);
-          break;
-        }
-      switch (char(std::toupper(j)))
-        {
-        case 'A':
-          l = Nucleotides (A);
-          break;
-        case 'T':
-          l = Nucleotides (T);
-          break;
-        case 'G':
-          l = Nucleotides (G);
-          break;
-        case 'C':
-          l = Nucleotides (C);
-          break;
-        case '-':
-          l = Nucleotides (GAP);
-          break;
-        case 'N':
-          l = Nucleotides (N);
-          break;
-        }
-      assert(k<=Nucleotides(C) && l <= Nucleotides(C));
-      */
       auto type = k + l;
       if (type%2 != 0.)	//if odd
         return (Mutations(Tv));	//a transversion

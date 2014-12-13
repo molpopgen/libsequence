@@ -105,4 +105,7 @@ BOOST_AUTO_TEST_CASE( tstv1 )
   BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','C'), Sequence::Mutations::Tv );
   BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','c'), Sequence::Mutations::Tv );
   BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','g'), Sequence::Mutations::Tv );
+
+  BOOST_REQUIRE_THROW( Sequence::TsTv('G','R'), Sequence::SeqException );
+  BOOST_REQUIRE_THROW( Sequence::TsTv('G','z'), Sequence::SeqException );
 }
