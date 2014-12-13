@@ -92,11 +92,11 @@ The Intel compiler suffers from the following issues:
    
 ### Simplest installation instructions
 
-```
+~~~
 ./configure
 make
 sudo make install
-```
+~~~
 
 #### Compiling unit tests and examples
 
