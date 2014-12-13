@@ -277,7 +277,7 @@ namespace Sequence
   }
 } //ns Sequence
 
-/*! \mainpage Introduction
+/*! mainpage Introduction
   \section purpose Purpose and Intent
   The purpose of this library (which defines namespace Sequence), is to provide
   a set of routines for handling biological sequence data, with an emphasis on how 
@@ -434,7 +434,7 @@ namespace Sequence
   @short The namespace in which this library resides
 */
 
-/*! \page lit References to primary sources
+/*! page lit References to primary sources
   \section genref General
   Stroustrup, B (1997) The C++ Programming Language, 3rd ed.  Addison-Wesley. -- The standard language reference\n
   Meyers, S (1998) Effective C++, Second Edition. Addison-Wesley -- An essential reference for design using C++

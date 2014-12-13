@@ -1,10 +1,10 @@
-#What this document implies
+# What this document implies
 
 This document lists major changes between tags/releases of libsequence. The following caveat is important:
 
 If you see a section below referring to libseqeunce version X, and no version X exists as a release, then you must consider the info here inaccurate.  In such cases, the list of changes may refer to planned changes for a future release which may or may not be implemented yet in either the master or some development branch.
 
-##Moving towards a "2.0" release: ABI compatibility in flux
+## Moving towards a "2.0" release: ABI compatibility in flux
 
 Starting with release 1.8.3, libsequence broke ABI compatibility with previous versions.  The "soname" of the library is now set to 20:0:0, where it will remain __even as future release continue to break the ABI__.   Basically, from here until 2.0, you should consider backwards-compatibility to be in flux.
 
@@ -13,7 +13,7 @@ However:
 * As a rule, software depending on libsequence will have to be recompiled, not rewritten.  The ABI breakage is (mostly...) coming from changing the implementation, not the interface.
 * If I remove features, they will be marked as deprecated, meaning that they will be removed in 2.0
 
-###TODO:
+### TODO:
 
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
@@ -22,11 +22,11 @@ However:
 5. Nucleotide, Genotype classes
 6. Document: Ptable, bamrecord, bamreader, sam*
 
-###ISSUES:
+### ISSUES:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
-##libsequence 1.8.4
+## libsequence 1.8.4
 
 (There is no official 1.8.4 release yet)
 
@@ -35,7 +35,7 @@ However:
 * Programs in examples/ are now compiled via "make check"
 * The build setup for the unit tests is improved
 
-##libsequence 1.8.3 (Dec. 5, 2014)
+## libsequence 1.8.3 (Dec. 5, 2014)
 
 1.  This release _breaks binary compatibility_ with previous releases.  Programs depending on libsequence will likely need to be recompiled.
 2.  New constructor functions were added to Sequence::PolyTable, which breaks binary compatibility.  These new constructors are needed for easier [Rcpp](http://www.rcpp.org/) integration.  Derived classes have been updated to use these new constructors whenever possible.
@@ -57,7 +57,7 @@ However:
 18. A unit test suite is starting to take shape in the test/ subdirectory.  These test programs depend on the [boost](http://www.boost.org) "test" library.  Future tests could add future dependencies.
 19. The unit testing revealed a variety of subtle issues in the code base. All of these were in "dark corners" of the library, _e.g._ functions that have seen little or no use in production programs.  
 
-##Historical data (copied from the readme.txt previously found at molpopgen.org)
+## Historical data (copied from the readme.txt previously found at molpopgen.org)
 
 current version 1.8.0 (Jan 14, 2014).  Two files needed #include <sstream> to used std::ostringstream.  Previous library versions were failing to compile on some systems due to the missing header.
 

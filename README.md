@@ -1,4 +1,4 @@
-#libsequence - A C++ class library for evolutionary genetic analysis
+# libsequence - A C++ class library for evolutionary genetic analysis
 
 
 
@@ -22,7 +22,7 @@ Comments are welcome.
 
 	- Kevin Thornton <krthornt@uci.edu>
 
-#Citation
+# Citation
 
 If you use the library for your research, please cite:
 
@@ -39,20 +39,20 @@ month = nov
 
 The manuscript is available online at http://bioinformatics.oxfordjournals.org/content/19/17/2325.short
 
-##Revision history.
+## Revision history.
 
 The revision history of the library is [here](REVISION_HISTORY.md).  The document describes what changed for a given release.
 
-##Obtaining the source code
+## Obtaining the source code
 
-###Obtaining the master branch
+### Obtaining the master branch
 You have a few options:
 <ol>
 <li> Clone the repo (best option): git clone https://github.com/molpopgen/libsequence.git</li>
 <li> Click on "Download Zip" at https://github.com/molpopgen/libsequence </li>
 </ol>
 
-###Obtaining a specific release
+### Obtaining a specific release
 Again, a few options:
 <ol>
 <li> Click on "Releases" at https://github.com/molpopgen/libsequence, then download the one you want </li>
@@ -63,14 +63,14 @@ Again, a few options:
 </ol>
 </ol>
 
-##Installation
+## Installation
 
-###Dependencies
+### Dependencies
 
 1. zlib: http://zlib.net
 2. A C++11-compliant compiler (see next section)
 
-###Compilers
+### Compilers
 
 I support the following compilers:
 
@@ -86,11 +86,11 @@ The Intel compiler suffers from the following issues:
 * It appears to no longer be free for academic use. (boo!)
 * It appears to be based on a version of libstdc++ that is too old to be compatible with libsequence (see [here](https://github.com/molpopgen/libsequence/pull/4) for some discussion of the issue)
 
-###Optional dependencies
+### Optional dependencies
 
 1. [htslib](http://htslib.org) The configure script will attempt to detect the presence of htslib on your system.  If the library is present, then libsequence will compile with support for features like direct reading from BAM files.  If htslib is not present, those features will not be compiled.
    
-###Simplest installation instructions
+### Simplest installation instructions
 
 ```
 ./configure
@@ -98,7 +98,9 @@ make
 sudo make install
 ```
 
-####To #To compile unit testing suite and example programs
+#### Compiling unit tests and examples
+
+To compile unit testing suite and example programs
 
 ```
 make check
@@ -113,13 +115,13 @@ make check
 
 Note that the library must be built prior to "make check", but _you do not have to install the library prior ot "make check"_.  The examples and unit tests are statically-linked to the version of the library that will be found in src/.libs after a "make" command.  I do this so that one can perform unit tests without having to install the library.  I use static linking here to avoid any possible confusion with an existing libsequence installation.
 
-####Running the unit tests
+#### Running the unit tests
 
 ```
 cd test && sh runTests.sh
 ```
 
-###More complex installation scenarios
+### More complex installation scenarios
 
 Some users may not have the dependent libraries installed in the standard locations on their systems.  Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking.  This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly.  In order to accomodate such situations, the user must provide the correct path to the include and lib directories.  For example, assume that the dependend libraries are in /opt on your system.  You would install libsequence as follows:
 
@@ -131,7 +133,7 @@ sudo make install
 
 Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists.  This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable.  (One could also do the same with CXXFLAGS, FYI.)
 
-###Installing libsequence locally
+### Installing libsequence locally
 
 If you do not have permission to "sudo make install", you can install the library in your $HOME:
 
@@ -149,11 +151,11 @@ to any linking commands.
 
 When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD _ LIBRARY _ PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
 
-###Another installation option (not supported by the libsequence author)
+### Another installation option (not supported by the libsequence author)
 
 I've recently been made aware that there is a method for installing libsequence using the [brew.sh](http://brew.sh/) system.  This system allows the [homebrew-science](https://github.com/Homebrew/homebrew-science) git repo to be used to obtain libsequence.  I do not use this system myself, nor do I know how to.
 
-##Using libsequence to compile other programs
+## Using libsequence to compile other programs
 
 If libsequence is not installed in a standard path, then you must provide the appropriate include (-I) and link path (-L) commands to your compiler.  This may be done in various ways, e.g., via a configure script or your own Makefile.
 
@@ -169,7 +171,7 @@ If you are using features depending on htslib, the linking options become
 -lsequence -lz -lhts
 ```
 
-#Compiling the examples
+# Compiling the examples
 
 There are several example programs in the examples subdirectory.  If you have installed libsequence in a standard path (e.g., /usr/local/lib and /usr/local/include), then you compile the examples by saying
 
