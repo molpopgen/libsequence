@@ -1,4 +1,6 @@
-# What this document implies
+# libsequence revision history
+
+## What this document implies
 
 This document lists major changes between tags/releases of libsequence. The following caveat is important:
 
