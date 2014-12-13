@@ -102,24 +102,24 @@ sudo make install
 
 To compile unit testing suite and example programs
 
-```
+~~~
 make check
-```
+~~~
 
 or
 
-```
+~~~
 cd test
 make check
-```
+~~~
 
 Note that the library must be built prior to "make check", but _you do not have to install the library prior ot "make check"_.  The examples and unit tests are statically-linked to the version of the library that will be found in src/.libs after a "make" command.  I do this so that one can perform unit tests without having to install the library.  I use static linking here to avoid any possible confusion with an existing libsequence installation.
 
 #### Running the unit tests
 
-```
+~~~
 cd test && sh runTests.sh
-```
+~~~
 
 ### More complex installation scenarios
 
@@ -161,29 +161,29 @@ If libsequence is not installed in a standard path, then you must provide the ap
 
 A program that depends on libsequence must provide at least the following libraries to the linker:
 
-```
+~~~
 -lsequence -lz 
-```
+~~~
 
 If you are using features depending on htslib, the linking options become
 
-```
+~~~
 -lsequence -lz -lhts
-```
+~~~
 
 # Compiling the examples
 
 There are several example programs in the examples subdirectory.  If you have installed libsequence in a standard path (e.g., /usr/local/lib and /usr/local/include), then you compile the examples by saying
 
-```
+~~~
 make
-```
+~~~
 
 If you have installed the library elsewhere, such as $HOME, then you need to adjust LDFLAGS as follows:
 
-```
+~~~
 LDFLAGS=-L$HOME/lib make
-```
+~~~
 
 If you have dependencies in locations other than /usr/local (or their equivalent on your system), then you will likely need to manually edit CXXFLAGS in the Makefile to add a -I flag to the folder containing header files.  For example, you may change the variable from
 
