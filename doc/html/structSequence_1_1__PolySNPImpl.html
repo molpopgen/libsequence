@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -82,8 +82,7 @@ $(document).ready(function(){initNavTree('structSequence_1_1__PolySNPImpl.html',
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a029eac0f5a4a9327fc3ef8ce6279a1e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a029eac0f5a4a9327fc3ef8ce6279a1e6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>preprocess</b> (void)</td></tr>
+<tr class="memitem:a029eac0f5a4a9327fc3ef8ce6279a1e6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1__PolySNPImpl.html#a029eac0f5a4a9327fc3ef8ce6279a1e6">preprocess</a> (void)</td></tr>
 <tr class="separator:a029eac0f5a4a9327fc3ef8ce6279a1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a229250fa139f1e0240e32aaa4eeae367"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229250fa139f1e0240e32aaa4eeae367"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>_PolySNPImpl</b> (const <a class="el" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data, const bool &amp;haveOutgroup, const unsigned &amp;outgroup, const bool &amp;totMuts)</td></tr>
@@ -164,16 +163,37 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_preprocessed</b></td
 <div class="textblock"><p>Implementation details for <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>. This class is visible so that it can be accessed from classes derived from <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>. A <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a> object contains a pointer to an instance of this class that is storage class protected. </p>
 
 <p>Definition at line <a class="el" href="PolySNPimpl_8hpp_source.html#l00030">30</a> of file <a class="el" href="PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a029eac0f5a4a9327fc3ef8ce6279a1e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sequence::_PolySNPImpl::preprocess </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>This routine takes the data and obtains count information for each possible character state at each site. The reason for doing this is that the various summary statistics that depend on frequency spectrum information are all O(n x S) to compute, where n is the sample size and S the number of sites. However, all of these statistics depend basically on the same features of the data, so it inefficient to recalculate them every time. This function obtains the counts for each site. Note that the efficiency gain is huge (especially for large data sets) as each summary statistic is reduced from an O(n x S) to an O(S) calculation. The increase in run-time efficiency comes at the cost of allocating 2 vectors whose sizes are linear in S </p>
+
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00098">98</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li><a class="el" href="PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a></li>
+<li><a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="structSequence_1_1__PolySNPImpl.html">_PolySNPImpl</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:09 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1__PolySNPImpl.html">_PolySNPImpl</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

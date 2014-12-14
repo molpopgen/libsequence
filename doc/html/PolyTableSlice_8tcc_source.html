@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> end,</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                     <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; window_size,</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                                     <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; step_len,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                     <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; alignment_length,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                     <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; <a class="code" href="namespaceSequence.html#af9ef00b653826aace505b09f269f6e93">alignment_length</a>,</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                     <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; physical_scale)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    : currentSlice(T()),</div>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                                           <span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> end,</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; window_size,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; step_len,</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; alignment_length,</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; <a class="code" href="namespaceSequence.html#af9ef00b653826aace505b09f269f6e93">alignment_length</a>,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; is_physical,</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                           <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; physical_scale )</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  {</div>
@@ -156,15 +156,15 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    <span class="keywordflow">while</span>(currLen &lt; alignment_length)</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                      {</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                        <span class="keywordtype">double</span> endOfWindow = currLen + double(window_size);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        <span class="keywordtype">unsigned</span> off1=Sequence::SEQMAXUNSIGNED,</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                          off2=Sequence::SEQMAXUNSIGNED;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        <span class="keywordtype">unsigned</span> off1=<a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                          off2=<a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>;</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                        <span class="keywordtype">size_t</span> j=0;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                        <span class="keywordflow">while</span> ((b+j) &lt; e)</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                          {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                            <span class="keywordflow">if</span> ( physical_scale*(b+j)-&gt;first &gt; currLen &amp;&amp; </div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                 physical_scale*(b+j)-&gt;first &lt;= endOfWindow )</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                              {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                <span class="keywordflow">if</span> (off1 == Sequence::SEQMAXUNSIGNED)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                                <span class="keywordflow">if</span> (off1 == <a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>)</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                  {</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                    off1=j;</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                    off2=j+1; <span class="comment">//we add 1 because off2 will be used to make an &quot;end&quot; iterator</span></div>
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                            <span class="keywordflow">if</span> ( (b+j)&gt;=e || physical_scale*(b+j)-&gt;first &gt; endOfWindow )</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                              <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                          }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        <span class="keywordflow">if</span> (off1 != Sequence::SEQMAXUNSIGNED)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        <span class="keywordflow">if</span> (off1 != <a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>)</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                          {</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                            windows.push_back( std::make_pair( (b+off1),(b+off2) ) );</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                          }</div>
@@ -280,6 +280,7 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  }</div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1PolyTableSlice_html_a582b76fb90c496f6323089182a98e7d7"><div class="ttname"><a href="classSequence_1_1PolyTableSlice.html#a582b76fb90c496f6323089182a98e7d7">Sequence::PolyTableSlice::size</a></div><div class="ttdeci">unsigned size() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTableSlice_8tcc_source.html#l00213">PolyTableSlice.tcc:213</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ac427687431515f70256efb59893388ce"><div class="ttname"><a href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a></div><div class="ttdeci">const unsigned SEQMAXUNSIGNED</div><div class="ttdef"><b>Definition:</b> <a href="SeqConstants_8cc_source.html#l00032">SeqConstants.cc:32</a></div></div>
 <div class="ttc" id="classSequence_1_1PolyTableSlice_html_ac1c8a2c2974f3f92b296a7e12d8d5528"><div class="ttname"><a href="classSequence_1_1PolyTableSlice.html#ac1c8a2c2974f3f92b296a7e12d8d5528">Sequence::PolyTableSlice::const_iterator</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; PolyTable::const_site_iterator, PolyTable::const_site_iterator &gt; &gt;::const_iterator const_iterator</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableSlice_8hpp_source.html#l00150">PolyTableSlice.hpp:150</a></div></div>
 <div class="ttc" id="classSequence_1_1SeqException_html"><div class="ttname"><a href="classSequence_1_1SeqException.html">Sequence::SeqException</a></div><div class="ttdoc">Base class for exceptions that may be thrown. </div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00052">SeqExceptions.hpp:52</a></div></div>
 <div class="ttc" id="classSequence_1_1PolyTable_html_a69dfc554c3b8ad2769c7547d4c7316d0"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">Sequence::PolyTable::const_site_iterator</a></div><div class="ttdeci">Sequence::polySiteVector::const_iterator const_site_iterator</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00106">PolyTable.hpp:106</a></div></div>
@@ -288,13 +289,14 @@ $(document).ready(function(){initNavTree('PolyTableSlice_8tcc_source.html','');}
 <div class="ttc" id="classSequence_1_1PolyTableSlice_html_a2cc1577a3ca75e0ae384683b2a375b9e"><div class="ttname"><a href="classSequence_1_1PolyTableSlice.html#a2cc1577a3ca75e0ae384683b2a375b9e">Sequence::PolyTableSlice::get_slice</a></div><div class="ttdeci">T get_slice(const const_iterator) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTableSlice_8tcc_source.html#l00193">PolyTableSlice.tcc:193</a></div></div>
 <div class="ttc" id="classSequence_1_1PolyTableSlice_html_a984bd1fcffbf0e930e8832fa609c7dbe"><div class="ttname"><a href="classSequence_1_1PolyTableSlice.html#a984bd1fcffbf0e930e8832fa609c7dbe">Sequence::PolyTableSlice::operator[]</a></div><div class="ttdeci">T operator[](const unsigned &amp;) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTableSlice_8tcc_source.html#l00222">PolyTableSlice.tcc:222</a></div></div>
 <div class="ttc" id="classSequence_1_1PolyTableSlice_html_a5f20a15b959e6533b3c75d1b440cfc2e"><div class="ttname"><a href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">Sequence::PolyTableSlice::PolyTableSlice</a></div><div class="ttdeci">PolyTableSlice(const PolyTable::const_site_iterator beg, const PolyTable::const_site_iterator end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableSlice_8tcc_source.html#l00031">PolyTableSlice.tcc:31</a></div></div>
+<div class="ttc" id="namespaceSequence_html_af9ef00b653826aace505b09f269f6e93"><div class="ttname"><a href="namespaceSequence.html#af9ef00b653826aace505b09f269f6e93">Sequence::alignment_length</a></div><div class="ttdeci">unsigned alignment_length(const samrecord &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="samfunctions_8cc_source.html#l00029">samfunctions.cc:29</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><b>PolyTableSlice.tcc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

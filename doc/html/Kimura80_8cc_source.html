@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('Kimura80_8cc_source.html','');});
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classSequence_1_1Kimura80.html#afd42998079763d43af88873724e2c7bd">   40</a></span>&#160;  <a class="code" href="classSequence_1_1Kimura80.html#afd42998079763d43af88873724e2c7bd">Kimura80::Kimura80</a> (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Sequence::Seq</a> * seqa, <span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Sequence::Seq</a> * seqb):</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    seqlen (seqa-&gt;length())</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (seqa-&gt;length () != seqb-&gt;length ())</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (seqa-&gt;<a class="code" href="classSequence_1_1Seq.html#ad39cfca713b7688ad53b3ef0246e3994">length</a> () != seqb-&gt;<a class="code" href="classSequence_1_1Seq.html#ad39cfca713b7688ad53b3ef0246e3994">length</a> ())</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1SeqException.html">SeqException</a> (<span class="stringliteral">&quot;Sequence::Kimura80::Kimura80(): constructor called with two sequence objects of unequal length&quot;</span>);</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    num_Ts = 0;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    num_Tv = 0;</div>
@@ -127,19 +127,19 @@ $(document).ready(function(){initNavTree('Kimura80_8cc_source.html','');});
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">unsigned</span> ungapped_sites = 0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; seqlen; ++i)        <span class="comment">//iterate over the sequence</span></div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (NotAGap((*seq1)[i]) &amp;&amp; NotAGap((*seq2)[i]))</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="namespaceSequence.html#a0a76f7fc1d7afe7494d999300a79f669">NotAGap</a>((*seq1)[i]) &amp;&amp; <a class="code" href="namespaceSequence.html#a0a76f7fc1d7afe7494d999300a79f669">NotAGap</a>((*seq2)[i]))</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;          {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            ++ungapped_sites;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (std::toupper((*seq1)[i]) != </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                std::toupper((*seq2)[i]))       <span class="comment">//if the sites differ at that position</span></div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;              {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordtype">int</span> type = TsTv ((*seq1)[i], (*seq2)[i]);       <span class="comment">//check if difference is Ts or Tv</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordtype">int</span> type = <a class="code" href="namespaceSequence.html#a75b90c6ccf6178eb60649717875611b7">TsTv</a> ((*seq1)[i], (*seq2)[i]);       <span class="comment">//check if difference is Ts or Tv</span></div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;              </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (type == Mutations(Ts))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Ts))</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  {     <span class="comment">//Ts</span></div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                    ++num_Ts;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                  }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == Mutations(Tv))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Tv))</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                  {     <span class="comment">//Tv</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    ++num_Tv;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                  }</div>
@@ -184,12 +184,16 @@ $(document).ready(function(){initNavTree('Kimura80_8cc_source.html','');});
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1Kimura80_html_afd42998079763d43af88873724e2c7bd"><div class="ttname"><a href="classSequence_1_1Kimura80.html#afd42998079763d43af88873724e2c7bd">Sequence::Kimura80::Kimura80</a></div><div class="ttdeci">Kimura80(const Sequence::Seq *seqa, const Sequence::Seq *seqb)</div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00040">Kimura80.cc:40</a></div></div>
 <div class="ttc" id="SeqExceptions_8hpp_html"><div class="ttname"><a href="SeqExceptions_8hpp.html">SeqExceptions.hpp</a></div><div class="ttdoc">declaration of exception classes used in namespace Sequence, including class Sequence::SeqException ...</div></div>
+<div class="ttc" id="namespaceSequence_html_a75b90c6ccf6178eb60649717875611b7"><div class="ttname"><a href="namespaceSequence.html#a75b90c6ccf6178eb60649717875611b7">Sequence::TsTv</a></div><div class="ttdeci">Mutations TsTv(const char &amp;i, const char &amp;j)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00035">Comparisons.cc:35</a></div></div>
 <div class="ttc" id="Kimura80_8hpp_html"><div class="ttname"><a href="Kimura80_8hpp.html">Kimura80.hpp</a></div><div class="ttdoc">declaration of Sequence::Kimura80 </div></div>
 <div class="ttc" id="Seq_8hpp_html"><div class="ttname"><a href="Seq_8hpp.html">Seq.hpp</a></div><div class="ttdoc">class Sequence::Seq, an abstract base class for Sequences </div></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
 <div class="ttc" id="classSequence_1_1Kimura80_html_aab7daa2ca6bb6ddc39051818c133eb6e"><div class="ttname"><a href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">Sequence::Kimura80::K</a></div><div class="ttdeci">double K() const </div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00108">Kimura80.cc:108</a></div></div>
 <div class="ttc" id="classSequence_1_1Kimura80_html_aa987104cbb72653f423c0d550e9be33b"><div class="ttname"><a href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">Sequence::Kimura80::sites</a></div><div class="ttdeci">size_t sites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="Kimura80_8cc_source.html#l00122">Kimura80.cc:122</a></div></div>
+<div class="ttc" id="classSequence_1_1Seq_html_ad39cfca713b7688ad53b3ef0246e3994"><div class="ttname"><a href="classSequence_1_1Seq.html#ad39cfca713b7688ad53b3ef0246e3994">Sequence::Seq::length</a></div><div class="ttdeci">size_type length(void) const </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8cc_source.html#l00085">Seq.cc:85</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a2009c170f0f10cf641e08fb544a0374d"><div class="ttname"><a href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Sequence::Mutations</a></div><div class="ttdeci">Mutations</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00051">SeqEnums.hpp:51</a></div></div>
 <div class="ttc" id="classSequence_1_1SeqException_html"><div class="ttname"><a href="classSequence_1_1SeqException.html">Sequence::SeqException</a></div><div class="ttdoc">Base class for exceptions that may be thrown. </div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00052">SeqExceptions.hpp:52</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a0a76f7fc1d7afe7494d999300a79f669"><div class="ttname"><a href="namespaceSequence.html#a0a76f7fc1d7afe7494d999300a79f669">Sequence::NotAGap</a></div><div class="ttdeci">bool NotAGap(const char &amp;c)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00193">Comparisons.cc:193</a></div></div>
 <div class="ttc" id="Comparisons_8hpp_html"><div class="ttname"><a href="Comparisons_8hpp.html">Comparisons.hpp</a></div><div class="ttdoc">delcaration of routines for comparing DNA sequences This file declares a set of functions useful for ...</div></div>
 <div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -198,7 +202,7 @@ $(document).ready(function(){initNavTree('Kimura80_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>Kimura80.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -141,18 +141,18 @@ $(document).ready(function(){initNavTree('correlations_8cc-example.html','');});
 <div class="line">  std::cout &lt;&lt; <span class="stringliteral">&quot;(all pvalues are one-tailed tests of observing a more extreme,\n&quot;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;i.e. larger correlation than the observe dvalue)\n&quot;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;pval of P-M correlation, seed with time: &quot;</span></div>
-<div class="line">            &lt;&lt; Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),</div>
+<div class="line">            &lt;&lt; <a name="a2"></a><a class="code" href="namespaceSequence.html#a8ad6da6579788349c3f9f442c31c3805">Sequence::PermuteCorrelation</a>(x.begin(),x.end(),y.begin(),</div>
 <div class="line">                                            <a class="code" href="structSequence_1_1ProductMoment.html">Sequence::ProductMoment</a>(),</div>
 <div class="line">                                            std::greater_equal&lt;double&gt;(),</div>
 <div class="line">                                            __x) &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;pval of rank correlation, default seed: &quot;</span></div>
-<div class="line">            &lt;&lt; Sequence::PermuteCorrelation(x.begin(),x.end(),</div>
+<div class="line">            &lt;&lt; <a class="code" href="namespaceSequence.html#a8ad6da6579788349c3f9f442c31c3805">Sequence::PermuteCorrelation</a>(x.begin(),x.end(),</div>
 <div class="line">                                            y.begin(),</div>
 <div class="line">                                            <a class="code" href="structSequence_1_1SpearmansRank.html">Sequence::SpearmansRank</a>(),</div>
 <div class="line">                                            std::greater_equal&lt;double&gt;(),</div>
 <div class="line">                                            __x) &lt;&lt; std::endl</div>
 <div class="line">            &lt;&lt; <span class="stringliteral">&quot;pval of rank correlation, seed with time: &quot;</span></div>
-<div class="line">            &lt;&lt; Sequence::PermuteCorrelation(x.begin(),x.end(),y.begin(),</div>
+<div class="line">            &lt;&lt; <a class="code" href="namespaceSequence.html#a8ad6da6579788349c3f9f442c31c3805">Sequence::PermuteCorrelation</a>(x.begin(),x.end(),y.begin(),</div>
 <div class="line">                                            <a class="code" href="structSequence_1_1SpearmansRank.html">Sequence::SpearmansRank</a>(),</div>
 <div class="line">                                            std::greater_equal&lt;double&gt;(),</div>
 <div class="line">                                            __x) &lt;&lt;std::endl;</div>
@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('correlations_8cc-example.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

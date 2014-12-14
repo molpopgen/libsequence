@@ -6,12 +6,17 @@ var hierarchy =
       [ "Sequence::phylipData< T >", "classSequence_1_1phylipData.html", null ]
     ] ],
     [ "ambiguousNucleotide", "structambiguousNucleotide.html", null ],
+    [ "Sequence::bamaux", "structSequence_1_1bamaux.html", null ],
+    [ "Sequence::bamreader", "classSequence_1_1bamreader.html", null ],
+    [ "Sequence::bamreaderImpl", "classSequence_1_1bamreaderImpl.html", null ],
+    [ "Sequence::bamrecord", "classSequence_1_1bamrecord.html", null ],
     [ "Sequence::chromosome", "structSequence_1_1chromosome.html", null ],
     [ "Sequence::Comeron95", "classSequence_1_1Comeron95.html", null ],
     [ "Sequence::ComplementBase", "structSequence_1_1ComplementBase.html", null ],
     [ "Sequence::countDerivedStates", "structSequence_1_1countDerivedStates.html", null ],
     [ "Sequence::countStates", "structSequence_1_1countStates.html", null ],
     [ "first_is_equal< key, value >", "structfirst__is__equal.html", null ],
+    [ "Sequence::FST", "classSequence_1_1FST.html", null ],
     [ "Sequence::Grantham", "classSequence_1_1Grantham.html", null ],
     [ "Sequence::HKAdata", "structSequence_1_1HKAdata.html", null ],
     [ "Sequence::HKAresults", "structSequence_1_1HKAresults.html", null ],
@@ -20,8 +25,10 @@ var hierarchy =
     [ "Sequence::lowerCrit", "structSequence_1_1lowerCrit.html", null ],
     [ "Sequence::marginal", "structSequence_1_1marginal.html", null ],
     [ "Sequence::newick_stream_marginal_tree", "classSequence_1_1newick__stream__marginal__tree.html", null ],
+    [ "Sequence::newick_stream_marginal_tree_impl", "classSequence_1_1newick__stream__marginal__tree__impl.html", null ],
     [ "Sequence::nmuts< counter >", "structSequence_1_1nmuts.html", null ],
     [ "Sequence::node", "structSequence_1_1node.html", null ],
+    [ "outputFreq", "structoutputFreq.html", null ],
     [ "Sequence::PolySNP", "classSequence_1_1PolySNP.html", [
       [ "Sequence::PolySIM", "classSequence_1_1PolySIM.html", null ]
     ] ],
@@ -39,7 +46,8 @@ var hierarchy =
     [ "Sequence::samtag", "structSequence_1_1samtag.html", null ],
     [ "Sequence::segment", "structSequence_1_1segment.html", null ],
     [ "Sequence::Seq", "classSequence_1_1Seq.html", [
-      [ "Sequence::Fasta", "classSequence_1_1Fasta.html", null ]
+      [ "Sequence::Fasta", "classSequence_1_1Fasta.html", null ],
+      [ "Sequence::fastq", "classSequence_1_1fastq.html", null ]
     ] ],
     [ "Sequence::SeqException", "classSequence_1_1SeqException.html", [
       [ "Sequence::badFormat", "classSequence_1_1badFormat.html", null ]

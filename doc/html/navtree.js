@@ -1,14 +1,26 @@
 var NAVTREE =
 [
   [ "libsequence", "index.html", [
-    [ "Todo List", "todo.html", null ],
+    [ "References to primary sources", "md_md_literature.html", [
+      [ "General", "md_md_literature.html#genref", null ],
+      [ "Sequence::PolySNP", "md_md_literature.html#poly", null ],
+      [ "namespace Sequence::Recombination", "md_md_literature.html#rec", null ],
+      [ "Sequence::Comeron95", "md_md_literature.html#com", null ],
+      [ "Sequence::Kimura80", "md_md_literature.html#kim", null ]
+    ] ],
+    [ "Tutorial/overview", "md_md_tutorial.html", null ],
+    [ "The libsequence home page", "md__home_kevin_git_libsequence_8git_md_index.html", null ],
+    [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ]
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -17,7 +29,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Typedefs", "functions_type.html", null ],
         [ "Enumerations", "functions_enum.html", null ],
@@ -37,12 +49,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html",
-"Sites_8hpp_source.html",
-"classSequence_1_1PolySNP.html#a6b74b764c8466d98c2a6ef81fdd6ef02",
-"classSequence_1_1SimData.html#a55853db7c6a78f14c7002fc2c326c394",
-"classSequence_1_1samflag.html#aabfc8a0993501355d6c85d2f42d28f12",
-"structSequence_1_1__PolySNPImpl.html#a83b7c675ef6940a9bbcc2bbaf4cd2bde"
+"AlignStreamTest_8cc_source.html",
+"SeqExceptions_8hpp.html#gaab0e36240236b3366ae6e76b5ba9a678",
+"classSequence_1_1Fasta.html#aee4da62ab2c7ca7d2bd3de6b0cc9fd88",
+"classSequence_1_1Seq.html#a15eacb158eaeb74a67e6285b4d8d1a5c",
+"classSequence_1_1Sums.html#a24c3911a328a68548429c11ae5602a32",
+"classSequence_1_1samrecord.html#aab9070870b1435433f7fc785a79c9339",
+"namespaceSequence_1_1Recombination.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

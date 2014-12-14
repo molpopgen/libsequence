@@ -1,7 +1,7 @@
 var classSequence_1_1PolySIM =
 [
     [ "PolySIM", "classSequence_1_1PolySIM.html#abf9a79572c1c61befaf91f4fcb3272f1", null ],
-    [ "~PolySIM", "classSequence_1_1PolySIM.html#a00a13b87336f0e01510956ccff5fbead", null ],
+    [ "~PolySIM", "classSequence_1_1PolySIM.html#a4661fead2c6057637c1a8f993c522f5f", null ],
     [ "a_sub_n", "classSequence_1_1PolySIM.html#ac2e80d4fe8be5231aa99993949c123e7", null ],
     [ "a_sub_n_plus1", "classSequence_1_1PolySIM.html#ac930e586b07a9b64ce3c4c53c8b3d401", null ],
     [ "b_sub_n", "classSequence_1_1PolySIM.html#a0f4687d987b2548be37d902321b7d9aa", null ],
@@ -11,7 +11,7 @@ var classSequence_1_1PolySIM =
     [ "DandVH", "classSequence_1_1PolySIM.html#a5cb1e8e0583eaf95f8baf5d4383e8cca", null ],
     [ "DandVK", "classSequence_1_1PolySIM.html#a1be376ce9d69d7bc0016fac306124454", null ],
     [ "DepaulisVeuilleStatistics", "classSequence_1_1PolySIM.html#af89d438b6bb1df23dac3b2162e42d260", null ],
-    [ "Disequilibrium", "classSequence_1_1PolySIM.html#a4a359687d5c6a4727d3ce22c7614ae5b", null ],
+    [ "Disequilibrium", "classSequence_1_1PolySIM.html#a50eea85970a1e0a4eb3a049ded42b10d", null ],
     [ "Dnominator", "classSequence_1_1PolySIM.html#a8f8b95b3331ac33c19e9b9cec4b5e23e", null ],
     [ "FuLiD", "classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b", null ],
     [ "FuLiDStar", "classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101", null ],

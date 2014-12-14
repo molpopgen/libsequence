@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -121,7 +121,7 @@ $(document).ready(function(){initNavTree('ThreeSubs_8cc_source.html','');});
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  {</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    assert(codon1.length() == 3 &amp;&amp; codon2.length() == 3);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">string</span> intermediates[9];</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f">Intermediates3</a>(intermediates,codon1,codon2);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    Intermediates3(intermediates,codon1,codon2);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    p0 = p2S = p2V = p4 = q0 = q2S = q2V = q4 = 0.0;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    weights3-&gt;<a class="code" href="classSequence_1_1WeightingScheme3.html#a9163ccd089c8e8b83598ace72282f9bf">Calculate</a>(codon1,codon2);</div>
@@ -284,7 +284,6 @@ $(document).ready(function(){initNavTree('ThreeSubs_8cc_source.html','');});
 <div class="ttc" id="classSequence_1_1ThreeSubs_html_ab9a67241bd0e3547eb66ef004272e82d"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ab9a67241bd0e3547eb66ef004272e82d">Sequence::ThreeSubs::~ThreeSubs</a></div><div class="ttdeci">~ThreeSubs(void)</div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00041">ThreeSubs.cc:41</a></div></div>
 <div class="ttc" id="classSequence_1_1SingleSub_html_a9cac216a1574a7cdd33a91fb56a94c87"><div class="ttname"><a href="classSequence_1_1SingleSub.html#a9cac216a1574a7cdd33a91fb56a94c87">Sequence::SingleSub::Q4</a></div><div class="ttdeci">double Q4(void) const </div><div class="ttdef"><b>Definition:</b> <a href="SingleSub_8cc_source.html#l00117">SingleSub.cc:117</a></div></div>
 <div class="ttc" id="classSequence_1_1SingleSub_html"><div class="ttname"><a href="classSequence_1_1SingleSub.html">Sequence::SingleSub</a></div><div class="ttdoc">Deal with codons differing at 1 position. </div><div class="ttdef"><b>Definition:</b> <a href="SingleSub_8hpp_source.html#l00044">SingleSub.hpp:44</a></div></div>
-<div class="ttc" id="group__CodonPaths_html_gab933905f221fb3d14014dbf130e7e17f"><div class="ttname"><a href="group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f">Sequence::Intermediates3</a></div><div class="ttdeci">void Intermediates3(string *intermediates, const std::string &amp;codon1, const std::string &amp;codon2)</div><div class="ttdoc">Calculate the intermediate codons between a pair of codons diverged at 3 positions. </div><div class="ttdef"><b>Definition:</b> <a href="PathwayHelper_8cc_source.html#l00092">PathwayHelper.cc:92</a></div></div>
 <div class="ttc" id="RedundancyCom95_8hpp_html"><div class="ttname"><a href="RedundancyCom95_8hpp.html">RedundancyCom95.hpp</a></div><div class="ttdoc">class Sequence::RedundancyCom95 </div></div>
 <div class="ttc" id="ThreeSubs_8hpp_html"><div class="ttname"><a href="ThreeSubs_8hpp.html">ThreeSubs.hpp</a></div><div class="ttdoc">used by Sequence::Comeron95, class Sequence::ThreeSubs calculates divergence between codons that diff...</div></div>
 <div class="ttc" id="Grantham_8hpp_html"><div class="ttname"><a href="Grantham_8hpp.html">Grantham.hpp</a></div><div class="ttdoc">Grantham&#39;s distances (Sequence::Grantham) </div></div>
@@ -309,7 +308,7 @@ $(document).ready(function(){initNavTree('ThreeSubs_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>ThreeSubs.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

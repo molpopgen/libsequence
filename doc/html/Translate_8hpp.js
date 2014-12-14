@@ -1,4 +1,4 @@
 var Translate_8hpp =
 [
-    [ "Translate", "Translate_8hpp.html#gabfebaa3474da1c5e8432cc3ed1a097d9", null ]
+    [ "Translate", "Translate_8hpp.html#gaa68a90c6a1a5466ea314c55a8dda3cba", null ]
 ];

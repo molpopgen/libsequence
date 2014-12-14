@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                tcoal = expo(1./rcoal);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;              }</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        trec = (rrec&gt;0.) ? expo(1./rrec) : SEQMAXDOUBLE;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        trec = (rrec&gt;0.) ? expo(1./rrec) : <a class="code" href="namespaceSequence.html#ac4311dadc006f2bfcdbd3b3f9b7b324f">SEQMAXDOUBLE</a>;</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        assert(std::isfinite(trec));</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        tmin = std::min(tcoal,trec);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keyword">event</span> = <span class="keyword">true</span>;</div>
@@ -179,16 +179,16 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;              {</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                t += tmin;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                two = <a class="code" href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">pick2</a>(uni,NSAM);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                NSAM -= coalesce(t,nsam,NSAM,two.first,two.second,nsites,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                NSAM -= <a class="code" href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">coalesce</a>(t,nsam,NSAM,two.first,two.second,nsites,</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                 &amp;nlinks,&amp;sample,&amp;sample_history);</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;              }</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;              {</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                t += tmin;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                two = pick_uniform_spot(uni01(),</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                two = <a class="code" href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">pick_uniform_spot</a>(uni01(),</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                        nlinks,</div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                                        sample.begin(),NSAM);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                nlinks -= crossover(NSAM,two.first,two.second,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                nlinks -= <a class="code" href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">crossover</a>(NSAM,two.first,two.second,</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                                    &amp;sample,&amp;sample_history);</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                NSAM++;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;              }</div>
@@ -234,7 +234,7 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        assert( std::isfinite(t) );</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        rcoal = double(NSAM*(NSAM-1));</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        rrec = littler*(nlinks);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        trec = (rrec&gt;0.) ? expo((1./rrec)) : SEQMAXDOUBLE;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        trec = (rrec&gt;0.) ? expo((1./rrec)) : <a class="code" href="namespaceSequence.html#ac4311dadc006f2bfcdbd3b3f9b7b324f">SEQMAXDOUBLE</a>;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        assert(std::isfinite(trec));</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> ( t &lt; t_begin || G == 0.)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;          {</div>
@@ -273,16 +273,16 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;              {</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                t += tmin;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                two = <a class="code" href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">pick2</a>(uni,NSAM);</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                NSAM -= coalesce(t,nsam,NSAM,two.first,two.second,nsites,</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                NSAM -= <a class="code" href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">coalesce</a>(t,nsam,NSAM,two.first,two.second,nsites,</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                 &amp;nlinks,&amp;sample,&amp;sample_history);</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;              }</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;              {</div>
 <div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                t += tmin;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                two = pick_uniform_spot(uni01(),</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                two = <a class="code" href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">pick_uniform_spot</a>(uni01(),</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                                        nlinks,</div>
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                                        sample.begin(),NSAM);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                nlinks -= crossover(NSAM,two.first,two.second,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                nlinks -= <a class="code" href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">crossover</a>(NSAM,two.first,two.second,</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                    &amp;sample,&amp;sample_history);</div>
 <div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                NSAM++;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;              }</div>
@@ -397,9 +397,13 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#endif //include guard</span></div>
 <div class="ttc" id="group__coalescent_html_ga1da6ee3005af95c7da8538bbf31c3298"><div class="ttname"><a href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">Sequence::pick2</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick2(uniform_generator &amp;uni, const int &amp;nsam)</div><div class="ttdef"><b>Definition:</b> <a href="Coalesce_8tcc_source.html#l00090">Coalesce.tcc:90</a></div></div>
-<div class="ttc" id="group__coalescent_html_ga3912c6722638e2f67d61caa4be52bcec"><div class="ttname"><a href="group__coalescent.html#ga3912c6722638e2f67d61caa4be52bcec">Sequence::bottleneck</a></div><div class="ttdeci">arg bottleneck(uniform_generator &amp;uni, uniform01_generator &amp;uni01, exponential_generator &amp;expo, const std::vector&lt; chromosome &gt; &amp;initialized_sample, const marginal &amp;initialized_marginal, const double &amp;tr, const double &amp;d, const double &amp;f, const double &amp;rho=0., const bool &amp;exponential_recovery=false, const double &amp;recovered_size=1.)</div><div class="ttdoc">Coalescent simulation of a population bottleneck Simulate a single, bottlenecked, population accordin...</div><div class="ttdef"><b>Definition:</b> <a href="DemographicModels_8tcc_source.html#l00227">DemographicModels.tcc:227</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga3912c6722638e2f67d61caa4be52bcec"><div class="ttname"><a href="group__coalescent.html#ga3912c6722638e2f67d61caa4be52bcec">Sequence::bottleneck</a></div><div class="ttdeci">arg bottleneck(uniform_generator &amp;uni, uniform01_generator &amp;uni01, exponential_generator &amp;expo, const std::vector&lt; chromosome &gt; &amp;initialized_sample, const marginal &amp;initialized_marginal, const double &amp;tr, const double &amp;d, const double &amp;f, const double &amp;rho, const bool &amp;exponential_recovery, const double &amp;recovered_size)</div><div class="ttdoc">Coalescent simulation of a population bottleneck Simulate a single, bottlenecked, population accordin...</div><div class="ttdef"><b>Definition:</b> <a href="DemographicModels_8tcc_source.html#l00227">DemographicModels.tcc:227</a></div></div>
 <div class="ttc" id="structSequence_1_1marginal_html"><div class="ttname"><a href="structSequence_1_1marginal.html">Sequence::marginal</a></div><div class="ttdoc">The genealogy of a portion of a chromosome on which no recombination has occurred. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00165">SimTypes.hpp:165</a></div></div>
-<div class="ttc" id="group__coalescent_html_ga50a0f43f10ace15dc54a42f38ce598d8"><div class="ttname"><a href="group__coalescent.html#ga50a0f43f10ace15dc54a42f38ce598d8">Sequence::exponential_change</a></div><div class="ttdeci">arg exponential_change(uniform_generator &amp;uni, uniform01_generator &amp;uni01, exponential_generator &amp;expo, const std::vector&lt; chromosome &gt; &amp;initialized_sample, const marginal &amp;initialized_marginal, const double &amp;G, const double &amp;t_begin, const double &amp;t_end, const double &amp;rho=0., const double &amp;size_at_end=-1)</div><div class="ttdoc">Coalescent simulation of exponential change in population size Simulate a single population whose siz...</div><div class="ttdef"><b>Definition:</b> <a href="DemographicModels_8tcc_source.html#l00301">DemographicModels.tcc:301</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga50a0f43f10ace15dc54a42f38ce598d8"><div class="ttname"><a href="group__coalescent.html#ga50a0f43f10ace15dc54a42f38ce598d8">Sequence::exponential_change</a></div><div class="ttdeci">arg exponential_change(uniform_generator &amp;uni, uniform01_generator &amp;uni01, exponential_generator &amp;expo, const std::vector&lt; chromosome &gt; &amp;initialized_sample, const marginal &amp;initialized_marginal, const double &amp;G, const double &amp;t_begin, const double &amp;t_end, const double &amp;rho, const double &amp;size_at_end)</div><div class="ttdoc">Coalescent simulation of exponential change in population size Simulate a single population whose siz...</div><div class="ttdef"><b>Definition:</b> <a href="DemographicModels_8tcc_source.html#l00301">DemographicModels.tcc:301</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ac4311dadc006f2bfcdbd3b3f9b7b324f"><div class="ttname"><a href="namespaceSequence.html#ac4311dadc006f2bfcdbd3b3f9b7b324f">Sequence::SEQMAXDOUBLE</a></div><div class="ttdeci">const double SEQMAXDOUBLE</div><div class="ttdef"><b>Definition:</b> <a href="SeqConstants_8cc_source.html#l00036">SeqConstants.cc:36</a></div></div>
+<div class="ttc" id="group__coalescent_html_gad689617c904bc44ec5fade5940273396"><div class="ttname"><a href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">Sequence::coalesce</a></div><div class="ttdeci">int coalesce(const double &amp;time, const int &amp;ttl_nsam, const int &amp;current_nsam, const int &amp;c1, const int &amp;c2, const int &amp;nsites, int *nlinks, std::vector&lt; chromosome &gt; *sample, arg *sample_history)</div><div class="ttdoc">Common ancestor routine for coalescent simulation. Merges chromosome segments and updates marginal tr...</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentCoalesce_8cc_source.html#l00053">CoalescentCoalesce.cc:53</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga3697a3a402b2395fafc6dc2548721a1c"><div class="ttname"><a href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">Sequence::pick_uniform_spot</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick_uniform_spot(const double &amp;random_01, const int &amp;nlinks, std::vector&lt; chromosome &gt;::const_iterator sample_begin, const unsigned &amp;current_nsam)</div><div class="ttdoc">Pick a crossover point for the model where recombination rates are constant across a recion...</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00051">CoalescentRecombination.cc:51</a></div></div>
+<div class="ttc" id="group__coalescent_html_gafe0abcf7a1656a19ad282f44822d7b73"><div class="ttname"><a href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">Sequence::crossover</a></div><div class="ttdeci">int crossover(const int &amp;current_nsam, const int &amp;chromo, const int &amp;pos, std::vector&lt; chromosome &gt; *sample, arg *sample_history)</div><div class="ttdoc">Recombination function. </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00083">CoalescentRecombination.cc:83</a></div></div>
 <div class="ttc" id="SeqConstants_8hpp_html"><div class="ttname"><a href="SeqConstants_8hpp.html">SeqConstants.hpp</a></div></div>
 <div class="ttc" id="group__coalescent_html_ga1116020585e7246433b28c69b0623a20"><div class="ttname"><a href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a></div><div class="ttdeci">std::list&lt; marginal &gt; arg</div><div class="ttdoc">Ancestral Recombination Graph. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00216">SimTypes.hpp:216</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -408,7 +412,7 @@ $(document).ready(function(){initNavTree('DemographicModels_8tcc_source.html',''
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><a class="el" href="dir_ce29cd4bc0234b00848bbc91a84a041e.html">bits</a></li><li class="navelem"><b>DemographicModels.tcc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a33d5a07667bc2645600f8b7ca2882d3a">  148</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a4084883c9810848f2e7e5ae549eb3c8e">Gapped</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data)</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a33d5a07667bc2645600f8b7ca2882d3a">  148</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a33d5a07667bc2645600f8b7ca2882d3a">Gapped</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data)</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;      static_assert( std::is_base_of&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value ||</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                     std::is_same&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value,</div>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">  168</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a8708fff82c60479f67ef4a53743ab097">IsAlignment</a> (<span class="keyword">const</span> std::vector &lt; T  &gt;&amp;data)</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">  168</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">IsAlignment</a> (<span class="keyword">const</span> std::vector &lt; T  &gt;&amp;data)</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    {</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;     static_assert( std::is_base_of&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value ||</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    std::is_same&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value,</div>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
-<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#ae60cbc30ba0c28af28b3eda2a162e823">  190</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#ac034d5598a885fae09f0356b84e1febe">validForPolyAnalysis</a>( Iterator beg,</div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#ae60cbc30ba0c28af28b3eda2a162e823">  190</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#ae60cbc30ba0c28af28b3eda2a162e823">validForPolyAnalysis</a>( Iterator beg,</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                               Iterator end )</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;      <span class="comment">//ensure that Iterator is an iterator type for a container</span></div>
@@ -219,7 +219,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    }</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a56398c1a8445799d20968dc59d198496">  221</a></span>&#160;    <span class="keywordtype">unsigned</span> <a class="code" href="namespaceSequence_1_1Alignment.html#ae165140264657646d644e1ba8ba5318b">UnGappedLength</a> (<span class="keyword">const</span> std::vector &lt;T&gt;&amp;data) </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a56398c1a8445799d20968dc59d198496">  221</a></span>&#160;    <span class="keywordtype">unsigned</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a56398c1a8445799d20968dc59d198496">UnGappedLength</a> (<span class="keyword">const</span> std::vector &lt;T&gt;&amp;data) </div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    </div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    {</div>
@@ -227,8 +227,8 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    std::is_same&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value,</div>
 <div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="stringliteral">&quot;T must be pair&lt;std::string,std::string&gt; or publicly inherit from that type&quot;</span> );</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      <span class="keywordtype">unsigned</span> len = 0;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="namespaceSequence_1_1Alignment.html#a8708fff82c60479f67ef4a53743ab097">IsAlignment</a>(data))</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">return</span> Sequence::SEQMAXUNSIGNED;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;      <span class="keywordflow">if</span> (!<a class="code" href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">IsAlignment</a>(data))</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>;</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> j = 0; j &lt; data[0].second.length (); ++j)</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        {</div>
@@ -248,7 +248,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a735e740b8c8fd1d4925404ca6b812da4">  255</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a717e6e1ed2a525b262cd4b6711b27d84">RemoveGaps</a> (std::vector &lt;T&gt; &amp;data)</div>
+<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a735e740b8c8fd1d4925404ca6b812da4">  255</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a735e740b8c8fd1d4925404ca6b812da4">RemoveGaps</a> (std::vector &lt;T&gt; &amp;data)</div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;      static_assert( std::is_base_of&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value ||</div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                     std::is_same&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value,</div>
@@ -286,7 +286,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="comment">//only remove gaps from the beginning</span></div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="comment">//and end of an alignment</span></div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a873d7abdf6bf1a915b20f48c29cc60ce">  298</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a5c97799d32bb988ebcb44500c4d91351">RemoveTerminalGaps</a> (std::vector &lt;T&gt;&amp;data)</div>
+<div class="line"><a name="l00298"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a873d7abdf6bf1a915b20f48c29cc60ce">  298</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a873d7abdf6bf1a915b20f48c29cc60ce">RemoveTerminalGaps</a> (std::vector &lt;T&gt;&amp;data)</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    {</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;     static_assert( std::is_base_of&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value ||</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                    std::is_same&lt;std::pair&lt;std::string,std::string&gt;,T&gt;::value,</div>
@@ -298,7 +298,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;      <span class="keywordtype">size_t</span> offset;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;      <span class="keywordtype">size_t</span> size = data.size ();</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      leftmost = SEQMAXUNSIGNED;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;      leftmost = <a class="code" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">SEQMAXUNSIGNED</a>;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      rightmost = length + 1;   <span class="comment">//offset by one b/c its an array...</span></div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="comment">//find the leftmost site where all sites in the alignment are ungapped</span></div>
@@ -346,7 +346,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
 <div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a6a7aa923f4997b5c65061a5aba39a665">  363</a></span>&#160;    <span class="keywordtype">void</span> RemoveFixedOutgroupInsertions( std::vector&lt;T&gt; &amp; data,</div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a6a7aa923f4997b5c65061a5aba39a665">  363</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a6a7aa923f4997b5c65061a5aba39a665">RemoveFixedOutgroupInsertions</a>( std::vector&lt;T&gt; &amp; data,</div>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                                        <span class="keywordtype">unsigned</span> site,</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; ref )</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    {</div>
@@ -377,7 +377,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
 <div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a6c6226427b76211aea24a1616334d57b">  401</a></span>&#160;    std::vector &lt; T &gt;<a class="code" href="namespaceSequence_1_1Alignment.html#a38d801124a67a766558bd1b1ff913056">Trim</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data,</div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a6c6226427b76211aea24a1616334d57b">  401</a></span>&#160;    std::vector &lt; T &gt;<a class="code" href="namespaceSequence_1_1Alignment.html#a6c6226427b76211aea24a1616334d57b">Trim</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data,</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                           <span class="keyword">const</span> std::vector &lt;int&gt; &amp;sites) </div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    </div>
@@ -416,7 +416,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    }</div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;</div>
 <div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keyword">template</span> &lt; <span class="keyword">typename</span> T &gt;</div>
-<div class="line"><a name="l00456"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a369589b5966a6ded569e4e5072a5740d">  456</a></span>&#160;    std::vector &lt; T &gt;<a class="code" href="namespaceSequence_1_1Alignment.html#a5475c61d9f574929d1903a240428dccc">TrimComplement</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data,</div>
+<div class="line"><a name="l00456"></a><span class="lineno"><a class="line" href="namespaceSequence_1_1Alignment.html#a369589b5966a6ded569e4e5072a5740d">  456</a></span>&#160;    std::vector &lt; T &gt;<a class="code" href="namespaceSequence_1_1Alignment.html#a369589b5966a6ded569e4e5072a5740d">TrimComplement</a> (<span class="keyword">const</span> std::vector &lt; T &gt;&amp;data,</div>
 <div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                                     <span class="keyword">const</span> std::vector &lt; int &gt; &amp;sites) </div>
 <div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;      </div>
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;</div>
@@ -501,19 +501,21 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;}</div>
 <div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;</div>
 <div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;</div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_ac034d5598a885fae09f0356b84e1febe"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ac034d5598a885fae09f0356b84e1febe">Sequence::Alignment::validForPolyAnalysis</a></div><div class="ttdeci">bool validForPolyAnalysis(std::vector&lt; std::string &gt;::const_iterator beg, std::vector&lt; std::string &gt;::const_iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00063">Specializations.cc:63</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a5c97799d32bb988ebcb44500c4d91351"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a5c97799d32bb988ebcb44500c4d91351">Sequence::Alignment::RemoveTerminalGaps</a></div><div class="ttdeci">void RemoveTerminalGaps(std::vector&lt; std::string &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00159">Specializations.cc:159</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a5475c61d9f574929d1903a240428dccc"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a5475c61d9f574929d1903a240428dccc">Sequence::Alignment::TrimComplement</a></div><div class="ttdeci">std::vector&lt; std::string &gt; TrimComplement(const std::vector&lt; std::string &gt; &amp;data, const std::vector&lt; int &gt; &amp;sites)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00276">Specializations.cc:276</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_ae165140264657646d644e1ba8ba5318b"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ae165140264657646d644e1ba8ba5318b">Sequence::Alignment::UnGappedLength</a></div><div class="ttdeci">unsigned UnGappedLength(const std::vector&lt; std::string &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00100">Specializations.cc:100</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a369589b5966a6ded569e4e5072a5740d"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a369589b5966a6ded569e4e5072a5740d">Sequence::Alignment::TrimComplement</a></div><div class="ttdeci">std::vector&lt; T &gt; TrimComplement(const std::vector&lt; T &gt; &amp;data, const std::vector&lt; int &gt; &amp;sites)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00456">Alignment.tcc:456</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a5ab64478af8efead7e80ada3722d0342"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">Sequence::Alignment::IsAlignment</a></div><div class="ttdeci">bool IsAlignment(const std::vector&lt; T &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00168">Alignment.tcc:168</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a6a7aa923f4997b5c65061a5aba39a665"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a6a7aa923f4997b5c65061a5aba39a665">Sequence::Alignment::RemoveFixedOutgroupInsertions</a></div><div class="ttdeci">void RemoveFixedOutgroupInsertions(std::vector&lt; T &gt; &amp;data, unsigned site, const unsigned &amp;ref)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00363">Alignment.tcc:363</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a33d5a07667bc2645600f8b7ca2882d3a"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a33d5a07667bc2645600f8b7ca2882d3a">Sequence::Alignment::Gapped</a></div><div class="ttdeci">bool Gapped(const std::vector&lt; T &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00148">Alignment.tcc:148</a></div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a065fe1cd11fa9b34a65d10a43ef7e6a5"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a065fe1cd11fa9b34a65d10a43ef7e6a5">Sequence::Alignment::ReadNObjects</a></div><div class="ttdeci">std::istream &amp; ReadNObjects(std::vector&lt; T &gt; &amp;seqarray, const unsigned &amp;n, std::istream &amp;input_stream)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00119">Alignment.tcc:119</a></div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a27f1d75d0ac948dab690542f574b792e"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a27f1d75d0ac948dab690542f574b792e">Sequence::Alignment::GetData</a></div><div class="ttdeci">void GetData(std::vector&lt; T &gt; &amp;seqarray, const char *infilename)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00045">Alignment.tcc:45</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a8708fff82c60479f67ef4a53743ab097"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a8708fff82c60479f67ef4a53743ab097">Sequence::Alignment::IsAlignment</a></div><div class="ttdeci">bool IsAlignment(const std::vector&lt; std::string &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00050">Specializations.cc:50</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a873d7abdf6bf1a915b20f48c29cc60ce"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a873d7abdf6bf1a915b20f48c29cc60ce">Sequence::Alignment::RemoveTerminalGaps</a></div><div class="ttdeci">void RemoveTerminalGaps(std::vector&lt; T &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00298">Alignment.tcc:298</a></div></div>
 <div class="ttc" id="Alignment_8hpp_html"><div class="ttname"><a href="Alignment_8hpp.html">Alignment.hpp</a></div><div class="ttdoc">Declaration of namespace Sequence::Alignment. </div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a4084883c9810848f2e7e5ae549eb3c8e"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a4084883c9810848f2e7e5ae549eb3c8e">Sequence::Alignment::Gapped</a></div><div class="ttdeci">bool Gapped(const std::vector&lt; std::string &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00035">Specializations.cc:35</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a717e6e1ed2a525b262cd4b6711b27d84"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a717e6e1ed2a525b262cd4b6711b27d84">Sequence::Alignment::RemoveGaps</a></div><div class="ttdeci">void RemoveGaps(std::vector&lt; std::string &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00128">Specializations.cc:128</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_a38d801124a67a766558bd1b1ff913056"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a38d801124a67a766558bd1b1ff913056">Sequence::Alignment::Trim</a></div><div class="ttdeci">std::vector&lt; std::string &gt; Trim(const std::vector&lt; std::string &gt; &amp;data, const std::vector&lt; int &gt; &amp;sites)</div><div class="ttdef"><b>Definition:</b> <a href="Specializations_8cc_source.html#l00241">Specializations.cc:241</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ac427687431515f70256efb59893388ce"><div class="ttname"><a href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a></div><div class="ttdeci">const unsigned SEQMAXUNSIGNED</div><div class="ttdef"><b>Definition:</b> <a href="SeqConstants_8cc_source.html#l00032">SeqConstants.cc:32</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a6c6226427b76211aea24a1616334d57b"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a6c6226427b76211aea24a1616334d57b">Sequence::Alignment::Trim</a></div><div class="ttdeci">std::vector&lt; T &gt; Trim(const std::vector&lt; T &gt; &amp;data, const std::vector&lt; int &gt; &amp;sites)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00401">Alignment.tcc:401</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a56398c1a8445799d20968dc59d198496"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a56398c1a8445799d20968dc59d198496">Sequence::Alignment::UnGappedLength</a></div><div class="ttdeci">unsigned UnGappedLength(const std::vector&lt; T &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00221">Alignment.tcc:221</a></div></div>
 <div class="ttc" id="classSequence_1_1SeqException_html"><div class="ttname"><a href="classSequence_1_1SeqException.html">Sequence::SeqException</a></div><div class="ttdoc">Base class for exceptions that may be thrown. </div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00052">SeqExceptions.hpp:52</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a735e740b8c8fd1d4925404ca6b812da4"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a735e740b8c8fd1d4925404ca6b812da4">Sequence::Alignment::RemoveGaps</a></div><div class="ttdeci">void RemoveGaps(std::vector&lt; T &gt; &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00255">Alignment.tcc:255</a></div></div>
 <div class="ttc" id="SeqConstants_8hpp_html"><div class="ttname"><a href="SeqConstants_8hpp.html">SeqConstants.hpp</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_ae60cbc30ba0c28af28b3eda2a162e823"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ae60cbc30ba0c28af28b3eda2a162e823">Sequence::Alignment::validForPolyAnalysis</a></div><div class="ttdeci">bool validForPolyAnalysis(Iterator beg, Iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="Alignment_8tcc_source.html#l00190">Alignment.tcc:190</a></div></div>
 <div class="ttc" id="SeqProperties_8hpp_html"><div class="ttname"><a href="SeqProperties_8hpp.html">SeqProperties.hpp</a></div><div class="ttdoc">Function objects to ask simple questions about sequence composition. Declares Sequence::ambiguousNucl...</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -521,7 +523,7 @@ $(document).ready(function(){initNavTree('Alignment_8tcc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><a class="el" href="Alignment_8tcc.html">Alignment.tcc</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

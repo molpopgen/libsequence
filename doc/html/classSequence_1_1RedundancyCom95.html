@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1RedundancyCom95.html'
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3d8fa9e2059e3b5dc82de77ccb55a48d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1RedundancyCom95.html#a3d8fa9e2059e3b5dc82de77ccb55a48d">RedundancyCom95</a> (const Sequence::GeneticCodes &amp;genetic_code=Sequence::UNIVERSAL)</td></tr>
+<tr class="memitem:a3d8fa9e2059e3b5dc82de77ccb55a48d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1RedundancyCom95.html#a3d8fa9e2059e3b5dc82de77ccb55a48d">RedundancyCom95</a> (const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;genetic_code=Sequence::UNIVERSAL)</td></tr>
 <tr class="separator:a3d8fa9e2059e3b5dc82de77ccb55a48d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a261206f2247d8600e503d39b37ca808c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1RedundancyCom95.html#a261206f2247d8600e503d39b37ca808c">FirstNon</a> (const std::string &amp;codon) const </td></tr>
 <tr class="separator:a261206f2247d8600e503d39b37ca808c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,7 +111,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Calculate redundancy of a genetic code using Comeron's counting scheme. </p>
-<p>This class performs "on-the-fly" tabulations of the redundancy of a genetic code, in terms of whether or not a transition or transversion at any site in the codon changes the amino acid encoded by that codon. It supports whatever codes libsequence supports, because it uses Sequence::Translate to determine whether a mutation at a certain position in a codon will encode the same amino acid or not.<br/>
+<p>This class performs "on-the-fly" tabulations of the redundancy of a genetic code, in terms of whether or not a transition or transversion at any site in the codon changes the amino acid encoded by that codon. It supports whatever codes libsequence supports, because it uses <a class="el" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Sequence::Translate</a> to determine whether a mutation at a certain position in a codon will encode the same amino acid or not.<br/>
 <br/>
 This should be considered a "buried" class, in the sense that it is, properly speaking, an implementation detail specific to <a class="el" href="classSequence_1_1Comeron95.html" title="Ka and Ks by Comeron&#39;s (1995) method. ">Sequence::Comeron95</a>. Another possible use for this class (which I will implement), is for analysis of silent/replacement polymorphism in population-genetic data.</p>
 <dl class="section note"><dt>Note</dt><dd>any variable of type std::string that is named codon implicity assumes codon.length()==3 </dd></dl>
@@ -128,7 +128,7 @@ This should be considered a "buried" class, in the sense that it is, properly sp
         <tr>
           <td class="memname">Sequence::RedundancyCom95::RedundancyCom95 </td>
           <td>(</td>
-          <td class="paramtype">const Sequence::GeneticCodes &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;&#160;</td>
           <td class="paramname"><em>genetic_code</em> = <code>Sequence::UNIVERSAL</code></td><td>)</td>
           <td></td>
         </tr>
@@ -141,7 +141,7 @@ This should be considered a "buried" class, in the sense that it is, properly sp
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">code</td><td>see Sequence::GeneticCodes </td></tr>
+    <tr><td class="paramname">code</td><td>see <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -450,8 +450,8 @@ This should be considered a "buried" class, in the sense that it is, properly sp
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:09 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

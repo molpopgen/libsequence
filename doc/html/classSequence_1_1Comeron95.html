@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -84,7 +84,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1Comeron95.html','');}
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8ee9c5b4c44c6dceccc2815b46942395"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Comeron95.html#a8ee9c5b4c44c6dceccc2815b46942395">Comeron95</a> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqa, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqb, int max=3, const <a class="el" href="classSequence_1_1RedundancyCom95.html">Sequence::RedundancyCom95</a> *genetic_code_redundancy=NULL, GeneticCodes code=UNIVERSAL, <a class="el" href="classSequence_1_1WeightingScheme2.html">WeightingScheme2</a> *weights2=NULL, <a class="el" href="classSequence_1_1WeightingScheme3.html">WeightingScheme3</a> *weights3=NULL)</td></tr>
+<tr class="memitem:a8ee9c5b4c44c6dceccc2815b46942395"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Comeron95.html#a8ee9c5b4c44c6dceccc2815b46942395">Comeron95</a> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqa, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqb, int max=3, const <a class="el" href="classSequence_1_1RedundancyCom95.html">Sequence::RedundancyCom95</a> *genetic_code_redundancy=NULL, <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a> code=UNIVERSAL, <a class="el" href="classSequence_1_1WeightingScheme2.html">WeightingScheme2</a> *weights2=NULL, <a class="el" href="classSequence_1_1WeightingScheme3.html">WeightingScheme3</a> *weights3=NULL)</td></tr>
 <tr class="separator:a8ee9c5b4c44c6dceccc2815b46942395"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab203d470e3cc76d35bd0e169a177ee76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab203d470e3cc76d35bd0e169a177ee76"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Comeron95</b> (const <a class="el" href="classSequence_1_1Comeron95.html">Comeron95</a> &amp;)=delete</td></tr>
@@ -144,7 +144,7 @@ Public Member Functions</h2></td></tr>
 <br/>
 The calculation can be done on any objects of type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> *, or anything derived from there.<br/>
 <br/>
-You should be warned that this class depends heavily on namespace Sequence (the libsequence library), and may throw any and all exceptions defined in that library, so you should see the documentation for that library. </p>
+You should be warned that this class depends heavily on namespace <a class="el" href="namespaceSequence.html" title="The namespace in which this library resides. ">Sequence</a> (the libsequence library), and may throw any and all exceptions defined in that library, so you should see the documentation for that library. </p>
 <dl class="section note"><dt>Note</dt><dd>This class allows weighting of pathways where codons differ at more than 1 site to be done using any arbitrary weighting scheme. To do so, however, requires deriving classes from <a class="el" href="classSequence_1_1WeightingScheme2.html" title="abstract interface to weighting schemes when codons differ at 2 positions ">Sequence::WeightingScheme2</a> and <a class="el" href="classSequence_1_1WeightingScheme2.html" title="abstract interface to weighting schemes when codons differ at 2 positions ">Sequence::WeightingScheme2</a>. See the code for <a class="el" href="classSequence_1_1GranthamWeights2.html" title="Weights paths by Grantham&#39;s distances for codons differing at 2 sites. ">Sequence::GranthamWeights2</a> and <a class="el" href="classSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. ">Sequence::GranthamWeights3</a> for an example of how to do this (in the files <a class="el" href="GranthamWeights_8cc_source.html">GranthamWeights.cc</a> and <a class="el" href="GranthamWeights_8hpp.html" title="declaration of classes to weight codons by Grantham distance (i.e. for Sequence::Comeron95). Declares Sequence::GranthamWeights2 and Sequence::GranthamWeights3 ">GranthamWeights.hpp</a>). You will also need to study <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>/.hpp and <a class="el" href="ThreeSubs_8cc_source.html">ThreeSubs.cc</a>/.hpp to understand how branches and intermediate codons are labelled (because you need to do it correctly in your implementation of weighting schemes)<br/>
 </dd>
 <dd>
@@ -172,7 +172,7 @@ Example: a simple program to calculate Ka and Ks:<br/>
 <div class="line">  <a class="code" href="namespaceSequence_1_1Alignment.html#a27f1d75d0ac948dab690542f574b792e">Alignment::GetData</a>(data,filename);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">//abort() unless all sequence objects are the same length</span></div>
-<div class="line">  assert(<a class="code" href="namespaceSequence_1_1Alignment.html#a8708fff82c60479f67ef4a53743ab097">Alignment::IsAlignment</a>(data));</div>
+<div class="line">  assert(<a class="code" href="namespaceSequence_1_1Alignment.html#a5ab64478af8efead7e80ada3722d0342">Alignment::IsAlignment</a>(data));</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">//iterate over the data</span></div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i = 0 ; i &lt; data.size()-1 ; ++i)</div>
@@ -196,8 +196,7 @@ Example: a simple program to calculate Ka and Ks:<br/>
 <div class="line">  }</div>
 <div class="line">}</div>
 </div><!-- fragment --> </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="gestimator_8cc-example.html#_a5">gestimator.cc</a>.</dd>
-</dl>
+
 <p>Definition at line <a class="el" href="Comeron95_8hpp_source.html#l00125">125</a> of file <a class="el" href="Comeron95_8hpp_source.html">Comeron95.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8ee9c5b4c44c6dceccc2815b46942395"></a>
@@ -234,7 +233,7 @@ Example: a simple program to calculate Ka and Ks:<br/>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">GeneticCodes&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a>&#160;</td>
           <td class="paramname"><em>code</em> = <code>UNIVERSAL</code>, </td>
         </tr>
         <tr>
@@ -267,21 +266,20 @@ Example: a simple program to calculate Ka and Ks:<br/>
     <tr><td class="paramname">seqa</td><td>an object of type or derived from type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> </td></tr>
     <tr><td class="paramname">seqb</td><td>an object of type or derived from type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> </td></tr>
     <tr><td class="paramname">max</td><td>maximum number of substitutions per codon to allow in the analysis </td></tr>
-    <tr><td class="paramname">code</td><td>genetic code, see Sequence::GeneticCodes </td></tr>
+    <tr><td class="paramname">code</td><td>genetic code, see <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> </td></tr>
     <tr><td class="paramname">_weights2</td><td>a weighting scheme for codons differing at 2 positions. If <code>NULL</code>, <a class="el" href="classSequence_1_1GranthamWeights2.html" title="Weights paths by Grantham&#39;s distances for codons differing at 2 sites. ">Sequence::GranthamWeights2</a> is used </td></tr>
     <tr><td class="paramname">_weights3</td><td>a weighting scheme for codons differing at 3 positions. If <code>NULL</code>, <a class="el" href="classSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. ">Sequence::GranthamWeights3</a> is used </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section warning"><dt>Warning</dt><dd>Note that the pointers to weighting schemes are dumb pointers. This allows me to check for NULL and then assign a default. If you use your own classes, make sure they clean up after themselves if they throw exceptions!!! </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>use <code>auto_ptr</code> for the weighting schemes <dl class="exception"><dt>Exceptions</dt><dd>
+<dl class="section warning"><dt>Warning</dt><dd>Note that the pointers to weighting schemes are dumb pointers. This allows me to check for NULL and then assign a default. If you use your own classes, make sure they clean up after themselves if they throw exceptions!!!</dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
     <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if sequence lengths are not equal </td></tr>
     <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if sequence lengths are not multiples of 3 </td></tr>
   </table>
   </dd>
 </dl>
-</dd></dl>
 
 <p>Definition at line <a class="el" href="Comeron95_8cc_source.html#l00050">50</a> of file <a class="el" href="Comeron95_8cc_source.html">Comeron95.cc</a>.</p>
 
@@ -664,7 +662,7 @@ Example: a simple program to calculate Ka and Ks:<br/>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd><img class="formulaInl" alt="$K_a/K_s$" src="form_0.png"/> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><img class="formulaInl" alt="$K_a/K_s$" src="form_2.png"/> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>999.0 is returned if Ka/Ks cannot be calculated </dd></dl>
 
 <p>Definition at line <a class="el" href="Comeron95_8cc_source.html#l00445">445</a> of file <a class="el" href="Comeron95_8cc_source.html">Comeron95.cc</a>.</p>
@@ -680,8 +678,8 @@ Example: a simple program to calculate Ka and Ks:<br/>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1Comeron95.html">Comeron95</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Comeron95.html">Comeron95</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

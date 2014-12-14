@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -99,9 +99,9 @@ $(document).ready(function(){initNavTree('PolyTableManip_8cc_source.html','');})
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">   29</a></span>&#160;  polySiteVector <a class="code" href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">rotatePolyTable</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data)</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">   29</a></span>&#160;  <a class="code" href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">polySiteVector</a> <a class="code" href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">rotatePolyTable</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data)</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    polySiteVector L;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">polySiteVector</a> L;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0 ; i &lt; data-&gt;<a class="code" href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">numsites</a>() ; ++i)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      {</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::string s;</div>
@@ -109,25 +109,27 @@ $(document).ready(function(){initNavTree('PolyTableManip_8cc_source.html','');})
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;          {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            s += (*data)[j][i];</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;          }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        L.push_back( polymorphicSite(data-&gt;<a class="code" href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">position</a>(i), s) );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        L.push_back( <a class="code" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">polymorphicSite</a>(data-&gt;<a class="code" href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">position</a>(i), s) );</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      }</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> L;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1PolyTable_html"><div class="ttname"><a href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a></div><div class="ttdoc">The base class for polymorphism tables. </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00058">PolyTable.hpp:58</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00294">PolyTable.hpp:294</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00275">PolyTable.hpp:275</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00297">PolyTable.hpp:297</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00278">PolyTable.hpp:278</a></div></div>
 <div class="ttc" id="PolyTable_8hpp_html"><div class="ttname"><a href="PolyTable_8hpp.html">PolyTable.hpp</a></div><div class="ttdoc">Sequence::PolyTable, a virtual base class for polymorphism tables. </div></div>
 <div class="ttc" id="group__polytables_html_ga64b1a038a111743ffce8c2ab57621596"><div class="ttname"><a href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">Sequence::rotatePolyTable</a></div><div class="ttdeci">polySiteVector rotatePolyTable(const Sequence::PolyTable *data)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableManip_8cc_source.html#l00029">PolyTableManip.cc:29</a></div></div>
 <div class="ttc" id="PolyTableManip_8hpp_html"><div class="ttname"><a href="PolyTableManip_8hpp.html">PolyTableManip.hpp</a></div><div class="ttdoc">Declaration of Sequence::rotatePolyTable. </div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_addb66d0f32a7b5e606b2081aeccc42fa"><div class="ttname"><a href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">Sequence::PolyTable::position</a></div><div class="ttdeci">double position(const std::vector&lt; double &gt;::size_type &amp;i) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00284">PolyTable.hpp:284</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a32ee74454170cd8bfd22d7515405149c"><div class="ttname"><a href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">Sequence::polySiteVector</a></div><div class="ttdeci">std::vector&lt; polymorphicSite &gt; polySiteVector</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00056">typedefs.hpp:56</a></div></div>
+<div class="ttc" id="namespaceSequence_html_afaaf89009878664a009249c537dc802a"><div class="ttname"><a href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00050">typedefs.hpp:50</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_addb66d0f32a7b5e606b2081aeccc42fa"><div class="ttname"><a href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">Sequence::PolyTable::position</a></div><div class="ttdeci">double position(const std::vector&lt; double &gt;::size_type &amp;i) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00287">PolyTable.hpp:287</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>PolyTableManip.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

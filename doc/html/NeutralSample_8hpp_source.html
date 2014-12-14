@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('NeutralSample_8hpp_source.html','');})
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> ( trec &lt; tcoal ) <span class="comment">//crossover event</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;          {</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            t+=trec;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            std::pair&lt;int,int&gt; pos_rec = pick_uniform_spot(uni01(),</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            std::pair&lt;int,int&gt; pos_rec = <a class="code" href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">pick_uniform_spot</a>(uni01(),</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                           nlinks,</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                           sample-&gt;begin(),NSAM);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            assert( pos_rec.second &gt;= 0 );</div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('NeutralSample_8hpp_source.html','');})
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            assert( pos_rec.second &lt;= ((sample-&gt;begin()+pos_rec.first)-&gt;last() ) ); </div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                                       </div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            assert( (sample-&gt;begin()+pos_rec.first)-&gt;links()&gt;0 );</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            nlinks -= crossover(NSAM,pos_rec.first,pos_rec.second,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            nlinks -= <a class="code" href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">crossover</a>(NSAM,pos_rec.first,pos_rec.second,</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                sample,sample_history);</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            NSAM++;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;          }</div>
@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('NeutralSample_8hpp_source.html','');})
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;          {</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            t+=tcoal;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            std::pair&lt;int,int&gt; two = <a class="code" href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">pick2</a>(uni,NSAM);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            NSAM -= coalesce(t,nsam,NSAM,two.first,two.second,nsites,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            NSAM -= <a class="code" href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">coalesce</a>(t,nsam,NSAM,two.first,two.second,nsites,</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                             &amp;nlinks,sample,sample_history);</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;          }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (<span class="keywordtype">unsigned</span>(NSAM) &lt; sample-&gt;size()/5)</div>
@@ -164,17 +164,20 @@ $(document).ready(function(){initNavTree('NeutralSample_8hpp_source.html','');})
 <div class="ttc" id="group__coalescent_html_ga1da6ee3005af95c7da8538bbf31c3298"><div class="ttname"><a href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">Sequence::pick2</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick2(uniform_generator &amp;uni, const int &amp;nsam)</div><div class="ttdef"><b>Definition:</b> <a href="Coalesce_8tcc_source.html#l00090">Coalesce.tcc:90</a></div></div>
 <div class="ttc" id="group__coalescent_html_gacd252657f1fdb3fe7d73fe23c468fd05"><div class="ttname"><a href="group__coalescent.html#gacd252657f1fdb3fe7d73fe23c468fd05">Sequence::neutral_sample</a></div><div class="ttdeci">Sequence::SimData neutral_sample(uniform_generator &amp;uni, uniform01_generator &amp;uni01, exponential_generator &amp;expo, poisson_generator &amp;poiss, const double &amp;theta, const double &amp;rho, const int &amp;nsites, const int &amp;nsam, std::vector&lt; chromosome &gt; *sample, arg *sample_history, unsigned *max_chromosomes=NULL, const unsigned &amp;max_chromosomes_inc=0)</div><div class="ttdoc">A simple function to generate samples under a neutral equilibrium model. </div><div class="ttdef"><b>Definition:</b> <a href="NeutralSample_8hpp_source.html#l00016">NeutralSample.hpp:16</a></div></div>
 <div class="ttc" id="SimTypes_8hpp_html"><div class="ttname"><a href="SimTypes_8hpp.html">SimTypes.hpp</a></div><div class="ttdoc">declaration of types for coalescent simulation </div></div>
+<div class="ttc" id="group__coalescent_html_gad689617c904bc44ec5fade5940273396"><div class="ttname"><a href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">Sequence::coalesce</a></div><div class="ttdeci">int coalesce(const double &amp;time, const int &amp;ttl_nsam, const int &amp;current_nsam, const int &amp;c1, const int &amp;c2, const int &amp;nsites, int *nlinks, std::vector&lt; chromosome &gt; *sample, arg *sample_history)</div><div class="ttdoc">Common ancestor routine for coalescent simulation. Merges chromosome segments and updates marginal tr...</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentCoalesce_8cc_source.html#l00053">CoalescentCoalesce.cc:53</a></div></div>
 <div class="ttc" id="SimData_8hpp_html"><div class="ttname"><a href="SimData_8hpp.html">SimData.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimData, a class representing polymorphism data from coalescent simulations ...</div></div>
+<div class="ttc" id="group__coalescent_html_ga3697a3a402b2395fafc6dc2548721a1c"><div class="ttname"><a href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">Sequence::pick_uniform_spot</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick_uniform_spot(const double &amp;random_01, const int &amp;nlinks, std::vector&lt; chromosome &gt;::const_iterator sample_begin, const unsigned &amp;current_nsam)</div><div class="ttdoc">Pick a crossover point for the model where recombination rates are constant across a recion...</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00051">CoalescentRecombination.cc:51</a></div></div>
+<div class="ttc" id="group__coalescent_html_gafe0abcf7a1656a19ad282f44822d7b73"><div class="ttname"><a href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">Sequence::crossover</a></div><div class="ttdeci">int crossover(const int &amp;current_nsam, const int &amp;chromo, const int &amp;pos, std::vector&lt; chromosome &gt; *sample, arg *sample_history)</div><div class="ttdoc">Recombination function. </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00083">CoalescentRecombination.cc:83</a></div></div>
 <div class="ttc" id="classSequence_1_1SimData_html"><div class="ttname"><a href="classSequence_1_1SimData.html">Sequence::SimData</a></div><div class="ttdoc">Data from coalescent simulations. </div><div class="ttdef"><b>Definition:</b> <a href="SimData_8hpp_source.html#l00069">SimData.hpp:69</a></div></div>
 <div class="ttc" id="group__coalescent_html_ga1116020585e7246433b28c69b0623a20"><div class="ttname"><a href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a></div><div class="ttdeci">std::list&lt; marginal &gt; arg</div><div class="ttdoc">Ancestral Recombination Graph. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00216">SimTypes.hpp:216</a></div></div>
-<div class="ttc" id="group__coalescent_html_ga65bfd963d90840b88f3b9c81e0598a59"><div class="ttname"><a href="group__coalescent.html#ga65bfd963d90840b88f3b9c81e0598a59">Sequence::infinite_sites_sim_data</a></div><div class="ttdeci">SimData infinite_sites_sim_data(poisson_generator &amp;poiss, uniform_generator &amp;uni, const int &amp;nsites, const arg &amp;history, const double &amp;theta)</div><div class="ttdoc">Apply the infinitely-many sites mutation model to an ancetral recombination graph. </div><div class="ttdef"><b>Definition:</b> <a href="Mutation_8tcc_source.html#l00399">Mutation.tcc:399</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga65bfd963d90840b88f3b9c81e0598a59"><div class="ttname"><a href="group__coalescent.html#ga65bfd963d90840b88f3b9c81e0598a59">Sequence::infinite_sites_sim_data</a></div><div class="ttdeci">SimData infinite_sites_sim_data(poisson_generator &amp;poiss, uniform_generator &amp;uni, const int &amp;nsites, const arg &amp;history, const double &amp;theta)</div><div class="ttdoc">Apply the infinitely-many sites mutation model to an ancetral recombination graph. </div><div class="ttdef"><b>Definition:</b> <a href="Mutation_8tcc_source.html#l00400">Mutation.tcc:400</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><b>NeutralSample.hpp</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

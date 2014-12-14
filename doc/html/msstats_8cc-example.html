@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -100,23 +100,22 @@ $(document).ready(function(){initNavTree('msstats_8cc-example.html','');});
 <div class="line">{</div>
 <div class="line">  <a name="_a0"></a><a class="code" href="classSequence_1_1SimParams.html">SimParams</a> p;</div>
 <div class="line">  cin &gt;&gt; p;</div>
-<div class="line">  <a name="_a1"></a><a class="code" href="classSequence_1_1SimData.html">SimData</a> d(p.totsam());</div>
-<div class="line"></div>
+<div class="line">  <a name="_a1"></a><a class="code" href="classSequence_1_1SimData.html">SimData</a> d;</div>
 <div class="line">  std::ios_base::sync_with_stdio(<span class="keyword">true</span>);</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordtype">int</span> rv;</div>
-<div class="line">  <span class="keywordflow">while</span>( (rv = d.fromfile(stdin)) != EOF )</div>
+<div class="line">  <span class="keywordflow">while</span>( (rv = d.<a name="a2"></a><a class="code" href="classSequence_1_1SimData.html#a0ebdf4db2d2eda6273c75ddca5aa4d64">fromfile</a>(stdin)) != EOF )</div>
 <div class="line">    {</div>
-<div class="line">      <a name="_a2"></a><a class="code" href="classSequence_1_1PolySIM.html">PolySIM</a> P(&amp;d);</div>
-<div class="line">      cout &lt;&lt;P.<a name="a3"></a>NumPoly()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
-<div class="line">           &lt;&lt; P.<a name="a4"></a>ThetaW()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
-<div class="line">           &lt;&lt; P.<a name="a5"></a>ThetaPi() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">           &lt;&lt; P.<a name="a6"></a>ThetaH()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
-<div class="line">           &lt;&lt; P.<a name="a7"></a>TajimasD() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">           &lt;&lt; P.<a name="a8"></a>FuLiD() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">           &lt;&lt; P.<a name="a9"></a>FuLiF() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">           &lt;&lt; P.<a name="a10"></a>FuLiDStar() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">           &lt;&lt; P.<a name="a11"></a>FuLiFStar() &lt;&lt; endl;</div>
+<div class="line">      <a name="_a3"></a><a class="code" href="classSequence_1_1PolySIM.html">PolySIM</a> P(&amp;d);</div>
+<div class="line">      cout &lt;&lt;P.<a name="a4"></a><a class="code" href="classSequence_1_1PolySNP.html#a582904af09c17b0644b1baa3bc3366d5">NumPoly</a>()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
+<div class="line">           &lt;&lt; P.<a name="a5"></a><a class="code" href="classSequence_1_1PolySIM.html#a593e8e6121bcf8477a2319b5f47a27c1">ThetaW</a>()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
+<div class="line">           &lt;&lt; P.<a name="a6"></a><a class="code" href="classSequence_1_1PolySIM.html#aab65a802f26b230fa9d0bfd58070fe7c">ThetaPi</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">           &lt;&lt; P.<a name="a7"></a><a class="code" href="classSequence_1_1PolySIM.html#a0aa19c3cdfddc2bc5b04142b85ab2499">ThetaH</a>()  &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> </div>
+<div class="line">           &lt;&lt; P.<a name="a8"></a><a class="code" href="classSequence_1_1PolySIM.html#a9b1af310ffc68287837f2c5ef039ee9b">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">           &lt;&lt; P.<a name="a9"></a><a class="code" href="classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b">FuLiD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">           &lt;&lt; P.<a name="a10"></a><a class="code" href="classSequence_1_1PolySIM.html#a2aaaaf19c345bab6cdb9e8b3ed048f04">FuLiF</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">           &lt;&lt; P.<a name="a11"></a><a class="code" href="classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101">FuLiDStar</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">           &lt;&lt; P.<a name="a12"></a><a class="code" href="classSequence_1_1PolySIM.html#ad9db7aeb8cfb4ff579bb87b0dd73fd5c">FuLiFStar</a>() &lt;&lt; endl;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -124,7 +123,7 @@ $(document).ready(function(){initNavTree('msstats_8cc-example.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

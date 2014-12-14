@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -77,19 +77,19 @@ $(document).ready(function(){initNavTree('Coalescent_2Recombination_8hpp_source.
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SimTypes_8hpp.html">Sequence/Coalescent/SimTypes.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordtype">int</span> crossover( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; current_nsam,</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">crossover</a>( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; current_nsam,</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                 <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; chromo,</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                 <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; pos,</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                 std::vector&lt;chromosome&gt; * sample,</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                 <a class="code" href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">arg</a> * sample_history);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  std::pair&lt;int,int&gt; pick_uniform_spot(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; random_01,</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  std::pair&lt;int,int&gt; <a class="code" href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">pick_uniform_spot</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; random_01,</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; nlinks,</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                                       std::vector&lt;chromosome&gt;::const_iterator sample_begin,</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; current_nsam);</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> uniform01_generator&gt;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  std::pair&lt;int,int&gt; <a class="code" href="group__coalescent.html#gab0f690d4ac297fc6bd9583b735254547">pick_spot</a>( uniform01_generator &amp; uni01,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  std::pair&lt;int,int&gt; <a class="code" href="group__coalescent.html#gadba4c228558e6c0c4b0b89cea7315c4d">pick_spot</a>( uniform01_generator &amp; uni01,</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                                <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; total_reclen,</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                                <span class="keyword">const</span> std::vector&lt;double&gt; &amp; reclens,</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                                std::vector&lt;chromosome&gt;::const_iterator sample_begin,</div>
@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('Coalescent_2Recombination_8hpp_source.
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                                <span class="keyword">const</span> <span class="keywordtype">double</span> * rec_map);</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> uniform01_generator&gt;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  std::pair&lt;int,int&gt; <a class="code" href="group__coalescent.html#gab0f690d4ac297fc6bd9583b735254547">pick_spot</a>( <span class="keyword">const</span> uniform01_generator &amp; uni01,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  std::pair&lt;int,int&gt; <a class="code" href="group__coalescent.html#gadba4c228558e6c0c4b0b89cea7315c4d">pick_spot</a>( <span class="keyword">const</span> uniform01_generator &amp; uni01,</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                                <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; total_reclen,</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                <span class="keyword">const</span> std::vector&lt;double&gt; &amp; reclens,</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                std::vector&lt;chromosome&gt;::const_iterator sample_begin,</div>
@@ -107,15 +107,17 @@ $(document).ready(function(){initNavTree('Coalescent_2Recombination_8hpp_source.
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;Sequence/Coalescent/bits/Recombination.tcc&gt;</span></div>
 <div class="ttc" id="SimTypes_8hpp_html"><div class="ttname"><a href="SimTypes_8hpp.html">SimTypes.hpp</a></div><div class="ttdoc">declaration of types for coalescent simulation </div></div>
-<div class="ttc" id="group__coalescent_html_gab0f690d4ac297fc6bd9583b735254547"><div class="ttname"><a href="group__coalescent.html#gab0f690d4ac297fc6bd9583b735254547">Sequence::pick_spot</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick_spot(const uniform01_generator &amp;uni01, const double &amp;total_reclen, const std::vector&lt; double &gt; &amp;reclens, std::vector&lt; chromosome &gt;::const_iterator sample_begin, const unsigned &amp;current_nsam, const double *rec_map)</div><div class="ttdef"><b>Definition:</b> <a href="Recombination_8tcc_source.html#l00084">Recombination.tcc:84</a></div></div>
+<div class="ttc" id="group__coalescent_html_ga3697a3a402b2395fafc6dc2548721a1c"><div class="ttname"><a href="group__coalescent.html#ga3697a3a402b2395fafc6dc2548721a1c">Sequence::pick_uniform_spot</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick_uniform_spot(const double &amp;random_01, const int &amp;nlinks, std::vector&lt; chromosome &gt;::const_iterator sample_begin, const unsigned &amp;current_nsam)</div><div class="ttdoc">Pick a crossover point for the model where recombination rates are constant across a recion...</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00051">CoalescentRecombination.cc:51</a></div></div>
+<div class="ttc" id="group__coalescent_html_gafe0abcf7a1656a19ad282f44822d7b73"><div class="ttname"><a href="group__coalescent.html#gafe0abcf7a1656a19ad282f44822d7b73">Sequence::crossover</a></div><div class="ttdeci">int crossover(const int &amp;current_nsam, const int &amp;chromo, const int &amp;pos, std::vector&lt; chromosome &gt; *sample, arg *sample_history)</div><div class="ttdoc">Recombination function. </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentRecombination_8cc_source.html#l00083">CoalescentRecombination.cc:83</a></div></div>
 <div class="ttc" id="group__coalescent_html_ga1116020585e7246433b28c69b0623a20"><div class="ttname"><a href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a></div><div class="ttdeci">std::list&lt; marginal &gt; arg</div><div class="ttdoc">Ancestral Recombination Graph. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00216">SimTypes.hpp:216</a></div></div>
+<div class="ttc" id="group__coalescent_html_gadba4c228558e6c0c4b0b89cea7315c4d"><div class="ttname"><a href="group__coalescent.html#gadba4c228558e6c0c4b0b89cea7315c4d">Sequence::pick_spot</a></div><div class="ttdeci">std::pair&lt; int, int &gt; pick_spot(uniform01_generator &amp;uni01, const double &amp;total_reclen, const std::vector&lt; double &gt; &amp;reclens, std::vector&lt; chromosome &gt;::const_iterator sample_begin, const unsigned &amp;current_nsam, const double *rec_map)</div><div class="ttdef"><b>Definition:</b> <a href="Recombination_8tcc_source.html#l00054">Recombination.tcc:54</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><b>Recombination.hpp</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

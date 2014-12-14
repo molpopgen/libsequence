@@ -1,5 +1,6 @@
 var examples =
 [
+    [ "baseComp.cc", "baseComp_8cc-example.html", null ],
     [ "bottleneck.cc", "bottleneck_8cc-example.html", null ],
     [ "codons.cc", "codons_8cc-example.html", null ],
     [ "correlations.cc", "correlations_8cc-example.html", null ],

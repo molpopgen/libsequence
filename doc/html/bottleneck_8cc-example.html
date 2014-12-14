@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -65,7 +65,7 @@ $(document).ready(function(){initNavTree('bottleneck_8cc-example.html','');});
 <div class="title">bottleneck.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>Example of using the Sequence::bottleneck template function</p>
+<p>Example of using the <a class="el" href="group__coalescent.html#ga3912c6722638e2f67d61caa4be52bcec" title="Coalescent simulation of a population bottleneck Simulate a single, bottlenecked, population accordin...">Sequence::bottleneck</a> template function</p>
 <div class="fragment"><div class="line"></div>
 <div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment">  Simulates 10000 samples from a bottleneck model where</span></div>
@@ -90,6 +90,7 @@ $(document).ready(function(){initNavTree('bottleneck_8cc-example.html','');});
 <div class="line"><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cstdlib&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;random&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
 <div class="line">{</div>
@@ -97,22 +98,22 @@ $(document).ready(function(){initNavTree('bottleneck_8cc-example.html','');});
 <div class="line">  std::mt19937 generator(seed);</div>
 <div class="line"></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">unsigned</span> n = 10;</div>
-<div class="line">  std::vector&lt;Sequence::chromosome&gt; sample = Sequence::init_sample(std::vector&lt;int&gt;(1,n),1000);</div>
-<div class="line">  <a name="_a0"></a><a class="code" href="structSequence_1_1marginal.html">Sequence::marginal</a> imarg = Sequence::init_marginal(n);</div>
+<div class="line">  std::vector&lt;Sequence::chromosome&gt; sample = <a name="a0"></a><a class="code" href="group__coalescent.html#gaef587d0dd2c9f5fc9725cea9c166f73a">Sequence::init_sample</a>(std::vector&lt;int&gt;(1,n),1000);</div>
+<div class="line">  <a name="_a1"></a><a class="code" href="structSequence_1_1marginal.html">Sequence::marginal</a> imarg = <a name="a2"></a><a class="code" href="group__coalescent.html#ga6e3a9fa77284d9751ba6fb025c4d218f">Sequence::init_marginal</a>(n);</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i=0;i&lt;10000;++i)</div>
 <div class="line">    {</div>
 <div class="line">      <span class="comment">//simulate the ancestral recombination graph for the sample</span></div>
-<div class="line">      <a class="code" href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a> hist = <a name="a1"></a><a class="code" href="group__coalescent.html#ga3912c6722638e2f67d61caa4be52bcec">Sequence::bottleneck</a>([&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> a, <span class="keyword">const</span> <span class="keywordtype">double</span> b){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(a,b)(generator); },</div>
+<div class="line">      <a class="code" href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a> hist = <a name="a3"></a><a class="code" href="group__coalescent.html#ga3912c6722638e2f67d61caa4be52bcec">Sequence::bottleneck</a>([&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> a, <span class="keyword">const</span> <span class="keywordtype">double</span> b){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(a,b)(generator); },</div>
 <div class="line">                                                [&amp;generator](){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(0.,1.)(generator); },</div>
-<div class="line">                                                [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span>  <a name="a2"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::exponential_distribution&lt;double&gt;(1./<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); },</div>
+<div class="line">                                                [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span>  <a name="a4"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::exponential_distribution&lt;double&gt;(1./<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); },</div>
 <div class="line">                                                sample,imarg,0.1,0.2,0.2,10.,<span class="keyword">true</span>,1.);</div>
 <div class="line">      <span class="comment">//Apply mutations according to the infinitely-many sites scheme</span></div>
-<div class="line">      <a name="_a3"></a><a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> d = <a name="a4"></a><a class="code" href="group__coalescent.html#ga65bfd963d90840b88f3b9c81e0598a59">Sequence::infinite_sites_sim_data</a>([&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span>  <a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::poisson_distribution&lt;int&gt;(<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); },</div>
+<div class="line">      <a name="_a5"></a><a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> d = <a name="a6"></a><a class="code" href="group__coalescent.html#ga65bfd963d90840b88f3b9c81e0598a59">Sequence::infinite_sites_sim_data</a>([&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span>  <a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::poisson_distribution&lt;int&gt;(<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); },</div>
 <div class="line">                                                              [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span>  a, <span class="keyword">const</span> <span class="keywordtype">double</span>  b){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(a,b)(generator); },</div>
 <div class="line">                                                              1000,hist,10.);</div>
-<div class="line">      <a name="_a5"></a><a class="code" href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a> ad(&amp;d);</div>
-<div class="line">      std::cout &lt;&lt; d.<a name="a6"></a><a class="code" href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">numsites</a>() &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; ad.<a name="a7"></a>ThetaPi() &lt;&lt; <span class="charliteral">&#39; &#39;</span></div>
-<div class="line">                &lt;&lt; ad.<a name="a8"></a>TajimasD() &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; ad.<a name="a9"></a>DandVH() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line">      <a name="_a7"></a><a class="code" href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a> ad(&amp;d);</div>
+<div class="line">      std::cout &lt;&lt; d.<a name="a8"></a><a class="code" href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">numsites</a>() &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; ad.<a name="a9"></a><a class="code" href="classSequence_1_1PolySIM.html#aab65a802f26b230fa9d0bfd58070fe7c">ThetaPi</a>() &lt;&lt; <span class="charliteral">&#39; &#39;</span></div>
+<div class="line">                &lt;&lt; ad.<a name="a10"></a><a class="code" href="classSequence_1_1PolySIM.html#a9b1af310ffc68287837f2c5ef039ee9b">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; ad.<a name="a11"></a><a class="code" href="classSequence_1_1PolySNP.html#a5cb1e8e0583eaf95f8baf5d4383e8cca">DandVH</a>() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
@@ -120,7 +121,7 @@ $(document).ready(function(){initNavTree('bottleneck_8cc-example.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

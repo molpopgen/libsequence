@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -74,7 +74,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1PolyTableSlice.html',
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classSequence_1_1PolyTableSlice-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Sequence::PolyTableSlice&lt; T &gt; Class Template Reference</div>  </div>
+<div class="title">Sequence::PolyTableSlice&lt; T &gt; Class Template Reference<div class="ingroups"><a class="el" href="group__popgenanalysis.html">Analysis of molecular population genetic data</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -95,7 +95,7 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
 <tr class="separator:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ecde38c00366942876cb376eea9caa1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a7ecde38c00366942876cb376eea9caa1">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size, const unsigned &amp;step_len, const double &amp;alignment_length, const double &amp;physical_scale=1.)</td></tr>
+<tr class="memitem:a7ecde38c00366942876cb376eea9caa1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a7ecde38c00366942876cb376eea9caa1">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a69dfc554c3b8ad2769c7547d4c7316d0">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size, const unsigned &amp;step_len, const double &amp;<a class="el" href="namespaceSequence.html#af9ef00b653826aace505b09f269f6e93">alignment_length</a>, const double &amp;physical_scale=1.)</td></tr>
 <tr class="separator:a7ecde38c00366942876cb376eea9caa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1d7b660161e33a556cff506d91fc4bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1d7b660161e33a556cff506d91fc4bc"></a>
 <a class="el" href="classSequence_1_1PolyTableSlice.html#ac1c8a2c2974f3f92b296a7e12d8d5528">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
@@ -146,7 +146,7 @@ natural population of Drosophila melanogaster." Genetics 153:1397-1399, which di
 <div class="line">SimData window = windows.get_slice(itr);</div>
 <div class="line"><span class="comment">//calculate and print Tajima&#39;s D for the window</span></div>
 <div class="line">PolySIM analyze(&amp;window); </div>
-<div class="line">std::cout &lt;&lt; analyze.TajimasD() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span>;</div>
+<div class="line">std::cout &lt;&lt; analyze.<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span>;</div>
 <div class="line">}</div>
 <div class="line">std::cout &lt;&lt; std::endl;</div>
 <div class="line">}</div>
@@ -386,8 +386,8 @@ template&lt;typename T &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:09 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

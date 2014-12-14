@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -118,10 +118,10 @@ $(document).ready(function(){initNavTree('CodonTable_8cc_source.html','');});
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> alphabet[alphsize] ={<span class="charliteral">&#39;A&#39;</span>,<span class="charliteral">&#39;C&#39;</span>,<span class="charliteral">&#39;G&#39;</span>,<span class="charliteral">&#39;T&#39;</span>};</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="comment">//Sequence::CodonUsageTable doWork(const std::string &amp;sequence)</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  Sequence::CodonUsageTable doWork( std::string::const_iterator beg,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">Sequence::CodonUsageTable</a> doWork( std::string::const_iterator beg,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                    std::string::const_iterator end )</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Sequence::CodonUsageTable UsageTable;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">Sequence::CodonUsageTable</a> UsageTable;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0 ; i &lt; alphsize ; ++i)</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0 ; j &lt; alphsize ; ++j)</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> k = 0 ; k &lt; alphsize ; ++k)</div>
@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('CodonTable_8cc_source.html','');});
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              {</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="comment">//Ask if positions beg to beg+3 differ from codon, but do </span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="comment">//not allow missing data to result in the answer to be false</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">if</span>( ! Sequence::Different( std::string(beg+pos,beg+pos+3),codon,<span class="keyword">false</span>) )</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">if</span>( ! <a class="code" href="namespaceSequence.html#ac45c04f3606f1ff0b7ba495c52339192">Sequence::Different</a>( std::string(beg+pos,beg+pos+3),codon,<span class="keyword">false</span>) )</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                  {</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    ++count;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                  }</div>
@@ -149,17 +149,17 @@ $(document).ready(function(){initNavTree('CodonTable_8cc_source.html','');});
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  CodonUsageTable makeCodonUsageTable(<span class="keyword">const</span> Seq* sequence)</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a58bae55ce26ada3c758d5480565da1f3">   81</a></span>&#160;  <a class="code" href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">CodonUsageTable</a> <a class="code" href="namespaceSequence.html#a58bae55ce26ada3c758d5480565da1f3">makeCodonUsageTable</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a>* sequence)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> doWork(sequence-&gt;begin(),sequence-&gt;end());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> doWork(sequence-&gt;<a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),sequence-&gt;<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>());</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  CodonUsageTable makeCodonUsageTable(<span class="keyword">const</span> std::string &amp;sequence)</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a50f3df3ad2810343c544036f6de2f3ab">   91</a></span>&#160;  <a class="code" href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">CodonUsageTable</a> <a class="code" href="namespaceSequence.html#a58bae55ce26ada3c758d5480565da1f3">makeCodonUsageTable</a>(<span class="keyword">const</span> std::string &amp;sequence)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  {</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> doWork(sequence.begin(),sequence.end());</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  CodonUsageTable makeCodonUsageTable(std::string::const_iterator beg,</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a4ece33a045f69189932dd14f6c77e6b3">  101</a></span>&#160;  <a class="code" href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">CodonUsageTable</a> <a class="code" href="namespaceSequence.html#a58bae55ce26ada3c758d5480565da1f3">makeCodonUsageTable</a>(std::string::const_iterator beg,</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                      std::string::const_iterator end)</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  {</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">//we do the typecast to string because it allows the use of std::string::find,</span></div>
@@ -168,15 +168,21 @@ $(document).ready(function(){initNavTree('CodonTable_8cc_source.html','');});
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  }</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
 <div class="ttc" id="Seq_8hpp_html"><div class="ttname"><a href="Seq_8hpp.html">Seq.hpp</a></div><div class="ttdoc">class Sequence::Seq, an abstract base class for Sequences </div></div>
+<div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
+<div class="ttc" id="classSequence_1_1Seq_html_abd1fcbf6b32d4699ac98665b79164704"><div class="ttname"><a href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">Sequence::Seq::begin</a></div><div class="ttdeci">iterator begin()</div><div class="ttdef"><b>Definition:</b> <a href="Seq_8cc_source.html#l00209">Seq.cc:209</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aa11ceda37fe03bcacea2e98c49723f90"><div class="ttname"><a href="namespaceSequence.html#aa11ceda37fe03bcacea2e98c49723f90">Sequence::CodonUsageTable</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; std::string, int &gt; &gt; CodonUsageTable</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00043">typedefs.hpp:43</a></div></div>
 <div class="ttc" id="CodonTable_8hpp_html"><div class="ttname"><a href="CodonTable_8hpp.html">CodonTable.hpp</a></div><div class="ttdoc">facility to count codons in CDS sequence, function Sequence::makeCodonUsageTable </div></div>
+<div class="ttc" id="classSequence_1_1Seq_html_a0c49ccc23f78c9d5f2dd8ea75f32e6eb"><div class="ttname"><a href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">Sequence::Seq::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="Seq_8cc_source.html#l00217">Seq.cc:217</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ac45c04f3606f1ff0b7ba495c52339192"><div class="ttname"><a href="namespaceSequence.html#ac45c04f3606f1ff0b7ba495c52339192">Sequence::Different</a></div><div class="ttdeci">bool Different(const std::string &amp;seq1, const std::string &amp;seq2, const bool &amp;skip_missing=true, const bool &amp;nucleic_acid=true)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00095">Comparisons.cc:95</a></div></div>
 <div class="ttc" id="Comparisons_8hpp_html"><div class="ttname"><a href="Comparisons_8hpp.html">Comparisons.hpp</a></div><div class="ttdoc">delcaration of routines for comparing DNA sequences This file declares a set of functions useful for ...</div></div>
+<div class="ttc" id="namespaceSequence_html_a58bae55ce26ada3c758d5480565da1f3"><div class="ttname"><a href="namespaceSequence.html#a58bae55ce26ada3c758d5480565da1f3">Sequence::makeCodonUsageTable</a></div><div class="ttdeci">CodonUsageTable makeCodonUsageTable(const Seq *sequence)</div><div class="ttdef"><b>Definition:</b> <a href="CodonTable_8cc_source.html#l00081">CodonTable.cc:81</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>CodonTable.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

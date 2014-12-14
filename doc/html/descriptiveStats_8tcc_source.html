@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -132,10 +132,10 @@ $(document).ready(function(){initNavTree('descriptiveStats_8tcc_source.html','')
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> ForwardIterator&gt;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::pair&lt;double,double&gt;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  meanAndVar(ForwardIterator beg,</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a11af83da11f8a27390d4c65758a04aff">   66</a></span>&#160;  <a class="code" href="namespaceSequence.html#a11af83da11f8a27390d4c65758a04aff">meanAndVar</a>(ForwardIterator beg,</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;             ForwardIterator end)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    Sums&lt;double&gt; __s = std::accumulate(beg,end,Sums&lt;double&gt;());</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="classSequence_1_1Sums.html">Sums&lt;double&gt;</a> __s = std::accumulate(beg,end,<a class="code" href="classSequence_1_1Sums.html">Sums&lt;double&gt;</a>());</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">return</span> std::make_pair(__s.mean(),__s.variance());</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
@@ -200,8 +200,10 @@ $(document).ready(function(){initNavTree('descriptiveStats_8tcc_source.html','')
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classSequence_1_1Sums_html"><div class="ttname"><a href="classSequence_1_1Sums.html">Sequence::Sums</a></div><div class="ttdef"><b>Definition:</b> <a href="descriptiveStats_8hpp_source.html#l00095">descriptiveStats.hpp:95</a></div></div>
 <div class="ttc" id="group__stats_html_ga73c172220e70e5f3f1f67be8275c8299"><div class="ttname"><a href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">Sequence::mean</a></div><div class="ttdeci">double mean(iterator beg, iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="descriptiveStats_8tcc_source.html#l00038">descriptiveStats.tcc:38</a></div></div>
 <div class="ttc" id="group__operators_html_ga713d4527729a5c8cd265176b8894f41c"><div class="ttname"><a href="group__operators.html#ga713d4527729a5c8cd265176b8894f41c">Sequence::operator+</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; key, value &gt; &gt; operator+(const std::vector&lt; std::pair&lt; key, value &gt; &gt; &amp;lhs, const std::vector&lt; std::pair&lt; key, value &gt; &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="CountingOperators_8tcc_source.html#l00033">CountingOperators.tcc:33</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a11af83da11f8a27390d4c65758a04aff"><div class="ttname"><a href="namespaceSequence.html#a11af83da11f8a27390d4c65758a04aff">Sequence::meanAndVar</a></div><div class="ttdeci">std::pair&lt; double, double &gt; meanAndVar(ForwardIterator beg, ForwardIterator end)</div><div class="ttdef"><b>Definition:</b> <a href="descriptiveStats_8tcc_source.html#l00066">descriptiveStats.tcc:66</a></div></div>
 <div class="ttc" id="group__operators_html_ga82588ee5620abd5e50f8290e421a7c9e"><div class="ttname"><a href="group__operators.html#ga82588ee5620abd5e50f8290e421a7c9e">Sequence::operator+=</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; key, value &gt; &gt; operator+=(std::vector&lt; std::pair&lt; key, value &gt; &gt; &amp;lhs, const std::vector&lt; std::pair&lt; key, value &gt; &gt; &amp;rhs)</div><div class="ttdef"><b>Definition:</b> <a href="CountingOperators_8tcc_source.html#l00059">CountingOperators.tcc:59</a></div></div>
 <div class="ttc" id="group__stats_html_gaae355805081a2bd7e93b276e43724b30"><div class="ttname"><a href="group__stats.html#gaae355805081a2bd7e93b276e43724b30">Sequence::variance</a></div><div class="ttdeci">double variance(iterator beg, iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="descriptiveStats_8tcc_source.html#l00050">descriptiveStats.tcc:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -210,7 +212,7 @@ $(document).ready(function(){initNavTree('descriptiveStats_8tcc_source.html','')
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><a class="el" href="descriptiveStats_8tcc.html">descriptiveStats.tcc</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

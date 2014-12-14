@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -289,7 +289,7 @@ $(document).ready(function(){initNavTree('SimpleSNP_8cc_source.html','');});
 <div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keywordflow">throw</span> (<a class="code" href="classSequence_1_1badFormat.html">Sequence::badFormat</a>(<span class="stringliteral">&quot;SimpleSNP::read() -- number of sequences does not match input value&quot;</span>));</div>
 <div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;      }     </div>
 <div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    this-&gt;<a class="code" href="classSequence_1_1PolyTable.html#a05f17c6ed162084fb6c1d48d6354b432">assign</a>(std::move(_positions),std::move(_data));</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    RemoveInvariantColumns(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="namespaceSequence.html#a21736523aa0d62767da47627190730a4">RemoveInvariantColumns</a>(<span class="keyword">this</span>);</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">return</span> s;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  }</div>
 <div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
@@ -395,16 +395,17 @@ $(document).ready(function(){initNavTree('SimpleSNP_8cc_source.html','');});
 <div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  }</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00294">PolyTable.hpp:294</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00275">PolyTable.hpp:275</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00297">PolyTable.hpp:297</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00278">PolyTable.hpp:278</a></div></div>
 <div class="ttc" id="classSequence_1_1SimpleSNP_html_a05672105cbb169f5a122ec83836e1000"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">Sequence::SimpleSNP::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00038">SimpleSNP.cc:38</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a21736523aa0d62767da47627190730a4"><div class="ttname"><a href="namespaceSequence.html#a21736523aa0d62767da47627190730a4">Sequence::RemoveInvariantColumns</a></div><div class="ttdeci">void RemoveInvariantColumns(PolyTable *t, const bool &amp;skipOutgroup=false, const unsigned &amp;outgroup=0)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00145">PolyTableFunctions.cc:145</a></div></div>
 <div class="ttc" id="classSequence_1_1SimpleSNP_html_a9a7a2fb74edb7498e96709813f0cbe85"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a9a7a2fb74edb7498e96709813f0cbe85">Sequence::SimpleSNP::label</a></div><div class="ttdeci">std::string label(unsigned i) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00295">SimpleSNP.cc:295</a></div></div>
 <div class="ttc" id="SimpleSNP_8hpp_html"><div class="ttname"><a href="SimpleSNP_8hpp.html">SimpleSNP.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimpleSNP, a polymorphism table stream in a &quot;spreadsheet&quot; format...</div></div>
 <div class="ttc" id="classSequence_1_1SimpleSNP_html_aafe563bd07ea1f112bc792215870eb65"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">Sequence::SimpleSNP::outgroup</a></div><div class="ttdeci">bool outgroup(void) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00315">SimpleSNP.cc:315</a></div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
 <div class="ttc" id="classSequence_1_1PolyTable_html_a05f17c6ed162084fb6c1d48d6354b432"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a05f17c6ed162084fb6c1d48d6354b432">Sequence::PolyTable::assign</a></div><div class="ttdeci">bool assign(PolyTable::const_site_iterator beg, PolyTable::const_site_iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00081">PolyTable.cc:81</a></div></div>
 <div class="ttc" id="PolyTableFunctions_8hpp_html"><div class="ttname"><a href="PolyTableFunctions_8hpp.html">PolyTableFunctions.hpp</a></div><div class="ttdoc">Operations on non-const Sequence::PolyTable objects. </div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_addb66d0f32a7b5e606b2081aeccc42fa"><div class="ttname"><a href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">Sequence::PolyTable::position</a></div><div class="ttdeci">double position(const std::vector&lt; double &gt;::size_type &amp;i) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00284">PolyTable.hpp:284</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_addb66d0f32a7b5e606b2081aeccc42fa"><div class="ttname"><a href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">Sequence::PolyTable::position</a></div><div class="ttdeci">double position(const std::vector&lt; double &gt;::size_type &amp;i) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00287">PolyTable.hpp:287</a></div></div>
 <div class="ttc" id="classSequence_1_1SimpleSNP_html_af46f1bb7a71ee3e849e04cdcd6f340b1"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#af46f1bb7a71ee3e849e04cdcd6f340b1">Sequence::SimpleSNP::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;o) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00225">SimpleSNP.cc:225</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -412,7 +413,7 @@ $(document).ready(function(){initNavTree('SimpleSNP_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>SimpleSNP.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

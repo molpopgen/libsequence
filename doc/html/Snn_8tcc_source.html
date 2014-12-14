@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('Snn_8tcc_source.html','');});
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> j=i+1;j&lt;snpTable.size();++j)</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;          {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            dkj[i][j] = double(NumDiffs(snpTable[i],snpTable[j]));</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            dkj[i][j] = double(<a class="code" href="namespaceSequence.html#a0ae39379bc92ab7feed829028035fce9">NumDiffs</a>(snpTable[i],snpTable[j]));</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;          }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      }</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    std::vector &lt;unsigned&gt; __individuals(snpTable.size(),0u);</div>
@@ -160,7 +160,7 @@ $(document).ready(function(){initNavTree('Snn_8tcc_source.html','');});
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      {</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> j=i+1;j&lt;snpTable.size();++j)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            dkj[i][j] = Sequence::NumDiffs(snpTable[i],snpTable[j]);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            dkj[i][j] = <a class="code" href="namespaceSequence.html#a0ae39379bc92ab7feed829028035fce9">Sequence::NumDiffs</a>(snpTable[i],snpTable[j]);</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;          }</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      }</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    std::vector &lt;unsigned&gt; __individuals(snpTable.size(),0u),individuals;</div>
@@ -207,7 +207,7 @@ $(document).ready(function(){initNavTree('Snn_8tcc_source.html','');});
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keyword">template</span>&lt; <span class="keyword">typename</span> shuffler &gt;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  std::pair&lt;double,double&gt;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  Snn_test(<span class="keyword">const</span> PolyTable &amp; snpTable,</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="group__popgenanalysis.html#ga1937fe206749689bd0d85fdd9bea9f3a">  137</a></span>&#160;  <a class="code" href="group__popgenanalysis.html#ga1937fe206749689bd0d85fdd9bea9f3a">Snn_test</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a> &amp; snpTable,</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;           <span class="keyword">const</span> <span class="keywordtype">unsigned</span> config[],</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;           <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; npop,</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;           shuffler &amp; s,</div>
@@ -218,7 +218,7 @@ $(document).ready(function(){initNavTree('Snn_8tcc_source.html','');});
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keyword">template</span>&lt; <span class="keyword">typename</span> shuffler &gt;</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  std::vector&lt; std::vector&lt;double&gt; &gt;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  Snn_test_pairwise(<span class="keyword">const</span> PolyTable &amp; snpTable,</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6">  159</a></span>&#160;  <a class="code" href="group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6">Snn_test_pairwise</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a> &amp; snpTable,</div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> config[],</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                    <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; npop,</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                    shuffler &amp; s,</div>
@@ -275,13 +275,17 @@ $(document).ready(function(){initNavTree('Snn_8tcc_source.html','');});
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="comment">// }</span></div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}<span class="comment">//ns Sequence</span></div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html"><div class="ttname"><a href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a></div><div class="ttdoc">The base class for polymorphism tables. </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00058">PolyTable.hpp:58</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a0ae39379bc92ab7feed829028035fce9"><div class="ttname"><a href="namespaceSequence.html#a0ae39379bc92ab7feed829028035fce9">Sequence::NumDiffs</a></div><div class="ttdeci">int NumDiffs(const std::string &amp;seq1, const std::string &amp;seq2, const bool &amp;skip_missing=true, const bool &amp;nucleic_acid=true)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00138">Comparisons.cc:138</a></div></div>
+<div class="ttc" id="group__popgenanalysis_html_ga1937fe206749689bd0d85fdd9bea9f3a"><div class="ttname"><a href="group__popgenanalysis.html#ga1937fe206749689bd0d85fdd9bea9f3a">Sequence::Snn_test</a></div><div class="ttdeci">std::pair&lt; double, double &gt; Snn_test(const PolyTable &amp;snpTable, const unsigned config[], const size_t &amp;npop, shuffler &amp;s, const unsigned &amp;nperms)</div><div class="ttdoc">Conducts a permutation-test of Hudson&#39;s Snn (sequence nearest-neighbor) statistic. </div><div class="ttdef"><b>Definition:</b> <a href="Snn_8tcc_source.html#l00137">Snn.tcc:137</a></div></div>
+<div class="ttc" id="group__popgenanalysis_html_gaf4a1f267e38e289072e54a22bef1a0e6"><div class="ttname"><a href="group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6">Sequence::Snn_test_pairwise</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; Snn_test_pairwise(const PolyTable &amp;snpTable, const unsigned config[], const size_t &amp;npop, shuffler &amp;s, const unsigned &amp;nperms)</div><div class="ttdoc">Conducts a permutation-test of Hudson&#39;s Snn (sequence nearest-neighbor) statistic, for all pairwise combinations of populations. </div><div class="ttdef"><b>Definition:</b> <a href="Snn_8tcc_source.html#l00159">Snn.tcc:159</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_4bb38300439ec13c0bdcb09ae4f813f3.html">bits</a></li><li class="navelem"><b>Snn.tcc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

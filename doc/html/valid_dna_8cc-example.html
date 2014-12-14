@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -79,12 +79,12 @@ $(document).ready(function(){initNavTree('valid_dna_8cc-example.html','');});
 <div class="line">  <a name="_a0"></a><a class="code" href="classSequence_1_1Fasta.html">Sequence::Fasta</a> seq;</div>
 <div class="line">  <span class="keywordflow">while</span> (in &gt;&gt; seq)</div>
 <div class="line">    {</div>
-<div class="line">      std::cout &lt;&lt; Sequence::validSeq(seq.<a name="a1"></a>begin(),seq.<a name="a2"></a>end())</div>
+<div class="line">      std::cout &lt;&lt; <a name="a1"></a><a class="code" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a>(seq.<a name="a2"></a><a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),seq.<a name="a3"></a><a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>())</div>
 <div class="line">                &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">                &lt;&lt; Sequence::validSeq(seq.begin(),seq.end(),Sequence::full_dna_alphabet)</div>
+<div class="line">                &lt;&lt; <a class="code" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a>(seq.<a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),seq.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>(),<a name="a4"></a><a class="code" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">Sequence::full_dna_alphabet</a>)</div>
 <div class="line">                &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">                &lt;&lt; (std::find_if(seq.begin(),seq.end(),Sequence::ambiguousNucleotide())</div>
-<div class="line">                    != seq.end())</div>
+<div class="line">                &lt;&lt; (std::find_if(seq.<a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),seq.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>(),Sequence::ambiguousNucleotide())</div>
+<div class="line">                    != seq.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>())</div>
 <div class="line">                &lt;&lt;<span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">    }</div>
 <div class="line">}</div>
@@ -93,7 +93,7 @@ $(document).ready(function(){initNavTree('valid_dna_8cc-example.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -1,6 +1,6 @@
 var shortestPath_8hpp =
 [
-    [ "diffType", "shortestPath_8hpp.html#a1123428f4b4ef44ee04b7e7030abb017", null ],
-    [ "diffTypeMulti", "shortestPath_8hpp.html#ae9d098842fb979e2b617ed4c5f12c740", null ],
-    [ "mutsShortestPath", "shortestPath_8hpp.html#ga2e5a173d72ddfe296615eb776d343f3e", null ]
+    [ "diffType", "shortestPath_8hpp.html#a022cdbeee8819e81d448eefbe1cc4e2a", null ],
+    [ "diffTypeMulti", "shortestPath_8hpp.html#ae76fd0402decf4d1790a72acc745a0d2", null ],
+    [ "mutsShortestPath", "shortestPath_8hpp.html#gae6dba1ba44944b4169c80fb8b4bc613e", null ]
 ];

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -98,8 +98,7 @@ double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca9644c36b49ade80f4bdbb430fd400"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>HKAresults</b> (const std::vector&lt; double &gt; &amp;_thetas, const std::vector&lt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a> &gt; &amp;_chisquareds, const double &amp;_fhat, const double &amp;_That, const double &amp;_xsq, const double &amp;_xsqA, const double &amp;_xsqB)</td></tr>
+<tr class="memitem:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#a5ca9644c36b49ade80f4bdbb430fd400">HKAresults</a> (const std::vector&lt; double &gt; &amp;_thetas, const std::vector&lt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a> &gt; &amp;_chisquareds, const double &amp;_fhat, const double &amp;_That, const double &amp;_xsq, const double &amp;_xsqA, const double &amp;_xsqB)</td></tr>
 <tr class="separator:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -153,6 +152,85 @@ Public Attributes</h2></td></tr>
 <p>The enum documents the order in which the deviations are stored in chisq_tuple </p>
 
 <p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00084">84</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5ca9644c36b49ade80f4bdbb430fd400"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sequence::HKAresults::HKAresults </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_thetas</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_chisquareds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>_fhat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>_That</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>_xsq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>_xsqA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>_xsqB</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_thetas</td><td>a vector containing the estimats of theta for each locus </td></tr>
+    <tr><td class="paramname">_chisquareds</td><td>a vector of the per-locus contributions to the test statistic </td></tr>
+    <tr><td class="paramname">_fhat</td><td>an estimate of the relative Ne of species b to species a </td></tr>
+    <tr><td class="paramname">_That</td><td>an estimate of the divergence time, on the scale of Ne in species a. </td></tr>
+    <tr><td class="paramname">_xsq</td><td>the Chi-squared statistic for the HKA test </td></tr>
+    <tr><td class="paramname">_xsqA</td><td>The HKA chi-squared statistic, only considering species A </td></tr>
+    <tr><td class="paramname">_xsqB</td><td>The HKA chi-squared statistic, only considering species B </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="HKA_8cc_source.html#l00080">80</a> of file <a class="el" href="HKA_8cc_source.html">HKA.cc</a>.</p>
 
 </div>
 </div>
@@ -264,16 +342,17 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li><a class="el" href="HKA_8hpp_source.html">HKA.hpp</a></li>
+<li><a class="el" href="HKA_8cc_source.html">HKA.cc</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="structSequence_1_1HKAresults.html">HKAresults</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:09 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1HKAresults.html">HKAresults</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

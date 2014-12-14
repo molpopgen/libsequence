@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -96,12 +96,12 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <div class="line"><span class="comment">//the marginal tree begins</span></div>
 <div class="line"><span class="comment">//(this overload is unambiguous, as the libsequence version</span></div>
 <div class="line"><span class="comment">//takes a single argument)</span></div>
-<div class="line"><a name="_a2"></a><a class="code" href="structSequence_1_1marginal.html">Sequence::marginal</a> init_marginal( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; nsam , <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; begin)</div>
+<div class="line"><a name="_a2"></a><a class="code" href="structSequence_1_1marginal.html">Sequence::marginal</a> <a name="a3"></a><a class="code" href="group__coalescent.html#ga6e3a9fa77284d9751ba6fb025c4d218f">init_marginal</a>( <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; nsam , <span class="keyword">const</span> <span class="keywordtype">int</span> &amp; begin)</div>
 <div class="line">{</div>
 <div class="line">  std::vector&lt;Sequence::node&gt; tree(2*nsam-1);</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;nsam;++i)</div>
 <div class="line">    {</div>
-<div class="line">      tree[i] = <a name="_a3"></a><a class="code" href="structSequence_1_1node.html">Sequence::node</a>(0.);</div>
+<div class="line">      tree[i] = <a name="_a4"></a><a class="code" href="structSequence_1_1node.html">Sequence::node</a>(0.);</div>
 <div class="line">    }</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1marginal.html">Sequence::marginal</a>(begin,nsam,nsam-1,tree);</div>
 <div class="line">}</div>
@@ -139,14 +139,14 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <div class="line">  std::mt19937 generator(seed);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">//Make our RNG types via lambda expressions</span></div>
-<div class="line">  <span class="keyword">auto</span> poiss = [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; <a name="a4"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::poisson_distribution&lt;int&gt;(<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); };</div>
+<div class="line">  <span class="keyword">auto</span> poiss = [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; <a name="a5"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::poisson_distribution&lt;int&gt;(<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); };</div>
 <div class="line">  <span class="keyword">auto</span> expo = [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; <a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>){ <span class="keywordflow">return</span> std::exponential_distribution&lt;double&gt;(1/<a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>)(generator); };</div>
 <div class="line">  <span class="keyword">auto</span> uni01 = [&amp;generator](){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(0.,1.)(generator); };</div>
 <div class="line">  <span class="keyword">auto</span> uni = [&amp;generator](<span class="keyword">const</span> <span class="keywordtype">double</span> &amp; a, <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; b){ <span class="keywordflow">return</span> std::uniform_real_distribution&lt;double&gt;(a,b)(generator); };</div>
 <div class="line"></div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">double</span> DMAX = std::numeric_limits&lt;double&gt;::max();</div>
 <div class="line">  vector&lt;Sequence::chromosome&gt; initialized_sample = </div>
-<div class="line">    Sequence::init_sample( vector&lt;int&gt;(1,nsam),nsites );</div>
+<div class="line">    <a name="a6"></a><a class="code" href="group__coalescent.html#gaef587d0dd2c9f5fc9725cea9c166f73a">Sequence::init_sample</a>( vector&lt;int&gt;(1,nsam),nsites );</div>
 <div class="line"></div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0;i&lt;argc;++i)</div>
@@ -178,7 +178,7 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <div class="line">                        initialized_sample.end(),</div>
 <div class="line">                        std::back_inserter(sample));</div>
 <div class="line">              <span class="keywordtype">int</span> NSAM = nsam;</div>
-<div class="line">              <a class="code" href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a> sample_history(1,init_marginal(nsam,site));</div>
+<div class="line">              <a class="code" href="group__coalescent.html#ga1116020585e7246433b28c69b0623a20">Sequence::arg</a> sample_history(1,<a class="code" href="group__coalescent.html#ga6e3a9fa77284d9751ba6fb025c4d218f">init_marginal</a>(nsam,site));</div>
 <div class="line">              <span class="keywordtype">int</span> nlinks = nsam;</div>
 <div class="line">              <span class="keywordtype">double</span> t = 0.;</div>
 <div class="line">              <span class="keywordflow">while</span>(NSAM &gt; 1)</div>
@@ -200,8 +200,8 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <div class="line">                  <span class="keywordflow">if</span>(event)</div>
 <div class="line">                    {</div>
 <div class="line">                      t+=tcoal;</div>
-<div class="line">                      pair&lt;int,int&gt; two = <a name="a5"></a><a class="code" href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">Sequence::pick2</a>(uni,NSAM);</div>
-<div class="line">                      NSAM -= Sequence::coalesce(t,nsam,NSAM,two.first,two.second,nsites,</div>
+<div class="line">                      pair&lt;int,int&gt; two = <a name="a7"></a><a class="code" href="group__coalescent.html#ga1da6ee3005af95c7da8538bbf31c3298">Sequence::pick2</a>(uni,NSAM);</div>
+<div class="line">                      NSAM -= <a name="a8"></a><a class="code" href="group__coalescent.html#gad689617c904bc44ec5fade5940273396">Sequence::coalesce</a>(t,nsam,NSAM,two.first,two.second,nsites,</div>
 <div class="line">                                       &amp;nlinks,&amp;sample,&amp;sample_history);</div>
 <div class="line">                      <span class="comment">//clean up some uncessary storage</span></div>
 <div class="line">                      <span class="keywordflow">if</span> (NSAM &lt; <span class="keywordtype">int</span>(sample.size())/5)</div>
@@ -219,9 +219,9 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <div class="line">              independent_histories.push_back(*(sample_history.begin()));</div>
 <div class="line">              sample.clear();</div>
 <div class="line">            }</div>
-<div class="line">          segsites = <a name="a6"></a><a class="code" href="group__coalescent.html#gac6380ab82353237eab66ee075d605356">Sequence::infinite_sites</a>(poiss,uni,&amp;gametes,</div>
+<div class="line">          segsites = <a name="a9"></a><a class="code" href="group__coalescent.html#gac6380ab82353237eab66ee075d605356">Sequence::infinite_sites</a>(poiss,uni,&amp;gametes,</div>
 <div class="line">                                              nsites,independent_histories,theta);</div>
-<div class="line">          Sequence::output_gametes(stdout,segsites,nsam,gametes);</div>
+<div class="line">          <a name="a10"></a><a class="code" href="namespaceSequence.html#a80ca235b3a31288ab65f98507c312be6">Sequence::output_gametes</a>(stdout,segsites,nsam,gametes);</div>
 <div class="line">          independent_histories.clear();</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
@@ -236,7 +236,7 @@ $(document).ready(function(){initNavTree('freerec_8cc-example.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

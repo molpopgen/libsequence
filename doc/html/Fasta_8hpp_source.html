@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -105,31 +105,35 @@ $(document).ready(function(){initNavTree('Fasta_8hpp_source.html','');});
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">   53</a></span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">Fasta</a>():<a class="code" href="classSequence_1_1Seq.html">Seq</a>() {}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">Fasta</a> (<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> std::string &amp;seq);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">Fasta</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *seq);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">Fasta</a> (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; s);</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">   57</a></span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">~Fasta</a>() {}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      std::istream&amp;  <a class="code" href="classSequence_1_1Fasta.html#aaae2ace64d374f10c4330ce80b8e3f87">read</a>(std::istream &amp;s) </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        ;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      std::ostream&amp; <a class="code" href="classSequence_1_1Fasta.html#a654d91b1111806cfceb97e561588dfa7">print</a>(std::ostream&amp; s) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    };</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_a654d91b1111806cfceb97e561588dfa7"><div class="ttname"><a href="classSequence_1_1Fasta.html#a654d91b1111806cfceb97e561588dfa7">Sequence::Fasta::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> ( std::string &amp;&amp; name, std::string &amp;&amp; seq);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> (<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> std::string &amp;seq);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keyword">const</span> <span class="keywordtype">char</span> *seq);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; s);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a>( <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp;&amp; ) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a>( <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp; );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a>( <span class="keyword">const</span> <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp; ) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">   61</a></span>&#160;      <a class="code" href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">~Fasta</a>() {}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp; operator=(<a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp; operator=(<span class="keyword">const</span> <a class="code" href="classSequence_1_1Fasta.html">Fasta</a> &amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      std::istream&amp;  <a class="code" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">read</a>(std::istream &amp;s);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      std::ostream&amp; <a class="code" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">print</a>(std::ostream&amp; s) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="Seq_8hpp_html"><div class="ttname"><a href="Seq_8hpp.html">Seq.hpp</a></div><div class="ttdoc">class Sequence::Seq, an abstract base class for Sequences </div></div>
 <div class="ttc" id="classSequence_1_1Fasta_html"><div class="ttname"><a href="classSequence_1_1Fasta.html">Sequence::Fasta</a></div><div class="ttdoc">FASTA sequence stream. </div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8hpp_source.html#l00049">Fasta.hpp:49</a></div></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_a347ebe77959068ea01e52a2c1aaff9f2"><div class="ttname"><a href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">Sequence::Fasta::~Fasta</a></div><div class="ttdeci">~Fasta()</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8hpp_source.html#l00057">Fasta.hpp:57</a></div></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_aaae2ace64d374f10c4330ce80b8e3f87"><div class="ttname"><a href="classSequence_1_1Fasta.html#aaae2ace64d374f10c4330ce80b8e3f87">Sequence::Fasta::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_a774d800b62c172303deaff5803145989"><div class="ttname"><a href="classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989">Sequence::Fasta::Fasta</a></div><div class="ttdeci">Fasta()</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8hpp_source.html#l00053">Fasta.hpp:53</a></div></div>
+<div class="ttc" id="classSequence_1_1Fasta_html_a10d9c55ca6c9b8b58593cb4f7b359b02"><div class="ttname"><a href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00067">Fasta.cc:67</a></div></div>
+<div class="ttc" id="classSequence_1_1Fasta_html_a347ebe77959068ea01e52a2c1aaff9f2"><div class="ttname"><a href="classSequence_1_1Fasta.html#a347ebe77959068ea01e52a2c1aaff9f2">Sequence::Fasta::~Fasta</a></div><div class="ttdeci">~Fasta()</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8hpp_source.html#l00061">Fasta.hpp:61</a></div></div>
+<div class="ttc" id="classSequence_1_1Fasta_html_a5e71e5adf3dad82a87e5f00ce074ab4a"><div class="ttname"><a href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00090">Fasta.cc:90</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="Fasta_8hpp.html">Fasta.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

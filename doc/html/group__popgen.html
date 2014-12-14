@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -63,7 +63,8 @@ $(document).ready(function(){initNavTree('group__popgen.html','');});
 <div class="header">
   <div class="summary">
 <a href="#groups">Modules</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Molecular Population Genetics</div>  </div>
 </div><!--header-->
@@ -71,9 +72,11 @@ $(document).ready(function(){initNavTree('group__popgen.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
 Modules</h2></td></tr>
+<tr class="memitem:group__coalescent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__coalescent.html">Classes and functions related to simulating data under coalescent models</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:group__polytables"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__polytables.html">Classes Related to Polymorphism tables</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__coalescent"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__coalescent.html">Classes and functions related to simulating data under coalescent models</a></td></tr>
+<tr class="memitem:group__popgenanalysis"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html">Analysis of molecular population genetic data</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -84,14 +87,47 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html">Sequence::HKAresults</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">results of calculations of the HKA test  <a href="structSequence_1_1HKAresults.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ga490ad3c8b4e548d1cf850806b6a5be1d"><td class="memItemLeft" align="right" valign="top">HKAresults&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgen.html#ga490ad3c8b4e548d1cf850806b6a5be1d">Sequence::calcHKA</a> (const std::vector&lt; HKAdata &gt; &amp;data)</td></tr>
+<tr class="separator:ga490ad3c8b4e548d1cf850806b6a5be1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga490ad3c8b4e548d1cf850806b6a5be1d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">HKAresults Sequence::calcHKA </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; HKAdata &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Performs the calculations necessary for the HKA test. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">data</td><td>a vector of <a class="el" href="structSequence_1_1HKAdata.html" title="Data from a single locus for an HKA test. ">HKAdata</a> objects </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an object of type multiLocusHKAparams. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The thetas vector in the return object contains theta values in the same order as the loci in <em>data</em>. </dd></dl>
+
+<p>Definition at line <a class="el" href="HKA_8cc_source.html#l00100">100</a> of file <a class="el" href="HKA_8cc_source.html">HKA.cc</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

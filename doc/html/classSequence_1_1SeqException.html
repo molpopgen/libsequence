@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -106,9 +106,8 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for exceptions that may be thrown. </p>
-<p>All exceptions thrown by routines defined in namespace Sequence are derived from a common base class, <a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a>. This class contains a private member, message, which is a C-style string. message is use to store and report error messages when exceptions need to be thrown. The member function <a class="el" href="classSequence_1_1SeqException.html#a31f983ee0864348a83be9b10239322f0">SeqException::print</a> takes a reference to an ostream as an argument, an can be used to display message. The output operator&lt;&lt; can also be used on objects of this type. Alternately, if you need to display the message in some other fashion, the public member function <a class="el" href="classSequence_1_1SeqException.html#af129004435c2fa43e634356adf036990">SeqException::error</a> will return message to you as a const char * </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="gestimator_8cc-example.html#_a6">gestimator.cc</a>.</dd>
-</dl>
+<p>All exceptions thrown by routines defined in namespace <a class="el" href="namespaceSequence.html" title="The namespace in which this library resides. ">Sequence</a> are derived from a common base class, <a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a>. This class contains a private member, message, which is a C-style string. message is use to store and report error messages when exceptions need to be thrown. The member function <a class="el" href="classSequence_1_1SeqException.html#a31f983ee0864348a83be9b10239322f0">SeqException::print</a> takes a reference to an ostream as an argument, an can be used to display message. The output operator&lt;&lt; can also be used on objects of this type. Alternately, if you need to display the message in some other fashion, the public member function <a class="el" href="classSequence_1_1SeqException.html#af129004435c2fa43e634356adf036990">SeqException::error</a> will return message to you as a const char * </p>
+
 <p>Definition at line <a class="el" href="SeqExceptions_8hpp_source.html#l00052">52</a> of file <a class="el" href="SeqExceptions_8hpp_source.html">SeqExceptions.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ab0789c166900b69991cbd1c70427d7ba"></a>
@@ -192,8 +191,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Write the error to out. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="gestimator_8cc-example.html#a2">gestimator.cc</a>.</dd>
-</dl>
+
 <p>Definition at line <a class="el" href="SeqExceptions_8cc_source.html#l00044">44</a> of file <a class="el" href="SeqExceptions_8cc_source.html">SeqExceptions.cc</a>.</p>
 
 </div>
@@ -226,8 +224,8 @@ Public Member Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1SeqException.html">SeqException</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:10 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1SeqException.html">SeqException</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

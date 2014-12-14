@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -123,8 +123,20 @@ Sequence::polySiteVector::const_iterator&#160;</td><td class="memItemRight" vali
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:ab5582926d6ebfde11a259b5772f53e0f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5582926d6ebfde11a259b5772f53e0f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SimpleSNP</b> (<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;)=default</td></tr>
+<tr class="separator:ab5582926d6ebfde11a259b5772f53e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e86d8b75c2d7651a6543375fe54c66f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7e86d8b75c2d7651a6543375fe54c66f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>SimpleSNP</b> (<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a7e86d8b75c2d7651a6543375fe54c66f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0bf7f64722e47b991d315b9b19e3391b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">SimpleSNP</a> (const bool diploid=0, const bool isofemale=0)</td></tr>
 <tr class="separator:a0bf7f64722e47b991d315b9b19e3391b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7a2abd281d5d7f108bd47fca3fe3e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4d7a2abd281d5d7f108bd47fca3fe3e0"></a>
+<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;)=default</td></tr>
+<tr class="separator:a4d7a2abd281d5d7f108bd47fca3fe3e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebcf4ea51b40926629d9a157c9d35c35"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aebcf4ea51b40926629d9a157c9d35c35"></a>
+<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:aebcf4ea51b40926629d9a157c9d35c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aafe563bd07ea1f112bc792215870eb65"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">outgroup</a> (void) const </td></tr>
 <tr class="separator:aafe563bd07ea1f112bc792215870eb65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceb51495be3fbb411fd68774efebff24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aceb51495be3fbb411fd68774efebff24"></a>
@@ -381,7 +393,7 @@ The two numbers on the first line are the sample size and number of segregating 
 <br/>
 If isofemale==1, it is assumed that the data represent real haplotype data (i.e. phase is known). The name for the bool comes from the fact that data gathered from Drosophila lines is often obtained from isofemale stocks, making them homozygous such that the phase of each SNP is known. If a heterozygous base is found, one of the two possible states will be assigned randomly (NOT IMPLEMENTED YET!) </p>
 
-<p>Definition at line <a class="el" href="SimpleSNP_8hpp_source.html#l00074">74</a> of file <a class="el" href="SimpleSNP_8hpp_source.html">SimpleSNP.hpp</a>.</p>
+<p>Definition at line <a class="el" href="SimpleSNP_8hpp_source.html#l00076">76</a> of file <a class="el" href="SimpleSNP_8hpp_source.html">SimpleSNP.hpp</a>.</p>
 
 </div>
 </div>
@@ -883,9 +895,9 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Return how many positions are stored in PolyTable::positions </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="bottleneck_8cc-example.html#a6">bottleneck.cc</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="bottleneck_8cc-example.html#a8">bottleneck.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00294">294</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00297">297</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -897,7 +909,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">Sequence::PolyTable::operator Sequence::polySiteVector </td>
+          <td class="memname">Sequence::PolyTable::operator <a class="el" href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">Sequence::polySiteVector</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -909,7 +921,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>allow (implicit) typecast of <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> to Sequence::polySiteVector </p>
+<p>allow (implicit) typecast of <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> to <a class="el" href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">Sequence::polySiteVector</a> </p>
 
 <p>Definition at line <a class="el" href="PolyTable_8cc_source.html#l00177">177</a> of file <a class="el" href="PolyTable_8cc_source.html">PolyTable.cc</a>.</p>
 
@@ -967,7 +979,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th element of PolyTable::data. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00208">208</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00211">211</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -995,7 +1007,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th element of PolyTable::data. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00218">218</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00221">221</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1200,7 +1212,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <p>Return the i-th position from the PolyTable::positions. </p>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00284">284</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00287">287</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1528,7 +1540,7 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 </div><div class="memdoc">
 <p>Return how many std::strings are stored in PolyTable::data. </p>
 
-<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00275">275</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTable_8hpp_source.html#l00278">278</a> of file <a class="el" href="PolyTable_8hpp_source.html">PolyTable.hpp</a>.</p>
 
 </div>
 </div>
@@ -1541,8 +1553,8 @@ template&lt;typename numeric_type , typename string_type &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>Sequence</b></li><li class="navelem"><a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:10 for libsequence by
+    <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a></li>
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

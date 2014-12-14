@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -116,7 +116,7 @@ $(document).ready(function(){initNavTree('shortestPath_8hpp_source.html','');});
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classSequence_1_1shortestPath.html#af7ef2a3cf87718e6a3d25a5de20cf8e9">shortestPath</a>(<span class="keyword">const</span> std::string &amp;codon1,</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                          <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                          <span class="keyword">const</span> Sequence::GeneticCodes &amp; code = Sequence::UNIVERSAL) </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                          <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp; code = Sequence::UNIVERSAL) </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      ;</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    ~<a class="code" href="classSequence_1_1shortestPath.html">shortestPath</a>();</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="classSequence_1_1shortestPath.html#ae1c4034e9dad83fafb969f5e5400247d">pathType</a> <a class="code" href="classSequence_1_1shortestPath.html#a55c25859bf4b4d692041488bcf91e177">type</a>() <span class="keyword">const</span>;</div>
@@ -126,43 +126,46 @@ $(document).ready(function(){initNavTree('shortestPath_8hpp_source.html','');});
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    const_iterator <a class="code" href="classSequence_1_1shortestPath.html#a31de2258bc2e3b010a99070af8b1958f">end</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  };</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::pair&lt;unsigned,unsigned&gt; <a class="code" href="group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e">mutsShortestPath</a>(<span class="keyword">const</span> std::string &amp;codon1,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  std::pair&lt;unsigned,unsigned&gt; <a class="code" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">mutsShortestPath</a>(<span class="keyword">const</span> std::string &amp;codon1,</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                                                <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                <span class="keyword">const</span> Sequence::GeneticCodes </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                                <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                                                &amp; code = Sequence::UNIVERSAL)</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    ;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::pair&lt;unsigned,shortestPath::pathType&gt; diffType(<span class="keyword">const</span> std::string &amp;codon1,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  std::pair&lt;unsigned,shortestPath::pathType&gt; <a class="code" href="namespaceSequence.html#a022cdbeee8819e81d448eefbe1cc4e2a">diffType</a>(<span class="keyword">const</span> std::string &amp;codon1,</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                                      <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                      <span class="keyword">const</span> Sequence::GeneticCodes </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                                                      <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> </div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                                      &amp; code = Sequence::UNIVERSAL)</div>
 <div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    ;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::tuple&lt;shortestPath::pathType,shortestPath::pathType,shortestPath::pathType&gt;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  diffTypeMulti(<span class="keyword">const</span> std::string &amp;codon1,</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="namespaceSequence.html#ae76fd0402decf4d1790a72acc745a0d2">diffTypeMulti</a>(<span class="keyword">const</span> std::string &amp;codon1,</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keyword">const</span> Sequence::GeneticCodes </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> </div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                &amp; code = Sequence::UNIVERSAL)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    ;</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_af7ef2a3cf87718e6a3d25a5de20cf8e9"><div class="ttname"><a href="classSequence_1_1shortestPath.html#af7ef2a3cf87718e6a3d25a5de20cf8e9">Sequence::shortestPath::shortestPath</a></div><div class="ttdeci">shortestPath(const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code=Sequence::UNIVERSAL)</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00252">shortestPath.cc:252</a></div></div>
-<div class="ttc" id="group__CodonPaths_html_ga2e5a173d72ddfe296615eb776d343f3e"><div class="ttname"><a href="group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e">Sequence::mutsShortestPath</a></div><div class="ttdeci">std::pair&lt; unsigned, unsigned &gt; mutsShortestPath(const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code)</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00325">shortestPath.cc:325</a></div></div>
 <div class="ttc" id="SeqExceptions_8hpp_html"><div class="ttname"><a href="SeqExceptions_8hpp.html">SeqExceptions.hpp</a></div><div class="ttdoc">declaration of exception classes used in namespace Sequence, including class Sequence::SeqException ...</div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_a4d42c6f4b5396ac5fba2bd97864334f8"><div class="ttname"><a href="classSequence_1_1shortestPath.html#a4d42c6f4b5396ac5fba2bd97864334f8">Sequence::shortestPath::path_distance</a></div><div class="ttdeci">double path_distance() const </div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00317">shortestPath.cc:317</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a022cdbeee8819e81d448eefbe1cc4e2a"><div class="ttname"><a href="namespaceSequence.html#a022cdbeee8819e81d448eefbe1cc4e2a">Sequence::diffType</a></div><div class="ttdeci">std::pair&lt; unsigned, shortestPath::pathType &gt; diffType(const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code=Sequence::UNIVERSAL)</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00428">shortestPath.cc:428</a></div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_a367e2eba0010c9ee1ed1d7b7fae27c66"><div class="ttname"><a href="classSequence_1_1shortestPath.html#a367e2eba0010c9ee1ed1d7b7fae27c66">Sequence::shortestPath::begin</a></div><div class="ttdeci">const_iterator begin() const </div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00297">shortestPath.cc:297</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aff4fe77c175b8c7b68ce94cb9880d82b"><div class="ttname"><a href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a></div><div class="ttdeci">GeneticCodes</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00046">SeqEnums.hpp:46</a></div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html"><div class="ttname"><a href="classSequence_1_1shortestPath.html">Sequence::shortestPath</a></div><div class="ttdoc">Calculate shortest path between 2 codons. </div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8hpp_source.html#l00056">shortestPath.hpp:56</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ae76fd0402decf4d1790a72acc745a0d2"><div class="ttname"><a href="namespaceSequence.html#ae76fd0402decf4d1790a72acc745a0d2">Sequence::diffTypeMulti</a></div><div class="ttdeci">std::tuple&lt; shortestPath::pathType, shortestPath::pathType, shortestPath::pathType &gt; diffTypeMulti(const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code=Sequence::UNIVERSAL)</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00481">shortestPath.cc:481</a></div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_a55c25859bf4b4d692041488bcf91e177"><div class="ttname"><a href="classSequence_1_1shortestPath.html#a55c25859bf4b4d692041488bcf91e177">Sequence::shortestPath::type</a></div><div class="ttdeci">pathType type() const </div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00288">shortestPath.cc:288</a></div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_a31de2258bc2e3b010a99070af8b1958f"><div class="ttname"><a href="classSequence_1_1shortestPath.html#a31de2258bc2e3b010a99070af8b1958f">Sequence::shortestPath::end</a></div><div class="ttdeci">const_iterator end() const </div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00307">shortestPath.cc:307</a></div></div>
 <div class="ttc" id="classSequence_1_1shortestPath_html_ae1c4034e9dad83fafb969f5e5400247d"><div class="ttname"><a href="classSequence_1_1shortestPath.html#ae1c4034e9dad83fafb969f5e5400247d">Sequence::shortestPath::pathType</a></div><div class="ttdeci">pathType</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8hpp_source.html#l00069">shortestPath.hpp:69</a></div></div>
 <div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
+<div class="ttc" id="group__CodonPaths_html_gae6dba1ba44944b4169c80fb8b4bc613e"><div class="ttname"><a href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a></div><div class="ttdeci">std::pair&lt; unsigned, unsigned &gt; mutsShortestPath(const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code=Sequence::UNIVERSAL)</div><div class="ttdef"><b>Definition:</b> <a href="shortestPath_8cc_source.html#l00325">shortestPath.cc:325</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="shortestPath_8hpp.html">shortestPath.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

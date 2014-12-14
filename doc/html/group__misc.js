@@ -1,5 +1,5 @@
 var group__misc =
 [
     [ "Comparisons.hpp", "Comparisons_8hpp.html", null ],
-    [ "Translate", "group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9", null ]
+    [ "Translate", "group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba", null ]
 ];

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -69,13 +69,14 @@ $(document).ready(function(){initNavTree('shortestPath_8hpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">shortestPath.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Routines to find the shortest distance between any 2 codons, using Grantham's distance. Declares the class <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>, and the functions Sequence::mutsShortestPath and Sequence::diffType.  
+<p>Routines to find the shortest distance between any 2 codons, using Grantham's distance. Declares the class <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>, and the functions <a class="el" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a> and <a class="el" href="namespaceSequence.html#a022cdbeee8819e81d448eefbe1cc4e2a">Sequence::diffType</a>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br/>
 <code>#include &lt;utility&gt;</code><br/>
@@ -92,21 +93,27 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate shortest path between 2 codons.  <a href="classSequence_1_1shortestPath.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceSequence"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html">Sequence</a></td></tr>
+<tr class="memdesc:namespaceSequence"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace in which this library resides. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga2e5a173d72ddfe296615eb776d343f3e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e">Sequence::mutsShortestPath</a> (const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code)</td></tr>
-<tr class="separator:ga2e5a173d72ddfe296615eb776d343f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1123428f4b4ef44ee04b7e7030abb017"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, <br class="typebreak"/>
-shortestPath::pathType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Sequence::diffType</b> (const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code)</td></tr>
-<tr class="separator:a1123428f4b4ef44ee04b7e7030abb017"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9d098842fb979e2b617ed4c5f12c740"><td class="memItemLeft" align="right" valign="top">std::tuple<br class="typebreak"/>
+<tr class="memitem:gae6dba1ba44944b4169c80fb8b4bc613e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a> (const std::string &amp;codon1, const std::string &amp;codon2, const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;code=Sequence::UNIVERSAL)</td></tr>
+<tr class="separator:gae6dba1ba44944b4169c80fb8b4bc613e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a022cdbeee8819e81d448eefbe1cc4e2a"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, <br class="typebreak"/>
+shortestPath::pathType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a022cdbeee8819e81d448eefbe1cc4e2a">Sequence::diffType</a> (const std::string &amp;codon1, const std::string &amp;codon2, const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;code=Sequence::UNIVERSAL)</td></tr>
+<tr class="separator:a022cdbeee8819e81d448eefbe1cc4e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae76fd0402decf4d1790a72acc745a0d2"><td class="memItemLeft" align="right" valign="top">std::tuple<br class="typebreak"/>
 &lt; shortestPath::pathType, <br class="typebreak"/>
 shortestPath::pathType, <br class="typebreak"/>
-shortestPath::pathType &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Sequence::diffTypeMulti</b> (const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code)</td></tr>
-<tr class="separator:ae9d098842fb979e2b617ed4c5f12c740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+shortestPath::pathType &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#ae76fd0402decf4d1790a72acc745a0d2">Sequence::diffTypeMulti</a> (const std::string &amp;codon1, const std::string &amp;codon2, const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;code=Sequence::UNIVERSAL)</td></tr>
+<tr class="separator:ae76fd0402decf4d1790a72acc745a0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Routines to find the shortest distance between any 2 codons, using Grantham's distance. Declares the class <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>, and the functions Sequence::mutsShortestPath and Sequence::diffType. </p>
+<div class="textblock"><p>Routines to find the shortest distance between any 2 codons, using Grantham's distance. Declares the class <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>, and the functions <a class="el" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a> and <a class="el" href="namespaceSequence.html#a022cdbeee8819e81d448eefbe1cc4e2a">Sequence::diffType</a>. </p>
 
 <p>Definition in file <a class="el" href="shortestPath_8hpp_source.html">shortestPath.hpp</a>.</p>
 </div></div><!-- contents -->
@@ -115,7 +122,7 @@ shortestPath::pathType &gt;&#160;</td><td class="memItemRight" valign="bottom"><
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="shortestPath_8hpp.html">shortestPath.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

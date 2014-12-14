@@ -24,5 +24,5 @@ var group__CodonPaths =
     ] ],
     [ "Intermediates2", "group__CodonPaths.html#ga3640124ef623404694e650ba8a757e78", null ],
     [ "Intermediates3", "group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f", null ],
-    [ "mutsShortestPath", "group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e", null ]
+    [ "mutsShortestPath", "group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e", null ]
 ];

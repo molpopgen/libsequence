@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -65,7 +65,7 @@ $(document).ready(function(){initNavTree('critical_values_8cc-example.html','');
 <div class="title">critical_values.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>Examples of the following classes and functions : Sequence::descriptiveStats, <a class="el" href="structSequence_1_1upperCrit.html" title="Find the upper critical value of a sorted list. ">Sequence::upperCrit</a>, <a class="el" href="structSequence_1_1lowerCrit.html" title="Find the upper critical value of a sorted list. ">Sequence::lowerCrit</a>, Sequence::mean, and Sequence::variance.</p>
+<p>Examples of the following classes and functions : Sequence::descriptiveStats, <a class="el" href="structSequence_1_1upperCrit.html" title="Find the upper critical value of a sorted list. ">Sequence::upperCrit</a>, <a class="el" href="structSequence_1_1lowerCrit.html" title="Find the upper critical value of a sorted list. ">Sequence::lowerCrit</a>, <a class="el" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">Sequence::mean</a>, and <a class="el" href="group__stats.html#gaae355805081a2bd7e93b276e43724b30">Sequence::variance</a>.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Crit_8hpp.html">Sequence/Crit.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="descriptiveStats_8hpp.html">Sequence/descriptiveStats.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -102,17 +102,17 @@ $(document).ready(function(){initNavTree('critical_values_8cc-example.html','');
 <div class="line">  cout &lt;&lt; *(p.first) &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> &lt;&lt; p.second &lt;&lt; endl;</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">//examples of descriptive stats</span></div>
-<div class="line">  std::pair&lt;double,double&gt; desc = meanAndVar(x.begin(),x.end());</div>
+<div class="line">  std::pair&lt;double,double&gt; desc = <a name="a2"></a><a class="code" href="namespaceSequence.html#a11af83da11f8a27390d4c65758a04aff">meanAndVar</a>(x.begin(),x.end());</div>
 <div class="line">  cout &lt;&lt; desc.first &lt;&lt; <span class="charliteral">&#39;\t&#39;</span> &lt;&lt; desc.second &lt;&lt; endl;</div>
-<div class="line">  cout &lt;&lt; <a name="a2"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>(x.begin(),x.end()) &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
-<div class="line">       &lt;&lt; <a name="a3"></a><a class="code" href="group__stats.html#gaae355805081a2bd7e93b276e43724b30">variance</a>(x.begin(),x.end()) &lt;&lt; endl;</div>
+<div class="line">  cout &lt;&lt; <a name="a3"></a><a class="code" href="group__stats.html#ga73c172220e70e5f3f1f67be8275c8299">mean</a>(x.begin(),x.end()) &lt;&lt; <span class="charliteral">&#39;\t&#39;</span></div>
+<div class="line">       &lt;&lt; <a name="a4"></a><a class="code" href="group__stats.html#gaae355805081a2bd7e93b276e43724b30">variance</a>(x.begin(),x.end()) &lt;&lt; endl;</div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

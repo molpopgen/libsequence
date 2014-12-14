@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('SeqUtilities_8hpp_source.html','');});
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  std::map&lt;typename std::iterator_traits&lt;Iterator&gt;::value_type,<span class="keywordtype">unsigned</span>&gt;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  makeCountList( Iterator beg,  Iterator end)</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a0bdb6d8aaf283e419945540da5d8c1f5">   61</a></span>&#160;  <a class="code" href="namespaceSequence.html#a0bdb6d8aaf283e419945540da5d8c1f5">makeCountList</a>( Iterator beg,  Iterator end)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::iterator_traits&lt;Iterator&gt;::value_type type;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">typedef</span> <span class="keyword">typename</span> std::map&lt;type,unsigned&gt; maptype;</div>
@@ -130,7 +130,7 @@ $(document).ready(function(){initNavTree('SeqUtilities_8hpp_source.html','');});
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iterator&gt;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">bool</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  internalGapCheck(Iterator beg, Iterator end,</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="namespaceSequence.html#ab034fd4b0b756671f74a26b5828707e1">   86</a></span>&#160;  <a class="code" href="namespaceSequence.html#ab034fd4b0b756671f74a26b5828707e1">internalGapCheck</a>(Iterator beg, Iterator end,</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                   <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; gapchar = <span class="charliteral">&#39;-&#39;</span>,</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                   <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; mod = 3)</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  {</div>
@@ -181,13 +181,15 @@ $(document).ready(function(){initNavTree('SeqUtilities_8hpp_source.html','');});
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}<span class="comment">//namespace Sequence</span></div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespaceSequence_html_a0bdb6d8aaf283e419945540da5d8c1f5"><div class="ttname"><a href="namespaceSequence.html#a0bdb6d8aaf283e419945540da5d8c1f5">Sequence::makeCountList</a></div><div class="ttdeci">std::map&lt; typename std::iterator_traits&lt; Iterator &gt;::value_type, unsigned &gt; makeCountList(Iterator beg, Iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="SeqUtilities_8hpp_source.html#l00061">SeqUtilities.hpp:61</a></div></div>
+<div class="ttc" id="namespaceSequence_html_ab034fd4b0b756671f74a26b5828707e1"><div class="ttname"><a href="namespaceSequence.html#ab034fd4b0b756671f74a26b5828707e1">Sequence::internalGapCheck</a></div><div class="ttdeci">bool internalGapCheck(Iterator beg, Iterator end, const char &amp;gapchar= '-', const unsigned &amp;mod=3)</div><div class="ttdef"><b>Definition:</b> <a href="SeqUtilities_8hpp_source.html#l00086">SeqUtilities.hpp:86</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="SeqUtilities_8hpp.html">SeqUtilities.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

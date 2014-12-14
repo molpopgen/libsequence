@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -69,6 +69,7 @@ $(document).ready(function(){initNavTree('Correlations_8hpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">Correlations.hpp File Reference</div>  </div>
@@ -89,14 +90,20 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spearman's rank correlation.  <a href="structSequence_1_1SpearmansRank.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceSequence"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html">Sequence</a></td></tr>
+<tr class="memdesc:namespaceSequence"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace in which this library resides. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0a32c26bd78e91f70d8a517279b9437c"><td class="memTemplParams" colspan="2">template&lt;typename iter1 , typename iter2 , typename correlation_type , typename comparison_function , typename shuffler &gt; </td></tr>
-<tr class="memitem:a0a32c26bd78e91f70d8a517279b9437c"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::PermuteCorrelation</b> (iter1 beg_x, iter1 end_x, iter2 beg_y, const correlation_type &amp;c, const comparison_function &amp;comp, shuffler &amp;s, const unsigned &amp;NPERM=10000)</td></tr>
-<tr class="separator:a0a32c26bd78e91f70d8a517279b9437c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01ef3ae984b6aa0d2002faf3979ef9ce"><td class="memTemplParams" colspan="2">template&lt;typename iter1 , typename iter2 , typename correlation_type , typename comparison_function , typename shuffler &gt; </td></tr>
-<tr class="memitem:a01ef3ae984b6aa0d2002faf3979ef9ce"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::PermuteCorrelation</b> (iter1 beg_x, iter1 end_x, iter2 beg_y, const correlation_type &amp;c, const comparison_function &amp;comp, const shuffler &amp;s, const unsigned &amp;NPERM=10000)</td></tr>
-<tr class="separator:a01ef3ae984b6aa0d2002faf3979ef9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ad6da6579788349c3f9f442c31c3805"><td class="memTemplParams" colspan="2">template&lt;typename iter1 , typename iter2 , typename correlation_type , typename comparison_function , typename shuffler &gt; </td></tr>
+<tr class="memitem:a8ad6da6579788349c3f9f442c31c3805"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a8ad6da6579788349c3f9f442c31c3805">Sequence::PermuteCorrelation</a> (iter1 beg_x, iter1 end_x, iter2 beg_y, const correlation_type &amp;corr, const comparison_function &amp;comp, shuffler &amp;s, const unsigned &amp;NPERM)</td></tr>
+<tr class="separator:a8ad6da6579788349c3f9f442c31c3805"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac24509f39ce9d1735556d677555fabfb"><td class="memTemplParams" colspan="2">template&lt;typename iter1 , typename iter2 , typename correlation_type , typename comparison_function , typename shuffler &gt; </td></tr>
+<tr class="memitem:ac24509f39ce9d1735556d677555fabfb"><td class="memTemplItemLeft" align="right" valign="top">double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#ac24509f39ce9d1735556d677555fabfb">Sequence::PermuteCorrelation</a> (iter1 beg_x, iter1 end_x, iter2 beg_y, const correlation_type &amp;corr, const comparison_function &amp;comp, const shuffler &amp;s, const unsigned &amp;NPERM)</td></tr>
+<tr class="separator:ac24509f39ce9d1735556d677555fabfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generic algorithms for calculating and testing the significance of correlation coefficients </p>
@@ -108,7 +115,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="Correlations_8hpp.html">Correlations.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('TwoSubs_8cc_source.html','');});
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    p0_b3= p2S_b3= p2V_b3= p4_b3= q0_b3= q2S_b3= q2V_b3= q4_b3=0.;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    p0_b4= p2S_b4= p2V_b4= p4_b4= q0_b4= q2S_b4= q2V_b4= q4_b4=0.;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    std::string intermediates[2];</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="group__CodonPaths.html#ga3640124ef623404694e650ba8a757e78">Intermediates2</a>(intermediates,codon1,codon2);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    Intermediates2(intermediates,codon1,codon2);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    weights2-&gt;<a class="code" href="classSequence_1_1WeightingScheme2.html#a33ab2b615486ddddb78f3cade69f3712">Calculate</a>(codon1,codon2);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">double</span> *weights = weights2-&gt;<a class="code" href="classSequence_1_1WeightingScheme2.html#a9fe15764f2773c8570af3014e100570a">weights</a>();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);</div>
@@ -256,7 +256,6 @@ $(document).ready(function(){initNavTree('TwoSubs_8cc_source.html','');});
 <div class="ttc" id="CountingOperators_8hpp_html_a4ca8632ef3a0d27c197c9cabeac10ef6"><div class="ttname"><a href="CountingOperators_8hpp.html#a4ca8632ef3a0d27c197c9cabeac10ef6">operator()</a></div><div class="ttdeci">bool operator()(const std::pair&lt; key, value &gt; &amp;l, const std::pair&lt; key, value &gt; &amp;r) const </div><div class="ttdef"><b>Definition:</b> <a href="CountingOperators_8hpp_source.html#l00085">CountingOperators.hpp:85</a></div></div>
 <div class="ttc" id="classSequence_1_1WeightingScheme2_html_a33ab2b615486ddddb78f3cade69f3712"><div class="ttname"><a href="classSequence_1_1WeightingScheme2.html#a33ab2b615486ddddb78f3cade69f3712">Sequence::WeightingScheme2::Calculate</a></div><div class="ttdeci">virtual void Calculate(const std::string &amp;codon1, const std::string &amp;codon2) const =0</div></div>
 <div class="ttc" id="RedundancyCom95_8hpp_html"><div class="ttname"><a href="RedundancyCom95_8hpp.html">RedundancyCom95.hpp</a></div><div class="ttdoc">class Sequence::RedundancyCom95 </div></div>
-<div class="ttc" id="group__CodonPaths_html_ga3640124ef623404694e650ba8a757e78"><div class="ttname"><a href="group__CodonPaths.html#ga3640124ef623404694e650ba8a757e78">Sequence::Intermediates2</a></div><div class="ttdeci">void Intermediates2(string *intermediates, const std::string &amp;codon1, const std::string &amp;codon2)</div><div class="ttdoc">Calculate the intermediate codons between a pair of codons diverged at 2 positions. </div><div class="ttdef"><b>Definition:</b> <a href="PathwayHelper_8cc_source.html#l00033">PathwayHelper.cc:33</a></div></div>
 <div class="ttc" id="SingleSub_8hpp_html"><div class="ttname"><a href="SingleSub_8hpp.html">SingleSub.hpp</a></div><div class="ttdoc">used by Sequence::Comeron95, class Sequence::SingleSub calculates divergence between codons that diff...</div></div>
 <div class="ttc" id="classSequence_1_1WeightingScheme2_html"><div class="ttname"><a href="classSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 2 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00081">WeightingSchemes.hpp:81</a></div></div>
 <div class="ttc" id="PathwayHelper_8hpp_html"><div class="ttname"><a href="PathwayHelper_8hpp.html">PathwayHelper.hpp</a></div><div class="ttdoc">declarations of Sequence::Intermediates2 and Sequence::Intermediates3 </div></div>
@@ -269,7 +268,7 @@ $(document).ready(function(){initNavTree('TwoSubs_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>TwoSubs.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

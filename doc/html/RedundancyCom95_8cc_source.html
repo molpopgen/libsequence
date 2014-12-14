@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -111,9 +111,9 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#ifndef DOXYGEN_SKIP</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>RedundancyCom95impl</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">explicit</span> RedundancyCom95impl(<span class="keyword">const</span> GeneticCodes &amp;code);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">explicit</span> RedundancyCom95impl(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a> &amp;code);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> GeneticCodes genetic_code;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a> genetic_code;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;      </div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//matrices to be filled on the fly</span></div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">double</span> firstNon[4][4][4];</div>
@@ -136,7 +136,7 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span> codonPrecondition(<span class="keyword">const</span> std::string &amp; codon);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  };</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  RedundancyCom95impl::RedundancyCom95impl(<span class="keyword">const</span> GeneticCodes &amp;code) : genetic_code(code)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  RedundancyCom95impl::RedundancyCom95impl(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a> &amp;code) : genetic_code(code)</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  {</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    intToNuc[0] = <span class="charliteral">&#39;A&#39;</span>;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    intToNuc[1] = <span class="charliteral">&#39;T&#39;</span>;</div>
@@ -184,11 +184,11 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">//make every codon</span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    codon.resize(3);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    mutation.resize(3);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">for</span> (i = Nucleotides (A); i &lt;= Nucleotides (C); ++i)</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">for</span> (i = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); i &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++i)</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">for</span> (j = Nucleotides (A); j &lt;= Nucleotides (C); ++j)</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">for</span> (j = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); j &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++j)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;          {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">for</span> (k = Nucleotides (A); k &lt;= Nucleotides (C); ++k)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">for</span> (k = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); k &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++k)</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;              {</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                numN = numTsS = numTvS = 0;     <span class="comment">//initialize</span></div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                numPossTs = numPossTv = 0;</div>
@@ -199,19 +199,19 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <span class="comment">//now make all possible mutations at first position</span></div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                codonState = i;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">for</span> (l = Nucleotides (A);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                     l &lt;= Nucleotides (C); ++l)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="keywordflow">for</span> (l = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                     l &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++l)</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                  {</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                    <span class="keywordflow">if</span> (l != codonState)</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                      { <span class="comment">//only include mutations</span></div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                        mutation[0] = intToNuc[l];</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                        mutation[1] = codon[1];</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                        mutation[2] = codon[2]; <span class="comment">//the mutant codon is now defined</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        type = TsTv (intToNuc[codonState], mutation[0]);<span class="comment">//find out if change is Ts or Tv</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                        type = <a class="code" href="namespaceSequence.html#a75b90c6ccf6178eb60649717875611b7">TsTv</a> (intToNuc[codonState], mutation[0]);<span class="comment">//find out if change is Ts or Tv</span></div>
 <div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        codonTrans = <a class="code" href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Translate</a> (codon.begin(),</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                        codonTrans = <a class="code" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Translate</a> (codon.begin(),</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                                                codon.end(), genetic_code);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        mutationTrans = <a class="code" href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Translate</a> (mutation.begin(),</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                        mutationTrans = <a class="code" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Translate</a> (mutation.begin(),</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                                                   mutation.end(),genetic_code);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                        <span class="comment">//if neither codon is a stop</span></div>
@@ -228,16 +228,16 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                                S = 0;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                N = 1;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                              }</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                            <span class="keywordflow">if</span> (type == Mutations(Ts))</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                            <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Ts))</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                              ++numPossTs;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == Mutations(Tv))</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Tv))</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                              ++numPossTv;</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                            <span class="keywordflow">if</span> (N == 1) <span class="comment">//if change is nonsynonymous</span></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                              ++numN;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S == 1 &amp;&amp; type == Mutations(Ts))</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S == 1 &amp;&amp; type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Ts))</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                              <span class="comment">//if change is synonymous transition</span></div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;                              ++numTsS;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S == 1 &amp;&amp; type == Mutations(Tv))</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S == 1 &amp;&amp; type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Tv))</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                              <span class="comment">//if change is synonymous transversion</span></div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                              ++numTvS;</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                          }</div>
@@ -328,11 +328,11 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">//make every codon</span></div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    codon.resize(3);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    mutation.resize(3);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (i = Nucleotides (A); i &lt;= Nucleotides (C); ++i)</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">for</span> (i = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); i &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++i)</div>
 <div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;      {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">for</span> (j = Nucleotides (A); j &lt;= Nucleotides (C); ++j)</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">for</span> (j = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); j &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++j)</div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;          {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">for</span> (k = Nucleotides (A); k &lt;= Nucleotides (C); ++k)</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">for</span> (k = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); k &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++k)</div>
 <div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;              {</div>
 <div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                numN = numTsS = numTvS = 0;     <span class="comment">//initialize</span></div>
 <div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                numPossTs = numPossTv = 0;</div>
@@ -343,19 +343,19 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <span class="comment">//now make all possible mutations at first position</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                codonState = k;</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">for</span> (l = Nucleotides (A);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                     l &lt;= Nucleotides (C); ++l)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                <span class="keywordflow">for</span> (l = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                     l &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++l)</div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                  {</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    <span class="keywordflow">if</span> (l != codonState)</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                      { <span class="comment">//only include mutations</span></div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                        mutation[0] = codon[0];</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                        mutation[1] = codon[1];</div>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                        mutation[2] = intToNuc[l];      <span class="comment">//the mutant codon is now defined</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        type = TsTv (intToNuc[codonState], mutation[2]);        <span class="comment">//find out if change is Ts or Tv</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                        type = <a class="code" href="namespaceSequence.html#a75b90c6ccf6178eb60649717875611b7">TsTv</a> (intToNuc[codonState], mutation[2]);        <span class="comment">//find out if change is Ts or Tv</span></div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        codonTrans = <a class="code" href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Translate</a> (codon.begin(),</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        codonTrans = <a class="code" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Translate</a> (codon.begin(),</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                                                codon.end(),genetic_code);</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        mutationTrans = <a class="code" href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Translate</a> (mutation.begin(),</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                        mutationTrans = <a class="code" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Translate</a> (mutation.begin(),</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                                   mutation.end(),genetic_code);</div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                        <span class="keywordflow">if</span> ((codonTrans)[0] != <span class="charliteral">&#39;*&#39;</span></div>
@@ -371,15 +371,15 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                                S = 0;</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                                N = 1;</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                              }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                            <span class="keywordflow">if</span> (type == Mutations(Ts))</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                            <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Ts))</div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                              ++numPossTs;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == Mutations(Tv))</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Tv))</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                              ++numPossTv;</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                            <span class="keywordflow">if</span> (N)</div>
 <div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                              ++numN;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S &amp;&amp; type == Mutations(Ts))</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S &amp;&amp; type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Ts))</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                              ++numTsS;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S &amp;&amp; type == Mutations(Tv))</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (S &amp;&amp; type == <a class="code" href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Mutations</a>(Tv))</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                              ++numTvS;</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                          }</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                      }</div>
@@ -452,15 +452,15 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    std::string trans;</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    std::string codon(3,<span class="charliteral">&#39;A&#39;</span>);</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">for</span> (i = Nucleotides (A); i &lt;= Nucleotides (C); ++i)</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      <span class="keywordflow">for</span> (j = Nucleotides (A); j &lt;= Nucleotides (C); ++j)</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">for</span> (k = Nucleotides (A); k &lt;= Nucleotides (C); ++k)</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">for</span> (i = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); i &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++i)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      <span class="keywordflow">for</span> (j = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); j &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++j)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">for</span> (k = <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (A); k &lt;= <a class="code" href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Nucleotides</a> (C); ++k)</div>
 <div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;          {</div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            codon[0] = intToNuc[i];</div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            codon[1] = intToNuc[j];</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            codon[2] = intToNuc[k];</div>
 <div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            trans =<a class="code" href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Translate</a> (codon.begin(),codon.end(),  genetic_code);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            trans =<a class="code" href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Translate</a> (codon.begin(),codon.end(),  genetic_code);</div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <span class="keywordflow">if</span>(strcmp(trans.c_str(),<span class="stringliteral">&quot;*&quot;</span>)!=0)</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;              { <span class="comment">//if not a stop codon</span></div>
 <div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                l0_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 1. </div>
@@ -488,7 +488,7 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;          }</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  }</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00423"></a><span class="lineno"><a class="line" href="classSequence_1_1RedundancyCom95.html#a3d8fa9e2059e3b5dc82de77ccb55a48d">  423</a></span>&#160;<span class="preprocessor"></span>  RedundancyCom95::RedundancyCom95 (<span class="keyword">const</span> GeneticCodes &amp;code):</div>
+<div class="line"><a name="l00423"></a><span class="lineno"><a class="line" href="classSequence_1_1RedundancyCom95.html#a3d8fa9e2059e3b5dc82de77ccb55a48d">  423</a></span>&#160;<span class="preprocessor"></span>  RedundancyCom95::RedundancyCom95 (<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">GeneticCodes</a> &amp;code):</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    impl(std::unique_ptr&lt;RedundancyCom95impl&gt;(new RedundancyCom95impl(code)))</div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  {</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  }</div>
@@ -587,6 +587,8 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordflow">return</span> impl-&gt;l4_vals[impl-&gt;nucToInt[codon[0]]][impl-&gt;nucToInt[codon[1]]][impl-&gt;nucToInt[codon[2]]];</div>
 <div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;  }</div>
 <div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;}</div>
+<div class="ttc" id="group__misc_html_gaa68a90c6a1a5466ea314c55a8dda3cba"><div class="ttname"><a href="group__misc.html#gaa68a90c6a1a5466ea314c55a8dda3cba">Sequence::Translate</a></div><div class="ttdeci">std::string Translate(std::string::const_iterator beg, std::string::const_iterator end, Sequence::GeneticCodes genetic_code=Sequence::UNIVERSAL, const char &amp;gapchar= '-')</div><div class="ttdef"><b>Definition:</b> <a href="Translate_8cc_source.html#l00222">Translate.cc:222</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a75b90c6ccf6178eb60649717875611b7"><div class="ttname"><a href="namespaceSequence.html#a75b90c6ccf6178eb60649717875611b7">Sequence::TsTv</a></div><div class="ttdeci">Mutations TsTv(const char &amp;i, const char &amp;j)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00035">Comparisons.cc:35</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a1a19c3141d23009151c0ff7edbf0b13a"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a1a19c3141d23009151c0ff7edbf0b13a">Sequence::RedundancyCom95::First2S</a></div><div class="ttdeci">double First2S(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00451">RedundancyCom95.cc:451</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a58cdcbf2cf76437b4cdc2c8d42a36136"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a58cdcbf2cf76437b4cdc2c8d42a36136">Sequence::RedundancyCom95::ThirdNon</a></div><div class="ttdeci">double ThirdNon(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00479">RedundancyCom95.cc:479</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a7eb9bb93b438efa291020aa994e643d3"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a7eb9bb93b438efa291020aa994e643d3">Sequence::RedundancyCom95::L4_vals</a></div><div class="ttdeci">double L4_vals(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00573">RedundancyCom95.cc:573</a></div></div>
@@ -594,15 +596,17 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div class="ttc" id="RedundancyCom95_8hpp_html"><div class="ttname"><a href="RedundancyCom95_8hpp.html">RedundancyCom95.hpp</a></div><div class="ttdoc">class Sequence::RedundancyCom95 </div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a7fc29b11be9f2ad4543af77323a714db"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a7fc29b11be9f2ad4543af77323a714db">Sequence::RedundancyCom95::First2V</a></div><div class="ttdeci">double First2V(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00465">RedundancyCom95.cc:465</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_addbd0121c0fe6e10de254c0deae98a18"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#addbd0121c0fe6e10de254c0deae98a18">Sequence::RedundancyCom95::Third2V</a></div><div class="ttdeci">double Third2V(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00518">RedundancyCom95.cc:518</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aff4fe77c175b8c7b68ce94cb9880d82b"><div class="ttname"><a href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a></div><div class="ttdeci">GeneticCodes</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00046">SeqEnums.hpp:46</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a34c92fedb9bb9442252140f21ab6811d"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a34c92fedb9bb9442252140f21ab6811d">Sequence::RedundancyCom95::L2V_vals</a></div><div class="ttdeci">double L2V_vals(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00559">RedundancyCom95.cc:559</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a2009c170f0f10cf641e08fb544a0374d"><div class="ttname"><a href="namespaceSequence.html#a2009c170f0f10cf641e08fb544a0374d">Sequence::Mutations</a></div><div class="ttdeci">Mutations</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00051">SeqEnums.hpp:51</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a9d0364fd8cc62f7d42287e12ac459875"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a9d0364fd8cc62f7d42287e12ac459875">Sequence::RedundancyCom95::L0_vals</a></div><div class="ttdeci">double L0_vals(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00531">RedundancyCom95.cc:531</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a4df03c70f53b404fe5047317398a2d3f"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a4df03c70f53b404fe5047317398a2d3f">Sequence::RedundancyCom95::ThirdFour</a></div><div class="ttdeci">double ThirdFour(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00492">RedundancyCom95.cc:492</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a261206f2247d8600e503d39b37ca808c"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a261206f2247d8600e503d39b37ca808c">Sequence::RedundancyCom95::FirstNon</a></div><div class="ttdeci">double FirstNon(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00438">RedundancyCom95.cc:438</a></div></div>
 <div class="ttc" id="structambiguousNucleotide_html"><div class="ttname"><a href="structambiguousNucleotide.html">ambiguousNucleotide</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqProperties_8hpp_source.html#l00036">SeqProperties.hpp:36</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a74fd98f47670edccac244fe68afbde20"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a74fd98f47670edccac244fe68afbde20">Sequence::RedundancyCom95::Third2S</a></div><div class="ttdeci">double Third2S(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00505">RedundancyCom95.cc:505</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_ac034ce011874388cd1c3c95372cfbf2f"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#ac034ce011874388cd1c3c95372cfbf2f">Sequence::RedundancyCom95::L2S_vals</a></div><div class="ttdeci">double L2S_vals(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00545">RedundancyCom95.cc:545</a></div></div>
-<div class="ttc" id="group__misc_html_gabfebaa3474da1c5e8432cc3ed1a097d9"><div class="ttname"><a href="group__misc.html#gabfebaa3474da1c5e8432cc3ed1a097d9">Sequence::Translate</a></div><div class="ttdeci">std::string Translate(std::string::const_iterator beg, std::string::const_iterator end, Sequence::GeneticCodes genetic_code, const char &amp;gapchar)</div><div class="ttdef"><b>Definition:</b> <a href="Translate_8cc_source.html#l00222">Translate.cc:222</a></div></div>
 <div class="ttc" id="SeqProperties_8hpp_html"><div class="ttname"><a href="SeqProperties_8hpp.html">SeqProperties.hpp</a></div><div class="ttdoc">Function objects to ask simple questions about sequence composition. Declares Sequence::ambiguousNucl...</div></div>
+<div class="ttc" id="namespaceSequence_html_a27b0d28a22fbebd8b2407eda21caaacc"><div class="ttname"><a href="namespaceSequence.html#a27b0d28a22fbebd8b2407eda21caaacc">Sequence::Nucleotides</a></div><div class="ttdeci">Nucleotides</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00040">SeqEnums.hpp:40</a></div></div>
 <div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -610,7 +614,7 @@ $(document).ready(function(){initNavTree('RedundancyCom95_8cc_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>RedundancyCom95.cc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

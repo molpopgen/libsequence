@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -68,6 +68,7 @@ $(document).ready(function(){initNavTree('SeqRegexes_8hpp.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#namespaces">Namespaces</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -75,30 +76,36 @@ $(document).ready(function(){initNavTree('SeqRegexes_8hpp.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>various useful rexex-based functions for dealing with data. Declares Sequence::basic_dna_alphabet,Sequence::full_dna_alphabet, Sequence::pep_alphabet, and the function Sequence::validSeq.  
+<p>various useful rexex-based functions for dealing with data. Declares <a class="el" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a>,<a class="el" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">Sequence::full_dna_alphabet</a>, <a class="el" href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">Sequence::pep_alphabet</a>, and the function <a class="el" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;regex&gt;</code><br/>
 <code>#include &lt;type_traits&gt;</code><br/>
 </div>
 <p><a href="SeqRegexes_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+Namespaces</h2></td></tr>
+<tr class="memitem:namespaceSequence"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html">Sequence</a></td></tr>
+<tr class="memdesc:namespaceSequence"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace in which this library resides. <br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a3a96d1177eef3a800d6d881a334fc377"><td class="memTemplParams" colspan="2">template&lt;typename Iter &gt; </td></tr>
-<tr class="memitem:a3a96d1177eef3a800d6d881a334fc377"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::validSeq</b> (Iter beg, Iter end, const char *_pattern=Sequence::basic_dna_alphabet, const bool icase=true)</td></tr>
+<tr class="memitem:a3a96d1177eef3a800d6d881a334fc377"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a> (Iter beg, Iter end, const char *_pattern=<a class="el" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a>, const bool icase=true)</td></tr>
 <tr class="separator:a3a96d1177eef3a800d6d881a334fc377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a264064250dc327bf9785e92987ef7517"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Sequence::basic_dna_alphabet</b> = &quot;[^AGTCN\\-]&quot;</td></tr>
+<tr class="memitem:a264064250dc327bf9785e92987ef7517"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a> = &quot;[^AGTCN\\-]&quot;</td></tr>
 <tr class="separator:a264064250dc327bf9785e92987ef7517"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a840142238ae796f1ce8588aa31ca4c75"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Sequence::full_dna_alphabet</b> = &quot;[^AGCTNXMRWSKVHDB\\-]&quot;</td></tr>
+<tr class="memitem:a840142238ae796f1ce8588aa31ca4c75"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">Sequence::full_dna_alphabet</a> = &quot;[^AGCTNXMRWSKVHDB\\-]&quot;</td></tr>
 <tr class="separator:a840142238ae796f1ce8588aa31ca4c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacd435c5120259af4a63b40d14187c1f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><b>Sequence::pep_alphabet</b> = &quot;[^ARNDBCQEZGHILKMFPSTWYV\\-]&quot;</td></tr>
+<tr class="memitem:aacd435c5120259af4a63b40d14187c1f"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">Sequence::pep_alphabet</a> = &quot;[^ARNDBCQEZGHILKMFPSTWYV\\-]&quot;</td></tr>
 <tr class="separator:aacd435c5120259af4a63b40d14187c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>various useful rexex-based functions for dealing with data. Declares Sequence::basic_dna_alphabet,Sequence::full_dna_alphabet, Sequence::pep_alphabet, and the function Sequence::validSeq. </p>
+<div class="textblock"><p>various useful rexex-based functions for dealing with data. Declares <a class="el" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a>,<a class="el" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">Sequence::full_dna_alphabet</a>, <a class="el" href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">Sequence::pep_alphabet</a>, and the function <a class="el" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a>. </p>
 <p>This file declares various functions using regular expressions. </p>
 
 <p>Definition in file <a class="el" href="SeqRegexes_8hpp_source.html">SeqRegexes.hpp</a>.</p>
@@ -108,7 +115,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="SeqRegexes_8hpp.html">SeqRegexes.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

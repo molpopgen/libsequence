@@ -13,6 +13,10 @@ var classSequence_1_1PolySites =
     [ "PolySites", "classSequence_1_1PolySites.html#af104fc59511518102d8a396ea2e36943", null ],
     [ "PolySites", "classSequence_1_1PolySites.html#a46f1841a7da4c4c78d2e8555defb9b5d", null ],
     [ "PolySites", "classSequence_1_1PolySites.html#af14f4d12c39b24abeb6124137c7f85d6", null ],
+    [ "PolySites", "classSequence_1_1PolySites.html#a5c738113c109734750370010fac59ac6", null ],
+    [ "PolySites", "classSequence_1_1PolySites.html#a99ce29e0a3abf1cb7e55f6ea010bd2bd", null ],
+    [ "PolySites", "classSequence_1_1PolySites.html#afbac90f82f4e4054377be06c3c8a9f20", null ],
+    [ "PolySites", "classSequence_1_1PolySites.html#a54b2e4b948a3258d7da39f3cfbd73353", null ],
     [ "~PolySites", "classSequence_1_1PolySites.html#a91483ac003227247b276d3dfd1457391", null ],
     [ "ApplyFreqFilter", "classSequence_1_1PolySites.html#a97a105bcdbaff6298ecde778a7d5fe49", null ],
     [ "assign", "classSequence_1_1PolySites.html#a05f17c6ed162084fb6c1d48d6354b432", null ],
@@ -31,6 +35,10 @@ var classSequence_1_1PolySites =
     [ "numsites", "classSequence_1_1PolySites.html#ad4a3c9e456be37dd7cb46b3956d539c5", null ],
     [ "operator Sequence::polySiteVector", "classSequence_1_1PolySites.html#ae09d26d7f11e7b59080bec260fae79ed", null ],
     [ "operator!=", "classSequence_1_1PolySites.html#a1e7747ab6a13f5eae75ce6c4ff8ad90b", null ],
+    [ "operator=", "classSequence_1_1PolySites.html#a994b4de0ce4f2167bcdcb196c655c893", null ],
+    [ "operator=", "classSequence_1_1PolySites.html#a3e463c089f315323e7a749684023b918", null ],
+    [ "operator=", "classSequence_1_1PolySites.html#a077f6209ec15cb28b74c862f3558e344", null ],
+    [ "operator=", "classSequence_1_1PolySites.html#a2b3a43f9e9201cebad1b536a151df681", null ],
     [ "operator==", "classSequence_1_1PolySites.html#a274be63f61e949be5056f47ae3bd0402", null ],
     [ "operator[]", "classSequence_1_1PolySites.html#a5dd3235f5a85b6bcfec56433fc54de6f", null ],
     [ "operator[]", "classSequence_1_1PolySites.html#a4bf5043b79dca186f547224921d06e4d", null ],
@@ -50,7 +58,5 @@ var classSequence_1_1PolySites =
     [ "scbegin", "classSequence_1_1PolySites.html#a46bfc0844dcaf28ff31214190ed3e1dd", null ],
     [ "scend", "classSequence_1_1PolySites.html#aec9ce40d98cbda31be56389b17a52d71", null ],
     [ "send", "classSequence_1_1PolySites.html#afe610e36cc38d3a77dfe9d6254deb789", null ],
-    [ "size", "classSequence_1_1PolySites.html#a0ad9fa4c28b8568a1bde74e13d10f1b3", null ],
-    [ "numseqs", "classSequence_1_1PolySites.html#a2abe3756e78167eb8b81db7386b8fa43", null ],
-    [ "seqlen", "classSequence_1_1PolySites.html#aae3f86c5eb093ff75e95e2a3ca51e77f", null ]
+    [ "size", "classSequence_1_1PolySites.html#a0ad9fa4c28b8568a1bde74e13d10f1b3", null ]
 ];

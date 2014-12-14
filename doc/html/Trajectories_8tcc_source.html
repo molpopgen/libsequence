@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keyword">template</span>&lt; <span class="keyword">typename</span> uni01_generator &gt;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">void</span> ConditionalTraj_details(uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a4ea4808f30d4863cf14362371c05e040">   11</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a4ea4808f30d4863cf14362371c05e040">ConditionalTraj_details</a>(uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                               std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                               <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; N,</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                               <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; s,</div>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> uni01_generator&gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordtype">void</span> ConditionalTrajNeutral_details(uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a065e92d81c4f66e39cd10eea8101013a">   48</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a065e92d81c4f66e39cd10eea8101013a">ConditionalTrajNeutral_details</a>(uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                      std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; dt,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                                      <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; initial_freq,</div>
@@ -141,7 +141,7 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  }</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">template</span>&lt; <span class="keyword">typename</span> uni01_generator &gt;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> ConditionalTraj(uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a1023b5e091da3de628947bf1da0644c6">   77</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a1023b5e091da3de628947bf1da0644c6">ConditionalTraj</a>(uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                       std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; N,</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; s,</div>
@@ -149,11 +149,11 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; initial_frequency,</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; final_frequency)</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    ConditionalTraj_details(uni01,traj,N,s,dt,initial_frequency,final_frequency);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="namespaceSequence.html#a4ea4808f30d4863cf14362371c05e040">ConditionalTraj_details</a>(uni01,traj,N,s,dt,initial_frequency,final_frequency);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">template</span>&lt; <span class="keyword">typename</span> uni01_generator &gt;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">void</span> ConditionalTraj(<span class="keyword">const</span> uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="namespaceSequence.html#af6d6ccdace4b1873351b1813346819c5">  102</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a1023b5e091da3de628947bf1da0644c6">ConditionalTraj</a>(<span class="keyword">const</span> uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                       std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; N,</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; s,</div>
@@ -161,11 +161,11 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; initial_frequency,</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; final_frequency)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    ConditionalTraj_details(uni01,traj,N,s,dt,initial_frequency,final_frequency);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="namespaceSequence.html#a4ea4808f30d4863cf14362371c05e040">ConditionalTraj_details</a>(uni01,traj,N,s,dt,initial_frequency,final_frequency);</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  </div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> uni01_generator&gt;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">void</span> ConditionalTrajNeutral(uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a2f47432317cde97fc60fdc8dd23c63c0">  127</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a2f47432317cde97fc60fdc8dd23c63c0">ConditionalTrajNeutral</a>(uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                              std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; dt,</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; initial_freq,</div>
@@ -173,27 +173,31 @@ $(document).ready(function(){initNavTree('Trajectories_8tcc_source.html','');});
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  </div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  {</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    ConditionalTrajNeutral_details(uni01,traj,dt,initial_freq,final_freq);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="namespaceSequence.html#a065e92d81c4f66e39cd10eea8101013a">ConditionalTrajNeutral_details</a>(uni01,traj,dt,initial_freq,final_freq);</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  }</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> uni01_generator&gt;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">void</span> ConditionalTrajNeutral(<span class="keyword">const</span> uni01_generator &amp; uni01,</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a47e59fa7e04b60104f6e1436eb7ae1ea">  150</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a2f47432317cde97fc60fdc8dd23c63c0">ConditionalTrajNeutral</a>(<span class="keyword">const</span> uni01_generator &amp; uni01,</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                              std::vector&lt;double&gt; * traj,</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; dt,</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; initial_freq,</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">double</span> &amp; final_freq)</div>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  {</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    ConditionalTrajNeutral_details(uni01,traj,dt,initial_freq,final_freq);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="namespaceSequence.html#a065e92d81c4f66e39cd10eea8101013a">ConditionalTrajNeutral_details</a>(uni01,traj,dt,initial_freq,final_freq);</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespaceSequence_html_a065e92d81c4f66e39cd10eea8101013a"><div class="ttname"><a href="namespaceSequence.html#a065e92d81c4f66e39cd10eea8101013a">Sequence::ConditionalTrajNeutral_details</a></div><div class="ttdeci">void ConditionalTrajNeutral_details(uni01_generator &amp;uni01, std::vector&lt; double &gt; *traj, const double &amp;dt, const double &amp;initial_freq, const double &amp;final_freq)</div><div class="ttdef"><b>Definition:</b> <a href="Trajectories_8tcc_source.html#l00048">Trajectories.tcc:48</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a1023b5e091da3de628947bf1da0644c6"><div class="ttname"><a href="namespaceSequence.html#a1023b5e091da3de628947bf1da0644c6">Sequence::ConditionalTraj</a></div><div class="ttdeci">void ConditionalTraj(uni01_generator &amp;uni01, std::vector&lt; double &gt; *traj, const unsigned &amp;N, const double &amp;s, const double &amp;dt, const double &amp;initial_frequency, const double &amp;final_frequency)</div><div class="ttdef"><b>Definition:</b> <a href="Trajectories_8tcc_source.html#l00077">Trajectories.tcc:77</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a4ea4808f30d4863cf14362371c05e040"><div class="ttname"><a href="namespaceSequence.html#a4ea4808f30d4863cf14362371c05e040">Sequence::ConditionalTraj_details</a></div><div class="ttdeci">void ConditionalTraj_details(uni01_generator &amp;uni01, std::vector&lt; double &gt; *traj, const unsigned &amp;N, const double &amp;s, const double &amp;dt, const double &amp;initial_frequency, const double &amp;final_frequency)</div><div class="ttdef"><b>Definition:</b> <a href="Trajectories_8tcc_source.html#l00011">Trajectories.tcc:11</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a2f47432317cde97fc60fdc8dd23c63c0"><div class="ttname"><a href="namespaceSequence.html#a2f47432317cde97fc60fdc8dd23c63c0">Sequence::ConditionalTrajNeutral</a></div><div class="ttdeci">void ConditionalTrajNeutral(uni01_generator &amp;uni01, std::vector&lt; double &gt; *traj, const double &amp;dt, const double &amp;initial_freq, const double &amp;final_freq)</div><div class="ttdef"><b>Definition:</b> <a href="Trajectories_8tcc_source.html#l00127">Trajectories.tcc:127</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><a class="el" href="dir_ce29cd4bc0234b00848bbc91a84a041e.html">bits</a></li><li class="navelem"><b>Trajectories.tcc</b></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -101,15 +101,15 @@ $(document).ready(function(){initNavTree('SeqRegexes_8hpp_source.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;type_traits&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *basic_dna_alphabet = <span class="stringliteral">&quot;[^AGTCN\\-]&quot;</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">   40</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">basic_dna_alphabet</a> = <span class="stringliteral">&quot;[^AGTCN\\-]&quot;</span>;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *full_dna_alphabet =  <span class="stringliteral">&quot;[^AGCTNXMRWSKVHDB\\-]&quot;</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">   45</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">full_dna_alphabet</a> =  <span class="stringliteral">&quot;[^AGCTNXMRWSKVHDB\\-]&quot;</span>;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *pep_alphabet = <span class="stringliteral">&quot;[^ARNDBCQEZGHILKMFPSTWYV\\-]&quot;</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">   50</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">pep_alphabet</a> = <span class="stringliteral">&quot;[^ARNDBCQEZGHILKMFPSTWYV\\-]&quot;</span>;</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> Iter&gt;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">bool</span> validSeq(Iter beg, Iter end, <span class="keyword">const</span> <span class="keywordtype">char</span> *_pattern = Sequence::basic_dna_alphabet, <span class="keyword">const</span> <span class="keywordtype">bool</span> icase = <span class="keyword">true</span>)</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">   55</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">validSeq</a>(Iter beg, Iter end, <span class="keyword">const</span> <span class="keywordtype">char</span> *_pattern = <a class="code" href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a>, <span class="keyword">const</span> <span class="keywordtype">bool</span> icase = <span class="keyword">true</span>)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">for</span>( ; beg != end ; ++beg )</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      {</div>
@@ -124,13 +124,17 @@ $(document).ready(function(){initNavTree('SeqRegexes_8hpp_source.html','');});
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="namespaceSequence_html_a264064250dc327bf9785e92987ef7517"><div class="ttname"><a href="namespaceSequence.html#a264064250dc327bf9785e92987ef7517">Sequence::basic_dna_alphabet</a></div><div class="ttdeci">const char * basic_dna_alphabet</div><div class="ttdef"><b>Definition:</b> <a href="SeqRegexes_8hpp_source.html#l00040">SeqRegexes.hpp:40</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a3a96d1177eef3a800d6d881a334fc377"><div class="ttname"><a href="namespaceSequence.html#a3a96d1177eef3a800d6d881a334fc377">Sequence::validSeq</a></div><div class="ttdeci">bool validSeq(Iter beg, Iter end, const char *_pattern=Sequence::basic_dna_alphabet, const bool icase=true)</div><div class="ttdef"><b>Definition:</b> <a href="SeqRegexes_8hpp_source.html#l00055">SeqRegexes.hpp:55</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a840142238ae796f1ce8588aa31ca4c75"><div class="ttname"><a href="namespaceSequence.html#a840142238ae796f1ce8588aa31ca4c75">Sequence::full_dna_alphabet</a></div><div class="ttdeci">const char * full_dna_alphabet</div><div class="ttdef"><b>Definition:</b> <a href="SeqRegexes_8hpp_source.html#l00045">SeqRegexes.hpp:45</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aacd435c5120259af4a63b40d14187c1f"><div class="ttname"><a href="namespaceSequence.html#aacd435c5120259af4a63b40d14187c1f">Sequence::pep_alphabet</a></div><div class="ttdeci">const char * pep_alphabet</div><div class="ttdef"><b>Definition:</b> <a href="SeqRegexes_8hpp_source.html#l00050">SeqRegexes.hpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="SeqRegexes_8hpp.html">SeqRegexes.hpp</a></li>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:07 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

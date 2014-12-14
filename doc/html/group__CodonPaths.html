@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.3</span>
+   &#160;<span id="projectnumber">1.8.4</span>
    </div>
   </td>
  </tr>
@@ -83,8 +83,8 @@ Functions</h2></td></tr>
 <tr class="memitem:gab933905f221fb3d14014dbf130e7e17f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f">Sequence::Intermediates3</a> (string *intermediates, const std::string &amp;codon1, const std::string &amp;codon2)</td></tr>
 <tr class="memdesc:gab933905f221fb3d14014dbf130e7e17f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the intermediate codons between a pair of codons diverged at 3 positions.  <a href="#gab933905f221fb3d14014dbf130e7e17f">More...</a><br/></td></tr>
 <tr class="separator:gab933905f221fb3d14014dbf130e7e17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2e5a173d72ddfe296615eb776d343f3e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e">Sequence::mutsShortestPath</a> (const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::GeneticCodes &amp;code)</td></tr>
-<tr class="separator:ga2e5a173d72ddfe296615eb776d343f3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6dba1ba44944b4169c80fb8b4bc613e"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a> (const std::string &amp;codon1, const std::string &amp;codon2, const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;code=Sequence::UNIVERSAL)</td></tr>
+<tr class="separator:gae6dba1ba44944b4169c80fb8b4bc613e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group of classes and functions deals with determining either the counts of silent and replacement differences between codons or the intermedate codons that occurs between two different codons </p>
@@ -178,7 +178,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2e5a173d72ddfe296615eb776d343f3e"></a>
+<a class="anchor" id="gae6dba1ba44944b4169c80fb8b4bc613e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -197,7 +197,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const Sequence::GeneticCodes &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="namespaceSequence.html#aff4fe77c175b8c7b68ce94cb9880d82b">Sequence::GeneticCodes</a> &amp;&#160;</td>
           <td class="paramname"><em>code</em>&#160;</td>
         </tr>
         <tr>
@@ -207,7 +207,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>a std::pair&lt;unsigned,unsigned&gt; representing the number of silent and replacement changes b/w 2 codons, as calculated by <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>. The first member of the pair is the number of silent changes in the shortest path, and the second the number of replacement changes. If the pathway type is shortestPath::AMBIG, both members of the return value will be equal to Sequence::SEQMAXUNSIGNED, which is declared in &lt;<a class="el" href="SeqConstants_8hpp.html">Sequence/SeqConstants.hpp</a>&gt;</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a std::pair&lt;unsigned,unsigned&gt; representing the number of silent and replacement changes b/w 2 codons, as calculated by <a class="el" href="classSequence_1_1shortestPath.html" title="Calculate shortest path between 2 codons. ">Sequence::shortestPath</a>. The first member of the pair is the number of silent changes in the shortest path, and the second the number of replacement changes. If the pathway type is shortestPath::AMBIG, both members of the return value will be equal to <a class="el" href="namespaceSequence.html#ac427687431515f70256efb59893388ce">Sequence::SEQMAXUNSIGNED</a>, which is declared in &lt;<a class="el" href="SeqConstants_8hpp.html">Sequence/SeqConstants.hpp</a>&gt;</dd></dl>
 <p>For example: </p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="shortestPath_8hpp.html">Sequence/shortestPath.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -215,7 +215,7 @@ Functions</h2></td></tr>
 <div class="line">{</div>
 <div class="line"><span class="comment">//the shortest path between AAA and GGG, using the universal code,</span></div>
 <div class="line"><span class="comment">//requires 1 silent and 2 replacement changes.</span></div>
-<div class="line">std::pair&lt;unsigned,unsigned&gt; muts = <a class="code" href="group__CodonPaths.html#ga2e5a173d72ddfe296615eb776d343f3e">Sequence::mutsShortestPath</a>(<span class="stringliteral">&quot;AAA&quot;</span>,<span class="stringliteral">&quot;GGG&quot;</span>);</div>
+<div class="line">std::pair&lt;unsigned,unsigned&gt; muts = <a class="code" href="group__CodonPaths.html#gae6dba1ba44944b4169c80fb8b4bc613e">Sequence::mutsShortestPath</a>(<span class="stringliteral">&quot;AAA&quot;</span>,<span class="stringliteral">&quot;GGG&quot;</span>);</div>
 <div class="line">std::cout &lt;&lt; muts.first</div>
 <div class="line">&lt;&lt; <span class="charliteral">&#39; &#39;</span></div>
 <div class="line">&lt;&lt; muts.second</div>
@@ -231,7 +231,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Dec 11 2014 19:25:08 for libsequence by
+    <li class="footer">Generated on Sun Dec 14 2014 06:28:14 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
