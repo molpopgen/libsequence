@@ -1,3 +1,4 @@
+//\file fastqConstructors.cc
 #define BOOST_TEST_MODULE fastqIO
 #define BOOST_TEST_DYN_LINK 
 

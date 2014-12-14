@@ -1,3 +1,4 @@
+//!\ file FastaConstructors.cc
 #define BOOST_TEST_MODULE FastaConstructors
 #define BOOST_TEST_DYN_LINK 
 
