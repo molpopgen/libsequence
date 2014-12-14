@@ -53,6 +53,20 @@ auto namelen = f.first.size();
 auto seqlen = f.second.size();
 ~~~~
 
+You may also access the data in the sequence (but not the name!) using C++11 range-based for loops:
+
+~~~~~{.cpp}
+Sequence::Fasta f("name","TTT");
+/*
+The for loop is equavalent to:
+for( auto & c : f.second )
+*/
+for( auto & c : f )
+{
+	c = 'CCC';
+}
+~~~~~
+
 #### Gzipped files, etc.
 
 For reading/writing compressed files, see the [boost](http://www.boost.org)'s filtering_ostream libraries.  They have been tested, and "just work" with libsequence objects.
