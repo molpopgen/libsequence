@@ -63,7 +63,7 @@ for( auto & c : f.second )
 */
 for( auto & c : f )
 {
-	c = 'CCC';
+	c = 'C';
 }
 ~~~~~
 
