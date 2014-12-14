@@ -1,5 +1,7 @@
 # Tutorial/overview
 
+[TOC]
+
 This document is a rapid-fire overview of library features.
 
 ## Background
@@ -39,6 +41,18 @@ exit(1);
 
 A sequence may be written to an output stream using the usual C++ output operator <<.
 
+### Manipulating a sequence
+
+Sequence::Seq provides obvious member functions for element access and iteration. Further, because a sequence inherits from std::pair<std::string,std::string>, a library user may use any of std::string's member functions as well:
+
+~~~~{.cpp}
+Sequence fasta f;
+//This is the name, whose type is std::string
+auto namelen = f.first.size();
+//The sequence is also std::string:
+auto seqlen = f.second.size();
+~~~~
+
 #### Gzipped files, etc.
 
 For reading/writing compressed files, see the [boost](http://www.boost.org)'s filtering_ostream libraries.  They have been tested, and "just work" with libsequence objects.
@@ -57,3 +71,5 @@ gzwrite(f,o.str().c_str(),o.str().size());
 //Clear your buffer
 o.str(std::string());
 ~~~~
+
+## Testing for correct character sets
