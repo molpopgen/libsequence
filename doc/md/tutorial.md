@@ -57,10 +57,8 @@ You may also access the data in the sequence (but not the name!) using C++11 ran
 
 ~~~~~{.cpp}
 Sequence::Fasta f("name","TTT");
-/*
-The for loop is equavalent to:
-for( auto & c : f.second )
-*/
+//The for loop is equavalent to:
+//for( auto & c : f.second )
 for( auto & c : f )
 {
 	c = 'C';
