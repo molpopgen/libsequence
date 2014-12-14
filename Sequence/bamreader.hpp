@@ -1,3 +1,6 @@
+/*! \file bamreader.hpp
+  @brief BAM input stream
+*/
 #ifdef HAVE_HTSLIB //Will only compile if ./configure detects htslib
 
 #ifndef __SEQUENCE__BAMREADER_HPP__
@@ -13,9 +16,14 @@
 namespace Sequence 
 {
 
-  //fwd declaration
+  //!fwd declaration
   class bamreaderImpl;
 
+  /*! 
+    \class Sequence::bamreader Sequence/bamreader.hpp
+    \brief A class managing input from BAM files
+    \ingroup HTS
+  */
   class bamreader
   {
   private:

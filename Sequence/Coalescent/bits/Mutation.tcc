@@ -188,8 +188,9 @@ namespace Sequence
     if(S==0)
       return SimData();
     unsigned nsam = unsigned(history.begin()->nsam);
-    SimData d(nsam,S);
-    SimData::pos_iterator pos_i = d.pbegin();
+    std::vector<std::string> d(nsam,std::string(S,' '));
+    std::vector<double> pos(S);
+    auto pos_i = pos.begin();
     unsigned seg=0,nsegs = unsigned(history.size());
     arg::const_iterator i=history.begin(),
       j = history.begin();
@@ -223,8 +224,8 @@ namespace Sequence
 	    ttlS += *(segsites+seg);
 	  }
       }
-    std::sort(pos_i,d.pend());
-    return d;
+    std::sort(pos.begin(),pos.end());
+    return SimData(std::move(pos),std::move(d));
   }
 #endif
 

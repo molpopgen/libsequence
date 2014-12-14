@@ -22,7 +22,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Sequence/SeqEnums.hpp>
+#include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/SeqExceptions.hpp>
+#include <algorithm>
+#include <iterator>
 #include <cassert>
 #include <string>
 #include <cctype>
@@ -35,51 +38,29 @@ namespace Sequence
       is a member of the enumeration type Sequence::Mutations.
     */
     {
-      int k = 0, l = 0;
-      switch (char(std::toupper(i)))
-        {
-        case 'A':
-          k = Nucleotides (A);
-          break;
-        case 'T':
-          k = Nucleotides (T);
-          break;
-        case 'G':
-          k = Nucleotides (G);
-          break;
-        case 'C':
-          k = Nucleotides (C);
-          break;
-        case '-':
-          k = Nucleotides (GAP);
-          break;
-        case 'N':
-          k = Nucleotides (N);
-          break;
-        }
-      switch (char(std::toupper(j)))
-        {
-        case 'A':
-          l = Nucleotides (A);
-          break;
-        case 'T':
-          l = Nucleotides (T);
-          break;
-        case 'G':
-          l = Nucleotides (G);
-          break;
-        case 'C':
-          l = Nucleotides (C);
-          break;
-        case '-':
-          l = Nucleotides (GAP);
-          break;
-        case 'N':
-          l = Nucleotides (N);
-          break;
-        }
-      assert(k<=Nucleotides(C) && l <= Nucleotides(C));
-      int type = k + l;
+      auto k = std::distance( dna_alphabet.begin(),
+			      std::find( dna_alphabet.begin(),
+					 dna_alphabet.end(),
+					 char(std::toupper(i)) ) );
+      if ( k > 3 )
+	{
+	  std::string message("Sequence::TsTv error: ");
+	  message += i;
+	  message += " is not A,G,C, nor T.";
+	  throw SeqException(message.c_str());
+	}
+      auto l = std::distance( dna_alphabet.begin(),
+			      std::find( dna_alphabet.begin(),
+					 dna_alphabet.end(),
+					 char(std::toupper(j)) ) );
+      if ( l > 3 )
+	{
+	  std::string message("Sequence::TsTv error: ");
+	  message += j;
+	  message += " is not A,G,C, nor T.";
+	  throw SeqException(message.c_str());
+	}
+      auto type = k + l;
       if (type%2 != 0.)	//if odd
         return (Mutations(Tv));	//a transversion
       else if (type%2==0.)	//if even

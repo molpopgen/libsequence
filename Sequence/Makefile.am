@@ -13,6 +13,7 @@ pkginclude_HEADERS = AlignStream.hpp\
 	CountingOperators.hpp\
 	FST.hpp\
 	Fasta.hpp\
+	fastq.hpp\
 	FastaExplicit.hpp\
 	Grantham.hpp\
 	GranthamWeights.hpp\
@@ -62,8 +63,8 @@ pkginclude_HEADERS = AlignStream.hpp\
 	samfunctions.hpp\
 	typedefs.hpp \
 	Ptable.hpp \
-	PolyData.hpp \
 	SummStats.hpp \
 	IOhelp.hpp \
 	bamrecord.hpp \
-	bamreader.hpp 
+	bamreader.hpp \
+	SeqAlphabets.hpp

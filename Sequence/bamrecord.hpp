@@ -1,3 +1,12 @@
+/*! \file bamrecord.hpp
+  @brief Sequence::bamaux and Sequence::bamrecord
+ */
+  /*! 
+    \struct Sequence::bamaux Sequence/bamrecord.hpp
+    \short The extra data types at the end of a bam record.
+    \ingroup HTS
+  */
+
 #ifdef HAVE_HTSLIB //Will only compile if ./configure detects htslib
 
 #ifndef __SEQUENCE__BAMRECORD_HPP__
@@ -10,7 +19,6 @@
 
 namespace Sequence
 {
-  //! The extra data types at the end of a bam record.
   struct bamaux 
   {
     /*! 
@@ -53,17 +61,20 @@ namespace Sequence
     //bamaux & operator=(const bamaux &);
   };
 
-  //fwd declaration
+  //!fwd declaration
   class bamrecordImpl;
 
-  //! A single alignment record from a BAM file
+  /*! 
+    \class Sequence::bamrecord Sequence/bamrecord.hpp
+    \short A single alignment record from a BAM file
+    \ingroup HTS
+  */
   class bamrecord 
   {
   private:
     std::unique_ptr<bamrecordImpl> __impl;
   public:
     //constructors
-    //bamrecord( BGZF * in );
     bamrecord( std::int32_t blocksize,
 	       std::unique_ptr<char[]> && block);
     bamrecord( );
@@ -129,8 +140,6 @@ namespace Sequence
     /*! Search auxillary data for a specific tag, beginning at position start
       \return The first position of the match if it exists, nullptr if it does not
     */
-    //const char * hasTag(const char * start, const char * tag) const;
-
     bamaux aux(const char * tag) const;
   };
 

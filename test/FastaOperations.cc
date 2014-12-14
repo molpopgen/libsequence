@@ -1,3 +1,4 @@
+//\file FastaOperations.cc
 #define BOOST_TEST_MODULE FastaOperations
 #define BOOST_TEST_DYN_LINK 
 
@@ -88,6 +89,16 @@ BOOST_AUTO_TEST_CASE( gapped )
   BOOST_REQUIRE( f3.length() == 3 );
 
   BOOST_REQUIRE( f3.UngappedLength() == 3 );
+}
+
+BOOST_AUTO_TEST_CASE( cpp11access_1 )
+{
+  Sequence::Fasta f3("seqname","GCG");
+  for( auto & d  : f3 )
+    {
+      d = 'A';
+    }
+  BOOST_REQUIRE_EQUAL(f3.second,"AAA");
 }
 
 //EOF

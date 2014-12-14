@@ -24,26 +24,45 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Fasta.hpp>
 #include <stdexcept>
 #include <iostream>
+#include <functional>
 
 namespace Sequence
 {
+  Fasta::Fasta() : Seq() {}
+
   /*! \example baseComp.cc */
   Fasta::Fasta (const std::string &name, const std::string &seq) :
-    Seq(name.c_str(),seq.c_str())
+    Seq(std::cref(name),std::cref(seq))
     /*!
       constructor for const std::string
     */
-  {}
+  {
+  }
+
+
+  Fasta::Fasta ( std::string && name, std::string && seq) :
+    Seq(std::move(name),std::move(seq))
+    /*!
+      constructor for std::string lvalue references
+    */
+  {
+  }
+
   Fasta::Fasta (const char *name,const char *seq) : 
     Seq(name,seq)
     /*!
       constructor for const char *
     */
   {}
-  
+
+    
   Fasta::Fasta (const Seq & seq) : Seq(seq) 
     /*! copy constructor */
   {}
+ 
+  Fasta::Fasta( Seq && seq ) : Seq(std::move(seq))
+  {
+  }
 
   std::istream & Fasta::read (std::istream & stream) 
   {

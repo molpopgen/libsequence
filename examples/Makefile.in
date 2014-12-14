@@ -77,20 +77,17 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaExplicitIO$(EXEEXT) FastaOperations$(EXEEXT) \
-	AlignStreamTest$(EXEEXT) testSimDataIO$(EXEEXT) \
-	CountingOperators$(EXEEXT) PolyTableConversions$(EXEEXT) \
-	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
-	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
-	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT) \
-	fastqIO$(EXEEXT) fastqConstructors$(EXEEXT) \
-	SeqConversions$(EXEEXT)
+check_PROGRAMS = baseComp$(EXEEXT) valid_dna$(EXEEXT) \
+	translateTest$(EXEEXT) slidingWindow$(EXEEXT) \
+	slidingWindow2$(EXEEXT) PolyTableIterators$(EXEEXT) \
+	correlations$(EXEEXT) critical_values$(EXEEXT) ufs$(EXEEXT) \
+	msmm$(EXEEXT) freerec$(EXEEXT) bottleneck$(EXEEXT) \
+	fragments$(EXEEXT) msstats$(EXEEXT) Ptable_test$(EXEEXT)
 @HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @DEBUG_TRUE@am__append_3 = -g
 @DEBUG_FALSE@am__append_4 = -DNDEBUG
-subdir = test
+subdir = examples
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -104,64 +101,55 @@ mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = $(top_builddir)/config-h.in
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am_AlignStreamTest_OBJECTS = AlignStreamTest.$(OBJEXT)
-AlignStreamTest_OBJECTS = $(am_AlignStreamTest_OBJECTS)
-AlignStreamTest_LDADD = $(LDADD)
+am_PolyTableIterators_OBJECTS = PolyTableIterators.$(OBJEXT)
+PolyTableIterators_OBJECTS = $(am_PolyTableIterators_OBJECTS)
+PolyTableIterators_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_AlignmentTest_OBJECTS = AlignmentTest.$(OBJEXT)
-AlignmentTest_OBJECTS = $(am_AlignmentTest_OBJECTS)
-AlignmentTest_LDADD = $(LDADD)
-am_ComparisonsTest_OBJECTS = ComparisonsTest.$(OBJEXT)
-ComparisonsTest_OBJECTS = $(am_ComparisonsTest_OBJECTS)
-ComparisonsTest_LDADD = $(LDADD)
-am_CountingOperators_OBJECTS = CountingOperators.$(OBJEXT)
-CountingOperators_OBJECTS = $(am_CountingOperators_OBJECTS)
-CountingOperators_LDADD = $(LDADD)
-am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
-FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
-FastaConstructors_LDADD = $(LDADD)
-am_FastaExplicitIO_OBJECTS = FastaIO.$(OBJEXT)
-FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
-FastaExplicitIO_LDADD = $(LDADD)
-am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
-FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
-FastaIO_LDADD = $(LDADD)
-am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
-FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
-FastaOperations_LDADD = $(LDADD)
-am_PolySIMtest_OBJECTS = PolySIMtest.$(OBJEXT)
-PolySIMtest_OBJECTS = $(am_PolySIMtest_OBJECTS)
-PolySIMtest_LDADD = $(LDADD)
-am_PolySNPtest_OBJECTS = PolySNPtest.$(OBJEXT)
-PolySNPtest_OBJECTS = $(am_PolySNPtest_OBJECTS)
-PolySNPtest_LDADD = $(LDADD)
-am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
-PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
-PolySitesIO_LDADD = $(LDADD)
-am_PolyTableConversions_OBJECTS = PolyTableConversions.$(OBJEXT)
-PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
-PolyTableConversions_LDADD = $(LDADD)
-am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
-PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
-PolyTableTweaking_LDADD = $(LDADD)
-am_SeqConversions_OBJECTS = SeqConversions.$(OBJEXT)
-SeqConversions_OBJECTS = $(am_SeqConversions_OBJECTS)
-SeqConversions_LDADD = $(LDADD)
-am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
-SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
-SimpleSNPIO_LDADD = $(LDADD)
-am_fastqConstructors_OBJECTS = fastqConstructors.$(OBJEXT)
-fastqConstructors_OBJECTS = $(am_fastqConstructors_OBJECTS)
-fastqConstructors_LDADD = $(LDADD)
-am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
-fastqIO_OBJECTS = $(am_fastqIO_OBJECTS)
-fastqIO_LDADD = $(LDADD)
-am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
-testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
-testSimDataIO_LDADD = $(LDADD)
+am_Ptable_test_OBJECTS = Ptable_test.$(OBJEXT)
+Ptable_test_OBJECTS = $(am_Ptable_test_OBJECTS)
+Ptable_test_LDADD = $(LDADD)
+am_baseComp_OBJECTS = baseComp.$(OBJEXT)
+baseComp_OBJECTS = $(am_baseComp_OBJECTS)
+baseComp_LDADD = $(LDADD)
+am_bottleneck_OBJECTS = bottleneck.$(OBJEXT)
+bottleneck_OBJECTS = $(am_bottleneck_OBJECTS)
+bottleneck_LDADD = $(LDADD)
+am_correlations_OBJECTS = correlations.$(OBJEXT)
+correlations_OBJECTS = $(am_correlations_OBJECTS)
+correlations_LDADD = $(LDADD)
+am_critical_values_OBJECTS = critical_values.$(OBJEXT)
+critical_values_OBJECTS = $(am_critical_values_OBJECTS)
+critical_values_LDADD = $(LDADD)
+am_fragments_OBJECTS = fragments.$(OBJEXT)
+fragments_OBJECTS = $(am_fragments_OBJECTS)
+fragments_LDADD = $(LDADD)
+am_freerec_OBJECTS = freerec.$(OBJEXT)
+freerec_OBJECTS = $(am_freerec_OBJECTS)
+freerec_LDADD = $(LDADD)
+am_msmm_OBJECTS = msmm.$(OBJEXT)
+msmm_OBJECTS = $(am_msmm_OBJECTS)
+msmm_LDADD = $(LDADD)
+am_msstats_OBJECTS = msstats.$(OBJEXT)
+msstats_OBJECTS = $(am_msstats_OBJECTS)
+msstats_LDADD = $(LDADD)
+am_slidingWindow_OBJECTS = slidingWindow.$(OBJEXT)
+slidingWindow_OBJECTS = $(am_slidingWindow_OBJECTS)
+slidingWindow_LDADD = $(LDADD)
+am_slidingWindow2_OBJECTS = slidingWindow2.$(OBJEXT)
+slidingWindow2_OBJECTS = $(am_slidingWindow2_OBJECTS)
+slidingWindow2_LDADD = $(LDADD)
+am_translateTest_OBJECTS = translateTest.$(OBJEXT)
+translateTest_OBJECTS = $(am_translateTest_OBJECTS)
+translateTest_LDADD = $(LDADD)
+am_ufs_OBJECTS = ufs.$(OBJEXT)
+ufs_OBJECTS = $(am_ufs_OBJECTS)
+ufs_LDADD = $(LDADD)
+am_valid_dna_OBJECTS = valid_dna.$(OBJEXT)
+valid_dna_OBJECTS = $(am_valid_dna_OBJECTS)
+valid_dna_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
 am__v_P_0 = false
@@ -196,24 +184,20 @@ AM_V_CXXLD = $(am__v_CXXLD_@AM_V@)
 am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
-SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
-	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
-DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
-	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
+SOURCES = $(PolyTableIterators_SOURCES) $(Ptable_test_SOURCES) \
+	$(baseComp_SOURCES) $(bottleneck_SOURCES) \
+	$(correlations_SOURCES) $(critical_values_SOURCES) \
+	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
+	$(msstats_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
+DIST_SOURCES = $(PolyTableIterators_SOURCES) $(Ptable_test_SOURCES) \
+	$(baseComp_SOURCES) $(bottleneck_SOURCES) \
+	$(correlations_SOURCES) $(critical_values_SOURCES) \
+	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
+	$(msstats_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -360,32 +344,26 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-
-#BOOST_LIBS=-lboost_unit_test_framework
-#	SEQUENCE=-lsequence
+baseComp_SOURCES = baseComp.cc
+valid_dna_SOURCES = valid_dna.cc
+translateTest_SOURCES = translateTest.cc
+slidingWindow_SOURCES = slidingWindow.cc
+slidingWindow2_SOURCES = slidingWindow2.cc
+PolyTableIterators_SOURCES = PolyTableIterators.cc
+correlations_SOURCES = correlations.cc
+critical_values_SOURCES = critical_values.cc
+ufs_SOURCES = ufs.cc
+msmm_SOURCES = msmm.cc
+freerec_SOURCES = freerec.cc
+bottleneck_SOURCES = bottleneck.cc
+fragments_SOURCES = fragments.cc
+msstats_SOURCES = msstats.cc
+Ptable_test_SOURCES = Ptable_test.cc
 AM_CXXFLAGS = $(am__append_1) $(am__append_3) $(am__append_4)
 AM_LDFLAGS = -L../src/.libs -static
-AM_LIBS = -lboost_unit_test_framework -lsequence $(am__append_2)
+AM_LIBS = -lsequence $(am__append_2)
 @PROFILING_FALSE@PROFILE = 
 @PROFILING_TRUE@PROFILE = -pg
-FastaConstructors_SOURCES = FastaConstructors.cc
-FastaIO_SOURCES = FastaIO.cc
-FastaExplicitIO_SOURCES = FastaIO.cc
-FastaOperations_SOURCES = FastaOperations.cc
-AlignStreamTest_SOURCES = AlignStreamTest.cc
-testSimDataIO_SOURCES = testSimDataIO.cc
-CountingOperators_SOURCES = CountingOperators.cc
-PolyTableConversions_SOURCES = PolyTableConversions.cc
-PolyTableTweaking_SOURCES = PolyTableTweaking.cc
-PolySitesIO_SOURCES = PolySitesIO.cc
-SimpleSNPIO_SOURCES = SimpleSNPIO.cc
-PolySIMtest_SOURCES = PolySIMtest.cc
-PolySNPtest_SOURCES = PolySNPtest.cc
-ComparisonsTest_SOURCES = ComparisonsTest.cc
-AlignmentTest_SOURCES = AlignmentTest.cc
-fastqIO_SOURCES = fastqIO.cc
-fastqConstructors_SOURCES = fastqConstructors.cc
-SeqConversions_SOURCES = SeqConversions.cc
 all: all-am
 
 .SUFFIXES:
@@ -399,9 +377,9 @@ $(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am  $(am__confi
 	      exit 1;; \
 	  esac; \
 	done; \
-	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu test/Makefile'; \
+	echo ' cd $(top_srcdir) && $(AUTOMAKE) --gnu examples/Makefile'; \
 	$(am__cd) $(top_srcdir) && \
-	  $(AUTOMAKE) --gnu test/Makefile
+	  $(AUTOMAKE) --gnu examples/Makefile
 .PRECIOUS: Makefile
 Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	@case '$?' in \
@@ -430,77 +408,65 @@ clean-checkPROGRAMS:
 	echo " rm -f" $$list; \
 	rm -f $$list
 
-AlignStreamTest$(EXEEXT): $(AlignStreamTest_OBJECTS) $(AlignStreamTest_DEPENDENCIES) $(EXTRA_AlignStreamTest_DEPENDENCIES) 
-	@rm -f AlignStreamTest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(AlignStreamTest_OBJECTS) $(AlignStreamTest_LDADD) $(LIBS)
+PolyTableIterators$(EXEEXT): $(PolyTableIterators_OBJECTS) $(PolyTableIterators_DEPENDENCIES) $(EXTRA_PolyTableIterators_DEPENDENCIES) 
+	@rm -f PolyTableIterators$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableIterators_OBJECTS) $(PolyTableIterators_LDADD) $(LIBS)
 
-AlignmentTest$(EXEEXT): $(AlignmentTest_OBJECTS) $(AlignmentTest_DEPENDENCIES) $(EXTRA_AlignmentTest_DEPENDENCIES) 
-	@rm -f AlignmentTest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(AlignmentTest_OBJECTS) $(AlignmentTest_LDADD) $(LIBS)
+Ptable_test$(EXEEXT): $(Ptable_test_OBJECTS) $(Ptable_test_DEPENDENCIES) $(EXTRA_Ptable_test_DEPENDENCIES) 
+	@rm -f Ptable_test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(Ptable_test_OBJECTS) $(Ptable_test_LDADD) $(LIBS)
 
-ComparisonsTest$(EXEEXT): $(ComparisonsTest_OBJECTS) $(ComparisonsTest_DEPENDENCIES) $(EXTRA_ComparisonsTest_DEPENDENCIES) 
-	@rm -f ComparisonsTest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(ComparisonsTest_OBJECTS) $(ComparisonsTest_LDADD) $(LIBS)
+baseComp$(EXEEXT): $(baseComp_OBJECTS) $(baseComp_DEPENDENCIES) $(EXTRA_baseComp_DEPENDENCIES) 
+	@rm -f baseComp$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(baseComp_OBJECTS) $(baseComp_LDADD) $(LIBS)
 
-CountingOperators$(EXEEXT): $(CountingOperators_OBJECTS) $(CountingOperators_DEPENDENCIES) $(EXTRA_CountingOperators_DEPENDENCIES) 
-	@rm -f CountingOperators$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(CountingOperators_OBJECTS) $(CountingOperators_LDADD) $(LIBS)
+bottleneck$(EXEEXT): $(bottleneck_OBJECTS) $(bottleneck_DEPENDENCIES) $(EXTRA_bottleneck_DEPENDENCIES) 
+	@rm -f bottleneck$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(bottleneck_OBJECTS) $(bottleneck_LDADD) $(LIBS)
 
-FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
-	@rm -f FastaConstructors$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
+correlations$(EXEEXT): $(correlations_OBJECTS) $(correlations_DEPENDENCIES) $(EXTRA_correlations_DEPENDENCIES) 
+	@rm -f correlations$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(correlations_OBJECTS) $(correlations_LDADD) $(LIBS)
 
-FastaExplicitIO$(EXEEXT): $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_DEPENDENCIES) $(EXTRA_FastaExplicitIO_DEPENDENCIES) 
-	@rm -f FastaExplicitIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_LDADD) $(LIBS)
+critical_values$(EXEEXT): $(critical_values_OBJECTS) $(critical_values_DEPENDENCIES) $(EXTRA_critical_values_DEPENDENCIES) 
+	@rm -f critical_values$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(critical_values_OBJECTS) $(critical_values_LDADD) $(LIBS)
 
-FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEPENDENCIES) 
-	@rm -f FastaIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(FastaIO_OBJECTS) $(FastaIO_LDADD) $(LIBS)
+fragments$(EXEEXT): $(fragments_OBJECTS) $(fragments_DEPENDENCIES) $(EXTRA_fragments_DEPENDENCIES) 
+	@rm -f fragments$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(fragments_OBJECTS) $(fragments_LDADD) $(LIBS)
 
-FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENCIES) $(EXTRA_FastaOperations_DEPENDENCIES) 
-	@rm -f FastaOperations$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
+freerec$(EXEEXT): $(freerec_OBJECTS) $(freerec_DEPENDENCIES) $(EXTRA_freerec_DEPENDENCIES) 
+	@rm -f freerec$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(freerec_OBJECTS) $(freerec_LDADD) $(LIBS)
 
-PolySIMtest$(EXEEXT): $(PolySIMtest_OBJECTS) $(PolySIMtest_DEPENDENCIES) $(EXTRA_PolySIMtest_DEPENDENCIES) 
-	@rm -f PolySIMtest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(PolySIMtest_OBJECTS) $(PolySIMtest_LDADD) $(LIBS)
+msmm$(EXEEXT): $(msmm_OBJECTS) $(msmm_DEPENDENCIES) $(EXTRA_msmm_DEPENDENCIES) 
+	@rm -f msmm$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(msmm_OBJECTS) $(msmm_LDADD) $(LIBS)
 
-PolySNPtest$(EXEEXT): $(PolySNPtest_OBJECTS) $(PolySNPtest_DEPENDENCIES) $(EXTRA_PolySNPtest_DEPENDENCIES) 
-	@rm -f PolySNPtest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(PolySNPtest_OBJECTS) $(PolySNPtest_LDADD) $(LIBS)
+msstats$(EXEEXT): $(msstats_OBJECTS) $(msstats_DEPENDENCIES) $(EXTRA_msstats_DEPENDENCIES) 
+	@rm -f msstats$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(msstats_OBJECTS) $(msstats_LDADD) $(LIBS)
 
-PolySitesIO$(EXEEXT): $(PolySitesIO_OBJECTS) $(PolySitesIO_DEPENDENCIES) $(EXTRA_PolySitesIO_DEPENDENCIES) 
-	@rm -f PolySitesIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(PolySitesIO_OBJECTS) $(PolySitesIO_LDADD) $(LIBS)
+slidingWindow$(EXEEXT): $(slidingWindow_OBJECTS) $(slidingWindow_DEPENDENCIES) $(EXTRA_slidingWindow_DEPENDENCIES) 
+	@rm -f slidingWindow$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(slidingWindow_OBJECTS) $(slidingWindow_LDADD) $(LIBS)
 
-PolyTableConversions$(EXEEXT): $(PolyTableConversions_OBJECTS) $(PolyTableConversions_DEPENDENCIES) $(EXTRA_PolyTableConversions_DEPENDENCIES) 
-	@rm -f PolyTableConversions$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableConversions_OBJECTS) $(PolyTableConversions_LDADD) $(LIBS)
+slidingWindow2$(EXEEXT): $(slidingWindow2_OBJECTS) $(slidingWindow2_DEPENDENCIES) $(EXTRA_slidingWindow2_DEPENDENCIES) 
+	@rm -f slidingWindow2$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(slidingWindow2_OBJECTS) $(slidingWindow2_LDADD) $(LIBS)
 
-PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEPENDENCIES) $(EXTRA_PolyTableTweaking_DEPENDENCIES) 
-	@rm -f PolyTableTweaking$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
+translateTest$(EXEEXT): $(translateTest_OBJECTS) $(translateTest_DEPENDENCIES) $(EXTRA_translateTest_DEPENDENCIES) 
+	@rm -f translateTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(translateTest_OBJECTS) $(translateTest_LDADD) $(LIBS)
 
-SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES) $(EXTRA_SeqConversions_DEPENDENCIES) 
-	@rm -f SeqConversions$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(SeqConversions_OBJECTS) $(SeqConversions_LDADD) $(LIBS)
+ufs$(EXEEXT): $(ufs_OBJECTS) $(ufs_DEPENDENCIES) $(EXTRA_ufs_DEPENDENCIES) 
+	@rm -f ufs$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(ufs_OBJECTS) $(ufs_LDADD) $(LIBS)
 
-SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA_SimpleSNPIO_DEPENDENCIES) 
-	@rm -f SimpleSNPIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
-
-fastqConstructors$(EXEEXT): $(fastqConstructors_OBJECTS) $(fastqConstructors_DEPENDENCIES) $(EXTRA_fastqConstructors_DEPENDENCIES) 
-	@rm -f fastqConstructors$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(fastqConstructors_OBJECTS) $(fastqConstructors_LDADD) $(LIBS)
-
-fastqIO$(EXEEXT): $(fastqIO_OBJECTS) $(fastqIO_DEPENDENCIES) $(EXTRA_fastqIO_DEPENDENCIES) 
-	@rm -f fastqIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(fastqIO_OBJECTS) $(fastqIO_LDADD) $(LIBS)
-
-testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
-	@rm -f testSimDataIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
+valid_dna$(EXEEXT): $(valid_dna_OBJECTS) $(valid_dna_DEPENDENCIES) $(EXTRA_valid_dna_DEPENDENCIES) 
+	@rm -f valid_dna$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(valid_dna_OBJECTS) $(valid_dna_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -508,23 +474,21 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignStreamTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AlignmentTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComparisonsTest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/CountingOperators.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIMtest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNPtest.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableIterators.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable_test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/baseComp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bottleneck.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/correlations.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/critical_values.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fragments.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freerec.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msmm.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msstats.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slidingWindow.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slidingWindow2.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/translateTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ufs.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/valid_dna.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

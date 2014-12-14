@@ -33,8 +33,7 @@ int main(int argc, char *argv[])
 {
   SimParams p;
   cin >> p;
-  SimData d(p.totsam());
-
+  SimData d;
   std::ios_base::sync_with_stdio(true);
 
   int rv;

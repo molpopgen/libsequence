@@ -1,8 +1,9 @@
 AC_PREREQ(2.59)
 
-AC_INIT([libsequence], [1.8.3], [https://github.com/molpopgen/libsequence])
+AC_INIT([libsequence], [1.8.4], [https://github.com/molpopgen/libsequence])
 AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
 AC_CONFIG_SRCDIR([test/FastaIO.cc])
+AC_CONFIG_SRCDIR([examples/msstats.cc])
 AM_INIT_AUTOMAKE([subdir-objects])
 AC_CONFIG_HEADERS([config-h.in])
 
@@ -18,7 +19,7 @@ AM_MAINTAINER_MODE([disable])
 LT_INIT
 AC_PROG_LIBTOOL
 AC_LANG(C++)
-AC_CONFIG_FILES([Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile Sequence/SummStats/Makefile test/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile Sequence/SummStats/Makefile test/Makefile examples/Makefile])
 
 AC_ARG_ENABLE(debug,
 [  --enable-debug    Turn on debugging],

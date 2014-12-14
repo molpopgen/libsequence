@@ -196,3 +196,135 @@ BOOST_AUTO_TEST_CASE( move_construction_1 )
   BOOST_REQUIRE_EQUAL( ps.size() , ps2.size() );
   BOOST_REQUIRE( ps == ps2 );
 }
+
+BOOST_AUTO_TEST_CASE( move_construction_2 )
+{
+  std::vector< Sequence::Fasta >
+    data = { Sequence::Fasta("seq1","AATAG"),
+	     Sequence::Fasta("seq2","ATTAC"),
+	     Sequence::Fasta("seq3","AATAC") };
+
+  Sequence::PolySites ps(data);
+
+  Sequence::PolySites ps2(std::move(ps));
+
+  BOOST_CHECK(ps.empty());
+}
+
+BOOST_AUTO_TEST_CASE( move_construction_3 )
+{
+  std::vector< Sequence::Fasta >
+    data = { Sequence::Fasta("seq1","AATAG"),
+	     Sequence::Fasta("seq2","ATTAC"),
+	     Sequence::Fasta("seq3","AATAC") };
+
+  Sequence::PolySites ps(data);
+
+  Sequence::PolySites ps2 = std::move(ps);
+
+  BOOST_CHECK(ps.empty());
+}
+
+BOOST_AUTO_TEST_CASE( move_construction_4 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  Sequence::SimData d2(std::move(d));
+  BOOST_CHECK(d.empty());
+}
+
+BOOST_AUTO_TEST_CASE( move_construction_5 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  Sequence::SimData d2 = std::move(d);
+  BOOST_CHECK(d.empty());
+}
+
+//PolySites can be created via move
+BOOST_AUTO_TEST_CASE( move_conversion_1 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  auto nsam = d.size();
+  auto nsites = d.numsites();
+  Sequence::PolySites d2 = std::move(d);
+  BOOST_CHECK(d.empty());
+  BOOST_CHECK_EQUAL( d2.size(), nsam );
+  BOOST_CHECK_EQUAL( d2.numsites(), nsites );
+ }
+
+BOOST_AUTO_TEST_CASE( move_conversion_2 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  auto nsam = d.size();
+  auto nsites = d.numsites();
+  Sequence::PolySites d2(std::move(d));
+  BOOST_CHECK(d.empty());
+  BOOST_CHECK_EQUAL( d2.size(), nsam );
+  BOOST_CHECK_EQUAL( d2.numsites(), nsites );
+ }
+
+//Making SimData via move
+BOOST_AUTO_TEST_CASE( move_conversion_3 )
+{
+  std::vector< Sequence::Fasta >
+    data = { Sequence::Fasta("seq1","AATAG"),
+	     Sequence::Fasta("seq2","ATTAC"),
+	     Sequence::Fasta("seq3","AATAC") };
+  
+  Sequence::PolySites ps(data);
+  ps.Binary();
+  Sequence::SimData sd(std::move(ps));
+
+  BOOST_CHECK(ps.empty());
+  BOOST_CHECK_EQUAL(sd.size(),3);
+  BOOST_CHECK_EQUAL(sd.numsites(),2);
+}
+
+BOOST_AUTO_TEST_CASE( move_conversion_4 )
+{
+  std::vector< Sequence::Fasta >
+    data = { Sequence::Fasta("seq1","AATAG"),
+	     Sequence::Fasta("seq2","ATTAC"),
+	     Sequence::Fasta("seq3","AATAC") };
+  
+  Sequence::PolySites ps(data);
+  ps.Binary();
+  Sequence::SimData sd = std::move(ps);
+
+  BOOST_CHECK(ps.empty());
+  BOOST_CHECK_EQUAL(sd.size(),3);
+  BOOST_CHECK_EQUAL(sd.numsites(),2);
+}
+
+BOOST_AUTO_TEST_CASE( assign_conversion_1 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  auto nsam = d.size();
+  auto nsites = d.numsites();
+  Sequence::PolySites d2 = d;
+  BOOST_CHECK(!d.empty());
+  BOOST_CHECK(d == d2);
+  BOOST_CHECK_EQUAL( d2.size(), nsam );
+  BOOST_CHECK_EQUAL( d2.numsites(), nsites );
+ }
+
+BOOST_AUTO_TEST_CASE( assign_conversion_2 )
+{
+  std::ifstream in("data/single_ms.txt");
+  Sequence::SimData d;
+  in >> d >> std::ws;
+  auto nsam = d.size();
+  auto nsites = d.numsites();
+  Sequence::PolySites d2 = d;
+  Sequence::SimData d3 = d2;
+  BOOST_CHECK(d == d3);
+ }

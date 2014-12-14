@@ -178,7 +178,8 @@ namespace Sequence
 
     explicit PolyTable( std::vector<double> && __positions,
 			std::vector<std::string> && __data );
-
+    PolyTable(PolyTable &) = default;
+    PolyTable(PolyTable &&) = default;
     virtual ~ PolyTable (void);
 
     
@@ -202,6 +203,8 @@ namespace Sequence
     //operators and implicit typecasts
     virtual bool operator==(const PolyTable &rhs) const;
     virtual bool operator!=(const PolyTable &rhs) const;
+    PolyTable & operator=(PolyTable &&) = default;
+    PolyTable & operator=(const PolyTable &) = default;
     operator Sequence::polySiteVector() const;
 
     //The functions below are inlined data access routines.

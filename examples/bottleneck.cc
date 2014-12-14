@@ -24,6 +24,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
 int main(int argc, char **argv)
 {

@@ -69,7 +69,7 @@ namespace Sequence
     This allows me to check for NULL and then assign a default.  If you
     use your own classes, make sure they clean up after themselves if they
     throw exceptions!!!
-    \todo use \c auto_ptr for the weighting schemes
+
     \exception Sequence::SeqException if sequence lengths are not equal
     \exception Sequence::SeqException if sequence lengths are not multiples of 3
   */

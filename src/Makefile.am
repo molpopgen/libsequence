@@ -24,6 +24,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Sites.cc\
 	Unweighted.cc\
 	Seq/Fasta.cc\
+	Seq/fastq.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
@@ -50,10 +51,10 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Ptable.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
-	PolyData.cc \
 	IOhelp.cc \
 	hts/bamrecord.cc \
-	hts/bamreader.cc
+	hts/bamreader.cc \
+	SeqAlphabets.cc
 
 AM_LDFLAGS=-version-info 20:0:0
 

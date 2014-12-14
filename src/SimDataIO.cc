@@ -134,6 +134,7 @@ namespace Sequence
   {
     uint32_t nsam,nsites;
     IOhelp::readBin(in,&nsam,1);
+    if( ! nsam ) { return SimData(); }
     IOhelp::readBin(in,&nsites,1);
     if( ! nsites ) { return SimData(); }
     

@@ -41,9 +41,6 @@ namespace Sequence
                          bool strictInfSites = 0,
                          bool ignoregaps = 1,bool skipMissing=false,
                          unsigned freqfilter=0);
-    protected:
-      size_t numseqs;
-      size_t seqlen;
     public:
       PolySites (void);
       template<typename __DataType>
@@ -57,6 +54,14 @@ namespace Sequence
       PolySites ( std::vector < double > && List, std::vector < std::string > && stringList);
       PolySites (PolyTable::const_site_iterator beg,
 		 PolyTable::const_site_iterator end);
+      PolySites( PolySites & ) = default;
+      PolySites( PolySites && ) = default;
+      PolySites( PolyTable & );
+      PolySites( PolyTable && );
+      PolySites & operator=( PolySites & ) = default;
+      PolySites & operator=( PolySites && ) = default;
+      PolySites & operator=( PolyTable & ); 
+      PolySites & operator=( PolyTable && );
       ~PolySites(void)
       {}
       std::istream & read(std::istream &s) ;
