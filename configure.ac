@@ -5,7 +5,7 @@ AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
 AC_CONFIG_SRCDIR([test/FastaIO.cc])
 AC_CONFIG_SRCDIR([examples/msstats.cc])
 AM_INIT_AUTOMAKE([subdir-objects])
-AC_CONFIG_HEADERS([config-h.in])
+AC_CONFIG_HEADERS([config.h])
 
 AC_CONFIG_MACRO_DIR([m4])
 
