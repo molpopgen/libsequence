@@ -9,7 +9,6 @@ var NAVTREE =
       [ "Sequence::Kimura80", "md_md_literature.html#kim", null ]
     ] ],
     [ "Tutorial/overview", "md_md_tutorial.html", null ],
-    [ "The libsequence home page", "md__home_kevin_git_libsequence_8git_md_index.html", null ],
     [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -55,7 +54,7 @@ var NAVTREEINDEX =
 "classSequence_1_1Seq.html#a15eacb158eaeb74a67e6285b4d8d1a5c",
 "classSequence_1_1Sums.html#a24c3911a328a68548429c11ae5602a32",
 "classSequence_1_1samrecord.html#aab9070870b1435433f7fc785a79c9339",
-"namespaceSequence_1_1Recombination.html"
+"namespaceSequence_1_1sambits.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
