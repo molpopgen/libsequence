@@ -42,6 +42,7 @@ exit(1);
 A sequence may be written to an output stream using the usual C++ output operator <<.
 
 ### Manipulating a sequence
+\section seqmanip Manipulating a sequence
 
 Sequence::Seq provides obvious member functions for element access and iteration. Further, because a sequence inherits from std::pair<std::string,std::string>, a library user may use any of std::string's member functions as well:
 
@@ -85,6 +86,7 @@ o.str(std::string());
 ~~~~
 
 ## Testing for correct character sets
+\section alphabet Testing for correct character sets
 
 The list of characters accepted as DNA is defined in the constant array Sequence::dna_alphabet, declared in Sequence/SeqAlphabets.hpp.  The type of Sequence::dna_alphabet is std::array<const char,17>, and may therefore be iterated over, etc., as per a normal std::array type.
 
@@ -115,6 +117,7 @@ auto itr = std::find_if( f.begin(),f.end(),
 The above code block comes from the unit test file alphabets.cc
 
 ## Input and output of DNA sequence alignments
+\section alignments (old-fashioned) Alignments
 
 libsequence contains support for I/O and processing of sequence alignments.  The primary use for these functions and classes is to handle the sorts of data that one would collect for population genetic analysis based on Sanger resequencing data and/or phylogenetic analysis.
 
@@ -136,12 +139,17 @@ As of the time of this writing (2014), these classes may be viewed as quaint.  H
 * The unit test files AlignStreamTest.cc and AlignmentTest.cc.  These tests provide good coverage of relevant usage cases (and a few cases of user error, too).
 
 ## Polymorphism tables
+\section polytables Polymorphism tables
 
 ## Summary statistics from polymorphism tables
+\section summstats Summary statistics
 
 ## Coalescent simulation
+\section coalsim Coalescent simulation
 
 ## Reading "SAM" format records
+\section sam SAM records
 
 ## Processing BAM files
+\section bam BAM files
 
