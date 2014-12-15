@@ -1,3 +1,4 @@
+//! \file SimDataIO.hpp \brief Various I/O functions for Sequence::SimData
 #ifndef __SIMDATA_IO_HPP__
 #define __SIMDATA_IO_HPP__
 
@@ -10,12 +11,13 @@
 
 namespace Sequence
 {
-  /*!
+  /*! \brief Wite a SimData object to a gzFile
     Write a SimData object to a gzFile object (from the C-language zlib library)
     Returns the amount of data written, or -1 on error.
    */
   long long write_SimData_gz( gzFile & file, const SimData & d, const bool & binary = false);
-  /*!
+
+  /*! \brief Read a SimData object from a gzFile
     Read a SimData object from a gzFile object (from the C-language zlib library)
 
     \note Only guaranteed compatible with compressed data written using
@@ -24,7 +26,8 @@ namespace Sequence
     should use a boost filtering_istream instead.
    */
   SimData read_SimData_gz( gzFile & file, const bool & binary = false );
-  /*!
+
+  /*! \brief Write a SimData object in binary format to an ostream.
     Write a SimData object in binary format to an ostream.
 
     The format of the binary data is:
@@ -52,7 +55,7 @@ namespace Sequence
   */
   SimData read_SimData_binary( std::istream & i );
 
-  /*!
+  /*! \brief  Write a SimData object in binary format to a C-style file descriptor
     Write a SimData object in binary format to a C-style file descriptor
   
     The format of the binary data is:
@@ -66,7 +69,7 @@ namespace Sequence
    */
   long int write_SimData_binary( int fd , const SimData & d );
 
-  /*!
+  /*! \brief Write a SimData object in binary format to a C-style file pointer
     Write a SimData object in binary format to a C-style file pointer
 
     The format of the binary data is:
