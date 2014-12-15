@@ -36,6 +36,10 @@ However:
 * move semantics for the Sequence::Seq hierarchy + unit tests
 * Programs in examples/ are now compiled via "make check"
 * The build setup for the unit tests is improved
+* Old-style enums replaced with C++11 enum classes.  (These enums are WAY better.)
+* The enum changes led to many other changes, primarily in the code base dealing wih calculating differences between codons.  The new code is much simpler.  
+* A unit test was added to check the calculations of differences bewtween codons.
+* Kimura80 and Comeron95 will now return a non-signalling NaN for non-finite values.  Previous versions returned "999", which was a bit silly, in all honesty.
 
 ## libsequence 1.8.3 (Dec. 5, 2014)
 
