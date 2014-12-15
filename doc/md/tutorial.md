@@ -113,3 +113,16 @@ auto itr = std::find_if( f.begin(),f.end(),
 ~~~
 
 The above code block comes from the unit test file alphabets.cc
+
+## Input and output of DNA sequence alignments
+
+## Polymorphism tables
+
+## Summary statistics from polymorphism tables
+
+## Coalescent simulation
+
+## Reading "SAM" format records
+
+## Processing BAM files
+
