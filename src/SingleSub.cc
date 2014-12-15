@@ -189,7 +189,6 @@ namespace Sequence
 	      {
 		p0j += 1.;
 	      }
-	    //}
 	    break;
 	  case Mutations::Tv: //transversion
 	    d = sitesObj->FirstNon(codon1);
@@ -226,7 +225,6 @@ namespace Sequence
 	      {
 		q0j += 1.;
 	      }
-	    // }
 	    break;
 	  case Mutations::Unknown:
 	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
@@ -306,8 +304,8 @@ namespace Sequence
 	      }
 	  
 	    break;
-	    //case 2: //transversion
-	  case Mutations::Tv:
+	    //case 2: 
+	  case Mutations::Tv: //transversion
 	    d = sitesObj->ThirdNon (codon1);
 	    if ( d < 1.)
 	      {
@@ -368,114 +366,4 @@ namespace Sequence
 	break;
       }
   }
-  // void
-  // SingleSub::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
-  //                       const std::string & codon2)
-  // /*!
-  //   count up mutations between the codons
-  // */
-  // {
-  //   int pos = 0, k = 0, type = 0;
-  //   double a, b, c, d;
-  //   for (k = 0; k <= 2; ++k)
-  //     if (codon1[k] != codon2[k])
-  //       pos = k;
-
-
-  //   type = TsTv (codon1[pos], codon2[pos]);
-  //   string aa1 = Translate(codon1.begin(),codon1.end()),
-  //     aa2 = Translate(codon2.begin(),codon2.end());
-  //   if (pos == 0 && type == 1)	//transition at first position
-  //     {
-  //       a = sitesObj->FirstNon (codon1);
-  //       b = sitesObj->First2S (codon1);
-  //       c = sitesObj->First2V (codon1);
-  //       p0i += (a > b && a > c) ? 1.0 : 0.0;
-  //       p2Si += (b >= a && b >= c) ? 1.0 : 0.0;
-  //       p2Vi += (c >= a && c > b) ? 1.0 : 0.0;
-
-  //       a = sitesObj->FirstNon (codon2);
-  //       b = sitesObj->First2S (codon2);
-  //       c = sitesObj->First2V (codon2);
-
-  //       p0j += (a > b && a > c) ? 1.0 : 0.0;
-  //       p2Sj += (b >= a && b >= c) ? 1.0 : 0.0;
-  //       p2Vj += (c >= a && c > b) ? 1.0 : 0.0;
-  //     }
-  //   else if (pos == 0 && type == 2)	//transversion at first position
-  //     {
-  //       a = sitesObj->FirstNon (codon1);
-  //       b = sitesObj->First2S (codon1);
-  //       c = sitesObj->First2V (codon1);
-
-  //       q0i += (a > b && a > c) ? 1.0 : 0.0;
-  //       q2Si += (b >= a && b > c) ? 1.0 : 0.0;
-  //       q2Vi += (c >= a && c >= b) ? 1.0 : 0.0;
-
-  //       a = sitesObj->FirstNon (codon2);
-  //       b = sitesObj->First2S (codon2);
-  //       c = sitesObj->First2V (codon2);
-
-  //       q0j += (a > b && a > c) ? 1.0 : 0.0;
-  //       q2Sj += (b >= a && b > c) ? 1.0 : 0.0;
-  //       q2Vj += (c >= a && c >= b) ? 1.0 : 0.0;
-
-  //     }
-  //   else if (pos == 1 && type == 1)	//transition at 2nd position
-  //     {
-  //       p0i += 1.0;
-  //       p0j += 1.0;
-  //     }
-  //   else if (pos == 1 && type == 2)	//transversion at 2nd position
-  //     {
-  //       q0i += 1.0;
-  //       q0j += 1.0;
-  //     }
-  //   else if (pos == 2 && type == 1)	//transition at third position
-  //     {
-  //       a = sitesObj->ThirdNon (codon1);
-  //       b = sitesObj->Third2S (codon1);
-  //       c = sitesObj->Third2V (codon1);
-  //       d = sitesObj->ThirdFour (codon1);
-
-  //       p0i += (a > b && a > c && a > d) ? 1.0 : 0.0;
-  //       p2Si += (b >= a && b >= c && b > d) ? 1.0 : 0.0;
-  //       p2Vi += (c >= a && c > b && c > d) ? 1.0 : 0.0;
-  //       p4i += (d >= a && d >= b && d >= c) ? 1.0 : 0.0;
-
-
-  //       a = sitesObj->ThirdNon (codon2);
-  //       b = sitesObj->Third2S (codon2);
-  //       c = sitesObj->Third2V (codon2);
-  //       d = sitesObj->ThirdFour (codon2);
-
-  //       p0j += (a > b && a > c && a > d) ? 1.0 : 0.0;
-  //       p2Sj += (b >= a && b >= c && b > d) ? 1.0 : 0.0;
-  //       p2Vj += (c >= a && c > b && c > d) ? 1.0 : 0.0;
-  //       p4j += (d >= a && d >= b && d >= c) ? 1.0 : 0.0;
-
-  //     }
-  //   else if (pos == 2 && type == 2)	//transversion at third position
-  //     {
-  //       a = sitesObj->ThirdNon (codon1);
-  //       b = sitesObj->Third2S (codon1);
-  //       c = sitesObj->Third2V (codon1);
-  //       d = sitesObj->ThirdFour (codon1);
-
-  //       q0i += (a > b && a > c && a > d) ? 1.0 : 0.0;
-  //       q2Si += (b >= a && b > c && b > d) ? 1.0 : 0.0;
-  //       q2Vi += (c >= a && c >= b && c > d) ? 1.0 : 0.0;
-  //       q4i += (d >= a && d >= b && d >= c) ? 1.0 : 0.0;
-
-  //       a = sitesObj->ThirdNon (codon2);
-  //       b = sitesObj->Third2S (codon2);
-  //       c = sitesObj->Third2V (codon2);
-  //       d = sitesObj->ThirdFour (codon2);
-
-  //       q0j += (a > b && a > c && a > d) ? 1.0 : 0.0;
-  //       q2Sj += (b >= a && b > c && b > d) ? 1.0 : 0.0;
-  //       q2Vj += (c >= a && c >= b && c > d) ? 1.0 : 0.0;
-  //       q4j += (d >= a && d >= b && d >= c) ? 1.0 : 0.0;
-  //     }
-  // }
 }
