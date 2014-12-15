@@ -1,4 +1,4 @@
-//! \file ComparisonsTests.cc Tests for Sequence/Comparisons.hpp
+//! \file ComparisonsTests.cc @brief Tests for Sequence/Comparisons.hpp
 #define BOOST_TEST_MODULE ComparisonsTest
 #define BOOST_TEST_DYN_LINK 
 

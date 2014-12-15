@@ -1,4 +1,4 @@
-/*! \file alphabets.cc Unit tests for Sequence/SeqAlphabets.hpp */
+/*! \file alphabets.cc @brief Unit tests for Sequence/SeqAlphabets.hpp */
 #define BOOST_TEST_MODULE alphabets
 #define BOOST_TEST_DYN_LINK 
 
