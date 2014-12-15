@@ -101,9 +101,7 @@ namespace Sequence
 	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
 
 	    //update pathway lengths
-	    //process pathway 1 (codon1->intermediates[0]->codon2);
 	    paths[0] = process_path(intermediates[0],code);
-	    //process pathway 2 (codon1->intermediates[1]->codon2)
 	    paths[1] = process_path(intermediates[1],code);
 	    if (paths[0].first < paths[1].first)
 	      {
