@@ -85,3 +85,31 @@ o.str(std::string());
 ~~~~
 
 ## Testing for correct character sets
+
+The list of characters accepted as DNA is defined in the constant array Sequence::dna_alphabet, declared in Sequence/SeqAlphabets.hpp.  The type of Sequence::dna_alphabet is std::array<const char,17>, and may therefore be iterated over, etc., as per a normal std::array type.
+
+The function Sequence::isDNA accepts a single char as an argument and returns true if the argument is found in Sequence::dna_alphabet:
+
+~~~{.cpp}
+#include <Sequence/Fasta.hpp>
+#include <Sequence/SeqAlphabets.hpp>
+#include <algorithm>
+
+Sequence::Fasta f = { "name",	"ATGCZAGC" };  //Z is a non-DNA character
+
+//Find non-DNA characters:
+auto itr = std::find_if( f.begin(),f.end(),
+     	   		    [](const char & __ch) {
+			    return !Sequence::isDNA(__ch);
+			   } );
+
+//Delete them from sequences:
+  f.second.erase( std::remove_if(f.begin(),
+				 f.end(),
+				 [](const char & __ch) {
+				   return !Sequence::isDNA(__ch);
+				 }), f.second.end() );
+
+~~~
+
+The above code block comes from the unit test file alphabets.cc
