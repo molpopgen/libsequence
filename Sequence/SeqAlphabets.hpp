@@ -6,6 +6,7 @@
 
 namespace Sequence {
   /*!
+    @brief Alphabet for DNA sequences
     Valid DNA characters.  Upper-case only.  
     Both . and - are accepted as gap characters
     \note http://www.bioinformatics.org/sms/iupac.html, excluding U
