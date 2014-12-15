@@ -74,7 +74,14 @@ namespace Sequence
     The conversion of int to nucleotide is via Sequence::dna_alphabet
     */
     {
-      assert(i<=Nucleotides(C) && j <= Nucleotides(C));
+      assert( std::distance(dna_alphabet.begin(),
+			    std::find( dna_alphabet.begin(),
+				       dna_alphabet.end(),
+				       std::toupper(i))) < 4 );
+      assert( std::distance(dna_alphabet.begin(),
+			    std::find( dna_alphabet.begin(),
+				       dna_alphabet.end(),
+				       std::toupper(j))) < 4 );
       int type = i + j;
       if (type%2!=0.)	//if odd
         {
