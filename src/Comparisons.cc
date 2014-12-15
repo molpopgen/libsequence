@@ -71,11 +71,7 @@ namespace Sequence
     Mutations TsTv (const int & i, const int & j)
     /*!
     Takes two ints, assumed to be integer representations of nucleotides. 
-    The way to ensure that the int represents a nucleotide in a valid way is
-    to use Sequence::Nucleotides.
-    The return value is determined
-    by a call to Comparisons::TsTv(int i, int j), where the ints are defined
-    in turn by Sequence::Nucleotides
+    The conversion of int to nucleotide is via Sequence::dna_alphabet
     */
     {
       assert(i<=Nucleotides(C) && j <= Nucleotides(C));
