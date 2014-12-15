@@ -26,6 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <memory>
 #include <cassert>
+#include <limits>
 #include <algorithm>
 #include <Sequence/Seq.hpp>
 #include <Sequence/SeqProperties.hpp>
@@ -259,9 +260,9 @@ namespace Sequence
     Ka = Aa + Ba;
 
     if (!std::isfinite (Ks))
-      Ks = 999;
+      Ks = std::numeric_limits<double>::quiet_NaN();
     if (!std::isfinite (Ka))
-      Ka = 999;
+      Ka = std::numeric_limits<double>::quiet_NaN();
   }
 
   void Comeron95::diverge (const Sequence::Seq * seq1,
@@ -411,7 +412,7 @@ namespace Sequence
   */
   {
     if (!std::isfinite (As))
-      return 999.;
+      return std::numeric_limits<double>::quiet_NaN();
     return As;
   }
   double Comeron95::aa (void) const
@@ -420,7 +421,7 @@ namespace Sequence
   */
   {
     if (!std::isfinite (Aa))
-      return 999.;
+      return std::numeric_limits<double>::quiet_NaN();
     return Aa;
   }
   double Comeron95::bs (void) const
@@ -429,7 +430,7 @@ namespace Sequence
   */
   {
     if (!std::isfinite (Bs))
-      return 999.;
+      return std::numeric_limits<double>::quiet_NaN();
     return Bs;
   }
   double Comeron95::ba (void) const
@@ -438,25 +439,25 @@ namespace Sequence
   */
   {
     if (!std::isfinite (Ba))
-      return 999.;
+      return std::numeric_limits<double>::quiet_NaN();
     return Ba;
   }
 
   double Comeron95::ratio(void) const
   /*!
     \return \f$K_a/K_s\f$
-    \note 999.0 is returned if Ka/Ks cannot be calculated
+    \note std::numeric_limits<double>::quiet_NaN() is returned if Ka/Ks cannot be calculated
   */
   {
 
-    if (Ka == 999. || Ks == 999. || fabs(Ks-0.) <= DBL_EPSILON)
-      return 999.;
+    if ( !std::isfinite(Ka) || !std::isfinite(Ks) || fabs(Ks-0.) <= DBL_EPSILON)
+      return std::numeric_limits<double>::quiet_NaN();
     return Ka / Ks;
   }
   double Comeron95::ka (void) const
   /*!
     \return the nonsynonymous distance
-    \note 999.0 is returned if Ka cannot be calculated
+    \note std::numeric_limits<double>::quiet_NaN() is returned if Ka cannot be calculated
   */
   {
     return Ka;
@@ -464,7 +465,7 @@ namespace Sequence
   double Comeron95::ks (void) const
   /*!
     \return the synonymous distance
-    \note 999.0 is returned if Ks cannot be calculated
+    \note std::numeric_limits<double>::quiet_NaN() is returned if Ks cannot be calculated
   */
   {
     return Ks;

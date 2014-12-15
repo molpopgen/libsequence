@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cmath>
 #include <cfloat>
 #include <cctype>
+#include <limits>
 #include <Sequence/Seq.hpp>
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/SeqEnums.hpp>
@@ -108,13 +109,13 @@ namespace Sequence
   Kimura80::K (void) const
   /*!
     \return the distance between the two sequences.
-    \note 999.0 is returned as a warning value.
+    \note non-signaling nan is returned as a warning value.
     This can be necessary if sites are saturated,
     which implies that divergence cannot be calculated
   */
   {
     if (!std::isfinite(divergence))
-      return (999.0);
+      return std::numeric_limits<double>::quiet_NaN();
     return (divergence);
   }
 
