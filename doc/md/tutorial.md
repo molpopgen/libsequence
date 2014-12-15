@@ -4,7 +4,7 @@
 
 This document is a rapid-fire overview of library features.
 
-## Background
+\section Background
 
 I assume a working familiarity with:
 
@@ -18,7 +18,7 @@ A programmer may define new sequences via public inheritance from Sequence::Seq.
 
 Sequence::Seq defines several functions for data access and various biological operations (Sequence::Seq::Revcom, etc.).
 
-### Reading and writing
+\subsection seqio Reading and writing
 
 During read operations, a sequence object may throw an exception of type Sequence::badFormat if the data stream is not in the correct format.  The built-int types (Sequence::Fasta and Sequence::fastq) do not throw on write (although the output stream type could if something bad happens with the stream itself, etc.).
 
@@ -41,7 +41,26 @@ exit(1);
 
 A sequence may be written to an output stream using the usual C++ output operator <<.
 
-### Manipulating a sequence
+\subsubsection seqgz Gzipped files, etc.
+
+For reading/writing compressed files, see the [boost](http://www.boost.org)'s filtering_ostream libraries.  They have been tested, and "just work" with libsequence objects.
+
+Note: at the time of this writing (and as per my latest testing) the boost libraries do not support opening compressed streams in append mode.  If you need to append to files, then buffer output to a std::ostringstream and write the buffer to a gzFile using [zlib](http://zlib.net) directly:
+
+~~~~{.cpp}
+#include <zlib.h>
+#include <sstream>
+std::ostringstream o;
+//Fill o with stuff
+
+gzFile f = gzopen("file.gz","a");
+//Write your data to the .gz file
+gzwrite(f,o.str().c_str(),o.str().size());
+//Clear your buffer
+o.str(std::string());
+~~~~
+
+\subsection manip Manipulating a sequence
 
 Sequence::Seq provides obvious member functions for element access and iteration. Further, because a sequence inherits from std::pair<std::string,std::string>, a library user may use any of std::string's member functions as well:
 
@@ -64,25 +83,6 @@ for( auto & c : f )
 	c = 'C';
 }
 ~~~~~
-
-#### Gzipped files, etc.
-
-For reading/writing compressed files, see the [boost](http://www.boost.org)'s filtering_ostream libraries.  They have been tested, and "just work" with libsequence objects.
-
-Note: at the time of this writing (and as per my latest testing) the boost libraries do not support opening compressed streams in append mode.  If you need to append to files, then buffer output to a std::ostringstream and write the buffer to a gzFile using [zlib](http://zlib.net) directly:
-
-~~~~{.cpp}
-#include <zlib.h>
-#include <sstream>
-std::ostringstream o;
-//Fill o with stuff
-
-gzFile f = gzopen("file.gz","a");
-//Write your data to the .gz file
-gzwrite(f,o.str().c_str(),o.str().size());
-//Clear your buffer
-o.str(std::string());
-~~~~
 
 \section alphabet Testing for correct character sets
 
