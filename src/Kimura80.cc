@@ -69,13 +69,13 @@ namespace Sequence
             if (std::toupper((*seq1)[i]) != 
 		std::toupper((*seq2)[i]))	//if the sites differ at that position
               {
-                int type = TsTv ((*seq1)[i], (*seq2)[i]);	//check if difference is Ts or Tv
+                auto type = TsTv ((*seq1)[i], (*seq2)[i]);	//check if difference is Ts or Tv
               
-		if (type == Mutations(Ts))
+		if (type == Mutations::Ts)
 		  {	//Ts
 		    ++num_Ts;
 		  }
-		else if (type == Mutations(Tv))
+		else if (type == Mutations::Tv)
 		  {	//Tv
 		    ++num_Tv;
 		  }

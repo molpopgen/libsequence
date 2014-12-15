@@ -144,7 +144,7 @@ namespace Sequence
                           const Sequence::Seq * seqb,
                           int max = 3, 
 			  const Sequence::RedundancyCom95 * genetic_code_redundancy = NULL,
-			  GeneticCodes code = UNIVERSAL,
+			  GeneticCodes code = GeneticCodes::UNIVERSAL,
                           WeightingScheme2 *weights2 = NULL,
                           WeightingScheme3 *weights3 = NULL);
       Comeron95( const Comeron95 & ) = delete;

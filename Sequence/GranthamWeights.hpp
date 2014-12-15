@@ -52,7 +52,7 @@ namespace Sequence
       Sequence::GeneticCodes code;
       mutable double __weights[2];//logical const
     public:
-      explicit GranthamWeights2(Sequence::GeneticCodes genetic_code = Sequence::UNIVERSAL);
+      explicit GranthamWeights2(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights2(void);
       void Calculate(const std::string &codon1, const std::string &codon2) const;
       double *weights(void) const;
@@ -64,7 +64,7 @@ namespace Sequence
       GeneticCodes code;
       mutable double __weights[6];//logical const
     public:
-      explicit GranthamWeights3(Sequence::GeneticCodes genetic_code = Sequence::UNIVERSAL);
+      explicit GranthamWeights3(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights3(void);
       void Calculate(const std::string &codon1, const std::string &codon2) const;
       double *weights(void) const;

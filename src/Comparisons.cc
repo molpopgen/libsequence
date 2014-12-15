@@ -62,10 +62,10 @@ namespace Sequence
 	}
       auto type = k + l;
       if (type%2 != 0.)	//if odd
-        return (Mutations(Tv));	//a transversion
+        return (Mutations::Tv);	//a transversion
       else if (type%2==0.)	//if even
-        return (Mutations(Ts));	//a transition
-      return (Mutations(Unknown));	//can be used for error checking
+        return (Mutations::Ts);	//a transition
+      return (Mutations::Unknown);	//can be used for error checking
     }
 
     Mutations TsTv (const int & i, const int & j)
@@ -85,14 +85,14 @@ namespace Sequence
       int type = i + j;
       if (type%2!=0.)	//if odd
         {
-          return (Mutations(Tv));	//a transversion
+          return (Mutations::Tv);	//a transversion
         }
       else if (type%2==0.)	//if even
         {
-          return (Mutations(Ts));	//a transition
+          return (Mutations::Ts);	//a transition
         }
 
-      return (Mutations(Unknown));	//can be used for error checking
+      return (Mutations::Unknown);
     }
 
     bool Different (const std::string & seq1,

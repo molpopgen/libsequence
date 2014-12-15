@@ -38,7 +38,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
   {
   Sites::Sites (const Sequence::RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
-                          const Sequence::Seq * seq2, const int max , const int code ):
+                          const Sequence::Seq * seq2, const int max , const GeneticCodes code ):
       _L0(0.),_L2S(0.),_L2V(0.0),_L4(0.0)
       /*!
         \param sitesObj an initialized object of type Sequence::RedundancyCom95

@@ -129,7 +129,7 @@ namespace Sequence
     count up mutations between the codons
   */
   {
-    unsigned pos = 0, k = 0, type = 0;
+    unsigned pos = 0, k = 0;//, type = 0;
     double d;
     for (k = 0; k <= 2; ++k)
       {
@@ -138,8 +138,8 @@ namespace Sequence
 	    pos = k;
 	  }
       }
-    type = TsTv (codon1[pos], codon2[pos]);
-    if( type == Mutations(Unknown) )
+    Mutations type = TsTv (codon1[pos], codon2[pos]);
+    if( type == Mutations::Unknown )
       {
 	ostringstream o;
 	o << "SingleSub.cc: mutation between " << codon1 << " and " << codon2
@@ -147,14 +147,14 @@ namespace Sequence
 	  << " is neither a transition nor a transversion";
 	throw SeqException(o.str().c_str());
       }
-    assert(type==1 || type==2);
+    assert(type==Mutations::Ts || type==Mutations::Tv);
 
     switch (pos)
       {
       case 0: //mutation at first position
 	switch (type)
 	  {
-	  case 1: //transition
+	  case Mutations::Ts: //transition
 	    d = sitesObj->FirstNon(codon1);
 	    if( d < 1. )
 	      {
@@ -189,8 +189,9 @@ namespace Sequence
 	      {
 		p0j += 1.;
 	      }
+	    //}
 	    break;
-	  case 2: //transversion 
+	  case Mutations::Tv: //transversion
 	    d = sitesObj->FirstNon(codon1);
 	    if( d < 1. )
 	      {
@@ -225,26 +226,33 @@ namespace Sequence
 	      {
 		q0j += 1.;
 	      }
+	    // }
+	    break;
+	  case Mutations::Unknown:
+	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;
       case 1: //mutation at second position
 	switch (type)
 	  {
-	  case 1: //transition
+	  case Mutations::Ts: //transition
 	    p0i += 1.0;
 	    p0j += 1.0;
 	    break;
-	  case 2: //transversion 
+	  case Mutations::Tv:
 	    q0i += 1.0;
 	    q0j += 1.0;
+	    break;
+	  case Mutations::Unknown:
+	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;
       case 2: //mutation at third position
 	switch (type)
 	  {
-	  case 1: //transition
+	  case Mutations::Ts:
 	    d = sitesObj->ThirdNon (codon1);
 	    if ( d < 1.)
 	      {
@@ -258,7 +266,7 @@ namespace Sequence
 		      }
 		    else
 		      {
-			p2Vi += 1.;
+		 	p2Vi += 1.;
 		      }
 		  } 
 		else
@@ -296,8 +304,10 @@ namespace Sequence
 	      {
 		p0j += 1.;
 	      }
+	  
 	    break;
-	  case 2: //transversion 
+	    //case 2: //transversion
+	  case Mutations::Tv:
 	    d = sitesObj->ThirdNon (codon1);
 	    if ( d < 1.)
 	      {
@@ -349,6 +359,10 @@ namespace Sequence
 	      {
 		q0j += 1.;
 	      }
+	  
+	    break;
+	  case Mutations::Unknown:
+	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;

@@ -192,7 +192,7 @@ namespace Sequence
         if (K80->K () < 1.0)
           Ba = 0.0;
       }
-
+    
     //calculate numbers of mutation per site type
     double P2S_site = p2S / sites->L2S();
     double P2V_site = p2V / sites->L2V();

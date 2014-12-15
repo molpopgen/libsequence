@@ -62,7 +62,7 @@ namespace Sequence
       int validcds;
       size_t seqlen;
       int maxhits;
-      int genetic_code;
+      GeneticCodes genetic_code;
       double _L0;
       double _L2S;
       double _L2V;
@@ -75,7 +75,7 @@ namespace Sequence
     public:
       explicit Sites (const RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
                       const Sequence::Seq * seq2, const int max = 3,
-                      const int code = 0);
+                      const GeneticCodes code = GeneticCodes::UNIVERSAL);
       ~Sites (void);
       double L0(void) const
       /*!
