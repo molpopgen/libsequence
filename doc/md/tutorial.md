@@ -116,6 +116,25 @@ The above code block comes from the unit test file alphabets.cc
 
 ## Input and output of DNA sequence alignments
 
+libsequence contains support for I/O and processing of sequence alignments.  The primary use for these functions and classes is to handle the sorts of data that one would collect for population genetic analysis based on Sanger resequencing data and/or phylogenetic analysis.
+
+The relevant modules are:
+
+* Sequence::AlignStream is a template class abstracting the I/O for alignment data.
+* namespace Sequence::Alignment
+
+Concrete examples of Sequence::AlignStream include:
+
+* Sequence::ClustalW
+* Sequence::phylipData
+
+Developers wishing to handle other input/output formats should study the implementation of those two classes.
+
+As of the time of this writing (2014), these classes may be viewed as quaint.  However, I still think that there is some value to them, and refer the reader to the following sources for usage examples:
+
+* The [analysis](http://github.com/molpopgen/analysis) package that I maintain
+* The unit test files AlignStreamTest.cc and AlignmentTest.cc.  These tests provide good coverage of relevant usage cases (and a few cases of user error, too).
+
 ## Polymorphism tables
 
 ## Summary statistics from polymorphism tables
