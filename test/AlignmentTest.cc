@@ -1,12 +1,12 @@
-/*
-  Tests for fxns in namespace Sequence::Alignment
+/*!
+  @brief Unit tests for fxns in namespace Sequence::Alignment
 
   This ns is implmented in terms of T,
   intended to be in thet Sequence::Seq hierarchy.
 
   Specializations for std::string also exist.
 
-  This module tests bost
+  This module tests both
 */
 
 #define BOOST_TEST_MODULE AlignmentTest

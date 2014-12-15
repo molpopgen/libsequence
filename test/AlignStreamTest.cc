@@ -1,3 +1,4 @@
+//! \file AlignStreamTest.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
 #define BOOST_TEST_MODULE AlignStream
 #define BOOST_TEST_DYN_LINK
 
