@@ -62,17 +62,17 @@ namespace Sequence
     explicit RedundancyCom95 (const Sequence::GeneticCodes &genetic_code = GeneticCodes::UNIVERSAL);
     ~RedundancyCom95(void);
     //counting routines, return values from private matrices of same name
-    double FirstNon (const std::string &codon) const ;
-    double First2S (const std::string &codon) const ;
-    double First2V (const std::string &codon) const ;
-    double ThirdNon (const std::string &codon) const ;
-    double ThirdFour (const std::string &codon) const ;
-    double Third2S (const std::string &codon) const ;
-    double Third2V (const std::string &codon) const ;
-    double L0_vals (const std::string &codon) const ;
-    double L2S_vals (const std::string &codon) const ;
-    double L2V_vals (const std::string &codon) const ;
-    double L4_vals (const std::string &codon) const ;
+    double FirstNon (const std::string &codon) const;
+    double First2S (const std::string &codon) const;
+    double First2V (const std::string &codon) const;
+    double ThirdNon (const std::string &codon) const;
+    double ThirdFour (const std::string &codon) const;
+    double Third2S (const std::string &codon) const;
+    double Third2V (const std::string &codon) const;
+    double L0_vals (const std::string &codon) const;
+    double L2S_vals (const std::string &codon) const;
+    double L2V_vals (const std::string &codon) const;
+    double L4_vals (const std::string &codon) const;
   };
 }
 
