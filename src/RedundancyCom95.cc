@@ -107,11 +107,7 @@ namespace Sequence
                 numN = numTsS = numTvS = 0;	//initialize
                 numPossTs = numPossTv = 0;
                 S = N = 0;
-		/*
-		  codon[0] = intToNuc[i];
-		  codon[1] = intToNuc[j];
-		  codon[2] = intToNuc[k];
-		*/
+
 		codon[0] = dna_alphabet[i];
 		codon[1] = dna_alphabet[j];
 		codon[2] = dna_alphabet[k];
@@ -378,6 +374,7 @@ namespace Sequence
 		l0_vals[i][j][k] = 1. + firstNon[i][j][k] + thirdNon[i][j][k];
 		l2S_vals[i][j][k] = first2S[i][j][k] + third2S[i][j][k];
 		l2V_vals[i][j][k] = first2V[i][j][k] + third2V[i][j][k];
+		l4_vals[i][j][k] = thirdFour[i][j][k];
               }
             else
               {
