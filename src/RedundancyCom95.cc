@@ -31,7 +31,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Translate.hpp>
 #include <Sequence/RedundancyCom95.hpp>
-
+#include <Sequence/SeqAlphabets.hpp>
 
 namespace Sequence
 {
