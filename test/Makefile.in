@@ -85,7 +85,8 @@ check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
 	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
 	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT) \
 	fastqIO$(EXEEXT) fastqConstructors$(EXEEXT) \
-	SeqConversions$(EXEEXT) RedundancyCom95test$(EXEEXT)
+	SeqConversions$(EXEEXT) RedundancyCom95test$(EXEEXT) \
+	alphabets$(EXEEXT)
 @HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @DEBUG_TRUE@am__append_3 = -g
@@ -156,6 +157,9 @@ SeqConversions_LDADD = $(LDADD)
 am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
+am_alphabets_OBJECTS = alphabets.$(OBJEXT)
+alphabets_OBJECTS = $(am_alphabets_OBJECTS)
+alphabets_LDADD = $(LDADD)
 am_fastqConstructors_OBJECTS = fastqConstructors.$(OBJEXT)
 fastqConstructors_OBJECTS = $(am_fastqConstructors_OBJECTS)
 fastqConstructors_LDADD = $(LDADD)
@@ -207,8 +211,8 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
 	$(PolyTableTweaking_SOURCES) $(RedundancyCom95test_SOURCES) \
 	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
@@ -217,8 +221,8 @@ DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
 	$(PolyTableTweaking_SOURCES) $(RedundancyCom95test_SOURCES) \
 	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -392,6 +396,7 @@ fastqIO_SOURCES = fastqIO.cc
 fastqConstructors_SOURCES = fastqConstructors.cc
 SeqConversions_SOURCES = SeqConversions.cc
 RedundancyCom95test_SOURCES = RedundancyCom95test.cc
+alphabets_SOURCES = alphabets.cc
 all: all-am
 
 .SUFFIXES:
@@ -500,6 +505,10 @@ SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA
 	@rm -f SimpleSNPIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
 
+alphabets$(EXEEXT): $(alphabets_OBJECTS) $(alphabets_DEPENDENCIES) $(EXTRA_alphabets_DEPENDENCIES) 
+	@rm -f alphabets$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(alphabets_OBJECTS) $(alphabets_LDADD) $(LIBS)
+
 fastqConstructors$(EXEEXT): $(fastqConstructors_OBJECTS) $(fastqConstructors_DEPENDENCIES) $(EXTRA_fastqConstructors_DEPENDENCIES) 
 	@rm -f fastqConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(fastqConstructors_OBJECTS) $(fastqConstructors_LDADD) $(LIBS)
@@ -533,6 +542,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alphabets.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@

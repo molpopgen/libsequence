@@ -12,6 +12,14 @@ namespace Sequence {
     \note http://www.bioinformatics.org/sms/iupac.html, excluding U
   */
   extern const std::array<const char,17> dna_alphabet;
+
+  /*
+    @brief test if character is part of Sequence::dna_alphabet
+    @param ch Character to test
+    \return true if ch is in Sequence::dna_alphabet, false otherwise
+    \note case-insensitive via std::toupper
+  */
+  bool isDNA( const char & ch);
 }
 
 #endif

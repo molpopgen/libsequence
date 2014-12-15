@@ -13,7 +13,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	fastqIO \
 	fastqConstructors \
 	SeqConversions \
-	RedundancyCom95test 
+	RedundancyCom95test \
+	alphabets
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -75,3 +76,5 @@ fastqConstructors_SOURCES=fastqConstructors.cc
 SeqConversions_SOURCES=SeqConversions.cc
 
 RedundancyCom95test_SOURCES=RedundancyCom95test.cc
+
+alphabets_SOURCES=alphabets.cc
