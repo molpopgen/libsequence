@@ -171,24 +171,3 @@ If you are using features depending on htslib, the linking options become
 -lsequence -lz -lhts
 ~~~
 
-# Compiling the examples
-
-There are several example programs in the examples subdirectory.  If you have installed libsequence in a standard path (e.g., /usr/local/lib and /usr/local/include), then you compile the examples by saying
-
-~~~
-make
-~~~
-
-If you have installed the library elsewhere, such as $HOME, then you need to adjust LDFLAGS as follows:
-
-~~~
-LDFLAGS=-L$HOME/lib make
-~~~
-
-If you have dependencies in locations other than /usr/local (or their equivalent on your system), then you will likely need to manually edit CXXFLAGS in the Makefile to add a -I flag to the folder containing header files.  For example, you may change the variable from
-
-> CXXFLAGS = -O3 -Wall -W -I..
-
-to
-
-> CXXFLAGS = -O3 -Wall -W -I.. -I$(HOME)/include
