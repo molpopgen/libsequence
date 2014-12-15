@@ -1,4 +1,4 @@
-/*!
+/*! \file AlignmentTest.cc
   @brief Unit tests for fxns in namespace Sequence::Alignment
 
   This ns is implmented in terms of T,
