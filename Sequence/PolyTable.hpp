@@ -317,7 +317,7 @@ namespace Sequence
       act via this routine, which must be defined in all
       derived classes
     */
-    virtual std::ostream & print(std::ostream &h) const =0 ;
+    virtual std::ostream & print(std::ostream &h) const = 0;
   };
 
   /*!
