@@ -1,4 +1,4 @@
-//Tests for Sequence/Comparisons.hpp
+//! \fie ComparisonsTests.cc Tests for Sequence/Comparisons.hpp
 #define BOOST_TEST_MODULE ComparisonsTest
 #define BOOST_TEST_DYN_LINK 
 
@@ -7,16 +7,6 @@
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
-
-BOOST_AUTO_TEST_CASE( check_dna_alphabet )
-{
-  for ( auto c : {'A','G','C','T'} )
-    {
-      BOOST_REQUIRE( std::distance(Sequence::dna_alphabet.begin(),
-				   std::find( Sequence::dna_alphabet.begin(),
-					      Sequence::dna_alphabet.end(), c ) ) < 4 );
-    }
-}
 
 BOOST_AUTO_TEST_CASE( notagap ) //Silly!
 {
