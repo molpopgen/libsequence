@@ -12,7 +12,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	AlignmentTest \
 	fastqIO \
 	fastqConstructors \
-	SeqConversions 
+	SeqConversions \
+	RedundancyCom95test 
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -72,3 +73,5 @@ fastqIO_SOURCES=fastqIO.cc
 fastqConstructors_SOURCES=fastqConstructors.cc
 
 SeqConversions_SOURCES=SeqConversions.cc
+
+RedundancyCom95test_SOURCES=RedundancyCom95test.cc
