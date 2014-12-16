@@ -640,6 +640,8 @@ LTLIBOBJS
 LIBOBJS
 HAVE_HTSLIB_FALSE
 HAVE_HTSLIB_TRUE
+BUNIT_TEST_PRESENT_FALSE
+BUNIT_TEST_PRESENT_TRUE
 PROFILING_FALSE
 PROFILING_TRUE
 DEBUG_FALSE
@@ -15498,6 +15500,23 @@ fi
 
 
 
+ac_fn_cxx_check_header_mongrel "$LINENO" "boost/test/unit_test.hpp" "ac_cv_header_boost_test_unit_test_hpp" "$ac_includes_default"
+if test "x$ac_cv_header_boost_test_unit_test_hpp" = xyes; then :
+  BUNITTEST=1
+else
+  echo "boost/test/unit_test.hpp not found. Unit tests will not be compiled."
+fi
+
+
+ if test x$BUNITTEST = x1; then
+  BUNIT_TEST_PRESENT_TRUE=
+  BUNIT_TEST_PRESENT_FALSE='#'
+else
+  BUNIT_TEST_PRESENT_TRUE='#'
+  BUNIT_TEST_PRESENT_FALSE=
+fi
+
+
 ac_fn_cxx_check_header_mongrel "$LINENO" "htslib/bgzf.h" "ac_cv_header_htslib_bgzf_h" "$ac_includes_default"
 if test "x$ac_cv_header_htslib_bgzf_h" = xyes; then :
   FOUND_HTSLIB_HEADERS=1
@@ -15761,6 +15780,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${PROFILING_TRUE}" && test -z "${PROFILING_FALSE}"; then
   as_fn_error $? "conditional \"PROFILING\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUNIT_TEST_PRESENT_TRUE}" && test -z "${BUNIT_TEST_PRESENT_FALSE}"; then
+  as_fn_error $? "conditional \"BUNIT_TEST_PRESENT\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${HAVE_HTSLIB_TRUE}" && test -z "${HAVE_HTSLIB_FALSE}"; then

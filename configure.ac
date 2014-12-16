@@ -43,6 +43,10 @@ AM_CONDITIONAL(PROFILING, test x$profiling = xtrue)
 dnl zlib header
 AC_CHECK_HEADER(zlib.h,,[AC_MSG_ERROR([zlib headers missing - cannot continue])])
 
+dnl boost unit test library
+AC_CHECK_HEADER(boost/test/unit_test.hpp, BUNITTEST=1,[echo "boost/test/unit_test.hpp not found. Unit tests will not be compiled."])
+AM_CONDITIONAL([BUNIT_TEST_PRESENT], test x$BUNITTEST = x1)
+
 dnl htslib, http://www.htslib.org/
 AC_CHECK_HEADER(htslib/bgzf.h,FOUND_HTSLIB_HEADERS=1,[AC_MSG_WARN([htslib/bgzf.h not found.  We will not be compiling features depending on this library])])
 AM_CONDITIONAL([HAVE_HTSLIB],test x$FOUND_HTSLIB_HEADERS = x1 )

@@ -1,3 +1,5 @@
+if BUNIT_TEST_PRESENT
+
 check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	AlignStreamTest \
 	testSimDataIO \
@@ -78,3 +80,5 @@ SeqConversions_SOURCES=SeqConversions.cc
 RedundancyCom95test_SOURCES=RedundancyCom95test.cc
 
 alphabets_SOURCES=alphabets.cc
+
+endif #if BUNIT_TEST_PRESENT
