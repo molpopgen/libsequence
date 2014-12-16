@@ -26,6 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/typedefs.hpp>
 
 /*! \file CodonTable.hpp
+  \deprecated
   @brief facility to count codons in CDS sequence, function Sequence::makeCodonUsageTable
 */
 
