@@ -26,7 +26,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Translate.hpp>
 #include <Sequence/Grantham.hpp>
 #include <Sequence/SeqConstants.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 #include <algorithm>
 
 namespace Sequence

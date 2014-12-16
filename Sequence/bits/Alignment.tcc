@@ -32,7 +32,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <Sequence/Alignment.hpp>
 #include <Sequence/SeqConstants.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
 #include <type_traits>
 #include <iterator>
 #include <algorithm>

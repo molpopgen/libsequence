@@ -29,7 +29,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <limits>
 #include <algorithm>
 #include <Sequence/Seq.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 #include <Sequence/Grantham.hpp>
 #include <Sequence/GranthamWeights.hpp>
 #include <Sequence/SingleSub.hpp>

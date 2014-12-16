@@ -30,7 +30,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <Sequence/Seq.hpp>
 #include <Sequence/Translate.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 #include <Sequence/RedundancyCom95.hpp>
 #include <Sequence/Sites.hpp>
 //divergence statistics for a pair of sequences

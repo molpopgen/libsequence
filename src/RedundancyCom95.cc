@@ -27,11 +27,11 @@
 #include <cstring>
 #include <algorithm>
 #include <functional>
-#include <Sequence/SeqProperties.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Translate.hpp>
 #include <Sequence/RedundancyCom95.hpp>
 #include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 
 namespace Sequence
 {

@@ -153,9 +153,11 @@ The major difference between Sequence::PolyTable and Sequence::Ptable is how the
 
 \subsection polytable_terms Definitions of terms
 
+Formally, the objects discussed in this section are agnostic with respect to ploidy.  Further, I use the term _haplotype_ here loosely.  If the data that populate a PolyTable or Ptable come from sources such as X-chromosome sequences obtained from males, autosomal sequences from a highly-inbred _Drosophila_ or _Arabidopsis_, or the output of some sort of haplotype phasing algorithm, then the haplotypes are indeed haplotypes (although, for the latter case, one should use the likeliehood of the haplotype inference as a weight on any results, if appropriate).  However, if the input are diploid genotype data, then those data must be split into two strings for that individual (in the case of a PolyTable), which will require arbitrarily assigning the values for a heterozygote to each string.   For such data, __it is user error to then apply any haplotype- or LD-based calculation to the data__.
+
+The only allowed characters in these objects are the set A,G,C,T,N,.,-,0,1.  The first five values should be obvious.  The next two are the identity and gap characters, respectively.  The 0 and 1 may be used in various ways, such as representing arbitrary states of biallelic data, ancestral vs. derived character states, minor/major alleles, or to represent more complex genotypes at a site.  A programmer may check that data contain valid characters using functions declared in Sequence/SeqAlphabets.hpp: Sequence::ambiguousNucleotide and Sequence::invalidPolyChar.
+
 \subsection polytable Sequence::PolyTable in detail
-
-
 
 \subsubsection polytables The inheritance hierarchy.
 
