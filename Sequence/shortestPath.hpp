@@ -67,7 +67,6 @@ namespace Sequence
       2 codons don't differ, the value is NONE.  If the path
       cannot be determined, the value is AMBIG
     */
-    //enum pathType {S,N,SS,SN,NN,SSS,SSN,SNN,NNN,NONE,AMBIG};
     enum class pathType : std::int8_t {S,N,SS,SN,NN,SSS,SSN,SNN,NNN,NONE,AMBIG};
 
     explicit shortestPath(const std::string &codon1,
