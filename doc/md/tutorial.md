@@ -161,7 +161,16 @@ The only allowed characters in these objects are the set A,G,C,T,N,.,-,0,1.  The
 
 \subsubsection polytables The inheritance hierarchy.
 
-Sequence::PolyTable is a pure virtual class.  As with Sequence::Seq, there are two pure virtuals member functions, Sequence::PolyTable::read and Sequence::PolyTable::print.  A valid class must publicly inherit from Sequence::PolyTable and define these functions.  The library defines the following three classes that publicly inherit from the base class:
+Sequence::PolyTable is a pure virtual class that inherits publicly from objects in namespace std:
+
+~~~{.cpp}
+//The vector of doubles are the site positions.  The strings are the haplotypes
+class Sequence::PolyTable : public std::pair<std::vector<double>, std::vector<std::string> >
+{
+};
+~~~
+
+As with Sequence::Seq, there are two pure virtuals member functions, Sequence::PolyTable::read and Sequence::PolyTable::print.  A valid class must publicly inherit from Sequence::PolyTable and define these functions.  The library defines the following three classes that publicly inherit from the base class:
 
 * Sequence::SimData is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program [ms](http://home.uchicago.edu/~rhudson1/source/mksamples.html).  This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state.  See the example program msstats.cc for how to read these objects in from streams, and the documentation for the file Sequence/SimDataIO.hpp for how to read/write from gzipped streams, binary streams, etc.
 * Sequence::PolySites This is a generic/catch-all class for nucleotide-based SNP data.
@@ -276,13 +285,31 @@ The following member functions exist for data access:
 
 * Sequence::PolyTable::operator[] returns a reference or const_reference.  The data returned correspond to a std::string representing a haplotype.
 * Sequence::PolyTable::begin and Sequence::PolyTable::end return either Sequence::PolyTable::const_data_iterator or Sequence::PolyTabe::data_iterator to haplotypes, depending on the context
-* Sequence::PolyTable::cbegin and Sequence::PolyTable::cend return Sequence::PolyTab;e::const_data_iterator to haplotypes
+* Sequence::PolyTable::cbegin and Sequence::PolyTable::cend return Sequence::PolyTable::const_data_iterator to haplotypes
 * Sequence::PolyTable::pbegin and Sequence::PolyTable::pend return either pos_iteraor or const_pos_iterator to the mutation positions, depending on the context
 * Sequence::PolyTable::pcbegin and Sequence::PolyTable::pcend return const_pos_iterator to the mutation positions.
 * Sequence::PolyTable::sbegin and Sequence::PolyTable::send return const_site_iterators
 * Sequence::PolyTable::scbegin and Sequence::PolyTable::scend return const_site iterators
 
 The versions with "c" in them may appear redundant, but they are used in C++11 in the context of type deduction using keywords like auto or the declytpe function.
+
+__NOTE:__ these iterators are aliases to the underling vectors in the base class, and should be preferred.  In other words, this code:
+
+~~~{.cpp}
+Sequence::PolySites ps;
+
+std::for_each(ps.begin(),ps.end(),[](const Sequence::PolySites::const_reference & __s) { std::cout << __s.length() << '\n'; });
+~~~
+
+is better than this code:
+
+~~~{.cpp}
+Sequence::PolySites ps;
+
+std::for_each(ps.second.begin(),ps.second.end(),[](const Sequence::PolySites::const_reference & __s) { std::cout << __s.length() << '\n'; });
+~~~
+
+The reason why will be explained below.
 
 Let's look at some examples.
 
@@ -365,6 +392,8 @@ for( auto & d : ps ) {
 \subsubsection polytable_manip_builtin Methods provided
 
 The library provides a variety of methods for doing things like removing missing data, applying frequency filters, etc.  Unfortunately (for now), these functions are mixed between member functions of Sequence::PolyTable and the file PolyTableFunctions.hpp.  See the documentation for Sequence::PolyTable and PolyTableFunctions.hpp as well as the unit test code PolyTableTweaking.cc for usage examples.  It is possible that a future release of libsequence will deprecate the member functions in favor of standalone functions.
+
+A user unfamiliar with C++ may think that many features are missing.  How does one permute site positions or the order of the haplotypes?  How can you remove a single haplotype?  These functions are not necessary as they are possible because of the definition of Sequence::PolyTable itself.
 
 \paragraph polytable_idiot Don't be this guy
 
