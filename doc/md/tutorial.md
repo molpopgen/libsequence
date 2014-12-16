@@ -309,7 +309,7 @@ Sequence::PolySites ps;
 std::for_each(ps.second.begin(),ps.second.end(),[](const Sequence::PolySites::const_reference & __s) { std::cout << __s.length() << '\n'; });
 ~~~
 
-The reason why will be explained below.
+The reason why will be explained in \ref polytable_csi
 
 Let's look at some examples.
 
@@ -432,6 +432,97 @@ Because you have non-const access to the data, you can do this:
 ~~~
 
 \subsubsection polytable_csi Iterating over sites directly
+
+The examples above iterate over haplotypes.   It is sometimes useful to iterate over the variable sites themselves.  However, iterating over site positions using Sequence::PolyTable::pbegin and Sequence::PolyTable::pend only gives you access to the positions, and not to the character states.  The library allows const access to sites via the member functions Sequence::PolyTable::sbegin and Sequence::PolyTable::send, where the "s" means "site".  These functions return types Sequence::PolyTable::const_site_iterator, whose value_type is __const__ Sequence::polymorphicSite, which is itself a typedef for std::pair< double, std::string >.  Let's look at an example:
+
+~~~{.cpp}
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data =
+	{"AAAAA",
+	 "AAGAA",
+     "CTGAA",
+	 "NAACT"};
+
+Sequence::PolySites ps(std::move(pos),std::move(data));
+
+/*
+The output of this block will be:
+1 AACN
+2 AATA
+3 AGGA
+4 AAAC
+5 AAAT
+*/
+for( auto i = ps.sbegin() ; i < ps.send() ; ++i )
+{
+std::cout << i->first << ' '
+	<< i->second << '\n';
+}
+~~~
+
+Let's call this type of output "rotated", in the sense that the sites are the rows and the haplotypes are now columns.
+
+The fact that this access is const-only brings up several important points:
+
+1.  Sequence::PolyTable knows if you have accessed it in a const or non-const context.
+2.  If you access a PolyTable in a non-const context, the "rotated" representation of the data will be recalculated the next time Sequence::PolyTable::sbegin or Sequence::PolyTable::send is called.  The reason is that your non-const access may have removed some data.
+3. In the section called \ref polytable_access, I said that you should prefer iterator-based access to the data via the class's member functions rather than the base classes.  The reason is that _only the former is cabable of distinguishing const from non-const access_, and therefore modifying the data via the latter method will result in const_site_iterators whose data are inconsistent with what the object currently stores.
+
+Let's look at a concrete example of that last point.  The following example appeared above (in the section \ref polytable_manip_builtin):
+
+~~~{.cpp}
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"NAACT"}; //This sequence will get erased below
+
+Sequence::PolySites ps(std::move(pos),std::move(data));
+ps.second.erase( std::remove_if(ps.begin(),
+	ps.end(),
+		[](const std::string & __s) {
+			return __s.find('N') != std::string::npos;
+	}),
+	ps.end() );
+/*
+The output will be:
+1 AAC
+2 AAT
+3 AGG
+4 AAA
+5 AAA
+*/
+std::for_each( ps.sbegin(),ps.send(),
+[](const Sequence::polymorphicSite & __p) {
+	std::cout << __p.first << ' ' << p.second << '\n';
+});
+~~~
+
+However, if we had applied the erase/remove step with this code instead:
+
+~~~{.cpp}
+/*
+Here, we never call Sequence::PolyTable::begin or end.
+Rather, we are calling std::vector<std::string>'s versions
+of the same functions.
+Therefore, does not know that it has been accessed in
+a non-const context, and calls to sbegin/send should
+be viewed as leading to undefined behavior
+*/
+ps.second.erase( std::remove_if(ps.second.begin(),
+	ps.second.end(),
+		[](const std::string & __s) {
+			return __s.find('N') != std::string::npos;
+	}),
+	ps.second.end() );
+~~~
+
+How does the above lead to bizarre behavior?  Well, it depends:
+
+1.  If const_site_iterators have never been accessed, then the next call will regenerate the data, and all will be well.
+2.  If const_site_iterators _have_ been previously accessed, then the above block will not signal that their data needs to be recalculated.  Exactly what will happen depends on the nature of your non-const access, and should therfore be classified as "scary" at best.
+
+To see how things go badly, look at the unit test file PolyTableBadBehavior.cc
 
 \subsection ptable_detail Sequence::Ptable in detail
 

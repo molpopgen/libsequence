@@ -6,6 +6,7 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	CountingOperators \
 	PolyTableConversions \
 	PolyTableTweaking \
+	PolyTableBadBehavior \
 	PolySitesIO \
 	SimpleSNPIO \
 	PolySIMtest \
@@ -58,6 +59,8 @@ CountingOperators_SOURCES=CountingOperators.cc
 PolyTableConversions_SOURCES=PolyTableConversions.cc
 
 PolyTableTweaking_SOURCES=PolyTableTweaking.cc
+
+PolyTableBadBehavior_SOURCES=PolyTableBadBehavior.cc
 
 PolySitesIO_SOURCES=PolySitesIO.cc
 

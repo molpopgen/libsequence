@@ -86,6 +86,7 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	CountingOperators$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableConversions$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableTweaking$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableBadBehavior$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolySitesIO$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	SimpleSNPIO$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolySIMtest$(EXEEXT) \
@@ -174,6 +175,11 @@ am__PolySitesIO_SOURCES_DIST = PolySitesIO.cc
 @BUNIT_TEST_PRESENT_TRUE@	PolySitesIO.$(OBJEXT)
 PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
 PolySitesIO_LDADD = $(LDADD)
+am__PolyTableBadBehavior_SOURCES_DIST = PolyTableBadBehavior.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolyTableBadBehavior_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableBadBehavior.$(OBJEXT)
+PolyTableBadBehavior_OBJECTS = $(am_PolyTableBadBehavior_OBJECTS)
+PolyTableBadBehavior_LDADD = $(LDADD)
 am__PolyTableConversions_SOURCES_DIST = PolyTableConversions.cc
 @BUNIT_TEST_PRESENT_TRUE@am_PolyTableConversions_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableConversions.$(OBJEXT)
@@ -256,11 +262,12 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(RedundancyCom95test_SOURCES) \
-	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
-	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
+	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(RedundancyCom95test_SOURCES) $(SeqConversions_SOURCES) \
+	$(SimpleSNPIO_SOURCES) $(alphabets_SOURCES) \
+	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
@@ -272,6 +279,7 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__PolySIMtest_SOURCES_DIST) \
 	$(am__PolySNPtest_SOURCES_DIST) \
 	$(am__PolySitesIO_SOURCES_DIST) \
+	$(am__PolyTableBadBehavior_SOURCES_DIST) \
 	$(am__PolyTableConversions_SOURCES_DIST) \
 	$(am__PolyTableTweaking_SOURCES_DIST) \
 	$(am__RedundancyCom95test_SOURCES_DIST) \
@@ -444,6 +452,7 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@CountingOperators_SOURCES = CountingOperators.cc
 @BUNIT_TEST_PRESENT_TRUE@PolyTableConversions_SOURCES = PolyTableConversions.cc
 @BUNIT_TEST_PRESENT_TRUE@PolyTableTweaking_SOURCES = PolyTableTweaking.cc
+@BUNIT_TEST_PRESENT_TRUE@PolyTableBadBehavior_SOURCES = PolyTableBadBehavior.cc
 @BUNIT_TEST_PRESENT_TRUE@PolySitesIO_SOURCES = PolySitesIO.cc
 @BUNIT_TEST_PRESENT_TRUE@SimpleSNPIO_SOURCES = SimpleSNPIO.cc
 @BUNIT_TEST_PRESENT_TRUE@PolySIMtest_SOURCES = PolySIMtest.cc
@@ -543,6 +552,10 @@ PolySitesIO$(EXEEXT): $(PolySitesIO_OBJECTS) $(PolySitesIO_DEPENDENCIES) $(EXTRA
 	@rm -f PolySitesIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolySitesIO_OBJECTS) $(PolySitesIO_LDADD) $(LIBS)
 
+PolyTableBadBehavior$(EXEEXT): $(PolyTableBadBehavior_OBJECTS) $(PolyTableBadBehavior_DEPENDENCIES) $(EXTRA_PolyTableBadBehavior_DEPENDENCIES) 
+	@rm -f PolyTableBadBehavior$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableBadBehavior_OBJECTS) $(PolyTableBadBehavior_LDADD) $(LIBS)
+
 PolyTableConversions$(EXEEXT): $(PolyTableConversions_OBJECTS) $(PolyTableConversions_DEPENDENCIES) $(EXTRA_PolyTableConversions_DEPENDENCIES) 
 	@rm -f PolyTableConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableConversions_OBJECTS) $(PolyTableConversions_LDADD) $(LIBS)
@@ -595,6 +608,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIMtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNPtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableBadBehavior.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
