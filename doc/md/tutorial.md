@@ -345,23 +345,21 @@ We can take advantage of non-const access to data in order to manipulate what is
   Sequence::PolySites ps(std::move(pos),std::move(data)),
     ps2(ps);
 
-    //Make everything lower-case
-  for( auto & d : ps )
-    {
-      std::transform(d.begin(),
-		     d.end(),
-		     d.begin(),
-		     [](char & ch) { return std::tolower(ch); });
-    }
+//Make everything lower-case
 
+	//Non-const access to the strings
+for( auto & d : ps ) {
+	//non-const access to the char within the strings
+	for(auto & ch : d ) {
+	ch = std::tolower(ch);
+	}
+}
     //Restore it to upper-case
-  for( auto & d : ps )
-    {
-      std::transform(d.begin(),
-		     d.end(),
-		     d.begin(),
-		     [](char & ch) { return std::toupper(ch); });
-    }
+for( auto & d : ps ) {
+	for( auto & ch : d ) {
+		ch = std::toupper(ch);
+	}
+  }
 ~~~
 
 \subsubsection polytable_manip_builtin Methods provided
