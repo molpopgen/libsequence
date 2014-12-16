@@ -97,7 +97,8 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	fastqConstructors$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	SeqConversions$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT)
+@BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @BUNIT_TEST_PRESENT_TRUE@@DEBUG_TRUE@am__append_3 = -g
@@ -190,6 +191,10 @@ am__PolyTableTweaking_SOURCES_DIST = PolyTableTweaking.cc
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
+am__PtableTest_SOURCES_DIST = PtableTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PtableTest_OBJECTS = PtableTest.$(OBJEXT)
+PtableTest_OBJECTS = $(am_PtableTest_OBJECTS)
+PtableTest_LDADD = $(LDADD)
 am__RedundancyCom95test_SOURCES_DIST = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@am_RedundancyCom95test_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test.$(OBJEXT)
@@ -264,10 +269,10 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(RedundancyCom95test_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(alphabets_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(PtableTest_SOURCES) $(RedundancyCom95test_SOURCES) \
+	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
@@ -282,6 +287,7 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__PolyTableBadBehavior_SOURCES_DIST) \
 	$(am__PolyTableConversions_SOURCES_DIST) \
 	$(am__PolyTableTweaking_SOURCES_DIST) \
+	$(am__PtableTest_SOURCES_DIST) \
 	$(am__RedundancyCom95test_SOURCES_DIST) \
 	$(am__SeqConversions_SOURCES_DIST) \
 	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
@@ -464,6 +470,7 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@SeqConversions_SOURCES = SeqConversions.cc
 @BUNIT_TEST_PRESENT_TRUE@RedundancyCom95test_SOURCES = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@alphabets_SOURCES = alphabets.cc
+@BUNIT_TEST_PRESENT_TRUE@PtableTest_SOURCES = PtableTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -564,6 +571,10 @@ PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEP
 	@rm -f PolyTableTweaking$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
 
+PtableTest$(EXEEXT): $(PtableTest_OBJECTS) $(PtableTest_DEPENDENCIES) $(EXTRA_PtableTest_DEPENDENCIES) 
+	@rm -f PtableTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PtableTest_OBJECTS) $(PtableTest_LDADD) $(LIBS)
+
 RedundancyCom95test$(EXEEXT): $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_DEPENDENCIES) $(EXTRA_RedundancyCom95test_DEPENDENCIES) 
 	@rm -f RedundancyCom95test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_LDADD) $(LIBS)
@@ -611,6 +622,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableBadBehavior.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PtableTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@

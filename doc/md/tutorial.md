@@ -526,7 +526,32 @@ To see how things go badly, look at the unit test file PolyTableBadBehavior.cc
 
 \subsection ptable_detail Sequence::Ptable in detail
 
+Sequence::Ptable is declared in Sequence/Ptable.hpp and defined in Ptable.cc.  From these files, you will see that this is an extremely simple class.  Sequence::Ptable publicly inherits from std::vector< Sequence::polymorphicSite >, and is therefore related to the objects referred to by Sequence::PolyTable::const_site_iterator (whose value_type is Sequence::polymorphicSite).
+
+This class is new to libsequence, but it is important in light of C++11's addition of lambda expressions to the language.  The definition of Sequence::Ptable plus the power of lambda expressions leads to a very powerful grammer for manipulating variation tables.  For example, let is remove all sites with invalid characters (as defined in \ref polytable_terms) from a Ptable:
+
+~~~{.cpp}
+  using psite = Sequence::polymorphicSite;
+  Sequence::Ptable t = { psite(1.,"AAGC"),
+			 psite(2.,"ACZA") }; //site 2 has a non-DNA character
+
+	//This will remove site 2:
+  t.erase( std::remove_if( t.begin(),
+			t.end(),
+			[]( const psite & __p ) {
+			     return std::find_if(__p.second.begin(),
+						 __p.second.end(),
+						 Sequence::invalidPolyChar())
+			       != __p.second.end();
+			   } ),
+	   t.end() );
+~~~
+
+The syntax in the above example is compact, readable, efficient, and avoids the pre-C++11 headache of having to define standalone function objects for such simple tasks.  The above code block is from the unit test file PtableTest.cc.  See the example program Ptable_test.cc for some cool usage cases.
+
 \subsection polytable_ptable The relationship between PolyTable and Ptable
+
+These two types are intimately-related and may be constructed from one another.
 
 \section summstats Summary statistics 
 
