@@ -189,6 +189,39 @@ BOOST_AUTO_TEST_CASE( to_lower )
   BOOST_REQUIRE( ps == ps2 );
 }
 
+BOOST_AUTO_TEST_CASE( to_lower2 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "NAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data)),
+    ps2(ps);
+
+  for( auto & d : ps )
+    {
+      for( auto & ch : d )
+	{
+	  ch = std::tolower(ch);
+	}
+    }
+
+  //Now, ps and ps2 will not be equal
+  BOOST_REQUIRE( ps != ps2 );
+
+  for( auto & d : ps )
+    {
+      for( auto & ch : d )
+	{
+	  ch = std::toupper(ch);
+	}
+    }
+
+  BOOST_REQUIRE( ps == ps2 );
+}
+
 
 BOOST_AUTO_TEST_CASE( remove_maf_with_outgroup )
 {
