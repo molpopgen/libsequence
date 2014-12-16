@@ -265,10 +265,6 @@ namespace Sequence
     bool assign( std::vector<double> && __positions,
 		 std::vector<std::string> && __data );
 
-//     template<typename iterator>
-//     bool rear_insert( const iterator beg,
-// 		      const iterator end );
-
     inline size_type size (void) const
       /*!
         Return how many std::strings are stored
