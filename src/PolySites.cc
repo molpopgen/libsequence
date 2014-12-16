@@ -141,6 +141,10 @@ namespace Sequence
   {
   }
 
+  PolySites::PolySites( const PolySites & ps ) : PolyTable(ps)
+  {
+  }
+
   PolySites::PolySites( PolyTable & pt ) : PolyTable(pt)
   {
   }

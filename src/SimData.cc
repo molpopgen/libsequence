@@ -43,6 +43,10 @@ namespace Sequence
   {
   }
   
+  SimData::SimData( const SimData & sd) : PolyTable(sd)
+  {
+  }
+
   SimData::SimData( PolyTable & pt) : PolyTable(pt)
   {
   }

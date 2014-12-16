@@ -172,6 +172,7 @@ namespace Sequence
 
     explicit PolyTable( std::vector<double> && __positions,
 			std::vector<std::string> && __data );
+    PolyTable(const PolyTable &) = default;
     PolyTable(PolyTable &) = default;
     PolyTable(PolyTable &&) = default;
     virtual ~ PolyTable (void);
