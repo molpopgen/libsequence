@@ -2,7 +2,7 @@
 #define BOOST_TEST_MODULE PTableTest
 #define BOOST_TEST_DYN_LINK 
 
-#include <Sequence/PTable.hpp>
+#include <Sequence/Ptable.hpp>
 #include <Sequence/SeqAlphabets.hpp>
 #include <boost/test/unit_test.hpp>
 #include <cstdio>
