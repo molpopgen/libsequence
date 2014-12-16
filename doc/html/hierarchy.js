@@ -5,7 +5,7 @@ var hierarchy =
       [ "Sequence::ClustalW< T >", "classSequence_1_1ClustalW.html", null ],
       [ "Sequence::phylipData< T >", "classSequence_1_1phylipData.html", null ]
     ] ],
-    [ "ambiguousNucleotide", "structambiguousNucleotide.html", null ],
+    [ "Sequence::ambiguousNucleotide", "structSequence_1_1ambiguousNucleotide.html", null ],
     [ "Sequence::bamaux", "structSequence_1_1bamaux.html", null ],
     [ "Sequence::bamreader", "classSequence_1_1bamreader.html", null ],
     [ "Sequence::bamreaderImpl", "classSequence_1_1bamreaderImpl.html", null ],
@@ -20,7 +20,7 @@ var hierarchy =
     [ "Sequence::Grantham", "classSequence_1_1Grantham.html", null ],
     [ "Sequence::HKAdata", "structSequence_1_1HKAdata.html", null ],
     [ "Sequence::HKAresults", "structSequence_1_1HKAresults.html", null ],
-    [ "invalidPolyChar", "structinvalidPolyChar.html", null ],
+    [ "Sequence::invalidPolyChar", "structSequence_1_1invalidPolyChar.html", null ],
     [ "Sequence::Kimura80", "classSequence_1_1Kimura80.html", null ],
     [ "Sequence::lowerCrit", "structSequence_1_1lowerCrit.html", null ],
     [ "Sequence::marginal", "structSequence_1_1marginal.html", null ],
@@ -39,7 +39,6 @@ var hierarchy =
     ] ],
     [ "Sequence::PolyTableSlice< T >", "classSequence_1_1PolyTableSlice.html", null ],
     [ "Sequence::ProductMoment", "structSequence_1_1ProductMoment.html", null ],
-    [ "Sequence::Ptable", "classSequence_1_1Ptable.html", null ],
     [ "Sequence::RedundancyCom95", "classSequence_1_1RedundancyCom95.html", null ],
     [ "Sequence::samflag", "classSequence_1_1samflag.html", null ],
     [ "Sequence::samrecord", "classSequence_1_1samrecord.html", null ],
@@ -63,6 +62,9 @@ var hierarchy =
     [ "Sequence::ThreeSubs", "classSequence_1_1ThreeSubs.html", null ],
     [ "Sequence::TwoSubs", "classSequence_1_1TwoSubs.html", null ],
     [ "Sequence::upperCrit", "structSequence_1_1upperCrit.html", null ],
+    [ "std::vector< T >", null, [
+      [ "Sequence::Ptable", "classSequence_1_1Ptable.html", null ]
+    ] ],
     [ "Sequence::WeightingScheme2", "classSequence_1_1WeightingScheme2.html", [
       [ "Sequence::GranthamWeights2", "classSequence_1_1GranthamWeights2.html", null ],
       [ "Sequence::Unweighted2", "classSequence_1_1Unweighted2.html", null ]

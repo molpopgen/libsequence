@@ -1,13 +1,13 @@
 var group__weights =
 [
     [ "GranthamWeights2", "classSequence_1_1GranthamWeights2.html", [
-      [ "GranthamWeights2", "classSequence_1_1GranthamWeights2.html#ab22f789467f04cb7f125a3d9017255ec", null ],
+      [ "GranthamWeights2", "classSequence_1_1GranthamWeights2.html#a6306b486e62c947f1c1dceb483ac79b0", null ],
       [ "~GranthamWeights2", "classSequence_1_1GranthamWeights2.html#af8b4e29448853ef51292bfc7e9b88dfb", null ],
       [ "Calculate", "classSequence_1_1GranthamWeights2.html#a0ceea06b9aab4a4137b2d5aff2041fda", null ],
       [ "weights", "classSequence_1_1GranthamWeights2.html#a2790a66ed19b9882135af318db80fe9a", null ]
     ] ],
     [ "GranthamWeights3", "classSequence_1_1GranthamWeights3.html", [
-      [ "GranthamWeights3", "classSequence_1_1GranthamWeights3.html#a6fc7cb6a1e41c5a64a8b2799f39f29bc", null ],
+      [ "GranthamWeights3", "classSequence_1_1GranthamWeights3.html#aa12d744819bc9e544d8e33922f5192f2", null ],
       [ "~GranthamWeights3", "classSequence_1_1GranthamWeights3.html#aedf087f422dcb444325fd1ce0850ff7b", null ],
       [ "Calculate", "classSequence_1_1GranthamWeights3.html#ae0d0699a1787acf3fd65d2794fb7e5df", null ],
       [ "weights", "classSequence_1_1GranthamWeights3.html#adc16f8c1d8cd76eb25476a3e12d152fd", null ]

@@ -8,8 +8,43 @@ var NAVTREE =
       [ "Sequence::Comeron95", "md_md_literature.html#com", null ],
       [ "Sequence::Kimura80", "md_md_literature.html#kim", null ]
     ] ],
-    [ "Tutorial/overview", "md_md_tutorial.html", null ],
-    [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
+    [ "Tutorial/overview", "md_md_tutorial.html", [
+      [ "Background", "md_md_tutorial.html#background", [
+        [ "A quick note on streams", "md_md_tutorial.html#streams", null ]
+      ] ],
+      [ "Handling biological sequences.", "md_md_tutorial.html#seq", [
+        [ "Reading and writing", "md_md_tutorial.html#seqio", [
+          [ "Gzipped files, etc.", "md_md_tutorial.html#seqgz", null ]
+        ] ],
+        [ "Manipulating a sequence", "md_md_tutorial.html#manip", null ]
+      ] ],
+      [ "Testing for correct character sets", "md_md_tutorial.html#alphabet", null ],
+      [ "Input and output of DNA sequence alignments", "md_md_tutorial.html#alignments", null ],
+      [ "Polymorphism tables", "md_md_tutorial.html#polymorphism_tables", [
+        [ "Definitions of terms", "md_md_tutorial.html#polytable_terms", null ],
+        [ "Sequence::PolyTable in detail", "md_md_tutorial.html#polytable", [
+          [ "The inheritance hierarchy.", "md_md_tutorial.html#polytables", null ],
+          [ "Handling custom input formats", "md_md_tutorial.html#customptables", null ],
+          [ "Constructing PolyTables", "md_md_tutorial.html#polytable_construct", [
+            [ "From streams", "md_md_tutorial.html#polytable_read", null ]
+          ] ],
+          [ "Using move construction", "md_md_tutorial.html#polytable_move", null ],
+          [ "Accessing the data", "md_md_tutorial.html#polytable_access", null ],
+          [ "Manipulating PolyTables", "md_md_tutorial.html#polytable_manip", null ],
+          [ "Methods provided", "md_md_tutorial.html#polytable_manip_builtin", [
+            [ "Don't be this guy", "md_md_tutorial.html#polytable_idiot", null ]
+          ] ],
+          [ "Iterating over sites directly", "md_md_tutorial.html#polytable_csi", null ]
+        ] ],
+        [ "Sequence::Ptable in detail", "md_md_tutorial.html#ptable_detail", null ],
+        [ "The relationship between PolyTable and Ptable", "md_md_tutorial.html#polytable_ptable", null ]
+      ] ],
+      [ "Summary statistics", "md_md_tutorial.html#summstats", null ],
+      [ "Coalescent simulation", "md_md_tutorial.html#coalsim", null ],
+      [ "SAM records", "md_md_tutorial.html#sam", null ],
+      [ "BAM files", "md_md_tutorial.html#bam", null ]
+    ] ],
+    [ "libsequence revision history", "md__Users_kevin_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", null, [
@@ -48,17 +83,15 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AlignStreamTest_8cc_source.html",
-"SeqExceptions_8hpp.html#gaab0e36240236b3366ae6e76b5ba9a678",
-"classSequence_1_1Fasta.html#aee4da62ab2c7ca7d2bd3de6b0cc9fd88",
+"AlignStreamTest_8cc.html",
+"PtableTest_8cc.html#a6b2a3852db8bb19ab6909bac01859985",
+"classSequence_1_1Fasta.html#ad211e922dbe6cd62acfc5578a9af7e8c",
 "classSequence_1_1Seq.html#a15eacb158eaeb74a67e6285b4d8d1a5c",
-"classSequence_1_1Sums.html#a24c3911a328a68548429c11ae5602a32",
-"classSequence_1_1samrecord.html#aab9070870b1435433f7fc785a79c9339",
-"namespaceSequence_1_1sambits.html"
+"classSequence_1_1Sites.html#aadc806ee083fd3f959387ec558512faa",
+"classSequence_1_1shortestPath.html#afdc202778d4020667d4b536c05c997edad53aeb78abc83a52ab8982f5c82a3d5b",
+"structSequence_1_1HKAdata.html"
 ];
 
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
 var SYNCONMSG = 'click to disable panel synchronisation';
 var SYNCOFFMSG = 'click to enable panel synchronisation';
 var navTreeSubIndices = new Array();
@@ -83,6 +116,21 @@ function stripPath2(uri)
   return m ? uri.substring(i-6) : s;
 }
 
+function hashValue()
+{
+  return $(location).attr('hash').substring(1).replace(/[^\w\-]/g,'');
+}
+
+function hashUrl()
+{
+  return '#'+hashValue();
+}
+
+function pathName()
+{
+  return $(location).attr('pathname').replace(/[^-A-Za-z0-9+&@#/%?=~_|!:,.;\(\)]/g, '');
+}
+
 function localStorageSupported()
 {
   try {
@@ -105,7 +153,7 @@ function deleteLink()
 {
   if (localStorageSupported()) {
     window.localStorage.setItem('navpath','');
-  } 
+  }
 }
 
 function cachedLink()
@@ -177,11 +225,13 @@ var animationInProgress = false;
 function gotoAnchor(anchor,aname,updateLocation)
 {
   var pos, docContent = $('#doc-content');
-  if (anchor.parent().attr('class')=='memItemLeft' ||
-      anchor.parent().attr('class')=='fieldtype' ||
-      anchor.parent().is(':header')) 
+  var ancParent = $(anchor.parent());
+  if (ancParent.hasClass('memItemLeft') ||
+      ancParent.hasClass('fieldname') ||
+      ancParent.hasClass('fieldtype') ||
+      ancParent.is(':header'))
   {
-    pos = anchor.parent().position().top;
+    pos = ancParent.position().top;
   } else if (anchor.position()) {
     pos = anchor.position().top;
   }
@@ -239,7 +289,7 @@ function newNode(o, po, text, link, childrenData, lastNode)
     a.className = stripPath(link.replace('#',':'));
     if (link.indexOf('#')!=-1) {
       var aname = '#'+link.split('#')[1];
-      var srcPage = stripPath($(location).attr('pathname'));
+      var srcPage = stripPath(pathName());
       var targetPage = stripPath(link.split('#')[0]);
       a.href = srcPage!=targetPage ? url : "javascript:void(0)"; 
       a.onclick = function(){
@@ -333,14 +383,13 @@ function glowEffect(n,duration)
 
 function highlightAnchor()
 {
-  var aname = $(location).attr('hash');
+  var aname = hashUrl();
   var anchor = $(aname);
   if (anchor.parent().attr('class')=='memItemLeft'){
-    var rows = $('.memberdecls tr[class$="'+
-               window.location.hash.substring(1)+'"]');
+    var rows = $('.memberdecls tr[class$="'+hashValue()+'"]');
     glowEffect(rows.children(),300); // member without details
-  } else if (anchor.parents().slice(2).prop('tagName')=='TR') {
-    glowEffect(anchor.parents('div.memitem'),1000); // enum value
+  } else if (anchor.parent().attr('class')=='fieldname'){
+    glowEffect(anchor.parent().parent(),1000); // enum value
   } else if (anchor.parent().attr('class')=='fieldtype'){
     glowEffect(anchor.parent().parent(),1000); // struct field
   } else if (anchor.parent().is(":header")) {
@@ -355,7 +404,7 @@ function selectAndHighlight(hash,n)
 {
   var a;
   if (hash) {
-    var link=stripPath($(location).attr('pathname'))+':'+hash.substring(1);
+    var link=stripPath(pathName())+':'+hash.substring(1);
     a=$('.item a[class$="'+link+'"]');
   }
   if (a && a.length) {
@@ -466,14 +515,13 @@ function navTo(o,root,hash,relpath)
   if (link) {
     var parts = link.split('#');
     root = parts[0];
-    if (parts.length>1) hash = '#'+parts[1];
+    if (parts.length>1) hash = '#'+parts[1].replace(/[^\w\-]/g,'');
     else hash='';
   }
   if (hash.match(/^#l\d+$/)) {
     var anchor=$('a[name='+hash.substring(1)+']');
     glowEffect(anchor.parent(),1000); // line number
     hash=''; // strip line number anchors
-    //root=root.replace(/_source\./,'.'); // source link to doc link
   }
   var url=root+hash;
   var i=-1;
@@ -507,7 +555,7 @@ function toggleSyncButton(relpath)
   if (navSync.hasClass('sync')) {
     navSync.removeClass('sync');
     showSyncOff(navSync,relpath);
-    storeLink(stripPath2($(location).attr('pathname'))+$(location).attr('hash'));
+    storeLink(stripPath2(pathName())+hashUrl());
   } else {
     navSync.addClass('sync');
     showSyncOn(navSync,relpath);
@@ -547,7 +595,7 @@ function initNavTree(toroot,relpath)
   }
 
   $(window).load(function(){
-    navTo(o,toroot,window.location.hash,relpath);
+    navTo(o,toroot,hashUrl(),relpath);
     showRoot();
   });
 
@@ -555,21 +603,20 @@ function initNavTree(toroot,relpath)
      if (window.location.hash && window.location.hash.length>1){
        var a;
        if ($(location).attr('hash')){
-         var clslink=stripPath($(location).attr('pathname'))+':'+
-                               $(location).attr('hash').substring(1);
-         a=$('.item a[class$="'+clslink+'"]');
+         var clslink=stripPath(pathName())+':'+hashValue();
+         a=$('.item a[class$="'+clslink.replace(/</g,'\\3c ')+'"]');
        }
        if (a==null || !$(a).parent().parent().hasClass('selected')){
          $('.item').removeClass('selected');
          $('.item').removeAttr('id');
        }
-       var link=stripPath2($(location).attr('pathname'));
-       navTo(o,link,$(location).attr('hash'),relpath);
+       var link=stripPath2(pathName());
+       navTo(o,link,hashUrl(),relpath);
      } else if (!animationInProgress) {
        $('#doc-content').scrollTop(0);
        $('.item').removeClass('selected');
        $('.item').removeAttr('id');
-       navTo(o,toroot,window.location.hash,relpath);
+       navTo(o,toroot,hashUrl(),relpath);
      }
   })
 }

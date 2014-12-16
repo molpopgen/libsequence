@@ -1,9 +1,9 @@
 var group__operators =
 [
-    [ "operator+", "group__operators.html#ga713d4527729a5c8cd265176b8894f41c", null ],
-    [ "operator+", "group__operators.html#gab9513410166fbc5922fa379bbb88927c", null ],
-    [ "operator+=", "group__operators.html#ga82588ee5620abd5e50f8290e421a7c9e", null ],
-    [ "operator+=", "group__operators.html#ga3d092d1930cc4afd5eafa0ab567c7da7", null ],
+    [ "operator+", "group__operators.html#gaa3180d75ebfc65c11929c4ff6902f82e", null ],
+    [ "operator+", "group__operators.html#ga7fd2902dd7d9f28517ed3ce64531b47d", null ],
+    [ "operator+=", "group__operators.html#ga05d487fd09ccec32e8cb327cc9434ee3", null ],
+    [ "operator+=", "group__operators.html#ga0538f93583048466b679182206b8510d", null ],
     [ "operator<<", "group__operators.html#ga8af68243ce020d1e29beb9ab6cd7c97d", null ],
     [ "operator<<", "group__operators.html#gaab0e36240236b3366ae6e76b5ba9a678", null ],
     [ "operator<<", "group__operators.html#ga18491cc65f7e1239ec54a64e3820fb46", null ],

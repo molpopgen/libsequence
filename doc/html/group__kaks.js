@@ -2,7 +2,7 @@ var group__kaks =
 [
     [ "Classes and functions relating to pathway weighting for Ka/Ks", "group__weights.html", "group__weights" ],
     [ "Comeron95", "classSequence_1_1Comeron95.html", [
-      [ "Comeron95", "classSequence_1_1Comeron95.html#a8ee9c5b4c44c6dceccc2815b46942395", null ],
+      [ "Comeron95", "classSequence_1_1Comeron95.html#a1bc9b8d789761e6f901af05bbe1dc446", null ],
       [ "Comeron95", "classSequence_1_1Comeron95.html#ab203d470e3cc76d35bd0e169a177ee76", null ],
       [ "~Comeron95", "classSequence_1_1Comeron95.html#a4f95d6a0871d308d57162dc55b7fc692", null ],
       [ "aa", "classSequence_1_1Comeron95.html#ac3d6d403aed0ddd35cc35bcc74dd5d03", null ],
@@ -27,7 +27,7 @@ var group__kaks =
       [ "ratio", "classSequence_1_1Comeron95.html#aa74801f38cf6a0114fa973c821b570a2", null ]
     ] ],
     [ "RedundancyCom95", "classSequence_1_1RedundancyCom95.html", [
-      [ "RedundancyCom95", "classSequence_1_1RedundancyCom95.html#a3d8fa9e2059e3b5dc82de77ccb55a48d", null ],
+      [ "RedundancyCom95", "classSequence_1_1RedundancyCom95.html#a0969473afef84394878de89af203ec1c", null ],
       [ "~RedundancyCom95", "classSequence_1_1RedundancyCom95.html#a5ca54d6ee96e2edf44615b5d76c5caba", null ],
       [ "First2S", "classSequence_1_1RedundancyCom95.html#a1a19c3141d23009151c0ff7edbf0b13a", null ],
       [ "First2V", "classSequence_1_1RedundancyCom95.html#a7fc29b11be9f2ad4543af77323a714db", null ],
@@ -55,7 +55,7 @@ var group__kaks =
       [ "Q4", "classSequence_1_1SingleSub.html#a9cac216a1574a7cdd33a91fb56a94c87", null ]
     ] ],
     [ "Sites", "classSequence_1_1Sites.html", [
-      [ "Sites", "classSequence_1_1Sites.html#adea200ac113adcad93b6da7fff774212", null ],
+      [ "Sites", "classSequence_1_1Sites.html#a30eca5fa7ae058267a0ee03f70fcf594", null ],
       [ "~Sites", "classSequence_1_1Sites.html#a3c2e705a7187cd213d2882f17559977e", null ],
       [ "L0", "classSequence_1_1Sites.html#aadc806ee083fd3f959387ec558512faa", null ],
       [ "L2S", "classSequence_1_1Sites.html#a0d50d3e4d8aa720095cb121ed9512060", null ],

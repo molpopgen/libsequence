@@ -1,19 +1,11 @@
 var SeqEnums_8hpp =
 [
-    [ "GeneticCodes", "SeqEnums_8hpp.html#aff4fe77c175b8c7b68ce94cb9880d82b", [
-      [ "UNIVERSAL", "SeqEnums_8hpp.html#aff4fe77c175b8c7b68ce94cb9880d82bad23586fc89d8e86e5502b25baa2b1e95", null ]
+    [ "GeneticCodes", "SeqEnums_8hpp.html#a5e0228ffad6c8cf2441604124c8b9961", [
+      [ "UNIVERSAL", "SeqEnums_8hpp.html#a5e0228ffad6c8cf2441604124c8b9961aad17c1bd5b196a0923cde6beda1161a3", null ]
     ] ],
-    [ "Mutations", "SeqEnums_8hpp.html#a2009c170f0f10cf641e08fb544a0374d", [
-      [ "Unknown", "SeqEnums_8hpp.html#a2009c170f0f10cf641e08fb544a0374daea5e7b6cc272d3377e7d5b9a3723802b", null ],
-      [ "Ts", "SeqEnums_8hpp.html#a2009c170f0f10cf641e08fb544a0374da51681c05f7ffaf881ddb73f0e2733df3", null ],
-      [ "Tv", "SeqEnums_8hpp.html#a2009c170f0f10cf641e08fb544a0374dabbd3de1f39e526c7a2d655f446e879ed", null ]
-    ] ],
-    [ "Nucleotides", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaacc", [
-      [ "A", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaaccaccf31f878f03b0a085c65abc159cbc25", null ],
-      [ "T", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaaccabc1611f556b20453cbb10244b9a33fd6", null ],
-      [ "G", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaaccaa71f195d112f0ea1189963dd35c77e29", null ],
-      [ "C", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaaccac1189dbfc2ec1a16a33880733e15e9cd", null ],
-      [ "N", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaacca256e7b88ccb536a199dbaf74a91db1e5", null ],
-      [ "GAP", "SeqEnums_8hpp.html#a27b0d28a22fbebd8b2407eda21caaaccaf98e256b48e835a5242aa91254c1dce8", null ]
+    [ "Mutations", "SeqEnums_8hpp.html#adda7b0ede24f1c823c79dbfca8dc48a1", [
+      [ "Unknown", "SeqEnums_8hpp.html#adda7b0ede24f1c823c79dbfca8dc48a1a88183b946cc5f0e8c96b2e66e1c74a7e", null ],
+      [ "Ts", "SeqEnums_8hpp.html#adda7b0ede24f1c823c79dbfca8dc48a1a6a2389c404bc1b338fb35293fd4c19d3", null ],
+      [ "Tv", "SeqEnums_8hpp.html#adda7b0ede24f1c823c79dbfca8dc48a1a7428554abf279ee0c460ca305785246e", null ]
     ] ]
 ];
