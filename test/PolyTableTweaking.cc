@@ -24,6 +24,9 @@ BOOST_AUTO_TEST_CASE( remove_missing_N )
   Sequence::PolySites ps(std::move(pos),std::move(data)),
     ps2(ps),ps3(ps),ps4(ps);
 
+  BOOST_CHECK(pos.empty());
+  BOOST_CHECK(data.empty());
+
   BOOST_REQUIRE(ps == ps2);
 
   BOOST_REQUIRE_EQUAL( ps.numsites() , 5 );
