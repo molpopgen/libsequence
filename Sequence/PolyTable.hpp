@@ -28,9 +28,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*! \class Sequence::PolyTable Sequence/PolyTable.hpp
   \ingroup polytables
-  This is a base class for dealing with polymorphism data.  It has no
+  This is a pure virtual base class for dealing with polymorphism data.  It has no
   real utility in and of itself, other than defining the interface
-  to derived classes
+  to derived classes.  The class publicly inherits from 
+  std::pair< std::vector<double>, std::vector<std::string> >,
+  representing positions and variable site data, respectively.
   \note Segregating site positions are stored as double rather than int.
   This is because they can be represented as int (for example, in the case of
   Sequence::PolySites). However, it is also reasonable that positions be 
@@ -59,17 +61,16 @@ namespace Sequence
   class PolyTable : public std::pair< std::vector<double>, std::vector<std::string> >
   {
   private:
-    //! typedef for the base class
+    //! A PolyTable publicly inherits from std::pair< std::vector<double>, std::vector<std::string> >
     using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
     mutable Sequence::polySiteVector pv;
     mutable bool non_const_access;
   public:
     //typedefs for container types
-
     //! \brief non-const reference to std::string
-    using reference = std::string &;
+    using reference = std::vector<std::string>::reference;
     //! \brief const reference to std::string
-    using const_reference = const std::string &;
+    using const_reference = std::vector<std::string>::const_reference;
     //! \brief The size_type for the haplotype vector
     using size_type = std::vector<std::string>::size_type;
     /*!
