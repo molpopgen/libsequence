@@ -75,27 +75,31 @@ namespace Sequence
     mutable bool non_const_access;
   public:
     //typedefs for container types
-    using reference =std::string &;
+
+    //! \brief non-const reference to std::string
+    using reference = std::string &;
+    //! \brief const reference to std::string
     using const_reference = const std::string &;
+    //! \brief The size_type for the haplotype vector
     using size_type = std::vector<std::string>::size_type;
 
     /*!
-      non-const iterator to the data
+      \brief non-const iterator to the haplotypes
     */
     using data_iterator = std::vector<std::string>::iterator;
     /*!
-      const iterator to the data
+      \brief const iterator to the haplotypes
     */
     using const_data_iterator = std::vector<std::string>::const_iterator;
     /*!
-      non-const iterator to the positions
+      \brief non-const iterator to the positions
     */
     using pos_iterator =  std::vector<double>::iterator;
     /*!
-      const iterator to the positions
+      \brief const iterator to the positions
     */
     using const_pos_iterator = std::vector<double>::const_iterator;
-    /*!
+    /*! \brief Const iterator to segregating sites
       Const iterator to segregating sites. The value type of this
       iterator is const std::pair<double,std::string>, where the 
       double is the position of the segregating site, and the
