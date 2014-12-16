@@ -393,7 +393,25 @@ for( auto & d : ps ) {
 
 The library provides a variety of methods for doing things like removing missing data, applying frequency filters, etc.  Unfortunately (for now), these functions are mixed between member functions of Sequence::PolyTable and the file PolyTableFunctions.hpp.  See the documentation for Sequence::PolyTable and PolyTableFunctions.hpp as well as the unit test code PolyTableTweaking.cc for usage examples.  It is possible that a future release of libsequence will deprecate the member functions in favor of standalone functions.
 
-A user unfamiliar with C++ may think that many features are missing.  How does one permute site positions or the order of the haplotypes?  How can you remove a single haplotype?  These functions are not necessary as they are possible because of the definition of Sequence::PolyTable itself.
+A user unfamiliar with C++ may think that many features are missing.  How does one permute site positions or the order of the haplotypes?  How can you remove a single haplotype?  These functions are not necessary as they are possible because of the definition of Sequence::PolyTable itself and the functions that already exist in the C++ Standard Template Library (STL).  For example, to remove all haplotypes containing missing data, simply use the erase/remove idiom:
+
+~~~{.cpp}
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"NAACT"}; //This sequence will get erased below
+
+Sequence::PolySites ps(std::move(pos),std::move(data));
+ps.second.erase( std::remove_if(ps.begin(),
+	ps.end(),
+		[](const std::string & __s) {
+			return __s.find('N') != std::string::npos;
+	}),
+	ps.end() );
+~~~
+
+Similarly, one may permute the haplotype order and/or the site positions using std::random_shuffle.  If you are not familiar with what is in the STL, it would be a good idea to learn more about it.  I quite like [cppreference](http://en.cppreference.com/w/) as an online source.
 
 \paragraph polytable_idiot Don't be this guy
 
