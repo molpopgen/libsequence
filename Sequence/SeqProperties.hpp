@@ -34,8 +34,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
   struct ambiguousNucleotide : public std::unary_function<char,bool>
-			       /*! \struct ambiguousNucleotide Sequence/SeqProperties.hpp
-				*/
+  /*! \struct ambiguousNucleotide Sequence/SeqProperties.hpp
+    \todo redefine in terms of Sequence::dna_alphabet
+   */
   {
     inline bool operator()(const char & c) const
     /*!
@@ -52,12 +53,13 @@ namespace Sequence
   };
 
   struct invalidPolyChar : public std::unary_function<char,bool>
-			   /*! \struct invalidPolyChar Sequence/SeqProperties.hpp
-			     This functor can be used to determine
-			     if a range contains characters that
-			     the SNP analysis routines in this
-			     library cannot handle gracefully
-			    */
+  /*! \struct invalidPolyChar Sequence/SeqProperties.hpp
+    This functor can be used to determine
+    if a range contains characters that
+    the SNP analysis routines in this
+    library cannot handle gracefully
+    \todo reimplement in terms of Sequence::dna_alphabet??
+  */
   {
     inline bool operator()(const char & nucleotide) const
     /*!
