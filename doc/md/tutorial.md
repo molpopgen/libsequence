@@ -139,7 +139,7 @@ As of the time of this writing (2014), these classes may be viewed as quaint.  H
 * The [analysis](http://github.com/molpopgen/analysis) package that I maintain
 * The unit test files AlignStreamTest.cc and AlignmentTest.cc.  These tests provide good coverage of relevant usage cases (and a few cases of user error, too).
 
-\section polytables Polymorphism tables
+\section polymorphism_tables Polymorphism tables
 
 Perhaps the most powerful part of libsequence is the efficient handling of tables of variable sites (polymorphism tables).
 
@@ -150,6 +150,8 @@ There are three basic types for the maninpulation of variation data:
 * Sequence::Ptable publicly inherits from std::vector<Sequence::polymorphicSite>.  This type is very new to the library, and is the basis of a future rewrite of the code base controlling how variation data are analyzed.
 
 The major difference between Sequence::PolyTable and Sequence::Ptable is how the data are stored internally.  Iteration over a Sequence::PolyTable iterates over _haplotypes_, whereas iteration through a Ptable moves across _variable sites_.  These concepts will become more clear when we look at specific examples below.
+
+\subsubsection poly_defn Definitions of terms, etc.
 
 \subsection polytable Sequence::PolyTable in detail
 
