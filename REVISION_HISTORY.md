@@ -32,6 +32,7 @@ However:
 
 (There is no official 1.8.4 release yet)
 
+* Major improvements to the documentation.  The doxygen output now contains a detailed tutorial.
 * fastq stream + fastq unit tests added
 * move semantics for the Sequence::Seq hierarchy + unit tests
 * Programs in examples/ are now compiled via "make check"
@@ -40,6 +41,7 @@ However:
 * The enum changes led to many other changes, primarily in the code base dealing wih calculating differences between codons.  The new code is much simpler.  
 * A unit test was added to check the calculations of differences bewtween codons.
 * Kimura80 and Comeron95 will now return a non-signalling NaN for non-finite values.  Previous versions returned "999", which was a bit silly, in all honesty.
+* PolyTable was redefined to publicly inherit from std::pair< std::vector<double>, std::vector<std::string> >.  This change represents a major revision to the code.  This change gives full access to the underlying data, and possibly even "too much rope".  The change also totally wrecks binary compatiblity with previous versions. All unit tests pass.
 
 ## libsequence 1.8.3 (Dec. 5, 2014)
 
