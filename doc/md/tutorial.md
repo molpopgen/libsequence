@@ -153,7 +153,7 @@ The major difference between Sequence::PolyTable and Sequence::Ptable is how the
 
 \subsection polytable Sequence::PolyTable in detail
 
-\subsubsection ptables The inheritance hierarchy.
+\subsubsection polytables The inheritance hierarchy.
 
 Sequence::PolyTable is a pure virtual class.  As with Sequence::Seq, there are two pure virtuals member functions, Sequence::PolyTable::read and Sequence::PolyTable::print.  A valid class must publicly inherit from Sequence::PolyTable and define these functions.  The library defines the following three classes that publicly inherit from the base class:
 
@@ -199,9 +199,9 @@ An alternative approach to creating your own class is to simply read the data in
 
 From these two containers, a programmer can construct a Sequence::PolySites using move semantics.  The construction of PolyTables is covered in the next section.
 
-\subsubsection ptable_construct Constructing PolyTables
+\subsubsection polytable_construct Constructing PolyTables
 
-\paragraph ptable_read From streams
+\paragraph polytable_read From streams
 
 Most trivially, a polymorphism table may be read in via Sequence::operator>>, which redirects to Sequence::PolyTable::read.  For example, to read in data from a coalescent simulation that writes to stdout:
 
@@ -224,7 +224,7 @@ See the unit test testSimDataIO.cc for other ways to read/write objects of type 
 
 See the unit test PolySitesIO.cc for an example using Sequence::PolySites.
 
-\subsubsection ptable_move Using move construction
+\subsubsection polytable_move Using move construction
 
 Let's say we have the following data in C++ containers:
 
@@ -253,7 +253,7 @@ In addition to the above example, a well-defined PolyTable has a move constructo
 
 See the header files PolySites.hpp, SimData.hpp, and PolyTable.hpp for examples of declarations.  The corresponding definitions are in PolySites.cc, SimData.cc, and PolyTable.cc, respectively.
 
-\subsubsection ptable_access Accessing the data
+\subsubsection polytable_access Accessing the data
 
 The data stored in a PolyTable may be accessed in a variety of ways.  The following types are relevant, and are analogs to the usual typedefs found in STL containers (click to see their documentation):
 
@@ -325,7 +325,7 @@ Because we have begin and end defined, we can use range-based for loops in C++11
   }
 ~~~
 
-\subsubsection ptable_manip Manipulating PolyTables
+\subsubsection polytable_manip Manipulating PolyTables
 
 We can take advantage of non-const access to data in order to manipulate what is stored:
 
@@ -380,7 +380,11 @@ Because you have non-const access to the data, you can do this:
   ps[0] = std::string("A");
 ~~~
 
+\subsubsection polytable_csi Iterating over sites directly
+
 \subsection ptable_detail Sequence::Ptable in detail
+
+\subsection polytable_ptable The relationship between PolyTable and Ptable
 
 \section summstats Summary statistics 
 
