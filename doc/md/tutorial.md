@@ -151,9 +151,11 @@ There are three basic types for the maninpulation of variation data:
 
 The major difference between Sequence::PolyTable and Sequence::Ptable is how the data are stored internally.  Iteration over a Sequence::PolyTable iterates over _haplotypes_, whereas iteration through a Ptable moves across _variable sites_.  These concepts will become more clear when we look at specific examples below.
 
-\subsubsection poly_defn Definitions of terms, etc.
+\subsection polytable_terms Definitions of terms
 
 \subsection polytable Sequence::PolyTable in detail
+
+
 
 \subsubsection polytables The inheritance hierarchy.
 
