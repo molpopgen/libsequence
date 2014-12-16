@@ -62,34 +62,37 @@ namespace Sequence
 	}
       auto type = k + l;
       if (type%2 != 0.)	//if odd
-        return (Mutations(Tv));	//a transversion
+        return (Mutations::Tv);	//a transversion
       else if (type%2==0.)	//if even
-        return (Mutations(Ts));	//a transition
-      return (Mutations(Unknown));	//can be used for error checking
+        return (Mutations::Ts);	//a transition
+      return (Mutations::Unknown);	//can be used for error checking
     }
 
     Mutations TsTv (const int & i, const int & j)
     /*!
     Takes two ints, assumed to be integer representations of nucleotides. 
-    The way to ensure that the int represents a nucleotide in a valid way is
-    to use Sequence::Nucleotides.
-    The return value is determined
-    by a call to Comparisons::TsTv(int i, int j), where the ints are defined
-    in turn by Sequence::Nucleotides
+    The conversion of int to nucleotide is via Sequence::dna_alphabet
     */
     {
-      assert(i<=Nucleotides(C) && j <= Nucleotides(C));
+      assert( std::distance(dna_alphabet.begin(),
+			    std::find( dna_alphabet.begin(),
+				       dna_alphabet.end(),
+				       std::toupper(i))) < 4 );
+      assert( std::distance(dna_alphabet.begin(),
+			    std::find( dna_alphabet.begin(),
+				       dna_alphabet.end(),
+				       std::toupper(j))) < 4 );
       int type = i + j;
       if (type%2!=0.)	//if odd
         {
-          return (Mutations(Tv));	//a transversion
+          return (Mutations::Tv);	//a transversion
         }
       else if (type%2==0.)	//if even
         {
-          return (Mutations(Ts));	//a transition
+          return (Mutations::Ts);	//a transition
         }
 
-      return (Mutations(Unknown));	//can be used for error checking
+      return (Mutations::Unknown);
     }
 
     bool Different (const std::string & seq1,

@@ -28,9 +28,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 /*! \class Sequence::PolyTable Sequence/PolyTable.hpp
   \ingroup polytables
-  This is a base class for dealing with polymorphism data.  It has no
+  This is a pure virtual base class for dealing with polymorphism data.  It has no
   real utility in and of itself, other than defining the interface
-  to derived classes
+  to derived classes.  The class publicly inherits from 
+  std::pair< std::vector<double>, std::vector<std::string> >,
+  representing positions and variable site data, respectively.
   \note Segregating site positions are stored as double rather than int.
   This is because they can be represented as int (for example, in the case of
   Sequence::PolySites). However, it is also reasonable that positions be 
@@ -49,53 +51,45 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <iosfwd>
 #include <exception>
 #include <type_traits>
+#include <functional>
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/PolyTableManip.hpp>
 
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
-  class PolyTable
+  class PolyTable : public std::pair< std::vector<double>, std::vector<std::string> >
   {
   private:
-    /*!
-      \c positions is a std::vector of doubles that
-      constains the positions of the variable sites,
-      from wherever the aligment began. The positions
-      are indexed starting from 1, not zero.
-    */
-    std::vector<double> positions;
-    /*!
-      \c data is a std::vector of std::strings representing the
-      variable sites themselves.  Each member of the 
-      std::vector represents one sequence/haplotype.
-    */
-    std::vector<std::string> data;
+    //! A PolyTable publicly inherits from std::pair< std::vector<double>, std::vector<std::string> >
+    using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
     mutable Sequence::polySiteVector pv;
     mutable bool non_const_access;
   public:
     //typedefs for container types
-    typedef std::string & reference;
-    typedef const std::string & const_reference;
-    typedef std::vector<std::string>::size_type size_type;
-
+    //! \brief non-const reference to std::string
+    using reference = std::vector<std::string>::reference;
+    //! \brief const reference to std::string
+    using const_reference = std::vector<std::string>::const_reference;
+    //! \brief The size_type for the haplotype vector
+    using size_type = std::vector<std::string>::size_type;
     /*!
-      non-const iterator to the data
+      \brief non-const iterator to the haplotypes
     */
-    typedef std::vector<std::string>::iterator data_iterator;
+    using data_iterator = std::vector<std::string>::iterator;
     /*!
-      const iterator to the data
+      \brief const iterator to the haplotypes
     */
-    typedef std::vector<std::string>::const_iterator const_data_iterator;
+    using const_data_iterator = std::vector<std::string>::const_iterator;
     /*!
-      non-const iterator to the positions
+      \brief non-const iterator to the positions
     */
-    typedef std::vector<double>::iterator pos_iterator;
+    using pos_iterator =  std::vector<double>::iterator;
     /*!
-      const iterator to the positions
+      \brief const iterator to the positions
     */
-    typedef std::vector<double>::const_iterator const_pos_iterator;
-    /*!
+    using const_pos_iterator = std::vector<double>::const_iterator;
+    /*! \brief Const iterator to segregating sites
       Const iterator to segregating sites. The value type of this
       iterator is const std::pair<double,std::string>, where the 
       double is the position of the segregating site, and the
@@ -103,7 +97,7 @@ namespace Sequence
       in the string corresponds to the state of the first character
       in the PolyTable (i.e. (*this)[0]), etc.
     */
-    typedef Sequence::polySiteVector::const_iterator const_site_iterator;
+    using const_site_iterator = Sequence::polySiteVector::const_iterator;
 
     //functions to return iterators
     data_iterator begin();
@@ -141,8 +135,8 @@ namespace Sequence
     explicit PolyTable( const double_type & pbeg,
 			const double_type & pend,
 			const string_type & dbeg,
-			const string_type & dend ) : positions(std::vector<double>(pbeg,pend)),
-						     data( std::vector<std::string>(dbeg,dend) ),
+			const string_type & dend ) : PolyTableBase(std::vector<double>(pbeg,pend),
+								   std::vector<std::string>(dbeg,dend) ),
 						     non_const_access(true)
     {
     }
@@ -166,18 +160,19 @@ namespace Sequence
     explicit PolyTable( const double_type & pbeg,
 			const double_type & pend,
 			const char ** __data,
-			const size_t & nsam ) : positions(std::vector<double>(pbeg,pend)),
-						data( std::vector<std::string>(nsam) ),
+			const size_t & nsam ) : PolyTableBase(std::vector<double>(pbeg,pend),
+							      std::vector<std::string>(nsam)),
 						non_const_access(true)
     {
       for( size_t i = 0 ; i < nsam ; ++i )
 	{
-	  data[i] = std::string( __data[i] );
+	  second[i] = std::string( __data[i] );
 	}
     }
 
     explicit PolyTable( std::vector<double> && __positions,
 			std::vector<std::string> && __data );
+    PolyTable(const PolyTable &) = default;
     PolyTable(PolyTable &) = default;
     PolyTable(PolyTable &&) = default;
     virtual ~ PolyTable (void);
@@ -214,8 +209,8 @@ namespace Sequence
       \note range-checking done by assert()
     */
     {
-      assert(i<data.size());
-      return (data[i]);
+      assert(i<second.size());
+      return (second[i]);
     }
 
     inline reference operator[] (const size_type & i)
@@ -224,9 +219,9 @@ namespace Sequence
       \note range-checking done by assert()
     */
     {
-      assert(i<data.size());
+      assert(i<second.size());
       non_const_access=true;
-      return (data[i]);
+      return (second[i]);
     }
     /*!
       \return true if object contains no data, false otherwise
@@ -271,17 +266,13 @@ namespace Sequence
     bool assign( std::vector<double> && __positions,
 		 std::vector<std::string> && __data );
 
-//     template<typename iterator>
-//     bool rear_insert( const iterator beg,
-// 		      const iterator end );
-
     inline size_type size (void) const
       /*!
         Return how many std::strings are stored
         in PolyTable::data.
       */
     {
-      return data.size();
+      return second.size();
     }
 
     inline double position (const std::vector<double>::size_type & i) const
@@ -290,8 +281,8 @@ namespace Sequence
         \note range-checking done by assert()
       */
     {
-      assert( i < positions.size());
-      return positions[i];
+      assert( i < first.size());
+      return first[i];
     }
 
     inline unsigned numsites (void) const
@@ -300,7 +291,7 @@ namespace Sequence
         PolyTable::positions
       */
     {
-      return unsigned(positions.size());
+      return unsigned(first.size());
     }
 
     /*!
@@ -317,7 +308,7 @@ namespace Sequence
       act via this routine, which must be defined in all
       derived classes
     */
-    virtual std::ostream & print(std::ostream &h) const =0 ;
+    virtual std::ostream & print(std::ostream &h) const = 0;
   };
 
   /*!

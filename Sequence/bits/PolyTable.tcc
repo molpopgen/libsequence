@@ -46,18 +46,18 @@ namespace Sequence
 		    std::is_same<string_type,std::string>::value),
 		   "string_type must be char * or std::string");
   
-    positions.resize(_num_positions);
-    data.resize(_num_individuals);
-    positions.assign(_positions,_positions+_num_positions);
-    data.assign(_data,_data+_num_individuals);
+    first.resize(_num_positions);
+    second.resize(_num_individuals);
+    first.assign(_positions,_positions+_num_positions);
+    second.assign(_data,_data+_num_individuals);
     non_const_access = true;
-    for(std::vector<std::string>::const_iterator itr = data.begin() ;
-	itr < data.end() ; ++itr)
+    for(std::vector<std::string>::const_iterator itr = second.begin() ;
+	itr < second.end() ; ++itr)
       {
 	if (itr->length() != _num_positions)
 	  {
-	    positions.clear();
-	    data.clear();
+	    first.clear();
+	    second.clear();
 	    return false;
 	  }
       }

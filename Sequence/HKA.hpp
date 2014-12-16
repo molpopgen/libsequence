@@ -26,6 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <vector>
 #include <tuple>
+#include <cstdint>
 
 namespace Sequence
 {
@@ -81,7 +82,7 @@ namespace Sequence
       The enum documents the order in which the deviations
       are stored in chisq_tuple
     */
-    enum chisq_tuple_elements {POLY,DIV,POLYA,POLYB};
+    enum class chisq_tuple_element : std::int8_t {POLY,DIV,POLYA,POLYB};
     /*!
       The order of elements is the same as the loci that were 
       placed in the std::vector< HKAdata > passed to calcHKA.

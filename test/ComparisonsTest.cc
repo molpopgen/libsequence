@@ -1,10 +1,12 @@
-//Tests for Sequence/Comparisons.hpp
+//! \file ComparisonsTests.cc @brief Tests for Sequence/Comparisons.hpp
 #define BOOST_TEST_MODULE ComparisonsTest
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Comparisons.hpp>
+#include <Sequence/SeqAlphabets.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
+#include <iterator>
 
 BOOST_AUTO_TEST_CASE( notagap ) //Silly!
 {
@@ -76,35 +78,36 @@ BOOST_AUTO_TEST_CASE( numdiffs2 )
 
 BOOST_AUTO_TEST_CASE( tstv1 )
 {
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','A'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','a'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('a','a'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','G'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','G'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('g','a'), Sequence::Mutations::Ts );
+  //The type casting to int is a hack b/c strongly-type enums are not implicitly-convertible to something printable.
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','A')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','a')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('a','a')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','G')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','G')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('g','a')), int(Sequence::Mutations::Ts) );
 
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','t'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('c','t'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','T'), Sequence::Mutations::Ts );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','c'), Sequence::Mutations::Ts );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','T')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','t')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('c','t')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','T')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','T')), int(Sequence::Mutations::Ts) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('T','c')), int(Sequence::Mutations::Ts) );
 
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','T'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('A','C'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','A'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','A'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('C','a'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','a'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('c','A'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('t','A'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','T')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('A','C')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','A')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('T','A')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('C','a')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('T','a')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('c','A')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('t','A')), int(Sequence::Mutations::Tv) );
 
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','T'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','t'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('g','t'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','C'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('G','c'), Sequence::Mutations::Tv );
-  BOOST_REQUIRE_EQUAL( Sequence::TsTv('T','g'), Sequence::Mutations::Tv );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('G','T')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('G','t')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('g','t')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('G','C')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('G','c')), int(Sequence::Mutations::Tv) );
+  BOOST_REQUIRE_EQUAL( int(Sequence::TsTv('T','g')), int(Sequence::Mutations::Tv) );
 
   BOOST_REQUIRE_THROW( Sequence::TsTv('G','R'), Sequence::SeqException );
   BOOST_REQUIRE_THROW( Sequence::TsTv('G','z'), Sequence::SeqException );

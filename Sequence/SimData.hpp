@@ -70,6 +70,7 @@ namespace Sequence
     {
     public:
       SimData(void);
+      SimData( const SimData & );
       SimData( SimData & ) = default;
       SimData( SimData && ) = default;
       SimData( PolyTable & );

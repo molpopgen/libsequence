@@ -42,19 +42,19 @@ namespace Sequence
     strings, each of length nsnps.  Each string is filled with a blank space (the ' ' character).
     \param nsps when non-zero, the table is allocated to contain nsnps position (each with position 0)
   */
-    : positions( std::vector<double>(nsnps,0.) ),
-      data( std::vector< std::string >( nsam, std::string(nsnps,' ') ) ),
+    : PolyTableBase( std::vector<double>(nsnps,0.) ,
+		     std::vector< std::string >( nsam, std::string(nsnps,' ') )),
       pv(Sequence::polySiteVector()),
       non_const_access(true)
   {}
 
   PolyTable::PolyTable( std::vector<double> && __positions,
-			std::vector<std::string> && __data ) : positions( std::vector<double>() ),
-							       data( std::vector<std::string>() ),
+			std::vector<std::string> && __data ) : PolyTableBase( std::vector<double>(),
+									      std::vector<std::string>() ),
 							       non_const_access(true)
   {
-    std::swap(__positions,positions);
-    std::swap(__data,data);
+    std::swap(__positions,first);
+    std::swap(__data,second);
   }
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
@@ -75,7 +75,7 @@ namespace Sequence
 
   bool PolyTable::empty() const
   {
-    return data.empty()&&positions.empty();
+    return second.empty()&&first.empty();
   }
 
   bool PolyTable::assign(PolyTable::const_site_iterator beg,
@@ -92,12 +92,12 @@ namespace Sequence
    */
   {
     non_const_access = true; //set to true in case an exception is thrown
-    positions.clear();
-    data.clear();
+    first.clear();
+    second.clear();
     if(std::distance(beg,end) < 1) return true;
-    positions.resize(std::vector<double>::size_type(end-beg));
+    first.resize(std::vector<double>::size_type(end-beg));
     pv.resize(std::vector<double>::size_type(end-beg));
-    data.resize(beg->second.length());
+    second.resize(beg->second.length());
     size_t nsam = beg->second.length();
     std::string::const_iterator sb,se;
     typedef PolyTable::const_site_iterator::difference_type DTYPE;
@@ -108,17 +108,17 @@ namespace Sequence
 	if ((beg+i)->second.length() != nsam)
 	  {
 	    //If we toss an exception, let's make sure we leave an empty object.
-	    positions.clear();
-	    data.clear();
+	    first.clear();
+	    second.clear();
 	    return false;
 	  }
-	positions[unsigned(i)] = (beg+i)->first;
+	first[unsigned(i)] = (beg+i)->first;
 	sb = (beg+i)->second.begin();
 	se = (beg+i)->second.end();
 	j = 0;
 	while( (sb+j) < se )
 	  {
-	    data[unsigned(j)] += *(sb+j);
+	    second[unsigned(j)] += *(sb+j);
 	    ++j;
 	  }
 	++i;
@@ -131,18 +131,18 @@ namespace Sequence
 			  std::vector<std::string> && __data )
   {
     non_const_access = true;
-    positions.clear();
-    data.clear();
-    std::swap(positions,__positions);
-    std::swap(data,__data);
+    first.clear();
+    second.clear();
+    std::swap(this->first,__positions);
+    std::swap(this->second,__data);
 
-    if( std::find_if( data.cbegin(),data.cend(),
+    if( std::find_if( second.cbegin(),second.cend(),
 		      [this](const std::string __s) {
-			return __s.size() != positions.size();
-		      } ) != data.cend() )
+			return __s.size() != first.size();
+		      } ) != second.cend() )
       {
-	positions.clear();
-	data.clear();
+	first.clear();
+	second.clear();
 	return false;
       }
     return true;
@@ -154,16 +154,16 @@ namespace Sequence
     \warning case-sensitive
    */
   {
-    if (positions.size() != rhs.positions.size()
-        || data.size() != rhs.data.size())
+    if (first.size() != rhs.first.size()
+        || second.size() != rhs.second.size())
       return false;
 
-    for(unsigned i = 0 ; i < positions.size() ; ++i)
-      if (positions[i] != rhs.positions[i])
+    for(unsigned i = 0 ; i < first.size() ; ++i)
+      if (first[i] != rhs.first[i])
         return false;
 
-    for(unsigned i = 0 ; i < data.size() ; ++i)
-      if (data[i] != rhs.data[i])
+    for(unsigned i = 0 ; i < second.size() ; ++i)
+      if (second[i] != rhs.second[i])
         return false;
 
     return true;
@@ -194,7 +194,7 @@ namespace Sequence
   */
   {
     non_const_access=true;
-    return data.begin();
+    return second.begin();
   }
 
   PolyTable::data_iterator PolyTable::end()
@@ -204,7 +204,7 @@ namespace Sequence
   */
   {
     non_const_access=true;
-    return data.end();
+    return second.end();
   }
 
   PolyTable::const_data_iterator PolyTable::begin() const
@@ -213,7 +213,7 @@ namespace Sequence
     the data
   */
   {
-    return data.begin();
+    return second.begin();
   }
 
   PolyTable::const_data_iterator PolyTable::cbegin() const
@@ -222,7 +222,7 @@ namespace Sequence
     the data
   */
   {
-    return data.cbegin();
+    return second.cbegin();
   }
 
   PolyTable::const_data_iterator PolyTable::end() const
@@ -231,7 +231,7 @@ namespace Sequence
     the data
   */
   {
-    return data.end();
+    return second.end();
   }
 
   PolyTable::const_data_iterator PolyTable::cend() const
@@ -240,7 +240,7 @@ namespace Sequence
     the data
   */
   {
-    return data.cend();
+    return second.cend();
   }
 
   PolyTable::pos_iterator PolyTable::pbegin()
@@ -249,7 +249,7 @@ namespace Sequence
   */
   {
     non_const_access=true;
-    return positions.begin();
+    return first.begin();
   }
 
   PolyTable::pos_iterator PolyTable::pend()
@@ -258,7 +258,7 @@ namespace Sequence
   */
   {
     non_const_access=true;
-    return positions.end();
+    return first.end();
   }
 
   PolyTable::const_pos_iterator PolyTable::pbegin() const
@@ -266,7 +266,7 @@ namespace Sequence
     \return a const iterator pointing to the beginning of the list of positions
   */
   {
-    return positions.begin();
+    return first.begin();
   }
 
   PolyTable::const_pos_iterator PolyTable::pend() const
@@ -275,7 +275,7 @@ namespace Sequence
   */
   {
 
-    return positions.end();
+    return first.end();
   }
 
   PolyTable::const_pos_iterator PolyTable::pcbegin() const
@@ -283,7 +283,7 @@ namespace Sequence
     \return a const iterator pointing to the beginning of the list of positions
   */
   {
-    return positions.cbegin();
+    return first.cbegin();
   }
 
   PolyTable::const_pos_iterator PolyTable::pcend() const
@@ -292,7 +292,7 @@ namespace Sequence
   */
   {
 
-    return positions.cend();
+    return first.cend();
   }
 
   PolyTable::const_site_iterator PolyTable::sbegin() const
@@ -371,17 +371,17 @@ namespace Sequence
   */
   {
     std::vector<double> newpos;
-    std::vector<std::string> newdata(data.size());
+    std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < positions.size() ; ++i)
+    for(unsigned i = 0 ; i < first.size() ; ++i)
       {
         stateCounter Counts;
-        for (unsigned j = 0 ; j < data.size() ; ++j)
+        for (unsigned j = 0 ; j < second.size() ; ++j)
           {
             if(haveOutgroup==false||
 	       (haveOutgroup==true && j != outgroup))
               {
-                Counts(data[j][i]);
+                Counts(second[j][i]);
               }
           }
         bool freq = true;
@@ -411,10 +411,10 @@ namespace Sequence
           }
         if(freq == true)
           {
-            newpos.push_back(positions[i]);
-            for(unsigned j = 0 ; j < data.size() ; ++j)
+            newpos.push_back(first[i]);
+            for(unsigned j = 0 ; j < second.size() ; ++j)
               {
-                newdata[j] += data[j][i];
+                newdata[j] += second[j][i];
               }
           }
       }
@@ -437,25 +437,25 @@ namespace Sequence
   */
   {
     std::vector<double> newpos;
-    std::vector<std::string> newdata(data.size());
+    std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < positions.size() ; ++i)
+    for(unsigned i = 0 ; i < first.size() ; ++i)
       {
         stateCounter Counts;
-        for (unsigned j = 0 ; j < data.size() ; ++j)
+        for (unsigned j = 0 ; j < second.size() ; ++j)
           {
             if((skipOutgroup==false)||
 	       (skipOutgroup==true && j != outgroup))
               {
-                Counts(data[j][i]);
+                Counts(second[j][i]);
               }
           }
         if(Counts.nStates() <= 2)
           {
-            newpos.push_back(positions[i]);
-            for(unsigned j = 0 ; j < data.size() ; ++j)
+            newpos.push_back(first[i]);
+            for(unsigned j = 0 ; j < second.size() ; ++j)
               {
-                newdata[j] += data[j][i];
+                newdata[j] += second[j][i];
               }
           }
       }
@@ -474,17 +474,17 @@ namespace Sequence
   */
   {
     std::vector<double> newpos;
-    std::vector<std::string> newdata(data.size());
+    std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < positions.size() ; ++i)
+    for(unsigned i = 0 ; i < first.size() ; ++i)
       {
         bool hasMissing=false;
-        for (unsigned j = 0 ; j < data.size() ; ++j)
+        for (unsigned j = 0 ; j < second.size() ; ++j)
           {
             if((skipOutgroup==false)||
 	       (skipOutgroup==true && j != outgroup))
               {
-                switch(char(std::toupper(data[j][i])))
+                switch(char(std::toupper(second[j][i])))
                   {
                   case 'N':
                     hasMissing=true;
@@ -494,10 +494,10 @@ namespace Sequence
           }
         if(hasMissing==false)
           {
-            newpos.push_back(positions[i]);
-            for(unsigned j = 0 ; j < data.size() ; ++j)
+            newpos.push_back(first[i]);
+            for(unsigned j = 0 ; j < second.size() ; ++j)
               {
-                newdata[j] += data[j][i];
+                newdata[j] += second[j][i];
               }
           }
       }
@@ -517,25 +517,25 @@ namespace Sequence
   */
   {
     std::vector<double> newpos;
-    std::vector<std::string> newdata(data.size());
+    std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < positions.size() ; ++i)
+    for(unsigned i = 0 ; i < first.size() ; ++i)
       {
 	stateCounter c;
-        for (unsigned j = 0 ; j < data.size() ; ++j)
+        for (unsigned j = 0 ; j < second.size() ; ++j)
           {
             if((skipOutgroup==false)||
 	       (skipOutgroup==true && j != outgroup))
               {
-		c(data[j][i]);
+		c(second[j][i]);
               }
           }
 	if (c.ndna == 0)
 	  {
-	    newpos.push_back(positions[i]);
-            for(unsigned j = 0 ; j < data.size() ; ++j)
+	    newpos.push_back(first[i]);
+            for(unsigned j = 0 ; j < second.size() ; ++j)
               {
-                newdata[j] += data[j][i];
+                newdata[j] += second[j][i];
               }
 	  }
       }
@@ -625,25 +625,24 @@ namespace Sequence
     assign(std::move(newpositions),std::move(newdata));
   }
 
-     
   std::vector < double >
   PolyTable::GetPositions (void) const
   /*!
-    Returns PolyTable::positions.
+    Returns PolyTableBase.first
   */
   {
-    return positions;
+    return first;
   }
 
   std::vector <std::string > PolyTable::GetData (void) const
   /*!
     Returns PolyTable::data, a vector of std::strings containing polymorphic
     sites. Assuming the vector is returned to a vector<string>
-    called data, accessing data[i][j] accesses the j-th site
+    called data, accessing second[i][j] accesses the j-th site
     of the i-th sequence
   */
   {
-    return data;
+    return second;
   }
   
   //non-member functions

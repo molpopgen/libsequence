@@ -640,6 +640,8 @@ LTLIBOBJS
 LIBOBJS
 HAVE_HTSLIB_FALSE
 HAVE_HTSLIB_TRUE
+BUNIT_TEST_PRESENT_FALSE
+BUNIT_TEST_PRESENT_TRUE
 PROFILING_FALSE
 PROFILING_TRUE
 DEBUG_FALSE
@@ -2967,7 +2969,7 @@ END
     as_fn_error $? "Your 'rm' program is bad, sorry." "$LINENO" 5
   fi
 fi
-ac_config_headers="$ac_config_headers config-h.in"
+ac_config_headers="$ac_config_headers config.h"
 
 
 
@@ -15489,8 +15491,6 @@ fi
 
 
 
-
-
 ac_fn_cxx_check_header_mongrel "$LINENO" "zlib.h" "ac_cv_header_zlib_h" "$ac_includes_default"
 if test "x$ac_cv_header_zlib_h" = xyes; then :
 
@@ -15498,6 +15498,23 @@ else
   as_fn_error $? "zlib headers missing - cannot continue" "$LINENO" 5
 fi
 
+
+
+ac_fn_cxx_check_header_mongrel "$LINENO" "boost/test/unit_test.hpp" "ac_cv_header_boost_test_unit_test_hpp" "$ac_includes_default"
+if test "x$ac_cv_header_boost_test_unit_test_hpp" = xyes; then :
+  BUNITTEST=1
+else
+  echo "boost/test/unit_test.hpp not found. Unit tests will not be compiled."
+fi
+
+
+ if test x$BUNITTEST = x1; then
+  BUNIT_TEST_PRESENT_TRUE=
+  BUNIT_TEST_PRESENT_FALSE='#'
+else
+  BUNIT_TEST_PRESENT_TRUE='#'
+  BUNIT_TEST_PRESENT_FALSE=
+fi
 
 
 ac_fn_cxx_check_header_mongrel "$LINENO" "htslib/bgzf.h" "ac_cv_header_htslib_bgzf_h" "$ac_includes_default"
@@ -15763,6 +15780,10 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${PROFILING_TRUE}" && test -z "${PROFILING_FALSE}"; then
   as_fn_error $? "conditional \"PROFILING\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${BUNIT_TEST_PRESENT_TRUE}" && test -z "${BUNIT_TEST_PRESENT_FALSE}"; then
+  as_fn_error $? "conditional \"BUNIT_TEST_PRESENT\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${HAVE_HTSLIB_TRUE}" && test -z "${HAVE_HTSLIB_FALSE}"; then
@@ -16740,7 +16761,7 @@ cat >>$CONFIG_STATUS <<\_ACEOF || ac_write_fail=1
 for ac_config_target in $ac_config_targets
 do
   case $ac_config_target in
-    "config-h.in") CONFIG_HEADERS="$CONFIG_HEADERS config-h.in" ;;
+    "config.h") CONFIG_HEADERS="$CONFIG_HEADERS config.h" ;;
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "libtool") CONFIG_COMMANDS="$CONFIG_COMMANDS libtool" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;

@@ -1,7 +1,7 @@
 /*! \include valid_dna.cc */
 #include <Sequence/Fasta.hpp>
 #include <Sequence/SeqRegexes.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
 #include <fstream>
 #include <iostream>
 #include <algorithm>

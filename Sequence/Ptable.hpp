@@ -1,3 +1,4 @@
+//! \file Sequence/Ptable.hpp @brief Site-major variation tables
 #ifndef __SEQUENCE_PTABLE_HPP__
 #define __SEQUENCE_PTABLE_HPP__
 
@@ -17,11 +18,14 @@ namespace Sequence
   {
   private:
   public:
-    typedef std::vector<polymorphicSite> base;
+    using base = std::vector<polymorphicSite>;
 
     //constructors
+    //! Construct from an initializer_list
     Ptable( const std::initializer_list<polymorphicSite> & );
+    //! Construct from const PolyTable
     Ptable( const PolyTable & );
+    //! Conststruc from const PolyTable *
     Ptable( const PolyTable * );
   };
 } //ns Sequence

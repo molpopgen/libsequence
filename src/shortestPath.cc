@@ -26,7 +26,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Translate.hpp>
 #include <Sequence/Grantham.hpp>
 #include <Sequence/SeqConstants.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 #include <algorithm>
 
 namespace Sequence
@@ -53,7 +54,7 @@ namespace Sequence
   shortestPathImpl::shortestPathImpl(const std::string &codon1,
 				     const std::string &codon2,
 				     const Sequence::GeneticCodes & code):
-    _type(shortestPath::AMBIG),
+    _type(shortestPath::pathType::AMBIG),
     distances(Sequence::Grantham()),
     _distance(0.)
   {
@@ -71,7 +72,7 @@ namespace Sequence
 
     if (ndiffs == 0)
       {
-	_type = shortestPath::NONE;
+	_type = shortestPath::pathType::NONE;
       }
     else if (t1 != "X" && t2 != "X" && 
 	     (std::find_if(codon1.begin(),codon1.end(),
@@ -84,11 +85,11 @@ namespace Sequence
 	    _distance = distances(t1[0],t2[0]);
 	    if(t1 != t2)
 	      {
-		_type = shortestPath::N;
+		_type = shortestPath::pathType::N;
 	      }
 	    else
 	      {
-		_type = shortestPath::S;
+		_type = shortestPath::pathType::S;
 	      }
 
 	  }
@@ -98,12 +99,10 @@ namespace Sequence
 	    Sequence::Intermediates2(intermediates,codon1,codon2);
 
 	    std::vector< std::pair<double, shortestPath::pathType> > 
-	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::AMBIG));
+	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
 
 	    //update pathway lengths
-	    //process pathway 1 (codon1->intermediates[0]->codon2);
 	    paths[0] = process_path(intermediates[0],code);
-	    //process pathway 2 (codon1->intermediates[1]->codon2)
 	    paths[1] = process_path(intermediates[1],code);
 	    if (paths[0].first < paths[1].first)
 	      {
@@ -123,7 +122,7 @@ namespace Sequence
 	    std::string intermediates[9];
 	    Sequence::Intermediates3(intermediates,codon1,codon2);
 	    std::vector< std::pair<double, shortestPath::pathType> > 
-	      paths(6,std::pair<double, shortestPath::pathType>(0.,shortestPath::AMBIG));
+	      paths(6,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
 	    //there are 6 paths b/w codons that differ at all 3 sites
 	    //the indexing of array intermediates is describing in the documentation 
 	    //for class Sequence::ThreeSubs in the manual
@@ -177,7 +176,7 @@ namespace Sequence
       }
     else
       {
-	_type = shortestPath::AMBIG;
+	_type = shortestPath::pathType::AMBIG;
       }
     _path.push_back(codon2);
   }
@@ -188,20 +187,20 @@ namespace Sequence
   {
     std::string tint = Sequence::Translate(intermediate.begin(),intermediate.end(),
 					   code);
-    shortestPath::pathType t = shortestPath::AMBIG;
+    shortestPath::pathType t = shortestPath::pathType::AMBIG;
     double d = ( distances(t1[0],tint[0]) + distances(tint[0],t2[0]) );
     if ( (t1 != tint) && (tint != t2) )
       {
-	t = shortestPath::NN;
+	t = shortestPath::pathType::NN;
       }
     else if ( ((t1 != tint) && (tint == t2)) ||
 	      ((t1 == tint) && (tint != t2)) )
       {
-	t = shortestPath::SN;
+	t = shortestPath::pathType::SN;
       }
     else if ( t1==tint && tint==t2 )
       {
-	t = shortestPath::SS;
+	t = shortestPath::pathType::SS;
       }
     return std::make_pair(d,t);
   }
@@ -215,7 +214,7 @@ namespace Sequence
 					    intermediate1.end(),code);
     std::string tint2 = Sequence::Translate(intermediate2.begin(),
 					    intermediate2.end(),code);
-    shortestPath::pathType t = shortestPath::AMBIG;
+    shortestPath::pathType t = shortestPath::pathType::AMBIG;
     double d = (distances(t1[0],tint1[0]) + 
 		distances(tint1[0],tint2[0]) + 
 		distances(tint2[0],t2[0]));
@@ -226,24 +225,24 @@ namespace Sequence
 
     if ( !a && !b && !c )
       {
-	t = shortestPath::NNN;
+	t = shortestPath::pathType::NNN;
       }
     else if ( (a && b && !c) ||
 	      (a && !b && c) ||
 	      (!a && b && c) )
       {
-	t = shortestPath::SSN;
+	t = shortestPath::pathType::SSN;
       }
     else if ( (!a && !b && c) ||
 	      (!a && b && !c) ||
 	      ( a && !b && !c) )
       {
-	t = shortestPath::SNN;
+	t = shortestPath::pathType::SNN;
       }
 
     else if (a && b && c)
       {
-	t = shortestPath::SSS;
+	t = shortestPath::pathType::SSS;
       }
     return std::make_pair(d,t);
   }
@@ -360,57 +359,57 @@ namespace Sequence
 	shortestPath::pathType type = sp.type();
 	switch (type)
 	  {
-	  case shortestPath::S :
+	  case shortestPath::pathType::S :
 	    {
 	      rv = std::make_pair(1,0);
 	      break;
 	    }
-	  case shortestPath::N :
+	  case shortestPath::pathType::N :
 	    {
 	      rv = std::make_pair(0,1);
 	      break;
 	    }
-	  case shortestPath::SS :
+	  case shortestPath::pathType::SS :
 	    {
 	      rv = std::make_pair(2,0);
 	      break;
 	    }
-	  case shortestPath::SN :
+	  case shortestPath::pathType::SN :
 	    {
 	      rv = std::make_pair(1,1);
 	      break;
 	    }
-	  case shortestPath::NN :
+	  case shortestPath::pathType::NN :
 	    {
 	      rv = std::make_pair(0,2);
 	      break;
 	    }
-	  case shortestPath::SSS :
+	  case shortestPath::pathType::SSS :
 	    {
 	      rv =  std::make_pair(3,0);
 	      break;
 	    }
-	  case shortestPath::SSN :
+	  case shortestPath::pathType::SSN :
 	    {
 	      rv = std::make_pair(2,1);
 	      break;
 	    }
-	  case shortestPath::SNN :
+	  case shortestPath::pathType::SNN :
 	    {
 	      rv = std::make_pair(1,2);
 	      break;
 	    }
-	  case shortestPath::NNN :
+	  case shortestPath::pathType::NNN :
 	    {
 	      rv = std::make_pair(0,3);
 	      break;
 	    }
-	  case shortestPath::NONE :
+	  case shortestPath::pathType::NONE :
 	    {
 	      rv = std::make_pair(0,0);
 	      break;
 	    }
-	  case shortestPath::AMBIG :
+	  case shortestPath::pathType::AMBIG :
 	    {
 	      rv = std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
 	      break;
@@ -441,7 +440,7 @@ namespace Sequence
     {A,G,C,T}, the first member will be set to Sequence::SEQMAXUNSIGNED.
     The second member will have the value Sequence::shortestPath::pathType::N
     if the change is nonsynonymous, Sequence::shortestPath::pathType::S if synonymous,
-    Sequence::shortestPath::pathType::NONE if the codons don't differ,
+    Sequence::shortestPath::shortestPath::pathType::NONE if the codons don't differ,
     and Sequence::shortestPath::pathType::AMBIG if any of the codons contain characters
     other than {A,G,C,T}.
     \pre (codon1.length()==3 && codon2.length() == 3)
@@ -452,7 +451,7 @@ namespace Sequence
 	shortestPath sp(codon1,codon2,code);
 	shortestPath::pathType type = sp.type();
 	//check preconditions
-	if (type == shortestPath::AMBIG)
+	if (type == shortestPath::pathType::AMBIG)
 	  {
 	    return std::make_pair(SEQMAXUNSIGNED,type);
 	  }
@@ -490,7 +489,7 @@ namespace Sequence
     swap the i-th state between the two codons.  If this results in a replacement
     change in both cases, record shortestPath::N.  If it's synonymous in both cases, record
     shortestPath::S.  If the swap results in no change at all (i.e. the two bases are identical),
-    record shortestPath::NONE. For all other cases, record shortestPath::AMBIG.  This function
+    record shortestPath::pathType::NONE. For all other cases, record shortestPath::AMBIG.  This function
     is most useful at identifying mutations that can be unambiguously classifies as silent
     or replacement.  Note that, if one considers the pathways possible between codons,
     all sites can be assigned as N or S.  For such applications, use Sequence::shortestPath.
@@ -509,7 +508,7 @@ namespace Sequence
 	    if (dt1 == dt2)
 	      p[i] = dt1.second;
 	    else
-	      p[i] = shortestPath::AMBIG;
+	      p[i] = shortestPath::pathType::AMBIG;
 	    //swap back...
 	    std::swap(t1[i],t2[i]);
 	  }

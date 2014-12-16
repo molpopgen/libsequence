@@ -97,7 +97,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
         auto_ptr<Comeron95> C(new Comeron95(&data[i],&data[j]));
 	cout << data[i].GetName() << '\t' << data[j].GetName() << '\t';
 	cout << C->ka() << '\t' << C->ks() << '\t' << C->ratio() << endl;
-	if (C->ratio() > 1.0 && C->ratio() != 999.0)
+	if (std::isfinite(C->ratio()) && C->ratio() > 1.0)
 	  cout << "congratulations, you win!" << endl;
 	}
 	catch (SeqException &e)
@@ -144,7 +144,7 @@ namespace Sequence
                           const Sequence::Seq * seqb,
                           int max = 3, 
 			  const Sequence::RedundancyCom95 * genetic_code_redundancy = NULL,
-			  GeneticCodes code = UNIVERSAL,
+			  GeneticCodes code = GeneticCodes::UNIVERSAL,
                           WeightingScheme2 *weights2 = NULL,
                           WeightingScheme3 *weights3 = NULL);
       Comeron95( const Comeron95 & ) = delete;

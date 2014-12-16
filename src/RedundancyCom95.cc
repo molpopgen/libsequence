@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -27,11 +27,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cstring>
 #include <algorithm>
 #include <functional>
-#include <Sequence/SeqProperties.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Translate.hpp>
 #include <Sequence/RedundancyCom95.hpp>
-
+#include <Sequence/SeqAlphabets.hpp>
+#include <Sequence/Comparisons.hpp>
 
 namespace Sequence
 {
@@ -54,9 +54,6 @@ namespace Sequence
     double l2S_vals[4][4][4];
     double l2V_vals[4][4][4];
     double l4_vals[4][4][4];
-    char intToNuc[4];
-    //the map maps the nucleotides A,G,C,T onto array indices
-    std::map<char,int> nucToInt;
     void FillFirstPositionCounts ();
     void FillThirdPositionCounts ();
     void FillLValues ();
@@ -65,19 +62,6 @@ namespace Sequence
 
   RedundancyCom95impl::RedundancyCom95impl(const GeneticCodes &code) : genetic_code(code)
   {
-    intToNuc[0] = 'A';
-    intToNuc[1] = 'T';
-    intToNuc[2] = 'G';
-    intToNuc[3] = 'C';
-    //the map is case-insensitive...
-    nucToInt['A'] = 0;
-    nucToInt['T'] = 1;
-    nucToInt['G'] = 2;
-    nucToInt['C'] = 3;
-    nucToInt['a'] = 0;
-    nucToInt['t'] = 1;
-    nucToInt['g'] = 2;
-    nucToInt['c'] = 3;
     FillFirstPositionCounts ();
     FillThirdPositionCounts ();
     FillLValues ();
@@ -102,11 +86,9 @@ namespace Sequence
   void
   RedundancyCom95impl::FillFirstPositionCounts ()
   {
-    int i, j, k, l;
     std::string codon,mutation;
     int numN, numTsS, numTvS;	//numbers of changes of various types, N = nonsynon, S = synon
-    int codonState;
-    int type;		//type refers to Ts or Tv
+    unsigned codonState;
     int numPossTs, numPossTv;
     double FirstN, First2S, First2V;
     std::string codonTrans;
@@ -116,31 +98,30 @@ namespace Sequence
     //make every codon
     codon.resize(3);
     mutation.resize(3);
-    for (i = Nucleotides (A); i <= Nucleotides (C); ++i)
+    for( unsigned i = 0 ; i < 4 ; ++i )
       {
-        for (j = Nucleotides (A); j <= Nucleotides (C); ++j)
+	for( unsigned j = 0 ; j < 4 ; ++j )
           {
-            for (k = Nucleotides (A); k <= Nucleotides (C); ++k)
+	    for( unsigned k = 0 ; k < 4 ; ++k )
               {
                 numN = numTsS = numTvS = 0;	//initialize
                 numPossTs = numPossTv = 0;
                 S = N = 0;
-                codon[0] = intToNuc[i];
-                codon[1] = intToNuc[j];
-                codon[2] = intToNuc[k];
+
+		codon[0] = dna_alphabet[i];
+		codon[1] = dna_alphabet[j];
+		codon[2] = dna_alphabet[k];
 
                 //now make all possible mutations at first position
                 codonState = i;
-                for (l = Nucleotides (A);
-                     l <= Nucleotides (C); ++l)
+		for( unsigned l = 0 ; l < 4 ; ++l )
                   {
                     if (l != codonState)
                       {	//only include mutations
-                        mutation[0] = intToNuc[l];
+			mutation[0] = dna_alphabet[l];
                         mutation[1] = codon[1];
                         mutation[2] = codon[2];	//the mutant codon is now defined
-                        type = TsTv (intToNuc[codonState], mutation[0]);//find out if change is Ts or Tv
-
+			auto type = TsTv(dna_alphabet[codonState],mutation[0]);
                         codonTrans = Translate (codon.begin(),
                                                 codon.end(), genetic_code);
                         mutationTrans = Translate (mutation.begin(),
@@ -160,16 +141,16 @@ namespace Sequence
                                 S = 0;
                                 N = 1;
                               }
-                            if (type == Mutations(Ts))
+                            if (type == Mutations::Ts)
                               ++numPossTs;
-                            else if (type == Mutations(Tv))
+                            else if (type == Mutations::Tv)
                               ++numPossTv;
                             if (N == 1)	//if change is nonsynonymous
                               ++numN;
-                            else if (S == 1 && type == Mutations(Ts))
+                            else if (S == 1 && type == Mutations::Ts)
                               //if change is synonymous transition
                               ++numTsS;
-                            else if (S == 1 && type == Mutations(Tv))
+                            else if (S == 1 && type == Mutations::Tv)
                               //if change is synonymous transversion
                               ++numTvS;
                           }
@@ -236,9 +217,9 @@ namespace Sequence
                     FirstN = 1.0 - First2S - First2V;
                   }
                 //fill array
-		firstNon[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=FirstN;
-		first2S[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=First2S;
-		first2V[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=First2V;
+		firstNon[i][j][k]=FirstN;
+		first2S[i][j][k]=First2S;
+		first2V[i][j][k]=First2V;
               }
           }
       }
@@ -247,11 +228,9 @@ namespace Sequence
   void
   RedundancyCom95impl::FillThirdPositionCounts ()
   {
-    int i, j, k, l;
     std::string codon, mutation;	//the two codons
     int numN, numTsS, numTvS;	//numbers of changes of various types, N = nonsynon, S = synon
-    int codonState;
-    int type;		//type refers to Ts or Tv
+    unsigned codonState;
     int numPossTs, numPossTv;
     double ThirdN, Third2S, Third2V, Third4;
     std::string codonTrans;
@@ -260,31 +239,29 @@ namespace Sequence
     //make every codon
     codon.resize(3);
     mutation.resize(3);
-    for (i = Nucleotides (A); i <= Nucleotides (C); ++i)
+    for( unsigned i = 0 ; i < 4 ; ++i )
       {
-        for (j = Nucleotides (A); j <= Nucleotides (C); ++j)
+	for( unsigned j = 0 ; j < 4 ; ++j )
           {
-            for (k = Nucleotides (A); k <= Nucleotides (C); ++k)
+	    for( unsigned k = 0 ; k < 4 ; ++k )
               {
                 numN = numTsS = numTvS = 0;	//initialize
                 numPossTs = numPossTv = 0;
                 S = N = 0;
-                codon[0] = intToNuc[i];
-                codon[1] = intToNuc[j];
-                codon[2] = intToNuc[k];
+		codon[0] = dna_alphabet[i];
+		codon[1] = dna_alphabet[j];
+		codon[2] = dna_alphabet[k];
                 //now make all possible mutations at first position
                 codonState = k;
 
-                for (l = Nucleotides (A);
-                     l <= Nucleotides (C); ++l)
+		for( unsigned l = 0 ; l < 4 ; ++l )
                   {
                     if (l != codonState)
                       {	//only include mutations
                         mutation[0] = codon[0];
                         mutation[1] = codon[1];
-                        mutation[2] = intToNuc[l];	//the mutant codon is now defined
-                        type = TsTv (intToNuc[codonState], mutation[2]);	//find out if change is Ts or Tv
-
+			mutation[2] = dna_alphabet[l];
+			auto type = TsTv( dna_alphabet[codonState],mutation[2] );
                         codonTrans = Translate (codon.begin(),
                                                 codon.end(),genetic_code);
                         mutationTrans = Translate (mutation.begin(),
@@ -303,15 +280,15 @@ namespace Sequence
                                 S = 0;
                                 N = 1;
                               }
-                            if (type == Mutations(Ts))
+                            if (type == Mutations::Ts)
                               ++numPossTs;
-                            else if (type == Mutations(Tv))
+                            else if (type == Mutations::Tv)
                               ++numPossTv;
                             if (N)
                               ++numN;
-                            else if (S && type == Mutations(Ts))
+                            else if (S && type == Mutations::Ts)
                               ++numTsS;
-                            else if (S && type == Mutations(Tv))
+                            else if (S && type == Mutations::Tv)
                               ++numTvS;
                           }
                       }
@@ -367,10 +344,10 @@ namespace Sequence
                     ThirdN = 1.0 / 3.0;
                     Third4 = 0.0;
                   }
-		thirdNon[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=ThirdN;
-		third2S[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=Third2S;
-		third2V[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=Third2V;
-		thirdFour[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]]=Third4;
+		thirdNon[i][j][k]=ThirdN;
+		third2S[i][j][k]=Third2S;
+		third2V[i][j][k]=Third2V;
+		thirdFour[i][j][k]=Third4;
               }
           }
       }
@@ -380,42 +357,28 @@ namespace Sequence
   void
   RedundancyCom95impl::FillLValues ()
   {
-    int i, j, k;
     std::string trans;
 
     std::string codon(3,'A');
-    for (i = Nucleotides (A); i <= Nucleotides (C); ++i)
-      for (j = Nucleotides (A); j <= Nucleotides (C); ++j)
-        for (k = Nucleotides (A); k <= Nucleotides (C); ++k)
+    for(unsigned i = 0 ; i < 4 ; ++i )
+      for(unsigned j = 0 ; j < 4 ; ++j )
+	for(unsigned k = 0 ; k < 4 ; ++k )
           {
-            codon[0] = intToNuc[i];
-            codon[1] = intToNuc[j];
-            codon[2] = intToNuc[k];
+	    codon[0] = dna_alphabet[i];
+	    codon[1] = dna_alphabet[j];
+	    codon[2] = dna_alphabet[k];
 
             trans =Translate (codon.begin(),codon.end(),  genetic_code);
             if(strcmp(trans.c_str(),"*")!=0)
               {	//if not a stop codon
-		l0_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 1. 
-		  + firstNon[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] 
-		  + thirdNon[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]];
-
-		l2S_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 
-		  first2S[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] + 
-		  third2S[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]];
-
-		l2V_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] =
-		  first2V[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] + 
-		  third2V[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]];
-
-		l4_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 
-		  thirdFour[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]];		
+		l0_vals[i][j][k] = 1. + firstNon[i][j][k] + thirdNon[i][j][k];
+		l2S_vals[i][j][k] = first2S[i][j][k] + third2S[i][j][k];
+		l2V_vals[i][j][k] = first2V[i][j][k] + third2V[i][j][k];
+		l4_vals[i][j][k] = thirdFour[i][j][k];
               }
             else
               {
-		l0_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 0.0;
-		l2S_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 0.0;
-		l2V_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 0.0;
-		l4_vals[nucToInt[codon[0]]][nucToInt[codon[1]]][nucToInt[codon[2]]] = 0.0;
+		l0_vals[i][j][k] = l2S_vals[i][j][k] = l2V_vals[i][j][k] = l4_vals[i][j][k] = 0.;
               }
           }
   }
@@ -444,7 +407,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->firstNon[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->firstNon[i][j][k];
   }
 
   double
@@ -458,7 +430,16 @@ namespace Sequence
 
   {
     impl->codonPrecondition(codon);
-    return impl->first2S[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->first2S[i][j][k];
   }
 
   double
@@ -469,10 +450,18 @@ namespace Sequence
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
     \throw Sequence::SeqException if precondition is not met
   */
-
   {
     impl->codonPrecondition(codon);
-    return impl->first2V[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->first2V[i][j][k];
   }
 
   double
@@ -485,7 +474,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->thirdNon[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->thirdNon[i][j][k];
   }
 
   double
@@ -498,7 +496,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->thirdFour[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->thirdFour[i][j][k];
   }
 
   double
@@ -511,7 +518,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->third2S[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->third2S[i][j][k];
   }
 
   double
@@ -524,7 +540,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->third2V[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->third2V[i][j][k];
   }
 
   double
@@ -538,7 +563,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->l0_vals[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->l0_vals[i][j][k];
   }
 
   double
@@ -552,7 +586,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->l2S_vals[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->l2S_vals[i][j][k];
   }
 
   double
@@ -566,7 +609,16 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->l2V_vals[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->l2V_vals[i][j][k];
   }
 
   double
@@ -580,6 +632,15 @@ namespace Sequence
   */
   {
     impl->codonPrecondition(codon);
-    return impl->l4_vals[impl->nucToInt[codon[0]]][impl->nucToInt[codon[1]]][impl->nucToInt[codon[2]]];
+    auto i = std::distance( dna_alphabet.begin(),
+			    std::find(dna_alphabet.begin(),
+				      dna_alphabet.end(),codon[0]) ),
+      j = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[1]) ),
+      k = std::distance( dna_alphabet.begin(),
+			 std::find(dna_alphabet.begin(),
+				   dna_alphabet.end(),codon[2]) );
+    return impl->l4_vals[i][j][k];
   }
 }

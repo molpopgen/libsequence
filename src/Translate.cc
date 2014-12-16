@@ -239,7 +239,7 @@ namespace Sequence
         codon[2] = char(std::toupper(*(beg+2)));
         switch (genetic_code)
           {
-          case Sequence::UNIVERSAL:
+          case GeneticCodes::UNIVERSAL:
             translation += Universal (codon,gapchar);
             break;
           default:

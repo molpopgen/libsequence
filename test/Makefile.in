@@ -77,19 +77,33 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
-check_PROGRAMS = FastaConstructors$(EXEEXT) FastaIO$(EXEEXT) \
-	FastaExplicitIO$(EXEEXT) FastaOperations$(EXEEXT) \
-	AlignStreamTest$(EXEEXT) testSimDataIO$(EXEEXT) \
-	CountingOperators$(EXEEXT) PolyTableConversions$(EXEEXT) \
-	PolyTableTweaking$(EXEEXT) PolySitesIO$(EXEEXT) \
-	SimpleSNPIO$(EXEEXT) PolySIMtest$(EXEEXT) PolySNPtest$(EXEEXT) \
-	ComparisonsTest$(EXEEXT) AlignmentTest$(EXEEXT) \
-	fastqIO$(EXEEXT) fastqConstructors$(EXEEXT) \
-	SeqConversions$(EXEEXT)
-@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
-@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
-@DEBUG_TRUE@am__append_3 = -g
-@DEBUG_FALSE@am__append_4 = -DNDEBUG
+@BUNIT_TEST_PRESENT_TRUE@check_PROGRAMS = FastaConstructors$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	FastaIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	FastaExplicitIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	FastaOperations$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	AlignStreamTest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	testSimDataIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	CountingOperators$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableConversions$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableTweaking$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableBadBehavior$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolySitesIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	SimpleSNPIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolySIMtest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PolySNPtest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	ComparisonsTest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	AlignmentTest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	fastqIO$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	fastqConstructors$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	SeqConversions$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT)
+@BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
+@BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
+@BUNIT_TEST_PRESENT_TRUE@@DEBUG_TRUE@am__append_3 = -g
+@BUNIT_TEST_PRESENT_TRUE@@DEBUG_FALSE@am__append_4 = -DNDEBUG
+@BUNIT_TEST_PRESENT_TRUE@am__append_5 = $(AM_LIBS)
 subdir = test
 DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
 	$(top_srcdir)/depcomp
@@ -101,65 +115,117 @@ am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(install_sh) -d
-CONFIG_HEADER = $(top_builddir)/config-h.in
+CONFIG_HEADER = $(top_builddir)/config.h
 CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
-am_AlignStreamTest_OBJECTS = AlignStreamTest.$(OBJEXT)
+am__AlignStreamTest_SOURCES_DIST = AlignStreamTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_AlignStreamTest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	AlignStreamTest.$(OBJEXT)
 AlignStreamTest_OBJECTS = $(am_AlignStreamTest_OBJECTS)
 AlignStreamTest_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
 am__v_lt_0 = --silent
 am__v_lt_1 = 
-am_AlignmentTest_OBJECTS = AlignmentTest.$(OBJEXT)
+am__AlignmentTest_SOURCES_DIST = AlignmentTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_AlignmentTest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	AlignmentTest.$(OBJEXT)
 AlignmentTest_OBJECTS = $(am_AlignmentTest_OBJECTS)
 AlignmentTest_LDADD = $(LDADD)
-am_ComparisonsTest_OBJECTS = ComparisonsTest.$(OBJEXT)
+am__ComparisonsTest_SOURCES_DIST = ComparisonsTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_ComparisonsTest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	ComparisonsTest.$(OBJEXT)
 ComparisonsTest_OBJECTS = $(am_ComparisonsTest_OBJECTS)
 ComparisonsTest_LDADD = $(LDADD)
-am_CountingOperators_OBJECTS = CountingOperators.$(OBJEXT)
+am__CountingOperators_SOURCES_DIST = CountingOperators.cc
+@BUNIT_TEST_PRESENT_TRUE@am_CountingOperators_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	CountingOperators.$(OBJEXT)
 CountingOperators_OBJECTS = $(am_CountingOperators_OBJECTS)
 CountingOperators_LDADD = $(LDADD)
-am_FastaConstructors_OBJECTS = FastaConstructors.$(OBJEXT)
+am__FastaConstructors_SOURCES_DIST = FastaConstructors.cc
+@BUNIT_TEST_PRESENT_TRUE@am_FastaConstructors_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
-am_FastaExplicitIO_OBJECTS = FastaIO.$(OBJEXT)
+am__FastaExplicitIO_SOURCES_DIST = FastaIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_FastaExplicitIO_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	FastaIO.$(OBJEXT)
 FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
 FastaExplicitIO_LDADD = $(LDADD)
-am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
+am__FastaIO_SOURCES_DIST = FastaIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
 FastaIO_LDADD = $(LDADD)
-am_FastaOperations_OBJECTS = FastaOperations.$(OBJEXT)
+am__FastaOperations_SOURCES_DIST = FastaOperations.cc
+@BUNIT_TEST_PRESENT_TRUE@am_FastaOperations_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	FastaOperations.$(OBJEXT)
 FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
-am_PolySIMtest_OBJECTS = PolySIMtest.$(OBJEXT)
+am__PolySIMtest_SOURCES_DIST = PolySIMtest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolySIMtest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolySIMtest.$(OBJEXT)
 PolySIMtest_OBJECTS = $(am_PolySIMtest_OBJECTS)
 PolySIMtest_LDADD = $(LDADD)
-am_PolySNPtest_OBJECTS = PolySNPtest.$(OBJEXT)
+am__PolySNPtest_SOURCES_DIST = PolySNPtest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolySNPtest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolySNPtest.$(OBJEXT)
 PolySNPtest_OBJECTS = $(am_PolySNPtest_OBJECTS)
 PolySNPtest_LDADD = $(LDADD)
-am_PolySitesIO_OBJECTS = PolySitesIO.$(OBJEXT)
+am__PolySitesIO_SOURCES_DIST = PolySitesIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolySitesIO_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolySitesIO.$(OBJEXT)
 PolySitesIO_OBJECTS = $(am_PolySitesIO_OBJECTS)
 PolySitesIO_LDADD = $(LDADD)
-am_PolyTableConversions_OBJECTS = PolyTableConversions.$(OBJEXT)
+am__PolyTableBadBehavior_SOURCES_DIST = PolyTableBadBehavior.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolyTableBadBehavior_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableBadBehavior.$(OBJEXT)
+PolyTableBadBehavior_OBJECTS = $(am_PolyTableBadBehavior_OBJECTS)
+PolyTableBadBehavior_LDADD = $(LDADD)
+am__PolyTableConversions_SOURCES_DIST = PolyTableConversions.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolyTableConversions_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableConversions.$(OBJEXT)
 PolyTableConversions_OBJECTS = $(am_PolyTableConversions_OBJECTS)
 PolyTableConversions_LDADD = $(LDADD)
-am_PolyTableTweaking_OBJECTS = PolyTableTweaking.$(OBJEXT)
+am__PolyTableTweaking_SOURCES_DIST = PolyTableTweaking.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PolyTableTweaking_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
-am_SeqConversions_OBJECTS = SeqConversions.$(OBJEXT)
+am__PtableTest_SOURCES_DIST = PtableTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_PtableTest_OBJECTS = PtableTest.$(OBJEXT)
+PtableTest_OBJECTS = $(am_PtableTest_OBJECTS)
+PtableTest_LDADD = $(LDADD)
+am__RedundancyCom95test_SOURCES_DIST = RedundancyCom95test.cc
+@BUNIT_TEST_PRESENT_TRUE@am_RedundancyCom95test_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test.$(OBJEXT)
+RedundancyCom95test_OBJECTS = $(am_RedundancyCom95test_OBJECTS)
+RedundancyCom95test_LDADD = $(LDADD)
+am__SeqConversions_SOURCES_DIST = SeqConversions.cc
+@BUNIT_TEST_PRESENT_TRUE@am_SeqConversions_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	SeqConversions.$(OBJEXT)
 SeqConversions_OBJECTS = $(am_SeqConversions_OBJECTS)
 SeqConversions_LDADD = $(LDADD)
-am_SimpleSNPIO_OBJECTS = SimpleSNPIO.$(OBJEXT)
+am__SimpleSNPIO_SOURCES_DIST = SimpleSNPIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_SimpleSNPIO_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
-am_fastqConstructors_OBJECTS = fastqConstructors.$(OBJEXT)
+am__alphabets_SOURCES_DIST = alphabets.cc
+@BUNIT_TEST_PRESENT_TRUE@am_alphabets_OBJECTS = alphabets.$(OBJEXT)
+alphabets_OBJECTS = $(am_alphabets_OBJECTS)
+alphabets_LDADD = $(LDADD)
+am__fastqConstructors_SOURCES_DIST = fastqConstructors.cc
+@BUNIT_TEST_PRESENT_TRUE@am_fastqConstructors_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	fastqConstructors.$(OBJEXT)
 fastqConstructors_OBJECTS = $(am_fastqConstructors_OBJECTS)
 fastqConstructors_LDADD = $(LDADD)
-am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
+am__fastqIO_SOURCES_DIST = fastqIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
 fastqIO_OBJECTS = $(am_fastqIO_OBJECTS)
 fastqIO_LDADD = $(LDADD)
-am_testSimDataIO_OBJECTS = testSimDataIO.$(OBJEXT)
+am__testSimDataIO_SOURCES_DIST = testSimDataIO.cc
+@BUNIT_TEST_PRESENT_TRUE@am_testSimDataIO_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	testSimDataIO.$(OBJEXT)
 testSimDataIO_OBJECTS = $(am_testSimDataIO_OBJECTS)
 testSimDataIO_LDADD = $(LDADD)
 AM_V_P = $(am__v_P_@AM_V@)
@@ -201,19 +267,32 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
+	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
+	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
+	$(PtableTest_SOURCES) $(RedundancyCom95test_SOURCES) \
+	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
 	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
-DIST_SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
-	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableConversions_SOURCES) \
-	$(PolyTableTweaking_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
+DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
+	$(am__AlignmentTest_SOURCES_DIST) \
+	$(am__ComparisonsTest_SOURCES_DIST) \
+	$(am__CountingOperators_SOURCES_DIST) \
+	$(am__FastaConstructors_SOURCES_DIST) \
+	$(am__FastaExplicitIO_SOURCES_DIST) \
+	$(am__FastaIO_SOURCES_DIST) \
+	$(am__FastaOperations_SOURCES_DIST) \
+	$(am__PolySIMtest_SOURCES_DIST) \
+	$(am__PolySNPtest_SOURCES_DIST) \
+	$(am__PolySitesIO_SOURCES_DIST) \
+	$(am__PolyTableBadBehavior_SOURCES_DIST) \
+	$(am__PolyTableConversions_SOURCES_DIST) \
+	$(am__PolyTableTweaking_SOURCES_DIST) \
+	$(am__PtableTest_SOURCES_DIST) \
+	$(am__RedundancyCom95test_SOURCES_DIST) \
+	$(am__SeqConversions_SOURCES_DIST) \
+	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
+	$(am__fastqConstructors_SOURCES_DIST) \
+	$(am__fastqIO_SOURCES_DIST) $(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -278,7 +357,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
-LIBS = @LIBS@ $(AM_LIBS)
+LIBS = @LIBS@ $(am__append_5)
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
@@ -363,29 +442,35 @@ top_srcdir = @top_srcdir@
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
-AM_CXXFLAGS = $(am__append_1) $(am__append_3) $(am__append_4)
-AM_LDFLAGS = -L../src/.libs -static
-AM_LIBS = -lboost_unit_test_framework -lsequence $(am__append_2)
-@PROFILING_FALSE@PROFILE = 
-@PROFILING_TRUE@PROFILE = -pg
-FastaConstructors_SOURCES = FastaConstructors.cc
-FastaIO_SOURCES = FastaIO.cc
-FastaExplicitIO_SOURCES = FastaIO.cc
-FastaOperations_SOURCES = FastaOperations.cc
-AlignStreamTest_SOURCES = AlignStreamTest.cc
-testSimDataIO_SOURCES = testSimDataIO.cc
-CountingOperators_SOURCES = CountingOperators.cc
-PolyTableConversions_SOURCES = PolyTableConversions.cc
-PolyTableTweaking_SOURCES = PolyTableTweaking.cc
-PolySitesIO_SOURCES = PolySitesIO.cc
-SimpleSNPIO_SOURCES = SimpleSNPIO.cc
-PolySIMtest_SOURCES = PolySIMtest.cc
-PolySNPtest_SOURCES = PolySNPtest.cc
-ComparisonsTest_SOURCES = ComparisonsTest.cc
-AlignmentTest_SOURCES = AlignmentTest.cc
-fastqIO_SOURCES = fastqIO.cc
-fastqConstructors_SOURCES = fastqConstructors.cc
-SeqConversions_SOURCES = SeqConversions.cc
+@BUNIT_TEST_PRESENT_TRUE@AM_CXXFLAGS = $(am__append_1) $(am__append_3) \
+@BUNIT_TEST_PRESENT_TRUE@	$(am__append_4)
+@BUNIT_TEST_PRESENT_TRUE@AM_LDFLAGS = -L../src/.libs -static
+@BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lboost_unit_test_framework \
+@BUNIT_TEST_PRESENT_TRUE@	-lsequence $(am__append_2)
+@BUNIT_TEST_PRESENT_TRUE@@PROFILING_FALSE@PROFILE = 
+@BUNIT_TEST_PRESENT_TRUE@@PROFILING_TRUE@PROFILE = -pg
+@BUNIT_TEST_PRESENT_TRUE@FastaConstructors_SOURCES = FastaConstructors.cc
+@BUNIT_TEST_PRESENT_TRUE@FastaIO_SOURCES = FastaIO.cc
+@BUNIT_TEST_PRESENT_TRUE@FastaExplicitIO_SOURCES = FastaIO.cc
+@BUNIT_TEST_PRESENT_TRUE@FastaOperations_SOURCES = FastaOperations.cc
+@BUNIT_TEST_PRESENT_TRUE@AlignStreamTest_SOURCES = AlignStreamTest.cc
+@BUNIT_TEST_PRESENT_TRUE@testSimDataIO_SOURCES = testSimDataIO.cc
+@BUNIT_TEST_PRESENT_TRUE@CountingOperators_SOURCES = CountingOperators.cc
+@BUNIT_TEST_PRESENT_TRUE@PolyTableConversions_SOURCES = PolyTableConversions.cc
+@BUNIT_TEST_PRESENT_TRUE@PolyTableTweaking_SOURCES = PolyTableTweaking.cc
+@BUNIT_TEST_PRESENT_TRUE@PolyTableBadBehavior_SOURCES = PolyTableBadBehavior.cc
+@BUNIT_TEST_PRESENT_TRUE@PolySitesIO_SOURCES = PolySitesIO.cc
+@BUNIT_TEST_PRESENT_TRUE@SimpleSNPIO_SOURCES = SimpleSNPIO.cc
+@BUNIT_TEST_PRESENT_TRUE@PolySIMtest_SOURCES = PolySIMtest.cc
+@BUNIT_TEST_PRESENT_TRUE@PolySNPtest_SOURCES = PolySNPtest.cc
+@BUNIT_TEST_PRESENT_TRUE@ComparisonsTest_SOURCES = ComparisonsTest.cc
+@BUNIT_TEST_PRESENT_TRUE@AlignmentTest_SOURCES = AlignmentTest.cc
+@BUNIT_TEST_PRESENT_TRUE@fastqIO_SOURCES = fastqIO.cc
+@BUNIT_TEST_PRESENT_TRUE@fastqConstructors_SOURCES = fastqConstructors.cc
+@BUNIT_TEST_PRESENT_TRUE@SeqConversions_SOURCES = SeqConversions.cc
+@BUNIT_TEST_PRESENT_TRUE@RedundancyCom95test_SOURCES = RedundancyCom95test.cc
+@BUNIT_TEST_PRESENT_TRUE@alphabets_SOURCES = alphabets.cc
+@BUNIT_TEST_PRESENT_TRUE@PtableTest_SOURCES = PtableTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -474,6 +559,10 @@ PolySitesIO$(EXEEXT): $(PolySitesIO_OBJECTS) $(PolySitesIO_DEPENDENCIES) $(EXTRA
 	@rm -f PolySitesIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolySitesIO_OBJECTS) $(PolySitesIO_LDADD) $(LIBS)
 
+PolyTableBadBehavior$(EXEEXT): $(PolyTableBadBehavior_OBJECTS) $(PolyTableBadBehavior_DEPENDENCIES) $(EXTRA_PolyTableBadBehavior_DEPENDENCIES) 
+	@rm -f PolyTableBadBehavior$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableBadBehavior_OBJECTS) $(PolyTableBadBehavior_LDADD) $(LIBS)
+
 PolyTableConversions$(EXEEXT): $(PolyTableConversions_OBJECTS) $(PolyTableConversions_DEPENDENCIES) $(EXTRA_PolyTableConversions_DEPENDENCIES) 
 	@rm -f PolyTableConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableConversions_OBJECTS) $(PolyTableConversions_LDADD) $(LIBS)
@@ -482,6 +571,14 @@ PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEP
 	@rm -f PolyTableTweaking$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
 
+PtableTest$(EXEEXT): $(PtableTest_OBJECTS) $(PtableTest_DEPENDENCIES) $(EXTRA_PtableTest_DEPENDENCIES) 
+	@rm -f PtableTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(PtableTest_OBJECTS) $(PtableTest_LDADD) $(LIBS)
+
+RedundancyCom95test$(EXEEXT): $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_DEPENDENCIES) $(EXTRA_RedundancyCom95test_DEPENDENCIES) 
+	@rm -f RedundancyCom95test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_LDADD) $(LIBS)
+
 SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES) $(EXTRA_SeqConversions_DEPENDENCIES) 
 	@rm -f SeqConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SeqConversions_OBJECTS) $(SeqConversions_LDADD) $(LIBS)
@@ -489,6 +586,10 @@ SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES
 SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA_SimpleSNPIO_DEPENDENCIES) 
 	@rm -f SimpleSNPIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
+
+alphabets$(EXEEXT): $(alphabets_OBJECTS) $(alphabets_DEPENDENCIES) $(EXTRA_alphabets_DEPENDENCIES) 
+	@rm -f alphabets$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(alphabets_OBJECTS) $(alphabets_LDADD) $(LIBS)
 
 fastqConstructors$(EXEEXT): $(fastqConstructors_OBJECTS) $(fastqConstructors_DEPENDENCIES) $(EXTRA_fastqConstructors_DEPENDENCIES) 
 	@rm -f fastqConstructors$(EXEEXT)
@@ -518,10 +619,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIMtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNPtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableBadBehavior.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PtableTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alphabets.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@

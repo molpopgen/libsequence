@@ -24,6 +24,9 @@ BOOST_AUTO_TEST_CASE( remove_missing_N )
   Sequence::PolySites ps(std::move(pos),std::move(data)),
     ps2(ps),ps3(ps),ps4(ps);
 
+  BOOST_CHECK(pos.empty());
+  BOOST_CHECK(data.empty());
+
   BOOST_REQUIRE(ps == ps2);
 
   BOOST_REQUIRE_EQUAL( ps.numsites() , 5 );
@@ -63,6 +66,25 @@ BOOST_AUTO_TEST_CASE( remove_missing_N )
   BOOST_REQUIRE_EQUAL( ps4.size(), 4 );
 
   BOOST_REQUIRE( ps3 == ps4 );
+}
+
+//remove haplotypes with missing data
+BOOST_AUTO_TEST_CASE( remove_missing_Nhap )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "NAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+  ps.second.erase( std::remove_if(ps.begin(),
+				  ps.end(),
+				  [](const std::string & __s) {
+				    return __s.find('N') != std::string::npos;
+				  }),
+		   ps.end() );
+  BOOST_CHECK_EQUAL( ps.size(), 3 );
 }
 
 //What about lower-case data?
@@ -181,6 +203,39 @@ BOOST_AUTO_TEST_CASE( to_lower )
 		     d.end(),
 		     d.begin(),
 		     [](char & ch) { return std::toupper(ch); });
+    }
+
+  BOOST_REQUIRE( ps == ps2 );
+}
+
+BOOST_AUTO_TEST_CASE( to_lower2 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "NAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data)),
+    ps2(ps);
+
+  for( auto & d : ps )
+    {
+      for( auto & ch : d )
+	{
+	  ch = std::tolower(ch);
+	}
+    }
+
+  //Now, ps and ps2 will not be equal
+  BOOST_REQUIRE( ps != ps2 );
+
+  for( auto & d : ps )
+    {
+      for( auto & ch : d )
+	{
+	  ch = std::toupper(ch);
+	}
     }
 
   BOOST_REQUIRE( ps == ps2 );

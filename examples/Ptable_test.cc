@@ -1,4 +1,5 @@
 /*! \include Ptable_test.cc
+  \file Ptable_test.cc @brief Examples of using Sequence::Ptable
  */
 
 #include <Sequence/Ptable.hpp>

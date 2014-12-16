@@ -28,6 +28,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <utility>
 #include <memory>
 #include <tuple>
+#include <cstdint>
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/SeqExceptions.hpp>
 
@@ -66,12 +67,11 @@ namespace Sequence
       2 codons don't differ, the value is NONE.  If the path
       cannot be determined, the value is AMBIG
     */
-    enum pathType {S,N,SS,SN,NN,SSS,SSN,SNN,NNN,NONE,AMBIG};
+    enum class pathType : std::int8_t {S,N,SS,SN,NN,SSS,SSN,SNN,NNN,NONE,AMBIG};
 
     explicit shortestPath(const std::string &codon1,
 			  const std::string &codon2,
-			  const Sequence::GeneticCodes & code = Sequence::UNIVERSAL) 
-      ;
+			  const Sequence::GeneticCodes & code = GeneticCodes::UNIVERSAL);
     ~shortestPath();
     pathType type() const;
     double path_distance() const;
@@ -82,21 +82,15 @@ namespace Sequence
 
   std::pair<unsigned,unsigned> mutsShortestPath(const std::string &codon1,
 						const std::string &codon2,
-						const Sequence::GeneticCodes 
-						& code = Sequence::UNIVERSAL)
-    ;
+						const Sequence::GeneticCodes & code = GeneticCodes::UNIVERSAL);
 
   std::pair<unsigned,shortestPath::pathType> diffType(const std::string &codon1,
 						      const std::string &codon2,
-						      const Sequence::GeneticCodes 
-						      & code = Sequence::UNIVERSAL)
-    ;
+						      const Sequence::GeneticCodes & code = GeneticCodes::UNIVERSAL);
 
   std::tuple<shortestPath::pathType,shortestPath::pathType,shortestPath::pathType>
   diffTypeMulti(const std::string &codon1,
 		const std::string &codon2,
-		const Sequence::GeneticCodes 
-		& code = Sequence::UNIVERSAL)
-    ;
+		const Sequence::GeneticCodes & code = GeneticCodes::UNIVERSAL);
 }
 #endif

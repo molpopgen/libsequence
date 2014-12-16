@@ -22,7 +22,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Sequence/PolyTableFunctions.hpp>
-#include <Sequence/SeqProperties.hpp>
+#include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/PolyTable.hpp>
 #include <algorithm>
 #include <set>
