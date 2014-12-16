@@ -75,26 +75,26 @@ namespace Sequence
     mutable bool non_const_access;
   public:
     //typedefs for container types
-    typedef std::string & reference;
-    typedef const std::string & const_reference;
-    typedef std::vector<std::string>::size_type size_type;
+    using reference =std::string &;
+    using const_reference = const std::string &;
+    using size_type = std::vector<std::string>::size_type;
 
     /*!
       non-const iterator to the data
     */
-    typedef std::vector<std::string>::iterator data_iterator;
+    using data_iterator = std::vector<std::string>::iterator;
     /*!
       const iterator to the data
     */
-    typedef std::vector<std::string>::const_iterator const_data_iterator;
+    using const_data_iterator = std::vector<std::string>::const_iterator;
     /*!
       non-const iterator to the positions
     */
-    typedef std::vector<double>::iterator pos_iterator;
+    using pos_iterator =  std::vector<double>::iterator;
     /*!
       const iterator to the positions
     */
-    typedef std::vector<double>::const_iterator const_pos_iterator;
+    using const_pos_iterator = std::vector<double>::const_iterator;
     /*!
       Const iterator to segregating sites. The value type of this
       iterator is const std::pair<double,std::string>, where the 
@@ -103,7 +103,7 @@ namespace Sequence
       in the string corresponds to the state of the first character
       in the PolyTable (i.e. (*this)[0]), etc.
     */
-    typedef Sequence::polySiteVector::const_iterator const_site_iterator;
+    using const_site_iterator = Sequence::polySiteVector::const_iterator;
 
     //functions to return iterators
     data_iterator begin();
