@@ -49,28 +49,18 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <iosfwd>
 #include <exception>
 #include <type_traits>
+#include <functional>
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/PolyTableManip.hpp>
 
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
-  class PolyTable
+  class PolyTable : public std::pair< std::vector<double>, std::vector<std::string> >
   {
   private:
-    /*!
-      \c positions is a std::vector of doubles that
-      constains the positions of the variable sites,
-      from wherever the aligment began. The positions
-      are indexed starting from 1, not zero.
-    */
-    std::vector<double> positions;
-    /*!
-      \c data is a std::vector of std::strings representing the
-      variable sites themselves.  Each member of the 
-      std::vector represents one sequence/haplotype.
-    */
-    std::vector<std::string> data;
+    //! typedef for the base class
+    using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
     mutable Sequence::polySiteVector pv;
     mutable bool non_const_access;
   public:
@@ -82,7 +72,6 @@ namespace Sequence
     using const_reference = const std::string &;
     //! \brief The size_type for the haplotype vector
     using size_type = std::vector<std::string>::size_type;
-
     /*!
       \brief non-const iterator to the haplotypes
     */
@@ -145,8 +134,8 @@ namespace Sequence
     explicit PolyTable( const double_type & pbeg,
 			const double_type & pend,
 			const string_type & dbeg,
-			const string_type & dend ) : positions(std::vector<double>(pbeg,pend)),
-						     data( std::vector<std::string>(dbeg,dend) ),
+			const string_type & dend ) : PolyTableBase(std::vector<double>(pbeg,pend),
+								   std::vector<std::string>(dbeg,dend) ),
 						     non_const_access(true)
     {
     }
@@ -170,13 +159,13 @@ namespace Sequence
     explicit PolyTable( const double_type & pbeg,
 			const double_type & pend,
 			const char ** __data,
-			const size_t & nsam ) : positions(std::vector<double>(pbeg,pend)),
-						data( std::vector<std::string>(nsam) ),
+			const size_t & nsam ) : PolyTableBase(std::vector<double>(pbeg,pend),
+							      std::vector<std::string>(nsam)),
 						non_const_access(true)
     {
       for( size_t i = 0 ; i < nsam ; ++i )
 	{
-	  data[i] = std::string( __data[i] );
+	  second[i] = std::string( __data[i] );
 	}
     }
 
@@ -218,8 +207,8 @@ namespace Sequence
       \note range-checking done by assert()
     */
     {
-      assert(i<data.size());
-      return (data[i]);
+      assert(i<second.size());
+      return (second[i]);
     }
 
     inline reference operator[] (const size_type & i)
@@ -228,9 +217,9 @@ namespace Sequence
       \note range-checking done by assert()
     */
     {
-      assert(i<data.size());
+      assert(i<second.size());
       non_const_access=true;
-      return (data[i]);
+      return (second[i]);
     }
     /*!
       \return true if object contains no data, false otherwise
@@ -285,7 +274,7 @@ namespace Sequence
         in PolyTable::data.
       */
     {
-      return data.size();
+      return second.size();
     }
 
     inline double position (const std::vector<double>::size_type & i) const
@@ -294,8 +283,8 @@ namespace Sequence
         \note range-checking done by assert()
       */
     {
-      assert( i < positions.size());
-      return positions[i];
+      assert( i < first.size());
+      return first[i];
     }
 
     inline unsigned numsites (void) const
@@ -304,7 +293,7 @@ namespace Sequence
         PolyTable::positions
       */
     {
-      return unsigned(positions.size());
+      return unsigned(first.size());
     }
 
     /*!

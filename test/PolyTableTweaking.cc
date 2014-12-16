@@ -68,6 +68,25 @@ BOOST_AUTO_TEST_CASE( remove_missing_N )
   BOOST_REQUIRE( ps3 == ps4 );
 }
 
+//remove haplotypes with missing data
+BOOST_AUTO_TEST_CASE( remove_missing_Nhap )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "NAACT"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+  ps.second.erase( std::remove_if(ps.begin(),
+				  ps.end(),
+				  [](const std::string & __s) {
+				    return __s.find('N') != std::string::npos;
+				  }),
+		   ps.end() );
+  BOOST_CHECK_EQUAL( ps.size(), 3 );
+}
+
 //What about lower-case data?
 BOOST_AUTO_TEST_CASE( remove_missing_n )
 {
