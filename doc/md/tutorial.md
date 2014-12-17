@@ -630,9 +630,24 @@ Sequence::PolySNP and Sequence::PolySIM are "factory" objects, which means that 
 
 The interface described above will be kept because there is a lot of code sitting around that depends upon it.
 
-
-
 \section coalsim Coalescent simulation
+
+The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
+
+* There are no global variables representing the fundamental data structures.  Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.
+* It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion
+* The current implementation has the Kingman coalescent in mind, in which all coalsecent events are between paris of lineages.  However, the fundamental data structure (Sequence::coalsim::marginal) will also be compatible with simulating "lamba" coalescents.
+* The recombination method implemented in Sequence::coalsim::crossover is Hudson's algorithm.  There is currently no support for the Markovian approximation to this process, but there could be in the future.
+* The namespace uses templates to achieve independence from any particular random number generation system.  I have successfully used it with both the C++11 <random> header and the [GSL](http://gnu.org/software/gsl) functions.
+
+The namespace implements several standard/simple demographic scenarios in the file Sequence/Coalescent/DemographicModels.hpp.
+
+The following example programs show more complex use scenarios:
+
+* msmm.cc
+* freerec.cc
+* fragments.cc
+* bottleneck.cc
 
 \section sam SAM records
 
