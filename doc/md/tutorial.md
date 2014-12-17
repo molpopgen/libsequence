@@ -649,9 +649,13 @@ The following example programs show more complex use scenarios:
 * fragments.cc
 * bottleneck.cc
 
+There is support for simulation involving selection via the header Sequence/Coalescent/Trajectories.hpp.
+
 __DISCLAIMER:__ Please note that this namespace may easily lead to having "too much rope".  As with any simulation interface, knowing how to test what you've coded up is critical, and these functions are intended for people who are comfortable with coalescent theory.
 
-\section sam SAM records
+\section hts_tut High-throughput sequencing
 
-\section bam BAM files
+\subsection sam SAM records
+
+\subsection bam BAM files
 
