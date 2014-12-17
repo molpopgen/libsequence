@@ -2,6 +2,8 @@
 
 [TOC]
 
+The citation for the library is \cite Thornton:2003vz
+
 This document is a rapid-fire overview of library features.
 
 \section background Background
@@ -174,7 +176,7 @@ class Sequence::PolyTable : public std::pair<std::vector<double>, std::vector<st
 
 As with Sequence::Seq, there are two pure virtuals member functions, Sequence::PolyTable::read and Sequence::PolyTable::print.  A valid class must publicly inherit from Sequence::PolyTable and define these functions.  The library defines the following three classes that publicly inherit from the base class:
 
-* Sequence::SimData is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program [ms](http://home.uchicago.edu/~rhudson1/source/mksamples.html).  This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state.  See the example program msstats.cc for how to read these objects in from streams, and the documentation for the file Sequence/SimDataIO.hpp for how to read/write from gzipped streams, binary streams, etc.
+* Sequence::SimData is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program \cite Hudson:2002vy.  This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state.  See the example program msstats.cc for how to read these objects in from streams, and the documentation for the file Sequence/SimDataIO.hpp for how to read/write from gzipped streams, binary streams, etc.
 * Sequence::PolySites This is a generic/catch-all class for nucleotide-based SNP data.
 * Sequence::SimpleSNP This class handles the format used by the software described in [Hudson (2001)](http://www.genetics.org/content/159/4/1805.abstract).
 
@@ -632,7 +634,7 @@ The interface described above will be kept because there is a lot of code sittin
 
 \section coalsim Coalescent simulation
 
-The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
+The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program, \cite Hudson:2002vy).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
 
 * There are no global variables representing the fundamental data structures.  Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.
 * It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion

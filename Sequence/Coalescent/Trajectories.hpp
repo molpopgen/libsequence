@@ -9,7 +9,7 @@ namespace Sequence
     /*!
       Generate a trajectory for an additive beneficial mutation
       with selection coefficient "s", follwing the method of 
-      Coop and Griffiths (http://www.ncbi.nlm.nih.gov/pubmed/15465123)
+      Coop and Griffiths \cite Coop:2004dk
 
       @param uni01 Generates doubles on the interval [0,1)
       @param traj This will contain the trjactory.  It is cleared by the function.
@@ -34,7 +34,7 @@ namespace Sequence
     /*!
       Generate a trajectory for an additive beneficial mutation
       with selection coefficient "s", follwing the method of 
-      Coop and Griffiths (http://www.ncbi.nlm.nih.gov/pubmed/15465123)
+      Coop and Griffiths \cite Coop:2004dk
 
       @param uni01 Generates doubles on the interval [0,1)
       @param traj This will contain the trjactory.  It is cleared by the function.
@@ -58,9 +58,7 @@ namespace Sequence
 
     /*!
       Generate a trajectory for a neutral mutation via the method
-      of Przeworski et al. (2005),
-      http://dx.doi.org/10.1554/05-273.1
-
+      of Przeworski et al. (2005) \cite Przeworski:2005ef
       @param uni01 Generates doubles on the interval [0,1)
       @param traj This will contain the trjactory.  It is cleared by the function.
       @param dt Determines the time scale
@@ -79,8 +77,7 @@ namespace Sequence
   
     /*!
       Generate a trajectory for a neutral mutation via the method
-      of Przeworski et al. (2005),
-      http://dx.doi.org/10.1554/05-273.1
+      of Przeworski et al. (2005) \cite Przeworski:2005ef,
 
       @param uni01 Generates doubles on the interval [0,1)
       @param traj This will contain the trjactory.  It is cleared by the function.
