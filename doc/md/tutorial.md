@@ -10,6 +10,8 @@ I assume a working familiarity with:
 
 * C++ and "C++11"
 
+The code snippets below all use C++11 language features (initialization lists, lambda expressions, etc.).  Using GCC/clang, you would need to compile with -std=c++11.  Note, however, that none of the snippets below will actually compile, as they are not complete C++ programs.
+
 \subsection streams A quick note on streams
 
 In C++, input from streams are handled via operator>> and operator<<. libsequence defines many of these operators for its types (see \ref operators).  These operators are overloaded for uncompressed ASCII streams (aka plain-text files and buffers).  However, all of these operators are compatible with well-designed compressed-file streams, too.  Programmers using libsequence may use [boost](http://www.boost.org)'s filtering_ostream libraries as replacements for <fstream> as they see fit.
@@ -553,7 +555,82 @@ The syntax in the above example is compact, readable, efficient, and avoids the 
 
 These two types are intimately-related and may be constructed from one another.
 
-\section summstats Summary statistics 
+\subsection 
+
+\section summstats Summary statistics
+
+\subsection classic Standard summary statistics
+libsequence contains routines for calculating several standard summary statistics (Watterson's \f$\theta\f$, Tajima's \f$\pi\f$, etc.).  The relevant classes are:
+
+* Sequence::PolySNP to calculate statistics from nucleotide data.  The allowed character set is A,G,C,T,N,-.
+* Sequence::PolySIM inherits from PolySNP and is intended to be used with biallelic data encoded in a 0/1 format where 0 = ancestral and 1 = the derived character state.  This class is tightly-coupled to Sequence::SimData.  See the example program msstats.cc for how to use this class.
+
+These classes are constructed from objects in the Sequence::PolyTable class hierarchy:
+
+~~~{.cpp}
+#include <Sequence/PolySNP.hpp>
+#include <Sequence/PolySites.hpp>
+#include <iostream>
+
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"NAACT"}; 
+
+Sequence::PolySites ps(std::move(pos),std::move(data));
+
+Sequence::PolySNP aps(&ps);
+
+//Now, output some summary stats
+std::cout << aps.NumPoly() << '\t' //Number of segregating sites
+	<< aps.ThetaW() << '\t' //Watterson's theta
+	<< aps.ThetaPi() << '\t' //Tajima's pi
+	<< aps.TajimasD() << '\n'; //Tajima's D
+~~~
+
+Take a look at the class documentation for Sequence::PolySNP and Sequence::PolySIM for a list of all the things that you can calculate from a PolyTable -- there is a lot there.
+
+\subsection classic_fst FST
+
+The class Sequence::FST allows the calculation of \f$F_{st}\f$ statistics from PolyTables + a vector of the sample sizes per population:
+
+~~~{.cpp}
+#include <Sequence/PolySites.hpp>
+#include <Sequence/FST.hpp>
+#include <iostream>
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"CAACT"};
+//The sample size is 2 in each subpop:
+std::vector<unsigned> sample_sizes = {2,2};
+Sequence FST fst_calculator(&data,sample_sizes.size(),&sample_sizes[0]);
+std::cout << fst_calculator.HSM() << '\t' //Hudson, Slaktin, Maddison
+	<< fst_calculator.HBK() << '\t' //Hudson, Boos, Kaplan
+	<< fst_calculator.Slatkin() << '\t'  //Slatkin
+	//below are the components of Fst calculations:
+	<< fst_calculator.piB() << '\t' //Mean pairwise divergence b/w pops
+	<< fst_calculator.piT() << '\t' //Total diversity
+	<< fst_calculator.piS() << '\t' //mean within-pop diversity
+	<< fst_calculator.piD() << '\n';//The difference between- and within- pop diversity
+~~~
+
+\subsection hka The HKA test
+
+The HKA test statistic is available via the functions Sequence::calcHKA.
+
+\subsection stat_future The future 
+
+Sequence::PolySNP and Sequence::PolySIM are "factory" objects, which means that they pre-process your data and contain lots of member functions to calculate various statistics.  A significant problem with this design is that adding new summary statistics breaks the library's compatibility with existing programs compiled against it (because the sizeof(Sequence::PolySNP) changes with the addition of new funtions).   The future of libsequence's interface to summary statistics will be:
+
+* Extracting the preprocessing steps from Sequence::PolySNP to a standalone class
+* Rewriting the summary statistic calculations as standalone functions taking the preprocessed data object as a parameter.
+
+The interface described above will be kept because there is a lot of code sitting around that depends upon it.
+
+
 
 \section coalsim Coalescent simulation
 
