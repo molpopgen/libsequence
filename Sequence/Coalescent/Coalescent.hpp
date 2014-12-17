@@ -29,6 +29,10 @@
   Example of simulating partially linked fragments in neutral models.
 */
 
+/*!
+  \namespace Sequence::coalsim @brief Routines for coalescent simulation
+ */
+
 #include <Sequence/Coalescent/SimTypes.hpp>
 #include <Sequence/Coalescent/Coalesce.hpp>
 #include <Sequence/Coalescent/Recombination.hpp>

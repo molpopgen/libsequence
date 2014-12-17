@@ -18,21 +18,22 @@
 
 namespace Sequence
 {
-  int sample_length( const std::vector< std::pair<int,int> > & fragments );
-  int total_length( const std::vector< std::pair<int,int> > & fragments );
-  void calculate_scales(const std::vector< std::pair<int,int> > & fragments,
-			std::vector< std::pair<double,double> > * sample_scale,
-			std::vector< std::pair<double,double> > * mutation_scale );
-  class SimData; //forward declaration
-  void rescale_mutation_positions(SimData * d,
-				  const std::vector< std::pair<double,double> > & sample_scale, 
-				  const std::vector< std::pair<double,double> > & mutation_scale );
-  void rescale_arg( arg * sample_history,
+  class SimData; //fwd declaration
+  namespace coalsim {
+    int sample_length( const std::vector< std::pair<int,int> > & fragments );
+    int total_length( const std::vector< std::pair<int,int> > & fragments );
+    void calculate_scales(const std::vector< std::pair<int,int> > & fragments,
+			  std::vector< std::pair<double,double> > * sample_scale,
+			  std::vector< std::pair<double,double> > * mutation_scale );
+    void rescale_mutation_positions(Sequence::SimData * d,
+				    const std::vector< std::pair<double,double> > & sample_scale, 
+				    const std::vector< std::pair<double,double> > & mutation_scale );
+    void rescale_arg( arg * sample_history,
 		    const std::vector< std::pair<int,int> > & fragments );
-  double integrate_genetic_map( const std::vector<chromosome> & sample,
-				const int & current_nsam,
-				const std::vector<double> & genetic_map,
-				std::vector<double> * reclens);
+    double integrate_genetic_map( const std::vector<chromosome> & sample,
+				  const int & current_nsam,
+				  const std::vector<double> & genetic_map,
+				  std::vector<double> * reclens);
+  }
 }
-
 #endif

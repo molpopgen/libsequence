@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -27,49 +27,51 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  std::vector<chromosome> init_sample( const std::vector<int> & pop_config,
-				       const int & nsites )
-  /*!
-    @brief A simple function to initialize a sample of chromosomes.
-    \param pop_config For a k-population model, this vector contains the 
-    sample size for each pop.  Individuals are labeled as beloning to 
-    population 0 to k-1, in the order specified in this vector
-    \param nsites The number of sites at which mutations occur.  For a k-site model,
-    recombination occurs at any of the k-1 "links" between sites.  Eaach chromosome
-    is assigned a single segment starting at position 0 and ending at nsites-1.
-    \ingroup coalescent
-  */
-  {
-    assert (! pop_config.empty() );
-    std::vector<chromosome>::size_type nsam = 
-      std::vector<chromosome>::size_type(std::accumulate(pop_config.begin(),pop_config.end(),0));
-    std::vector<chromosome> sample(nsam);
-    std::vector<chromosome>::size_type k=0;
-    for(unsigned i = 0 ; i < pop_config.size() ; ++i)
-      {
-	int popsize = pop_config[i];
-	assert(popsize >= 0);
-	for(int j=0;j<popsize;++j)
-	  {
-	    std::vector<segment> initial_segments(1,segment(0,(nsites>0 ? nsites-1 : 0),int(k)));
-	    sample[k++] = chromosome(initial_segments,int(i));
-	  }
-      }
-    return sample;
-  }
+  namespace coalsim {
+    std::vector<chromosome> init_sample( const std::vector<int> & pop_config,
+					 const int & nsites )
+    /*!
+      @brief A simple function to initialize a sample of chromosomes.
+      \param pop_config For a k-population model, this vector contains the 
+      sample size for each pop.  Individuals are labeled as beloning to 
+      population 0 to k-1, in the order specified in this vector
+      \param nsites The number of sites at which mutations occur.  For a k-site model,
+      recombination occurs at any of the k-1 "links" between sites.  Eaach chromosome
+      is assigned a single segment starting at position 0 and ending at nsites-1.
+      \ingroup coalescent
+    */
+    {
+      assert (! pop_config.empty() );
+      std::vector<chromosome>::size_type nsam = 
+	std::vector<chromosome>::size_type(std::accumulate(pop_config.begin(),pop_config.end(),0));
+      std::vector<chromosome> sample(nsam);
+      std::vector<chromosome>::size_type k=0;
+      for(unsigned i = 0 ; i < pop_config.size() ; ++i)
+	{
+	  int popsize = pop_config[i];
+	  assert(popsize >= 0);
+	  for(int j=0;j<popsize;++j)
+	    {
+	      std::vector<segment> initial_segments(1,segment(0,(nsites>0 ? nsites-1 : 0),int(k)));
+	      sample[k++] = chromosome(initial_segments,int(i));
+	    }
+	}
+      return sample;
+    }
   
-  marginal init_marginal( const int & nsam )
-  /*!
-    @brief Simple function to initialize a marginal tree
-    \param nsam the total sample size (i.e. summed over all populations) that you want to simulate
-    \ingroup coalescent
-  */
-  {
-    std::vector<node> tree(std::vector<node>::size_type(2*nsam-1));
-    for(int i=0;i<nsam;++i)
-      {
-	tree[std::vector<node>::size_type(i)] = node(0.);
-      }
-    return marginal(0,nsam,nsam-1,tree);
-  } 
+    marginal init_marginal( const int & nsam )
+    /*!
+      @brief Simple function to initialize a marginal tree
+      \param nsam the total sample size (i.e. summed over all populations) that you want to simulate
+      \ingroup coalescent
+    */
+    {
+      std::vector<node> tree(std::vector<node>::size_type(2*nsam-1));
+      for(int i=0;i<nsam;++i)
+	{
+	  tree[std::vector<node>::size_type(i)] = node(0.);
+	}
+      return marginal(0,nsam,nsam-1,tree);
+    } 
+  }
 }

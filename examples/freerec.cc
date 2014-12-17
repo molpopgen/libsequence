@@ -19,10 +19,11 @@
 using namespace std;
 
 //need to define these
-namespace Sequence
-{
-  MAX_SEG_T MAX_SEGSITES=200;
-  MAX_SEG_T MAX_SEGS_INC=200;
+namespace Sequence {
+  namespace coalsim {
+    MAX_SEG_T MAX_SEGSITES=200;
+    MAX_SEG_T MAX_SEGS_INC=200;
+  }
 }
 
 //overload of the libsequence function in the global namespace
@@ -30,14 +31,14 @@ namespace Sequence
 //the marginal tree begins
 //(this overload is unambiguous, as the libsequence version
 //takes a single argument)
-Sequence::marginal init_marginal( const int & nsam , const int & begin)
+Sequence::coalsim::marginal init_marginal( const int & nsam , const int & begin)
 {
-  std::vector<Sequence::node> tree(2*nsam-1);
+  std::vector<Sequence::coalsim::node> tree(2*nsam-1);
   for(int i=0;i<nsam;++i)
     {
-      tree[i] = Sequence::node(0.);
+      tree[i] = Sequence::coalsim::node(0.);
     }
-  return Sequence::marginal(begin,nsam,nsam-1,tree);
+  return Sequence::coalsim::marginal(begin,nsam,nsam-1,tree);
 }
 
 int main(int argc, char ** argv)
@@ -79,8 +80,8 @@ int main(int argc, char ** argv)
   auto uni = [&generator](const double & a, const double & b){ return std::uniform_real_distribution<double>(a,b)(generator); };
 
   const double DMAX = std::numeric_limits<double>::max();
-  vector<Sequence::chromosome> initialized_sample = 
-    Sequence::init_sample( vector<int>(1,nsam),nsites );
+  vector<Sequence::coalsim::chromosome> initialized_sample = 
+    Sequence::coalsim::init_sample( vector<int>(1,nsam),nsites );
 
 
   for(int i=0;i<argc;++i)
@@ -89,9 +90,9 @@ int main(int argc, char ** argv)
     }
   cout << '\n';
 
-  Sequence::gamete_storage_type gametes( std::vector<double>(Sequence::MAX_SEGSITES,0.),
+  Sequence::coalsim::gamete_storage_type gametes( std::vector<double>(Sequence::coalsim::MAX_SEGSITES,0.),
 			       std::vector<std::string>(nsam,
-							std::string(Sequence::MAX_SEGSITES,'0')) );
+							std::string(Sequence::coalsim::MAX_SEGSITES,'0')) );
   int segsites;
   unsigned MAXCH=0;
   bool event = false;
@@ -102,17 +103,17 @@ int main(int argc, char ** argv)
 	{
 	  //we will collect nsites independently-simulated
 	  //trees in the list independent_histories
-	  Sequence::arg independent_histories;
+	  Sequence::coalsim::arg independent_histories;
 
 	  for(int site=0;site<nsites;++site)
 	    {
-	      vector<Sequence::chromosome> sample;
+	      vector<Sequence::coalsim::chromosome> sample;
 	      sample.reserve(MAXCH);
 	      std::copy(initialized_sample.begin(),
 			initialized_sample.end(),
 			std::back_inserter(sample));
 	      int NSAM = nsam;
-	      Sequence::arg sample_history(1,init_marginal(nsam,site));
+	      Sequence::coalsim::arg sample_history(1,init_marginal(nsam,site));
 	      int nlinks = nsam;
 	      double t = 0.;
 	      while(NSAM > 1)
@@ -134,8 +135,8 @@ int main(int argc, char ** argv)
 		  if(event)
 		    {
 		      t+=tcoal;
-		      pair<int,int> two = Sequence::pick2(uni,NSAM);
-		      NSAM -= Sequence::coalesce(t,nsam,NSAM,two.first,two.second,nsites,
+		      pair<int,int> two = Sequence::coalsim::pick2(uni,NSAM);
+		      NSAM -= Sequence::coalsim::coalesce(t,nsam,NSAM,two.first,two.second,nsites,
 				       &nlinks,&sample,&sample_history);
 		      //clean up some uncessary storage
 		      if (NSAM < int(sample.size())/5)
@@ -153,9 +154,9 @@ int main(int argc, char ** argv)
 	      independent_histories.push_back(*(sample_history.begin()));
 	      sample.clear();
 	    }
-	  segsites = Sequence::infinite_sites(poiss,uni,&gametes,
+	  segsites = Sequence::coalsim::infinite_sites(poiss,uni,&gametes,
 					      nsites,independent_histories,theta);
-	  Sequence::output_gametes(stdout,segsites,nsam,gametes);
+	  Sequence::coalsim::output_gametes(stdout,segsites,nsam,gametes);
 	  independent_histories.clear();
 	}
     }
