@@ -175,19 +175,6 @@ namespace Sequence
     return !(*this==rhs);
   }
 
-  PolyTable::operator Sequence::polySiteVector() const
-  /*!
-    allow (implicit) typecast of Sequence::PolyTable to Sequence::polySiteVector
-  */
-  {
-    if(non_const_access==true)
-      {
-	pv = Ptable(std::move(rotatePolyTable(this)));
-	non_const_access=false;
-      }
-    return polySiteVector(pv.begin(),pv.end());
-  }
-
   PolyTable::data_iterator PolyTable::begin()
   /*!
     \return an iterator pointing to the beginning of the std::vector<string> containing
