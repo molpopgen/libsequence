@@ -657,5 +657,67 @@ __DISCLAIMER:__ Please note that this namespace may easily lead to having "too m
 
 \subsection sam SAM records
 
+The class Sequence::samrecord allows processing SAM records from streams:
+
+~~~{.cpp}
+#include <Sequence/samrecord.hpp>
+#include <iostream>
+
+Sequence::samrecord r;
+
+while( ! std::cin.eof() )
+{
+	std::cin >> r >> std::ws;
+}
+~~~
+
+Intended usage for a program using this class would be:
+
+~~~{.sh}
+samtools view bamfile | ./program
+~~~
+
+The class provides no method for parsing a SAM header.  However, doing so is trivial, and is left to the library user
+
+\subsection samflags SAM flags and bit fields
+
+SAM/BAM data contain "SAM flag" fields.  These fields are 32-bit integers containing a lot of info about the alignment.  They are represented in libsequence by Sequence::samflag.  This type contains boolean variables (Sequence::samflag::is_paired, etc.) representing the various data fields.  The parsing of the bit fields is implemented using data in namespace Sequence::sambits.
+
 \subsection bam BAM files
 
+Sequence::bamreader allows reading directly from BAM files.  The class also supports seeking within a BAM file. An alignment is represented by Sequence::bamrecord, and is returned from a bamreader via Sequence::bamreader::next_record:
+
+~~~{.cpp}
+#include <Sequence/bamreader.hpp>
+
+/*
+	The header is now parsed if the file was opened successfully
+*/
+Sequence::bamreader r("file.bam");
+
+if ( r )
+{
+	while( !r.eof() && !r.error() )
+	{
+		Sequence::bamrecord rec = r.next_record();
+	}
+}
+~~~
+
+You may access the BAM header info via:
+
+* Sequence::bamreader::header
+* Sequence::bamreader::operator[]
+* Sequence::bamreader::ref_cbegin()
+* Sequence::bamreader::ref_cend()
+
+And use Sequence::bamreader::n_ref to get the number of sequences in the reference.
+
+The Sequence::bamrecord class provides a set of functions to get at the alignment data.  These are direct representations of how the BAM data are stored.  See the class documentation for details.
+
+Some comments:
+
+* Sequence::bamreader is based on the BAM specification.  [htslib](http://htslib.org) is not used for anything other than bgzf decompression and seeking.
+* Sequence::bamrecord is move-constructable, meaning that it is lightning fast to copy alignments into containers, etc.
+
+See the author's [pecnv](http://github.com/molpopgen/pecnv) for real-world use of theses classes.  Those programs scan large BAM files in minutes using these classes.
