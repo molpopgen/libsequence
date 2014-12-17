@@ -636,7 +636,7 @@ The sub-namespace Sequence::coalsim contains the routines required for implement
 
 * There are no global variables representing the fundamental data structures.  Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.
 * It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion
-* The current implementation has the Kingman coalescent in mind, in which all coalsecent events are between paris of lineages.  However, the fundamental data structure (Sequence::coalsim::marginal) will also be compatible with simulating "lamba" coalescents.
+* The current implementation has the Kingman coalescent in mind, in which all coalsecent events are between pairs of lineages.  However, the fundamental data structure (Sequence::coalsim::marginal) will also be compatible with simulating "lamba" coalescents.
 * The recombination method implemented in Sequence::coalsim::crossover is Hudson's algorithm.  There is currently no support for the Markovian approximation to this process, but there could be in the future.
 * The namespace uses templates to achieve independence from any particular random number generation system.  I have successfully used it with both the C++11 <random> header and the [GSL](http://gnu.org/software/gsl) functions.
 
@@ -648,6 +648,8 @@ The following example programs show more complex use scenarios:
 * freerec.cc
 * fragments.cc
 * bottleneck.cc
+
+__DISCLAIMER:__ Please note that this namespace may easily lead to having "too much rope".  As with any simulation interface, knowing how to test what you've coded up is critical, and these functions are intended for people who are comfortable with coalescent theory.
 
 \section sam SAM records
 
