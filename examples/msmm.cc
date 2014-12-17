@@ -1,4 +1,4 @@
-/*! \include ms--.cc
+/*! \include msmm.cc
 */
 
 #include <Sequence/Coalescent/NeutralSample.hpp>
