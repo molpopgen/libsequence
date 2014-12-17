@@ -1,9 +1,9 @@
 var FragmentsRescaling_8hpp =
 [
-    [ "calculate_scales", "FragmentsRescaling_8hpp.html#gaf6799b522bbd1873080aeb2107244172", null ],
-    [ "integrate_genetic_map", "FragmentsRescaling_8hpp.html#gac820614c0309bd7c2b8c613cb33c4ad5", null ],
-    [ "rescale_arg", "FragmentsRescaling_8hpp.html#gac593c97e75254030b0dc5b793603ebcd", null ],
-    [ "rescale_mutation_positions", "FragmentsRescaling_8hpp.html#ga0c22215ad956c74d797ee8aa31333afa", null ],
-    [ "sample_length", "FragmentsRescaling_8hpp.html#ga1e686d875016adee17ea99e68d4eb127", null ],
-    [ "total_length", "FragmentsRescaling_8hpp.html#gad76215f50d491cee38ed10fdc9abeae2", null ]
+    [ "calculate_scales", "FragmentsRescaling_8hpp.html#ga6fe3c0b20183faf7b3329d286b223c22", null ],
+    [ "integrate_genetic_map", "FragmentsRescaling_8hpp.html#ga97cb42aca9d2e63e3d9a5ef949fdbde2", null ],
+    [ "rescale_arg", "FragmentsRescaling_8hpp.html#gae05bf27fdb8db26d8d5f0c348d11e41b", null ],
+    [ "rescale_mutation_positions", "FragmentsRescaling_8hpp.html#gad4e2444231cd36ed90653671b0d1197c", null ],
+    [ "sample_length", "FragmentsRescaling_8hpp.html#gae7f5707d2a650dbd3021e2a7403942b3", null ],
+    [ "total_length", "FragmentsRescaling_8hpp.html#gac6f384ac658344ff44f4413b1a77a34e", null ]
 ];

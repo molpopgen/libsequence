@@ -84,7 +84,16 @@ var group__popgenanalysis =
       [ "WallStats", "classSequence_1_1PolySNP.html#a47a48b2aa71f1ff5beb9f44f384ae47a", null ],
       [ "rep", "classSequence_1_1PolySNP.html#a927043714e78254f032ce6581b04ea12", null ]
     ] ],
-    [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html", null ],
+    [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html", [
+      [ "const_iterator", "classSequence_1_1PolyTableSlice.html#ac1c8a2c2974f3f92b296a7e12d8d5528", null ],
+      [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e", null ],
+      [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html#a7ecde38c00366942876cb376eea9caa1", null ],
+      [ "begin", "classSequence_1_1PolyTableSlice.html#ad1d7b660161e33a556cff506d91fc4bc", null ],
+      [ "end", "classSequence_1_1PolyTableSlice.html#a316cfacc77b5463cdaef0502535bf300", null ],
+      [ "get_slice", "classSequence_1_1PolyTableSlice.html#a2cc1577a3ca75e0ae384683b2a375b9e", null ],
+      [ "operator[]", "classSequence_1_1PolyTableSlice.html#a984bd1fcffbf0e930e8832fa609c7dbe", null ],
+      [ "size", "classSequence_1_1PolyTableSlice.html#a582b76fb90c496f6323089182a98e7d7", null ]
+    ] ],
     [ "FST", "classSequence_1_1FST.html", [
       [ "FST", "classSequence_1_1FST.html#a995a97fe657cd2b51c543dfd3f5984e9", null ],
       [ "FST", "classSequence_1_1FST.html#a5b4f8d417fe7c88ba9ac29dc7f38e60d", null ],
@@ -100,5 +109,7 @@ var group__popgenanalysis =
       [ "Private", "classSequence_1_1FST.html#a33bc9ea9a5d4abb55f3a2b1159ad8e5a", null ],
       [ "shared", "classSequence_1_1FST.html#ace63e30cfc5a69c251cf23525240b65d", null ],
       [ "Slatkin", "classSequence_1_1FST.html#a5cd2e1d1a0c294efda4da6b3e4a08961", null ]
-    ] ]
+    ] ],
+    [ "Snn_test", "group__popgenanalysis.html#ga1937fe206749689bd0d85fdd9bea9f3a", null ],
+    [ "Snn_test_pairwise", "group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6", null ]
 ];

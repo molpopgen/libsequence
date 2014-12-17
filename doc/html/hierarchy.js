@@ -10,7 +10,7 @@ var hierarchy =
     [ "Sequence::bamreader", "classSequence_1_1bamreader.html", null ],
     [ "Sequence::bamreaderImpl", "classSequence_1_1bamreaderImpl.html", null ],
     [ "Sequence::bamrecord", "classSequence_1_1bamrecord.html", null ],
-    [ "Sequence::chromosome", "structSequence_1_1chromosome.html", null ],
+    [ "Sequence::coalsim::chromosome", "structSequence_1_1coalsim_1_1chromosome.html", null ],
     [ "Sequence::Comeron95", "classSequence_1_1Comeron95.html", null ],
     [ "Sequence::ComplementBase", "structSequence_1_1ComplementBase.html", null ],
     [ "Sequence::countDerivedStates", "structSequence_1_1countDerivedStates.html", null ],
@@ -23,11 +23,11 @@ var hierarchy =
     [ "Sequence::invalidPolyChar", "structSequence_1_1invalidPolyChar.html", null ],
     [ "Sequence::Kimura80", "classSequence_1_1Kimura80.html", null ],
     [ "Sequence::lowerCrit", "structSequence_1_1lowerCrit.html", null ],
-    [ "Sequence::marginal", "structSequence_1_1marginal.html", null ],
-    [ "Sequence::newick_stream_marginal_tree", "classSequence_1_1newick__stream__marginal__tree.html", null ],
-    [ "Sequence::newick_stream_marginal_tree_impl", "classSequence_1_1newick__stream__marginal__tree__impl.html", null ],
+    [ "Sequence::coalsim::marginal", "structSequence_1_1coalsim_1_1marginal.html", null ],
+    [ "Sequence::coalsim::newick_stream_marginal_tree", "classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html", null ],
+    [ "Sequence::coalsim::newick_stream_marginal_tree_impl", "classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl.html", null ],
     [ "Sequence::nmuts< counter >", "structSequence_1_1nmuts.html", null ],
-    [ "Sequence::node", "structSequence_1_1node.html", null ],
+    [ "Sequence::coalsim::node", "structSequence_1_1coalsim_1_1node.html", null ],
     [ "outputFreq", "structoutputFreq.html", null ],
     [ "Sequence::PolySNP", "classSequence_1_1PolySNP.html", [
       [ "Sequence::PolySIM", "classSequence_1_1PolySIM.html", null ]
@@ -43,7 +43,7 @@ var hierarchy =
     [ "Sequence::samflag", "classSequence_1_1samflag.html", null ],
     [ "Sequence::samrecord", "classSequence_1_1samrecord.html", null ],
     [ "Sequence::samtag", "structSequence_1_1samtag.html", null ],
-    [ "Sequence::segment", "structSequence_1_1segment.html", null ],
+    [ "Sequence::coalsim::segment", "structSequence_1_1coalsim_1_1segment.html", null ],
     [ "Sequence::Seq", "classSequence_1_1Seq.html", [
       [ "Sequence::Fasta", "classSequence_1_1Fasta.html", null ],
       [ "Sequence::fastq", "classSequence_1_1fastq.html", null ]

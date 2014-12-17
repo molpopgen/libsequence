@@ -91,10 +91,17 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <h2>libsequence 1.8.4</h2>
 <p>(There is no official 1.8.4 release yet)</p>
 <ul>
+<li>Major improvements to the documentation. The doxygen output now contains a detailed tutorial.</li>
 <li>fastq stream + fastq unit tests added</li>
 <li>move semantics for the <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> hierarchy + unit tests</li>
 <li>Programs in examples/ are now compiled via "make check"</li>
 <li>The build setup for the unit tests is improved</li>
+<li>Old-style enums replaced with C++11 enum classes. (These enums are WAY better.)</li>
+<li>The enum changes led to many other changes, primarily in the code base dealing wih calculating differences between codons. The new code is much simpler.</li>
+<li>A unit test was added to check the calculations of differences bewtween codons.</li>
+<li>Kimura80 and Comeron95 will now return a non-signalling NaN for non-finite values. Previous versions returned "999", which was a bit silly, in all honesty.</li>
+<li>PolyTable was redefined to publicly inherit from std::pair&lt; std::vector&lt;double&gt;, std::vector&lt;std::string&gt; &gt;. This change represents a major revision to the code. This change gives full access to the underlying data, and possibly even "too much rope". The change also totally wrecks binary compatiblity with previous versions. All unit tests pass.</li>
+<li>Routines for coalescent simulation moved from namespace <a class="el" href="namespaceSequence.html" title="The namespace in which this library resides. ">Sequence</a> to namespace <a class="el" href="namespaceSequence_1_1coalsim.html" title="Routines for coalescent simulation. ">Sequence::coalsim</a>.</li>
 </ul>
 <h2>libsequence 1.8.3 (Dec. 5, 2014)</h2>
 <ol type="1">
@@ -109,7 +116,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <li>Lots of function prototypes have changed. There were some leftover foo(int x) that are now foo(const int &amp; x). When called many times, the latter may be noticeably faster.</li>
 <li>A new class, <a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> : public std::vector&lt;Sequence::polymorhpicSite&gt; is added. This is a very powerful class for maninpulating polymorphism data in a general way.</li>
 <li>The build system has been rebuilt around automake-1.14</li>
-<li><a class="el" href="SimDataIO_8hpp_source.html">SimDataIO.hpp</a>/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.</li>
+<li><a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">SimDataIO.hpp</a>/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.</li>
 <li>A new namespace, Sequence::IOhelp, is declared in <a class="el" href="IOhelp_8hpp_source.html">Sequence/IOhelp.hpp</a>. It contains some functions to reduce the tedium of some IO conversions.</li>
 <li>A new, faster implementation of <a class="el" href="classSequence_1_1SimData.html#a984f64dd6e55c1c54f0cb8b2bc543813">Sequence::SimData::read</a></li>
 <li>The configure script how checks for the existence of <a href="http://www.htslib.org">htslib</a></li>
@@ -123,7 +130,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <p>version 1.7.9 (Dec 12, 2013) Forward declaration of templates in namespace std were removed from <a class="el" href="typedefs_8hpp.html" title="typedefs used by libsequence ">Sequence/typedefs.hpp</a>. The library will now compile on OS X Mavericks.</p>
 <p>version 1.7.8 (Nov 8, 2013): Fixed (a possibly 10 year old) bug in <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>. This bug misclassified AGG to CGG changes as q_0 rather than q_2V. This would lead to errors in synonymous/nonsynonymous substitution counting. Programs like gestimator and polydNdS were affected. However, I have run through a lot of my own data, and recorded no differences in output. You have to have had this specific change (or possibly others involving amino acids with 6 codons in the family). The SingleSub code is now vastly simplified and gives correct output (fingers crossed).</p>
 <p>Binary compatilibity with previous versions of libsequence is now broken: All exception specifications are removed in anticipation of that language feature being removed/deprecated.</p>
-<p>A new file, <a class="el" href="SimDataIO_8hpp_source.html">SimDataIO.hpp</a> has been added, allowing .gz and binary I/O for SimData objects. See <a class="el" href="test__SimDataIO_8cc_source.html">examples/test_SimDataIO.cc</a> for documentation. This now changes how one compiles programs depending on libsequence: you need zlib installed and must include -lsequence -lz (in that order) when compiling programs.</p>
+<p>A new file, <a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">SimDataIO.hpp</a> has been added, allowing .gz and binary I/O for SimData objects. See <a class="el" href="test__SimDataIO_8cc_source.html">examples/test_SimDataIO.cc</a> for documentation. This now changes how one compiles programs depending on libsequence: you need zlib installed and must include -lsequence -lz (in that order) when compiling programs.</p>
 <p>version 1.7.7: never happened. never publicly released</p>
 <p>version 1.7.6 (Feb 13, 2013) Fixed inconsistent exception declarations in templates. libsequence is now compilable with the clang compiler. To use: CXX=clang++ CC=clang ./configure; make ; sudo make install</p>
 <p>version 1.7.5 (Dec. 18 2012). The operator&gt;&gt; for Clustalw was not processing whitespace properly when compiled with new versions of gcc. That issue is now fixed.</p>
@@ -161,7 +168,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <p>version 1.4.7 (Oct 7, 2004) Class <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">Sequence::PolySIM</a> now correctly sets both Wall's B and Q to -1 if there are &lt; 2 segregating sites. Previously, only Wall's B was set correctly</p>
 <p>version 1.4.6 (Oct 6, 2004) Fixed bug in HKA calculations where the poly data in species 1 had 0 seg sites. <a class="el" href="classSequence_1_1SimpleSNP.html" title="SNP table data format. ">Sequence::SimpleSNP</a> now does better checking of its input. PolyTableSlice (aka "sliding windows") now stores windows both with and without segregating sites.</p>
 <p>version 1.4.5 (Aug 22, 2004). Bugs fixed: The output shift operator for template class AlignStream now takes a const reference. The input routines for SimParams now reserve memory, which seems to have fixed a rare crash on OS X systems.</p>
-<p>New features: <a class="el" href="HKA_8hpp_source.html">Sequence/HKA.hpp</a> provides an interface to calculating the HKA test of Hudson, Kreitman, and Aguade.</p>
+<p>New features: <a class="el" href="HKA_8hpp.html" title="Calculations related to the HKA test. ">Sequence/HKA.hpp</a> provides an interface to calculating the HKA test of Hudson, Kreitman, and Aguade.</p>
 <p>The class <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">Sequence::PolySIM</a> (<a class="el" href="PolySIM_8hpp.html" title="declaration of Sequence::PolySIM, a class to analyze coalescent simulation data ">Sequence/PolySIM.hpp</a>) is now much more efficient, due to a reorganization of code in the base class <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">Sequence::PolySNP</a> (<a class="el" href="PolySNP_8hpp.html" title="declaration of Sequence::PolySNP, a class to analyze SNP data ">Sequence/PolySNP.hpp</a>). In some applications, calculations can be up to 1/3 faster. The reorganization of code breaks binary compatibility with previous library versions.</p>
 <p><a class="el" href="classSequence_1_1SimParams.html" title="Parameters for Hudson&#39;s simulation program. ">Sequence::SimParams</a> (<a class="el" href="SimParams_8hpp.html" title="Sequence::SimParams reads in the parameters of Dick Hudon&#39;s coalescent simulation program...">Sequence/SimParams.hpp</a>) now has a member function fromfile(FILE *), mimicing that of <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a>.</p>
 <p>version 1.4.4 (Jul 8, 2004) : minor bugfix. All files that use toupper now include &lt;cctype&gt;</p>
@@ -249,7 +256,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Dec 14 2014 06:37:37 for libsequence by
+    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
