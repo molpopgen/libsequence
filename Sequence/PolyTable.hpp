@@ -53,7 +53,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <type_traits>
 #include <functional>
 #include <Sequence/SeqExceptions.hpp>
-#include <Sequence/PolyTableManip.hpp>
 #include <Sequence/Ptable.hpp>
 /*! \example PolyTableIterators.cc */
 namespace Sequence
@@ -63,7 +62,6 @@ namespace Sequence
   private:
     //! A PolyTable publicly inherits from std::pair< std::vector<double>, std::vector<std::string> >
     using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
-    //mutable Sequence::polySiteVector pv;
     mutable Ptable pv;
     mutable bool non_const_access;
   public:

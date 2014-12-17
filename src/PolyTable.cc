@@ -22,6 +22,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <Sequence/PolyTable.hpp>
+#include <Sequence/PolyTableManip.hpp>
 #include <Sequence/stateCounter.hpp>
 #include <cctype>
 #include <algorithm>
