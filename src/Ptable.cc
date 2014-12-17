@@ -18,7 +18,7 @@ namespace Sequence
   Ptable::Ptable( const std::vector<polymorphicSite> & v ) : base(v)
   {
   }
-   
+
   Ptable::Ptable( std::vector<polymorphicSite> && v ) : base(std::move(v))
   {
   }

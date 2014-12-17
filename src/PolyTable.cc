@@ -44,7 +44,7 @@ namespace Sequence
   */
     : PolyTableBase( std::vector<double>(nsnps,0.) ,
 		     std::vector< std::string >( nsam, std::string(nsnps,' ') )),
-      pv(Ptable()),//Sequence::polySiteVector()),
+      pv(Ptable()),
       non_const_access(true)
   {}
 
@@ -59,7 +59,7 @@ namespace Sequence
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : 
-    pv(Ptable()),//Sequence::polySiteVector()),
+    pv(Ptable()),
     non_const_access(true)
   {
     if (beg>=end)
@@ -181,8 +181,6 @@ namespace Sequence
   {
     if(non_const_access==true)
       {
-	//pv = Sequence::rotatePolyTable(this);
-	//pv = Ptable(this);
 	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
@@ -306,9 +304,7 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	//pv = Ptable(this);//Sequence::rotatePolyTable(this);
 	pv = Ptable(std::move(rotatePolyTable(this)));
-	//std::cerr << pv.size() << ' ' << this->numsites() << '\n';
 	non_const_access=false;
       }
     return pv.begin();
@@ -323,8 +319,6 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	//pv = Sequence::rotatePolyTable(this);
-	//pv = Ptable(this);
 	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
@@ -340,8 +334,6 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	//pv = Sequence::rotatePolyTable(this);
-	//pv = Ptable(this);
 	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
@@ -357,8 +349,6 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	//pv = Sequence::rotatePolyTable(this);
-	//pv = Ptable(this);
 	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
