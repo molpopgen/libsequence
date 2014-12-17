@@ -21,12 +21,16 @@ namespace Sequence
     using base = std::vector<polymorphicSite>;
 
     //constructors
+    //! Empty
+    Ptable() : std::vector<polymorphicSite>() {}
     //! Construct from an initializer_list
     Ptable( const std::initializer_list<polymorphicSite> & );
     //! Construct from const PolyTable
     Ptable( const PolyTable & );
-    //! Conststruc from const PolyTable *
+    //! Construct from const PolyTable *
     Ptable( const PolyTable * );
+    Ptable( const std::vector<polymorphicSite> & );
+    Ptable( std::vector<polymorphicSite> && );
   };
 } //ns Sequence
 

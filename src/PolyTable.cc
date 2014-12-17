@@ -25,7 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <cctype>
 #include <algorithm>
-
+#include <iostream>
 /*! \defgroup popgen Molecular Population Genetics
  */
 /*!
@@ -44,7 +44,7 @@ namespace Sequence
   */
     : PolyTableBase( std::vector<double>(nsnps,0.) ,
 		     std::vector< std::string >( nsam, std::string(nsnps,' ') )),
-      pv(Sequence::polySiteVector()),
+      pv(Ptable()),//Sequence::polySiteVector()),
       non_const_access(true)
   {}
 
@@ -59,7 +59,7 @@ namespace Sequence
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : 
-    pv(Sequence::polySiteVector()),
+    pv(Ptable()),//Sequence::polySiteVector()),
     non_const_access(true)
   {
     if (beg>=end)
@@ -181,10 +181,12 @@ namespace Sequence
   {
     if(non_const_access==true)
       {
-	pv = Sequence::rotatePolyTable(this);
+	//pv = Sequence::rotatePolyTable(this);
+	//pv = Ptable(this);
+	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
-    return pv;
+    return polySiteVector(pv.begin(),pv.end());
   }
 
   PolyTable::data_iterator PolyTable::begin()
@@ -304,7 +306,9 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Sequence::rotatePolyTable(this);
+	//pv = Ptable(this);//Sequence::rotatePolyTable(this);
+	pv = Ptable(std::move(rotatePolyTable(this)));
+	//std::cerr << pv.size() << ' ' << this->numsites() << '\n';
 	non_const_access=false;
       }
     return pv.begin();
@@ -319,7 +323,9 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Sequence::rotatePolyTable(this);
+	//pv = Sequence::rotatePolyTable(this);
+	//pv = Ptable(this);
+	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
     return pv.end();
@@ -334,7 +340,9 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Sequence::rotatePolyTable(this);
+	//pv = Sequence::rotatePolyTable(this);
+	//pv = Ptable(this);
+	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
     return pv.cbegin();
@@ -349,7 +357,9 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Sequence::rotatePolyTable(this);
+	//pv = Sequence::rotatePolyTable(this);
+	//pv = Ptable(this);
+	pv = Ptable(std::move(rotatePolyTable(this)));
 	non_const_access=false;
       }
     return pv.cend();

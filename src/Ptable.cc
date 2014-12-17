@@ -14,4 +14,12 @@ namespace Sequence
   Ptable::Ptable( const std::initializer_list<polymorphicSite> & il) : base(il.begin(),il.end())
   {
   }
+
+  Ptable::Ptable( const std::vector<polymorphicSite> & v ) : base(v)
+  {
+  }
+   
+  Ptable::Ptable( std::vector<polymorphicSite> && v ) : base(std::move(v))
+  {
+  }
 }
