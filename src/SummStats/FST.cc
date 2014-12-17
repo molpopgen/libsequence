@@ -23,6 +23,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/FST.hpp>
 #include <Sequence/PolyTable.hpp>
+#include <Sequence/PolyTableManip.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <algorithm>
 #include <numeric>

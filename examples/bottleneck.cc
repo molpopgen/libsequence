@@ -32,17 +32,17 @@ int main(int argc, char **argv)
   std::mt19937 generator(seed);
 
   const unsigned n = 10;
-  std::vector<Sequence::chromosome> sample = Sequence::init_sample(std::vector<int>(1,n),1000);
-  Sequence::marginal imarg = Sequence::init_marginal(n);
+  std::vector<Sequence::coalsim::chromosome> sample = Sequence::coalsim::init_sample(std::vector<int>(1,n),1000);
+  Sequence::coalsim::marginal imarg = Sequence::coalsim::init_marginal(n);
   for(unsigned i=0;i<10000;++i)
     {
       //simulate the ancestral recombination graph for the sample
-      Sequence::arg hist = Sequence::bottleneck([&generator](const double a, const double b){ return std::uniform_real_distribution<double>(a,b)(generator); },
+      Sequence::coalsim::arg hist = Sequence::coalsim::bottleneck([&generator](const double a, const double b){ return std::uniform_real_distribution<double>(a,b)(generator); },
 						[&generator](){ return std::uniform_real_distribution<double>(0.,1.)(generator); },
 						[&generator](const double  mean){ return std::exponential_distribution<double>(1./mean)(generator); },
 						sample,imarg,0.1,0.2,0.2,10.,true,1.);
       //Apply mutations according to the infinitely-many sites scheme
-      Sequence::SimData d = Sequence::infinite_sites_sim_data([&generator](const double  mean){ return std::poisson_distribution<int>(mean)(generator); },
+      Sequence::SimData d = Sequence::coalsim::infinite_sites_sim_data([&generator](const double  mean){ return std::poisson_distribution<int>(mean)(generator); },
 							      [&generator](const double  a, const double  b){ return std::uniform_real_distribution<double>(a,b)(generator); },
 							      1000,hist,10.);
       Sequence::PolySIM ad(&d);

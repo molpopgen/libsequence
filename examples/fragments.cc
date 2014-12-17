@@ -19,15 +19,15 @@ int main(int argc, char **argv)
   std::vector< std::pair<double,double> > sample_scale,mutation_scale;
 
   //convert bp to units on the interval 0,1
-  Sequence::calculate_scales(fragments,&sample_scale,&mutation_scale);
+  Sequence::coalsim::calculate_scales(fragments,&sample_scale,&mutation_scale);
 
 
-  const int slength = Sequence::sample_length(fragments);
-  const int tlength = Sequence::total_length(fragments);
+  const int slength = Sequence::coalsim::sample_length(fragments);
+  const int tlength = Sequence::coalsim::total_length(fragments);
 
-  std::vector<Sequence::chromosome> isample = 
-    Sequence::init_sample( std::vector<int>(1,10),slength );
-  Sequence::marginal imarg = Sequence::init_marginal(10);
+  std::vector<Sequence::coalsim::chromosome> isample = 
+    Sequence::coalsim::init_sample( std::vector<int>(1,10),slength );
+  Sequence::coalsim::marginal imarg = Sequence::coalsim::init_marginal(10);
 
   //make a genetic map for a region
   std::vector<double> genetic_map;
@@ -65,44 +65,44 @@ int main(int argc, char **argv)
   std::vector<double> reclens;
   while(run++ < NRUNS)
     {
-      std::vector<Sequence::chromosome> sample(isample);
-      Sequence::arg sample_history(1,imarg);
+      std::vector<Sequence::coalsim::chromosome> sample(isample);
+      Sequence::coalsim::arg sample_history(1,imarg);
       int NSAM = nsam;
       int nlinks = NSAM*total_size;
       double t = 0.;
       while( NSAM > 1 )
 	{
 	  double rc = double(NSAM*(NSAM-1));
-	  double rrec = Sequence::integrate_genetic_map(sample,NSAM,genetic_map,&reclens);
+	  double rrec = Sequence::coalsim::integrate_genetic_map(sample,NSAM,genetic_map,&reclens);
 	  double tc = expo(1./rc),tr = expo(1./rrec);
 	 
 	  t += std::min(tc,tr);
 	  if( tc < tr ) //CA
 	    {
 	      //cerr << "CA" << '\n';
-	      std::pair<int,int> two = Sequence::pick2(uni,NSAM);
-	      NSAM -= Sequence::coalesce(t,nsam,NSAM,two.first,two.second,slength,
+	      std::pair<int,int> two = Sequence::coalsim::pick2(uni,NSAM);
+	      NSAM -= Sequence::coalsim::coalesce(t,nsam,NSAM,two.first,two.second,slength,
 			       &nlinks,&sample,&sample_history);
 	    }
 	  else //RE
 	    {
 	      //cerr << "REC" << '\n';
-	      std::pair<int,int> pos_rec = Sequence::pick_spot(uni01,
+	      std::pair<int,int> pos_rec = Sequence::coalsim::pick_spot(uni01,
 						rrec,
 						reclens,
 						sample.begin(),
 						NSAM,&genetic_map_pdf[0]);
-	      nlinks -= Sequence::crossover(NSAM,pos_rec.first,pos_rec.second,
+	      nlinks -= Sequence::coalsim::crossover(NSAM,pos_rec.first,pos_rec.second,
 					    &sample,&sample_history);
 	      NSAM++;
 	    }
 	  if( unsigned(NSAM) < sample.size()/5 )
 	    sample.erase(sample.begin()+NSAM+1,sample.end());
 	}
-      Sequence::minimize_arg(&sample_history);      
+      Sequence::coalsim::minimize_arg(&sample_history);      
       Sequence::SimData d = infinite_sites_sim_data(poiss,uni,
 					  slength,sample_history,10.);
-      Sequence::rescale_mutation_positions(&d,sample_scale,mutation_scale);
+      Sequence::coalsim::rescale_mutation_positions(&d,sample_scale,mutation_scale);
       std::cout  << d << std::endl;
     }
 }

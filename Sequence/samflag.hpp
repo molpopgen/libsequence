@@ -1,3 +1,4 @@
+//! \file Sequence/samflag.hpp @brief SAM flags
 #ifndef __LIBSEQ_SAMFLAG_HPP__
 #define __LIBSEQ_SAMFLAG_HPP__
 

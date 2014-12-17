@@ -1,3 +1,4 @@
+//! \file Sequence/samrecord.hpp @brief SAM records from streams
 #ifndef __LIBSEQ_SAMRECORD_HPP__
 #define __LIBSEQ_SAMRECORD_HPP__
 

@@ -10,6 +10,8 @@ I assume a working familiarity with:
 
 * C++ and "C++11"
 
+The code snippets below all use C++11 language features (initialization lists, lambda expressions, etc.).  Using GCC/clang, you would need to compile with -std=c++11.  Note, however, that none of the snippets below will actually compile, as they are not complete C++ programs.
+
 \subsection streams A quick note on streams
 
 In C++, input from streams are handled via operator>> and operator<<. libsequence defines many of these operators for its types (see \ref operators).  These operators are overloaded for uncompressed ASCII streams (aka plain-text files and buffers).  However, all of these operators are compatible with well-designed compressed-file streams, too.  Programmers using libsequence may use [boost](http://www.boost.org)'s filtering_ostream libraries as replacements for <fstream> as they see fit.
@@ -553,11 +555,169 @@ The syntax in the above example is compact, readable, efficient, and avoids the 
 
 These two types are intimately-related and may be constructed from one another.
 
-\section summstats Summary statistics 
+\subsection 
+
+\section summstats Summary statistics
+
+\subsection classic Standard summary statistics
+libsequence contains routines for calculating several standard summary statistics (Watterson's \f$\theta\f$, Tajima's \f$\pi\f$, etc.).  The relevant classes are:
+
+* Sequence::PolySNP to calculate statistics from nucleotide data.  The allowed character set is A,G,C,T,N,-.
+* Sequence::PolySIM inherits from PolySNP and is intended to be used with biallelic data encoded in a 0/1 format where 0 = ancestral and 1 = the derived character state.  This class is tightly-coupled to Sequence::SimData.  See the example program msstats.cc for how to use this class.
+
+These classes are constructed from objects in the Sequence::PolyTable class hierarchy:
+
+~~~{.cpp}
+#include <Sequence/PolySNP.hpp>
+#include <Sequence/PolySites.hpp>
+#include <iostream>
+
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"NAACT"}; 
+
+Sequence::PolySites ps(std::move(pos),std::move(data));
+
+Sequence::PolySNP aps(&ps);
+
+//Now, output some summary stats
+std::cout << aps.NumPoly() << '\t' //Number of segregating sites
+	<< aps.ThetaW() << '\t' //Watterson's theta
+	<< aps.ThetaPi() << '\t' //Tajima's pi
+	<< aps.TajimasD() << '\n'; //Tajima's D
+~~~
+
+Take a look at the class documentation for Sequence::PolySNP and Sequence::PolySIM for a list of all the things that you can calculate from a PolyTable -- there is a lot there.
+
+\subsection classic_fst FST
+
+The class Sequence::FST allows the calculation of \f$F_{st}\f$ statistics from PolyTables + a vector of the sample sizes per population:
+
+~~~{.cpp}
+#include <Sequence/PolySites.hpp>
+#include <Sequence/FST.hpp>
+#include <iostream>
+std::vector<double> pos = {1,2,3,4,5};
+std::vector<std::string> data = {"AAAAA",
+	"AAGAA",
+	"CTGAA",
+	"CAACT"};
+//The sample size is 2 in each subpop:
+std::vector<unsigned> sample_sizes = {2,2};
+Sequence FST fst_calculator(&data,sample_sizes.size(),&sample_sizes[0]);
+std::cout << fst_calculator.HSM() << '\t' //Hudson, Slaktin, Maddison
+	<< fst_calculator.HBK() << '\t' //Hudson, Boos, Kaplan
+	<< fst_calculator.Slatkin() << '\t'  //Slatkin
+	//below are the components of Fst calculations:
+	<< fst_calculator.piB() << '\t' //Mean pairwise divergence b/w pops
+	<< fst_calculator.piT() << '\t' //Total diversity
+	<< fst_calculator.piS() << '\t' //mean within-pop diversity
+	<< fst_calculator.piD() << '\n';//The difference between- and within- pop diversity
+~~~
+
+\subsection hka The HKA test
+
+The HKA test statistic is available via the functions Sequence::calcHKA.
+
+\subsection stat_future The future 
+
+Sequence::PolySNP and Sequence::PolySIM are "factory" objects, which means that they pre-process your data and contain lots of member functions to calculate various statistics.  A significant problem with this design is that adding new summary statistics breaks the library's compatibility with existing programs compiled against it (because the sizeof(Sequence::PolySNP) changes with the addition of new funtions).   The future of libsequence's interface to summary statistics will be:
+
+* Extracting the preprocessing steps from Sequence::PolySNP to a standalone class
+* Rewriting the summary statistic calculations as standalone functions taking the preprocessed data object as a parameter.
+
+The interface described above will be kept because there is a lot of code sitting around that depends upon it.
 
 \section coalsim Coalescent simulation
 
-\section sam SAM records
+The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
 
-\section bam BAM files
+* There are no global variables representing the fundamental data structures.  Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.
+* It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion
+* The current implementation has the Kingman coalescent in mind, in which all coalsecent events are between pairs of lineages.  However, the fundamental data structure (Sequence::coalsim::marginal) will also be compatible with simulating "lamba" coalescents.
+* The recombination method implemented in Sequence::coalsim::crossover is Hudson's algorithm.  There is currently no support for the Markovian approximation to this process, but there could be in the future.
+* The namespace uses templates to achieve independence from any particular random number generation system.  I have successfully used it with both the C++11 <random> header and the [GSL](http://gnu.org/software/gsl) functions.
 
+The namespace implements several standard/simple demographic scenarios in the file Sequence/Coalescent/DemographicModels.hpp.
+
+The following example programs show more complex use scenarios:
+
+* msmm.cc
+* freerec.cc
+* fragments.cc
+* bottleneck.cc
+
+There is support for simulation involving selection via the header Sequence/Coalescent/Trajectories.hpp.
+
+__DISCLAIMER:__ Please note that this namespace may easily lead to having "too much rope".  As with any simulation interface, knowing how to test what you've coded up is critical, and these functions are intended for people who are comfortable with coalescent theory.
+
+\section hts_tut High-throughput sequencing
+
+\subsection sam SAM records
+
+The class Sequence::samrecord allows processing SAM records from streams:
+
+~~~{.cpp}
+#include <Sequence/samrecord.hpp>
+#include <iostream>
+
+Sequence::samrecord r;
+
+while( ! std::cin.eof() )
+{
+	std::cin >> r >> std::ws;
+}
+~~~
+
+Intended usage for a program using this class would be:
+
+~~~{.sh}
+samtools view bamfile | ./program
+~~~
+
+The class provides no method for parsing a SAM header.  However, doing so is trivial, and is left to the library user
+
+\subsection samflags SAM flags and bit fields
+
+SAM/BAM data contain "SAM flag" fields.  These fields are 32-bit integers containing a lot of info about the alignment.  They are represented in libsequence by Sequence::samflag.  This type contains boolean variables (Sequence::samflag::is_paired, etc.) representing the various data fields.  The parsing of the bit fields is implemented using data in namespace Sequence::sambits.
+
+\subsection bam BAM files
+
+Sequence::bamreader allows reading directly from BAM files.  The class also supports seeking within a BAM file. An alignment is represented by Sequence::bamrecord, and is returned from a bamreader via Sequence::bamreader::next_record:
+
+~~~{.cpp}
+#include <Sequence/bamreader.hpp>
+
+/*
+	The header is now parsed if the file was opened successfully
+*/
+Sequence::bamreader r("file.bam");
+
+if ( r )
+{
+	while( !r.eof() && !r.error() )
+	{
+		Sequence::bamrecord rec = r.next_record();
+	}
+}
+~~~
+
+You may access the BAM header info via:
+
+* Sequence::bamreader::header
+* Sequence::bamreader::operator[]
+* Sequence::bamreader::ref_cbegin()
+* Sequence::bamreader::ref_cend()
+
+And use Sequence::bamreader::n_ref to get the number of sequences in the reference.
+
+The Sequence::bamrecord class provides a set of functions to get at the alignment data.  These are direct representations of how the BAM data are stored.  See the class documentation for details.
+
+Some comments:
+
+* Sequence::bamreader is based on the BAM specification.  [htslib](http://htslib.org) is not used for anything other than bgzf decompression and seeking.
+* Sequence::bamrecord is move-constructable, meaning that it is lightning fast to copy alignments into containers, etc.
+
+See the author's [pecnv](http://github.com/molpopgen/pecnv) for real-world use of theses classes.  Those programs scan large BAM files in minutes using these classes.

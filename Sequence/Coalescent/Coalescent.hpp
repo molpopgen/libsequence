@@ -19,11 +19,8 @@
 /*! \example freerec.cc
   Coalescent simulation with free recombination
 */
-/*! \example ms--.cc
+/*! \example msmm.cc
   Coalescent simulation
-*/
-/*! \example msbeta.cc
-  Coalescent simulation with non-uniform genetic maps
 */
 /*! \example bottleneck.cc
   Example of using the  Sequence::bottleneck template function
@@ -31,6 +28,10 @@
 /*! \example fragments.cc
   Example of simulating partially linked fragments in neutral models.
 */
+
+/*!
+  \namespace Sequence::coalsim @brief Routines for coalescent simulation
+ */
 
 #include <Sequence/Coalescent/SimTypes.hpp>
 #include <Sequence/Coalescent/Coalesce.hpp>

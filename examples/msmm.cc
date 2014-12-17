@@ -1,4 +1,4 @@
-/*! \include ms--.cc
+/*! \include msmm.cc
 */
 
 #include <Sequence/Coalescent/NeutralSample.hpp>
@@ -13,9 +13,11 @@
   and are used to make storage of gametes more efficient during the simulation.
   You need to set their value here.  In practice, the values below work well.
 */
-namespace Sequence{
-  MAX_SEG_T MAX_SEGSITES = 200;
-  MAX_SEG_T MAX_SEGS_INC = 100;
+namespace Sequence {
+  namespace coalsim {
+    MAX_SEG_T MAX_SEGSITES = 200;
+    MAX_SEG_T MAX_SEGS_INC = 100;
+  }
 }
 
 int main(int argc, char **argv)
@@ -40,11 +42,11 @@ int main(int argc, char **argv)
   //initialize a vector of chromosomes
   //There will be 1 population containing nsam chromosomes with nsites each
   //sites are labelled 0 to nsites-1
-  std::vector<Sequence::chromosome> initialized_sample = Sequence::init_sample( std::vector<int>(1,nsam),nsites );
+  std::vector<Sequence::coalsim::chromosome> initialized_sample = Sequence::coalsim::init_sample( std::vector<int>(1,nsam),nsites );
   //initialize a marginal tree
-  Sequence::marginal initialized_marginal = Sequence::init_marginal(nsam);
+  Sequence::coalsim::marginal initialized_marginal = Sequence::coalsim::init_marginal(nsam);
 
-  //These value can be used by Sequence::neutral_sample
+  //These value can be used by Sequence::coalsim::neutral_sample
   //to fine-tune memory allocation in the simulation
   unsigned MAXCH=0;
   const unsigned MAXCH_INC=50;
@@ -63,22 +65,22 @@ int main(int argc, char **argv)
   while(howmany--)
     {
       //copy construct to avoid having to re-init each time
-      std::vector<Sequence::chromosome> sample;
+      std::vector<Sequence::coalsim::chromosome> sample;
       sample.reserve(MAXCH); //use MAXCH to reserve a good amount of contiguous memory
       std::copy(initialized_sample.begin(),
 		initialized_sample.end(),
 		std::back_inserter(sample));
-      Sequence::arg sample_history(1,initialized_marginal);
+      Sequence::coalsim::arg sample_history(1,initialized_marginal);
 
       //simulate a sample from the standard neutral model
       //of a large Wright-Fisher population with infinite-sites 
       //mutation
-      Sequence::SimData gametes = Sequence::neutral_sample(uni,uni01,expo,poiss,
-							   theta,rho,nsites,nsam,
-							   &sample,
-							   &sample_history,
-							   &MAXCH,
-							   MAXCH_INC);
+      Sequence::SimData gametes = Sequence::coalsim::neutral_sample(uni,uni01,expo,poiss,
+								    theta,rho,nsites,nsam,
+								    &sample,
+								    &sample_history,
+								    &MAXCH,
+								    MAXCH_INC);
       //print it
       std::cout << gametes << '\n';
     }

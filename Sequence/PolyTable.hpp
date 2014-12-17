@@ -53,8 +53,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <type_traits>
 #include <functional>
 #include <Sequence/SeqExceptions.hpp>
-#include <Sequence/PolyTableManip.hpp>
-
+#include <Sequence/Ptable.hpp>
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
@@ -63,7 +62,7 @@ namespace Sequence
   private:
     //! A PolyTable publicly inherits from std::pair< std::vector<double>, std::vector<std::string> >
     using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
-    mutable Sequence::polySiteVector pv;
+    mutable Ptable pv;
     mutable bool non_const_access;
   public:
     //typedefs for container types
@@ -90,14 +89,14 @@ namespace Sequence
     */
     using const_pos_iterator = std::vector<double>::const_iterator;
     /*! \brief Const iterator to segregating sites
-      Const iterator to segregating sites. The value type of this
+      Const iterator to segregating sites. The value_type of this
       iterator is const std::pair<double,std::string>, where the 
       double is the position of the segregating site, and the
       string the list of states at the site.  The first character
       in the string corresponds to the state of the first character
       in the PolyTable (i.e. (*this)[0]), etc.
     */
-    using const_site_iterator = Sequence::polySiteVector::const_iterator;
+    using const_site_iterator = Sequence::Ptable::const_iterator;
 
     //functions to return iterators
     data_iterator begin();
@@ -200,7 +199,6 @@ namespace Sequence
     virtual bool operator!=(const PolyTable &rhs) const;
     PolyTable & operator=(PolyTable &&) = default;
     PolyTable & operator=(const PolyTable &) = default;
-    operator Sequence::polySiteVector() const;
 
     //The functions below are inlined data access routines.
     inline const_reference operator[] (const size_type & i) const

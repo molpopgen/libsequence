@@ -1,3 +1,4 @@
+//! \file Sequence/HKA.hpp @brief Calculations related to the HKA test
 /*
 
 Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu

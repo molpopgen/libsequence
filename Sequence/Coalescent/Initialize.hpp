@@ -6,9 +6,11 @@
 
 namespace Sequence
 {
-  std::vector<chromosome> init_sample( const std::vector<int> & pop_config,
+  namespace coalsim {
+    std::vector<chromosome> init_sample( const std::vector<int> & pop_config,
 				       const int & nsites );
-  marginal init_marginal( const int & nsam );
+    marginal init_marginal( const int & nsam );
+  }
 }
 
 #endif
