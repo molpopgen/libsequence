@@ -19,11 +19,8 @@
 /*! \example freerec.cc
   Coalescent simulation with free recombination
 */
-/*! \example ms--.cc
+/*! \example msmm.cc
   Coalescent simulation
-*/
-/*! \example msbeta.cc
-  Coalescent simulation with non-uniform genetic maps
 */
 /*! \example bottleneck.cc
   Example of using the  Sequence::bottleneck template function
