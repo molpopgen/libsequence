@@ -60,7 +60,8 @@ namespace Sequence {
 			   }
 		       }
 		     states.emplace_back(std::move(a));
-		     dstates.emplace_back( std::move(std::make_pair(std::move(ancValid),std::move(d))) );
+		     if( haveAncStates )
+		       dstates.emplace_back( std::move(std::make_pair(std::move(ancValid),std::move(d))) );
 		   } );
   }
 
