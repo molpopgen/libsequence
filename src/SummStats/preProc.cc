@@ -4,6 +4,22 @@
 #include <memory>
 #include <utility>
 
+/*
+  Idea:
+  3 classes:
+  1. statePreproc
+  2. derstatePreproc
+  3. HaploPreproc
+
+  The main class contains one of each of them.
+  Probably mutable.
+
+  Simplifies iteration down to beg/end, etc.
+
+  template base class to enforce some things?
+
+  Maybe too complex?
+ */
 namespace Sequence {
 
   /*
