@@ -67,4 +67,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	IOhelp.hpp \
 	bamrecord.hpp \
 	bamreader.hpp \
-	SeqAlphabets.hpp
+	SeqAlphabets.hpp \
+	preProc.hpp
