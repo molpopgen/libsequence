@@ -148,7 +148,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
 	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
-	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo
+	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo preProc.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -391,7 +391,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
-	SeqAlphabets.cc
+	SeqAlphabets.cc \
+	preProc.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
@@ -581,6 +582,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Translate.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TwoSubs.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Unweighted.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preProc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@

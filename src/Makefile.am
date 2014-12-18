@@ -54,7 +54,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
-	SeqAlphabets.cc
+	SeqAlphabets.cc \
+	preProc.cc
 
 AM_LDFLAGS=-version-info 20:0:0
 
