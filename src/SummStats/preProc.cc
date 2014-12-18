@@ -3,6 +3,8 @@
 #include <Sequence/stateCounter.hpp>
 #include <memory>
 #include <utility>
+#include <list>
+#include <algorithm>
 
 /*
   Idea:
@@ -24,111 +26,250 @@
 */
 namespace Sequence {
 
-  /*
-    struct Uhapvec
-    {
-    };
-  */
-  
   struct preProcImpl
   {
-    //types
-    Ptable pt;
-    std::vector<std::string> ustrings;
-    std::vector< std::vector<std::string>::iterator > haplotypes;
+    void populate( const Ptable & ps,
+		   const bool & haveAncStates, const std::string::size_type & anc,
+		   std::vector<stateCounter> & states,
+		   std::vector<std::pair<bool,stateCounter> > & dstates);
+  };
 
-    //constructors
-    preProcImpl();
-    preProcImpl( const Ptable & , const bool haveAncStates = 0, const std::string::size_type ancState = 0 );
-    preProcImpl( Ptable && , const bool haveAncStates = 0, const std::string::size_type ancState = 0 );
-    preProcImpl( const PolyTable & , const bool haveAncStates = 0, const PolyTable::size_type ancState = 0 );
-};
+  void populate( const Ptable & ps,
+		 const bool & haveAncStates, const std::string::size_type & anc,
+		 std::vector<stateCounter> & states,
+		 std::vector<std::pair<bool,stateCounter> > & dstates)
+  {
+    std::for_each( ps.cbegin(), ps.cend(),
+		   [&states,&dstates,&haveAncStates,&anc]( const polymorphicSite & __ps )
+		   {
+		     stateCounter a,d; //all && derived states, resp.
+		     std::string::size_type i = 0;
+		     bool ancValid = haveAncStates;
+		     for( auto itr = __ps.second.cbegin() ; itr != __ps.second.cend() ; ++itr,++i )
+		       {
+			 a(*itr);
+			 if( haveAncStates )
+			   {
+			     if( i == anc ) 
+			       {
+				 if (std::toupper(*itr) == 'N' || *itr == '-' )
+				   ancValid = false;
+			       }
+			     else d(*itr);
+			   }
+		       }
+		     states.emplace_back(std::move(a));
+		     dstates.emplace_back( std::move(std::make_pair(std::move(ancValid),std::move(d))) );
+		   } );
+  }
 
-preProcImpl::preProcImpl() : pt( Ptable() )
-{
-}
+  class Uhaps
+  {
+  private:
+    using ustring_ctr_t = std::list<std::string>;
+    using ustring_const_iterator = ustring_ctr_t::const_iterator;
+    using ustring_itr_ctr_t = std::vector< ustring_const_iterator >;
+    mutable ustring_ctr_t ustrings;
+    ustring_itr_ctr_t ustring_itrs;
+    int populate( const Ptable & );
+    int populate( const PolyTable & );
+  public:
+    Uhaps() = default;
+    Uhaps( const Ptable & );
+    Uhaps( const PolyTable & );
+    using iterator = ustring_itr_ctr_t::iterator;
+    using const_iterator = ustring_itr_ctr_t::const_iterator;
+    using const_reference = ustring_ctr_t::const_reference;
+    using size_type = ustring_itr_ctr_t::size_type;
+    iterator begin();
+    iterator end();
+    const_iterator begin() const;
+    const_iterator end() const;
+    const_iterator cbegin() const;
+    const_iterator cend() const;
+    const_reference operator[]( const size_type & i ) const;
+    size_type size() const;
+    bool empty() const;
+  };
+
+  int Uhaps::populate(const Ptable & __pt)
+  {
+    if(__pt.empty()) return 0;
+    std::string::size_type nsam = __pt.begin()->second.size();
+    for( std::string::size_type i = 0 ; i < nsam ; ++i )
+      {
+	std::string hap;
+	for( const auto & p : __pt )
+	  {
+	    if( p.second.size() != nsam )
+	      {
+		ustrings.clear();
+		ustring_itrs.clear();
+		return -1;
+	      }
+	    hap += p.second[i];
+	  }
+	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),hap);
+	if( itr == ustrings.cend() ) //new string
+	  {
+	    //store the pointer and add string
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),hap) );
+	  }
+	else
+	  {
+	    //store the pointer
+	    ustring_itrs.push_back(itr);
+	  }
+      }
+    return 0;
+  }
+
+  int Uhaps::populate(const PolyTable & __pt)
+  {
+    if(__pt.empty()) return 0;
+    std::string::size_type len = __pt[0].size();
+    for( auto s : __pt )
+      {
+	if( s.size() != len ) 
+	  {
+	    ustrings.clear();
+	    ustring_itrs.clear();
+	    return -1;
+	  }
+	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),s);
+	if( itr == ustrings.cend() ) //new string
+	  {
+	    //store the pointer and add string
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),s) );
+	  }
+	else
+	  {
+	    //store the pointer
+	    ustring_itrs.push_back(itr);
+	  }
+      }
+    return 0;
+  }
+
+  Uhaps::Uhaps( const Ptable & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
+				       ustring_itrs (Uhaps::ustring_itr_ctr_t() )
+  {
+    if( populate(__pt) == -1 )
+      {
+	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
+      }
+  }
+
+  Uhaps::Uhaps( const PolyTable & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
+					  ustring_itrs (Uhaps::ustring_itr_ctr_t() )
+  {
+    if( populate(__pt) == -1 )
+      {
+	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
+      }
+  }
+
+  Uhaps::iterator Uhaps::begin() {
+    return ustring_itrs.begin();
+  }
+
+  Uhaps::iterator Uhaps::end() {
+    return ustring_itrs.end();
+  }
+  Uhaps::const_iterator Uhaps::begin() const {
+    return ustring_itrs.begin();
+  }
+
+  Uhaps::const_iterator Uhaps::end() const {
+    return ustring_itrs.end();
+  }
+
+  Uhaps::const_iterator Uhaps::cbegin() const {
+    return ustring_itrs.cbegin();
+  }
+
+  Uhaps::const_iterator Uhaps::cend() const {
+    return ustring_itrs.cend();
+  }
+
+  Uhaps::const_reference Uhaps::operator[]( const Uhaps::size_type & i ) const {
+    return *ustring_itrs[i];
+  }
+
+  Uhaps::size_type Uhaps::size() const
+  {
+    return ustring_itrs.size();
+  }
+
+  bool Uhaps::empty() const
+  {
+    return ustring_itrs.empty();
+  }
+
+  class preProc
+  {
+  private:
+    std::unique_ptr<preProcImpl> __impl;
+  public:
+    mutable Ptable ptable;
+    mutable Uhaps uhaps;
+    using state_t = std::vector<stateCounter>;
+    using dstate_t = std::vector<std::pair<bool,stateCounter> >;
+    //! Unpolarized states per site.
+    mutable state_t states;
+    /*! 
+      Polarized states per site.		       
+      \note Will be empty if no info ancestral states are 
+      provided
+    */
+    mutable dstate_t dstates;
   
-preProcImpl::preProcImpl( const Ptable & __pt, const bool haveAncStates, const std::string::size_type ancState ) : pt(__pt)
-{
-}
+    preProc() = default;
+    preProc( const Ptable &, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
+    preProc( Ptable &&, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
+    preProc( const PolyTable &, const bool & haveAncStates = 0, const PolyTable::size_type & anc = 0 );
+  };
 
-preProcImpl::preProcImpl( Ptable && __pt, const bool haveAncStates, const std::string::size_type ancState) : pt(std::move(__pt))
-{
-}
-
-preProcImpl::preProcImpl( const PolyTable & __pt, const bool haveAncStates, const std::string::size_type ancState) : pt(__pt)
-{
-}
-
-class preProc //: public std::pair< Ptable, Uhapvec >
-{
-private:
-  std::unique_ptr<preProcImpl> __impl;
-public:
-  using hap_iterator = std::vector<std::vector<std::string>::iterator >::iterator;
-  using hap_const_iterator = std::vector<std::vector<std::string>::iterator >::const_iterator;
-  using hap_reference = std::vector<std::vector<std::string>::iterator >::reference;
-  using hap_const_reference = std::vector<std::vector<std::string>::iterator >::const_reference;
-  using site_iterator = Ptable::iterator;
-  using site_const_iterator = Ptable::const_iterator;
-
-  //! Unpolarized states per site.
-  mutable std::vector<stateCounter> states;
-  /*! 
-    Polarized states per site.		       
-    \note Will be empty if no info ancestral states are 
-    provided
+  /*
+  preProc::preProc() : __impl(new preProcImpl()),
+		       ptable(Ptable()),
+		       uhaps()
+  {
+  }
   */
-  mutable std::vector<stateCounter> dstates;
+  preProc::preProc( const Ptable & __pt, 
+		    const bool & haveAncStates , 
+		    const std::string::size_type&  anc ) : __impl(new preProcImpl()),
+							   ptable(__pt),
+							   uhaps(__pt),
+							   states( state_t() ),
+							   dstates( dstate_t() )
+  {
+    __impl->populate(ptable,haveAncStates,anc,
+		     states,dstates);
+  }
   
-  preProc();
-  preProc( const Ptable & );
-  preProc( Ptable && );
-  preProc( const PolyTable & );
-
-  //member functions
-  site_iterator begin();
-  site_iterator end();
-  hap_iterator hap_begin();
-  hap_iterator hap_end();
-  hap_const_iterator hap_begin() const;
-  hap_const_iterator hap_end() const;
-  hap_const_iterator hap_cbegin() const;
-  hap_const_iterator hap_cend() const;
-};
-
-preProc::preProc() : __impl(new preProcImpl())
-{
-}
+  preProc::preProc( Ptable && __pt, 
+		    const bool & haveAncStates,
+		    const std::string::size_type & anc) : __impl(new preProcImpl()),
+							  ptable(std::move(__pt)),
+							  uhaps(__pt),
+							  states( state_t() ),
+							  dstates( dstate_t() )
+  {
+    __impl->populate(ptable,haveAncStates,anc,
+		     states,dstates);
+  }
   
-preProc::preProc( const Ptable & __pt) : __impl(new preProcImpl(__pt))
-{
-}
-  
-preProc::preProc( Ptable && __pt) : __impl(new preProcImpl(std::move(__pt)))
-{
-}
-  
-preProc::preProc( const PolyTable & __pt ) : __impl(new preProcImpl(__pt))
-{
-}
-  
-preProc::hap_iterator preProc::hap_begin() {
-  return __impl->haplotypes.begin();
-}
-preProc::hap_iterator preProc::hap_end() {
-  return __impl->haplotypes.end();
-}
-preProc::hap_const_iterator preProc::hap_begin() const {
-  return __impl->haplotypes.cbegin();
-}
-preProc::hap_const_iterator preProc::hap_end() const {
-  return __impl->haplotypes.cend();
-}
-preProc::hap_const_iterator preProc::hap_cbegin() const {
-  return __impl->haplotypes.cbegin();
-}
-preProc::hap_const_iterator preProc::hap_cend() const {
-  return __impl->haplotypes.cend();
-}
+  preProc::preProc( const PolyTable & __pt, 
+		    const bool & haveAncStates,
+		    const PolyTable::size_type & anc ) : __impl(new preProcImpl()),
+							 ptable(__pt),
+							 uhaps(__pt),
+							 states( state_t() ),
+							 dstates( dstate_t() )
+  {
+    __impl->populate(ptable,haveAncStates,anc,
+		     states,dstates);
+  }
 }
