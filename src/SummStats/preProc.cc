@@ -1,3 +1,4 @@
+#include <Sequence/preProc.hpp>
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/Ptable.hpp>
 #include <Sequence/stateCounter.hpp>
@@ -62,35 +63,6 @@ namespace Sequence {
 		     dstates.emplace_back( std::move(std::make_pair(std::move(ancValid),std::move(d))) );
 		   } );
   }
-
-  class Uhaps
-  {
-  private:
-    using ustring_ctr_t = std::list<std::string>;
-    using ustring_const_iterator = ustring_ctr_t::const_iterator;
-    using ustring_itr_ctr_t = std::vector< ustring_const_iterator >;
-    mutable ustring_ctr_t ustrings;
-    ustring_itr_ctr_t ustring_itrs;
-    int populate( const Ptable & );
-    int populate( const PolyTable & );
-  public:
-    Uhaps() = default;
-    Uhaps( const Ptable & );
-    Uhaps( const PolyTable & );
-    using iterator = ustring_itr_ctr_t::iterator;
-    using const_iterator = ustring_itr_ctr_t::const_iterator;
-    using const_reference = ustring_ctr_t::const_reference;
-    using size_type = ustring_itr_ctr_t::size_type;
-    iterator begin();
-    iterator end();
-    const_iterator begin() const;
-    const_iterator end() const;
-    const_iterator cbegin() const;
-    const_iterator cend() const;
-    const_reference operator[]( const size_type & i ) const;
-    size_type size() const;
-    bool empty() const;
-  };
 
   int Uhaps::populate(const Ptable & __pt)
   {
@@ -205,30 +177,6 @@ namespace Sequence {
   {
     return ustring_itrs.empty();
   }
-
-  class preProc
-  {
-  private:
-    std::unique_ptr<preProcImpl> __impl;
-  public:
-    mutable Ptable ptable;
-    mutable Uhaps uhaps;
-    using state_t = std::vector<stateCounter>;
-    using dstate_t = std::vector<std::pair<bool,stateCounter> >;
-    //! Unpolarized states per site.
-    mutable state_t states;
-    /*! 
-      Polarized states per site.		       
-      \note Will be empty if no info ancestral states are 
-      provided
-    */
-    mutable dstate_t dstates;
-  
-    preProc() = default;
-    preProc( const Ptable &, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
-    preProc( Ptable &&, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
-    preProc( const PolyTable &, const bool & haveAncStates = 0, const PolyTable::size_type & anc = 0 );
-  };
 
   /*
   preProc::preProc() : __impl(new preProcImpl()),
