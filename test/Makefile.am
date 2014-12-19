@@ -19,7 +19,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	PtableTest \
-	preProcTest
+	preProcTest \
+	Poly8Test
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -89,5 +90,7 @@ alphabets_SOURCES=alphabets.cc
 PtableTest_SOURCES=PtableTest.cc
 
 preProcTest_SOURCES=preProcTest.cc
+
+Poly8Test_SOURCES=Poly8Test.cc
 
 endif #if BUNIT_TEST_PRESENT

@@ -149,7 +149,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
 	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
-	SummStats/preProc.lo
+	SummStats/preProc.lo poly8/poly8.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -393,7 +393,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
-	SummStats/preProc.cc
+	SummStats/preProc.cc \
+	poly8/poly8.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
@@ -538,6 +539,13 @@ hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 SummStats/preProc.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
+poly8/$(am__dirstamp):
+	@$(MKDIR_P) poly8
+	@: > poly8/$(am__dirstamp)
+poly8/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) poly8/$(DEPDIR)
+	@: > poly8/$(DEPDIR)/$(am__dirstamp)
+poly8/poly8.lo: poly8/$(am__dirstamp) poly8/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -552,6 +560,8 @@ mostlyclean-compile:
 	-rm -f SummStats/*.lo
 	-rm -f hts/*.$(OBJEXT)
 	-rm -f hts/*.lo
+	-rm -f poly8/*.$(OBJEXT)
+	-rm -f poly8/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -612,6 +622,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@poly8/$(DEPDIR)/poly8.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -646,6 +657,7 @@ clean-libtool:
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
 	-rm -rf hts/.libs hts/_libs
+	-rm -rf poly8/.libs poly8/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -770,6 +782,8 @@ distclean-generic:
 	-rm -f SummStats/$(am__dirstamp)
 	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
 	-rm -f hts/$(am__dirstamp)
+	-rm -f poly8/$(DEPDIR)/$(am__dirstamp)
+	-rm -f poly8/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -780,7 +794,7 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) poly8/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -826,7 +840,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) poly8/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

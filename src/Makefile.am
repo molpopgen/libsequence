@@ -55,7 +55,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
-	SummStats/preProc.cc
+	SummStats/preProc.cc \
+	poly8/poly8.cc
 
 AM_LDFLAGS=-version-info 20:0:0
 
