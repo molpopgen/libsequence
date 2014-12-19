@@ -149,7 +149,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
 	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
-	SummStats/preProc.lo poly8/poly8.lo
+	SummStats/preProc.lo poly8/poly8.lo Ptable8.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -394,7 +394,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
 	SummStats/preProc.cc \
-	poly8/poly8.cc
+	poly8/poly8.cc \
+	Ptable8.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
@@ -580,6 +581,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableManip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
