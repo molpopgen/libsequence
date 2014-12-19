@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( create_3 )
 
   Sequence::Ptable8 t(__t);
 
- BOOST_CHECK( __t.empty() );
+  BOOST_CHECK( __t.empty() );
 
   std::string x ( Sequence::poly8::vtype2dna( t.begin()->second ) );
 
