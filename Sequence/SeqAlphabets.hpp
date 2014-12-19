@@ -28,6 +28,11 @@ namespace Sequence {
   extern const std::array<const char,16>::size_type NOTPOLYCHAR;
 
   /*!
+    @brief The value of terminating an encoded string of SNP data
+   */
+  extern const std::array<const char,16>::size_type POLYEOS;
+
+  /*!
     @brief test if character is part of Sequence::dna_alphabet
     @param ch Character to test
     \return true if ch is in Sequence::dna_alphabet, false otherwise
