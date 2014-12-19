@@ -18,10 +18,12 @@ namespace Sequence
     ustring_itr_ctr_t ustring_itrs;
     int populate( const Ptable & );
     int populate( const PolyTable & );
+    int populate( PolyTable && );
   public:
     Uhaps() = default;
     Uhaps( const Ptable & );
     Uhaps( const PolyTable & );
+    Uhaps( PolyTable && );
     using iterator = ustring_itr_ctr_t::iterator;
     using const_iterator = ustring_itr_ctr_t::const_iterator;
     using const_reference = ustring_ctr_t::const_reference;

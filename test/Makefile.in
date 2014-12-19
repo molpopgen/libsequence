@@ -98,7 +98,8 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	SeqConversions$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT)
+@BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	preProcTest$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @BUNIT_TEST_PRESENT_TRUE@@DEBUG_TRUE@am__append_3 = -g
@@ -223,6 +224,11 @@ am__fastqIO_SOURCES_DIST = fastqIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
 fastqIO_OBJECTS = $(am_fastqIO_OBJECTS)
 fastqIO_LDADD = $(LDADD)
+am__preProcTest_SOURCES_DIST = preProcTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_preProcTest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	preProcTest.$(OBJEXT)
+preProcTest_OBJECTS = $(am_preProcTest_OBJECTS)
+preProcTest_LDADD = $(LDADD)
 am__testSimDataIO_SOURCES_DIST = testSimDataIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_testSimDataIO_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	testSimDataIO.$(OBJEXT)
@@ -272,7 +278,8 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PtableTest_SOURCES) $(RedundancyCom95test_SOURCES) \
 	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
 	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(testSimDataIO_SOURCES)
+	$(fastqIO_SOURCES) $(preProcTest_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
@@ -292,7 +299,8 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__SeqConversions_SOURCES_DIST) \
 	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
 	$(am__fastqConstructors_SOURCES_DIST) \
-	$(am__fastqIO_SOURCES_DIST) $(am__testSimDataIO_SOURCES_DIST)
+	$(am__fastqIO_SOURCES_DIST) $(am__preProcTest_SOURCES_DIST) \
+	$(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -471,6 +479,7 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@RedundancyCom95test_SOURCES = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@alphabets_SOURCES = alphabets.cc
 @BUNIT_TEST_PRESENT_TRUE@PtableTest_SOURCES = PtableTest.cc
+@BUNIT_TEST_PRESENT_TRUE@preProcTest_SOURCES = preProcTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -599,6 +608,10 @@ fastqIO$(EXEEXT): $(fastqIO_OBJECTS) $(fastqIO_DEPENDENCIES) $(EXTRA_fastqIO_DEP
 	@rm -f fastqIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(fastqIO_OBJECTS) $(fastqIO_LDADD) $(LIBS)
 
+preProcTest$(EXEEXT): $(preProcTest_OBJECTS) $(preProcTest_DEPENDENCIES) $(EXTRA_preProcTest_DEPENDENCIES) 
+	@rm -f preProcTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(preProcTest_OBJECTS) $(preProcTest_LDADD) $(LIBS)
+
 testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
 	@rm -f testSimDataIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
@@ -629,6 +642,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alphabets.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preProcTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:

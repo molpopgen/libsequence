@@ -34,6 +34,8 @@ namespace Sequence
     preProc( const Ptable &, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
     preProc( Ptable &&, const bool & haveAncStates = 0, const std::string::size_type & anc = 0 );
     preProc( const PolyTable &, const bool & haveAncStates = 0, const PolyTable::size_type & anc = 0 );
+    preProc( PolyTable &&, const bool & haveAncStates = 0, const PolyTable::size_type & anc = 0 );
+    ~preProc(void);// = default;
   };
 }
 

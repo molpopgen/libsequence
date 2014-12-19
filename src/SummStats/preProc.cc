@@ -6,7 +6,7 @@
 #include <utility>
 #include <list>
 #include <algorithm>
-
+#include <iostream>
 /*
   Idea:
   3 classes:
@@ -35,10 +35,10 @@ namespace Sequence {
 		   std::vector<std::pair<bool,stateCounter> > & dstates);
   };
 
-  void populate( const Ptable & ps,
-		 const bool & haveAncStates, const std::string::size_type & anc,
-		 std::vector<stateCounter> & states,
-		 std::vector<std::pair<bool,stateCounter> > & dstates)
+  void preProcImpl::populate( const Ptable & ps,
+			      const bool & haveAncStates, const std::string::size_type & anc,
+			      std::vector<stateCounter> & states,
+			      std::vector<std::pair<bool,stateCounter> > & dstates)
   {
     std::for_each( ps.cbegin(), ps.cend(),
 		   [&states,&dstates,&haveAncStates,&anc]( const polymorphicSite & __ps )
@@ -69,9 +69,11 @@ namespace Sequence {
   {
     if(__pt.empty()) return 0;
     std::string::size_type nsam = __pt.begin()->second.size();
+    std::cerr << "nsam = " << nsam << '\n';
     for( std::string::size_type i = 0 ; i < nsam ; ++i )
       {
-	std::string hap;
+	std::string hap(__pt.size(),' ');
+	unsigned j = 0;
 	for( const auto & p : __pt )
 	  {
 	    if( p.second.size() != nsam )
@@ -80,13 +82,13 @@ namespace Sequence {
 		ustring_itrs.clear();
 		return -1;
 	      }
-	    hap += p.second[i];
+	    hap[j++]=p.second[i];
 	  }
 	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),hap);
 	if( itr == ustrings.cend() ) //new string
 	  {
 	    //store the pointer and add string
-	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),hap) );
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(hap)) );
 	  }
 	else
 	  {
@@ -94,6 +96,7 @@ namespace Sequence {
 	    ustring_itrs.push_back(itr);
 	  }
       }
+    std::cerr << ustrings.size() << '\n';
     return 0;
   }
 
@@ -124,6 +127,37 @@ namespace Sequence {
     return 0;
   }
 
+  int Uhaps::populate(PolyTable && __pt)
+  {
+    std::cerr << "move version\n";
+    if(__pt.empty()) return 0;
+    std::string::size_type len = __pt[0].size();
+    for( auto & s : __pt )
+      {
+	if( s.size() != len ) 
+	  {
+	    ustrings.clear();
+	    ustring_itrs.clear();
+	    return -1;
+	  }
+	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),s);
+	if( itr == ustrings.cend() ) //new string
+	  {
+	    //store the pointer and add string
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(s)) );
+	  }
+	else
+	  {
+	    //store the pointer
+	    ustring_itrs.push_back(itr);
+	  }
+      }
+    //leave __pt in a sensible state for the calling environment...
+    __pt.first.clear();
+    __pt.second.clear();
+    return 0;
+  }
+
   Uhaps::Uhaps( const Ptable & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
 				       ustring_itrs (Uhaps::ustring_itr_ctr_t() )
   {
@@ -131,6 +165,7 @@ namespace Sequence {
       {
 	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
       }
+    std::cerr << ustrings.size() << ' ' << ustring_itrs.size() << '\n';
   }
 
   Uhaps::Uhaps( const PolyTable & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
@@ -140,6 +175,17 @@ namespace Sequence {
       {
 	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
       }
+    std::cerr << ustrings.size() << ' ' << ustring_itrs.size() << '\n';
+  }
+
+  Uhaps::Uhaps(  PolyTable && __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
+				      ustring_itrs (Uhaps::ustring_itr_ctr_t() )
+  {
+    if( populate(std::move(__pt)) == -1 )
+      {
+	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
+      }
+    std::cerr << ustrings.size() << ' ' << ustring_itrs.size() << '\n';
   }
 
   Uhaps::iterator Uhaps::begin() {
@@ -202,7 +248,7 @@ namespace Sequence {
 		    const bool & haveAncStates,
 		    const std::string::size_type & anc) : __impl(new preProcImpl()),
 							  ptable(std::move(__pt)),
-							  uhaps(__pt),
+							  uhaps(ptable),
 							  states( state_t() ),
 							  dstates( dstate_t() )
   {
@@ -220,5 +266,21 @@ namespace Sequence {
   {
     __impl->populate(ptable,haveAncStates,anc,
 		     states,dstates);
+  }
+
+  preProc::preProc( PolyTable && __pt, 
+		    const bool & haveAncStates,
+		    const PolyTable::size_type & anc ) : __impl(new preProcImpl()),
+							 ptable(__pt),
+							 uhaps(std::move(__pt)),
+							 states( state_t() ),
+							 dstates( dstate_t() )
+  {
+    __impl->populate(ptable,haveAncStates,anc,
+		     states,dstates);
+  }
+
+  preProc::~preProc(void)
+  {
   }
 }
