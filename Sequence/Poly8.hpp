@@ -28,6 +28,13 @@ namespace Sequence
       \note Contents of s are cleared
      */
     vtype dna2vtype( std::string & s );
+
+    /*!
+      \return A vtype made from s
+      \note Contents of s are cleared
+     */
+    vtype dna2vtype( std::string && s );
+
     /*!
       \return A vtype made from s
      */
@@ -40,6 +47,12 @@ namespace Sequence
     vtype dna2vtype( Sequence::Seq & s );
 
     /*!
+      \return A vtype made from s
+      \note Contents of s are cleared
+     */
+    vtype dna2vtype( Sequence::Seq && s );
+
+    /*!
       \return A std::string made from v
     */
     std::string vtype2dna( const vtype & v );
@@ -49,6 +62,12 @@ namespace Sequence
       \note Contents of v are cleared
     */
     std::string vtype2dna( vtype & v );
+
+    /*!
+      \return A std::string made from v
+      \note Contents of v are cleared
+    */
+    std::string vtype2dna( vtype && v );
   }
 }
 

@@ -58,8 +58,17 @@ namespace Sequence
       return rv;
     }
 
+    vtype dna2vtype( std::string && s )
+    {
+      return dna2vtype(std::ref(s));
+    }
+
     vtype dna2vtype( const Sequence::Seq & s ) {
       return dna2vtype(s.second);
+    }
+
+    vtype dna2vtype(  Sequence::Seq && s ) {
+      return dna2vtype(std::ref(s.second));
     }
 
     vtype dna2vtype( Sequence::Seq & s ) {
@@ -88,6 +97,11 @@ namespace Sequence
       std::string rv = vtype2dna(std::cref(v));
       v.clear();
       return rv;
+    }
+
+    std::string vtype2dna( vtype && v ) 
+    {
+      return vtype2dna(std::ref(v));
     }
   }
 }
