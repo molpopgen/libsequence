@@ -15,6 +15,19 @@ namespace Sequence {
   extern const std::array<const char,17> dna_alphabet;
 
   /*!
+    @brief Alphabet for polymorphism (SNP) analysis.
+    16 characters are used so that we may encode 2 nucleotides
+    in a 8-bit integer.
+  */
+  extern const std::array<const char,16> dna_poly_alphabet;
+
+  /*!
+    @brief An index from dna_poly_alphabet >= this is not
+    a valid character for variation analysis
+  */
+  extern const std::array<const char,16>::size_type NOTPOLYCHAR;
+
+  /*!
     @brief test if character is part of Sequence::dna_alphabet
     @param ch Character to test
     \return true if ch is in Sequence::dna_alphabet, false otherwise

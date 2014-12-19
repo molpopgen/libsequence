@@ -10,6 +10,16 @@ namespace Sequence {
 	'K','M','B','D',
 	'H','V','N','-','.'} };
 
+  const std::array<const char,16> dna_poly_alhpabet{ {'A','C','G','T', //0-3
+	'0','1','-','N', //4-6
+	'\0'} }; //7
+
+  const std::array<const char,16>::size_type NOTPOLYCHAR( std::distance(dna_poly_alhpabet.begin(),
+									       std::find(dna_poly_alphabet.begin(),
+											 dna_poly_alphabet.end(),
+											 '\0')
+									) );
+  
   bool isDNA( const char & ch) 
   {
     return std::find( dna_alphabet.begin(),
