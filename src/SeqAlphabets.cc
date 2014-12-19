@@ -15,16 +15,16 @@ namespace Sequence {
 	'\0', //8
 	} };
 
-  const std::array<const char,16>::size_type NOTPOLYCHAR( std::distance(dna_poly_alphabet.begin(),
-									       std::find(dna_poly_alphabet.begin(),
-											 dna_poly_alphabet.end(),
+  const std::array<const char,16>::size_type NOTPOLYCHAR = std::array<const char,16>::size_type( std::distance(dna_poly_alphabet.begin(),
+													       std::find(dna_poly_alphabet.begin(),
+															 dna_poly_alphabet.end(),
 											 '\0')
 									) );
-
-  const std::array<const char,16>::size_type POLYEOS( std::distance(dna_poly_alphabet.begin(),
-								    std::find(dna_poly_alphabet.begin(),
-									      dna_poly_alphabet.end(),
-									      '\0')
+  
+  const std::array<const char,16>::size_type POLYEOS = std::array<const char,16>::size_type( std::distance(dna_poly_alphabet.begin(),
+													   std::find(dna_poly_alphabet.begin(),
+														     dna_poly_alphabet.end(),
+														     '\0')
 								    ) );
   bool isDNA( const char & ch) 
   {
