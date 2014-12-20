@@ -17,6 +17,11 @@ However:
 
 ### TODO:
 
+* Move BAM alphabet to SeqAlphabets
+* Change all references of 8 to 4?  Should the name be based on some int8_t or on the fact that it is 4-bit encoded?  8 > 4, so that is obviously a better choice?
+* Seq8, PolyTable8 ??
+* Explore std::unique_ptr< Sequence::poly8::itype > instead of vector.  It could be faster, but there are implementation/convenience/maintainability costs
+
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
 3. iHH?
