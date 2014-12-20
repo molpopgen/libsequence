@@ -1,12 +1,15 @@
 #define BOOST_TEST_MODULE preProcTest
 #define BOOST_TEST_DYN_LINK 
 
+#include <Sequence/Poly8.hpp>
 #include <Sequence/preProc.hpp>
 #include <Sequence/PolySites.hpp>
 #include <boost/test/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <cstdlib>
+#include <Sequence/PolySNP.hpp>
 
 BOOST_AUTO_TEST_CASE( create_1 )
 {
@@ -25,7 +28,8 @@ BOOST_AUTO_TEST_CASE( create_1 )
 
   for( unsigned i = 0 ; i < ps.size() ; ++i )
     {
-      BOOST_CHECK_EQUAL( ps[i], ps_pp.uhaps[i] );
+      std::cerr << ps[i] << ' ' << Sequence::poly8::vtype2dna( ps_pp.uhaps[i] ) << '\n';
+      BOOST_CHECK_EQUAL( ps[i], Sequence::poly8::vtype2dna( ps_pp.uhaps[i] ) );
     }
 }
 
@@ -56,16 +60,43 @@ BOOST_AUTO_TEST_CASE( create_2 )
 
 BOOST_AUTO_TEST_CASE( create_3 )
 {
+  using psite = Sequence::polymorphicSite;
+  /* Unique haps are:
+     AGA
+     TCC
+     TCN
+     ACA
+     TCA 
+  */
+  Sequence::Ptable p = { psite(1.,"ATTATN"),
+			 psite(2.,"GCCCCT"),
+			 psite(3.,"ACNAAN") };
+  Sequence::PolySites ps(p.begin(),p.end());
+
+  Sequence::preProc p_pp(p);
+
+  BOOST_CHECK_EQUAL(p_pp.uhaps.size(),6);
+
+  for(unsigned i = 0 ; i < ps.size() ; ++i )
+    {
+      BOOST_CHECK_EQUAL(ps[i],Sequence::poly8::vtype2dna(p_pp.uhaps[i]));
+    }
+}
+
+
+BOOST_AUTO_TEST_CASE( create_3b )
+{
   Sequence::Ptable pt( std::move(  std::vector<Sequence::polymorphicSite>( 1000000,std::make_pair(1.,
-												  std::string(5000,'A')) ) ) );
+												  std::string(1000,'A')) ) ) );
   unsigned j = 0;
   for( auto & s : pt )
     {
-      if ( j < 5000 )
+      if ( j < 1000 )
 	s.second[j++]='T';
       else break;
     }
-  Sequence::preProc pp_pt(std::move(pt));
+  Sequence::preProc pp_pt(pt);
+  std::cerr << pp_pt.uhaps.size() << '\n';
 }
 
 // BOOST_AUTO_TEST_CASE( create_4 )
@@ -77,6 +108,10 @@ BOOST_AUTO_TEST_CASE( create_3 )
 //     {
 //       s[j++]='T';
 //     }
-//   Sequence::preProc pp_pt(std::move(pt));
-//   std::cerr << pp_pt.ptable.size() << '\n';
+//   std::cerr << "cerr creating PolySNP: ";
+//   Sequence::PolySNP apt(&pt);
+//   std::cerr << "done\n";
+//   std::cerr << apt.ThetaPi() << '\n';
+//   //Sequence::preProc pp_pt(std::move(pt));
+//   //  std::cerr << pp_pt.ptable.size() << '\n';
 // }
