@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent SummStats
+SUBDIRS = bits Coalescent SummStats util
 
 pkgincludedir=$(prefix)/include/Sequence
 
