@@ -102,7 +102,7 @@ BOOST_AUTO_TEST_CASE( create_3b )
 // BOOST_AUTO_TEST_CASE( create_4 )
 // {
 //   Sequence::PolySites pt ( std::move(std::vector<double>(1000000,1.)),
-// 			   std::move(std::vector<std::string>(5000,std::string(1000000,'A')) ));
+// 			   std::move(std::vector<std::string>(1000,std::string(1000000,'A')) ));
 //   unsigned j = 0;
 //   for( auto & s : pt )
 //     {

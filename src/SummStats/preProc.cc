@@ -48,14 +48,22 @@ namespace Sequence {
     		   [&states,&dstates,&haveAncStates,&anc]( const poly8site & __ps )
     		   {
     		     stateCounter a,d; //all && derived states, resp.
+		     unsigned i = 0;
+		     auto __dd = std::distance(__ps.second.begin(),
+					       __ps.second.end());
 		     std::for_each( __ps.second.begin(),
 				    __ps.second.end(),
-				    [&a]( const poly8::itype & __i )
+				    [&a,&i,&__dd]( const poly8::itype & __i )
 				    {
-				      if( readhi(__i) >= NOTPOLYCHAR ) abort;
-				      if( readlo(__i) >= NOTPOLYCHAR ) abort;
-				      a( dna_poly_alphabet[ readhi(__i) ] );
-				      a( dna_poly_alphabet[ readlo(__i) ] );
+				      auto __hi = readhi(__i),
+					__lo = readlo(__i);
+				      if( !(__hi >= NOTPOLYCHAR && __lo >= NOTPOLYCHAR) ||
+					  ( __hi < NOTPOLYCHAR && __lo >= NOTPOLYCHAR ) )
+					{
+					  a( dna_poly_alphabet[ __hi ] );
+					  a( dna_poly_alphabet[ __lo ] );
+					}
+				      ++i;
 				    } );
 		     states.emplace_back(std::move(a));
     		   } );
@@ -80,7 +88,6 @@ namespace Sequence {
 	 poly8::vtype::size_type j = 0;
 	 for( const auto & p : __pt )
 	   {
-	     // std::cerr << poly8::vtype2dna(p.second) << ' ' << p.second.size() << '\n';
 	     if( p.second.size() != nsam )
 	       {
 		 ustrings.clear();
@@ -89,7 +96,6 @@ namespace Sequence {
 	       }
 	     if ( idx )
 	       {
-		 // std::cerr << "!idx: "<< int(readhi(p.second[i])) << ' ' << int(readlo(p.second[i])) << '\n';
 		 //read hi, write hi a
 		 writehi(a[j],readhi(p.second[i]));
 		 //read lo, write hi b
@@ -97,19 +103,14 @@ namespace Sequence {
 	       }
 	     else 
 	       {
-		 //std::cerr << "idx: "<< int(readhi(p.second[i])) << ' ' << int(readlo(p.second[i])) << '\n';
 		 //read hi, write lo a
 		 writelo(a[j],readhi(p.second[i]));
 		 //read lo, write lo b
 		 writelo(b[j],readlo(p.second[i]));
 	       }
-	     //std::cerr << i << ' ' << j << '\n';
 	     idx = !idx;
 	     if(idx) ++j;
 	   }
-	 // std::cerr << "a = ";
-	 //for( auto __a : a ) std::cout << int(__a) << ' ';
-	 //std::cerr << ' ' << poly8::vtype2dna(std::cref(a)) << '\n';
 	 if( !(readhi(a[0]) == poly8::itype(X)) )
 	   {
 	     auto itr = std::find(ustrings.cbegin(),ustrings.cend(),a);
@@ -119,11 +120,6 @@ namespace Sequence {
 	       }
 	 else ustring_itrs.push_back(itr);
 	   }
-	 // auto bblank = std::count_if(b.begin(),b.end(),
-	 // 			     [&X](const poly8::itype & i) {
-	 // 			       return readhi(i) == poly8::itype(X) || readlo(i) == poly8::itype(X);
-	 // 			     });
-	 // if(bblank < b.size() )
 	 if( !(readhi(b[0]) == poly8::itype(X) ) )
 	 {
 	   auto itr = std::find(ustrings.cbegin(),ustrings.cend(),b);
@@ -135,32 +131,6 @@ namespace Sequence {
 	 }
        }
      std::cerr << "Uhaps::Ptable8: "<< ustrings.size() << '\n';
-    //   {
-    // 	std::string hap(__pt.size(),' ');
-    // 	unsigned j = 0;
-    // 	for( const auto & p : __pt )
-    // 	  {
-    // 	    if( p.second.size() != nsam )
-    // 	      {
-    // 		ustrings.clear();
-    // 		ustring_itrs.clear();
-    // 		return -1;
-    // 	      }
-    // 	    hap[j++]=p.second[i];
-    // 	  }
-    // 	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),hap);
-    // 	if( itr == ustrings.cend() ) //new string
-    // 	  {
-    // 	    //store the pointer and add string
-    // 	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(hap)) );
-    // 	  }
-    // 	else
-    // 	  {
-    // 	    //store the pointer
-    // 	    ustring_itrs.push_back(itr);
-    // 	  }
-    //   }
-    // std::cerr << ustrings.size() << '\n';
     return 0;
   }
 
