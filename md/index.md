@@ -22,6 +22,17 @@ There are lots of these:
 * [Kevin Thornton](https://github.com/molpopgen)'s GitHub account
 * [Thornton lab](https://github.com/ThorntonLab) GitHub account
 
+Some specific project using the library
+
+* [fwdpp](https://github.com/molpopgen/fwdpp) - Forward simulation library described in Thornton (2014, doi: 10.1534/genetics.114.165019)
+* [pecnv](https://guthub.com/molpopgen/pecnv) - code from Rogers et al. (2014, doi: 10.1093/molbev/msu124) and Cridland et al (2013, doi: 10.1093/molbev/mst129) for detecting structural variants and transposable element insertions
+* [baldwin_brown_2014](https://github.com/molpopgen/baldwin_brown_2014) - Code from Baldwin-Brown et al. (2014, doi: 10.1093/molbev/msu048) for simulating "evolve and resequence" experiments
+* [analysis](https://github.com/molpopgen/analysis)
+* [sequtils](https://github.com/molpopgen/sequtils)
+* [msstats](https://github.com/molpopgen/msstats)
+* [sweepsims](https://github.com/molpopgen/sweepsims) - selective sweep code from Jensen et al. (2008, doi: 10.1371/journal.pgen.1000198), Thornton and Jensen 2007, doi: 10.1534/genetics.106.064642)
+* [newgene](https://github.com/molpopgen/newgene) - copy-number variant simulation code from Thornton (2007, doi: 10.1534/genetics.107.074948)
+
 ###Citation
 
 If you use __libsequence__ for yor research, or programs depending up on it, please cite the following paper:
