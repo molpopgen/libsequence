@@ -15,7 +15,7 @@ namespace Sequence
   namespace poly8
   {
     //! Integer type
-    using itype = std::int8_t;
+    using itype = std::uint8_t;
     //! vectors of itype
     using vtype = std::vector<itype>;
 
