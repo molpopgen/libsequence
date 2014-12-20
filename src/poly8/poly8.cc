@@ -27,7 +27,7 @@ namespace Sequence
   {
     vtype dna2vtype( const std::string & s )
     {
-      vtype rv(s.size()/2 + 1, emptychar());
+      vtype rv(s.size()/2 + (s.size()%2), emptychar());
       bool even = (s.size() % 2 == 0.);
       unsigned j=0;
       for( unsigned i = 0 ; i < s.size() ;  )

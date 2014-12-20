@@ -36,10 +36,10 @@ BOOST_AUTO_TEST_CASE( create_1 )
 BOOST_AUTO_TEST_CASE( create_2 )
 {
   std::vector<double> pos = {1,2,3,4,5};
-  std::vector<std::string> data = {"AAAAA",
-				   "AAGAA",
-				   "CTGAA",
-				   "NAACT"};
+  std::vector<std::string> data = {"AAAA",
+				   "AAGA",
+				   "CTGA",
+				   "NAAC"};
 
   Sequence::PolySites ps(std::move(pos),std::move(data));
 
