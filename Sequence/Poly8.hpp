@@ -21,51 +21,60 @@ namespace Sequence
 
     /*!
       \return A vtype made from s
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( const std::string & s );
     /*!
       \return A vtype made from s
       \note Contents of s are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( std::string & s );
 
     /*!
       \return A vtype made from s
       \note Contents of s are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( std::string && s );
 
     /*!
       \return A vtype made from s
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( const Sequence::Seq & s );
 
     /*!
       \return A vtype made from s
       \note Contents of s are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( Sequence::Seq & s );
 
     /*!
       \return A vtype made from s
       \note Contents of s are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
      */
     vtype dna2vtype( Sequence::Seq && s );
 
     /*!
       \return A std::string made from v
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
     */
     std::string vtype2dna( const vtype & v );
 
     /*!
       \return A std::string made from v
       \note Contents of v are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
     */
     std::string vtype2dna( vtype & v );
 
     /*!
       \return A std::string made from v
       \note Contents of v are cleared
+      \throw Sequence::SeqException if data are not part of Sequence::dna_poly_alphabet
     */
     std::string vtype2dna( vtype && v );
   }
