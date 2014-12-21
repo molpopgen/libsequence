@@ -53,11 +53,6 @@ BOOST_AUTO_TEST_CASE( string_3 )
   const std::string x("AGXCGTQN"); //x contains non-DNA characters
 
   //The conversion to vtype will therefore suffer from integer overflow
-  Sequence::poly8::vtype x8 = Sequence::poly8::dna2vtype((x));
-
-  //And our back-conversion will be gibberish!
-  std::string x2 = Sequence::poly8::vtype2dna(x8);
-
-  //An so x will not equal x2
-  BOOST_CHECK(x != x2);
+  BOOST_CHECK_THROW(Sequence::poly8::vtype x8 = Sequence::poly8::dna2vtype((x)),
+		    Sequence::SeqException);
 }
