@@ -1,5 +1,5 @@
 #include <Sequence/poly8.hpp>
-
+#include <Sequence/SeqExceptions.hpp>
 namespace 
 {
   void writehi( Sequence::poly8::itype & byte, Sequence::poly8::itype nibble )
@@ -27,19 +27,30 @@ namespace Sequence
   {
     vtype dna2vtype( const std::string & s )
     {
-      vtype rv(s.size()/2 + (s.size()%2), emptychar());
       bool even = (s.size() % 2 == 0.);
+      vtype rv(s.size()/2 + !even, emptychar());
       unsigned j=0;
       for( unsigned i = 0 ; i < s.size() ;  )
 	{
-	  writehi(rv[j], itype( std::distance( dna_poly_alphabet.begin(),
-						std::find(dna_poly_alphabet.begin(),
-							  dna_poly_alphabet.end(),s[i]) ) ) );
+	  auto itr = std::find(dna_poly_alphabet.begin(),
+			       dna_poly_alphabet.end(),s[i]);
+	  std::array<const char,16>::size_type d = 
+	    std::array<const char,16>::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
+	  if( d >= NOTPOLYCHAR )
+	    {
+	      throw SeqException("character out of range");
+	    }
+	  writehi(rv[j], itype(d));
 	  if( even || i < s.size() - 1 )
 	    {
-	      writelo(rv[j], itype( std::distance( dna_poly_alphabet.begin(),
-						   std::find(dna_poly_alphabet.begin(),
-							      dna_poly_alphabet.end(),s[i+1]) ) ) );
+	      itr = std::find(dna_poly_alphabet.begin(),
+			      dna_poly_alphabet.end(),s[i+1]);
+	      d = std::array<const char,16>::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
+	      if( d >= NOTPOLYCHAR )
+		{
+		  throw SeqException("character out of range");
+		}
+	      writelo(rv[j], itype(d));
 	      i+=2;
 	    }
 	  else
