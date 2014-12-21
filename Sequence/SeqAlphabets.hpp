@@ -13,14 +13,14 @@ namespace Sequence {
 
   /*!
     @brief Container type for nucleotide alphabets
-    \ingroup alphabets
+    \ingroup Alphabets
   */
-  
   using alphabet_t = const std::array<const char,16>;
+  
   /*!
     @brief Alphabet for DNA sequences
     Valid DNA characters.  Upper-case only.  
-    Both . and - are accepted as gap characters
+    Only - is accepted as gap characters
     \note http://www.bioinformatics.org/sms/iupac.html, excluding U,
     and ., which is redundant with -
     \ingroup Alphabets
