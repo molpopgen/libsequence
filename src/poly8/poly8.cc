@@ -1,19 +1,12 @@
 #include <Sequence/poly8.hpp>
 #include <Sequence/SeqExceptions.hpp>
+#include <Sequence/util/nibble.hpp>
 namespace 
 {
-  void writehi( Sequence::poly8::itype & byte, Sequence::poly8::itype nibble )
-  {
-    byte = (byte & 0x0F) | Sequence::poly8::itype((nibble & 0xF) << 4) ;
-  }
-  
-  void writelo( Sequence::poly8::itype & byte, Sequence::poly8::itype nibble )
-  {
-    byte = (byte & 0xF0) | Sequence::poly8::itype(nibble & 0xF);
-  }
-
   Sequence::poly8::itype emptychar(void)
   {
+    using Sequence::nibble::writehi;
+    using Sequence::nibble::writelo;
     Sequence::poly8::itype x = 0;
     writehi(x,Sequence::poly8::itype(Sequence::POLYEOS));
     writelo(x,Sequence::poly8::itype(Sequence::POLYEOS));
@@ -27,6 +20,8 @@ namespace Sequence
   {
     vtype dna2vtype( const std::string & s )
     {
+      using Sequence::nibble::writehi;
+      using Sequence::nibble::writelo;
       bool even = (s.size() % 2 == 0.);
       vtype rv(s.size()/2 + !even, emptychar());
       unsigned j=0;
