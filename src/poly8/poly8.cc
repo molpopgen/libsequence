@@ -16,12 +16,13 @@ namespace
 
 namespace Sequence
 {
+  using nibble::writehi;
+  using nibble::writelo;
   namespace poly8
   {
+    using Sequence::alphabet_t;
     vtype dna2vtype( const std::string & s )
     {
-      using Sequence::nibble::writehi;
-      using Sequence::nibble::writelo;
       bool even = (s.size() % 2 == 0.);
       vtype rv(s.size()/2 + !even, emptychar());
       unsigned j=0;
@@ -29,8 +30,8 @@ namespace Sequence
 	{
 	  auto itr = std::find(dna_poly_alphabet.begin(),
 			       dna_poly_alphabet.end(),s[i]);
-	  std::array<const char,16>::size_type d = 
-	    std::array<const char,16>::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
+	  alphabet_t::size_type d = 
+	    alphabet_t::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
 	  if( d >= NOTPOLYCHAR )
 	    {
 	      throw SeqException("character out of range");
@@ -40,7 +41,7 @@ namespace Sequence
 	    {
 	      itr = std::find(dna_poly_alphabet.begin(),
 			      dna_poly_alphabet.end(),s[i+1]);
-	      d = std::array<const char,16>::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
+	      d = alphabet_t::size_type(std::distance( dna_poly_alphabet.begin(), itr ));
 	      if( d >= NOTPOLYCHAR )
 		{
 		  throw SeqException("character out of range");

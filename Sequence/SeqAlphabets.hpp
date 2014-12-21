@@ -10,14 +10,23 @@
   @brief Various character sets for different types of analysis
 */
 namespace Sequence {
+
+  /*!
+    @brief Container type for nucleotide alphabets
+    \ingroup alphabets
+  */
+  
+  using alphabet_t = const std::array<const char,16>;
   /*!
     @brief Alphabet for DNA sequences
     Valid DNA characters.  Upper-case only.  
     Both . and - are accepted as gap characters
-    \note http://www.bioinformatics.org/sms/iupac.html, excluding U
+    \note http://www.bioinformatics.org/sms/iupac.html, excluding U,
+    and ., which is redundant with -
     \ingroup Alphabets
   */
-  extern const std::array<const char,17> dna_alphabet;
+
+  extern const alphabet_t dna_alphabet;
 
   /*!
     @brief Alphabet for polymorphism (SNP) analysis.
@@ -25,20 +34,20 @@ namespace Sequence {
     in a 8-bit integer.
     \ingroup Alphabets
   */
-  extern const std::array<const char,16> dna_poly_alphabet;
+  extern const alphabet_t dna_poly_alphabet;
 
   /*!
     @brief An index from dna_poly_alphabet >= this is not
     a valid character for variation analysis
     \ingroup Alphabets
   */
-  extern const std::array<const char,16>::size_type NOTPOLYCHAR;
+  extern const alphabet_t::size_type NOTPOLYCHAR;
 
   /*!
     @brief The value of terminating an encoded string of SNP data
     \ingroup Alphabets
    */
-  extern const std::array<const char,16>::size_type POLYEOS;
+  extern const alphabet_t::size_type POLYEOS;
 
   /*!
     @brief test if character is part of Sequence::dna_alphabet
