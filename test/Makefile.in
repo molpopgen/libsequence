@@ -99,7 +99,6 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	Poly8Test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	Ptable8test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	pack8test$(EXEEXT) Seq8test$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
@@ -164,10 +163,6 @@ am__FastaOperations_SOURCES_DIST = FastaOperations.cc
 @BUNIT_TEST_PRESENT_TRUE@	FastaOperations.$(OBJEXT)
 FastaOperations_OBJECTS = $(am_FastaOperations_OBJECTS)
 FastaOperations_LDADD = $(LDADD)
-am__Poly8Test_SOURCES_DIST = Poly8Test.cc
-@BUNIT_TEST_PRESENT_TRUE@am_Poly8Test_OBJECTS = Poly8Test.$(OBJEXT)
-Poly8Test_OBJECTS = $(am_Poly8Test_OBJECTS)
-Poly8Test_LDADD = $(LDADD)
 am__PolySIMtest_SOURCES_DIST = PolySIMtest.cc
 @BUNIT_TEST_PRESENT_TRUE@am_PolySIMtest_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	PolySIMtest.$(OBJEXT)
@@ -286,9 +281,8 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
 	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
 	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(Poly8Test_SOURCES) $(PolySIMtest_SOURCES) \
-	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
-	$(PolyTableBadBehavior_SOURCES) \
+	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
+	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
 	$(Ptable8test_SOURCES) $(PtableTest_SOURCES) \
 	$(RedundancyCom95test_SOURCES) $(Seq8test_SOURCES) \
@@ -304,7 +298,7 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__FastaExplicitIO_SOURCES_DIST) \
 	$(am__FastaIO_SOURCES_DIST) \
 	$(am__FastaOperations_SOURCES_DIST) \
-	$(am__Poly8Test_SOURCES_DIST) $(am__PolySIMtest_SOURCES_DIST) \
+	$(am__PolySIMtest_SOURCES_DIST) \
 	$(am__PolySNPtest_SOURCES_DIST) \
 	$(am__PolySitesIO_SOURCES_DIST) \
 	$(am__PolyTableBadBehavior_SOURCES_DIST) \
@@ -500,7 +494,8 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@PtableTest_SOURCES = PtableTest.cc
 
 #preProcTest_SOURCES=preProcTest.cc
-@BUNIT_TEST_PRESENT_TRUE@Poly8Test_SOURCES = Poly8Test.cc
+
+#Poly8Test_SOURCES=Poly8Test.cc
 @BUNIT_TEST_PRESENT_TRUE@Ptable8test_SOURCES = Ptable8test.cc
 @BUNIT_TEST_PRESENT_TRUE@pack8test_SOURCES = pack8test.cc
 @BUNIT_TEST_PRESENT_TRUE@Seq8test_SOURCES = Seq8test.cc
@@ -579,10 +574,6 @@ FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEP
 FastaOperations$(EXEEXT): $(FastaOperations_OBJECTS) $(FastaOperations_DEPENDENCIES) $(EXTRA_FastaOperations_DEPENDENCIES) 
 	@rm -f FastaOperations$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaOperations_OBJECTS) $(FastaOperations_LDADD) $(LIBS)
-
-Poly8Test$(EXEEXT): $(Poly8Test_OBJECTS) $(Poly8Test_DEPENDENCIES) $(EXTRA_Poly8Test_DEPENDENCIES) 
-	@rm -f Poly8Test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(Poly8Test_OBJECTS) $(Poly8Test_LDADD) $(LIBS)
 
 PolySIMtest$(EXEEXT): $(PolySIMtest_OBJECTS) $(PolySIMtest_DEPENDENCIES) $(EXTRA_PolySIMtest_DEPENDENCIES) 
 	@rm -f PolySIMtest$(EXEEXT)
@@ -665,7 +656,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FastaOperations.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Poly8Test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySIMtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySNPtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySitesIO.Po@am__quote@

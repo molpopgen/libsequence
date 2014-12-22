@@ -19,7 +19,6 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	PtableTest \
-	Poly8Test \
 	Ptable8test \
 	pack8test \
 	Seq8test
@@ -95,7 +94,7 @@ PtableTest_SOURCES=PtableTest.cc
 
 #preProcTest_SOURCES=preProcTest.cc
 
-Poly8Test_SOURCES=Poly8Test.cc
+#Poly8Test_SOURCES=Poly8Test.cc
 
 Ptable8test_SOURCES=Ptable8test.cc
 
