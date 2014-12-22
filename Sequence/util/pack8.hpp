@@ -9,6 +9,8 @@
 
 /*! \namespace Sequence::pack8
   @brief routines for performing 4-bit encoding of DNA sequences into 8-bit integers
+
+  See unit tests pack8test.cc for usage scenarios
  */
 namespace Sequence
 {
