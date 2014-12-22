@@ -56,7 +56,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
 	SummStats/preProc.cc \
-	poly8/poly8.cc \
 	Ptable8.cc \
 	Seq/Seq8.cc \
 	util/pack8.cc
