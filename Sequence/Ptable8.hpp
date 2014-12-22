@@ -1,14 +1,14 @@
 #ifndef __SEQUENCE_PTABLE8_HPP__
 #define __SEQUENCE_PTABLE8_HPP__
 
-#include <Sequence/Poly8.hpp>
+#include <Sequence/Seq8.hpp>
 #include <Sequence/typedefs.hpp>
 #include <utility>
 
 namespace Sequence
 {
   //! @brief Analog to Sequence::polymorphicSite
-  using poly8site = std::pair<double,Sequence::poly8::vtype>;
+  using poly8site = std::pair<double,Seq8>;
   //fwd declarations
   class PolyTable;
   class Ptable8 : public std::vector< poly8site >
