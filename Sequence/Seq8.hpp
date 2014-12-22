@@ -37,17 +37,46 @@ namespace Sequence
     using iterator = pack8::vtype::iterator;
     using const_iterator = pack8::vtype::const_iterator;
 
-    const_reference & operator[]( const size_type & ) const;
+    /*!
+      \return An ASCI character corresponding to the i-th
+      position in the unpacked sequence
+    */
+    const_reference & operator[]( const size_type & i) const;
     Seq8 & operator=(const Seq8 & rhs) = default;
     Seq8 & operator=( Seq8 && rhs) = default;
-    iterator begin();    
-    iterator end();    
-    const_iterator begin() const;    
-    const_iterator end() const;    
-    const_iterator cbegin() const;    
+
+    /*!
+      \return An iterator to the start of the compressed sequence
+    */
+    iterator begin();
+    /*!
+      \return The end of the compressed sequence
+    */
+    iterator end();
+    /*!
+      \return An iterator to the start of the compressed sequence
+    */
+    const_iterator begin() const;
+    /*!
+      \return The end of the compressed sequence
+    */
+    const_iterator end() const;
+    /*!
+      \return An iterator to the start of the compressed sequence
+    */
+    const_iterator cbegin() const;
+    /*!
+      \return The end of the compressed sequence
+    */
     const_iterator cend() const;    
 
+    /*!
+      \return The length of the unpacked string, in bytes
+    */
     std::string::size_type size() const;
+    /*!
+      \return The length of the unpacked string, in bytes
+    */
     std::string::size_type length() const;
 
     std::string unpack() const;
