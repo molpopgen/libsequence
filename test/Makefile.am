@@ -19,11 +19,12 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	PtableTest \
-	preProcTest \
 	Poly8Test \
 	Ptable8test \
 	pack8test \
 	Seq8test
+
+#	preProcTest
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -92,7 +93,7 @@ alphabets_SOURCES=alphabets.cc
 
 PtableTest_SOURCES=PtableTest.cc
 
-preProcTest_SOURCES=preProcTest.cc
+#preProcTest_SOURCES=preProcTest.cc
 
 Poly8Test_SOURCES=Poly8Test.cc
 
