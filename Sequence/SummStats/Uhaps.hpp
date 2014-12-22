@@ -1,7 +1,7 @@
 #ifndef __SEQUENCE_SUMMSTATS_UHAPS_HPP__
 #define __SEQUENCE_SUMMSTATS_UHAPS_HPP__
 
-#include <Sequence/Poly8.hpp>
+#include <Sequence/Seq8.hpp>
 #include <Sequence/Ptable.hpp>
 #include <Sequence/PolyTable.hpp>
 #include <list>
@@ -12,7 +12,7 @@ namespace Sequence
   class Uhaps
   {
   private:
-    using ustring_ctr_t = std::list<poly8::vtype>;
+    using ustring_ctr_t = std::list<Seq8>;
     using ustring_const_iterator = ustring_ctr_t::const_iterator;
     using ustring_itr_ctr_t = std::vector< ustring_const_iterator >;
     mutable ustring_ctr_t ustrings;
