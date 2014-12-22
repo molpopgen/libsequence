@@ -9,7 +9,7 @@ namespace Sequence
     this->reserve(p.size());
     std::for_each( p.begin(), p.end(),
 		   [this]( const polymorphicSite & p ) {
-		     this->push_back( poly8site(p.first, poly8::dna2vtype(p.second)) );
+		     this->push_back( poly8site(p.first, Seq8(p.second,dna_poly_alphabet)) );
 		   });
   }
   
@@ -19,7 +19,8 @@ namespace Sequence
     this->reserve(p.numsites());
     std::for_each( p.sbegin(), p.send(),
 		   [this]( const polymorphicSite & p ) {
-		     this->push_back( poly8site(p.first, poly8::dna2vtype(p.second)) );
+		     this->push_back( poly8site(p.first, Seq8(p.second,dna_poly_alphabet)) );
+		     //poly8::dna2vtype(p.second)) );
 		   });
   }
 
@@ -35,7 +36,7 @@ namespace Sequence
     this->reserve(p.size());
     std::for_each( p.cbegin(), p.cend(),
 		   [this]( const polymorphicSite & p ) {
-		     this->push_back( poly8site(p.first, poly8::dna2vtype(p.second)) );
+		     this->push_back( poly8site(p.first, Seq8(p.second,dna_poly_alphabet)) );//poly8::dna2vtype(p.second)) );
 		   });
   }
   
@@ -45,7 +46,8 @@ namespace Sequence
     this->reserve(p.size());
     std::for_each( p.begin(), p.end(),
 		   [this]( polymorphicSite & p ) {
-		     this->push_back( poly8site(p.first, poly8::dna2vtype(std::ref(p.second))) );
+		     this->push_back( poly8site(p.first,Seq8(p.second,std::ref(dna_poly_alphabet))) );//poly8::dna2vtype(p.second)) );
+						//poly8::dna2vtype(std::ref(p.second))) );
 		   });
     p.clear();
   }
