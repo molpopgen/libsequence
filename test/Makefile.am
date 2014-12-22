@@ -21,7 +21,9 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	PtableTest \
 	preProcTest \
 	Poly8Test \
-	Ptable8test
+	Ptable8test \
+	pack8test \
+	Seq8test
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -95,5 +97,9 @@ preProcTest_SOURCES=preProcTest.cc
 Poly8Test_SOURCES=Poly8Test.cc
 
 Ptable8test_SOURCES=Ptable8test.cc
+
+pack8test_SOURCES=pack8test.cc
+
+Seq8test_SOURCES=Seq8test.cc
 
 endif #if BUNIT_TEST_PRESENT

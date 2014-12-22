@@ -15,7 +15,7 @@ namespace Sequence {
     @brief Container type for nucleotide alphabets
     \ingroup Alphabets
   */
-  using alphabet_t = const std::array<const char,16>;
+  using alphabet_t = std::array<const char,16>;
   
   /*!
     @brief Alphabet for DNA sequences

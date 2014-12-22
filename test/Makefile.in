@@ -101,7 +101,8 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	PtableTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	preProcTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	Poly8Test$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	Ptable8test$(EXEEXT)
+@BUNIT_TEST_PRESENT_TRUE@	Ptable8test$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	pack8test$(EXEEXT) Seq8test$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @BUNIT_TEST_PRESENT_TRUE@@DEBUG_TRUE@am__append_3 = -g
@@ -212,6 +213,10 @@ am__RedundancyCom95test_SOURCES_DIST = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test.$(OBJEXT)
 RedundancyCom95test_OBJECTS = $(am_RedundancyCom95test_OBJECTS)
 RedundancyCom95test_LDADD = $(LDADD)
+am__Seq8test_SOURCES_DIST = Seq8test.cc
+@BUNIT_TEST_PRESENT_TRUE@am_Seq8test_OBJECTS = Seq8test.$(OBJEXT)
+Seq8test_OBJECTS = $(am_Seq8test_OBJECTS)
+Seq8test_LDADD = $(LDADD)
 am__SeqConversions_SOURCES_DIST = SeqConversions.cc
 @BUNIT_TEST_PRESENT_TRUE@am_SeqConversions_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	SeqConversions.$(OBJEXT)
@@ -235,6 +240,10 @@ am__fastqIO_SOURCES_DIST = fastqIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
 fastqIO_OBJECTS = $(am_fastqIO_OBJECTS)
 fastqIO_LDADD = $(LDADD)
+am__pack8test_SOURCES_DIST = pack8test.cc
+@BUNIT_TEST_PRESENT_TRUE@am_pack8test_OBJECTS = pack8test.$(OBJEXT)
+pack8test_OBJECTS = $(am_pack8test_OBJECTS)
+pack8test_LDADD = $(LDADD)
 am__preProcTest_SOURCES_DIST = preProcTest.cc
 @BUNIT_TEST_PRESENT_TRUE@am_preProcTest_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	preProcTest.$(OBJEXT)
@@ -288,10 +297,11 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
 	$(Ptable8test_SOURCES) $(PtableTest_SOURCES) \
-	$(RedundancyCom95test_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(alphabets_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(preProcTest_SOURCES) $(testSimDataIO_SOURCES)
+	$(RedundancyCom95test_SOURCES) $(Seq8test_SOURCES) \
+	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(pack8test_SOURCES) $(preProcTest_SOURCES) \
+	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
@@ -308,10 +318,12 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__PolyTableTweaking_SOURCES_DIST) \
 	$(am__Ptable8test_SOURCES_DIST) $(am__PtableTest_SOURCES_DIST) \
 	$(am__RedundancyCom95test_SOURCES_DIST) \
+	$(am__Seq8test_SOURCES_DIST) \
 	$(am__SeqConversions_SOURCES_DIST) \
 	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
 	$(am__fastqConstructors_SOURCES_DIST) \
-	$(am__fastqIO_SOURCES_DIST) $(am__preProcTest_SOURCES_DIST) \
+	$(am__fastqIO_SOURCES_DIST) $(am__pack8test_SOURCES_DIST) \
+	$(am__preProcTest_SOURCES_DIST) \
 	$(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -494,6 +506,8 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@preProcTest_SOURCES = preProcTest.cc
 @BUNIT_TEST_PRESENT_TRUE@Poly8Test_SOURCES = Poly8Test.cc
 @BUNIT_TEST_PRESENT_TRUE@Ptable8test_SOURCES = Ptable8test.cc
+@BUNIT_TEST_PRESENT_TRUE@pack8test_SOURCES = pack8test.cc
+@BUNIT_TEST_PRESENT_TRUE@Seq8test_SOURCES = Seq8test.cc
 all: all-am
 
 .SUFFIXES:
@@ -610,6 +624,10 @@ RedundancyCom95test$(EXEEXT): $(RedundancyCom95test_OBJECTS) $(RedundancyCom95te
 	@rm -f RedundancyCom95test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_LDADD) $(LIBS)
 
+Seq8test$(EXEEXT): $(Seq8test_OBJECTS) $(Seq8test_DEPENDENCIES) $(EXTRA_Seq8test_DEPENDENCIES) 
+	@rm -f Seq8test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(Seq8test_OBJECTS) $(Seq8test_LDADD) $(LIBS)
+
 SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES) $(EXTRA_SeqConversions_DEPENDENCIES) 
 	@rm -f SeqConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SeqConversions_OBJECTS) $(SeqConversions_LDADD) $(LIBS)
@@ -629,6 +647,10 @@ fastqConstructors$(EXEEXT): $(fastqConstructors_OBJECTS) $(fastqConstructors_DEP
 fastqIO$(EXEEXT): $(fastqIO_OBJECTS) $(fastqIO_DEPENDENCIES) $(EXTRA_fastqIO_DEPENDENCIES) 
 	@rm -f fastqIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(fastqIO_OBJECTS) $(fastqIO_LDADD) $(LIBS)
+
+pack8test$(EXEEXT): $(pack8test_OBJECTS) $(pack8test_DEPENDENCIES) $(EXTRA_pack8test_DEPENDENCIES) 
+	@rm -f pack8test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(pack8test_OBJECTS) $(pack8test_LDADD) $(LIBS)
 
 preProcTest$(EXEEXT): $(preProcTest_OBJECTS) $(preProcTest_DEPENDENCIES) $(EXTRA_preProcTest_DEPENDENCIES) 
 	@rm -f preProcTest$(EXEEXT)
@@ -661,11 +683,13 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PtableTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Seq8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alphabets.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pack8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/preProcTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 

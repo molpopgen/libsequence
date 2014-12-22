@@ -70,4 +70,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SeqAlphabets.hpp \
 	preProc.hpp \
 	Poly8.hpp \
-	Ptable8.hpp
+	Ptable8.hpp \
+	Seq8.hpp 
