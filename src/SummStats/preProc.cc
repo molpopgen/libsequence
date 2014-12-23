@@ -80,7 +80,8 @@ namespace Sequence {
     bool isodd = (__pt.begin()->second.size() % 2);
     for( Seq8::size_type i = 0 ; i < nsam ; ++i )
       {
-	pack8::vtype a(__pt.size()/2),b(a);
+	pack8::vtype a(__pt.size()/2);
+	pack8::vtype b = (!isodd) ? a : pack8::vtype();
 	bool idx = 0;
 	pack8::vtype::size_type j = 0;
 	for( const auto & p : __pt )
@@ -97,14 +98,16 @@ namespace Sequence {
 	    	//read hi, write hi a
 	    	writehi(a[j],readhi(*(p.second.begin()+i)));
 	    	//read lo, write hi b
-	    	writehi(b[j],readlo(*(p.second.begin()+i)));
+		if(!b.empty())
+		  writehi(b[j],readlo(*(p.second.begin()+i)));
 	      }
 	    else 
 	      {
 	    	//read hi, write lo a
 	    	writelo(a[j],readhi(*(p.second.begin()+i)));
 	    	//read lo, write lo b
-	    	writelo(b[j],readlo(*(p.second.begin()+i)));
+		if(!b.empty())
+		  writelo(b[j],readlo(*(p.second.begin()+i)));
 	      }
 	    idx = !idx;
 	    //if(idx) ++j;
@@ -124,7 +127,22 @@ namespace Sequence {
 	    ustring_itrs.emplace_back(std::move(itr));
 	  }
 
-	//Need to decide how to treat "b"
+	if(! b.empty() )
+	  {
+	     itr = std::find_if( ustrings.cbegin(),
+				 ustrings.cend(),
+				 [&b](const Seq8 __s8) {
+				   return b == __s8.second;
+				 } );
+	     if ( itr == ustrings.cend() )
+	       {
+		 //Need new constructor here in Seq8
+	       }
+	     else
+	       {
+		 ustring_itrs.emplace_back(std::move(itr));
+	       }
+	  }
       }
     // using namespace nibble;
     // if(__pt.empty()) return 0;
