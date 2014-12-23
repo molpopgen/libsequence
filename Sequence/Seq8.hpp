@@ -36,6 +36,7 @@ namespace Sequence
     using size_type = pack8::vtype::size_type;
     using iterator = pack8::vtype::iterator;
     using const_iterator = pack8::vtype::const_iterator;
+    using difference_type = pack8::vtype::difference_type;
 
     /*!
       \return An ASCI character corresponding to the i-th
