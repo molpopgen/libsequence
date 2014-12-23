@@ -77,6 +77,7 @@ namespace Sequence {
     if(__pt.empty()) return 0;
     //Bioloigcally, this is nsam/2...
     Seq8::size_type nsam = __pt.begin()->second.second.size();
+    bool isodd = (__pt.begin()->second.size() % 2);
     for( Seq8::size_type i = 0 ; i < nsam ; ++i )
       {
 	pack8::vtype a(__pt.size()/2),b(a);
@@ -84,12 +85,13 @@ namespace Sequence {
 	pack8::vtype::size_type j = 0;
 	for( const auto & p : __pt )
 	  {
-	    if( p.second.size() != nsam )
-	      {
-		ustrings.clear();
-		ustring_itrs.clear();
-		return -1;
-	      }
+	    // The below is not correct if it is a Seq8...
+	    // if( p.second.size() != nsam )
+	    //   {
+	    // 	ustrings.clear();
+	    // 	ustring_itrs.clear();
+	    // 	return -1;
+	    //   }
 	    if ( idx )
 	      {
 	    	//read hi, write hi a
@@ -105,7 +107,8 @@ namespace Sequence {
 	    	writelo(b[j],readlo(*(p.second.begin()+i)));
 	      }
 	    idx = !idx;
-	    if(idx) ++j;
+	    //if(idx) ++j;
+	    ++j;
 	  }
 	auto itr = std::find_if( ustrings.cbegin(),
 				 ustrings.cend(),
