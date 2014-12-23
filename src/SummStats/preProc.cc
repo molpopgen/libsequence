@@ -86,13 +86,12 @@ namespace Sequence {
 	pack8::vtype::size_type j = 0;
 	for( const auto & p : __pt )
 	  {
-	    // The below is not correct if it is a Seq8...
-	    // if( p.second.size() != nsam )
-	    //   {
-	    // 	ustrings.clear();
-	    // 	ustring_itrs.clear();
-	    // 	return -1;
-	    //   }
+	    if( p.second.second.size() != nsam )
+	      {
+	     	ustrings.clear();
+	     	ustring_itrs.clear();
+	     	return -1;
+	      }
 	    if ( idx )
 	      {
 	    	//read hi, write hi a
