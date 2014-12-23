@@ -95,18 +95,18 @@ namespace Sequence {
 	    if ( idx )
 	      {
 	    	//read hi, write hi a
-	    	writehi(a[j],readhi(*(p.second.begin()+i)));
+	    	writehi(a[j],readhi(*(p.second.begin()+Seq8::difference_type(i))));
 	    	//read lo, write hi b
 		if(!b.empty())
-		  writehi(b[j],readlo(*(p.second.begin()+i)));
+		  writehi(b[j],readlo(*(p.second.begin()+Seq8::difference_type(i))));
 	      }
 	    else 
 	      {
 	    	//read hi, write lo a
-	    	writelo(a[j],readhi(*(p.second.begin()+i)));
+	    	writelo(a[j],readhi(*(p.second.begin()+Seq8::difference_type(i))));
 	    	//read lo, write lo b
 		if(!b.empty())
-		  writelo(b[j],readlo(*(p.second.begin()+i)));
+		  writelo(b[j],readlo(*(p.second.begin()+Seq8::difference_type(i))));
 	      }
 	    idx = !idx;
 	    //if(idx) ++j;
