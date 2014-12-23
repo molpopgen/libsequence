@@ -81,7 +81,7 @@ namespace Sequence {
     for( Seq8::size_type i = 0 ; i < nsam ; ++i )
       {
 	pack8::vtype a(__pt.size()/2);
-	pack8::vtype b = (!isodd) ? a : pack8::vtype();
+	pack8::vtype b = (!isodd && i == nsam-1) ? a : pack8::vtype();
 	bool idx = 0;
 	pack8::vtype::size_type j = 0;
 	for( const auto & p : __pt )
