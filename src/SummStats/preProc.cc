@@ -73,6 +73,56 @@ namespace Sequence {
 
   int Uhaps::populate(const Ptable8 & __pt)
   {
+    using namespace nibble;
+    if(__pt.empty()) return 0;
+    //Bioloigcally, this is nsam/2...
+    Seq8::size_type nsam = __pt.begin()->second.second.size();
+    for( Seq8::size_type i = 0 ; i < nsam ; ++i )
+      {
+	pack8::vtype a(__pt.size()/2),b(a);
+	bool idx = 0;
+	pack8::vtype::size_type j = 0;
+	for( const auto & p : __pt )
+	  {
+	    if( p.second.size() != nsam )
+	      {
+		ustrings.clear();
+		ustring_itrs.clear();
+		return -1;
+	      }
+	    if ( idx )
+	      {
+	    	//read hi, write hi a
+	    	writehi(a[j],readhi(*(p.second.begin()+i)));
+	    	//read lo, write hi b
+	    	writehi(b[j],readlo(*(p.second.begin()+i)));
+	      }
+	    else 
+	      {
+	    	//read hi, write lo a
+	    	writelo(a[j],readhi(*(p.second.begin()+i)));
+	    	//read lo, write lo b
+	    	writelo(b[j],readlo(*(p.second.begin()+i)));
+	      }
+	    idx = !idx;
+	    if(idx) ++j;
+	  }
+	auto itr = std::find_if( ustrings.cbegin(),
+				 ustrings.cend(),
+				 [&a](const Seq8 __s8) {
+				   return a == __s8.second;
+				 } );
+	if ( itr == ustrings.cend() )
+	  {
+	    //Need new constructor here in Seq8
+	  }
+	else
+	  {
+	    ustring_itrs.emplace_back(std::move(itr));
+	  }
+
+	//Need to decide how to treat "b"
+      }
     // using namespace nibble;
     // if(__pt.empty()) return 0;
     // Seq8::size_type nsam = __pt.begin()->second.size();
@@ -138,11 +188,39 @@ namespace Sequence {
 
   int Uhaps::populate(const PolyTable & __pt)
   {
+    if(__pt.empty()) return 0;
+    for( const auto & s : __pt )
+      {
+	Seq8 t(s,dna_poly_alphabet);
+	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),t);
+	if( itr == ustrings.end() )
+	  {
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(t)) );
+	  }
+	else
+	  {
+	    ustring_itrs.emplace_back(std::move(itr));
+	  }
+      }
     return 0;
   }
 
   int Uhaps::populate(PolyTable && __pt)
   {
+    if(__pt.empty()) return 0;
+    for( auto & s : __pt )
+      {
+	Seq8 t(s,dna_poly_alphabet);
+	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),t);
+	if( itr == ustrings.end() )
+	  {
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(t)) );
+	  }
+	else
+	  {
+	    ustring_itrs.emplace_back(std::move(itr));
+	  }
+      }
     return 0;
   }
 
