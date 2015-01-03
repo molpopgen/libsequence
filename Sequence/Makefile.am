@@ -28,8 +28,8 @@ pkginclude_HEADERS = AlignStream.hpp\
 	PolyTable.hpp\
 	PolyTableFunctions.hpp\
 	PolyFunctional.hpp\
-	PolyTableManip.hpp\
 	PolyTableSlice.hpp\
+	polySiteVector.hpp \
 	Recombination.hpp\
 	RedundancyCom95.hpp\
 	Seq.hpp\
@@ -62,7 +62,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	samflag.hpp\
 	samfunctions.hpp\
 	typedefs.hpp \
-	Ptable.hpp \
 	SummStats.hpp \
 	IOhelp.hpp \
 	bamrecord.hpp \

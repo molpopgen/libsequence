@@ -45,7 +45,7 @@ namespace Sequence
   */
     : PolyTableBase( std::vector<double>(nsnps,0.) ,
 		     std::vector< std::string >( nsam, std::string(nsnps,' ') )),
-      pv(Ptable()),
+      pv(polySiteVector()),
       non_const_access(true)
   {}
 
@@ -60,7 +60,7 @@ namespace Sequence
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : 
-    pv(Ptable()),
+    pv(polySiteVector()),
     non_const_access(true)
   {
     if (beg>=end)
@@ -292,7 +292,7 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Ptable(std::move(rotatePolyTable(this)));
+	pv = polySiteVector(std::move(make_polySiteVector(*this)));
 	non_const_access=false;
       }
     return pv.begin();
@@ -307,7 +307,7 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Ptable(std::move(rotatePolyTable(this)));
+	pv = polySiteVector(std::move(make_polySiteVector(*this)));
 	non_const_access=false;
       }
     return pv.end();
@@ -322,7 +322,7 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Ptable(std::move(rotatePolyTable(this)));
+	pv = polySiteVector(std::move(make_polySiteVector(*this)));
 	non_const_access=false;
       }
     return pv.cbegin();
@@ -337,7 +337,7 @@ namespace Sequence
   {
     if(non_const_access == true)
       {
-	pv = Ptable(std::move(rotatePolyTable(this)));
+	pv = polySiteVector(std::move(make_polySiteVector(*this)));
 	non_const_access=false;
       }
     return pv.cend();

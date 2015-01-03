@@ -2,7 +2,7 @@
 #define __SEQUENCE_PTABLE8_HPP__
 
 #include <Sequence/Seq8.hpp>
-#include <Sequence/typedefs.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <utility>
 
 namespace Sequence

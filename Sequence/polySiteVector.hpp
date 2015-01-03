@@ -21,25 +21,35 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-/*! \file typedefs.hpp
-  Typedefs used in the library are defined here.
-  Wherever possible, types from namespace std
-  are given forward declarations. 
-  @brief typedefs used by libsequence
+#ifndef __POLYSITEVECTOR_MANIP_HPP__
+#define __POLYSITEVECTOR_MANIP_HPP__
+
+
+/*! \file Sequence/polySiteVector.hpp
+  @brief Site-major variation tables in ASCII format
 */
-#ifndef __SEQUENCE_TYPEDEFS_HPP
-#define __SEQUENCE_TYPEDEFS_HPP
-#include <vector>
-#include <utility>
+
 #include <string>
+#include <utility>
+#include <vector>
+
 namespace Sequence
 {
-  /*! 
-    A CodonUsageTable is a vector of pairs.  In each pair,
-    the first element is the codon, and the second element
-    is an integer counting the number of occurrences of 
-    the codon
+  class PolyTable;
+
+  /*!
+    For polymorphism data, a Site can be represented as
+    a position (a double) and the characters at 
+    that positions (a std::string)
   */
-  typedef std::vector< std::pair<std::string,int> > CodonUsageTable;
+  using polymorphicSite = std::pair< double, std::string >;
+
+  /*!
+    A polymorphism data set can be represented as
+    a vector containing a sequence of polymorphicSite
+  */
+  using polySiteVector = std::vector< polymorphicSite >;
+
+  polySiteVector make_polySiteVector(const Sequence::PolyTable & data);
 }
 #endif

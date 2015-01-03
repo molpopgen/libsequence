@@ -48,7 +48,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	hts/samrecord.cc\
 	hts/samflag.cc\
 	hts/samfunctions.cc\
-	Ptable.cc \
+	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	IOhelp.cc \
