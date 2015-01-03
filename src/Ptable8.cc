@@ -1,6 +1,7 @@
 #include <Sequence/Ptable8.hpp>
 #include <Sequence/PolyTable.hpp>
 #include <iostream>
+#include <algorithm>
 namespace Sequence
 {
   Ptable8::Ptable8( const std::initializer_list<polymorphicSite> & p) : base()

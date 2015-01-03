@@ -2,7 +2,7 @@
 #include <Sequence/util/nibble.hpp>
 #include <Sequence/SeqExceptions.hpp>
 #include <functional>
-
+#include <algorithm>
 namespace Sequence
 {
   namespace pack8
