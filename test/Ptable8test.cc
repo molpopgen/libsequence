@@ -5,11 +5,13 @@
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Ptable8.hpp>
-#include <Sequence/Ptable.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolySites.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
+
+using Ptable = Sequence::polySiteVector;
 
 //convert, convert back.  All good?
 BOOST_AUTO_TEST_CASE( create_1 )
@@ -47,7 +49,7 @@ BOOST_AUTO_TEST_CASE( create_2 )
 BOOST_AUTO_TEST_CASE( create_3 )
 {
   using psite = Sequence::polymorphicSite;
-  Sequence::Ptable __t = { psite(1.,"AAGC"),
+  Ptable __t = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") };
 
   Sequence::Ptable8 t(__t);
@@ -67,7 +69,7 @@ BOOST_AUTO_TEST_CASE( create_3 )
 BOOST_AUTO_TEST_CASE( create_4 )
 {
   using psite = Sequence::polymorphicSite;
-  Sequence::Ptable __t = { psite(1.,"AAGC"),
+  Ptable __t = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") };
 
   Sequence::Ptable8 t(std::cref(__t));
