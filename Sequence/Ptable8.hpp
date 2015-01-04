@@ -36,6 +36,7 @@ namespace Sequence
     using base::swap;
     using base::pop_back;
     using base::reserve;
+    using base::shrink_to_fit;
     using base::empty;
     using base::resize;
     using base::begin;
