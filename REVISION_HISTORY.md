@@ -50,6 +50,7 @@ However:
 * Routines for coalescent simulation moved from namespace Sequence to namespace Sequence::coalsim.
 * Support for 4-bit encoding of sequence data and variation data
 * Sequence::Ptable, introduced in 1.8.3, was a disaster, as it inherited publicly from std::vector, and was therefore a really poor design decision.  The code base has been reverted to a design centered around Sequence::polySiteVector + conversion functions.
+* Constructor inheritance for Sequence::Seq enabled.
 
 ## libsequence 1.8.3 (Dec. 5, 2014)
 
