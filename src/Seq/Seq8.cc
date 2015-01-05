@@ -1,43 +1,30 @@
 #include <Sequence/Seq8.hpp>
 #include <Sequence/util/nibble.hpp>
 #include <iostream>
+#include <utility>
 
 namespace Sequence
 {
   Seq8::Seq8(const alphabet_t & _a) : base(),
-				      alphabet( _a ),
-				      ssize(0)
+				      alphabet( _a )
   {
   }
   
   Seq8::Seq8 ( const std::string & seq,
-	       const alphabet_t & _a) : base( std::string(), pack8::dna2vtype(seq,_a) ),
-					alphabet( alphabet_t(_a) ),
-					ssize(seq.size())
+	       const alphabet_t & _a) : base( seq.size(), pack8::dna2vtype(seq,_a) ),
+					alphabet( alphabet_t(_a) )
 					
   {
   }
   
+  Seq8::Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a) : base(std::move(ssize),std::move(data)),
+									       alphabet( alphabet_t(_a) )
+  {
+  }
+
   Seq8::Seq8( std::string & seq,
-	      const alphabet_t & _a) : base( std::string(), pack8::dna2vtype(seq,_a) ),
-				       alphabet( alphabet_t(_a) ),
-				       ssize(seq.size())
-  {
-  }
-  
-  Seq8::Seq8( const std::string & name,
-	      const std::string & seq,
-	      const alphabet_t & _a) : base( name, pack8::dna2vtype(seq,_a) ),
-				       alphabet( alphabet_t(_a) ),
-				       ssize(seq.size())
-  {
-  }
-  
-  Seq8::Seq8( std::string & name,
-	      std::string & seq,
-	      const alphabet_t & _a) : base( name, pack8::dna2vtype(seq,_a) ),
-				       alphabet( alphabet_t(_a) ),
-				       ssize(seq.size())
+	      const alphabet_t & _a) : base( seq.size(), pack8::dna2vtype(seq,_a) ),
+				       alphabet( alphabet_t(_a) )
   {
   }
 
@@ -80,32 +67,24 @@ namespace Sequence
    
   std::string::size_type Seq8::size() const
   {
-    return ssize;
+    return first;
   }
 
   std::string::size_type Seq8::length() const
   {
-    return ssize;
+    return first;
   }
 
   std::string Seq8::unpack() const
   {
-    return pack8::vtype2dna(std::cref(second),alphabet,ssize);
+    return pack8::vtype2dna(std::cref(second),alphabet,first);
   }
   
   std::istream & Seq8::read (std::istream & s)
   {
-    first.clear();
     second.clear();
-    char ch;
-    while(!s.eof())
-      {
-	s.read( &ch, sizeof(char) );
-	if( ch != '\0' ) first += ch;
-	else break;
-      }
-    s.read(reinterpret_cast<char*>(&ssize),sizeof( std::string::size_type ));
-    second.resize(ssize/2 + (ssize&1));
+    s.read(reinterpret_cast<char*>(&first),sizeof( std::string::size_type ));
+    second.resize(first/2 + (first&1));
     s.read(reinterpret_cast<char*>(&second[0]),std::streamsize(second.size()*sizeof(pack8::itype)));
     return s;
   }
@@ -113,8 +92,7 @@ namespace Sequence
   std::ostream & Seq8::print (std::ostream & s) const
   {
     //Write, including the \0
-    s.write( first.c_str(), std::streamsize(first.size()+1) );
-    s.write( reinterpret_cast<const char *>(&ssize),sizeof( std::string::size_type ));
+    s.write( reinterpret_cast<const char *>(&first),sizeof( std::string::size_type ));
     s.write( reinterpret_cast<const char *>(&second[0]),std::streamsize(second.size()*sizeof(pack8::itype)) );
     return s;
   }

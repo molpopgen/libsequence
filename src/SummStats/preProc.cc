@@ -120,6 +120,7 @@ namespace Sequence {
 	if ( itr == ustrings.cend() )
 	  {
 	    //Need new constructor here in Seq8
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(a))) );
 	  }
 	else
 	  {
@@ -136,6 +137,7 @@ namespace Sequence {
 	     if ( itr == ustrings.cend() )
 	       {
 		 //Need new constructor here in Seq8
+		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(b))) );
 	       }
 	     else
 	       {

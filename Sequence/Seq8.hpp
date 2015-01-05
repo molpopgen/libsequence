@@ -8,24 +8,20 @@
 
 namespace Sequence
 {
-  class Seq8 : public std::pair< std::string, Sequence::pack8::vtype >
+  class Seq8 : public std::pair< unsigned, Sequence::pack8::vtype >
   {
   private:
     alphabet_t alphabet;
-    std::string::size_type ssize;
-    using base = std::pair< std::string, Sequence::pack8::vtype >;
+    //std::string::size_type ssize;
+    using base = std::pair< unsigned, Sequence::pack8::vtype >;
   public:
+    //inherit base constructors
     Seq8( const alphabet_t & = dna_alphabet);
     //! Construct with sequence only                                                                      
     Seq8( const std::string &, const alphabet_t & );
     //! Construct with sequence only.  String will be cleared
     Seq8( std::string &, const alphabet_t & );
-    //! Construct with name and sequence
-    Seq8( const std::string &,
-          const std::string &, const alphabet_t & );
-    //! Construct with name and sequence.  Both strings will be cleared
-    Seq8( std::string &,
-          std::string &, const alphabet_t & );
+    Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & = dna_poly_alphabet);
     Seq8(const Seq8 & ) = default;
     Seq8(Seq8 && ) = default;    
 

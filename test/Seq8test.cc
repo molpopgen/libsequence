@@ -94,7 +94,7 @@ BOOST_AUTO_TEST_CASE( assign_4 )
 BOOST_AUTO_TEST_CASE( IO_1 )
 {
   std::string seq("ATGCN");
-  Sequence::Seq8 s8("name",std::cref(seq), Sequence::dna_alphabet),
+  Sequence::Seq8 s8(std::cref(seq), Sequence::dna_alphabet),
     s8_2;
 
   std::ostringstream o;
