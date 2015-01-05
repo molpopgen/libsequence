@@ -243,6 +243,8 @@ namespace Sequence {
 	    ustring_itrs.emplace_back(std::move(itr));
 	  }
       }
+    __pt.first.clear();
+    __pt.second.clear();
     return 0;
   }
 
