@@ -78,10 +78,13 @@ namespace Sequence {
     //Bioloigcally, this is nsam/2...
     Seq8::size_type nsam = __pt.begin()->second.second.size();
     bool isodd = (__pt.begin()->second.size() % 2);
+    std::cerr << "ssize = " <<  (__pt.begin()->second.size()) << ' ' << isodd << '\n';
     for( Seq8::size_type i = 0 ; i < nsam ; ++i )
       {
-	pack8::vtype a(__pt.size()/2);
-	pack8::vtype b = (!isodd && i == nsam-1) ? a : pack8::vtype();
+	std::cerr << i << ' ' << nsam << '\n';
+	pack8::vtype a(__pt.size()/2 + isodd);
+	pack8::vtype b = (!isodd || i < nsam-1) ? a : pack8::vtype();
+	std::cerr << "b is empty: " << b.empty() << '\n';
 	bool idx = 0;
 	pack8::vtype::size_type j = 0;
 	for( const auto & p : __pt )
@@ -92,35 +95,59 @@ namespace Sequence {
 	     	ustring_itrs.clear();
 	     	return -1;
 	      }
-	    if ( idx )
-	      {
-	    	//read hi, write hi a
-	    	writehi(a[j],readhi(*(p.second.begin()+Seq8::difference_type(i))));
-	    	//read lo, write hi b
-		if(!b.empty())
-		  writehi(b[j],readlo(*(p.second.begin()+Seq8::difference_type(i))));
-	      }
+	    if ( !idx )
+	    {
+	      //read hi, write hi a
+	      writehi(a[j],readhi(p.second.second[i]));
+	      //read lo, write hi b
+	      if(!b.empty())
+		{
+		  writehi(b[j],readlo(p.second.second[i]));
+		}
+	      if(!b.empty())
+	      std::cerr << "not idx: " << int(readhi(p.second.second[i])) << ' ' << int(readhi(a[j]))
+			<< ' ' << int(readlo(p.second.second[i])) << ' ' << int(readhi(b[j])) << '\n';
+	    }
 	    else 
 	      {
 	    	//read hi, write lo a
-	    	writelo(a[j],readhi(*(p.second.begin()+Seq8::difference_type(i))));
+	    	//writelo(a[j],readhi(*(p.second.begin()+Seq8::difference_type(i))));
+		writelo(a[j],readhi(p.second.second[i]));
 	    	//read lo, write lo b
-		if(!b.empty())
-		  writelo(b[j],readlo(*(p.second.begin()+Seq8::difference_type(i))));
+	    	if(!b.empty())
+		  {
+		    std::cerr << int(readlo(p.second.second[i]));
+		    writelo(b[j],readlo(p.second.second[i]));
+		  }
+		std::cerr  << '\n';
+	    	  //writelo(b[j],readlo(*(p.second.begin()+Seq8::difference_type(i))));
+	      if(!b.empty())
+		std::cerr << "idx: " << int(readhi(p.second.second[i])) << ' ' << int(readlo(a[j]))
+			  << ' ' << int(readlo(p.second.second[i])) << ' ' << int(readlo(b[j])) << '\n';
 	      }
+	    if(idx) ++j;
 	    idx = !idx;
-	    //if(idx) ++j;
-	    ++j;
+	    //++j;
+	    std::cerr << idx << ' ' << j <<  ' ' << p.second.unpack() << '\n';
 	  }
+	std::cerr << "j=" <<j << ' ' << a.size() << ' ' << (2*a.size()-isodd) << ' '<< pack8::vtype2dna(std::cref(a),dna_poly_alphabet,2*a.size()-isodd) << ' ' 
+		  << b.size() << ' ' << pack8::vtype2dna(std::cref(b),dna_poly_alphabet,2*b.size()-isodd) << '\n';
 	auto itr = std::find_if( ustrings.cbegin(),
 				 ustrings.cend(),
-				 [&a](const Seq8 __s8) {
+				 [&a](const Seq8 & __s8) {
 				   return a == __s8.second;
 				 } );
 	if ( itr == ustrings.cend() )
 	  {
 	    //Need new constructor here in Seq8
-	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(a))) );
+	    std::cerr << "insert a: " << a.size() << ' ' << isodd << ' ';
+	    unsigned slen = unsigned(2*a.size()-isodd);
+	    std:: cerr << slen << ' ';
+	    Seq8 temp(std::move(slen),std::move(a));
+	    std::cerr << temp.unpack() << ' ';
+	    auto itr2 = ustrings.insert(ustrings.end(), std::move(temp));
+	    std::cerr << (itr2==ustrings.end()) << itr2->unpack() << '\n';
+	    ustring_itrs.emplace_back( std::move(itr2) );
 	  }
 	else
 	  {
@@ -131,13 +158,14 @@ namespace Sequence {
 	  {
 	     itr = std::find_if( ustrings.cbegin(),
 				 ustrings.cend(),
-				 [&b](const Seq8 __s8) {
+				 [&b](const Seq8 & __s8) {
 				   return b == __s8.second;
 				 } );
 	     if ( itr == ustrings.cend() )
 	       {
 		 //Need new constructor here in Seq8
-		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(b))) );
+		 std::cerr << "insert b\n";
+		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*b.size()-isodd)),std::move(b))) );
 	       }
 	     else
 	       {

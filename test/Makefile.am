@@ -21,9 +21,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	polySiteVectorTest \
 	polySiteVector8Test \
 	pack8test \
-	Seq8test
-
-#	preProcTest
+	Seq8test \
+	UhapsTest
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -92,7 +91,7 @@ alphabets_SOURCES=alphabets.cc
 
 polySiteVectorTest_SOURCES=polySiteVectorTest.cc
 
-#preProcTest_SOURCES=preProcTest.cc
+UhapsTest_SOURCES=UhapsTest.cc
 
 #Poly8Test_SOURCES=Poly8Test.cc
 

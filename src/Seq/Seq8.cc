@@ -17,9 +17,12 @@ namespace Sequence
   {
   }
   
-  Seq8::Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a) : base(std::move(ssize),std::move(data)),
+  Seq8::Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a) : base(),//std::move(ssize),std::move(data)),
 									       alphabet( alphabet_t(_a) )
   {
+    std::cerr << "Seq8 move test: " << this->first << ' ' << ssize << ' ' << data.size() << '\n';
+    this->first = std::move(ssize);
+    this->second = std::move(data);
   }
 
   Seq8::Seq8( std::string & seq,
