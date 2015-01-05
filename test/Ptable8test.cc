@@ -52,9 +52,11 @@ BOOST_AUTO_TEST_CASE( create_3 )
   Ptable __t = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") };
 
-  Sequence::Ptable8 t(__t);
+  Sequence::Ptable8 temp(__t);
+  Sequence::Ptable8 t(std::move(temp));
 
   BOOST_CHECK( __t.empty() );
+  BOOST_CHECK(temp.empty());
 
   std::string x ( t.begin()->second.unpack() );
 

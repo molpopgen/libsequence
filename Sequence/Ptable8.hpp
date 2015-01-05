@@ -26,6 +26,17 @@ namespace Sequence
     Ptable8( std::vector<polymorphicSite> & );
 
     //import base types
+    using base::value_type;
+    using base::reference;
+    using base::const_reference;
+    using base::iterator;
+    using base::reverse_iterator;
+    using base::const_iterator;
+    using base::const_reverse_iterator;
+    using base::pointer;
+    using base::difference_type;
+    using base::size_type;
+    
     //import base functions
     using base::size;
     using base::max_size;
@@ -52,9 +63,11 @@ namespace Sequence
     using base::at;
     using base::push_back;
     using base::emplace_back;
+    using base::emplace;
     using base::front;
     using base::back;
     using base::data;
+    using base::assign;
   };
 }
 
