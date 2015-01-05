@@ -2,7 +2,7 @@
 #include <Sequence/SummStats/Uhaps.hpp>
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/PolyTable.hpp>
-#include <Sequence/Ptable.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/util/nibble.hpp>
 #include <memory>

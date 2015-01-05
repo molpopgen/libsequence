@@ -132,13 +132,12 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Comeron95.lo GranthamWeights.lo SummStats/PolySNP.lo \
 	SummStats/PolySIM.lo RedundancyCom95.lo SingleSub.lo \
 	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
-	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo \
-	PolyTableManip.lo Seq/Seq.lo ComplementBase.lo Sites.lo \
-	Unweighted.lo Seq/Fasta.lo Seq/fastq.lo Kimura80.lo \
-	PolySites.lo SimData.lo SimDataIO.lo ThreeSubs.lo \
-	CodonTable.lo Specializations.lo Seq/FastaExplicit.lo \
-	SeqExceptions.lo SeqConstants.lo shortestPath.lo \
-	SummStats/HKA.lo SummStats/Snn.lo \
+	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
+	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
+	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
+	ThreeSubs.lo CodonTable.lo Specializations.lo \
+	Seq/FastaExplicit.lo SeqExceptions.lo SeqConstants.lo \
+	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	Coalescent/CoalescentMutation.lo \
 	Coalescent/CoalescentRecombination.lo \
 	Coalescent/CoalescentSimTypes.lo \
@@ -356,7 +355,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
 	PolyTableFunctions.cc\
-	PolyTableManip.cc\
 	Seq/Seq.cc\
 	ComplementBase.cc\
 	Sites.cc\
@@ -581,7 +579,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableManip.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@

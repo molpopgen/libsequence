@@ -18,7 +18,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
 	PolyTableFunctions.cc\
-	PolyTableManip.cc\
 	Seq/Seq.cc\
 	ComplementBase.cc\
 	Sites.cc\

@@ -23,7 +23,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/FST.hpp>
 #include <Sequence/PolyTable.hpp>
-#include <Sequence/PolyTableManip.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <algorithm>
 #include <numeric>
@@ -72,7 +72,7 @@ namespace Sequence
       _piB(0.), _piT(0.), _piS(0.), _piD(0.),
       _indexes( vector< pair<unsigned,unsigned> >(npop) ),
       _calcsDone(false),
-      pv( rotatePolyTable(data) )
+      pv( make_polySiteVector(*data) )
     {
     if (config == NULL)
       {
