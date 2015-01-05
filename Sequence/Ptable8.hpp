@@ -12,11 +12,11 @@ namespace Sequence
   using poly8site = std::pair<double,Seq8>;
   //fwd declarations
   class PolyTable;
-  class Ptable8 final : public vectorizer<poly8site> 
+  class Ptable8 final : public util::vectorizer<poly8site> 
   {
   private:
   public:
-    using base = vectorizer<poly8site>;// std::vector< poly8site >;
+    using base = util::vectorizer<poly8site>;// std::vector< poly8site >;
     using base::base;
     //Constructors 
     Ptable8() = default;

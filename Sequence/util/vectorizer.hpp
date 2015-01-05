@@ -3,6 +3,8 @@
 
 #include <vector>
 
+namespace Sequence {
+  namespace util {
     template<typename T, typename allocator = std::allocator<T> >
     class vectorizer : private std::vector<T,allocator>
     {
@@ -53,4 +55,7 @@
       using vectorizer_base_t::data;
       using vectorizer_base_t::assign;
     };
+  }
+}
 #endif
+    
