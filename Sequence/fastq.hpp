@@ -20,6 +20,7 @@ namespace Sequence
     private:
       mutable bool repeat_name;
     public:
+      using Seq::Seq;
       std::string quality;
       fastq(void);
       fastq (const std::string &name, const std::string &seq,

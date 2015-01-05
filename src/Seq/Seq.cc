@@ -31,7 +31,7 @@ namespace Sequence
 {
   Seq::Seq (void) : SeqBase()
       /*!
-	creates an empty sequence
+  	creates an empty sequence
       */
   {
   }

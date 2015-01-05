@@ -30,32 +30,6 @@ namespace Sequence
 {
   Fasta::Fasta() : Seq() {}
 
-  /*! \example baseComp.cc */
-  Fasta::Fasta (const std::string &name, const std::string &seq) :
-    Seq(std::cref(name),std::cref(seq))
-    /*!
-      constructor for const std::string
-    */
-  {
-  }
-
-
-  Fasta::Fasta ( std::string && name, std::string && seq) :
-    Seq(std::move(name),std::move(seq))
-    /*!
-      constructor for std::string lvalue references
-    */
-  {
-  }
-
-  Fasta::Fasta (const char *name,const char *seq) : 
-    Seq(name,seq)
-    /*!
-      constructor for const char *
-    */
-  {}
-
-    
   Fasta::Fasta (const Seq & seq) : Seq(seq) 
     /*! copy constructor */
   {}
