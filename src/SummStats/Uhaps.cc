@@ -63,11 +63,7 @@ namespace Sequence {
 				 } );
 	if ( itr == ustrings.cend() )
 	  {
-	    //Need new constructor here in Seq8
-	    unsigned slen = unsigned(2*a.size()-isodd);
-	    Seq8 temp(std::move(slen),std::move(a));
-	    auto itr2 = ustrings.insert(ustrings.end(), std::move(temp));
-	    ustring_itrs.emplace_back( std::move(itr2) );
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(a))) );
 	  }
 	else
 	  {
@@ -83,7 +79,6 @@ namespace Sequence {
 				 } );
 	     if ( itr == ustrings.cend() )
 	       {
-		 //Need new constructor here in Seq8
 		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*b.size()-isodd)),std::move(b))) );
 	       }
 	     else
