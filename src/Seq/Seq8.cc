@@ -17,12 +17,9 @@ namespace Sequence
   {
   }
   
-  Seq8::Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a) : base(),//std::move(ssize),std::move(data)),
+  Seq8::Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a) : base(std::move(ssize),std::move(data)),
 									       alphabet( alphabet_t(_a) )
   {
-    std::cerr << "Seq8 move test: " << this->first << ' ' << ssize << ' ' << data.size() << '\n';
-    this->first = std::move(ssize);
-    this->second = std::move(data);
   }
 
   Seq8::Seq8( std::string & seq,
@@ -94,7 +91,6 @@ namespace Sequence
 
   std::ostream & Seq8::print (std::ostream & s) const
   {
-    //Write, including the \0
     s.write( reinterpret_cast<const char *>(&first),sizeof( std::string::size_type ));
     s.write( reinterpret_cast<const char *>(&second[0]),std::streamsize(second.size()*sizeof(pack8::itype)) );
     return s;

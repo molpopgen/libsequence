@@ -148,7 +148,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	hts/samflag.lo hts/samfunctions.lo polySiteVector.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
 	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
-	SummStats/preProc.lo polySiteVector8.lo Seq/Seq8.lo \
+	SummStats/Uhaps.lo polySiteVector8.lo Seq/Seq8.lo \
 	util/pack8.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -392,7 +392,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
-	SummStats/preProc.cc \
+	SummStats/Uhaps.cc \
 	polySiteVector8.cc \
 	Seq/Seq8.cc \
 	util/pack8.cc
@@ -538,7 +538,7 @@ SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-SummStats/preProc.lo: SummStats/$(am__dirstamp) \
+SummStats/Uhaps.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 Seq/Seq8.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
 util/$(am__dirstamp):
@@ -618,8 +618,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Recombination.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Uhaps.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/preProc.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
