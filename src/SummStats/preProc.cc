@@ -34,13 +34,13 @@ namespace Sequence {
 
 //   struct preProcImpl
 //   {
-//     void populate( const Ptable8 & ps,
+//     void populate( const polySiteVector8 & ps,
 // 		   const bool & haveAncStates, const std::string::size_type & anc,
 // 		   std::vector<stateCounter> & states,
 // 		   std::vector<std::pair<bool,stateCounter> > & dstates);
 //   };
 
-//   void preProcImpl::populate( const Ptable8 & ps,
+//   void preProcImpl::populate( const polySiteVector8 & ps,
 // 			      const bool & haveAncStates, const std::string::size_type & anc,
 // 			      std::vector<stateCounter> & states,
 // 			      std::vector<std::pair<bool,stateCounter> > & dstates)
@@ -71,7 +71,7 @@ namespace Sequence {
 //     		   } );
 //   }
 
-  int Uhaps::populate(const Ptable8 & __pt)
+  int Uhaps::populate(const polySiteVector8 & __pt)
   {
     using namespace nibble;
     if(__pt.empty()) return 0;
@@ -202,7 +202,7 @@ namespace Sequence {
     // 	   else ustring_itrs.push_back(itr);
     // 	 }
     //    }
-    // std::cerr << "Uhaps::Ptable8: "<< ustrings.size() << '\n';
+    // std::cerr << "Uhaps::polySiteVector8: "<< ustrings.size() << '\n';
     return 0;
   }
 
@@ -244,7 +244,7 @@ namespace Sequence {
     return 0;
   }
 
-  Uhaps::Uhaps( const Ptable8 & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
+  Uhaps::Uhaps( const polySiteVector8 & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
 					ustring_itrs (Uhaps::ustring_itr_ctr_t() )
   {
     if( populate(__pt) == -1 )

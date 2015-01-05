@@ -148,7 +148,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	hts/samflag.lo hts/samfunctions.lo polySiteVector.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
 	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
-	SummStats/preProc.lo Ptable8.lo Seq/Seq8.lo util/pack8.lo
+	SummStats/preProc.lo polySiteVector8.lo Seq/Seq8.lo \
+	util/pack8.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -392,7 +393,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
 	SummStats/preProc.cc \
-	Ptable8.cc \
+	polySiteVector8.cc \
 	Seq/Seq8.cc \
 	util/pack8.cc
 
@@ -579,7 +580,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
@@ -596,6 +596,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TwoSubs.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Unweighted.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@

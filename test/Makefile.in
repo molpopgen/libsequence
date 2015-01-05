@@ -99,7 +99,7 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	Ptable8test$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	polySiteVector8Test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	pack8test$(EXEEXT) Seq8test$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
@@ -193,11 +193,6 @@ am__PolyTableTweaking_SOURCES_DIST = PolyTableTweaking.cc
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableTweaking.$(OBJEXT)
 PolyTableTweaking_OBJECTS = $(am_PolyTableTweaking_OBJECTS)
 PolyTableTweaking_LDADD = $(LDADD)
-am__Ptable8test_SOURCES_DIST = Ptable8test.cc
-@BUNIT_TEST_PRESENT_TRUE@am_Ptable8test_OBJECTS =  \
-@BUNIT_TEST_PRESENT_TRUE@	Ptable8test.$(OBJEXT)
-Ptable8test_OBJECTS = $(am_Ptable8test_OBJECTS)
-Ptable8test_LDADD = $(LDADD)
 am__RedundancyCom95test_SOURCES_DIST = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@am_RedundancyCom95test_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test.$(OBJEXT)
@@ -234,6 +229,11 @@ am__pack8test_SOURCES_DIST = pack8test.cc
 @BUNIT_TEST_PRESENT_TRUE@am_pack8test_OBJECTS = pack8test.$(OBJEXT)
 pack8test_OBJECTS = $(am_pack8test_OBJECTS)
 pack8test_LDADD = $(LDADD)
+am__polySiteVector8Test_SOURCES_DIST = polySiteVector8Test.cc
+@BUNIT_TEST_PRESENT_TRUE@am_polySiteVector8Test_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	polySiteVector8Test.$(OBJEXT)
+polySiteVector8Test_OBJECTS = $(am_polySiteVector8Test_OBJECTS)
+polySiteVector8Test_LDADD = $(LDADD)
 am__polySiteVectorTest_SOURCES_DIST = polySiteVectorTest.cc
 @BUNIT_TEST_PRESENT_TRUE@am_polySiteVectorTest_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest.$(OBJEXT)
@@ -285,11 +285,11 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableTweaking_SOURCES) \
-	$(Ptable8test_SOURCES) $(RedundancyCom95test_SOURCES) \
-	$(Seq8test_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(alphabets_SOURCES) \
-	$(fastqConstructors_SOURCES) $(fastqIO_SOURCES) \
-	$(pack8test_SOURCES) $(polySiteVectorTest_SOURCES) \
+	$(RedundancyCom95test_SOURCES) $(Seq8test_SOURCES) \
+	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
+	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
+	$(fastqIO_SOURCES) $(pack8test_SOURCES) \
+	$(polySiteVector8Test_SOURCES) $(polySiteVectorTest_SOURCES) \
 	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
@@ -305,13 +305,13 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__PolyTableBadBehavior_SOURCES_DIST) \
 	$(am__PolyTableConversions_SOURCES_DIST) \
 	$(am__PolyTableTweaking_SOURCES_DIST) \
-	$(am__Ptable8test_SOURCES_DIST) \
 	$(am__RedundancyCom95test_SOURCES_DIST) \
 	$(am__Seq8test_SOURCES_DIST) \
 	$(am__SeqConversions_SOURCES_DIST) \
 	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
 	$(am__fastqConstructors_SOURCES_DIST) \
 	$(am__fastqIO_SOURCES_DIST) $(am__pack8test_SOURCES_DIST) \
+	$(am__polySiteVector8Test_SOURCES_DIST) \
 	$(am__polySiteVectorTest_SOURCES_DIST) \
 	$(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
@@ -498,7 +498,7 @@ top_srcdir = @top_srcdir@
 #preProcTest_SOURCES=preProcTest.cc
 
 #Poly8Test_SOURCES=Poly8Test.cc
-@BUNIT_TEST_PRESENT_TRUE@Ptable8test_SOURCES = Ptable8test.cc
+@BUNIT_TEST_PRESENT_TRUE@polySiteVector8Test_SOURCES = polySiteVector8Test.cc
 @BUNIT_TEST_PRESENT_TRUE@pack8test_SOURCES = pack8test.cc
 @BUNIT_TEST_PRESENT_TRUE@Seq8test_SOURCES = Seq8test.cc
 all: all-am
@@ -601,10 +601,6 @@ PolyTableTweaking$(EXEEXT): $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_DEP
 	@rm -f PolyTableTweaking$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(PolyTableTweaking_OBJECTS) $(PolyTableTweaking_LDADD) $(LIBS)
 
-Ptable8test$(EXEEXT): $(Ptable8test_OBJECTS) $(Ptable8test_DEPENDENCIES) $(EXTRA_Ptable8test_DEPENDENCIES) 
-	@rm -f Ptable8test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(Ptable8test_OBJECTS) $(Ptable8test_LDADD) $(LIBS)
-
 RedundancyCom95test$(EXEEXT): $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_DEPENDENCIES) $(EXTRA_RedundancyCom95test_DEPENDENCIES) 
 	@rm -f RedundancyCom95test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_LDADD) $(LIBS)
@@ -637,6 +633,10 @@ pack8test$(EXEEXT): $(pack8test_OBJECTS) $(pack8test_DEPENDENCIES) $(EXTRA_pack8
 	@rm -f pack8test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(pack8test_OBJECTS) $(pack8test_LDADD) $(LIBS)
 
+polySiteVector8Test$(EXEEXT): $(polySiteVector8Test_OBJECTS) $(polySiteVector8Test_DEPENDENCIES) $(EXTRA_polySiteVector8Test_DEPENDENCIES) 
+	@rm -f polySiteVector8Test$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(polySiteVector8Test_OBJECTS) $(polySiteVector8Test_LDADD) $(LIBS)
+
 polySiteVectorTest$(EXEEXT): $(polySiteVectorTest_OBJECTS) $(polySiteVectorTest_DEPENDENCIES) $(EXTRA_polySiteVectorTest_DEPENDENCIES) 
 	@rm -f polySiteVectorTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(polySiteVectorTest_OBJECTS) $(polySiteVectorTest_LDADD) $(LIBS)
@@ -664,7 +664,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableBadBehavior.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Seq8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
@@ -673,6 +672,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pack8test.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector8Test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 

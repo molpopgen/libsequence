@@ -19,7 +19,7 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	polySiteVectorTest \
-	Ptable8test \
+	polySiteVector8Test \
 	pack8test \
 	Seq8test
 
@@ -96,7 +96,7 @@ polySiteVectorTest_SOURCES=polySiteVectorTest.cc
 
 #Poly8Test_SOURCES=Poly8Test.cc
 
-Ptable8test_SOURCES=Ptable8test.cc
+polySiteVector8Test_SOURCES=polySiteVector8Test.cc
 
 pack8test_SOURCES=pack8test.cc
 

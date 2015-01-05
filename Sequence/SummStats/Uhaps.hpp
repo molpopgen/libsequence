@@ -17,12 +17,12 @@ namespace Sequence
     using ustring_itr_ctr_t = std::vector< ustring_const_iterator >;
     mutable ustring_ctr_t ustrings;
     ustring_itr_ctr_t ustring_itrs;
-    int populate( const Ptable8 & );
+    int populate( const polySiteVector8 & );
     int populate( const PolyTable & );
     int populate( PolyTable && );
   public:
     Uhaps() = default;
-    Uhaps( const Ptable8 & );
+    Uhaps( const polySiteVector8 & );
     Uhaps( const PolyTable & );
     Uhaps( PolyTable && );
     using iterator = ustring_itr_ctr_t::iterator;

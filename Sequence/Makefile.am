@@ -68,5 +68,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	bamreader.hpp \
 	SeqAlphabets.hpp \
 	preProc.hpp \
-	Ptable8.hpp \
+	polySiteVector8.hpp \
 	Seq8.hpp 

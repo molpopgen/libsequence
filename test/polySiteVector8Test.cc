@@ -1,10 +1,10 @@
 /*! 
-  \file alphabets.cc @brief Unit tests for Sequence::Ptable8
+  \file alphabets.cc @brief Unit tests for Sequence::polySiteVector8
  */
-#define BOOST_TEST_MODULE Ptable8test
+#define BOOST_TEST_MODULE polySiteVector8test
 #define BOOST_TEST_DYN_LINK 
 
-#include <Sequence/Ptable8.hpp>
+#include <Sequence/polySiteVector8.hpp>
 #include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolySites.hpp>
 #include <boost/test/unit_test.hpp>
@@ -17,7 +17,7 @@ using Ptable = Sequence::polySiteVector;
 BOOST_AUTO_TEST_CASE( create_1 )
 {
   using psite = Sequence::polymorphicSite;
-  Sequence::Ptable8 t = { psite(1.,"AAGC"),
+  Sequence::polySiteVector8 t = { psite(1.,"AAGC"),
 			  psite(2.,"ACCA") }; 
   std::string x (  t.begin()->second.unpack() );
 
@@ -33,7 +33,7 @@ BOOST_AUTO_TEST_CASE( create_2 )
   using psite = Sequence::polymorphicSite;
   std::vector<psite> ps = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") }; 
-  Sequence::Ptable8 t(ps);
+  Sequence::polySiteVector8 t(ps);
  
   BOOST_CHECK( ps.empty() );
 
@@ -52,8 +52,8 @@ BOOST_AUTO_TEST_CASE( create_3 )
   Ptable __t = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") };
 
-  Sequence::Ptable8 temp(__t);
-  Sequence::Ptable8 t(std::move(temp));
+  Sequence::polySiteVector8 temp(__t);
+  Sequence::polySiteVector8 t(std::move(temp));
 
   BOOST_CHECK( __t.empty() );
   BOOST_CHECK(temp.empty());
@@ -74,7 +74,7 @@ BOOST_AUTO_TEST_CASE( create_4 )
   Ptable __t = { psite(1.,"AAGC"),
 			   psite(2.,"ACCA") };
 
-  Sequence::Ptable8 t(std::cref(__t));
+  Sequence::polySiteVector8 t(std::cref(__t));
 
  BOOST_CHECK( !__t.empty() );
 
