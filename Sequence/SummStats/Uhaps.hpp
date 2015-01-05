@@ -2,7 +2,7 @@
 #define __SEQUENCE_SUMMSTATS_UHAPS_HPP__
 
 #include <Sequence/Seq8.hpp>
-#include <Sequence/polySiteVector.hpp>
+#include <Sequence/polySiteVector8.hpp>
 #include <Sequence/PolyTable.hpp>
 #include <list>
 #include <vector>
