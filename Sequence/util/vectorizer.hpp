@@ -2,6 +2,11 @@
   \file Sequence/util/vectorizer.hpp
   \brief Definition of Sequence::util::vectorizer
  */
+
+/*! \namespace Sequence::util
+  \brief Routines related to low-level C++ stuff
+ */
+
 #ifndef __SEQUENCE_UTIL_VECTORIZER_HPP__
 #define __SEQUENCE_UTIL_VECTORIZER_HPP__
 
