@@ -17,8 +17,9 @@ namespace Sequence
   private:
   public:
     using base = util::vectorizer<polymorphicSite8>;
+    //Inherit constructors
     using base::base;
-    //Constructors 
+    //Constructors to conver from other types
     polySiteVector8() = default;
     polySiteVector8( const std::initializer_list<polymorphicSite> & );
     polySiteVector8( const PolyTable & );
