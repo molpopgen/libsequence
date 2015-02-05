@@ -35,8 +35,6 @@ However:
 
 ## libsequence 1.8.4
 
-(There is no official 1.8.4 release yet)
-
 * Major improvements to the documentation.  The doxygen output now contains a detailed tutorial.
 * fastq stream + fastq unit tests added
 * move semantics for the Sequence::Seq hierarchy + unit tests
