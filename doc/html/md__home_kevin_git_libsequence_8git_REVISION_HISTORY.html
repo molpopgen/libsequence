@@ -76,6 +76,12 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <li>If I remove features, they will be marked as deprecated, meaning that they will be removed in 2.0</li>
 </ul>
 <h3>TODO:</h3>
+<ul>
+<li>Move BAM alphabet to SeqAlphabets</li>
+<li>Change all references of 8 to 4? Should the name be based on some int8_t or on the fact that it is 4-bit encoded? 8 &gt; 4, so that is obviously a better choice?</li>
+<li>Seq8, PolyTable8 ??</li>
+<li>Explore std::unique_ptr&lt; Sequence::poly8::itype &gt; instead of vector. It could be faster, but there are implementation/convenience/maintainability costs</li>
+</ul>
 <ol type="1">
 <li>H12 from Petrov, Messer, et al.</li>
 <li>G stat for differentiation &ndash; <a href="http://arxiv.org/pdf/1403.1552.pdf">http://arxiv.org/pdf/1403.1552.pdf</a></li>
@@ -89,7 +95,6 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <li><a class="el" href="SeqRegexes_8hpp.html" title="various useful rexex-based functions for dealing with data. Declares Sequence::basic_dna_alphabet,Sequence::full_dna_alphabet, Sequence::pep_alphabet, and the function Sequence::validSeq. ">Sequence/SeqRegexes.hpp</a> &ndash; not working. This will not be fixed until GCC supports &lt;regex&gt;. The function is now currently implemented in a non-regex manner, which is lame, but it works.</li>
 </ol>
 <h2>libsequence 1.8.4</h2>
-<p>(There is no official 1.8.4 release yet)</p>
 <ul>
 <li>Major improvements to the documentation. The doxygen output now contains a detailed tutorial.</li>
 <li>fastq stream + fastq unit tests added</li>
@@ -102,6 +107,11 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <li>Kimura80 and Comeron95 will now return a non-signalling NaN for non-finite values. Previous versions returned "999", which was a bit silly, in all honesty.</li>
 <li>PolyTable was redefined to publicly inherit from std::pair&lt; std::vector&lt;double&gt;, std::vector&lt;std::string&gt; &gt;. This change represents a major revision to the code. This change gives full access to the underlying data, and possibly even "too much rope". The change also totally wrecks binary compatiblity with previous versions. All unit tests pass.</li>
 <li>Routines for coalescent simulation moved from namespace <a class="el" href="namespaceSequence.html" title="The namespace in which this library resides. ">Sequence</a> to namespace <a class="el" href="namespaceSequence_1_1coalsim.html" title="Routines for coalescent simulation. ">Sequence::coalsim</a>.</li>
+<li>Support for 4-bit encoding of sequence data and variation data</li>
+<li>Sequence::Ptable, introduced in 1.8.3, was a disaster, as it inherited publicly from std::vector, and was therefore a really poor design decision. The code base has been reverted to a design centered around <a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> + conversion functions.</li>
+<li>Constructor inheritance for <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> enabled.</li>
+<li><a class="el" href="vectorizer_8hpp.html" title="Definition of Sequence::util::vectorizer. ">Sequence/util/vectorizer.hpp</a> added, in order to facilitate safe inheritance from std::vector</li>
+<li>Issue #6, which was a bug in bamrecord::seq, is fixed</li>
 </ul>
 <h2>libsequence 1.8.3 (Dec. 5, 2014)</h2>
 <ol type="1">
@@ -114,7 +124,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <li>All function from boost that are now part of C++11 have been replaced with the C++11 function calls. This mostly includes replacing boost::bind with std::bind and BOOST_STATIC_ASSERT (and the correspponding use of boost/type_traits.hpp) with the C++11 &lt;type_traits&gt; equivalent</li>
 <li>All examples have been updated to C++11, with no dependencies on external libraries like <a href="http://gnu.org/software/gsl">GSL</a>. Importantly, the GSL is still probably a better way to do random numbers than the C++11 "random" header. (I personally don't like the design of the C++ random number system).</li>
 <li>Lots of function prototypes have changed. There were some leftover foo(int x) that are now foo(const int &amp; x). When called many times, the latter may be noticeably faster.</li>
-<li>A new class, <a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> : public std::vector&lt;Sequence::polymorhpicSite&gt; is added. This is a very powerful class for maninpulating polymorphism data in a general way.</li>
+<li>A new class, Sequence::Ptable : public std::vector&lt;Sequence::polymorhpicSite&gt; is added. This is a very powerful class for maninpulating polymorphism data in a general way.</li>
 <li>The build system has been rebuilt around automake-1.14</li>
 <li><a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">SimDataIO.hpp</a>/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.</li>
 <li>A new namespace, Sequence::IOhelp, is declared in <a class="el" href="IOhelp_8hpp_source.html">Sequence/IOhelp.hpp</a>. It contains some functions to reduce the tedium of some IO conversions.</li>
@@ -256,7 +266,7 @@ $(document).ready(function(){initNavTree('md__home_kevin_git_libsequence_8git_RE
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

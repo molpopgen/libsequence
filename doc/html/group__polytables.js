@@ -4,7 +4,7 @@ var group__polytables =
       [ "const_data_iterator", "classSequence_1_1PolyTable.html#a634b7467be454c6a7de374a372aadc77", null ],
       [ "const_pos_iterator", "classSequence_1_1PolyTable.html#af16bca677823dcb09df64ad62fbab2e8", null ],
       [ "const_reference", "classSequence_1_1PolyTable.html#a3c4a677bd42514c2db399be4f3b21202", null ],
-      [ "const_site_iterator", "classSequence_1_1PolyTable.html#a77311e44736d7fac042c1056effa52ad", null ],
+      [ "const_site_iterator", "classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c", null ],
       [ "data_iterator", "classSequence_1_1PolyTable.html#a64c1b337ea81908800c95b8a7a5cfd31", null ],
       [ "pos_iterator", "classSequence_1_1PolyTable.html#a6ba1a3d5991cffdf4b46c9bb837f46e8", null ],
       [ "reference", "classSequence_1_1PolyTable.html#a4499f916a1030b5ce5bc3538b1174407", null ],
@@ -57,21 +57,11 @@ var group__polytables =
       [ "send", "classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789", null ],
       [ "size", "classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3", null ]
     ] ],
-    [ "Ptable", "classSequence_1_1Ptable.html", [
-      [ "base", "classSequence_1_1Ptable.html#a27c5ebf36c9ba03639bd85fedd84432b", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#ae7e1debdde70a70ec0f85d60c076115a", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#a94127cf59928503122ec19a3fcca12b6", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#aceca7bd92220d2b558ffe85667e5dd9e", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#a252cba205d5562e660e7526ad28a4531", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#acd74103ff1cac962594a1ee2c0aa920e", null ],
-      [ "Ptable", "classSequence_1_1Ptable.html#a085597d13ec099d99c452b502efab182", null ],
-      [ "elements", "classSequence_1_1Ptable.html#a2396209900e8f592db1f0b2467f7d899", null ]
-    ] ],
     [ "SimData", "classSequence_1_1SimData.html", [
       [ "const_data_iterator", "classSequence_1_1SimData.html#a634b7467be454c6a7de374a372aadc77", null ],
       [ "const_pos_iterator", "classSequence_1_1SimData.html#af16bca677823dcb09df64ad62fbab2e8", null ],
       [ "const_reference", "classSequence_1_1SimData.html#a3c4a677bd42514c2db399be4f3b21202", null ],
-      [ "const_site_iterator", "classSequence_1_1SimData.html#a77311e44736d7fac042c1056effa52ad", null ],
+      [ "const_site_iterator", "classSequence_1_1SimData.html#a7096e7ad3abcb257a8e7ac8c28a23e5c", null ],
       [ "data_iterator", "classSequence_1_1SimData.html#a64c1b337ea81908800c95b8a7a5cfd31", null ],
       [ "pos_iterator", "classSequence_1_1SimData.html#a6ba1a3d5991cffdf4b46c9bb837f46e8", null ],
       [ "reference", "classSequence_1_1SimData.html#a4499f916a1030b5ce5bc3538b1174407", null ],
@@ -134,7 +124,7 @@ var group__polytables =
       [ "const_data_iterator", "classSequence_1_1SimpleSNP.html#a634b7467be454c6a7de374a372aadc77", null ],
       [ "const_pos_iterator", "classSequence_1_1SimpleSNP.html#af16bca677823dcb09df64ad62fbab2e8", null ],
       [ "const_reference", "classSequence_1_1SimpleSNP.html#a3c4a677bd42514c2db399be4f3b21202", null ],
-      [ "const_site_iterator", "classSequence_1_1SimpleSNP.html#a77311e44736d7fac042c1056effa52ad", null ],
+      [ "const_site_iterator", "classSequence_1_1SimpleSNP.html#a7096e7ad3abcb257a8e7ac8c28a23e5c", null ],
       [ "data_iterator", "classSequence_1_1SimpleSNP.html#a64c1b337ea81908800c95b8a7a5cfd31", null ],
       [ "pos_iterator", "classSequence_1_1SimpleSNP.html#a6ba1a3d5991cffdf4b46c9bb837f46e8", null ],
       [ "reference", "classSequence_1_1SimpleSNP.html#a4499f916a1030b5ce5bc3538b1174407", null ],
@@ -190,7 +180,7 @@ var group__polytables =
       [ "const_data_iterator", "classSequence_1_1PolySites.html#a634b7467be454c6a7de374a372aadc77", null ],
       [ "const_pos_iterator", "classSequence_1_1PolySites.html#af16bca677823dcb09df64ad62fbab2e8", null ],
       [ "const_reference", "classSequence_1_1PolySites.html#a3c4a677bd42514c2db399be4f3b21202", null ],
-      [ "const_site_iterator", "classSequence_1_1PolySites.html#a77311e44736d7fac042c1056effa52ad", null ],
+      [ "const_site_iterator", "classSequence_1_1PolySites.html#a7096e7ad3abcb257a8e7ac8c28a23e5c", null ],
       [ "data_iterator", "classSequence_1_1PolySites.html#a64c1b337ea81908800c95b8a7a5cfd31", null ],
       [ "pos_iterator", "classSequence_1_1PolySites.html#a6ba1a3d5991cffdf4b46c9bb837f46e8", null ],
       [ "reference", "classSequence_1_1PolySites.html#a4499f916a1030b5ce5bc3538b1174407", null ],
@@ -247,5 +237,6 @@ var group__polytables =
       [ "send", "classSequence_1_1PolySites.html#afe610e36cc38d3a77dfe9d6254deb789", null ],
       [ "size", "classSequence_1_1PolySites.html#a0ad9fa4c28b8568a1bde74e13d10f1b3", null ]
     ] ],
+    [ "make_polySiteVector", "group__polytables.html#ga7c715612544ef46c9e5900274f0928e8", null ],
     [ "rotatePolyTable", "group__polytables.html#ga64b1a038a111743ffce8c2ab57621596", null ]
 ];

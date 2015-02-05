@@ -98,8 +98,8 @@ $(document).ready(function(){initNavTree('RedundancyCom95test_8cc_source.html','
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;          <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> k = 0 ; k &lt; 4 ; ++k )</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              std::string codon( { <a class="code" href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040">Sequence::dna_alphabet</a>[i],</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    <a class="code" href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040">Sequence::dna_alphabet</a>[j],</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              std::string codon( { <a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">Sequence::dna_alphabet</a>[i],</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    <a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">Sequence::dna_alphabet</a>[j],</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                    Sequence::dna_alphabet[k] } );</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              ++ncodons;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;              <span class="comment">//Vals must some to 3 for all but the stop codons</span></div>
@@ -952,11 +952,11 @@ $(document).ready(function(){initNavTree('RedundancyCom95test_8cc_source.html','
 <div class="line"><a name="l00879"></a><span class="lineno">  879</span>&#160;</div>
 <div class="line"><a name="l00880"></a><span class="lineno">  880</span>&#160;</div>
 <div class="line"><a name="l00881"></a><span class="lineno">  881</span>&#160;</div>
-<div class="ttc" id="namespaceSequence_html_afd409ce3106271ea202b6ed998268040"><div class="ttname"><a href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040">Sequence::dna_alphabet</a></div><div class="ttdeci">const std::array&lt; const char, 17 &gt; dna_alphabet</div><div class="ttdoc">Alphabet for DNA sequences Valid DNA characters. Upper-case only. Both . and - are accepted as gap ch...</div><div class="ttdef"><b>Definition:</b> <a href="SeqAlphabets_8cc_source.html#l00008">SeqAlphabets.cc:8</a></div></div>
 <div class="ttc" id="SeqAlphabets_8hpp_html"><div class="ttname"><a href="SeqAlphabets_8hpp.html">SeqAlphabets.hpp</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a1a19c3141d23009151c0ff7edbf0b13a"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a1a19c3141d23009151c0ff7edbf0b13a">Sequence::RedundancyCom95::First2S</a></div><div class="ttdeci">double First2S(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00423">RedundancyCom95.cc:423</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a58cdcbf2cf76437b4cdc2c8d42a36136"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a58cdcbf2cf76437b4cdc2c8d42a36136">Sequence::RedundancyCom95::ThirdNon</a></div><div class="ttdeci">double ThirdNon(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00468">RedundancyCom95.cc:468</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a7eb9bb93b438efa291020aa994e643d3"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a7eb9bb93b438efa291020aa994e643d3">Sequence::RedundancyCom95::L4_vals</a></div><div class="ttdeci">double L4_vals(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00625">RedundancyCom95.cc:625</a></div></div>
+<div class="ttc" id="group__Alphabets_html_ga790250a2ef0192d63a54b94ef646be32"><div class="ttname"><a href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">Sequence::dna_alphabet</a></div><div class="ttdeci">const alphabet_t dna_alphabet</div><div class="ttdoc">Alphabet for DNA sequences Valid DNA characters. Upper-case only. Only - is accepted as gap character...</div><div class="ttdef"><b>Definition:</b> <a href="SeqAlphabets_8cc_source.html#l00008">SeqAlphabets.cc:8</a></div></div>
 <div class="ttc" id="RedundancyCom95_8hpp_html"><div class="ttname"><a href="RedundancyCom95_8hpp.html">RedundancyCom95.hpp</a></div><div class="ttdoc">class Sequence::RedundancyCom95 </div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_a7fc29b11be9f2ad4543af77323a714db"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#a7fc29b11be9f2ad4543af77323a714db">Sequence::RedundancyCom95::First2V</a></div><div class="ttdeci">double First2V(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00446">RedundancyCom95.cc:446</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html_addbd0121c0fe6e10de254c0deae98a18"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html#addbd0121c0fe6e10de254c0deae98a18">Sequence::RedundancyCom95::Third2V</a></div><div class="ttdeci">double Third2V(const std::string &amp;codon) const </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8cc_source.html#l00534">RedundancyCom95.cc:534</a></div></div>
@@ -973,7 +973,7 @@ $(document).ready(function(){initNavTree('RedundancyCom95test_8cc_source.html','
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_009f7b6e59b9ec4a57c1bd4d1bd3178a.html">test</a></li><li class="navelem"><b>RedundancyCom95test.cc</b></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

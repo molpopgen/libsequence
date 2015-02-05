@@ -63,7 +63,8 @@ var hierarchy =
     [ "Sequence::TwoSubs", "classSequence_1_1TwoSubs.html", null ],
     [ "Sequence::upperCrit", "structSequence_1_1upperCrit.html", null ],
     [ "std::vector< T >", null, [
-      [ "Sequence::Ptable", "classSequence_1_1Ptable.html", null ]
+      [ "Sequence::util::vectorizer< T, allocator >", "classSequence_1_1util_1_1vectorizer.html", null ],
+      [ "Sequence::util::vectorizer< polymorphicSite8 >", "classSequence_1_1util_1_1vectorizer.html", null ]
     ] ],
     [ "Sequence::WeightingScheme2", "classSequence_1_1WeightingScheme2.html", [
       [ "Sequence::GranthamWeights2", "classSequence_1_1GranthamWeights2.html", null ],

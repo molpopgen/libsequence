@@ -1,6 +1,5 @@
 var examples =
 [
-    [ "baseComp.cc", "baseComp_8cc-example.html", null ],
     [ "bottleneck.cc", "bottleneck_8cc-example.html", null ],
     [ "codons.cc", "codons_8cc-example.html", null ],
     [ "correlations.cc", "correlations_8cc-example.html", null ],
@@ -11,7 +10,6 @@ var examples =
     [ "msmm.cc", "msmm_8cc-example.html", null ],
     [ "msstats.cc", "msstats_8cc-example.html", null ],
     [ "PolyTableIterators.cc", "PolyTableIterators_8cc-example.html", null ],
-    [ "Ptable_test.cc", "Ptable_test_8cc-example.html", null ],
     [ "slidingWindow.cc", "slidingWindow_8cc-example.html", null ],
     [ "slidingWindow2.cc", "slidingWindow2_8cc-example.html", null ],
     [ "valid_dna.cc", "valid_dna_8cc-example.html", null ]

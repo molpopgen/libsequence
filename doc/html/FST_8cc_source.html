@@ -96,7 +96,7 @@ $(document).ready(function(){initNavTree('FST_8cc_source.html','');});
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="FST_8hpp.html">Sequence/FST.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="PolyTable_8hpp.html">Sequence/PolyTable.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="PolyTableManip_8hpp.html">Sequence/PolyTableManip.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="polySiteVector_8hpp.html">Sequence/polySiteVector.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SeqConstants_8hpp.html">Sequence/SeqConstants.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;numeric&gt;</span></div>
@@ -122,7 +122,7 @@ $(document).ready(function(){initNavTree('FST_8cc_source.html','');});
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    vector&lt;double&gt; _weights;</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    vector&lt; pair&lt;unsigned,unsigned&gt; &gt; _indexes;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">mutable</span> <span class="keywordtype">bool</span> _calcsDone;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">polySiteVector</a> pv;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">polySiteVector</a> pv;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">typedef</span> std::pair&lt; std::set&lt;char&gt;, std::set&lt;char&gt; &gt; PopStateSets;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    PopStateSets getPopStateSets(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp;i,</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                                 <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp;j,</div>
@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('FST_8cc_source.html','');});
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      _piB(0.), _piT(0.), _piS(0.), _piD(0.),</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      _indexes( vector&lt; pair&lt;unsigned,unsigned&gt; &gt;(npop) ),</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      _calcsDone(false),</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      pv( <a class="code" href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">rotatePolyTable</a>(data) )</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      pv( <a class="code" href="group__polytables.html#ga7c715612544ef46c9e5900274f0928e8">make_polySiteVector</a>(*data) )</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span> (config == NULL)</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      {</div>
@@ -480,11 +480,11 @@ $(document).ready(function(){initNavTree('FST_8cc_source.html','');});
 <div class="ttc" id="classSequence_1_1FST_html_a5cd2e1d1a0c294efda4da6b3e4a08961"><div class="ttname"><a href="classSequence_1_1FST.html#a5cd2e1d1a0c294efda4da6b3e4a08961">Sequence::FST::Slatkin</a></div><div class="ttdeci">double Slatkin(void) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00408">FST.cc:408</a></div></div>
 <div class="ttc" id="classSequence_1_1FST_html_aaaa32ea53b5654a0a9c741b7f6e9e2e0"><div class="ttname"><a href="classSequence_1_1FST.html#aaaa32ea53b5654a0a9c741b7f6e9e2e0">Sequence::FST::piD</a></div><div class="ttdeci">double piD(void) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00466">FST.cc:466</a></div></div>
 <div class="ttc" id="classSequence_1_1FST_html_a68e0ef82219163930ff035cb8ec1d988"><div class="ttname"><a href="classSequence_1_1FST.html#a68e0ef82219163930ff035cb8ec1d988">Sequence::FST::fixed</a></div><div class="ttdeci">std::set&lt; double &gt; fixed(unsigned pop1, unsigned pop2) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00316">FST.cc:316</a></div></div>
-<div class="ttc" id="group__polytables_html_ga64b1a038a111743ffce8c2ab57621596"><div class="ttname"><a href="group__polytables.html#ga64b1a038a111743ffce8c2ab57621596">Sequence::rotatePolyTable</a></div><div class="ttdeci">polySiteVector rotatePolyTable(const Sequence::PolyTable *data)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableManip_8cc_source.html#l00029">PolyTableManip.cc:29</a></div></div>
-<div class="ttc" id="PolyTableManip_8hpp_html"><div class="ttname"><a href="PolyTableManip_8hpp.html">PolyTableManip.hpp</a></div><div class="ttdoc">Declaration of Sequence::rotatePolyTable. </div></div>
+<div class="ttc" id="group__polytables_html_ga7c715612544ef46c9e5900274f0928e8"><div class="ttname"><a href="group__polytables.html#ga7c715612544ef46c9e5900274f0928e8">Sequence::make_polySiteVector</a></div><div class="ttdeci">polySiteVector make_polySiteVector(const Sequence::PolyTable &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8cc_source.html#l00029">polySiteVector.cc:29</a></div></div>
 <div class="ttc" id="classSequence_1_1FST_html_a3dc3987daf9d4e4b7f6c39fdba53b68e"><div class="ttname"><a href="classSequence_1_1FST.html#a3dc3987daf9d4e4b7f6c39fdba53b68e">Sequence::FST::HBK</a></div><div class="ttdeci">double HBK(void) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00420">FST.cc:420</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aa52c570782b66af0cddf21ccaa86c768"><div class="ttname"><a href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a></div><div class="ttdeci">std::vector&lt; polymorphicSite &gt; polySiteVector</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00051">polySiteVector.hpp:51</a></div></div>
 <div class="ttc" id="classSequence_1_1FST_html_a33bc9ea9a5d4abb55f3a2b1159ad8e5a"><div class="ttname"><a href="classSequence_1_1FST.html#a33bc9ea9a5d4abb55f3a2b1159ad8e5a">Sequence::FST::Private</a></div><div class="ttdeci">std::pair&lt; std::set&lt; double &gt;, std::set&lt; double &gt; &gt; Private(unsigned pop1, unsigned pop2) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00349">FST.cc:349</a></div></div>
-<div class="ttc" id="namespaceSequence_html_a32ee74454170cd8bfd22d7515405149c"><div class="ttname"><a href="namespaceSequence.html#a32ee74454170cd8bfd22d7515405149c">Sequence::polySiteVector</a></div><div class="ttdeci">std::vector&lt; polymorphicSite &gt; polySiteVector</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00056">typedefs.hpp:56</a></div></div>
+<div class="ttc" id="polySiteVector_8hpp_html"><div class="ttname"><a href="polySiteVector_8hpp.html">polySiteVector.hpp</a></div><div class="ttdoc">Site-major variation tables in ASCII format. </div></div>
 <div class="ttc" id="classSequence_1_1FST_html_a36de7e880aa6b30d7393882fee76e1f4"><div class="ttname"><a href="classSequence_1_1FST.html#a36de7e880aa6b30d7393882fee76e1f4">Sequence::FST::piS</a></div><div class="ttdeci">double piS(void) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00455">FST.cc:455</a></div></div>
 <div class="ttc" id="classSequence_1_1FST_html_a4dd9879a02a26cba6a812cd3906759d5"><div class="ttname"><a href="classSequence_1_1FST.html#a4dd9879a02a26cba6a812cd3906759d5">Sequence::FST::HSM</a></div><div class="ttdeci">double HSM(void) const </div><div class="ttdef"><b>Definition:</b> <a href="FST_8cc_source.html#l00396">FST.cc:396</a></div></div>
 <div class="ttc" id="classSequence_1_1SeqException_html"><div class="ttname"><a href="classSequence_1_1SeqException.html">Sequence::SeqException</a></div><div class="ttdoc">Base class for exceptions that may be thrown. </div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00052">SeqExceptions.hpp:52</a></div></div>
@@ -498,7 +498,7 @@ $(document).ready(function(){initNavTree('FST_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>FST.cc</b></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:52 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

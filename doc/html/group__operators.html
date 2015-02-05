@@ -101,6 +101,10 @@ value &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class
 <tr class="separator:gaaf2513fd99e190e6a0e745a6006be0c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7cc956199dddcab86120ab0130eeec21"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operators.html#ga7cc956199dddcab86120ab0130eeec21">Sequence::operator&gt;&gt;</a> (std::istream &amp;s, Seq &amp;c)</td></tr>
 <tr class="separator:ga7cc956199dddcab86120ab0130eeec21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga349dacaaffff5f2e055ec27e685b3845"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operators.html#ga349dacaaffff5f2e055ec27e685b3845">Sequence::operator&lt;&lt;</a> (std::ostream &amp;s, const Seq8 &amp;c)</td></tr>
+<tr class="separator:ga349dacaaffff5f2e055ec27e685b3845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga02969e44aa4d1fc80cc17c20bd78d73e"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operators.html#ga02969e44aa4d1fc80cc17c20bd78d73e">Sequence::operator&gt;&gt;</a> (std::istream &amp;s, Seq8 &amp;c)</td></tr>
+<tr class="separator:ga02969e44aa4d1fc80cc17c20bd78d73e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaab0e36240236b3366ae6e76b5ba9a678"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__operators.html#gaab0e36240236b3366ae6e76b5ba9a678">Sequence::operator&lt;&lt;</a> (std::ostream &amp;s, const SeqException &amp;c)</td></tr>
 <tr class="separator:gaab0e36240236b3366ae6e76b5ba9a678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0b30f677faac69720cdee554171a7c78"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga0b30f677faac69720cdee554171a7c78"></a>
@@ -321,6 +325,35 @@ template&lt;typename key , typename value , typename comparison &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ga349dacaaffff5f2e055ec27e685b3845"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; Sequence::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Seq8 &amp;&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows objects derived from Sequence::Seq8 to be written to output streams. This operator acts by a call to the virtual funtion Sequence::Seq8::print </p>
+
+<p>Definition at line <a class="el" href="Seq8_8cc_source.html#l00099">99</a> of file <a class="el" href="Seq8_8cc_source.html">Seq8.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga18491cc65f7e1239ec54a64e3820fb46"></a>
 <div class="memitem">
 <div class="memproto">
@@ -526,6 +559,35 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ga02969e44aa4d1fc80cc17c20bd78d73e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::istream &amp; Sequence::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Seq8 &amp;&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Allows objects derived from Sequence::Seq8 to be read from output streams. This operator acts by a call to the virtual funtion <a class="el" href="classSequence_1_1Seq.html#a6e8fd025d52d0183b70ecc327a9f2eb4">Sequence::Seq::read</a> </p>
+
+<p>Definition at line <a class="el" href="Seq8_8cc_source.html#l00104">104</a> of file <a class="el" href="Seq8_8cc_source.html">Seq8.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga7cc956199dddcab86120ab0130eeec21"></a>
 <div class="memitem">
 <div class="memproto">
@@ -649,7 +711,7 @@ template&lt;typename T &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

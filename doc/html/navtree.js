@@ -36,8 +36,8 @@ var NAVTREE =
           ] ],
           [ "Iterating over sites directly", "md_md_tutorial.html#polytable_csi", null ]
         ] ],
-        [ "Sequence::Ptable in detail", "md_md_tutorial.html#ptable_detail", null ],
-        [ "The relationship between PolyTable and Ptable", "md_md_tutorial.html#polytable_ptable", null ]
+        [ "Sequence::polySiteVector in detail", "md_md_tutorial.html#ptable_detail", null ],
+        [ "The relationship between PolyTable and polySiteVector", "md_md_tutorial.html#polytable_ptable", null ]
       ] ],
       [ "Summary statistics", "md_md_tutorial.html#summstats", [
         [ "Standard summary statistics", "md_md_tutorial.html#classic", null ],
@@ -54,6 +54,7 @@ var NAVTREE =
     ] ],
     [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
+    [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
@@ -93,12 +94,12 @@ var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
 "PolyTableFunctions_8hpp.html#a59bf69ad44829dececa75440a9f4e7cf",
-"classSequence_1_1Comeron95.html#a0862003c1ead174d65b7ef830e6b90f2",
-"classSequence_1_1PolyTable.html#a274be63f61e949be5056f47ae3bd0402",
-"classSequence_1_1SimParams.html#a9a6b50ddf60b1f5055021d99e741cbab",
-"classSequence_1_1fastq.html#ac5d9ce495b1f67ed6b21382475c63378",
-"group__coalescent.html#gab0c8f4db37c99fb894337fbcce910dd6",
-"structSequence_1_1coalsim_1_1chromosome.html#abb74f498e6569e818cad101629bf0797"
+"classSequence_1_1ClustalW.html#a853def5dd38dbfcda94a8276b17b8b3d",
+"classSequence_1_1PolyTable.html#a05bb8d5b84760082a5b20a3598fa4f57",
+"classSequence_1_1SimParams.html#a378fd71418f41da727a1095c9bc78007",
+"classSequence_1_1fastq.html#abd1fcbf6b32d4699ac98665b79164704",
+"group__coalescent.html#ga84db82131b381d35d77286be8ace562e",
+"structSequence_1_1HKAresults.html#a228da1a31bfb3f2f0e1dbba5ba8c7657"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

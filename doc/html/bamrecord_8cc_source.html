@@ -411,246 +411,251 @@ $(document).ready(function(){initNavTree('bamrecord_8cc_source.html','');});
 <div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a1f0e6e8b381e099048ac39c268954061">  338</a></span>&#160;  std::string <a class="code" href="classSequence_1_1bamrecord.html#a1f0e6e8b381e099048ac39c268954061">bamrecord::seq</a>()<span class="keyword"> const </span></div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="keyword">  </span>{</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    std::string rv;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    std::for_each(this-&gt;<a class="code" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">seq_cbegin</a>(),</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                  this-&gt;<a class="code" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">seq_cend</a>(),</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;                  [&amp;](<span class="keyword">const</span> uint8_t &amp; i) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                    rv += int2seq[ (((i) &gt;&gt; 4) &amp; 0x0F) ];</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                    rv += int2seq[ (((i)) &amp; 0x0F) ];</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                  });</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;</div>
-<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">  350</a></span>&#160;  <span class="keyword">const</span> std::uint8_t * <a class="code" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">bamrecord::seq_cbegin</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__seq_beg;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
-<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">  355</a></span>&#160;  <span class="keyword">const</span> std::uint8_t * <a class="code" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">bamrecord::seq_cend</a>()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__seq_end;</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  }</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">  360</a></span>&#160;  std::string <a class="code" href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">bamrecord::cigar</a>()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    std::string rv;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    std::for_each( __impl-&gt;__cig_beg,</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;                   __impl-&gt;__cig_end,</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;                   [&amp;](<span class="keyword">const</span> uint32_t &amp; i )</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;                   {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;                     uint32_t __op = (i&gt;&gt;4);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                     rv += to_string(__op) + bamCig[i^(__op&lt;&lt;4)];</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                   } );</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  }</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
-<div class="line"><a name="l00373"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#ad3eee590dd2c30bfd037b5bda02b54bc">  373</a></span>&#160;  std::string bamrecord::qual()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordflow">return</span> std::string(this-&gt;qual_cbegin(),</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                       this-&gt;qual_cend());</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  }</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
-<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a5f47e2c1ffb37b849a26b059efbf39f1">  379</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::qual_cbegin()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__qual_beg;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
-<div class="line"><a name="l00384"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a41730d0f4ebc14ddc65416c9e97a31e5">  384</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::qual_cend()<span class="keyword"> const </span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__qual_end;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  }</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  std::pair&lt; std::int32_t, const char * &gt;</div>
-<div class="line"><a name="l00390"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0769ec5e54726c3c7adb38ac8dbe450b">  390</a></span>&#160;  bamrecord::raw()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordflow">return</span> std::make_pair(__impl-&gt;__block_size,__impl-&gt;__alnblock.get());</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  }</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;</div>
-<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0d828ff49a6c7f6dfa4471e5488ba9cb">  395</a></span>&#160;  <a class="code" href="classSequence_1_1samflag.html">samflag</a> bamrecord::flag()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSequence_1_1samflag.html">samflag</a>(int32_t(__impl-&gt;__flag));</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#adefaf2f3f4eb412b2a5a23a1f71a4960">  400</a></span>&#160;  std::uint32_t bamrecord::mapq()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__mq;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  }</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;</div>
-<div class="line"><a name="l00405"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a773bbc3f96be7cd2a81ff5aa0c083745">  405</a></span>&#160;  std::int32_t bamrecord::pos()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__pos;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keyword">auto</span> ll = this-&gt;<a class="code" href="classSequence_1_1bamrecord.html#af1c37130333e02d056491b4925f45e0c">l_seq</a>(),ii=0;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">bool</span> odd = (ll%2!=0.);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    std::for_each(this-&gt;<a class="code" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">seq_cbegin</a>(),</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;                  this-&gt;<a class="code" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">seq_cend</a>(),</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;                  [&amp;](<span class="keyword">const</span> uint8_t &amp; i) {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                    rv += int2seq[ (((i) &gt;&gt; 4) &amp; 0x0F) ];</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                    <span class="keywordflow">if</span>(!odd || (odd &amp;&amp; ii &lt; ll-1))</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                      rv += int2seq[ (((i)) &amp; 0x0F) ];</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    ii+=2;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                  });</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  }</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;</div>
+<div class="line"><a name="l00354"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">  354</a></span>&#160;  <span class="keyword">const</span> std::uint8_t * <a class="code" href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">bamrecord::seq_cbegin</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__seq_beg;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">  359</a></span>&#160;  <span class="keyword">const</span> std::uint8_t * <a class="code" href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">bamrecord::seq_cend</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__seq_end;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  }</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">  364</a></span>&#160;  std::string <a class="code" href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">bamrecord::cigar</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    std::string rv;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    std::for_each( __impl-&gt;__cig_beg,</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;                   __impl-&gt;__cig_end,</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;                   [&amp;](<span class="keyword">const</span> uint32_t &amp; i )</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                   {</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                     uint32_t __op = (i&gt;&gt;4);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                     rv += to_string(__op) + bamCig[i^(__op&lt;&lt;4)];</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                   } );</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
+<div class="line"><a name="l00377"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#ad3eee590dd2c30bfd037b5bda02b54bc">  377</a></span>&#160;  std::string bamrecord::qual()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">return</span> std::string(this-&gt;qual_cbegin(),</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                       this-&gt;qual_cend());</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a5f47e2c1ffb37b849a26b059efbf39f1">  383</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::qual_cbegin()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__qual_beg;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a41730d0f4ebc14ddc65416c9e97a31e5">  388</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::qual_cend()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__qual_end;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  std::pair&lt; std::int32_t, const char * &gt;</div>
+<div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0769ec5e54726c3c7adb38ac8dbe450b">  394</a></span>&#160;  bamrecord::raw()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">return</span> std::make_pair(__impl-&gt;__block_size,__impl-&gt;__alnblock.get());</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0d828ff49a6c7f6dfa4471e5488ba9cb">  399</a></span>&#160;  <a class="code" href="classSequence_1_1samflag.html">samflag</a> bamrecord::flag()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="classSequence_1_1samflag.html">samflag</a>(int32_t(__impl-&gt;__flag));</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#adefaf2f3f4eb412b2a5a23a1f71a4960">  404</a></span>&#160;  std::uint32_t bamrecord::mapq()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__mq;</div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  }</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
-<div class="line"><a name="l00409"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4adfc32357b6d7ca4f1a586b42d443ec">  409</a></span>&#160;  std::int32_t bamrecord::next_pos()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__next_pos;</div>
+<div class="line"><a name="l00409"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a773bbc3f96be7cd2a81ff5aa0c083745">  409</a></span>&#160;  std::int32_t bamrecord::pos()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__pos;</div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  }</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
-<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#ae58116b6f37e945bca13c6b53fa00502">  413</a></span>&#160;  std::int32_t bamrecord::refid()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__refID;</div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4adfc32357b6d7ca4f1a586b42d443ec">  413</a></span>&#160;  std::int32_t bamrecord::next_pos()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__next_pos;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  }</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;</div>
-<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a789c43c32dad8505f651520cca6a39ff">  417</a></span>&#160;  std::int32_t bamrecord::next_refid()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__next_refID;</div>
+<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#ae58116b6f37e945bca13c6b53fa00502">  417</a></span>&#160;  std::int32_t bamrecord::refid()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__refID;</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  }</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
-<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a66795a73ebda45d7e7202d2c16e9cf63">  421</a></span>&#160;  std::int32_t bamrecord::tlen()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__tlen;</div>
+<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a789c43c32dad8505f651520cca6a39ff">  421</a></span>&#160;  std::int32_t bamrecord::next_refid()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__next_refID;</div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  }</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
-<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#af1c37130333e02d056491b4925f45e0c">  425</a></span>&#160;  std::int32_t bamrecord::l_seq()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__l_seq;</div>
+<div class="line"><a name="l00425"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a66795a73ebda45d7e7202d2c16e9cf63">  425</a></span>&#160;  std::int32_t bamrecord::tlen()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__tlen;</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  }</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  </div>
-<div class="line"><a name="l00429"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4cae68f4abd24ddc712989d9f8e47f44">  429</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::hasTag(<span class="keyword">const</span> <span class="keywordtype">char</span> * tag)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">if</span>(tag==NULL||tag==<span class="keyword">nullptr</span> || (__impl-&gt;__aux_beg == __impl-&gt;__aux_end) ) {</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    }</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * rv = __impl-&gt;__aux_beg;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    </div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">for</span>( ; rv &lt; __impl-&gt;__aux_end-1 ; rv++)</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;      {</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">if</span>( *rv == tag[0] &amp;&amp;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            *(rv+1) == tag[1]) </div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;          {</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            <span class="keywordflow">if</span>( std::find(&amp;ValTypes[0],&amp;ValTypes[0]+nValTypes,*(rv+2)) !=</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                &amp;ValTypes[0]+nValTypes )</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;              <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;          }</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;      }</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;  }</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  </div>
-<div class="line"><a name="l00448"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0a56b13bdfcba9bbddcb086b18c28e4e">  448</a></span>&#160;  <a class="code" href="structSequence_1_1bamaux.html">bamaux</a> bamrecord::aux(<span class="keyword">const</span> <span class="keywordtype">char</span> * tag)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * tagspot = this-&gt;hasTag(tag);</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keywordflow">if</span>( tagspot == <span class="keyword">nullptr</span> ) <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>();</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="keywordtype">char</span> __tag[3];</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    __tag[0]=*(tagspot++);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    __tag[1]=*(tagspot++);</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    __tag[2] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordtype">char</span> __val_type = char(*tagspot++);</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordtype">size_t</span> valsize = sizeofTag(__val_type,tagspot,__impl-&gt;__aux_end);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="keywordflow">if</span>(!valsize) <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>();</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    std::unique_ptr&lt;char[]&gt; value(<span class="keyword">new</span> <span class="keywordtype">char</span>[valsize]);</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    std::copy( tagspot,tagspot+valsize,value.get() );</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>(valsize,__tag,__val_type,value);</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;  }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    </div>
-<div class="line"><a name="l00463"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a6f2b5522f013c3c7077ba9c46481216d">  463</a></span>&#160;  std::string bamrecord::allaux()<span class="keyword"> const</span></div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordflow">if</span>(__impl-&gt;__aux_beg == __impl-&gt;__aux_end) <span class="keywordflow">return</span> std::string();</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keywordtype">string</span> rv;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * start = __impl-&gt;__aux_beg, * end = __impl-&gt;__aux_end;</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keywordtype">char</span> tag[3];</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    tag[2]=<span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">while</span>( start &lt; end )</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;      {</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        tag[0] = (*start++);</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        tag[1] = (*start++);</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordtype">char</span> val_type = (*start++);</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        rv += string(tag) + <span class="stringliteral">&quot;:&quot;</span> + val_type + <span class="stringliteral">&quot;:&quot;</span>;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="keywordflow">if</span> ( val_type == <span class="charliteral">&#39;A&#39;</span> )</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;          {</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;            rv += (*start++);</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;          }</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( val_type == <span class="charliteral">&#39;c&#39;</span> )</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
+<div class="line"><a name="l00429"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#af1c37130333e02d056491b4925f45e0c">  429</a></span>&#160;  std::int32_t bamrecord::l_seq()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">return</span> __impl-&gt;__l_seq;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  }</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  </div>
+<div class="line"><a name="l00433"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a4cae68f4abd24ddc712989d9f8e47f44">  433</a></span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> * bamrecord::hasTag(<span class="keyword">const</span> <span class="keywordtype">char</span> * tag)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">if</span>(tag==NULL||tag==<span class="keyword">nullptr</span> || (__impl-&gt;__aux_beg == __impl-&gt;__aux_end) ) {</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;      <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    }</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * rv = __impl-&gt;__aux_beg;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordflow">for</span>( ; rv &lt; __impl-&gt;__aux_end-1 ; rv++)</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;      {</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        <span class="keywordflow">if</span>( *rv == tag[0] &amp;&amp;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            *(rv+1) == tag[1]) </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;          {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <span class="keywordflow">if</span>( std::find(&amp;ValTypes[0],&amp;ValTypes[0]+nValTypes,*(rv+2)) !=</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;                &amp;ValTypes[0]+nValTypes )</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;              <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;          }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;      }</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  </div>
+<div class="line"><a name="l00452"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a0a56b13bdfcba9bbddcb086b18c28e4e">  452</a></span>&#160;  <a class="code" href="structSequence_1_1bamaux.html">bamaux</a> bamrecord::aux(<span class="keyword">const</span> <span class="keywordtype">char</span> * tag)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * tagspot = this-&gt;hasTag(tag);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <span class="keywordflow">if</span>( tagspot == <span class="keyword">nullptr</span> ) <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordtype">char</span> __tag[3];</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    __tag[0]=*(tagspot++);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    __tag[1]=*(tagspot++);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    __tag[2] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordtype">char</span> __val_type = char(*tagspot++);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordtype">size_t</span> valsize = sizeofTag(__val_type,tagspot,__impl-&gt;__aux_end);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">if</span>(!valsize) <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>();</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    std::unique_ptr&lt;char[]&gt; value(<span class="keyword">new</span> <span class="keywordtype">char</span>[valsize]);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    std::copy( tagspot,tagspot+valsize,value.get() );</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1bamaux.html">bamaux</a>(valsize,__tag,__val_type,value);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    </div>
+<div class="line"><a name="l00467"></a><span class="lineno"><a class="line" href="classSequence_1_1bamrecord.html#a6f2b5522f013c3c7077ba9c46481216d">  467</a></span>&#160;  std::string bamrecord::allaux()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordflow">if</span>(__impl-&gt;__aux_beg == __impl-&gt;__aux_end) <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordtype">string</span> rv;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> * start = __impl-&gt;__aux_beg, * end = __impl-&gt;__aux_end;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="keywordtype">char</span> tag[3];</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    tag[2]=<span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keywordflow">while</span>( start &lt; end )</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;      {</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        tag[0] = (*start++);</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        tag[1] = (*start++);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        <span class="keywordtype">char</span> val_type = (*start++);</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        rv += string(tag) + <span class="stringliteral">&quot;:&quot;</span> + val_type + <span class="stringliteral">&quot;:&quot;</span>;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keywordflow">if</span> ( val_type == <span class="charliteral">&#39;A&#39;</span> )</div>
 <div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;          {</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            int32_t v = toItype&lt;int8_t&gt;(start);</div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;          }</div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;C&#39;</span>)</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;          {</div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            uint32_t v = toItype&lt;uint8_t&gt;(start);</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;          }</div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;s&#39;</span>)</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;          {</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            int32_t v = toItype&lt;int16_t&gt;(start);</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;          }</div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;S&#39;</span>)</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;          {</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            uint32_t v = toItype&lt;uint16_t&gt;(start);</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;          }</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;i&#39;</span>)</div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;          {</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            int32_t v = toItype&lt;int32_t&gt;(start);</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;          }</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;I&#39;</span>)</div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;          {</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            uint32_t v = toItype&lt;uint32_t&gt;(start);</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;            start += auxTagSize(val_type);</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;            rv += to_string(v);</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;          }</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;B&#39;</span>)<span class="comment">//EXPERIMENTAL</span></div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;          {</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            <span class="keywordtype">char</span> Btype = (*start++);</div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            int32_t Bsize = *(<span class="keyword">const</span> int32_t*)(start++);</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            <span class="keywordflow">for</span>( <span class="keyword">auto</span> i = 0 ; i &lt; Bsize ; ++i )</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;              {</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                <span class="keywordflow">if</span> ( Btype == <span class="charliteral">&#39;c&#39;</span> )</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                  {</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    int32_t v = toItype&lt;int8_t&gt;(start);</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                  }</div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;C&#39;</span>)</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                  {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                    uint32_t v = toItype&lt;uint8_t&gt;(start);</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                  }</div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;s&#39;</span>)</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                  {</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                    int32_t v = toItype&lt;int16_t&gt;(start);</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                  }</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;S&#39;</span>)</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                  {</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                    int32_t v = toItype&lt;uint16_t&gt;(start);</div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                  }</div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;i&#39;</span>)</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                  {</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                    int32_t v = toItype&lt;int32_t&gt;(start);</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                  }</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;I&#39;</span>)</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                  {</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                    uint32_t v = toItype&lt;uint32_t&gt;(start);</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                    start += auxTagSize(Btype);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                    rv += to_string(v);</div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                  }</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                <span class="keywordflow">if</span>(i&lt;Bsize-1)</div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                  rv += <span class="charliteral">&#39;,&#39;</span>;</div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;              }</div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;          }</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;Z&#39;</span>)</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;          {</div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span> * __x = std::find(start,__impl-&gt;__aux_end,<span class="charliteral">&#39;\0&#39;</span>);</div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            rv += string( start,__x );</div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            start += (__x - start)+1;</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;          }</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        rv += <span class="charliteral">&#39;\t&#39;</span>;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;      }</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <span class="keywordflow">return</span> rv;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;  }</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;}</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;</div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;            rv += (*start++);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;          }</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( val_type == <span class="charliteral">&#39;c&#39;</span> )</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;          {</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            int32_t v = toItype&lt;int8_t&gt;(start);</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;          }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;C&#39;</span>)</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;          {</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            uint32_t v = toItype&lt;uint8_t&gt;(start);</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;          }</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;s&#39;</span>)</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;          {</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            int32_t v = toItype&lt;int16_t&gt;(start);</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;          }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;S&#39;</span>)</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;          {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            uint32_t v = toItype&lt;uint16_t&gt;(start);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;          }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;i&#39;</span>)</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;          {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;            int32_t v = toItype&lt;int32_t&gt;(start);</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;          }</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;I&#39;</span>)</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;          {</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            uint32_t v = toItype&lt;uint32_t&gt;(start);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            start += auxTagSize(val_type);</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;            rv += to_string(v);</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;          }</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;B&#39;</span>)<span class="comment">//EXPERIMENTAL</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;          {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            <span class="keywordtype">char</span> Btype = (*start++);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            int32_t Bsize = *(<span class="keyword">const</span> int32_t*)(start++);</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            <span class="keywordflow">for</span>( <span class="keyword">auto</span> i = 0 ; i &lt; Bsize ; ++i )</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;              {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                <span class="keywordflow">if</span> ( Btype == <span class="charliteral">&#39;c&#39;</span> )</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                  {</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                    int32_t v = toItype&lt;int8_t&gt;(start);</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                  }</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;C&#39;</span>)</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                  {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                    uint32_t v = toItype&lt;uint8_t&gt;(start);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                  }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;s&#39;</span>)</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                  {</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                    int32_t v = toItype&lt;int16_t&gt;(start);</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                  }</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;S&#39;</span>)</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                  {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                    int32_t v = toItype&lt;uint16_t&gt;(start);</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                  }</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;i&#39;</span>)</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                  {</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                    int32_t v = toItype&lt;int32_t&gt;(start);</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                  }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Btype == <span class="charliteral">&#39;I&#39;</span>)</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                  {</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                    uint32_t v = toItype&lt;uint32_t&gt;(start);</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                    start += auxTagSize(Btype);</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                    rv += to_string(v);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                  }</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                <span class="keywordflow">if</span>(i&lt;Bsize-1)</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;                  rv += <span class="charliteral">&#39;,&#39;</span>;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;              }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;          }</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (val_type == <span class="charliteral">&#39;Z&#39;</span>)</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;          {</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">char</span> * __x = std::find(start,__impl-&gt;__aux_end,<span class="charliteral">&#39;\0&#39;</span>);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            rv += string( start,__x );</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            start += (__x - start)+1;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;          }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        rv += <span class="charliteral">&#39;\t&#39;</span>;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;      }</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  }</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;}</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classSequence_1_1samflag_html"><div class="ttname"><a href="classSequence_1_1samflag.html">Sequence::samflag</a></div><div class="ttdoc">The flag field of a SAM record. </div><div class="ttdef"><b>Definition:</b> <a href="samflag_8hpp_source.html#l00043">samflag.hpp:43</a></div></div>
 <div class="ttc" id="classSequence_1_1bamrecord_html"><div class="ttname"><a href="classSequence_1_1bamrecord.html">Sequence::bamrecord</a></div><div class="ttdoc">A single alignment record from a BAM file. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8hpp_source.html#l00072">bamrecord.hpp:72</a></div></div>
-<div class="ttc" id="classSequence_1_1bamrecord_html_a545d631d7d528915b5c7cb4cda0ed74a"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">Sequence::bamrecord::cigar</a></div><div class="ttdeci">std::string cigar() const </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00360">bamrecord.cc:360</a></div></div>
-<div class="ttc" id="classSequence_1_1bamrecord_html_a4ca3476c5003687122e02b6892ff1e12"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">Sequence::bamrecord::seq_cbegin</a></div><div class="ttdeci">const std::uint8_t * seq_cbegin() const </div><div class="ttdoc">Beginning of encoded sequence data. Each integer contains 2 bases, with first base stored in the &quot;hig...</div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00350">bamrecord.cc:350</a></div></div>
+<div class="ttc" id="classSequence_1_1bamrecord_html_a545d631d7d528915b5c7cb4cda0ed74a"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a545d631d7d528915b5c7cb4cda0ed74a">Sequence::bamrecord::cigar</a></div><div class="ttdeci">std::string cigar() const </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00364">bamrecord.cc:364</a></div></div>
+<div class="ttc" id="classSequence_1_1bamrecord_html_a4ca3476c5003687122e02b6892ff1e12"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a4ca3476c5003687122e02b6892ff1e12">Sequence::bamrecord::seq_cbegin</a></div><div class="ttdeci">const std::uint8_t * seq_cbegin() const </div><div class="ttdoc">Beginning of encoded sequence data. Each integer contains 2 bases, with first base stored in the &quot;hig...</div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00354">bamrecord.cc:354</a></div></div>
 <div class="ttc" id="structSequence_1_1bamaux_html"><div class="ttname"><a href="structSequence_1_1bamaux.html">Sequence::bamaux</a></div><div class="ttdoc">The extra data types at the end of a bam record. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8hpp_source.html#l00022">bamrecord.hpp:22</a></div></div>
-<div class="ttc" id="classSequence_1_1bamrecord_html_a31cd7ed67f6b9a762bd78c9035f0deaf"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">Sequence::bamrecord::seq_cend</a></div><div class="ttdeci">const std::uint8_t * seq_cend() const </div><div class="ttdoc">One past end of encoded sequence data. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00355">bamrecord.cc:355</a></div></div>
+<div class="ttc" id="classSequence_1_1bamrecord_html_af1c37130333e02d056491b4925f45e0c"><div class="ttname"><a href="classSequence_1_1bamrecord.html#af1c37130333e02d056491b4925f45e0c">Sequence::bamrecord::l_seq</a></div><div class="ttdeci">std::int32_t l_seq() const </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00429">bamrecord.cc:429</a></div></div>
+<div class="ttc" id="classSequence_1_1bamrecord_html_a31cd7ed67f6b9a762bd78c9035f0deaf"><div class="ttname"><a href="classSequence_1_1bamrecord.html#a31cd7ed67f6b9a762bd78c9035f0deaf">Sequence::bamrecord::seq_cend</a></div><div class="ttdeci">const std::uint8_t * seq_cend() const </div><div class="ttdoc">One past end of encoded sequence data. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00359">bamrecord.cc:359</a></div></div>
 <div class="ttc" id="classSequence_1_1bamrecord_html_aff5f892c56af95f9e386a63f319a3b90"><div class="ttname"><a href="classSequence_1_1bamrecord.html#aff5f892c56af95f9e386a63f319a3b90">Sequence::bamrecord::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdoc">True if a record could not be read, or some sort of error occurred. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00305">bamrecord.cc:305</a></div></div>
 <div class="ttc" id="classSequence_1_1bamrecord_html_ab103cec6f5c32e3f494d59d55068b796"><div class="ttname"><a href="classSequence_1_1bamrecord.html#ab103cec6f5c32e3f494d59d55068b796">Sequence::bamrecord::read_name</a></div><div class="ttdeci">std::string read_name() const </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8cc_source.html#l00333">bamrecord.cc:333</a></div></div>
 <div class="ttc" id="structSequence_1_1bamaux_html_adbd5a3eee468f3f158e397cef9566a93"><div class="ttname"><a href="structSequence_1_1bamaux.html#adbd5a3eee468f3f158e397cef9566a93">Sequence::bamaux::value</a></div><div class="ttdeci">std::string value</div><div class="ttdoc">The value of the aux data, in raw bits. </div><div class="ttdef"><b>Definition:</b> <a href="bamrecord_8hpp_source.html#l00043">bamrecord.hpp:43</a></div></div>
@@ -664,7 +669,7 @@ $(document).ready(function(){initNavTree('bamrecord_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_6bd09f5c0d7c52c9474a019ed995cb05.html">hts</a></li><li class="navelem"><b>bamrecord.cc</b></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:52 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

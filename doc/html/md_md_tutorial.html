@@ -92,8 +92,8 @@ $(document).ready(function(){initNavTree('md_md_tutorial.html','');});
 <li class="level3"><a href="#polytable_csi">Iterating over sites directly</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#ptable_detail">Sequence::Ptable in detail</a></li>
-<li class="level2"><a href="#polytable_ptable">The relationship between PolyTable and Ptable</a></li>
+<li class="level2"><a href="#ptable_detail">Sequence::polySiteVector in detail</a></li>
+<li class="level2"><a href="#polytable_ptable">The relationship between PolyTable and polySiteVector</a></li>
 </ul>
 </li>
 <li class="level1"><a href="#summstats">Summary statistics</a><ul><li class="level2"><a href="#classic">Standard summary statistics</a></li>
@@ -110,7 +110,8 @@ $(document).ready(function(){initNavTree('md_md_tutorial.html','');});
 </li>
 </ul>
 </div>
-<div class="textblock"><p>This document is a rapid-fire overview of library features.</p>
+<div class="textblock"><p>The citation for the library is <a class="el" href="citelist.html#CITEREF_Thornton:2003vz">[4]</a></p>
+<p>This document is a rapid-fire overview of library features.</p>
 <h1><a class="anchor" id="background"></a>
 Background</h1>
 <p>I assume a working familiarity with:</p>
@@ -176,8 +177,8 @@ Manipulating a sequence</h2>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="alphabet"></a>
 Testing for correct character sets</h1>
-<p>The list of characters accepted as DNA is defined in the constant array <a class="el" href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Both . and - are accepted as gap ch...">Sequence::dna_alphabet</a>, declared in <a class="el" href="SeqAlphabets_8hpp.html">Sequence/SeqAlphabets.hpp</a>. The type of <a class="el" href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Both . and - are accepted as gap ch...">Sequence::dna_alphabet</a> is std::array&lt;const char,17&gt;, and may therefore be iterated over, etc., as per a normal std::array type.</p>
-<p>The function <a class="el" href="namespaceSequence.html#a04b131da5a173bc96dff2079b18e5ae6" title="test if character is part of Sequence::dna_alphabet ">Sequence::isDNA</a> accepts a single char as an argument and returns true if the argument is found in <a class="el" href="namespaceSequence.html#afd409ce3106271ea202b6ed998268040" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Both . and - are accepted as gap ch...">Sequence::dna_alphabet</a>:</p>
+<p>The list of characters accepted as DNA is defined in the constant array <a class="el" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Only - is accepted as gap character...">Sequence::dna_alphabet</a>, declared in <a class="el" href="SeqAlphabets_8hpp.html">Sequence/SeqAlphabets.hpp</a>. The type of <a class="el" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Only - is accepted as gap character...">Sequence::dna_alphabet</a> is std::array&lt;const char,17&gt;, and may therefore be iterated over, etc., as per a normal std::array type.</p>
+<p>The function <a class="el" href="group__Alphabets.html#ga04b131da5a173bc96dff2079b18e5ae6" title="test if character is part of Sequence::dna_alphabet ">Sequence::isDNA</a> accepts a single char as an argument and returns true if the argument is found in <a class="el" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32" title="Alphabet for DNA sequences Valid DNA characters. Upper-case only. Only - is accepted as gap character...">Sequence::dna_alphabet</a>:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Fasta_8hpp.html">Sequence/Fasta.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SeqAlphabets_8hpp.html">Sequence/SeqAlphabets.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
@@ -187,14 +188,14 @@ Testing for correct character sets</h1>
 <div class="line"><span class="comment">//Find non-DNA characters:</span></div>
 <div class="line"><span class="keyword">auto</span> itr = std::find_if( f.<a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),f.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>(),</div>
 <div class="line">                            [](<span class="keyword">const</span> <span class="keywordtype">char</span> &amp; __ch) {</div>
-<div class="line">                            <span class="keywordflow">return</span> !<a class="code" href="namespaceSequence.html#a04b131da5a173bc96dff2079b18e5ae6">Sequence::isDNA</a>(__ch);</div>
+<div class="line">                            <span class="keywordflow">return</span> !<a class="code" href="group__Alphabets.html#ga04b131da5a173bc96dff2079b18e5ae6">Sequence::isDNA</a>(__ch);</div>
 <div class="line">                           } );</div>
 <div class="line"></div>
 <div class="line"><span class="comment">//Delete them from sequences:</span></div>
 <div class="line">  f.second.erase( std::remove_if(f.<a class="code" href="classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704">begin</a>(),</div>
 <div class="line">                                 f.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>(),</div>
 <div class="line">                                 [](<span class="keyword">const</span> <span class="keywordtype">char</span> &amp; __ch) {</div>
-<div class="line">                                   <span class="keywordflow">return</span> !<a class="code" href="namespaceSequence.html#a04b131da5a173bc96dff2079b18e5ae6">Sequence::isDNA</a>(__ch);</div>
+<div class="line">                                   <span class="keywordflow">return</span> !<a class="code" href="group__Alphabets.html#ga04b131da5a173bc96dff2079b18e5ae6">Sequence::isDNA</a>(__ch);</div>
 <div class="line">                                 }), f.second.<a class="code" href="classSequence_1_1Seq.html#a0c49ccc23f78c9d5f2dd8ea75f32e6eb">end</a>() );</div>
 </div><!-- fragment --><p>The above code block comes from the unit test file <a class="el" href="alphabets_8cc.html" title="Unit tests for Sequence/SeqAlphabets.hpp. ">alphabets.cc</a></p>
 <h1><a class="anchor" id="alignments"></a>
@@ -222,13 +223,13 @@ Polymorphism tables</h1>
 <p>There are three basic types for the maninpulation of variation data:</p>
 <ul>
 <li><a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> is a pure virtual base class for polymorphism tables. In essence, a PolyTable is a std::vector&lt;std::string&gt;, where the strings are the variable sites comprising the haplotypes in the sample. In addition to this vector of strings, a std::vector&lt;double&gt; stores the positions of the variable sites. This representation of variation data is the oldest in the library, several functions exist for processing these types.</li>
-<li><a class="el" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a> is a typedef for std::pair&lt;double, std::string&gt;. The double represents the site position, and the string represents the state of each individual in the sample.</li>
-<li><a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> publicly inherits from std::vector&lt;Sequence::polymorphicSite&gt;. This type is very new to the library, and is the basis of a future rewrite of the code base controlling how variation data are analyzed.</li>
+<li><a class="el" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a> is a typedef for std::pair&lt;double, std::string&gt;. The double represents the site position, and the string represents the state of each individual in the sample.</li>
+<li><a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> is a typedef for std::vector&lt;Sequence::polymorphicSite&gt;. This type has existed for a while, and is a handy way to manipulate data in a SNP-centric way.</li>
 </ul>
-<p>The major difference between <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> and <a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> is how the data are stored internally. Iteration over a <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> iterates over <em>haplotypes</em>, whereas iteration through a Ptable moves across <em>variable sites</em>. These concepts will become more clear when we look at specific examples below.</p>
+<p>The major difference between <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> and <a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> is how the data are stored internally. Iteration over a <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> iterates over <em>haplotypes</em>, whereas iteration through a polySiteVector moves across <em>variable sites</em>. These concepts will become more clear when we look at specific examples below.</p>
 <h2><a class="anchor" id="polytable_terms"></a>
 Definitions of terms</h2>
-<p>Formally, the objects discussed in this section are agnostic with respect to ploidy. Further, I use the term <em>haplotype</em> here loosely. If the data that populate a PolyTable or Ptable come from sources such as X-chromosome sequences obtained from males, autosomal sequences from a highly-inbred <em>Drosophila</em> or <em>Arabidopsis</em>, or the output of some sort of haplotype phasing algorithm, then the haplotypes are indeed haplotypes (although, for the latter case, one should use the likeliehood of the haplotype inference as a weight on any results, if appropriate). However, if the input are diploid genotype data, then those data must be split into two strings for that individual (in the case of a PolyTable), which will require arbitrarily assigning the values for a heterozygote to each string. For such data, <b>it is user error to then apply any haplotype- or LD-based calculation to the data</b>.</p>
+<p>Formally, the objects discussed in this section are agnostic with respect to ploidy. Further, I use the term <em>haplotype</em> here loosely. If the data that populate a PolyTable or polySiteVector come from sources such as X-chromosome sequences obtained from males, autosomal sequences from a highly-inbred <em>Drosophila</em> or <em>Arabidopsis</em>, or the output of some sort of haplotype phasing algorithm, then the haplotypes are indeed haplotypes (although, for the latter case, one should use the likeliehood of the haplotype inference as a weight on any results, if appropriate). However, if the input are diploid genotype data, then those data must be split into two strings for that individual (in the case of a PolyTable), which will require arbitrarily assigning the values for a heterozygote to each string. For such data, <b>it is user error to then apply any haplotype- or LD-based calculation to the data</b>.</p>
 <p>The only allowed characters in these objects are the set A,G,C,T,N,.,-,0,1. The first five values should be obvious. The next two are the identity and gap characters, respectively. The 0 and 1 may be used in various ways, such as representing arbitrary states of biallelic data, ancestral vs. derived character states, minor/major alleles, or to represent more complex genotypes at a site. A programmer may check that data contain valid characters using functions declared in <a class="el" href="SeqAlphabets_8hpp.html">Sequence/SeqAlphabets.hpp</a>: <a class="el" href="structSequence_1_1ambiguousNucleotide.html" title="Tests if a character is in the set A,G,C,T. ">Sequence::ambiguousNucleotide</a> and <a class="el" href="structSequence_1_1invalidPolyChar.html" title="This functor can be used to determine if a range contains characters that the SNP analysis routines i...">Sequence::invalidPolyChar</a>.</p>
 <h2><a class="anchor" id="polytable"></a>
 Sequence::PolyTable in detail</h2>
@@ -241,7 +242,7 @@ The inheritance hierarchy.</h3>
 <div class="line">};</div>
 </div><!-- fragment --><p>As with <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a>, there are two pure virtuals member functions, <a class="el" href="classSequence_1_1PolyTable.html#a27a62e9ee28d31f4b386c79a7af167a0">Sequence::PolyTable::read</a> and <a class="el" href="classSequence_1_1PolyTable.html#ab3750df4d791c24e87815a29fbac77f4">Sequence::PolyTable::print</a>. A valid class must publicly inherit from <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> and define these functions. The library defines the following three classes that publicly inherit from the base class:</p>
 <ul>
-<li><a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program <a href="http://home.uchicago.edu/~rhudson1/source/mksamples.html">ms</a>. This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state. See the example program <a class="el" href="msstats_8cc_source.html">msstats.cc</a> for how to read these objects in from streams, and the documentation for the file <a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">Sequence/SimDataIO.hpp</a> for how to read/write from gzipped streams, binary streams, etc.</li>
+<li><a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program <a class="el" href="citelist.html#CITEREF_Hudson:2002vy">[2]</a>. This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state. See the example program <a class="el" href="msstats_8cc_source.html">msstats.cc</a> for how to read these objects in from streams, and the documentation for the file <a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">Sequence/SimDataIO.hpp</a> for how to read/write from gzipped streams, binary streams, etc.</li>
 <li><a class="el" href="classSequence_1_1PolySites.html" title="Polymorphism tables for sequence data. ">Sequence::PolySites</a> This is a generic/catch-all class for nucleotide-based SNP data.</li>
 <li><a class="el" href="classSequence_1_1SimpleSNP.html" title="SNP table data format. ">Sequence::SimpleSNP</a> This class handles the format used by the software described in <a href="http://www.genetics.org/content/159/4/1805.abstract">Hudson (2001)</a>.</li>
 </ul>
@@ -326,7 +327,7 @@ Accessing the data</h3>
 <li><a class="el" href="classSequence_1_1PolyTable.html#a634b7467be454c6a7de374a372aadc77" title="const iterator to the haplotypes ">Sequence::PolyTable::const_data_iterator</a></li>
 <li><a class="el" href="classSequence_1_1PolyTable.html#a6ba1a3d5991cffdf4b46c9bb837f46e8" title="non-const iterator to the positions ">Sequence::PolyTable::pos_iterator</a></li>
 <li><a class="el" href="classSequence_1_1PolyTable.html#af16bca677823dcb09df64ad62fbab2e8" title="const iterator to the positions ">Sequence::PolyTable::const_pos_iterator</a></li>
-<li><a class="el" href="classSequence_1_1PolyTable.html#a77311e44736d7fac042c1056effa52ad" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a></li>
+<li><a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a></li>
 </ul>
 <p>The following member functions exist for data access:</p>
 <ul>
@@ -443,7 +444,7 @@ Don't be this guy</h4>
 <div class="line">ps[0] = std::string(<span class="stringliteral">&quot;A&quot;</span>);</div>
 </div><!-- fragment --><h3><a class="anchor" id="polytable_csi"></a>
 Iterating over sites directly</h3>
-<p>The examples above iterate over haplotypes. It is sometimes useful to iterate over the variable sites themselves. However, iterating over site positions using <a class="el" href="classSequence_1_1PolyTable.html#aae81867f990cacbd36bce631c8c95bf3">Sequence::PolyTable::pbegin</a> and <a class="el" href="classSequence_1_1PolyTable.html#a906a808ab8ae90406a1f66fc7d38da38">Sequence::PolyTable::pend</a> only gives you access to the positions, and not to the character states. The library allows const access to sites via the member functions <a class="el" href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">Sequence::PolyTable::sbegin</a> and <a class="el" href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">Sequence::PolyTable::send</a>, where the "s" means "site". These functions return types <a class="el" href="classSequence_1_1PolyTable.html#a77311e44736d7fac042c1056effa52ad" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a>, whose value_type is <b>const</b> <a class="el" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a>, which is itself a typedef for std::pair&lt; double, std::string &gt;. Let's look at an example:</p>
+<p>The examples above iterate over haplotypes. It is sometimes useful to iterate over the variable sites themselves. However, iterating over site positions using <a class="el" href="classSequence_1_1PolyTable.html#aae81867f990cacbd36bce631c8c95bf3">Sequence::PolyTable::pbegin</a> and <a class="el" href="classSequence_1_1PolyTable.html#a906a808ab8ae90406a1f66fc7d38da38">Sequence::PolyTable::pend</a> only gives you access to the positions, and not to the character states. The library allows const access to sites via the member functions <a class="el" href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">Sequence::PolyTable::sbegin</a> and <a class="el" href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">Sequence::PolyTable::send</a>, where the "s" means "site". These functions return types <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a>, whose value_type is <b>const</b> <a class="el" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a>, which is itself a typedef for std::pair&lt; double, std::string &gt;. Let's look at an example:</p>
 <div class="fragment"><div class="line">std::vector&lt;double&gt; pos = {1,2,3,4,5};</div>
 <div class="line">std::vector&lt;std::string&gt; data =</div>
 <div class="line">        {<span class="stringliteral">&quot;AAAAA&quot;</span>,</div>
@@ -521,11 +522,11 @@ Iterating over sites directly</h3>
 </ol>
 <p>To see how things go badly, look at the unit test file <a class="el" href="PolyTableBadBehavior_8cc.html" title="Unit test for really bad things. ">PolyTableBadBehavior.cc</a></p>
 <h2><a class="anchor" id="ptable_detail"></a>
-Sequence::Ptable in detail</h2>
-<p><a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> is declared in <a class="el" href="Ptable_8hpp.html" title="Site-major variation tables. ">Sequence/Ptable.hpp</a> and defined in <a class="el" href="Ptable_8cc_source.html">Ptable.cc</a>. From these files, you will see that this is an extremely simple class. <a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> publicly inherits from std::vector&lt; Sequence::polymorphicSite &gt;, and is therefore related to the objects referred to by <a class="el" href="classSequence_1_1PolyTable.html#a77311e44736d7fac042c1056effa52ad" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a> (whose value_type is <a class="el" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a>).</p>
-<p>This class is new to libsequence, but it is important in light of C++11's addition of lambda expressions to the language. The definition of <a class="el" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> plus the power of lambda expressions leads to a very powerful grammer for manipulating variation tables. For example, let is remove all sites with invalid characters (as defined in <a class="el" href="md_md_tutorial.html#polytable_terms">Definitions of terms</a>) from a Ptable:</p>
-<div class="fragment"><div class="line"><span class="keyword">using</span> psite = <a class="code" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a>;</div>
-<div class="line"><a class="code" href="classSequence_1_1Ptable.html">Sequence::Ptable</a> t = { psite(1.,<span class="stringliteral">&quot;AAGC&quot;</span>),</div>
+Sequence::polySiteVector in detail</h2>
+<p><a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> is declared in <a class="el" href="polySiteVector_8hpp.html" title="Site-major variation tables in ASCII format. ">Sequence/polySiteVector.hpp</a> and defined in <a class="el" href="polySiteVector_8cc_source.html">polySiteVector.cc</a>. From these files, you will see that this is an extremely simple class. <a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> is simply a std::vector&lt; Sequence::polymorphicSite &gt;, and is therefore related to the objects referred to by <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c" title="Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...">Sequence::PolyTable::const_site_iterator</a> (whose value_type is <a class="el" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a>).</p>
+<p>This class is most powerful in light of C++11's addition of lambda expressions to the language. The definition of <a class="el" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> plus the power of lambda expressions leads to a very powerful grammer for manipulating variation tables. For example, let is remove all sites with invalid characters (as defined in <a class="el" href="md_md_tutorial.html#polytable_terms">Definitions of terms</a>) from a polySiteVector:</p>
+<div class="fragment"><div class="line"><span class="keyword">using</span> psite = <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a>;</div>
+<div class="line"><a class="code" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a> t = { psite(1.,<span class="stringliteral">&quot;AAGC&quot;</span>),</div>
 <div class="line">                       psite(2.,<span class="stringliteral">&quot;ACZA&quot;</span>) }; <span class="comment">//site 2 has a non-DNA character</span></div>
 <div class="line"></div>
 <div class="line">      <span class="comment">//This will remove site 2:</span></div>
@@ -538,17 +539,17 @@ Sequence::Ptable in detail</h2>
 <div class="line">                             != __p.second.end();</div>
 <div class="line">                         } ),</div>
 <div class="line">         t.end() );</div>
-</div><!-- fragment --><p>The syntax in the above example is compact, readable, efficient, and avoids the pre-C++11 headache of having to define standalone function objects for such simple tasks. The above code block is from the unit test file <a class="el" href="PtableTest_8cc_source.html">PtableTest.cc</a>. See the example program <a class="el" href="Ptable__test_8cc.html" title="Examples of using Sequence::Ptable. ">Ptable_test.cc</a> for some cool usage cases.</p>
+</div><!-- fragment --><p>The syntax in the above example is compact, readable, efficient, and avoids the pre-C++11 headache of having to define standalone function objects for such simple tasks. The above code block is from the unit test file <a class="el" href="polySiteVectorTest_8cc.html" title="Unit tests for Sequence::polySiteVector. ">polySiteVectorTest.cc</a>. See the example program <a class="el" href="polySiteVector__test_8cc.html" title="Examples of using Sequence::polySiteVector. ">polySiteVector_test.cc</a> for some cool usage cases.</p>
 <h2><a class="anchor" id="polytable_ptable"></a>
-The relationship between PolyTable and Ptable</h2>
+The relationship between PolyTable and polySiteVector</h2>
 <p>These two types are intimately-related and may be constructed from one another.</p>
 <h2><a class="anchor" id="polytable_ptable"></a>
-The relationship between PolyTable and Ptable</h2>
+The relationship between PolyTable and polySiteVector</h2>
 <h1><a class="anchor" id="summstats"></a>
 Summary statistics</h1>
 <h2><a class="anchor" id="classic"></a>
 Standard summary statistics</h2>
-<p>libsequence contains routines for calculating several standard summary statistics (Watterson's <img class="formulaInl" alt="$\theta$" src="form_23.png"/>, Tajima's <img class="formulaInl" alt="$\pi$" src="form_38.png"/>, etc.). The relevant classes are:</p>
+<p>libsequence contains routines for calculating several standard summary statistics (Watterson's <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, Tajima's <img class="formulaInl" alt="$\pi$" src="form_1.png"/>, etc.). The relevant classes are:</p>
 <ul>
 <li><a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">Sequence::PolySNP</a> to calculate statistics from nucleotide data. The allowed character set is A,G,C,T,N,-.</li>
 <li><a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">Sequence::PolySIM</a> inherits from PolySNP and is intended to be used with biallelic data encoded in a 0/1 format where 0 = ancestral and 1 = the derived character state. This class is tightly-coupled to <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a>. See the example program <a class="el" href="msstats_8cc_source.html">msstats.cc</a> for how to use this class.</li>
@@ -576,7 +577,7 @@ Standard summary statistics</h2>
 </div><!-- fragment --><p>Take a look at the class documentation for <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">Sequence::PolySNP</a> and <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">Sequence::PolySIM</a> for a list of all the things that you can calculate from a PolyTable &ndash; there is a lot there.</p>
 <h2><a class="anchor" id="classic_fst"></a>
 FST</h2>
-<p>The class <a class="el" href="classSequence_1_1FST.html" title="analysis of population structure using  ">Sequence::FST</a> allows the calculation of <img class="formulaInl" alt="$F_{st}$" src="form_39.png"/> statistics from PolyTables + a vector of the sample sizes per population:</p>
+<p>The class <a class="el" href="classSequence_1_1FST.html" title="analysis of population structure using  ">Sequence::FST</a> allows the calculation of <img class="formulaInl" alt="$F_{st}$" src="form_2.png"/> statistics from PolyTables + a vector of the sample sizes per population:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PolySites_8hpp.html">Sequence/PolySites.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="FST_8hpp.html">Sequence/FST.hpp</a>&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -609,7 +610,7 @@ The future</h2>
 <p>The interface described above will be kept because there is a lot of code sitting around that depends upon it.</p>
 <h1><a class="anchor" id="coalsim"></a>
 Coalescent simulation</h1>
-<p>The sub-namespace <a class="el" href="namespaceSequence_1_1coalsim.html" title="Routines for coalescent simulation. ">Sequence::coalsim</a> contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his <a href="http://www.ncbi.nlm.nih.gov/pubmed/11847089">ms</a> program). A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:</p>
+<p>The sub-namespace <a class="el" href="namespaceSequence_1_1coalsim.html" title="Routines for coalescent simulation. ">Sequence::coalsim</a> contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his <a href="http://www.ncbi.nlm.nih.gov/pubmed/11847089">ms</a> program, <a class="el" href="citelist.html#CITEREF_Hudson:2002vy">[2]</a>). A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:</p>
 <ul>
 <li>There are no global variables representing the fundamental data structures. Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.</li>
 <li>It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion</li>
@@ -684,7 +685,7 @@ BAM files</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

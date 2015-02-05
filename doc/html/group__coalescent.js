@@ -66,7 +66,7 @@ var group__coalescent =
       [ "const_data_iterator", "classSequence_1_1SimData.html#a634b7467be454c6a7de374a372aadc77", null ],
       [ "const_pos_iterator", "classSequence_1_1SimData.html#af16bca677823dcb09df64ad62fbab2e8", null ],
       [ "const_reference", "classSequence_1_1SimData.html#a3c4a677bd42514c2db399be4f3b21202", null ],
-      [ "const_site_iterator", "classSequence_1_1SimData.html#a77311e44736d7fac042c1056effa52ad", null ],
+      [ "const_site_iterator", "classSequence_1_1SimData.html#a7096e7ad3abcb257a8e7ac8c28a23e5c", null ],
       [ "data_iterator", "classSequence_1_1SimData.html#a64c1b337ea81908800c95b8a7a5cfd31", null ],
       [ "pos_iterator", "classSequence_1_1SimData.html#a6ba1a3d5991cffdf4b46c9bb837f46e8", null ],
       [ "reference", "classSequence_1_1SimData.html#a4499f916a1030b5ce5bc3538b1174407", null ],

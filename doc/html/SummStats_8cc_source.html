@@ -71,7 +71,7 @@ $(document).ready(function(){initNavTree('SummStats_8cc_source.html','');});
 <div class="title">SummStats.cc</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Ptable_8hpp.html">Sequence/Ptable.hpp</a>&gt;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="polySiteVector_8hpp.html">Sequence/polySiteVector.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SimData_8hpp.html">Sequence/SimData.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;numeric&gt;</span></div>
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('SummStats_8cc_source.html','');});
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span>Sequence</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">double</span> Dij(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">polymorphicSite</a> &amp; p, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; j)</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keywordtype">double</span> Dij(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; j)</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">unsigned</span> rv = 0;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">unsigned</span> N = 0;</div>
@@ -110,22 +110,23 @@ $(document).ready(function(){initNavTree('SummStats_8cc_source.html','');});
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">return</span> double(rv)/(double(config[i]+config[j]-N));</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  }</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">double</span> Gmin(<span class="keyword">const</span> Ptable &amp; pt, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">double</span> Gmin(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">polySiteVector</a> &amp; pt, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config)</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  {</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">unsigned</span> mdxy = numeric_limits&lt;unsigned&gt;::max(),sumdxy=0;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}<span class="comment">//ns Sequence</span></div>
-<div class="ttc" id="Ptable_8hpp_html"><div class="ttname"><a href="Ptable_8hpp.html">Ptable.hpp</a></div><div class="ttdoc">Site-major variation tables. </div></div>
-<div class="ttc" id="namespaceSequence_html_afaaf89009878664a009249c537dc802a"><div class="ttname"><a href="namespaceSequence.html#afaaf89009878664a009249c537dc802a">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="typedefs_8hpp_source.html#l00050">typedefs.hpp:50</a></div></div>
+<div class="ttc" id="namespaceSequence_html_aa52c570782b66af0cddf21ccaa86c768"><div class="ttname"><a href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a></div><div class="ttdeci">std::vector&lt; polymorphicSite &gt; polySiteVector</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00051">polySiteVector.hpp:51</a></div></div>
+<div class="ttc" id="polySiteVector_8hpp_html"><div class="ttname"><a href="polySiteVector_8hpp.html">polySiteVector.hpp</a></div><div class="ttdoc">Site-major variation tables in ASCII format. </div></div>
 <div class="ttc" id="SimData_8hpp_html"><div class="ttname"><a href="SimData_8hpp.html">SimData.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimData, a class representing polymorphism data from coalescent simulations ...</div></div>
 <div class="ttc" id="classSequence_1_1SimData_html"><div class="ttname"><a href="classSequence_1_1SimData.html">Sequence::SimData</a></div><div class="ttdoc">Data from coalescent simulations. </div><div class="ttdef"><b>Definition:</b> <a href="SimData_8hpp_source.html#l00069">SimData.hpp:69</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a08841c3bd3b0999a40dfdadbee4a6b0d"><div class="ttname"><a href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00045">polySiteVector.hpp:45</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>SummStats.cc</b></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -111,12 +111,6 @@ typedef std::string::size_type&#160;</td><td class="memItemRight" valign="bottom
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2e227989c11d5bbf9e9afb2285981095"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Fasta.html#a2e227989c11d5bbf9e9afb2285981095">Fasta</a> (std::string &amp;&amp;name, std::string &amp;&amp;seq)</td></tr>
-<tr class="separator:a2e227989c11d5bbf9e9afb2285981095"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee4da62ab2c7ca7d2bd3de6b0cc9fd88"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Fasta.html#aee4da62ab2c7ca7d2bd3de6b0cc9fd88">Fasta</a> (const std::string &amp;name, const std::string &amp;seq)</td></tr>
-<tr class="separator:aee4da62ab2c7ca7d2bd3de6b0cc9fd88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad18be02df7d0f25b46c50552a317ae6c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Fasta.html#ad18be02df7d0f25b46c50552a317ae6c">Fasta</a> (const char *name, const char *seq)</td></tr>
-<tr class="separator:ad18be02df7d0f25b46c50552a317ae6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9a5bd8c9c6107d5d43a7fa6b3053be6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Fasta.html#ab9a5bd8c9c6107d5d43a7fa6b3053be6">Fasta</a> (const <a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;s)</td></tr>
 <tr class="separator:ab9a5bd8c9c6107d5d43a7fa6b3053be6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92249021ecdee99765ff0bd4dc08d369"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92249021ecdee99765ff0bd4dc08d369"></a>
@@ -195,7 +189,7 @@ ATGATGATCAGATAGACATAGCAGATACATGT<br/>
 &gt;sequence name 2<br/>
 ATGTTGGTTTTTTTTTAGAGATGTTTATAGGT<br/>
 ETC... </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="baseComp_8cc-example.html#_a2">baseComp.cc</a>, <a class="el" href="codons_8cc-example.html#_a1">codons.cc</a>, and <a class="el" href="valid_dna_8cc-example.html#_a0">valid_dna.cc</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="codons_8cc-example.html#_a1">codons.cc</a>, and <a class="el" href="valid_dna_8cc-example.html#_a0">valid_dna.cc</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="Fasta_8hpp_source.html#l00049">49</a> of file <a class="el" href="Fasta_8hpp_source.html">Fasta.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -218,7 +212,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Const iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00079">79</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00080">80</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
 
 </div>
 </div>
@@ -241,98 +235,11 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00073">73</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00074">74</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2e227989c11d5bbf9e9afb2285981095"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Sequence::Fasta::Fasta </td>
-          <td>(</td>
-          <td class="paramtype">std::string &amp;&amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string &amp;&amp;&#160;</td>
-          <td class="paramname"><em>seq</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>constructor for std::string lvalue references </p>
-
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00043">43</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aee4da62ab2c7ca7d2bd3de6b0cc9fd88"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Sequence::Fasta::Fasta </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>seq</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>constructor for const std::string </p>
-
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00034">34</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ad18be02df7d0f25b46c50552a317ae6c"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Sequence::Fasta::Fasta </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>seq</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>constructor for const char * </p>
-
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00051">51</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ab9a5bd8c9c6107d5d43a7fa6b3053be6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -348,7 +255,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>copy constructor </p>
 
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00059">59</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
+<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00033">33</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
 
 </div>
 </div>
@@ -374,7 +281,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>placeholder for vtable </p>
 
-<p>Definition at line <a class="el" href="Fasta_8hpp_source.html#l00061">61</a> of file <a class="el" href="Fasta_8hpp_source.html">Fasta.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Fasta_8hpp_source.html#l00059">59</a> of file <a class="el" href="Fasta_8hpp_source.html">Fasta.hpp</a>.</p>
 
 </div>
 </div>
@@ -871,7 +778,7 @@ ETC... </p>
 
 <p>Implements <a class="el" href="classSequence_1_1Seq.html#a14cfe4a0853b7bcb42b5f9e395804e72">Sequence::Seq</a>.</p>
 
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00090">90</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
+<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00064">64</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
 
 </div>
 </div>
@@ -906,7 +813,7 @@ ETC... </p>
 
 <p>Implements <a class="el" href="classSequence_1_1Seq.html#a6e8fd025d52d0183b70ecc327a9f2eb4">Sequence::Seq</a>.</p>
 
-<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00067">67</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
+<p>Definition at line <a class="el" href="Fasta_8cc_source.html#l00041">41</a> of file <a class="el" href="Fasta_8cc_source.html">Fasta.cc</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1020,7 @@ ETC... </p>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Fasta.html">Fasta</a></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -103,73 +103,57 @@ $(document).ready(function(){initNavTree('Fasta_8cc_source.html','');});
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Fasta::Fasta() : Seq() {}</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#aee4da62ab2c7ca7d2bd3de6b0cc9fd88">   34</a></span>&#160;  Fasta::Fasta (<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> std::string &amp;seq) :</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::cref(name),std::cref(seq))</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a2e227989c11d5bbf9e9afb2285981095">   43</a></span>&#160;  Fasta::Fasta ( std::string &amp;&amp; name, std::string &amp;&amp; seq) :</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::move(name),std::move(seq))</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#ad18be02df7d0f25b46c50552a317ae6c">   51</a></span>&#160;  Fasta::Fasta (<span class="keyword">const</span> <span class="keywordtype">char</span> *name,<span class="keyword">const</span> <span class="keywordtype">char</span> *seq) : </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="classSequence_1_1Seq.html">Seq</a>(name,seq)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  {}</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#ab9a5bd8c9c6107d5d43a7fa6b3053be6">   59</a></span>&#160;  Fasta::Fasta (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; seq) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(seq) </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  {}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  Fasta::Fasta( <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp; seq ) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::move(seq))</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">   67</a></span>&#160;  std::istream &amp; <a class="code" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Fasta::read</a> (std::istream &amp; stream) </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::string temp;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> ch = stream.peek();</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span>( stream.eof() ) { <span class="keywordflow">return</span> stream; }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">if</span> (<span class="keywordtype">char</span>(ch) != <span class="charliteral">&#39;&gt;&#39;</span>)</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Fasta.cc: error, file not in FASTA format&quot;</span>);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">//Read in name</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    std::getline(stream,first);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    stream &gt;&gt; std::ws;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    first.clear();</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    second.clear();</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    second.reserve(1000);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">while</span>( <span class="keywordtype">char</span>( ch = stream.peek() ) != <span class="charliteral">&#39;&gt;&#39;</span> &amp;&amp; ! stream.eof() )</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        std::getline(stream,temp);</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        second += temp;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">return</span> (stream);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">   90</a></span>&#160;  std::ostream &amp; <a class="code" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Fasta::print</a> (std::ostream &amp; stream)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    stream &lt;&lt; &#39;&gt;<span class="stringliteral">&#39;</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="stringliteral">           &lt;&lt; first</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="stringliteral">           &lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="stringliteral">           &lt;&lt; second;</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="stringliteral">    return stream;</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="stringliteral">  }</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="stringliteral">}</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#ab9a5bd8c9c6107d5d43a7fa6b3053be6">   33</a></span>&#160;  Fasta::Fasta (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; seq) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(seq) </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  Fasta::Fasta( <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp; seq ) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::move(seq))</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">   41</a></span>&#160;  std::istream &amp; <a class="code" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Fasta::read</a> (std::istream &amp; stream) </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    std::string temp;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">int</span> ch = stream.peek();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>( stream.eof() ) { <span class="keywordflow">return</span> stream; }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> (<span class="keywordtype">char</span>(ch) != <span class="charliteral">&#39;&gt;&#39;</span>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Fasta.cc: error, file not in FASTA format&quot;</span>);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//Read in name</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    std::getline(stream,first);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    stream &gt;&gt; std::ws;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    first.clear();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    second.clear();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    second.reserve(1000);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">while</span>( <span class="keywordtype">char</span>( ch = stream.peek() ) != <span class="charliteral">&#39;&gt;&#39;</span> &amp;&amp; ! stream.eof() )</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        std::getline(stream,temp);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        second += temp;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> (stream);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">   64</a></span>&#160;  std::ostream &amp; <a class="code" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Fasta::print</a> (std::ostream &amp; stream)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    stream &lt;&lt; &#39;&gt;<span class="stringliteral">&#39;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="stringliteral">           &lt;&lt; first</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="stringliteral">           &lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="stringliteral">           &lt;&lt; second;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="stringliteral">    return stream;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="stringliteral">  }</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="stringliteral">}</span></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_a10d9c55ca6c9b8b58593cb4f7b359b02"><div class="ttname"><a href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00067">Fasta.cc:67</a></div></div>
+<div class="ttc" id="classSequence_1_1Fasta_html_a10d9c55ca6c9b8b58593cb4f7b359b02"><div class="ttname"><a href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00041">Fasta.cc:41</a></div></div>
 <div class="ttc" id="Fasta_8hpp_html"><div class="ttname"><a href="Fasta_8hpp.html">Fasta.hpp</a></div><div class="ttdoc">Declaration of Sequence::Fasta streams. </div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
-<div class="ttc" id="classSequence_1_1Fasta_html_a5e71e5adf3dad82a87e5f00ce074ab4a"><div class="ttname"><a href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00090">Fasta.cc:90</a></div></div>
+<div class="ttc" id="classSequence_1_1Fasta_html_a5e71e5adf3dad82a87e5f00ce074ab4a"><div class="ttname"><a href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="Fasta_8cc_source.html#l00064">Fasta.cc:64</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_4f06051c9df016f874d2786f7a52ea77.html">Seq</a></li><li class="navelem"><b>Fasta.cc</b></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:52 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

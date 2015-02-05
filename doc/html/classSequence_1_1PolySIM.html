@@ -243,7 +243,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_29.png"/>
+<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_31.png"/>
 </p>
 <p> This is the denominator of Watterson's Theta (see <a class="el" href="classSequence_1_1PolySNP.html#a942cec5aec3bd820c9029609969d4b57">PolySNP::ThetaW</a>) </p>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
@@ -274,7 +274,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_30.png"/>
+<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_32.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -304,7 +304,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_31.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_33.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -334,7 +334,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_32.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_34.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
@@ -365,7 +365,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n > 2 \\ \end{array}\right.\ \]" src="form_33.png"/>
+<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n > 2 \\ \end{array}\right.\ \]" src="form_35.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -395,7 +395,7 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_34.png"/>
+<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_36.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -740,7 +740,7 @@ To check if two sequences are unique, Sequence::Comparisons::Different is used, 
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_35.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a69224c56b3ca7cfe9a28685217e02a08">Recombination::HudsonsC</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_37.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a69224c56b3ca7cfe9a28685217e02a08">Recombination::HudsonsC</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Will return nan if there are no polymorphic sites </dd></dl>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01298">1298</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
@@ -1010,7 +1010,7 @@ Kevin Thornton </dd></dl>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_25.png"/>. This routine does calculate the denominator of the test statistic. </p>
+<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_27.png"/>. This routine does calculate the denominator of the test statistic. </p>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Tajima's D, or nan if there are no polymorphic sites </dd></dl>
 
@@ -1300,7 +1300,7 @@ A simpler version of <a class="el" href="classSequence_1_1PolySNP.html#a9c26d27c
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolySIM.html">PolySIM</a></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -301,7 +301,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_29.png"/>
+<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_31.png"/>
 </p>
 <p> This is the denominator of Watterson's Theta (see <a class="el" href="classSequence_1_1PolySNP.html#a942cec5aec3bd820c9029609969d4b57">PolySNP::ThetaW</a>) </p>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
@@ -332,7 +332,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_30.png"/>
+<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_32.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -362,7 +362,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_31.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_33.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -392,7 +392,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_32.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_34.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
@@ -423,7 +423,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n > 2 \\ \end{array}\right.\ \]" src="form_33.png"/>
+<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n > 2 \\ \end{array}\right.\ \]" src="form_35.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -453,7 +453,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_34.png"/>
+<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_36.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
@@ -744,7 +744,7 @@ To check if two sequences are unique, Sequence::Comparisons::Different is used, 
 for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster" and Equation 13 of Zeng et al. (2006) Genetics 1431-1439 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">likeThorntonAndolfatto</td><td>The calculation of H' requires calculation of <img class="formulaInl" alt="$\theta^2$" src="form_26.png"/>. In Thornton and Andolfatto, we simply used <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_27.png"/>, which is slightly biased. By default, this function calculates <img class="formulaInl" alt="$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$" src="form_28.png"/>, unless this bool is set to false, in which case <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_27.png"/> is used. </td></tr>
+    <tr><td class="paramname">likeThorntonAndolfatto</td><td>The calculation of H' requires calculation of <img class="formulaInl" alt="$\theta^2$" src="form_28.png"/>. In Thornton and Andolfatto, we simply used <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_29.png"/>, which is slightly biased. By default, this function calculates <img class="formulaInl" alt="$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$" src="form_30.png"/>, unless this bool is set to false, in which case <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_29.png"/> is used. </td></tr>
   </table>
   </dd>
 </dl>
@@ -770,7 +770,7 @@ for a recent, severe, bottleneck in a Netherlands population of Drosophila melan
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_35.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a69224c56b3ca7cfe9a28685217e02a08">Recombination::HudsonsC</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_37.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a69224c56b3ca7cfe9a28685217e02a08">Recombination::HudsonsC</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Will return nan if there are no polymorphic sites </dd></dl>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01298">1298</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
@@ -976,7 +976,7 @@ for a recent, severe, bottleneck in a Netherlands population of Drosophila melan
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_25.png"/>. This routine does calculate the denominator of the test statistic. </p>
+<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_27.png"/>. This routine does calculate the denominator of the test statistic. </p>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Tajima's D, or nan if there are no polymorphic sites </dd></dl>
 
@@ -1028,7 +1028,7 @@ G N<br/>
 G N<br/>
 N T<br/>
 <br/>
-This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_23.png"/>, and uses the correct number of derived mutations ovserved in the data. </p>
+This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p>
 <dl class="section note"><dt>Note</dt><dd>When using <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>, an outgroup is required. When using <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">PolySIM</a>, which is constructed with a <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">SimData</a> *, an outgroup is not required (as the 0,1 coding of the data refers to ancestral and derived, respectively). </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a0aa19c3cdfddc2bc5b04142b85ab2499">Sequence::PolySIM</a>.</p>
@@ -1059,7 +1059,7 @@ This keeps the expectation of the statistic equal to <img class="formulaInl" alt
 </table>
 </div><div class="memdoc">
 <p>Calculate Theta ( = 4Nu) from site homozygosity, corresponding to equation 1 in Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence 
-for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster," (although we labelled in <img class="formulaInl" alt="$theta_\eta$" src="form_24.png"/> in that paper) The test requires that the ancestral state (inferred from the outgroup) still be segregating in the ingroup. If that is not true, the site is skipped.<br/>
+for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster," (although we labelled in <img class="formulaInl" alt="$theta_\eta$" src="form_26.png"/> in that paper) The test requires that the ancestral state (inferred from the outgroup) still be segregating in the ingroup. If that is not true, the site is skipped.<br/>
  If there are &gt;= 2 derived states inferred, a "missing data" approach is taken.<br/>
 For example:<br/>
 Outgroup : <br/>
@@ -1079,7 +1079,7 @@ G N<br/>
 G N<br/>
 N T<br/>
 <br/>
-This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_23.png"/>, and uses the correct number of derived mutations ovserved in the data. </p>
+This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p>
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
@@ -1113,18 +1113,18 @@ This keeps the expectation of the statistic equal to <img class="formulaInl" alt
 <p>Calculated here as the sum of 1.0 - sum of site homozygosity accross sites.<br/>
  </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}>0 \]" src="form_14.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}>0 \]" src="form_17.png"/>
 </p>
-<p> Where <img class="formulaInl" alt="$S$" src="form_15.png"/> is the number of segregating sites, <img class="formulaInl" alt="$k_{j,i}$" src="form_16.png"/> is the number of occurences of the <img class="formulaInl" alt="$j_{th}$" src="form_17.png"/> character state at site <img class="formulaInl" alt="$i$" src="form_18.png"/>, and <img class="formulaInl" alt="$n_i$" src="form_19.png"/> is the sample size at site <img class="formulaInl" alt="$i$" src="form_18.png"/>. Calculating the statistic in this manner makes it easy to generalize to an arbitrary number of character states per polymorphic site<br/>
+<p> Where <img class="formulaInl" alt="$S$" src="form_18.png"/> is the number of segregating sites, <img class="formulaInl" alt="$k_{j,i}$" src="form_19.png"/> is the number of occurences of the <img class="formulaInl" alt="$j_{th}$" src="form_20.png"/> character state at site <img class="formulaInl" alt="$i$" src="form_21.png"/>, and <img class="formulaInl" alt="$n_i$" src="form_22.png"/> is the sample size at site <img class="formulaInl" alt="$i$" src="form_21.png"/>. Calculating the statistic in this manner makes it easy to generalize to an arbitrary number of character states per polymorphic site<br/>
 Also equivalent to sum of site heterozygosities:<br/>
  </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]" src="form_20.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]" src="form_23.png"/>
 </p>
 <p><br/>
 Also equivalent to mean pairwise differences, but that's slow to calculate.<br/>
 <br/>
-If there is missing data (indicated by 'N' characters), the sample size is reduced for that site. For example, if the data for the <img class="formulaInl" alt="$i_{th}$" src="form_21.png"/> site is:<br/>
+If there is missing data (indicated by 'N' characters), the sample size is reduced for that site. For example, if the data for the <img class="formulaInl" alt="$i_{th}$" src="form_24.png"/> site is:<br/>
 A<br/>
 A<br/>
 A<br/>
@@ -1164,10 +1164,10 @@ Then ThetaPi is calculated for that site as if the sample size were 4 (not 6), a
 </div><div class="memdoc">
 <p>The classic "Watterson's Theta" statistic, generalized to missing data and multiple mutations per site: </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]" src="form_22.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]" src="form_25.png"/>
 </p>
 <p><br/>
-For this statistic, <img class="formulaInl" alt="$S$" src="form_15.png"/> is either the number of segregating sites, or the number of mutations on the genealogy and <img class="formulaInl" alt="$n_i$" src="form_19.png"/> is the sample size at site i. If totMuts == 1, the number of mutations is used, else the number ofsegregating sites is used. </p>
+For this statistic, <img class="formulaInl" alt="$S$" src="form_18.png"/> is either the number of segregating sites, or the number of mutations on the genealogy and <img class="formulaInl" alt="$n_i$" src="form_22.png"/> is the sample size at site i. If totMuts == 1, the number of mutations is used, else the number ofsegregating sites is used. </p>
 <dl class="section warning"><dt>Warning</dt><dd>Statistic undefined if there are untyped SNPs. In the presence of missing data, ThetaW is calculated as the sum (over all segregating sites) of 1/a_sub_n, where a_sub_n is the denominator of ThetaW, using the number of alleles without missing data as the sample size. More formally, the routine returns a calculation base on an unweighted sample size adjustment accross sites. </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a593e8e6121bcf8477a2319b5f47a27c1">Sequence::PolySIM</a>.</p>
@@ -1316,7 +1316,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_15.png"/> is eit
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a></li>
-    <li class="footer">Generated on Wed Dec 17 2014 12:55:53 for libsequence by
+    <li class="footer">Generated on Wed Feb 4 2015 18:31:33 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
