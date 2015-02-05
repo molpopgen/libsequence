@@ -338,11 +338,15 @@ namespace Sequence
   std::string bamrecord::seq() const 
   {
     std::string rv;
+    auto ll = this->l_seq(),ii=0;
+    bool odd = (ll%2!=0.);
     std::for_each(this->seq_cbegin(),
      		  this->seq_cend(),
      		  [&](const uint8_t & i) {
      		    rv += int2seq[ (((i) >> 4) & 0x0F) ];
-     		    rv += int2seq[ (((i)) & 0x0F) ];
+		    if(!odd || (odd && ii < ll-1))
+		      rv += int2seq[ (((i)) & 0x0F) ];
+		    ii+=2;
      		  });
     return rv;
   }

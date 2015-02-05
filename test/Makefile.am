@@ -18,7 +18,11 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	SeqConversions \
 	RedundancyCom95test \
 	alphabets \
-	PtableTest
+	polySiteVectorTest \
+	polySiteVector8Test \
+	pack8test \
+	Seq8test \
+	UhapsTest
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -85,6 +89,16 @@ RedundancyCom95test_SOURCES=RedundancyCom95test.cc
 
 alphabets_SOURCES=alphabets.cc
 
-PtableTest_SOURCES=PtableTest.cc
+polySiteVectorTest_SOURCES=polySiteVectorTest.cc
+
+UhapsTest_SOURCES=UhapsTest.cc
+
+#Poly8Test_SOURCES=Poly8Test.cc
+
+polySiteVector8Test_SOURCES=polySiteVector8Test.cc
+
+pack8test_SOURCES=pack8test.cc
+
+Seq8test_SOURCES=Seq8test.cc
 
 endif #if BUNIT_TEST_PRESENT

@@ -42,3 +42,45 @@ BOOST_AUTO_TEST_CASE( check_isDNA_2 )
 				 }), f.second.end() );
   BOOST_REQUIRE_EQUAL(f.second,"ATGCAGC");
 }
+
+//Test of dna_poly_alphabet
+BOOST_AUTO_TEST_CASE( dna_poly_alphabet_1 )
+{
+  BOOST_REQUIRE( std::find( Sequence::dna_poly_alphabet.begin(),
+			    Sequence::dna_poly_alphabet.end(),'\0' ) != Sequence::dna_poly_alphabet.end() );
+}
+
+BOOST_AUTO_TEST_CASE( dna_poly_alphabet_2 )
+{
+  BOOST_CHECK_EQUAL( Sequence::POLYEOS, 8 );
+}
+
+BOOST_AUTO_TEST_CASE( dna_poly_alphabet_3 )
+{
+  for ( auto c : {'A','C','G','T','N','0','1','-'} )
+    {
+      BOOST_CHECK( std::distance( Sequence::dna_poly_alphabet.begin(),
+				  std::find(Sequence::dna_poly_alphabet.begin(),
+					    Sequence::dna_poly_alphabet.end(),c) ) < Sequence::POLYEOS );
+    }
+}
+
+BOOST_AUTO_TEST_CASE( dna_poly_alphabet_4 )
+{
+  for ( auto c : {'a','c','g','t','n','W','K'} )
+    {
+      BOOST_CHECK( std::distance( Sequence::dna_poly_alphabet.begin(),
+				  std::find(Sequence::dna_poly_alphabet.begin(),
+					    Sequence::dna_poly_alphabet.end(),c) ) >= Sequence::POLYEOS );
+    }
+}
+
+BOOST_AUTO_TEST_CASE( dna_poly_alphabet_5 )
+{
+  for ( auto c : {'a','c','g','t','n','W','K'} )
+    {
+      BOOST_CHECK( std::distance( Sequence::dna_poly_alphabet.begin(),
+				  std::find(Sequence::dna_poly_alphabet.begin(),
+					    Sequence::dna_poly_alphabet.end(),c) ) >= Sequence::NOTPOLYCHAR );
+    }
+}

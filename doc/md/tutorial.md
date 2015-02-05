@@ -2,6 +2,8 @@
 
 [TOC]
 
+The citation for the library is \cite Thornton:2003vz
+
 This document is a rapid-fire overview of library features.
 
 \section background Background
@@ -149,13 +151,13 @@ There are three basic types for the maninpulation of variation data:
 
 * Sequence::PolyTable is a pure virtual base class for polymorphism tables. In essence, a PolyTable is a std::vector<std::string>, where the strings are the variable sites comprising the haplotypes in the sample.  In addition to this vector of strings, a std::vector<double> stores the positions of the variable sites.  This representation of variation data is the oldest in the library, several functions exist for processing these types.
 * Sequence::polymorphicSite is a typedef for std::pair<double, std::string>.  The double represents the site position, and the string represents the state of each individual in the sample.  
-* Sequence::Ptable publicly inherits from std::vector<Sequence::polymorphicSite>.  This type is very new to the library, and is the basis of a future rewrite of the code base controlling how variation data are analyzed.
+* Sequence::polySiteVector is a typedef for std::vector<Sequence::polymorphicSite>.  This type has existed for a while, and is a handy way to manipulate data in a SNP-centric way.
 
-The major difference between Sequence::PolyTable and Sequence::Ptable is how the data are stored internally.  Iteration over a Sequence::PolyTable iterates over _haplotypes_, whereas iteration through a Ptable moves across _variable sites_.  These concepts will become more clear when we look at specific examples below.
+The major difference between Sequence::PolyTable and Sequence::polySiteVector is how the data are stored internally.  Iteration over a Sequence::PolyTable iterates over _haplotypes_, whereas iteration through a polySiteVector moves across _variable sites_.  These concepts will become more clear when we look at specific examples below.
 
 \subsection polytable_terms Definitions of terms
 
-Formally, the objects discussed in this section are agnostic with respect to ploidy.  Further, I use the term _haplotype_ here loosely.  If the data that populate a PolyTable or Ptable come from sources such as X-chromosome sequences obtained from males, autosomal sequences from a highly-inbred _Drosophila_ or _Arabidopsis_, or the output of some sort of haplotype phasing algorithm, then the haplotypes are indeed haplotypes (although, for the latter case, one should use the likeliehood of the haplotype inference as a weight on any results, if appropriate).  However, if the input are diploid genotype data, then those data must be split into two strings for that individual (in the case of a PolyTable), which will require arbitrarily assigning the values for a heterozygote to each string.   For such data, __it is user error to then apply any haplotype- or LD-based calculation to the data__.
+Formally, the objects discussed in this section are agnostic with respect to ploidy.  Further, I use the term _haplotype_ here loosely.  If the data that populate a PolyTable or polySiteVector come from sources such as X-chromosome sequences obtained from males, autosomal sequences from a highly-inbred _Drosophila_ or _Arabidopsis_, or the output of some sort of haplotype phasing algorithm, then the haplotypes are indeed haplotypes (although, for the latter case, one should use the likeliehood of the haplotype inference as a weight on any results, if appropriate).  However, if the input are diploid genotype data, then those data must be split into two strings for that individual (in the case of a PolyTable), which will require arbitrarily assigning the values for a heterozygote to each string.   For such data, __it is user error to then apply any haplotype- or LD-based calculation to the data__.
 
 The only allowed characters in these objects are the set A,G,C,T,N,.,-,0,1.  The first five values should be obvious.  The next two are the identity and gap characters, respectively.  The 0 and 1 may be used in various ways, such as representing arbitrary states of biallelic data, ancestral vs. derived character states, minor/major alleles, or to represent more complex genotypes at a site.  A programmer may check that data contain valid characters using functions declared in Sequence/SeqAlphabets.hpp: Sequence::ambiguousNucleotide and Sequence::invalidPolyChar.
 
@@ -174,7 +176,7 @@ class Sequence::PolyTable : public std::pair<std::vector<double>, std::vector<st
 
 As with Sequence::Seq, there are two pure virtuals member functions, Sequence::PolyTable::read and Sequence::PolyTable::print.  A valid class must publicly inherit from Sequence::PolyTable and define these functions.  The library defines the following three classes that publicly inherit from the base class:
 
-* Sequence::SimData is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program [ms](http://home.uchicago.edu/~rhudson1/source/mksamples.html).  This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state.  See the example program msstats.cc for how to read these objects in from streams, and the documentation for the file Sequence/SimDataIO.hpp for how to read/write from gzipped streams, binary streams, etc.
+* Sequence::SimData is intended to represent binary variation data in the format used by Dick Hudson's coalescent simulation program \cite Hudson:2002vy.  This is the "standard" format used for simulating biallelic sites, and the character states have a very specific meaning: 0 = the ancestral state, 1 = the derived state.  See the example program msstats.cc for how to read these objects in from streams, and the documentation for the file Sequence/SimDataIO.hpp for how to read/write from gzipped streams, binary streams, etc.
 * Sequence::PolySites This is a generic/catch-all class for nucleotide-based SNP data.
 * Sequence::SimpleSNP This class handles the format used by the software described in [Hudson (2001)](http://www.genetics.org/content/159/4/1805.abstract).
 
@@ -526,15 +528,15 @@ How does the above lead to bizarre behavior?  Well, it depends:
 
 To see how things go badly, look at the unit test file PolyTableBadBehavior.cc
 
-\subsection ptable_detail Sequence::Ptable in detail
+\subsection ptable_detail Sequence::polySiteVector in detail
 
-Sequence::Ptable is declared in Sequence/Ptable.hpp and defined in Ptable.cc.  From these files, you will see that this is an extremely simple class.  Sequence::Ptable publicly inherits from std::vector< Sequence::polymorphicSite >, and is therefore related to the objects referred to by Sequence::PolyTable::const_site_iterator (whose value_type is Sequence::polymorphicSite).
+Sequence::polySiteVector is declared in Sequence/polySiteVector.hpp and defined in polySiteVector.cc.  From these files, you will see that this is an extremely simple class.  Sequence::polySiteVector is simply a std::vector< Sequence::polymorphicSite >, and is therefore related to the objects referred to by Sequence::PolyTable::const_site_iterator (whose value_type is Sequence::polymorphicSite).
 
-This class is new to libsequence, but it is important in light of C++11's addition of lambda expressions to the language.  The definition of Sequence::Ptable plus the power of lambda expressions leads to a very powerful grammer for manipulating variation tables.  For example, let is remove all sites with invalid characters (as defined in \ref polytable_terms) from a Ptable:
+This class is most powerful in light of C++11's addition of lambda expressions to the language.  The definition of Sequence::polySiteVector plus the power of lambda expressions leads to a very powerful grammer for manipulating variation tables.  For example, let is remove all sites with invalid characters (as defined in \ref polytable_terms) from a polySiteVector:
 
 ~~~{.cpp}
   using psite = Sequence::polymorphicSite;
-  Sequence::Ptable t = { psite(1.,"AAGC"),
+  Sequence::polySiteVector t = { psite(1.,"AAGC"),
 			 psite(2.,"ACZA") }; //site 2 has a non-DNA character
 
 	//This will remove site 2:
@@ -549,9 +551,9 @@ This class is new to libsequence, but it is important in light of C++11's additi
 	   t.end() );
 ~~~
 
-The syntax in the above example is compact, readable, efficient, and avoids the pre-C++11 headache of having to define standalone function objects for such simple tasks.  The above code block is from the unit test file PtableTest.cc.  See the example program Ptable_test.cc for some cool usage cases.
+The syntax in the above example is compact, readable, efficient, and avoids the pre-C++11 headache of having to define standalone function objects for such simple tasks.  The above code block is from the unit test file polySiteVectorTest.cc.  See the example program polySiteVector_test.cc for some cool usage cases.
 
-\subsection polytable_ptable The relationship between PolyTable and Ptable
+\subsection polytable_ptable The relationship between PolyTable and polySiteVector
 
 These two types are intimately-related and may be constructed from one another.
 
@@ -632,7 +634,7 @@ The interface described above will be kept because there is a lot of code sittin
 
 \section coalsim Coalescent simulation
 
-The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
+The sub-namespace Sequence::coalsim contains the routines required for implementing coalescent simulations with recombination using Hudson's algorithm (e.g., the one that underlies his [ms](http://www.ncbi.nlm.nih.gov/pubmed/11847089) program, \cite Hudson:2002vy).  A full introduction to these routines is beyond the scope of this document at the moment, but the namespace has the following features:
 
 * There are no global variables representing the fundamental data structures.  Thus, the code base is prone to fewer side-effects than one would encounter in modifying ms directly.
 * It is agnostic with respect to time scale, and may be used for discrete or continuous time scales at the user's discretion

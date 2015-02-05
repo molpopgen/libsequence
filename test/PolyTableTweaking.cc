@@ -3,7 +3,7 @@
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/Fasta.hpp>
-#include <Sequence/PolyTableManip.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
 #include <boost/test/unit_test.hpp>
 #include <cstdio>

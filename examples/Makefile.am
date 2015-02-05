@@ -1,7 +1,7 @@
 check_PROGRAMS= baseComp valid_dna translateTest \
 	slidingWindow slidingWindow2 PolyTableIterators  correlations \
 	critical_values ufs msmm freerec bottleneck fragments \
-	msstats Ptable_test
+	msstats polySiteVector_test
 
 baseComp_SOURCES=baseComp.cc
 valid_dna_SOURCES=valid_dna.cc
@@ -17,7 +17,7 @@ freerec_SOURCES=freerec.cc
 bottleneck_SOURCES=bottleneck.cc
 fragments_SOURCES=fragments.cc
 msstats_SOURCES=msstats.cc
-Ptable_test_SOURCES=Ptable_test.cc
+polySiteVector_test_SOURCES=polySiteVector_test.cc
 
 AM_CXXFLAGS=
 AM_LDFLAGS=-L../src/.libs -static

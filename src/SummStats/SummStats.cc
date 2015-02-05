@@ -1,4 +1,4 @@
-#include <Sequence/Ptable.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/SimData.hpp>
 #include <algorithm>
 #include <numeric>
@@ -37,7 +37,7 @@ namespace Sequence
     return double(rv)/(double(config[i]+config[j]-N));
   }
   
-  double Gmin(const Ptable & pt, const std::vector< unsigned > & config)
+  double Gmin(const polySiteVector & pt, const std::vector< unsigned > & config)
   {
     unsigned mdxy = numeric_limits<unsigned>::max(),sumdxy=0;
   }

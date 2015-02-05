@@ -1,8 +1,8 @@
-/*! \include Ptable_test.cc
-  \file Ptable_test.cc @brief Examples of using Sequence::Ptable
+/*! \include polySiteVector_test.cc
+  \file polySiteVector_test.cc @brief Examples of using Sequence::polySiteVector
  */
 
-#include <Sequence/Ptable.hpp>
+#include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolySites.hpp>
 #include <Sequence/stateCounter.hpp>
 #include <iostream>
@@ -44,7 +44,7 @@ int main( int argc, char ** argv )
 {
   //Can use C++11 initializer lists
   //polymorphicSite is a typedef for pair<double,string>
-  Ptable x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GANG") };
+  polySiteVector x{ polymorphicSite(1.,"AAAT"),polymorphicSite(2.,"GANG") };
 
   //Print the data
   cout << "The data:\n";

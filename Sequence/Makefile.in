@@ -323,7 +323,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = bits Coalescent SummStats
+SUBDIRS = bits Coalescent SummStats util
 pkginclude_HEADERS = AlignStream.hpp\
 	Alignment.hpp\
 	Clustalw.hpp\
@@ -350,8 +350,8 @@ pkginclude_HEADERS = AlignStream.hpp\
 	PolyTable.hpp\
 	PolyTableFunctions.hpp\
 	PolyFunctional.hpp\
-	PolyTableManip.hpp\
 	PolyTableSlice.hpp\
+	polySiteVector.hpp \
 	Recombination.hpp\
 	RedundancyCom95.hpp\
 	Seq.hpp\
@@ -384,12 +384,13 @@ pkginclude_HEADERS = AlignStream.hpp\
 	samflag.hpp\
 	samfunctions.hpp\
 	typedefs.hpp \
-	Ptable.hpp \
 	SummStats.hpp \
 	IOhelp.hpp \
 	bamrecord.hpp \
 	bamreader.hpp \
-	SeqAlphabets.hpp
+	SeqAlphabets.hpp \
+	polySiteVector8.hpp \
+	Seq8.hpp 
 
 all: all-recursive
 

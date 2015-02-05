@@ -132,13 +132,12 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Comeron95.lo GranthamWeights.lo SummStats/PolySNP.lo \
 	SummStats/PolySIM.lo RedundancyCom95.lo SingleSub.lo \
 	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
-	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo \
-	PolyTableManip.lo Seq/Seq.lo ComplementBase.lo Sites.lo \
-	Unweighted.lo Seq/Fasta.lo Seq/fastq.lo Kimura80.lo \
-	PolySites.lo SimData.lo SimDataIO.lo ThreeSubs.lo \
-	CodonTable.lo Specializations.lo Seq/FastaExplicit.lo \
-	SeqExceptions.lo SeqConstants.lo shortestPath.lo \
-	SummStats/HKA.lo SummStats/Snn.lo \
+	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
+	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
+	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
+	ThreeSubs.lo CodonTable.lo Specializations.lo \
+	Seq/FastaExplicit.lo SeqExceptions.lo SeqConstants.lo \
+	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	Coalescent/CoalescentMutation.lo \
 	Coalescent/CoalescentRecombination.lo \
 	Coalescent/CoalescentSimTypes.lo \
@@ -146,9 +145,11 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentInitialize.lo \
 	Coalescent/CoalescentCoalesce.lo \
 	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
-	hts/samflag.lo hts/samfunctions.lo Ptable.lo \
+	hts/samflag.lo hts/samfunctions.lo polySiteVector.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo IOhelp.lo \
-	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo
+	hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
+	SummStats/Uhaps.lo polySiteVector8.lo Seq/Seq8.lo \
+	util/pack8.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -355,7 +356,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
 	PolyTableFunctions.cc\
-	PolyTableManip.cc\
 	Seq/Seq.cc\
 	ComplementBase.cc\
 	Sites.cc\
@@ -385,13 +385,17 @@ libsequence_la_SOURCES = Grantham.cc\
 	hts/samrecord.cc\
 	hts/samflag.cc\
 	hts/samfunctions.cc\
-	Ptable.cc \
+	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
-	SeqAlphabets.cc
+	SeqAlphabets.cc \
+	SummStats/Uhaps.cc \
+	polySiteVector8.cc \
+	Seq/Seq8.cc \
+	util/pack8.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
@@ -534,6 +538,16 @@ SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
+SummStats/Uhaps.lo: SummStats/$(am__dirstamp) \
+	SummStats/$(DEPDIR)/$(am__dirstamp)
+Seq/Seq8.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
+util/$(am__dirstamp):
+	@$(MKDIR_P) util
+	@: > util/$(am__dirstamp)
+util/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) util/$(DEPDIR)
+	@: > util/$(DEPDIR)/$(am__dirstamp)
+util/pack8.lo: util/$(am__dirstamp) util/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -548,6 +562,8 @@ mostlyclean-compile:
 	-rm -f SummStats/*.lo
 	-rm -f hts/*.$(OBJEXT)
 	-rm -f hts/*.lo
+	-rm -f util/*.$(OBJEXT)
+	-rm -f util/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -564,8 +580,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableFunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableManip.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ptable.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
@@ -581,6 +595,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Translate.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/TwoSubs.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Unweighted.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@
@@ -593,6 +609,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/FastaExplicit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/FST.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/HKA.Plo@am__quote@
@@ -601,12 +618,14 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Recombination.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Uhaps.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@util/$(DEPDIR)/pack8.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -641,6 +660,7 @@ clean-libtool:
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
 	-rm -rf hts/.libs hts/_libs
+	-rm -rf util/.libs util/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -765,6 +785,8 @@ distclean-generic:
 	-rm -f SummStats/$(am__dirstamp)
 	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
 	-rm -f hts/$(am__dirstamp)
+	-rm -f util/$(DEPDIR)/$(am__dirstamp)
+	-rm -f util/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -775,7 +797,7 @@ clean-am: clean-generic clean-libLTLIBRARIES clean-libtool \
 	mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) util/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -821,7 +843,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) util/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

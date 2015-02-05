@@ -17,6 +17,11 @@ However:
 
 ### TODO:
 
+* Move BAM alphabet to SeqAlphabets
+* Change all references of 8 to 4?  Should the name be based on some int8_t or on the fact that it is 4-bit encoded?  8 > 4, so that is obviously a better choice?
+* Seq8, PolyTable8 ??
+* Explore std::unique_ptr< Sequence::poly8::itype > instead of vector.  It could be faster, but there are implementation/convenience/maintainability costs
+
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
 3. iHH?
@@ -30,8 +35,6 @@ However:
 
 ## libsequence 1.8.4
 
-(There is no official 1.8.4 release yet)
-
 * Major improvements to the documentation.  The doxygen output now contains a detailed tutorial.
 * fastq stream + fastq unit tests added
 * move semantics for the Sequence::Seq hierarchy + unit tests
@@ -43,6 +46,11 @@ However:
 * Kimura80 and Comeron95 will now return a non-signalling NaN for non-finite values.  Previous versions returned "999", which was a bit silly, in all honesty.
 * PolyTable was redefined to publicly inherit from std::pair< std::vector<double>, std::vector<std::string> >.  This change represents a major revision to the code.  This change gives full access to the underlying data, and possibly even "too much rope".  The change also totally wrecks binary compatiblity with previous versions. All unit tests pass.
 * Routines for coalescent simulation moved from namespace Sequence to namespace Sequence::coalsim.
+* Support for 4-bit encoding of sequence data and variation data
+* Sequence::Ptable, introduced in 1.8.3, was a disaster, as it inherited publicly from std::vector, and was therefore a really poor design decision.  The code base has been reverted to a design centered around Sequence::polySiteVector + conversion functions.
+* Constructor inheritance for Sequence::Seq enabled.
+* Sequence/util/vectorizer.hpp added, in order to facilitate safe inheritance from std::vector
+* Issue #6, which was a bug in bamrecord::seq, is fixed
 
 ## libsequence 1.8.3 (Dec. 5, 2014)
 

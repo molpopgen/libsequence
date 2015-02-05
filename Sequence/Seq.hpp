@@ -50,6 +50,7 @@ namespace Sequence
     {
       using SeqBase = std::pair<std::string,std::string>;
     public:
+      //using SeqBase::SeqBase;
       Seq (void);
       Seq (std::string && name, std::string && seq);
       Seq (const std::string & name, const std::string & seq);

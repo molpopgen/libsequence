@@ -18,7 +18,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
 	PolyTableFunctions.cc\
-	PolyTableManip.cc\
 	Seq/Seq.cc\
 	ComplementBase.cc\
 	Sites.cc\
@@ -48,13 +47,17 @@ libsequence_la_SOURCES=  Grantham.cc\
 	hts/samrecord.cc\
 	hts/samflag.cc\
 	hts/samfunctions.cc\
-	Ptable.cc \
+	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
-	SeqAlphabets.cc
+	SeqAlphabets.cc \
+	SummStats/Uhaps.cc \
+	polySiteVector8.cc \
+	Seq/Seq8.cc \
+	util/pack8.cc
 
 AM_LDFLAGS=-version-info 20:0:0
 

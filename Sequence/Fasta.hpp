@@ -50,10 +50,8 @@ namespace Sequence
     {
     private:
     public:
+      using Seq::Seq;
       Fasta();
-      Fasta ( std::string && name, std::string && seq);
-      Fasta (const std::string &name, const std::string &seq);
-      Fasta(const char *name, const char *seq);
       Fasta (const Seq & s);
       Fasta( Fasta && ) = default;
       Fasta( Seq && );
