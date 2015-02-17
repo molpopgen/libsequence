@@ -35,7 +35,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __POLY_FUNCTIONAL_HPP__
 
 #include <Sequence/stateCounter.hpp>
-#include <Sequence/PolyTableManip.hpp>
 #include <Sequence/typedefs.hpp>
 #include <vector>
 #include <string>
