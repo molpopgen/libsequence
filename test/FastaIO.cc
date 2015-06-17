@@ -3,6 +3,7 @@
 
 #include <Sequence/Fasta.hpp>
 #include <fstream>
+#include <iostream>
 #include <boost/test/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
@@ -36,7 +37,8 @@ BOOST_AUTO_TEST_CASE( ostream_test_3recs )
   while(! in.eof() )
     {
       in >> f2 >> std::ws;
-      BOOST_REQUIRE_EQUAL(f,f2);
+      BOOST_REQUIRE_EQUAL(f.first,f2.first);
+      BOOST_REQUIRE_EQUAL(f.second,f2.second);
       ++count;
     }
   BOOST_REQUIRE_EQUAL( count, 3 );
@@ -60,7 +62,8 @@ BOOST_AUTO_TEST_CASE( ostream_test_no_newline_end_of_file )
   while(! in.eof() )
     {
       in >> f2 >> std::ws;
-      BOOST_REQUIRE_EQUAL(f,f2);
+      BOOST_REQUIRE_EQUAL(f.first,f2.first);
+      BOOST_REQUIRE_EQUAL(f.second,f2.second);
       ++count;
     }
   BOOST_REQUIRE_EQUAL( count, 3 );
@@ -84,7 +87,8 @@ BOOST_AUTO_TEST_CASE( ostream_test_newline_within_seq )
   while(! in.eof() )
     {
       in >> f2 >> std::ws;
-      BOOST_REQUIRE_EQUAL(f,f2);
+      BOOST_REQUIRE_EQUAL(f.first,f2.first);
+      BOOST_REQUIRE_EQUAL(f.second,f2.second);
       ++count;
     }
   BOOST_REQUIRE_EQUAL( count, 3 );
@@ -108,7 +112,8 @@ BOOST_AUTO_TEST_CASE( ostream_test_really_bad_input )
   while(! in.eof() )
     {
       in >> f2 >> std::ws;
-      BOOST_REQUIRE_EQUAL(f,f2);
+      BOOST_REQUIRE_EQUAL(f.first,f2.first);
+      BOOST_REQUIRE_EQUAL(f.second,f2.second);
       ++count;
     }
   BOOST_REQUIRE_EQUAL( count, 3 );
