@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-AC_INIT([libsequence], [1.8.4], [https://github.com/molpopgen/libsequence])
+AC_INIT([libsequence], [1.8.4-1], [https://github.com/molpopgen/libsequence])
 AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
 AC_CONFIG_SRCDIR([test/FastaIO.cc])
 AC_CONFIG_SRCDIR([examples/msstats.cc])
