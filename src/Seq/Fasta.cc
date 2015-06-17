@@ -40,6 +40,8 @@ namespace Sequence
 
   std::istream & Fasta::read (std::istream & stream) 
   {
+    first.clear();
+    second.clear();
     std::string temp;
     int ch = stream.peek();
     if( stream.eof() ) { return stream; }
@@ -48,10 +50,10 @@ namespace Sequence
         throw badFormat("Fasta.cc: error, file not in FASTA format");
       }
     //Read in name
+    //stream >> ch >> std::ws;
+    ch = stream.get();
     std::getline(stream,first);
     stream >> std::ws;
-    first.clear();
-    second.clear();
     second.reserve(1000);
     while( char( ch = stream.peek() ) != '>' && ! stream.eof() )
       {
