@@ -81,8 +81,7 @@ namespace Sequence
 
     //Step 1: record which sites are actually polymorphic,
     //in case PolyTable contains invariant pos'ns
-    auto begc = beg;
-    while( begc < end )
+    for(auto begc = beg; begc < end ; ++begc )
       {
 	stateCounter counts = std::for_each( begc->second.begin(),
 					     begc->second.end(),
@@ -91,7 +90,6 @@ namespace Sequence
 	  {
 	    variable_pos.push_back(begc);
 	  }
-	begc++;
       }
     variable_pos.push_back(end);
     if(!variable_pos.empty())
