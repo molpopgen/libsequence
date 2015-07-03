@@ -122,27 +122,34 @@ namespace Sequence
     //we store the window info as pointers to the range of sites 
     //in each window
     std::vector< range > windows;
-    std::vector< range >::const_iterator windows_begin,windows_end;
     void process_windows(  const PolyTable::const_site_iterator beg,
 			   const PolyTable::const_site_iterator end,
-			   const unsigned & window_size,
-			   const unsigned & step_len,
-			   const double & alignment_length,
-			   const bool & is_physical,
-			   const double & physical_scale = 1.);
+			   const double & window_size,
+			   const double & step_len,
+			   const double & starting_pos );
+
+    void process_windows_fixed(  const PolyTable::const_site_iterator beg,
+				 const PolyTable::const_site_iterator end,
+				 const unsigned & window_size_S,
+				 const unsigned & window_step_len );
 
   public:
-    explicit PolyTableSlice(  const PolyTable::const_site_iterator beg,
-			      const PolyTable::const_site_iterator end,
-			      const unsigned & window_size_S,
-			      const unsigned & window_step_len );
+    /*!
+      Constructor for iterating over a fixed number of variable positions
+    */
+    explicit PolyTableSlice( const PolyTable::const_site_iterator beg,
+			     const PolyTable::const_site_iterator end,
+			     const unsigned & window_size_S,
+			     const unsigned & window_step_len );
 
+    /*!
+      Constructor for iterating over a physical distance
+    */
     explicit PolyTableSlice(  const PolyTable::const_site_iterator beg,
 			      const PolyTable::const_site_iterator end,
-			      const unsigned & window_size,
-			      const unsigned & step_len,
-			      const double & alignment_length,
-			      const double & physical_scale = 1.);
+			      const double & window_size,
+			      const double & step_len,
+			      const double & starting_pos = 0. );
     /*!
       const_iterator type to access windows
     */
