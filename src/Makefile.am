@@ -1,4 +1,7 @@
 lib_LTLIBRARIES=libsequence.la
+bin_PROGRAMS=libsequenceConfig
+
+libsequenceConfig_SOURCES=libsequenceConfig.cc
 
 libsequence_la_SOURCES=  Grantham.cc\
 	PathwayHelper.cc\
