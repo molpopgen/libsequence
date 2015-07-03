@@ -98,12 +98,12 @@ namespace Sequence
 	do
 	  {
 	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
-	    auto lo = std::distance(vpitr,variable_pos.end());
-	    if(lo >= window_step_len && lo > window_size_S)
+	    auto lo = std::distance(*vpitr,end);
+	    if(lo > window_step_len && lo > window_size_S)
 	      vpitr += window_step_len;
 	    else{
 	      vpitr++;
-	      windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
+	      windows.push_back(std::make_pair(*vpitr,end));
 	      vpitr=variable_pos.end();
 	    }
 	  }
