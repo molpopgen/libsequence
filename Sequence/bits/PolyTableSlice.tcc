@@ -101,13 +101,12 @@ namespace Sequence
 	  {
 	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
 	    auto lo = std::distance(vpitr,variable_pos.end());
-	    if(lo >= window_step_len)
+	    if(lo >= window_step_len && lo > window_size_S)
 	      vpitr += window_step_len;
 	    else{
 	      vpitr++;
 	      windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
-	      if( lo < window_size_S )
-		vpitr=variable_pos.end();
+	      vpitr=variable_pos.end();
 	    }
 	  }
 	while( vpitr < variable_pos.end() );
