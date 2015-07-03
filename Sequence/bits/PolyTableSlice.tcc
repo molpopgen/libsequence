@@ -93,13 +93,22 @@ namespace Sequence
 	  }
 	begc++;
       }
+    variable_pos.push_back(end);
     if(!variable_pos.empty())
       {
 	auto vpitr = variable_pos.begin();
 	do
 	  {
 	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
-	    vpitr += window_step_len;
+	    auto lo = std::distance(vpitr,variable_pos.end());
+	    if(lo >= window_step_len)
+	      vpitr += window_step_len;
+	    else{
+	      vpitr++;
+	      windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
+	      if( lo < window_size_S )
+		vpitr=variable_pos.end();
+	    }
 	  }
 	while( vpitr < variable_pos.end() );
       }
