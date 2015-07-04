@@ -34,14 +34,6 @@ namespace Sequence
 				     const unsigned & step_len )
     : currentSlice(T()),
       windows( std::vector<range>() )
-      /*!
-	This constructor calculates sliding windows of a fixed number
-	of segregating sites.
-	\param beg A pointer the first segregating site in the data
-	\param end A pointer to one-past-the-last segregating site in the data
-	\param window_size_S The number of segregating sites in each window
-	\param step_len The number of segregating sites by which to "jump" for each new window
-      */
   {
     process_windows_fixed(beg,end,window_size_S,step_len);
   }
@@ -52,20 +44,8 @@ namespace Sequence
 				     const double & window_size,
 				     const double & step_len,
 				     const double & starting_pos)
-
     : currentSlice(T()),
       windows( std::vector<range>() )
-      /*!
-	Use this constructor to generate a sliding window accross the sequence itself.
-	\param beg A pointer the first segregating site in the data
-	\param end A pointer to one-past-the-last segregating site in the data
-	\param window_size The size of the sliding window
-	\param step_len The distance by which the window jumps
-	\param alignment_length The length of the alignment in base pairs.
-	\param physical_scale.  For SNP data, set this to 1.  For data with positions labelled
-	on the interval [0,1), set this equal to alignment_length.  For example,
-	if you simulate data for a 1000bp region using Hudson's program "ms", set this to 1000.
-      */
   {
     process_windows(beg,end,window_size,step_len,starting_pos);
   }
@@ -94,20 +74,6 @@ namespace Sequence
     variable_pos.push_back(end);
     if(!variable_pos.empty())
       {
-	// auto vpitr = variable_pos.begin();
-	// do
-	//   {
-	//     windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
-	//     auto lo = std::distance(*vpitr,end);
-	//     if(lo > window_step_len && lo > window_size_S)
-	//       vpitr += window_step_len;
-	//     else{
-	//       vpitr++;
-	//       windows.push_back(std::make_pair(*vpitr,end));
-	//       vpitr=variable_pos.end();
-	//     }
-	//   }
-	//while( vpitr < variable_pos.end() );
 	for( auto vpitr = variable_pos.begin() ; vpitr < variable_pos.end() ; ++vpitr )
 	  {
 	    unsigned jump=0;
@@ -155,24 +121,19 @@ namespace Sequence
   }
 
   template<typename T>
-  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::begin() const
+  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::cbegin() const
   {
     return windows.begin();
   }
 
   template<typename T>
-  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::end() const
+  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::cend() const
   {
     return windows.end();
   }
 
   template<typename T>  
   T PolyTableSlice<T>::get_slice(const_iterator itr) const
-  /*!
-    \return The window pointed to by the iterator itr.
-    \
-
-  */
   {
     if (itr >= windows.end())
       throw(Sequence::SeqException("PolyTableSlice<T>::get_slice() -- iterator out of range"));
@@ -186,19 +147,12 @@ namespace Sequence
 
   template<typename T>
   unsigned PolyTableSlice<T>::size() const
-  /*!
-    \return The number of windows stored
-  */
   {
     return windows.size();
   }
 
   template<typename T>
   T PolyTableSlice<T>::operator[](const unsigned & i) const 
-  /*!
-    \return the i-th window
-    \throw Sequence::SeqException if subscript i is out of range
-  */
   {
     if (i > windows.size())
       throw(Sequence::SeqException("PolyTableSlice::operator[] -- subscript out of range"));

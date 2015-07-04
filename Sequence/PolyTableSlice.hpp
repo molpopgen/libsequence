@@ -74,8 +74,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
     which discusses the multiple testing issue.
     
     The following example reads in data from Hudson's program ms.  Tajima's D
-    is calculated for non-overlapping 100bp windows.  It is assumed that 1000bp
-    were simulated:
+    is calculated for non-overlapping windows of size 0.1:
     \code
     #include<Sequence/SimData.hpp>
     #include<Sequence/SimParams.hpp>
@@ -92,9 +91,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
     int i;
     while( (i=d.fromstdin()) && i != EOF) //read simulated data from stdin
     {
-    Sequence::PolyTableSlice<Sequence::SimData> windows(d.sbegin(),d.send(),100,100,1000,1000);
-    PolyTableSlice<Sequence::SimData>::const_iterator itr = windows.begin();
-    while(itr < windows.end()) //iterate over windows
+    Sequence::PolyTableSlice<Sequence::SimData> windows(d.sbegin(),d.send(),0.1,0.1,0);
+    //The object only alows const iterations, and libsequence 1.8.5 changed
+    //the API to use the "C++11-ese" syntax of cbegin/cend"
+    PolyTableSlice<Sequence::SimData>::const_iterator itr = windows.cbegin();
+    while(itr < windows.cend()) //iterate over windows
     {
     //create a data object for the current window
     SimData window = windows.get_slice(itr);
@@ -108,6 +109,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
     \endcode
     \ingroup popgenanalysis
     \short A container class for "sliding windows" along a polymorphism table
+    \note The two constructors are left ambiguous intentionally!  See their documentation below.
+    The ambiguity is so that the progammer is forced to thing about which type of slding window to 
+    use.
   */
 namespace Sequence 
 {
@@ -135,7 +139,17 @@ namespace Sequence
 
   public:
     /*!
-      Constructor for iterating over a fixed number of variable positions
+      This constructor calculates sliding windows of a fixed number
+      of segregating sites.
+      \param beg A pointer the first segregating site in the data
+      \param end A pointer to one-past-the-last segregating site in the data
+      \param window_size_S The number of segregating sites in each window
+      \param step_len The number of segregating sites by which to "jump" for each new window
+      \note In order to use this constructor, you must make sure that the compiler sees unsigned values,
+      otherwise compilation will fail with an ambiguity error:
+      \code
+      PolyTableSlice<PolySites> windows(data,100u,10u);
+      \endcode
     */
     explicit PolyTableSlice( const PolyTable::const_site_iterator beg,
 			     const PolyTable::const_site_iterator end,
@@ -143,7 +157,23 @@ namespace Sequence
 			     const unsigned & window_step_len );
 
     /*!
-      Constructor for iterating over a physical distance
+      Use this constructor to generate a sliding window accross the sequence itself.
+      \param beg A pointer the first segregating site in the data
+      \param end A pointer to one-past-the-last segregating site in the data
+      \param window_size The size of the sliding window (in units of physical distance)
+      \param step_len The distance by which the window jumps (in units of physical distance)
+      \param starting_pos The starting position for your data.
+      \note For most situations involving "ms-like" data, and probably for most genomic data,
+      a starting_pos of 0 is appropriate.  However, there are situations where your data may be
+      something like a segment from the middle of a genome, and your SNP positions are annotated
+      with respect to the reference contig.  In that case, starting_pos is best set to the appropriate
+      position along the reference, else you will be returned a lot of empty windows should you start from
+      0.
+      In order to use this constructor, you must make sure that the compiler sees doubles,
+      otherwise compilation will fail with an ambiguity error:
+      \code
+      PolyTableSlice<SimData> windows(data,0.1,0.01);
+      \endcode
     */
     explicit PolyTableSlice(  const PolyTable::const_site_iterator beg,
 			      const PolyTable::const_site_iterator end,
@@ -155,10 +185,29 @@ namespace Sequence
     */
     typedef std::vector< std::pair<PolyTable::const_site_iterator,
 				   PolyTable::const_site_iterator> >::const_iterator const_iterator;
-    const_iterator begin() const;
-    const_iterator end() const;
+    /*!
+      \return Const iterator to begin
+    */
+    const_iterator cbegin() const;
+    /*!
+      \return Const iterator to end
+    */
+    const_iterator cend() const;
+    /*!
+      \param itr An iterator from the current object
+      \return The window pointed to by the iterator itr.
+      \throw Sequence::SeqException if itr is out of range
+    */
     T get_slice(const const_iterator) const ;
+    /*!
+      \return The number of windows stored
+    */
     unsigned size() const;
+    /*!
+      \param i The window to return, 0 <= i < object.size()
+      \return the i-th window
+      \throw Sequence::SeqException if i is out of range
+    */
     T operator[](const unsigned &) const ;
   };
 }
