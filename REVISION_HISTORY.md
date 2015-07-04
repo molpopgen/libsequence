@@ -36,6 +36,11 @@ However:
 ## libsequence 1.8.5
 
 * The API for the template classSequence::PolyTableSlice has changed.  During the development of [another project](http://github.com/molpopgen/foRward), I ran into some limitations of the previous API that would require some ugly hacks to work around.  The new interface is more modern, and the new implementation will be faster for sliding windows over a physical distance.
+* The library now installs a program called libsequenceConfig, which may be used to check for what library version is installed:
+
+~~~{sh}
+libsequenceConfig --version
+~~~
 
 ## libsequence 1.8.4
 
