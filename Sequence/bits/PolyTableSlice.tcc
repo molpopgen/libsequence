@@ -94,20 +94,29 @@ namespace Sequence
     variable_pos.push_back(end);
     if(!variable_pos.empty())
       {
-	auto vpitr = variable_pos.begin();
-	do
+	// auto vpitr = variable_pos.begin();
+	// do
+	//   {
+	//     windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
+	//     auto lo = std::distance(*vpitr,end);
+	//     if(lo > window_step_len && lo > window_size_S)
+	//       vpitr += window_step_len;
+	//     else{
+	//       vpitr++;
+	//       windows.push_back(std::make_pair(*vpitr,end));
+	//       vpitr=variable_pos.end();
+	//     }
+	//   }
+	//while( vpitr < variable_pos.end() );
+	for( auto vpitr = variable_pos.begin() ; vpitr < variable_pos.end() ; ++vpitr )
 	  {
-	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+window_size_S),end)));
-	    auto lo = std::distance(*vpitr,end);
-	    if(lo > window_step_len && lo > window_size_S)
-	      vpitr += window_step_len;
-	    else{
-	      vpitr++;
-	      windows.push_back(std::make_pair(*vpitr,end));
-	      vpitr=variable_pos.end();
-	    }
+	    unsigned jump=0;
+	    while(jump<window_step_len && (vpitr+jump) < variable_pos.end())
+	      {
+		++jump;
+	      }
+	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+jump),end)));
 	  }
-	while( vpitr < variable_pos.end() );
       }
   }
   
