@@ -24,7 +24,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/stateCounter.hpp>
 #include <algorithm>
-
+#include <iostream>
 namespace Sequence
 {
   template<typename T>
@@ -33,173 +33,109 @@ namespace Sequence
 				     const unsigned & window_size_S,
 				     const unsigned & step_len )
     : currentSlice(T()),
-      windows( std::vector<range>() ),
-      windows_begin(windows.begin()),
-      windows_end(windows.end())
-				   /*!
-				     This constructor calculates sliding windows of a fixed number
-				     of segregating sites.
-				     \param beg A pointer the first segregating site in the data
-				     \param end A pointer to one-past-the-last segregating site in the data
-				     \param window_size_S The number of segregating sites in each window
-				     \param step_len The number of segregating sites by which to "jump" for each new window
-    				   */
+      windows( std::vector<range>() )
   {
-    process_windows(beg,end,window_size_S,step_len,1.,false,1.);
+    process_windows_fixed(beg,end,window_size_S,step_len);
   }
 
   template<typename T>
   PolyTableSlice<T>::PolyTableSlice( const PolyTable::const_site_iterator beg,
 				     const PolyTable::const_site_iterator end,
-				     const unsigned & window_size,
-				     const unsigned & step_len,
-				     const double & alignment_length,
-				     const double & physical_scale)
-
+				     const double & window_size,
+				     const double & step_len,
+				     const double & starting_pos)
     : currentSlice(T()),
-      windows( std::vector<range>() ),
-      windows_begin(windows.begin()),
-      windows_end(windows.end())
-				   /*!
-				     Use this constructor to generate a sliding window accross the sequence itself.
-				     \param beg A pointer the first segregating site in the data
-				     \param end A pointer to one-past-the-last segregating site in the data
-				     \param window_size The size of the sliding window
-				     \param step_len The distance by which the window jumps
-				     \param alignment_length The length of the alignment in base pairs.
-				     \param physical_scale.  For SNP data, set this to 1.  For data with positions labelled
-				     on the interval [0,1), set this equal to alignment_length.  For example,
-				     if you simulate data for a 1000bp region using Hudson's program "ms", set this to 1000.
-				   */
+      windows( std::vector<range>() )
   {
-    process_windows(beg,end,window_size,step_len,
-		    alignment_length,true,physical_scale);
+    process_windows(beg,end,window_size,step_len,starting_pos);
   }
 
 
+  template<typename T>
+  void PolyTableSlice<T>::process_windows_fixed(const PolyTable::const_site_iterator beg,
+						const PolyTable::const_site_iterator end,
+						const unsigned & window_size_S,
+						const unsigned & window_step_len )
+  {
+    std::vector<PolyTable::const_site_iterator> variable_pos;
 
+    //Step 1: record which sites are actually polymorphic,
+    //in case PolyTable contains invariant pos'ns
+    for(auto begc = beg; begc < end ; ++begc )
+      {
+	stateCounter counts = std::for_each( begc->second.begin(),
+					     begc->second.end(),
+					     stateCounter('-'));
+	if (counts.nStates() > 1) //is a polymorphic site
+	  {
+	    variable_pos.push_back(begc);
+	  }
+      }
+    variable_pos.push_back(end);
+    if(!variable_pos.empty())
+      {
+	for( auto vpitr = variable_pos.begin() ; vpitr < variable_pos.end() ; ++vpitr )
+	  {
+	    unsigned jump=0;
+	    while(jump<window_step_len && (vpitr+jump) < variable_pos.end())
+	      {
+		++jump;
+	      }
+	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+jump),end)));
+	  }
+      }
+  }
+  
   template<typename T>  
   void PolyTableSlice<T>::process_windows( const PolyTable::const_site_iterator beg,
 					   const PolyTable::const_site_iterator end,
-					   const unsigned & window_size,
-					   const unsigned & step_len,
-					   const double & alignment_length,
-					   const bool & is_physical,
-					   const double & physical_scale )
+					   const double & window_size,
+					   const double & step_len,
+					   const double & starting_pos )
   {
-    if (window_size > 0 && step_len > 0 )
+    double wbeg = starting_pos;
+
+    //Obtain ptr to first element with position >= wbeg
+    auto wbeg_itr = std::lower_bound(beg,end,wbeg,
+				     [](const polymorphicSite & __p, const double & __value){
+				       return __p.first < __value;
+				     });
+    while(wbeg_itr != end)
       {
-	if (end>beg)
-	  {
-	    unsigned nsites = end-beg;
-	    if (is_physical)
-	      {
-		PolyTable::const_site_iterator b=beg,e=end;
-		if (alignment_length>0. && physical_scale > 0.)
-		  {
-		    unsigned i = 0;
-		    double currLen = double(i*step_len);
-		    while(currLen < alignment_length)
-		      {
-			double endOfWindow = currLen + double(window_size);
-			unsigned off1=Sequence::SEQMAXUNSIGNED,
-			  off2=Sequence::SEQMAXUNSIGNED;
-			size_t j=0;
-			while ((b+j) < e)
-			  {
-			    if ( physical_scale*(b+j)->first > currLen && 
-				 physical_scale*(b+j)->first <= endOfWindow )
-			      {
-				if (off1 == Sequence::SEQMAXUNSIGNED)
-				  {
-				    off1=j;
-				    off2=j+1; //we add 1 because off2 will be used to make an "end" iterator
-				  }
-				else
-				  {
-				    ++off2;
-				  }
-				++j;
-			      }
-			    else ++j;
-			    if ( (b+j)>=e || physical_scale*(b+j)->first > endOfWindow )
-			      break;
-			  }
-			if (off1 != Sequence::SEQMAXUNSIGNED)
-			  {
-			    windows.push_back( std::make_pair( (b+off1),(b+off2) ) );
-			  }
-			else
-			  {
-			    windows.push_back( std::make_pair( end,end ) );
-			  }
-			++i;
-			currLen = double(i*step_len);
-		      }
-		  }
-	      }
-	    else
-	      {
-		unsigned jump=0;
-		for (unsigned i=0 ; i<nsites ; i += jump)
-		  {
-		    //A check is necessary here--
-		    //We are trying to guarantee that there are exactly k polymorphisms
-		    //in each window.  However, SNP tables can be constructed/manipulated
-		    //such that each column is not neccessarily polymorphic.
-		    jump=0;
-		    unsigned k = 0;
-		    while(jump < step_len && i+k<nsites)
-		      {
-			stateCounter counts = std::for_each( (beg+i+k)->second.begin(),
-							     (beg+i+k)->second.end(),
-							     stateCounter('-'));
-			if (counts.nStates() > 1) //is a polymorphic site
-			  {
-			    ++jump;
-			  }
-			++k;
-		      }
-		    windows.push_back( std::make_pair( (beg+i),(beg+i+k) ) );
-// 		    if ( (beg+i+step_len+1) < end )
-// 		      {
-// 			windows.push_back( std::make_pair( (beg+i),(beg+i+step_len+1) ) );
-// 		      }
-// 		    else
-// 		      {
-// 			windows.push_back( std::make_pair( (beg+i),end ) );
-// 		      }
-		  }
-	      }
-	    windows_begin = windows.begin();
-	    windows_end = windows.end();
-	  }
+	double wend = wbeg + window_size;
+	//ptr to first element with position > wend
+	auto wend_itr = std::lower_bound(wbeg_itr,end,wend,
+					 [](const polymorphicSite & __p, const double & __value){
+					   return __p.first <= __value;
+					 });
+	windows.push_back( std::make_pair(wbeg_itr,wend_itr) );
+	//update window begin data:
+	//Update the starting position of next window
+	wbeg += step_len;
+	//Update pointer to first data lement whose pos'n is >= wbeg
+	wbeg_itr = std::lower_bound(wbeg_itr,end,wbeg,
+				     [](const polymorphicSite & __p, const double & __value){
+				       return __p.first < __value;
+				     });
       }
   }
 
   template<typename T>
-  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::begin() const
+  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::cbegin() const
   {
-    return windows_begin;
+    return windows.begin();
   }
 
   template<typename T>
-  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::end() const
+  typename PolyTableSlice<T>::const_iterator PolyTableSlice<T>::cend() const
   {
-    return windows_end;
+    return windows.end();
   }
 
   template<typename T>  
   T PolyTableSlice<T>::get_slice(const_iterator itr) const
-    
-
-  /*!
-    \return The window pointed to by the iterator itr.
-    \
-
-  */
   {
-    if (itr >= windows_end)
+    if (itr >= windows.end())
       throw(Sequence::SeqException("PolyTableSlice<T>::get_slice() -- iterator out of range"));
     if(itr->first != itr->second)
       {
@@ -211,21 +147,12 @@ namespace Sequence
 
   template<typename T>
   unsigned PolyTableSlice<T>::size() const
-  /*!
-    \return The number of windows stored
-  */
   {
     return windows.size();
   }
 
   template<typename T>
   T PolyTableSlice<T>::operator[](const unsigned & i) const 
-    
-
-  /*!
-    \return the i-th window
-    \throw Sequence::SeqException if subscript i is out of range
-  */
   {
     if (i > windows.size())
       throw(Sequence::SeqException("PolyTableSlice::operator[] -- subscript out of range"));

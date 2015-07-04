@@ -34,14 +34,14 @@ int main(int argc, char **argv)
 	  std::cout << "Tajima's D for the region is: "<< analyzeRegion.TajimasD() << std::endl;
 	  
 	  Sequence::PolyTableSlice<Sequence::PolySites> windows(SNPtable.sbegin(),
-								SNPtable.send(),1,1);
-	  Sequence::PolyTableSlice<Sequence::PolySites>::const_iterator itr = windows.begin();
-	  while(itr < windows.end())
+								SNPtable.send(),1u,1u);
+	  Sequence::PolyTableSlice<Sequence::PolySites>::const_iterator itr = windows.cbegin();
+	  while(itr < windows.cend())
 	    {
 	      Sequence::PolySites window = windows.get_slice(itr);
 	      Sequence::PolySNP analyzeWindow(&window);
 	      std::cout << "D for window " 
-			<< itr-windows.begin()
+			<< itr-windows.cbegin()
 			<< " is: "
 			<< analyzeWindow.TajimasD()
 			<< std::endl;
