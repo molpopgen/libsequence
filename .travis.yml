@@ -2,3 +2,7 @@ language: cpp
 
 before_install:
 	- sudo apt-get -f install zlib1g zlib1g-dev
+
+compiler:
+	- clang
+	- gcc
