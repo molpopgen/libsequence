@@ -22,6 +22,10 @@ Comments are welcome.
 
 	- Kevin Thornton <krthornt@uci.edu>
 
+# Build status
+
+https://travis-ci.org/molpopgen/libsequence.svg?branch=master
+
 # Citation
 
 If you use the library for your research, please cite:
