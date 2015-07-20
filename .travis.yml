@@ -6,8 +6,3 @@ before_install:
 compiler:
  - clang
  - gcc
-
-env:
- - LLVMVER=3.4
- - LLVMVER=3.5
- - LLVMVER=3.6
