@@ -1,0 +1,5 @@
+language: c++
+
+before_install:
+	- sudo apt-get update -qq
+	- sugo apt-get -f install zlib1g zlib1g-dev
