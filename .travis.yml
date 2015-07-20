@@ -5,7 +5,7 @@ compiler:
  - gcc
 
 before_install:
- - sudo apt-get -f install zlib1g zlib1g-dev
+  - sudo apt-get -f install zlib1g zlib1g-dev
   # g++4.8.1
   - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
 
