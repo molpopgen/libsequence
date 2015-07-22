@@ -24,7 +24,8 @@ Comments are welcome.
 
 # Build status
 
-[![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=master)](https://travis-ci.org/molpopgen/libsequence)
+* aster branch: [![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=master)](https://travis-ci.org/molpopgen/libsequence)
+* dev branch: [![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=dev)](https://travis-ci.org/molpopgen/libsequence)
 
 
 # Citation
