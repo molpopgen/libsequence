@@ -33,6 +33,10 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.8.6
+
+* Patch for Issue #7
+
 ## libsequence 1.8.5
 
 * The API for the template classSequence::PolyTableSlice has changed.  During the development of [another project](http://github.com/molpopgen/foRward), I ran into some limitations of the previous API that would require some ugly hacks to work around.  The new interface is more modern, and the new implementation will be faster for sliding windows over a physical distance.
