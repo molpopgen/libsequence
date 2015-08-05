@@ -38,7 +38,9 @@ namespace Sequence {
       throw badFormat("Sequence::fastq::read - error: record did not begin with \'@\'");
     std::string temp;
     stream.ignore(1,'@');
-    stream >> first >> second >> std::ws;
+    std::getline(stream,first);
+    std::getline(stream,second);
+    stream >> std::ws;
     if ( char(stream.peek()) != '+' ) 
       throw badFormat("Sequence::fastq::read - error: third line did not begin with \'+\'");
     stream >> temp >> std::ws;
