@@ -15,9 +15,11 @@ using namespace Sequence;
 BOOST_AUTO_TEST_CASE( lastwindows1 )
 {
   vector<pair<double,string> > data;
-  for(double i = 0.05 ; i < 0.9 ; i += 0.1 )
+  for(double i = 0.05 ; i < 0.9 ; i += 0.01 )
     data.push_back(make_pair(i,string("001000")));
+
   SimData d(data.begin(),data.end());
-  PolyTableSlice<SimData> w(d.sbegin(),d.send(),0.1,0.1);
-  BOOST_REQUIRE_EQUAL(w.size(),10);
+  PolyTableSlice<SimData> w(d.sbegin(),d.send(),0.1,0.001,0.,1.);
+  unsigned nwindows = unsigned(1./0.001);
+  BOOST_REQUIRE_EQUAL(w.size(),nwindows);
 }

@@ -26,6 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
+
 namespace Sequence
 {
   template<typename T>
@@ -112,7 +113,8 @@ namespace Sequence
 				     [](const polymorphicSite & __p, const double & __value){
 				       return __p.first < __value;
 				     });
-    while( int((ending_pos-wbeg)/window_size) >= 1 )
+    int nwindows=int((ending_pos-wbeg)/step_len);
+    for(int win = 0 ; win < nwindows ; ++win)
       {
 	double wend = wbeg + window_size;
 	//ptr to first element with position > wend
