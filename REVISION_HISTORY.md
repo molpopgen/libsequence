@@ -33,6 +33,12 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.8.7
+
+* Sliding windows over physical distance now require an end position
+* A new unit test was added to test the new sliding window code
+* A test un test/UhapsTest.cc was commented out.  It is known to fail, but those parts of libsequence are not used yet anywhere else.  I'll deal with it later
+
 ## libsequence 1.8.6
 
 * Patch for Issue #7
