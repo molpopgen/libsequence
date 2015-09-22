@@ -18,3 +18,7 @@ addons:
 
 notifications:
   email: false
+
+script:
+ - ./configure --prefix=$HOME && make && make check && make install
+ - $HOME/bin/libsequenceConfig --version
