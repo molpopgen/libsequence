@@ -20,5 +20,6 @@ notifications:
   email: false
 
 script:
+ - export LD_LIBRARY_PATH=$HOME/lib
  - ./configure --prefix=$HOME && make && make check && make install
  - $HOME/bin/libsequenceConfig --version
