@@ -1,0 +1,25 @@
+sudo: false
+language: cpp
+compiler:
+  - gcc
+  - clang
+install:
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+    - zlib1g
+    - zlib1g-dev
+
+notifications:
+  email: false
+
+script:
+ - export LD_LIBRARY_PATH=$HOME/lib
+ - ./configure --prefix=$HOME && make && make check && make install
+ - $HOME/bin/libsequenceConfig --version

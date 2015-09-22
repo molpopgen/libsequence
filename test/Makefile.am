@@ -22,7 +22,10 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	polySiteVector8Test \
 	pack8test \
 	Seq8test \
-	UhapsTest
+	UhapsTest \
+	PolyTableSliceTest
+
+TESTS=$(check_PROGRAMS)
 
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
@@ -100,5 +103,7 @@ polySiteVector8Test_SOURCES=polySiteVector8Test.cc
 pack8test_SOURCES=pack8test.cc
 
 Seq8test_SOURCES=Seq8test.cc
+
+PolyTableSliceTest_SOURCES=PolyTableSliceTest.cc
 
 endif #if BUNIT_TEST_PRESENT

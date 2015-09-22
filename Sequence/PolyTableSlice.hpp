@@ -130,7 +130,8 @@ namespace Sequence
 			   const PolyTable::const_site_iterator end,
 			   const double & window_size,
 			   const double & step_len,
-			   const double & starting_pos );
+			   const double & starting_pos,
+			   const double & ending_pos);
 
     void process_windows_fixed(  const PolyTable::const_site_iterator beg,
 				 const PolyTable::const_site_iterator end,
@@ -150,6 +151,8 @@ namespace Sequence
       \code
       PolyTableSlice<PolySites> windows(data,100u,10u);
       \endcode
+
+      \throw std::logic_error if window_size_S or window_step_len == 0
     */
     explicit PolyTableSlice( const PolyTable::const_site_iterator beg,
 			     const PolyTable::const_site_iterator end,
@@ -163,23 +166,28 @@ namespace Sequence
       \param window_size The size of the sliding window (in units of physical distance)
       \param step_len The distance by which the window jumps (in units of physical distance)
       \param starting_pos The starting position for your data.
+      \param ending_pos.  The last position for the data.
       \note For most situations involving "ms-like" data, and probably for most genomic data,
       a starting_pos of 0 is appropriate.  However, there are situations where your data may be
       something like a segment from the middle of a genome, and your SNP positions are annotated
       with respect to the reference contig.  In that case, starting_pos is best set to the appropriate
       position along the reference, else you will be returned a lot of empty windows should you start from
-      0.
+      0.  Likewise, for "normal" ms runs, ending_pos should be 1.0.  For other scenario, such as "real"
+      data, you'll have to set starting_pos and ending_pos to the appropriate values.
       In order to use this constructor, you must make sure that the compiler sees doubles,
       otherwise compilation will fail with an ambiguity error:
       \code
       PolyTableSlice<SimData> windows(data,0.1,0.01);
       \endcode
+
+      \throw std::logic_error if window_size or step_len <= 0.
     */
     explicit PolyTableSlice(  const PolyTable::const_site_iterator beg,
 			      const PolyTable::const_site_iterator end,
 			      const double & window_size,
 			      const double & step_len,
-			      const double & starting_pos = 0. );
+			      const double & starting_pos = 0.,
+			      const double & ending_pos = 1.0);
     /*!
       const_iterator type to access windows
     */
