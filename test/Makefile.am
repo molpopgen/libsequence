@@ -25,6 +25,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	UhapsTest \
 	PolyTableSliceTest
 
+TESTS=$(check_PROGRAMS)
+
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
 
