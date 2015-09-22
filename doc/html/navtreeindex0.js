@@ -111,7 +111,7 @@ var NAVTREEINDEX0 =
 "CoalescentRecombination_8cc_source.html":[8,0,22],
 "CoalescentSimTypes_8cc_source.html":[8,0,23],
 "CoalescentTreeOperations_8cc_source.html":[8,0,24],
-"Coalescent_2Recombination_8hpp_source.html":[8,0,127],
+"Coalescent_2Recombination_8hpp_source.html":[8,0,128],
 "Coalescent_8hpp.html":[8,0,17],
 "Coalescent_8hpp_source.html":[8,0,17],
 "CodonTable_8cc_source.html":[8,0,26],

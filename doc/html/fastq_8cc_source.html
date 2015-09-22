@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.5</span>
+   &#160;<span id="projectnumber">1.8.7</span>
    </div>
   </td>
  </tr>
@@ -111,47 +111,49 @@ $(document).ready(function(){initNavTree('fastq_8cc_source.html','');});
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Sequence::fastq::read - error: record did not begin with \&#39;@\&#39;&quot;</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    std::string temp;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    stream.ignore(1,<span class="charliteral">&#39;@&#39;</span>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    stream &gt;&gt; first &gt;&gt; second &gt;&gt; std::ws;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> ( <span class="keywordtype">char</span>(stream.peek()) != <span class="charliteral">&#39;+&#39;</span> ) </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Sequence::fastq::read - error: third line did not begin with \&#39;+\&#39;&quot;</span>);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    stream &gt;&gt; temp &gt;&gt; std::ws;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordflow">if</span>(temp.size() == 1) repeat_name = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    quality.resize(second.length());</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    stream.read( &amp;quality[0], std::streamsize(second.length()) );</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    stream &gt;&gt; std::ws;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span>( second.length() != quality.length() )</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Sequence::fastq::read - error: sequence and quality strings differ in length&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">   54</a></span>&#160;  std::ostream &amp; <a class="code" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">fastq::print</a> (std::ostream &amp; stream)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">  </span>{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    stream &lt;&lt; <span class="charliteral">&#39;@&#39;</span> &lt;&lt; first &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;           &lt;&lt; second &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;           &lt;&lt; <span class="charliteral">&#39;+&#39;</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span>( this-&gt;repeat_name )</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        stream &lt;&lt; first;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    stream &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;           &lt;&lt; quality;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">//ns Sequence</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    std::getline(stream,first);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    std::getline(stream,second);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    stream &gt;&gt; std::ws;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> ( <span class="keywordtype">char</span>(stream.peek()) != <span class="charliteral">&#39;+&#39;</span> ) </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Sequence::fastq::read - error: third line did not begin with \&#39;+\&#39;&quot;</span>);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    stream &gt;&gt; temp &gt;&gt; std::ws;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span>(temp.size() == 1) repeat_name = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    quality.resize(second.length());</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    stream.read( &amp;quality[0], std::streamsize(second.length()) );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    stream &gt;&gt; std::ws;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordflow">if</span>( second.length() != quality.length() )</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">throw</span> <a class="code" href="classSequence_1_1badFormat.html">badFormat</a>(<span class="stringliteral">&quot;Sequence::fastq::read - error: sequence and quality strings differ in length&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">return</span> stream;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">   56</a></span>&#160;  std::ostream &amp; <a class="code" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">fastq::print</a> (std::ostream &amp; stream)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">  </span>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    stream &lt;&lt; <span class="charliteral">&#39;@&#39;</span> &lt;&lt; first &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;           &lt;&lt; second &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;           &lt;&lt; <span class="charliteral">&#39;+&#39;</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span>( this-&gt;repeat_name )</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        stream &lt;&lt; first;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    stream &lt;&lt; <span class="charliteral">&#39;\n&#39;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;           &lt;&lt; quality;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> stream;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;} <span class="comment">//ns Sequence</span></div>
 <div class="ttc" id="classSequence_1_1fastq_html_a2c9a3999c31213a02702662257a764be"><div class="ttname"><a href="classSequence_1_1fastq.html#a2c9a3999c31213a02702662257a764be">Sequence::fastq::repname</a></div><div class="ttdeci">void repname(const bool &amp;)</div><div class="ttdoc">Set to true or false for repeating the seq name on third line of output. </div><div class="ttdef"><b>Definition:</b> <a href="fastq_8cc_source.html#l00029">fastq.cc:29</a></div></div>
 <div class="ttc" id="SeqExceptions_8hpp_html"><div class="ttname"><a href="SeqExceptions_8hpp.html">SeqExceptions.hpp</a></div><div class="ttdoc">declaration of exception classes used in namespace Sequence, including class Sequence::SeqException ...</div></div>
 <div class="ttc" id="classSequence_1_1Seq_html"><div class="ttname"><a href="classSequence_1_1Seq.html">Sequence::Seq</a></div><div class="ttdoc">Abstract interface to sequence objects. </div><div class="ttdef"><b>Definition:</b> <a href="Seq_8hpp_source.html#l00049">Seq.hpp:49</a></div></div>
 <div class="ttc" id="classSequence_1_1fastq_html_ae95bca7411b9d1b63b7abd1570be791f"><div class="ttname"><a href="classSequence_1_1fastq.html#ae95bca7411b9d1b63b7abd1570be791f">Sequence::fastq::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="fastq_8cc_source.html#l00034">fastq.cc:34</a></div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
 <div class="ttc" id="fastq_8hpp_html"><div class="ttname"><a href="fastq_8hpp.html">fastq.hpp</a></div><div class="ttdoc">FASTQ class. </div></div>
-<div class="ttc" id="classSequence_1_1fastq_html_a4ae8a07988f6d98765f40b1f3465983d"><div class="ttname"><a href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">Sequence::fastq::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="fastq_8cc_source.html#l00054">fastq.cc:54</a></div></div>
+<div class="ttc" id="classSequence_1_1fastq_html_a4ae8a07988f6d98765f40b1f3465983d"><div class="ttname"><a href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">Sequence::fastq::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;s) const </div><div class="ttdef"><b>Definition:</b> <a href="fastq_8cc_source.html#l00056">fastq.cc:56</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_4f06051c9df016f874d2786f7a52ea77.html">Seq</a></li><li class="navelem"><b>fastq.cc</b></li>
-    <li class="footer">Generated on Sat Jul 4 2015 09:59:14 for libsequence by
+    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

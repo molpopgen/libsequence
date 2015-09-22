@@ -134,6 +134,7 @@ var files =
     [ "PolyTableManip.cc", "PolyTableManip_8cc_source.html", null ],
     [ "PolyTableSlice.hpp", "PolyTableSlice_8hpp.html", null ],
     [ "PolyTableSlice.tcc", "PolyTableSlice_8tcc_source.html", null ],
+    [ "PolyTableSliceTest.cc", "PolyTableSliceTest_8cc.html", "PolyTableSliceTest_8cc" ],
     [ "PolyTableTweaking.cc", "PolyTableTweaking_8cc_source.html", null ],
     [ "Recombination.cc", "Recombination_8cc_source.html", null ],
     [ "Coalescent/Recombination.hpp", "Coalescent_2Recombination_8hpp_source.html", null ],

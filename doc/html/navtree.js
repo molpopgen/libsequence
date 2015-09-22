@@ -94,12 +94,12 @@ var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
 "PolyTableFunctions_8hpp.html#a59bf69ad44829dececa75440a9f4e7cf",
-"classSequence_1_1ClustalW.html#a853def5dd38dbfcda94a8276b17b8b3d",
-"classSequence_1_1PolyTable.html#a05bb8d5b84760082a5b20a3598fa4f57",
-"classSequence_1_1SimParams.html#a378fd71418f41da727a1095c9bc78007",
-"classSequence_1_1fastq.html#abd1fcbf6b32d4699ac98665b79164704",
-"group__coalescent.html#ga84db82131b381d35d77286be8ace562e",
-"structSequence_1_1HKAresults.html#a0e12fcdaf77728d05bb3cc47c4d0e8fa"
+"classSequence_1_1ClustalW.html#a58c2d9cd5575b24548e83bdb20e7a53c",
+"classSequence_1_1PolySites.html#afbac90f82f4e4054377be06c3c8a9f20",
+"classSequence_1_1SimData.html#afe610e36cc38d3a77dfe9d6254deb789",
+"classSequence_1_1fastq.html#a8142facc48cc9f4a206881918ba52e09",
+"group__coalescent.html#ga5a17f57753ba045fb00e008b086f59fa",
+"structSequence_1_1HKAdata.html#abe70b66cc88ddcacc19134a95332d735"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

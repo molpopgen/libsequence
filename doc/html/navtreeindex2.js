@@ -1,5 +1,10 @@
 var NAVTREEINDEX2 =
 {
+"classSequence_1_1ClustalW.html#a58c2d9cd5575b24548e83bdb20e7a53c":[5,9,0,2,9],
+"classSequence_1_1ClustalW.html#a5b5b3438d69167cf52dd3b7b10393044":[5,9,0,2,15],
+"classSequence_1_1ClustalW.html#a65e9815fba2e37d936c17341024edb8d":[5,9,0,2,10],
+"classSequence_1_1ClustalW.html#a68b14d782087af4ff31d7a7cf1f7ad17":[5,9,0,2,20],
+"classSequence_1_1ClustalW.html#a73104ea156b92008f2ef29bf7bb64ec3":[5,9,0,2,12],
 "classSequence_1_1ClustalW.html#a853def5dd38dbfcda94a8276b17b8b3d":[5,9,0,2,22],
 "classSequence_1_1ClustalW.html#aa47883cb24f02c761c8fd5daeb9b4cf9":[5,9,0,2,33],
 "classSequence_1_1ClustalW.html#aa4a63c00f0e1deff5fc35dc5daa923fc":[5,9,0,2,7],
@@ -244,10 +249,5 @@ var NAVTREEINDEX2 =
 "classSequence_1_1PolySites.html#aec9ce40d98cbda31be56389b17a52d71":[5,8,1,3,56],
 "classSequence_1_1PolySites.html#af104fc59511518102d8a396ea2e36943":[5,8,1,3,10],
 "classSequence_1_1PolySites.html#af14f4d12c39b24abeb6124137c7f85d6":[5,8,1,3,12],
-"classSequence_1_1PolySites.html#af16bca677823dcb09df64ad62fbab2e8":[5,8,1,3,1],
-"classSequence_1_1PolySites.html#afbac90f82f4e4054377be06c3c8a9f20":[5,8,1,3,16],
-"classSequence_1_1PolySites.html#afe610e36cc38d3a77dfe9d6254deb789":[5,8,1,3,57],
-"classSequence_1_1PolySites.html#aff95022a08e0a0e39de0358895a9ff8c":[5,8,1,3,47],
-"classSequence_1_1PolyTable.html":[5,8,1,0],
-"classSequence_1_1PolyTable.html#a037df2aa220abff8302b8f8cc2ff7ef8":[5,8,1,0,22]
+"classSequence_1_1PolySites.html#af16bca677823dcb09df64ad62fbab2e8":[5,8,1,3,1]
 };

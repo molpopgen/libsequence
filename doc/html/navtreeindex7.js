@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"structSequence_1_1HKAdata.html#abe70b66cc88ddcacc19134a95332d735":[5,8,3,0],
+"structSequence_1_1HKAdata.html#ae482071b159fa3c82642488e2ed8747c":[5,8,3,6],
+"structSequence_1_1HKAresults.html":[5,8,4],
+"structSequence_1_1HKAresults.html#a0227596159eb7a6f675fe8a159b984c9":[5,8,4,3],
+"structSequence_1_1HKAresults.html#a094ee061909b992bba100c2f69c56e1a":[5,8,4,9],
 "structSequence_1_1HKAresults.html#a0e12fcdaf77728d05bb3cc47c4d0e8fa":[5,8,4,8],
 "structSequence_1_1HKAresults.html#a228da1a31bfb3f2f0e1dbba5ba8c7657":[5,8,4,7],
 "structSequence_1_1HKAresults.html#a2bde5cc60c617dc031a5cb5fc1f59f81":[5,8,4,6],
@@ -117,15 +122,15 @@ var NAVTREEINDEX7 =
 "structfirst__is__equal.html":[7,0,1],
 "structoutputFreq.html":[7,0,2],
 "structoutputFreq.html#a1dd12d7db28f83245bba61a5454d1f07":[7,0,2,0],
-"testSimDataIO_8cc_source.html":[8,0,183],
-"test__SimDataIO_8cc_source.html":[8,0,182],
-"translateTest_8cc_source.html":[8,0,191],
-"typedefs_8hpp.html":[8,0,195],
-"typedefs_8hpp.html#aa11ceda37fe03bcacea2e98c49723f90":[8,0,195,0],
-"typedefs_8hpp_source.html":[8,0,195],
-"ufs_8cc_source.html":[8,0,196],
-"valid__dna_8cc_source.html":[8,0,202],
+"testSimDataIO_8cc_source.html":[8,0,184],
+"test__SimDataIO_8cc_source.html":[8,0,183],
+"translateTest_8cc_source.html":[8,0,192],
+"typedefs_8hpp.html":[8,0,196],
+"typedefs_8hpp.html#aa11ceda37fe03bcacea2e98c49723f90":[8,0,196,0],
+"typedefs_8hpp_source.html":[8,0,196],
+"ufs_8cc_source.html":[8,0,197],
+"valid__dna_8cc_source.html":[8,0,203],
 "valid_dna_8cc-example.html":[9,12],
-"vectorizer_8hpp.html":[8,0,203],
-"vectorizer_8hpp_source.html":[8,0,203]
+"vectorizer_8hpp.html":[8,0,204],
+"vectorizer_8hpp_source.html":[8,0,204]
 };

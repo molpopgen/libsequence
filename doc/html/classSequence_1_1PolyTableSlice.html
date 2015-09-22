@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.5</span>
+   &#160;<span id="projectnumber">1.8.7</span>
    </div>
   </td>
  </tr>
@@ -95,8 +95,8 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
 <tr class="separator:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeeb9e4bbbc8a5366454dd08f77221f1f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#aeeb9e4bbbc8a5366454dd08f77221f1f">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const double &amp;window_size, const double &amp;step_len, const double &amp;starting_pos=0.)</td></tr>
-<tr class="separator:aeeb9e4bbbc8a5366454dd08f77221f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#ae7a2d9a3b0878ea3f0019d336a21f3a2">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const double &amp;window_size, const double &amp;step_len, const double &amp;starting_pos=0., const double &amp;ending_pos=1.0)</td></tr>
+<tr class="separator:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f3886fbbcd57959a1e65350c1f5035f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1PolyTableSlice.html#ac1c8a2c2974f3f92b296a7e12d8d5528">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a4f3886fbbcd57959a1e65350c1f5035f">cbegin</a> () const </td></tr>
 <tr class="separator:a4f3886fbbcd57959a1e65350c1f5035f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ce33a9e1f4b4fb4cbc07f94442d423e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1PolyTableSlice.html#ac1c8a2c2974f3f92b296a7e12d8d5528">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a6ce33a9e1f4b4fb4cbc07f94442d423e">cend</a> () const </td></tr>
@@ -169,7 +169,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>const_iterator type to access windows </p>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8hpp_source.html#l00187">187</a> of file <a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8hpp_source.html#l00195">195</a> of file <a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a>.</p>
 
 </div>
 </div>
@@ -230,13 +230,19 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>In order to use this constructor, you must make sure that the compiler sees unsigned values, otherwise compilation will fail with an ambiguity error: <div class="fragment"><div class="line">PolyTableSlice&lt;PolySites&gt; windows(data,100u,10u);</div>
-</div><!-- fragment --> </dd></dl>
+</div><!-- fragment --></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if window_size_S or window_step_len == 0 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00031">31</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00033">33</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aeeb9e4bbbc8a5366454dd08f77221f1f"></a>
+<a class="anchor" id="ae7a2d9a3b0878ea3f0019d336a21f3a2"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
@@ -273,7 +279,13 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const double &amp;&#160;</td>
-          <td class="paramname"><em>starting_pos</em> = <code>0.</code>&#160;</td>
+          <td class="paramname"><em>starting_pos</em> = <code>0.</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>ending_pos</em> = <code>1.0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -295,13 +307,20 @@ template&lt;typename T &gt; </div>
     <tr><td class="paramname">window_size</td><td>The size of the sliding window (in units of physical distance) </td></tr>
     <tr><td class="paramname">step_len</td><td>The distance by which the window jumps (in units of physical distance) </td></tr>
     <tr><td class="paramname">starting_pos</td><td>The starting position for your data. </td></tr>
+    <tr><td class="paramname">ending_pos.</td><td>The last position for the data. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>For most situations involving "ms-like" data, and probably for most genomic data, a starting_pos of 0 is appropriate. However, there are situations where your data may be something like a segment from the middle of a genome, and your SNP positions are annotated with respect to the reference contig. In that case, starting_pos is best set to the appropriate position along the reference, else you will be returned a lot of empty windows should you start from 0. In order to use this constructor, you must make sure that the compiler sees doubles, otherwise compilation will fail with an ambiguity error: <div class="fragment"><div class="line">PolyTableSlice&lt;SimData&gt; windows(data,0.1,0.01);</div>
-</div><!-- fragment --> </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>For most situations involving "ms-like" data, and probably for most genomic data, a starting_pos of 0 is appropriate. However, there are situations where your data may be something like a segment from the middle of a genome, and your SNP positions are annotated with respect to the reference contig. In that case, starting_pos is best set to the appropriate position along the reference, else you will be returned a lot of empty windows should you start from 0. Likewise, for "normal" ms runs, ending_pos should be 1.0. For other scenario, such as "real" data, you'll have to set starting_pos and ending_pos to the appropriate values. In order to use this constructor, you must make sure that the compiler sees doubles, otherwise compilation will fail with an ambiguity error: <div class="fragment"><div class="line">PolyTableSlice&lt;SimData&gt; windows(data,0.1,0.01);</div>
+</div><!-- fragment --></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if window_size or step_len &lt;= 0. </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00042">42</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00049">49</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -323,7 +342,7 @@ template&lt;typename T &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>Const iterator to begin </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#a10">slidingWindow.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00124">124</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00138">138</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -343,7 +362,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Const iterator to end </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00130">130</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00144">144</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -376,7 +395,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00136">136</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00150">150</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -409,7 +428,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00155">155</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00169">169</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -430,7 +449,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The number of windows stored </dd></dl>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00149">149</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
+<p>Definition at line <a class="el" href="PolyTableSlice_8tcc_source.html#l00163">163</a> of file <a class="el" href="PolyTableSlice_8tcc_source.html">PolyTableSlice.tcc</a>.</p>
 
 </div>
 </div>
@@ -444,7 +463,7 @@ template&lt;typename T &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a></li>
-    <li class="footer">Generated on Sat Jul 4 2015 09:59:15 for libsequence by
+    <li class="footer">Generated on Tue Sep 22 2015 14:38:58 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

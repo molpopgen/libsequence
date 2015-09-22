@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.5</span>
+   &#160;<span id="projectnumber">1.8.7</span>
    </div>
   </td>
  </tr>
@@ -120,37 +120,39 @@ $(document).ready(function(){initNavTree('UhapsTest_8cc_source.html','');});
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  BOOST_CHECK_EQUAL(ps.empty(),<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  BOOST_CHECK_EQUAL(ps.numsites(),0);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; uh.size() ; ++i )</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      BOOST_CHECK_EQUAL( uh[i].unpack(), uh2[i].unpack() );</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;BOOST_AUTO_TEST_CASE( create_from_polysitevector8)</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// std::vector&lt;double&gt; pos = {1,2,3,4,5};</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="comment">// std::vector&lt;std::string&gt; data = {&quot;AAAAA&quot;,</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">//                               &quot;AAGAA&quot;,</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">//                               &quot;CTGAA&quot;,</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">//                               &quot;NAACT&quot;,</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">//                               &quot;NAACT&quot;};</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  std::vector&lt;double&gt; pos = {1,2,3};</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  std::vector&lt;std::string&gt; data  = {<span class="stringliteral">&quot;AGA&quot;</span>,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                    <span class="stringliteral">&quot;TCC&quot;</span>,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                    <span class="stringliteral">&quot;TCN&quot;</span>,</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                    <span class="stringliteral">&quot;ACA&quot;</span>,</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                    <span class="stringliteral">&quot;TCA&quot;</span>};</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <a class="code" href="classSequence_1_1PolySites.html">Sequence::PolySites</a> ps(std::move(pos),std::move(data));</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  Sequence::polySiteVector8 pt8( ps ); </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                                </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  Sequence::Uhaps uh(pt8);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; uh.size() ; ++i )</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;      BOOST_CHECK_EQUAL( uh[i].unpack(), ps[i] );</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">  for( unsigned i = 0 ; i &lt; uh.size() ; ++i )</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">      BOOST_CHECK_EQUAL( uh[i].unpack(), uh2[i].unpack() );</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;BOOST_AUTO_TEST_CASE( create_from_polysitevector8)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="comment">// std::vector&lt;double&gt; pos = {1,2,3,4,5};</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="comment">// std::vector&lt;std::string&gt; data = {&quot;AAAAA&quot;,</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">//                               &quot;AAGAA&quot;,</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="comment">//                               &quot;CTGAA&quot;,</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">//                               &quot;NAACT&quot;,</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="comment">//                               &quot;NAACT&quot;};</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  std::vector&lt;double&gt; pos = {1,2,3};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  std::vector&lt;std::string&gt; data  = {<span class="stringliteral">&quot;AGA&quot;</span>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                                    <span class="stringliteral">&quot;TCC&quot;</span>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                    <span class="stringliteral">&quot;TCN&quot;</span>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                    <span class="stringliteral">&quot;ACA&quot;</span>,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                    <span class="stringliteral">&quot;TCA&quot;</span>};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <a class="code" href="classSequence_1_1PolySites.html">Sequence::PolySites</a> ps(std::move(pos),std::move(data));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  Sequence::polySiteVector8 pt8( ps ); </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                                </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  Sequence::Uhaps uh(pt8);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; uh.size() ; ++i )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      BOOST_CHECK_EQUAL( uh[i].unpack(), ps[i] );</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
 <div class="ttc" id="classSequence_1_1PolySites_html"><div class="ttname"><a href="classSequence_1_1PolySites.html">Sequence::PolySites</a></div><div class="ttdoc">Polymorphism tables for sequence data. </div><div class="ttdef"><b>Definition:</b> <a href="PolySites_8hpp_source.html#l00033">PolySites.hpp:33</a></div></div>
 <div class="ttc" id="PolySNP_8hpp_html"><div class="ttname"><a href="PolySNP_8hpp.html">PolySNP.hpp</a></div><div class="ttdoc">declaration of Sequence::PolySNP, a class to analyze SNP data </div></div>
 <div class="ttc" id="PolySites_8hpp_html"><div class="ttname"><a href="PolySites_8hpp.html">PolySites.hpp</a></div><div class="ttdoc">Sequence::PolySites, generates polymorphism tables from data. </div></div>
@@ -160,7 +162,7 @@ $(document).ready(function(){initNavTree('UhapsTest_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_009f7b6e59b9ec4a57c1bd4d1bd3178a.html">test</a></li><li class="navelem"><b>UhapsTest.cc</b></li>
-    <li class="footer">Generated on Sat Jul 4 2015 09:59:14 for libsequence by
+    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
