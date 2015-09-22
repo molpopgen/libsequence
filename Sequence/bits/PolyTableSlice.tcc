@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <algorithm>
 #include <iostream>
+#include <stdexcept>
 namespace Sequence
 {
   template<typename T>
@@ -35,6 +36,11 @@ namespace Sequence
     : currentSlice(T()),
       windows( std::vector<range>() )
   {
+    if(!window_size_S)
+      throw std::logic_error("window size cannot be 0");
+    if(!step_len)
+      throw std::logic_error("step_len cannot be 0");
+    
     process_windows_fixed(beg,end,window_size_S,step_len);
   }
 
@@ -43,11 +49,16 @@ namespace Sequence
 				     const PolyTable::const_site_iterator end,
 				     const double & window_size,
 				     const double & step_len,
-				     const double & starting_pos)
+				     const double & starting_pos,
+				     const double & ending_pos)
     : currentSlice(T()),
       windows( std::vector<range>() )
   {
-    process_windows(beg,end,window_size,step_len,starting_pos);
+    if(window_size<=0.)
+      throw std::logic_error("window_size must be > 0");
+    if(step_len <= 0.)
+      throw std::logic_error("step_len must be > 0");
+	process_windows(beg,end,window_size,step_len,starting_pos,ending_pos);
   }
 
 
@@ -91,7 +102,8 @@ namespace Sequence
 					   const PolyTable::const_site_iterator end,
 					   const double & window_size,
 					   const double & step_len,
-					   const double & starting_pos )
+					   const double & starting_pos,
+					   const double & ending_pos)
   {
     double wbeg = starting_pos;
 
@@ -100,7 +112,7 @@ namespace Sequence
 				     [](const polymorphicSite & __p, const double & __value){
 				       return __p.first < __value;
 				     });
-    while(wbeg_itr != end)
+    while( int((ending_pos-wbeg)/window_size) >= 1 )
       {
 	double wend = wbeg + window_size;
 	//ptr to first element with position > wend
