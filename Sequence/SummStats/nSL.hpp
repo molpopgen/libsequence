@@ -12,7 +12,8 @@ namespace Sequence {
     The nSL statistic of Ferrer-Admetlla et al. doi: 10.1093/molbev/msu077.
     \param core The index of the "focal/core" SNP
     \param d An object of type Sequence::SimData
-    \param gmap The positions of every marker in d on the genetic map
+    \param gmap The positions of every marker in d on the genetic map.  If nullptr is passed,
+    iHS is calculated using SNP positions.
     \return nSL and iHs, with the latter as defined in doi: 10.1093/molbev/msu077.
     \note This routine was validated by comparing to code provided by
     Ferrer-Admetlla et al.
@@ -27,7 +28,8 @@ namespace Sequence {
     \param d An object of type Sequence::SimData
     \param minfreq Exclude mutations with minor allele frequency < minfreq.
     \param binsize The size of frequency bins.
-    \param gmap The positions of every marker in d on the genetic map
+    \param gmap The positions of every marker in d on the genetic map. If nullptr is passed,
+    iHS is calculated using SNP positions.
     \return maximum absolute value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al.
     \warning The use of 'gmap' is untested.
     \item The first member of the return value is nSL, the second is iHS
