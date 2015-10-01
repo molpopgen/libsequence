@@ -31,7 +31,7 @@ namespace Sequence
     
     for_each(uhaps.cbegin(),uhaps.cend(),
 	     [&](const string & hap) {
-	       unsigned hapcount = count(d.begin(),d.end(),hap);
+	       unsigned hapcount = unsigned(count(d.begin(),d.end(),hap));
 	       //Unbiased calc. of homozygosity in finite sample
 	       H1 += double(hapcount)*double(hapcount-1)/(double(d.size())*double(d.size()-1));
 	       hapcounts.push_back(double(hapcount));
