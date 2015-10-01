@@ -53,6 +53,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
+	SummStats/Garud.cc\
 	IOhelp.cc \
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
