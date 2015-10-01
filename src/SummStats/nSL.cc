@@ -30,8 +30,8 @@ namespace
 	    if(left.first != d[coretype[i]].rend() && right.first != d[coretype[i]].end())
 	      {
 		s += double(distance(left.first.base(),right.first) + 1);
-		s2 += (gmap == nullptr) ? fabs(d.position(distance(d[coretype[i]].cbegin(),right.first)-1) - 
-					       d.position(distance(d[coretype[i]].cbegin(),left.first.base())))
+		s2 += (gmap == nullptr) ? fabs(d.position(std::vector<double>::size_type(distance(d[coretype[i]].cbegin(),right.first))-1) - 
+					       d.position(std::vector<double>::size_type(distance(d[coretype[i]].cbegin(),left.first.base()))))
 		  : fabs( gmap[distance(d[coretype[i]].cbegin(),right.first)] -
 			  gmap[distance(d[coretype[i]].cbegin(),left.first.base())] );
 		++nc;
@@ -84,8 +84,8 @@ namespace Sequence
     for(unsigned i=0;i<__filtered.numsites();++i) 
       {
 	pair<double,double> rvi = nSL(i,__filtered,gmap);
-	unsigned dcount = count((__filtered.sbegin()+i)->second.begin(),
-				(__filtered.sbegin()+i)->second.end(),'1');
+	unsigned dcount = unsigned(count((__filtered.sbegin()+i)->second.begin(),
+					 (__filtered.sbegin()+i)->second.end(),'1'));
 	binning.push_back( make_pair( double(dcount)/double(__filtered.size()),
 				      rvi));
       }
