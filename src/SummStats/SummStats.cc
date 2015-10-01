@@ -5,12 +5,6 @@
 #include <cctype>
 using namespace std;
 
-namespace { //prototypes for non-exported functions
-  //Implementation details for nSL statistic
-  double __nSLsum(const unsigned & core,
-                  const Sequence::SimData & d,
-                  const std::vector<size_t> & coretype);
-}
 namespace Sequence
 {
   double Dij(const polymorphicSite & p, const std::vector< unsigned > & config, const unsigned & i, const unsigned & j)
