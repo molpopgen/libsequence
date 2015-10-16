@@ -1,7 +1,7 @@
 #include <Sequence/SummStats/lHaf.hpp>
 #include <algorithm>
 #include <numeric>
-
+#include <cmath>
 namespace Sequence
 {
   std::vector<double> lHaf( const SimData & data, const double l )
