@@ -21,7 +21,7 @@ namespace Sequence
 	  });
 	while(j!=data[i].cend())
 	  {
-	    size_t d = j-data[i].cbegin();
+	    size_t d = size_t(j-data[i].cbegin());
 	    rv[d] += std::pow( double(dcounts[d]),l );
 	    j = std::find_if(j+1,data[i].cend(),
 			     [](const char & ch) {
