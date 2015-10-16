@@ -10,7 +10,7 @@ namespace Sequence
     std::vector<unsigned> dcounts;
     std::for_each( data.sbegin(), data.send(),
 		   [&dcounts]( const polymorphicSite & p ) {
-		     dcounts.push_back( std::count(p.second.begin(),p.second.end(),'1') );
+		     dcounts.push_back( unsigned(std::count(p.second.begin(),p.second.end(),'1')) );
 		   } );
     //Get the values for each element in the data
     std::vector<double> rv(data.numsites(),0.);
