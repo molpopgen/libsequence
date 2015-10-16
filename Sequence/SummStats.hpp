@@ -7,6 +7,6 @@
 
 #include <Sequence/SummStats/nSL.hpp>
 #include <Sequence/SummStats/Garud.hpp>
-#include <Sequence/SummStats/lHap.hpp>
+#include <Sequence/SummStats/lHaf.hpp>
 
 #endif

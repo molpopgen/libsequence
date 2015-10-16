@@ -1,3 +1,3 @@
 pkgincludedir=$(prefix)/include/Sequence/SummStats
 
-pkginclude_HEADERS = Uhaps.hpp nSL.hpp Garud.hpp lHap.hpp
+pkginclude_HEADERS = Uhaps.hpp nSL.hpp Garud.hpp lHaf.hpp

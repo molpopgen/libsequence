@@ -62,7 +62,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	polySiteVector8.cc \
 	Seq/Seq8.cc \
 	util/pack8.cc\
-	SummStats/lHap.cc
+	SummStats/lHaf.cc
 
 AM_LDFLAGS=-version-info 20:0:0
 

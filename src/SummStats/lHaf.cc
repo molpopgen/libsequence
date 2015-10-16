@@ -4,7 +4,7 @@
 
 namespace Sequence
 {
-  std::vector<double> lHap( const SimData & data, const double l )
+  std::vector<double> lHaf( const SimData & data, const double l )
   {
     //Get derived mutation frequency counts per site
     std::vector<unsigned> dcounts;

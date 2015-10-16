@@ -151,7 +151,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo SummStats/Garud.lo \
 	IOhelp.lo hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
 	SummStats/Uhaps.lo polySiteVector8.lo Seq/Seq8.lo \
-	util/pack8.lo SummStats/lHap.lo
+	util/pack8.lo SummStats/lHaf.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -404,7 +404,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	polySiteVector8.cc \
 	Seq/Seq8.cc \
 	util/pack8.cc\
-	SummStats/lHap.cc
+	SummStats/lHaf.cc
 
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
@@ -559,7 +559,7 @@ util/$(DEPDIR)/$(am__dirstamp):
 	@$(MKDIR_P) util/$(DEPDIR)
 	@: > util/$(DEPDIR)/$(am__dirstamp)
 util/pack8.lo: util/$(am__dirstamp) util/$(DEPDIR)/$(am__dirstamp)
-SummStats/lHap.lo: SummStats/$(am__dirstamp) \
+SummStats/lHaf.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
@@ -687,7 +687,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Snn.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/Uhaps.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHap.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@

@@ -6,7 +6,7 @@
 namespace Sequence 
 {
   //! doi:10.1371/journal.pgen.1005527.g001
-  std::vector<double> lHap( const SimData & data, const double l );
+  std::vector<double> lHaf( const SimData & data, const double l );
 }
 
 
