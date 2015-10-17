@@ -5,7 +5,10 @@
 
 namespace Sequence 
 {
-  //! doi:10.1371/journal.pgen.1005527.g001
+  /*
+    ! doi:10.1371/journal.pgen.1005527.g001
+    \ingroup popgenanalysis
+  */
   std::vector<double> lHaf( const SimData & data, const double l );
 }
 

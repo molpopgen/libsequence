@@ -9,6 +9,7 @@ namespace Sequence
   /*! 
     From http://arxiv.org/abs/1303.0906
     \note H1 = 1 - haplotype homozygosity, e.g. Depaulis and Veuille's "H"
+    \ingroup popgenanalysis
   */
   {
     mutable double H1,H12,H2H1;
@@ -20,7 +21,7 @@ namespace Sequence
     Garud et al. DOI: 10.1371/journal.pgen.1005004
     Messer & Petrov DOI: 10.1016/j.tree.2013.08.003
     Note that H1 = 1 - haplotype homozygosity, e.g. Depaulis and Veuille's "H"
-
+    \ingroup popgenanalysis
     \return An object of type Sequence::GarudStats
   */
   GarudStats H1H12(const SimData & d);

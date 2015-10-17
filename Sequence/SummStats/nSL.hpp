@@ -18,6 +18,7 @@ namespace Sequence {
     \note This routine was validated by comparing to code provided by
     Ferrer-Admetlla et al.
     \warning The use of 'gmap' is untested.
+    \ingroup popgenanalysis
    */
   std::pair<double,double> nSL(const unsigned & core,
 			       const SimData & d,
@@ -33,6 +34,7 @@ namespace Sequence {
     \return maximum absolute value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al.
     \warning The use of 'gmap' is untested.
     \item The first member of the return value is nSL, the second is iHS
+    \ingroup popgenanalysis
   */
   std::pair<double,double> snSL(const SimData & d,const double minfreq, const double binsize, const double * gmap = nullptr);
 }
