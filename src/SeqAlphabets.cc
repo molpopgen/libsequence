@@ -46,10 +46,10 @@ namespace Sequence {
   
   bool invalidPolyChar::operator()(const char & nucleotide) const
     {
-      auto itr = std::find(dna_alphabet.begin(),
-			   dna_alphabet.end(),
+      auto itr = std::find(dna_poly_alphabet.begin(),
+			   dna_poly_alphabet.end(),
 			   std::toupper(nucleotide));
-      if(itr == dna_alphabet.end()) return 1;
+      if(itr == dna_poly_alphabet.end()) return 1;
       auto d = std::distance( dna_alphabet.begin(),
 			      itr );
       return ( d > 3 && d < 14 ); 
