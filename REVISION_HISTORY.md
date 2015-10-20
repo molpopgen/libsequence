@@ -39,6 +39,7 @@ However:
 * Garud et al.'s H1, H2H1, etc. added (Sequence/SummStats/Garud.hpp)
 * nSL added (Sequence/SummStats/nSL.hpp)
 * fixed implementation of Sequence::invalidPolyChar, which was checking the wrong alphabet
+* Various documentation fixes
 
 ## libsequence 1.8.7
 
