@@ -33,6 +33,13 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.8.8
+
+* l-HAF statistic added (Sequence/SummStats/lHaf.hpp)
+* Garud et al.'s H1, H2H1, etc. added (Sequence/SummStats/Garud.hpp)
+* nSL added (Sequence/SummStats/nSL.hpp)
+* fixed implementation of Sequence::invalidPolyChar, which was checking the wrong alphabet
+
 ## libsequence 1.8.7
 
 * Sliding windows over physical distance now require an end position
