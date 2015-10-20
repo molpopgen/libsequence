@@ -498,7 +498,7 @@ namespace Sequence
 				  const unsigned & outgroup)
   /*!
     go through the data and remove all the sites with 
-    states other than {A,G,C,T,N,-}
+    states other than {A,G,C,T,N,-,0,1}
     \param skipOutgroup default is \c false.  If \c true, the character
     state of the outgroup is ignored.
     \param outgroup the index of the outgroup in the data vector
