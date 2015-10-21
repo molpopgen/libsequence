@@ -40,6 +40,7 @@ However:
 * nSL added (Sequence/SummStats/nSL.hpp)
 * fixed implementation of Sequence::invalidPolyChar, which was checking the wrong alphabet
 * Various documentation fixes
+* Sequence::FST functions shared,Private, and fixed now throw an exception if deme indexes are out of range.  Previously, empty return values were sent, which could be confused with there being no sites in a category.
 
 ## libsequence 1.8.7
 
