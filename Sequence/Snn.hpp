@@ -32,6 +32,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
+  /*!
+    Test statistic from Hudson (2000) Genetics 155(4):2011
+   */
   double Snn_statistic( const unsigned individuals[],
 			const std::vector< std::vector<double> > & dkj,
 			const unsigned config[],
