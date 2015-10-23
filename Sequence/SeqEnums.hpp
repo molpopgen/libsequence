@@ -35,7 +35,7 @@ namespace Sequence
     /*! \enum Sequence::GeneticCodes
       Only UNIVERSAL (= 0)  is currently supported.
       The order of the genetic codes is that of NCBI's code tables, available at 
-      http://www.ncbi.nlm.nih.gov/htbin-post/Taxonomy/wprintgc?mode=c#SG2\n
+      http://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi
     */
     enum class GeneticCodes : std::int16_t {UNIVERSAL};
     /*! \enum Sequence::Mutations
