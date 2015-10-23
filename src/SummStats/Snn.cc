@@ -21,7 +21,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include <Sequence/Snn.hpp>
+#include <Sequence/SummStats/Snn.hpp>
+
 namespace Sequence
 {
   double Snn_statistic( const unsigned individuals[],

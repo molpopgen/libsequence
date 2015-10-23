@@ -57,7 +57,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	descriptiveStats.hpp\
 	Crit.hpp\
 	HKA.hpp\
-	Snn.hpp\
 	samrecord.hpp\
 	samflag.hpp\
 	samfunctions.hpp\
