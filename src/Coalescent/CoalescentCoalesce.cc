@@ -46,6 +46,7 @@ namespace Sequence
       \ingroup coalescent
     */
     {
+      //LINEAR SEARCH
       for( ; (seg+*offset)->beg <= pos && (*offset) < nsegs; ++(*offset) )
 	if ((seg+*offset)->end>=pos) return true;
       return false;
