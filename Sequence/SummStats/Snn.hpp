@@ -40,23 +40,7 @@ namespace Sequence
 			const unsigned config[],
 			const size_t & npop,
 			const unsigned & nsam );
-
-  // template< typename shuffler >
-  // std::pair<double,double>
-  // Snn_test(const PolyTable & snpTable,
-  // 	   const unsigned config[],
-  // 	   const size_t & npop,
-  // 	   shuffler & s,
-  // 	   const unsigned & nperms = 10000);
-
-  // template< typename shuffler >
-  // std::vector< std::vector<double> >
-  // Snn_test_pairwise(const PolyTable & snpTable,
-  // 		    const unsigned config[],
-  // 		    const size_t & npop,
-  // 		    shuffler & s,
-  // 		    const unsigned & nperms = 10000);
-
+  
   template< typename shuffler >
   std::pair<double,double>
   Snn_test(const PolyTable & snpTable,
