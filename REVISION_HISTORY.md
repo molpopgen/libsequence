@@ -42,6 +42,7 @@ However:
 * Various documentation fixes
 * Sequence::FST functions shared,Private, and fixed now throw an exception if deme indexes are out of range.  Previously, empty return values were sent, which could be confused with there being no sites in a category.
 * Various code cleanups, esp. removal of commented-out code blocks
+* Unit tests for 8-bit encoding improved, resulting in fixed bugs
 
 ## libsequence 1.8.7
 
