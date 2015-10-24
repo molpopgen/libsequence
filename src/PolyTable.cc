@@ -50,12 +50,18 @@ namespace Sequence
   {}
 
   PolyTable::PolyTable( std::vector<double> && __positions,
-			std::vector<std::string> && __data ) : PolyTableBase( std::vector<double>(),
-									      std::vector<std::string>() ),
+			std::vector<std::string> && __data ) : PolyTableBase( std::forward<std::vector<double> >(__positions),
+									      std::forward<std::vector<std::string> >(__data) ),
 							       non_const_access(true)
   {
-    std::swap(__positions,first);
-    std::swap(__data,second);
+    std::for_each(second.begin(),second.end(),[this](const std::string & __s) {
+	if(this->first.size()!=__s.size())
+	  {
+	    this->first.clear();
+	    this->second.clear();
+	    throw Sequence::SeqException("PolyTable: number of positions != length of data element");
+	  }
+      });
   }
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
