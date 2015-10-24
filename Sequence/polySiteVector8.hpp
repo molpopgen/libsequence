@@ -24,7 +24,6 @@ namespace Sequence
     polySiteVector8( const std::initializer_list<polymorphicSite> & );
     polySiteVector8( const PolyTable & );
     polySiteVector8( const polySiteVector & );
-    polySiteVector8( polySiteVector & );
   };
 }
 
