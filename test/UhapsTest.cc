@@ -47,29 +47,24 @@ BOOST_AUTO_TEST_CASE( create_from_polysites_move )
   BOOST_CHECK_EQUAL(ps.empty(),true);
   BOOST_CHECK_EQUAL(ps.numsites(),0);
 
-  /*
   for( unsigned i = 0 ; i < uh.size() ; ++i )
     {
       BOOST_CHECK_EQUAL( uh[i].unpack(), uh2[i].unpack() );
-    }
-  */
+    }  
 }
 
 BOOST_AUTO_TEST_CASE( create_from_polysitevector8)
 {
-  // std::vector<double> pos = {1,2,3,4,5};
-  // std::vector<std::string> data = {"AAAAA",
-  // 				   "AAGAA",
-  // 				   "CTGAA",
-  // 				   "NAACT",
-  // 				   "NAACT"};
-  std::vector<double> pos = {1,2,3};
-  std::vector<std::string> data  = {"AGA",
-				    "TCC",
-				    "TCN",
-				    "ACA",
-				    "TCA"};
+  std::vector<double> pos = {1,2,3,4,5,6};
+  std::vector<std::string> data = {"AAAAAA",
+				   "AAGAAA",
+				   "CTGAAG",
+				   "NAACTG",
+				   "NAACTG",
+				   "AAACCC"};
+
   Sequence::PolySites ps(std::move(pos),std::move(data));
+
   Sequence::polySiteVector8 pt8( ps ); 
 				
   Sequence::Uhaps uh(pt8);
