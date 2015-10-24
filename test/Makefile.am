@@ -19,10 +19,6 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	polySiteVectorTest \
-	polySiteVector8Test \
-	pack8test \
-	Seq8test \
-	UhapsTest \
 	PolyTableSliceTest
 
 TESTS=$(check_PROGRAMS)
@@ -93,16 +89,6 @@ RedundancyCom95test_SOURCES=RedundancyCom95test.cc
 alphabets_SOURCES=alphabets.cc
 
 polySiteVectorTest_SOURCES=polySiteVectorTest.cc
-
-UhapsTest_SOURCES=UhapsTest.cc
-
-#Poly8Test_SOURCES=Poly8Test.cc
-
-polySiteVector8Test_SOURCES=polySiteVector8Test.cc
-
-pack8test_SOURCES=pack8test.cc
-
-Seq8test_SOURCES=Seq8test.cc
 
 PolyTableSliceTest_SOURCES=PolyTableSliceTest.cc
 

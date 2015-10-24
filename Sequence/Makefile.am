@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent SummStats util
+SUBDIRS = bits Coalescent SummStats
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -65,6 +65,4 @@ pkginclude_HEADERS = AlignStream.hpp\
 	IOhelp.hpp \
 	bamrecord.hpp \
 	bamreader.hpp \
-	SeqAlphabets.hpp \
-	polySiteVector8.hpp \
-	Seq8.hpp 
+	SeqAlphabets.hpp 

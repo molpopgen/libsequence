@@ -58,10 +58,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	hts/bamrecord.cc \
 	hts/bamreader.cc \
 	SeqAlphabets.cc \
-	SummStats/Uhaps.cc \
-	polySiteVector8.cc \
-	Seq/Seq8.cc \
-	util/pack8.cc\
 	SummStats/lHaf.cc
 
 AM_LDFLAGS=-version-info 20:0:0

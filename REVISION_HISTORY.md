@@ -18,9 +18,6 @@ However:
 ### TODO:
 
 * Move BAM alphabet to SeqAlphabets
-* Change all references of 8 to 4?  Should the name be based on some int8_t or on the fact that it is 4-bit encoded?  8 > 4, so that is obviously a better choice?
-* Seq8, PolyTable8 ??
-* Explore std::unique_ptr< Sequence::poly8::itype > instead of vector.  It could be faster, but there are implementation/convenience/maintainability costs
 
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
@@ -42,7 +39,7 @@ However:
 * Various documentation fixes
 * Sequence::FST functions shared,Private, and fixed now throw an exception if deme indexes are out of range.  Previously, empty return values were sent, which could be confused with there being no sites in a category.
 * Various code cleanups, esp. removal of commented-out code blocks
-* Unit tests for 8-bit encoding improved, resulting in fixed bugs
+* The 8-bit encoding stuff has been removed.  This was never used in real-world programs, and suffered from some design issues.
 
 ## libsequence 1.8.7
 
