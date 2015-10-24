@@ -50,6 +50,26 @@ BOOST_AUTO_TEST_CASE( create_from_polysites_even )
     }
 }
 
+BOOST_AUTO_TEST_CASE( create_from_polysites_nsites_not_equal_nsam )
+{
+  std::vector<double> pos = {1,2,3};
+  std::vector<std::string> data = {"AAA",
+				   "AAG",
+				   "CTG",
+				   "NAA",
+				   "NAA",
+				   "AAA"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  Sequence::Uhaps uh(ps);
+
+  for( unsigned i = 0 ; i < uh.size() ; ++i )
+    {
+      BOOST_CHECK_EQUAL( uh[i].unpack(), ps[i] );
+    }
+}
+
 BOOST_AUTO_TEST_CASE( create_from_polysitevector8_odd)
 {
   std::vector<double> pos = {1,2,3,4,5};
