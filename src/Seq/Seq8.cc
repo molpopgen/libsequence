@@ -37,32 +37,32 @@ namespace Sequence
 
   Seq8::iterator Seq8::begin()
   {
-    return second.begin();
+    return iterator(second.begin(),&alphabet);
   }
   
   Seq8::iterator Seq8::end()
   {
-    return second.end();
+    return iterator(second.end(),&alphabet);
   }
   
   Seq8::const_iterator Seq8::begin() const
   {
-    return second.begin();
+    return const_iterator(second.begin(),&alphabet);
   }
 
   Seq8::const_iterator Seq8::end() const
   {
-    return second.end();
+    return const_iterator(second.end(),&alphabet);
   }
 
   Seq8::const_iterator Seq8::cbegin() const
   {
-    return second.cbegin();
+    return const_iterator(second.cbegin(),&alphabet);
   }
 
   Seq8::const_iterator Seq8::cend() const
   {
-    return second.cend();
+    return const_iterator(second.cend(),&alphabet);
   }
    
   std::string::size_type Seq8::size() const

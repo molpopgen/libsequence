@@ -3,6 +3,7 @@
 
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/util/pack8.hpp>
+#include <Sequence/util/nibble.hpp>
 #include <utility>
 #include <iosfwd>
 
@@ -27,11 +28,72 @@ namespace Sequence
 
     virtual ~Seq8() = default;
 
+    template<typename T>
+    struct iter_wrapper_t : public std::iterator<std::random_access_iterator_tag,
+						 char>
+    {
+      T itr;
+      bool odd;
+      const alphabet_t * pa;
+      
+      iter_wrapper_t(T i,const alphabet_t * __pa):itr(i),odd(false),pa(__pa)
+      {
+      }
+
+      inline iter_wrapper_t & operator++()
+      {
+	if (odd)
+	  {
+	    itr++;
+	  }
+	odd = !odd;
+	return *this;
+      }
+      inline iter_wrapper_t & operator--()
+      {
+	if (!odd)
+	  {
+	    itr--;
+	  }
+	odd = !odd;
+	return *this;
+      }
+      value_type operator*()
+      {
+	using nibble::readhi;
+	using nibble::readlo;
+	if (odd) 
+	  return (*pa)[readlo(*itr)];
+
+	return (*pa)[readhi(*itr)];
+      }
+      value_type operator*() const
+      {
+	using nibble::readhi;
+	using nibble::readlo;
+	if (odd) 
+	  return (*pa)[readlo(*itr)];
+
+	return (*pa)[readhi(*itr)];
+      }
+      
+      bool operator==(const iter_wrapper_t & rhs) const
+      {
+	return itr == rhs.itr && odd == rhs.odd;
+      }
+      bool operator!=(const iter_wrapper_t & rhs) const
+      {
+	return !(*this == rhs);
+      }
+    };
+    using iterator = iter_wrapper_t<pack8::vtype::iterator>;
+    using const_iterator = iter_wrapper_t<pack8::vtype::const_iterator>;
+      
     using reference = alphabet_t::reference;
     using const_reference = alphabet_t::const_reference;
     using size_type = pack8::vtype::size_type;
-    using iterator = pack8::vtype::iterator;
-    using const_iterator = pack8::vtype::const_iterator;
+    //using iterator = pack8::vtype::iterator;
+    //using const_iterator = pack8::vtype::const_iterator;
     using difference_type = pack8::vtype::difference_type;
 
     /*!
