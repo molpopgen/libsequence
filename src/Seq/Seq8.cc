@@ -22,12 +22,6 @@ namespace Sequence
   {
   }
 
-  Seq8::Seq8( std::string & seq,
-	      const alphabet_t & _a) : base( seq.size(), pack8::dna2vtype(seq,_a) ),
-				       alphabet( alphabet_t(_a) )
-  {
-  }
-
   Seq8::const_reference & Seq8::operator[]( const size_type & i) const
   {
     using nibble::readhi;

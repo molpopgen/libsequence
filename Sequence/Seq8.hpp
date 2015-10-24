@@ -21,8 +21,6 @@ namespace Sequence
     Seq8( const alphabet_t & = dna_alphabet);
     //! Construct with sequence only                                                                      
     Seq8( const std::string &, const alphabet_t & );
-    //! Construct with sequence only.  String will be cleared
-    Seq8( std::string &, const alphabet_t & );
     Seq8( unsigned && ssize, pack8::vtype && data, const alphabet_t & _a = dna_poly_alphabet);
     Seq8(const Seq8 & ) = default;
     Seq8(Seq8 && ) = default;    
