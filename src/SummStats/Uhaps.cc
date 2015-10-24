@@ -18,7 +18,7 @@ namespace Sequence {
     if(__pt.empty()) return 0;
     //Bioloigcally, this is nsam/2...
     Seq8::size_type nsam = __pt.begin()->second.second.size();
-    bool isodd = (__pt.begin()->second.size() % 2);
+    bool isodd = (__pt.size()%2);
     for( Seq8::size_type i = 0 ; i < nsam ; ++i )
       {
 	pack8::vtype a(__pt.size()/2 + isodd);
