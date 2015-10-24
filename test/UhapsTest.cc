@@ -93,3 +93,25 @@ BOOST_AUTO_TEST_CASE( create_from_polysitevector8_even)
     }
 }
 
+BOOST_AUTO_TEST_CASE( create_from_polysitevector8_nsites_not_equal_nsam)
+{
+  std::vector<double> pos = {1,2,3,4,5,6,7};
+  std::vector<std::string> data = {"AAAAAAA",
+				   "AAGAAAA",
+				   "CTGAAGA",
+				   "NAACTGA",
+				   "NAACTGA",
+				   "AAACCCA"};
+
+  Sequence::PolySites ps(std::move(pos),std::move(data));
+
+  Sequence::polySiteVector8 pt8( ps ); 
+				
+  Sequence::Uhaps uh(pt8);
+
+  for( unsigned i = 0 ; i < uh.size() ; ++i )
+    {
+      BOOST_CHECK_EQUAL( uh[i].unpack(), ps[i] );
+    }
+}
+
