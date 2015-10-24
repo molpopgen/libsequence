@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE preProcTest
+#define BOOST_TEST_MODULE UhapsTest
 #define BOOST_TEST_DYN_LINK 
 
 
