@@ -109,27 +109,6 @@ namespace Sequence {
     return 0;
   }
 
-  int Uhaps::populate(PolyTable && __pt)
-  {
-    if(__pt.empty()) return 0;
-    for( auto & s : __pt )
-      {
-	Seq8 t(s,dna_poly_alphabet);
-	auto itr = std::find(ustrings.cbegin(),ustrings.cend(),t);
-	if( itr == ustrings.end() )
-	  {
-	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),std::move(t)) );
-	  }
-	else
-	  {
-	    ustring_itrs.emplace_back(std::move(itr));
-	  }
-      }
-    __pt.first.clear();
-    __pt.second.clear();
-    return 0;
-  }
-
   Uhaps::Uhaps( const polySiteVector8 & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
 					ustring_itrs (Uhaps::ustring_itr_ctr_t() )
   {
@@ -143,15 +122,6 @@ namespace Sequence {
 					  ustring_itrs (Uhaps::ustring_itr_ctr_t() )
   {
     if( populate(__pt) == -1 )
-      {
-	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
-      }
-  }
-
-  Uhaps::Uhaps(  PolyTable && __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
-				      ustring_itrs (Uhaps::ustring_itr_ctr_t() )
-  {
-    if( populate(std::move(__pt)) == -1 )
       {
 	throw SeqException("Sequence::Uhaps error.  Invalid data encountered");
       }

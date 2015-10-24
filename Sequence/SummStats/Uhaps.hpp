@@ -24,7 +24,6 @@ namespace Sequence
     Uhaps() = default;
     Uhaps( const polySiteVector8 & );
     Uhaps( const PolyTable & );
-    Uhaps( PolyTable && );
     using iterator = ustring_itr_ctr_t::iterator;
     using const_iterator = ustring_itr_ctr_t::const_iterator;
     using const_reference = ustring_ctr_t::const_reference;
