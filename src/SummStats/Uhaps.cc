@@ -63,7 +63,8 @@ namespace Sequence {
 				 } );
 	if ( itr == ustrings.cend() )
 	  {
-	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(a))) );
+	    ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),
+						       Seq8(std::move(unsigned(2*a.size()-isodd)),std::move(a))) );
 	  }
 	else
 	  {
@@ -79,7 +80,8 @@ namespace Sequence {
 				 } );
 	     if ( itr == ustrings.cend() )
 	       {
-		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(), Seq8(std::move(unsigned(2*b.size()-isodd)),std::move(b))) );
+		 ustring_itrs.emplace_back( ustrings.insert(ustrings.end(),
+							    Seq8(std::move(unsigned(2*b.size()-isodd)),std::move(b))) );
 	       }
 	     else
 	       {
@@ -110,7 +112,7 @@ namespace Sequence {
   }
 
   Uhaps::Uhaps( const polySiteVector8 & __pt) : ustrings ( Uhaps::ustring_ctr_t() ),
-					ustring_itrs (Uhaps::ustring_itr_ctr_t() )
+						ustring_itrs (Uhaps::ustring_itr_ctr_t() )
   {
     if( populate(__pt) == -1 )
       {
