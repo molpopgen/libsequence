@@ -5,6 +5,7 @@
 #include <Sequence/util/pack8.hpp>
 #include <Sequence/util/nibble.hpp>
 #include <utility>
+#include <iterator>
 #include <iosfwd>
 
 namespace Sequence
