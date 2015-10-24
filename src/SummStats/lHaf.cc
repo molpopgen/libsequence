@@ -2,6 +2,17 @@
 #include <algorithm>
 #include <numeric>
 #include <cmath>
+
+/*
+  TODO:  A thread_site and thread_hap wrapper that apply some fxn to a site
+  or a hap, using <thread>, filling up a vector of return values.
+
+  Need to read/remind myself of this:
+
+  http://www.aristeia.com/TalkNotes/ACCU2011_CPUCaches.pdf
+
+  This sounds cool, too:
+ */
 namespace Sequence
 {
   std::vector<double> lHaf( const SimData & data, const double l )
