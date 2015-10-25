@@ -57,7 +57,7 @@ namespace Sequence
       }
     else
       {
-	unsigned snp_per_window = std::ceil(double(end-beg)/double(nwindows));
+	unsigned snp_per_window = unsigned(std::ceil(double(end-beg)/double(nwindows)));
 	process_windows_fixed(beg,end,snp_per_window,snp_per_window);
       }
   }
