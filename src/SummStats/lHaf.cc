@@ -3,7 +3,7 @@
 #include <numeric>
 #include <cmath>
 #include <thread>
-#include <iostream>
+
 /*
   TODO:  A thread_site and thread_hap wrapper that apply some fxn to a site
   or a hap, using <thread>, filling up a vector of return values.
@@ -36,27 +36,31 @@ namespace Sequence
 	for( unsigned j = 0 ; j <vt.size() ; ++j ) vt[j].join();
       }
     std::vector<double> rv(data.size(),0.);
+    const auto counter2 = [](const SimData::const_data_iterator & __hap, const size_t & index,
+			     const unsigned * dc,
+			     const double l,
+			     double * __rv) {
+      double rv_local = 0.;
+      auto j = std::find_if(__hap->cbegin(),__hap->cend(),[](const char & ch) {
+	  return ch == '1';
+	});
+      while(j != __hap->cend())
+	{
+	  size_t d = size_t(j-__hap->cbegin());
+	  rv_local += std::pow(*(dc+d),l );
+	  j = std::find_if(j+1,__hap->cend(),
+			   [](const char & ch) {
+			     return ch == '1';
+			   });
+	}
+      *__rv = rv_local;
+    };
     for(auto i = data.cbegin() ; i != data.cend() ; )
       {
 	std::vector<std::thread> vt;
 	for(int j = 0 ; i != data.end() && j < nthreads ; ++i,++j )
 	  {
-	    vt.emplace_back(std::thread([&rv,&dcounts,l](const SimData::const_data_iterator & __hap, const size_t & index) {
-		  double rv_local = 0.;
-		  auto j = std::find_if(__hap->cbegin(),__hap->cend(),[](const char & ch) {
-		      return ch == '1';
-		    });
-		  while(j != __hap->cend())
-		    {
-		      size_t d = size_t(j-__hap->cbegin());
-		      rv_local += std::pow( double(dcounts[d]),l );
-		      j = std::find_if(j+1,__hap->cend(),
-				       [](const char & ch) {
-					 return ch == '1';
-				       });
-		    }
-		  rv[index] = rv_local;
-		},i,i-data.cbegin()));
+	    vt.emplace_back(std::thread(std::cref(counter2),i,i-data.cbegin(),&dcounts[0],l,&rv[i-data.cbegin()]));
 	  }
 	for( unsigned j = 0 ; j <vt.size() ; ++j ) vt[j].join();
       }
