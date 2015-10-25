@@ -34,8 +34,7 @@ namespace Sequence
 				     const PolyTable::const_site_iterator end,
 				     const unsigned & window_size_S,
 				     const unsigned & step_len )
-    : currentSlice(T()),
-      windows( std::vector<range>() )
+    : windows( std::vector<range>() )
   {
     if(!window_size_S)
       throw std::logic_error("window size cannot be 0");
@@ -52,8 +51,7 @@ namespace Sequence
 				     const double & step_len,
 				     const double & starting_pos,
 				     const double & ending_pos)
-    : currentSlice(T()),
-      windows( std::vector<range>() )
+    : windows( std::vector<range>() )
   {
     if(window_size<=0.)
       throw std::logic_error("window_size must be > 0");
@@ -153,8 +151,9 @@ namespace Sequence
       throw(Sequence::SeqException("PolyTableSlice<T>::get_slice() -- iterator out of range"));
     if(itr->first != itr->second)
       {
-	currentSlice.assign(itr->first,itr->second);
-	return currentSlice;
+	T rv;
+	rv.assign(itr->first,itr->second);
+	return rv;
       }
     return T();
   }
@@ -172,8 +171,9 @@ namespace Sequence
       throw(Sequence::SeqException("PolyTableSlice::operator[] -- subscript out of range"));
     if(windows[i].first != windows[i].second)
       {
-	currentSlice.assign(windows[i].first,windows[i].second);
-	return currentSlice;
+	T rv;
+	rv.assign(windows[i].first,windows[i].second);
+	return rv;
       }
     return T();
   }

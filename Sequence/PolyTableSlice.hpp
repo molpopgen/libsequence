@@ -120,7 +120,6 @@ namespace Sequence
   private:
     static_assert( std::is_base_of<Sequence::PolyTable,T>::value,
 		   "T must be derived from Sequence::PolyTable" );
-    mutable T currentSlice;
     typedef std::pair<PolyTable::const_site_iterator,
 		      PolyTable::const_site_iterator> range;
     //we store the window info as pointers to the range of sites 
