@@ -117,11 +117,13 @@ namespace Sequence
 {
   template<typename T> class PolyTableSlice
   {
+  public:
+    //! Range of a window = [first,second)
+    typedef std::pair<PolyTable::const_site_iterator,
+		      PolyTable::const_site_iterator> range;
   private:
     static_assert( std::is_base_of<Sequence::PolyTable,T>::value,
 		   "T must be derived from Sequence::PolyTable" );
-    typedef std::pair<PolyTable::const_site_iterator,
-		      PolyTable::const_site_iterator> range;
     //we store the window info as pointers to the range of sites 
     //in each window
     std::vector< range > windows;
@@ -205,8 +207,7 @@ namespace Sequence
     /*!
       const_iterator type to access windows
     */
-    typedef std::vector< std::pair<PolyTable::const_site_iterator,
-				   PolyTable::const_site_iterator> >::const_iterator const_iterator;
+    typedef std::vector<range>::const_iterator const_iterator;
     /*!
       \return Const iterator to begin
     */
@@ -224,7 +225,7 @@ namespace Sequence
     /*!
       \return The number of windows stored
     */
-    unsigned size() const;
+    std::vector<range>::size_type size() const;
     /*!
       \param i The window to return, 0 <= i < object.size()
       \return the i-th window

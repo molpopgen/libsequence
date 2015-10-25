@@ -172,7 +172,7 @@ namespace Sequence
   }
 
   template<typename T>
-  unsigned PolyTableSlice<T>::size() const
+  typename std::vector<typename PolyTableSlice<T>::range>::size_type PolyTableSlice<T>::size() const
   {
     return windows.size();
   }
