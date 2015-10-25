@@ -159,6 +159,21 @@ namespace Sequence
 			     const unsigned & window_step_len );
 
     /*!
+      Create a specific number of windows with an equal number of segregating sites per window.
+      \param beg A pointer the first segregating site in the data
+      \param end A pointer to one-past-the-last segregating site in the data
+      \param nwindows The desired number of windows.
+      \note The intended use of this fxn is to break an interval up into approximately equal-sized 
+      chunks.  When end-beg is small relative to nwindows, you will end up with fewer than nwindows
+      "slices".  The primary use scenario envisioned for this type of window is downstream 
+      parallelization of computation on large PolyTable objects.
+     */
+    explicit PolyTableSlice( const PolyTable::const_site_iterator beg,
+			     const PolyTable::const_site_iterator end,
+			     const unsigned nwindows);
+    
+
+    /*!
       Use this constructor to generate a sliding window accross the sequence itself.
       \param beg A pointer the first segregating site in the data
       \param end A pointer to one-past-the-last segregating site in the data
