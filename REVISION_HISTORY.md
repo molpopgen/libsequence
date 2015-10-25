@@ -41,6 +41,7 @@ However:
 * Various code cleanups, esp. removal of commented-out code blocks
 * The 8-bit encoding stuff has been removed.  This was never used in real-world programs, and suffered from some design issues.
 * Sequence::PolyTableSlice has several updates.  First, a bug in "fixed-S" windows was identified through unit testing and fixed.  The previous version would drop the last window in some cases.  This probably didn't affect many people, but the bug was there for years. (In practice, most 'windows' are fixed distance, not fixed no. variable sites, hence my belief that most previous analyses are ok.)  A new constructor supports 'chunking' a PolyTable into equal-sized windows (based on number of variable sites).   The class no longer contains a data member of type T, which was never necessary anways.
+* auto_ptr replaced with unique_ptr in src/Comeron95.cc
 
 ## libsequence 1.8.7
 
