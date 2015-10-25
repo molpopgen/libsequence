@@ -190,7 +190,7 @@ namespace Sequence
         //it is likely that Ba is nan due to too few changes, and thus Ba should equal 0.0
         //otherwise it is due to too many changes.
         //NOTE--this is an ad-hoc treatment of the analysis!!!
-        std::auto_ptr<Kimura80> K80( new Kimura80 (seqobj1, seqobj2));
+        std::unique_ptr<Kimura80> K80( new Kimura80 (seqobj1, seqobj2));
         if (K80->K () < 1.0)
           Ba = 0.0;
       }
