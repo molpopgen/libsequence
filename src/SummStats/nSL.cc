@@ -94,27 +94,35 @@ namespace Sequence
     for( double l = minfreq ; l < 1. ; l += binsize )
       {
 	vector< pair<double, pair<double,double> > > thisbin;
-	double s1=0.,s2=0.,sq1=0.,sq2=0.;
 	copy_if( binning.begin(),binning.end(),
 		 back_inserter(thisbin),[&]( const pair<double, pair<double,double> > & data )
 		 {
-		   s1 += (isfinite(data.second.first)) ? data.second.first : 0.;
-		   s2 += (isfinite(data.second.second)) ? data.second.second : 0.;
-		   sq1 += (isfinite(data.second.first)) ? pow(data.second.first,2.) : 0.;
-		   sq2 += (isfinite(data.second.second)) ? pow(data.second.second,2.) : 0.;
 		   return isfinite(data.second.first) && data.first >= l && data.first < l+binsize;
 		 });
 	if( thisbin.size() > 1 ) //otherwise SD = 0, so there's nothing to standardize
 	  {
-	    double mean1 = s1/double(thisbin.size()),
-	      mean2 = s2/double(thisbin.size()),
-	      sd1 = pow(sq1/double(thisbin.size()) - pow(mean1,2.),0.5),
-	      sd2 = pow(sq2/double(thisbin.size()) - pow(mean2,2.),0.5);
+	    double mean1=0.,mean2=0.;
+	    for( const auto & p : thisbin )
+	      {
+		if(isfinite(p.second.first)) mean1 += p.second.first;
+		if(isfinite(p.second.second)) mean2 += p.second.second;
+	      }
+	    mean1 /= double(thisbin.size());
+	    mean2 /= double(thisbin.size());
+	    double var1=0.,var2=0.;
+	    for( const auto & p : thisbin )
+	      {
+		if(isfinite(p.second.first)) var1 += pow( p.second.first - mean1, 2.0 );
+		if(isfinite(p.second.first)) var2 += pow( p.second.second - mean2, 2.0 );
+	      }
+	    var1 /= double(thisbin.size()-1);
+	    var2 /= double(thisbin.size()-1);
+	    double sd1 = sqrt(var1),sd2=sqrt(var2);
 	    for_each( thisbin.begin(), 
 		      thisbin.end(),
 		      [&](const pair<double, pair<double,double> > & data ) {
-			double z1 = (data.second.first-mean1)/sd1,
-			  z2 = (data.second.second-mean2)/sd2;
+			double z1 = (isfinite(sd1)) ? (data.second.first-mean1)/sd1  : numeric_limits<double>::quiet_NaN(),
+			  z2 = (isfinite(sd2)) ? (data.second.second-mean2)/sd2 : numeric_limits<double>::quiet_NaN();
 			//Get max abs val of each stat
 			if( isfinite(z1) && (!isfinite(rv) || fabs(z1) > fabs(rv)) ) rv = z1;
 			if( isfinite(z2) && (!isfinite(rv2) || fabs(z2) > fabs(rv2)) ) rv2 = z2;
