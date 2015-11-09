@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -37,19 +37,19 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 //divergence statistics for a pair of sequences
 
 namespace Sequence
-  {
+{
   Sites::Sites (const Sequence::RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
-                          const Sequence::Seq * seq2, const int max , const GeneticCodes code ):
-      _L0(0.),_L2S(0.),_L2V(0.0),_L4(0.0)
-      /*!
-        \param sitesObj an initialized object of type Sequence::RedundancyCom95
-        \param seq1 a Sequence::Seq
-        \param seq2 a Sequence::Seq
-        \param max max number of substitutions per codon to analyze
-        \param code see Sequence::GeneticCodes for valid values
-        \note sequences must be of same length, this is checked by assert()
-        \note sequence lengths must be multiples of 3, this is checked by assert()
-       */
+		const Sequence::Seq * seq2, const int max , const GeneticCodes code ):
+    _L0(0.),_L2S(0.),_L2V(0.0),_L4(0.0)
+    /*!
+      \param sitesObj an initialized object of type Sequence::RedundancyCom95
+      \param seq1 a Sequence::Seq
+      \param seq2 a Sequence::Seq
+      \param max max number of substitutions per codon to analyze
+      \param code see Sequence::GeneticCodes for valid values
+      \note sequences must be of same length, this is checked by assert()
+      \note sequence lengths must be multiples of 3, this is checked by assert()
+    */
   {
     assert(seq1->length() == seq2->length());
     assert( (fabs(seq1->length()%3-0.)<=DBL_EPSILON) &&
