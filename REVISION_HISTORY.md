@@ -30,6 +30,13 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.8.9
+
+Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style release.
+
+* War on "mutable". The use of this keyword has been removed from the library to the best extent possible.
+* The API for calculations involving codons has been modernized.  This includes Sequence::Comeron95, Sequence::RedundancyCom95, Sequence::WeightingScheme2 (and derived types), Sequence::WeightingScheme3 (and derived types), Sequence::TwoSubs, Sequence::ThreeSubs, functions in Sequence/PathwayHelper.hpp
+
 ## libsequence 1.8.8
 
 * l-HAF statistic added (Sequence/SummStats/lHaf.hpp)
