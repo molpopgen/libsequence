@@ -43,7 +43,7 @@ namespace Sequence
   {
   private:
     void doCalcs(void) const;
-    mutable std::unique_ptr<FSTimpl> impl;
+    std::unique_ptr<FSTimpl> impl;
   public:
     explicit FST(const PolyTable *data, unsigned npop, const unsigned *config=NULL,
 		 const double *weights=NULL, bool haveOutgroup = false,
