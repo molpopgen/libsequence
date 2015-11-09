@@ -40,9 +40,7 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
-    Inter2_t intermediates;
-    intermediates[0].resize(3);
-    intermediates[1].resize(3);
+    Inter2_t intermediates({std::string(3,' '),std::string(3,' ')});
 
     unsigned i,j;
     unsigned pos[2];
@@ -100,9 +98,15 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
-    Inter3_t intermediates;
-    for(int i = 0 ; i < 9 ;++i)
-      intermediates[i].resize(3);
+    Inter3_t intermediates({std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' '),
+	  std::string(3,' ')});
 
     intermediates[0][0] = char(std::toupper(codon2[0]));
     intermediates[0][1] = char(std::toupper(codon1[1]));
