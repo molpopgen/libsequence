@@ -67,9 +67,9 @@ namespace Sequence
   class SimpleSNP:public PolyTable
     {
     private:
-      mutable bool Diploid,isoFemale;
-      bool haveOutgroup;
       std::vector<std::string> _names;
+      bool Diploid,isoFemale;
+      bool haveOutgroup;
     public:
       SimpleSNP( const SimpleSNP & );
       SimpleSNP( SimpleSNP & ) = default;
