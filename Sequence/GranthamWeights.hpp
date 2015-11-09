@@ -49,8 +49,8 @@ namespace Sequence
   class GranthamWeights2 : public WeightingScheme2
     {
     private:
-      Sequence::GeneticCodes code;
       mutable double __weights[2];//logical const
+      Sequence::GeneticCodes code;
     public:
       explicit GranthamWeights2(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights2(void);
@@ -61,8 +61,8 @@ namespace Sequence
   class GranthamWeights3 : public WeightingScheme3
     {
     private:
-      GeneticCodes code;
       mutable double __weights[6];//logical const
+      GeneticCodes code;
     public:
       explicit GranthamWeights3(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights3(void);
