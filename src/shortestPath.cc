@@ -95,8 +95,7 @@ namespace Sequence
 	  }
 	else if (ndiffs == 2)
 	  {
-	    std::string intermediates[2];
-	    Sequence::Intermediates2(intermediates,codon1,codon2);
+	    auto intermediates = Sequence::Intermediates2(codon1,codon2);
 
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
@@ -119,8 +118,7 @@ namespace Sequence
 	  }
 	else if (ndiffs == 3)
 	  {
-	    std::string intermediates[9];
-	    Sequence::Intermediates3(intermediates,codon1,codon2);
+	    auto intermediates = Sequence::Intermediates3(codon1,codon2);
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(6,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
 	    //there are 6 paths b/w codons that differ at all 3 sites

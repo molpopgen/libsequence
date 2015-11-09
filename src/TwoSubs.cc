@@ -56,10 +56,8 @@ namespace Sequence
     p0_b2= p2S_b2= p2V_b2= p4_b2= q0_b2= q2S_b2= q2V_b2= q4_b2=0.;
     p0_b3= p2S_b3= p2V_b3= p4_b3= q0_b3= q2S_b3= q2V_b3= q4_b3=0.;
     p0_b4= p2S_b4= p2V_b4= p4_b4= q0_b4= q2S_b4= q2V_b4= q4_b4=0.;
-    std::string intermediates[2];
-    Intermediates2(intermediates,codon1,codon2);
-    //weights2->Calculate(codon1,codon2);
-    auto weights = weights2->operator()(codon1,codon2);//->weights();
+    auto intermediates = Intermediates2(codon1,codon2);
+    auto weights = weights2->operator()(codon1,codon2,sitesObj->gencode());
     Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);
   }
 

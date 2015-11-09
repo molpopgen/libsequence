@@ -645,4 +645,9 @@ namespace Sequence
 				   dna_alphabet.end(),codon[2]) );
     return impl->l4_vals[i][j][k];
   }
+  
+  GeneticCodes RedundancyCom95::gencode()const
+  {
+    return impl->genetic_code;
+  }
 }

@@ -74,6 +74,7 @@ namespace Sequence
     double L2S_vals (const std::string &codon) const;
     double L2V_vals (const std::string &codon) const;
     double L4_vals (const std::string &codon) const;
+    GeneticCodes gencode()const;
   };
 }
 

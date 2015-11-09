@@ -26,7 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <string>
 #include <array>
-
+#include <Sequence/SeqEnums.hpp>
 /*! \file WeightingSchemes.hpp
   \short abstract interface to weighting schemes when codons differ at 2 positions
  */
@@ -77,33 +77,24 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
   {
-    using weights2_t = std::array<double,2>;
-    using weights3_t = std::array<double,6>;
-
-  class WeightingScheme2
+    struct WeightingScheme2
     {
-    private:
-    public:
+      using weights2_t = std::array<double,2>;
       explicit WeightingScheme2(void)
       {}
       virtual ~WeightingScheme2(void)
       {}
-      virtual weights2_t operator()(const std::string &codon1, const std::string &codon2) const =0;
-      //virtual void Calculate(const std::string &codon1, const std::string &codon2) =0;
-      //virtual weights2_t weights(void) const = 0;
+      virtual weights2_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const =0;
     };
 
-  class WeightingScheme3
+  struct WeightingScheme3
     {
-    private:
-    public:
+      using weights3_t = std::array<double,6>;
       explicit WeightingScheme3(void)
       {}
       virtual ~WeightingScheme3(void)
       {}
-      virtual weights3_t operator()(const std::string &codon1, const std::string &codon2) const =0;
-      //virtual void Calculate(const std::string &codon1, const std::string &codon2) =0;
-      //virtual weights3_t weights(void) const = 0;
+      virtual weights3_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const =0;
     };
 }
 #endif

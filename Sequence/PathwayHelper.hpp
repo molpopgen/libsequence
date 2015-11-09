@@ -33,11 +33,13 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   or the intermedate codons that occurs between two different codons
 */
 #include <string>
-
+#include <array>
 namespace Sequence
 {
-  void Intermediates2(std::string *intermediates,const std::string &codon1, const std::string &codon2);
-  void Intermediates3(std::string *intermediates, const std::string &codon1, const std::string &codon2);
+  using Inter2_t = std::array<std::string,2>;
+  using Inter3_t = std::array<std::string,9>;
+  Inter2_t Intermediates2(const std::string &codon1, const std::string &codon2);
+  Inter3_t Intermediates3(const std::string &codon1, const std::string &codon2);
 }
 #endif
 

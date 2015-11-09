@@ -41,6 +41,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   of implementing weighting schemes.
   @short Deal with codons differing at all 3 positions
 */
+#include <Sequence/PathwayHelper.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <string>
 
@@ -53,7 +54,7 @@ namespace Sequence
     private:
       double p0, p2S, p2V, p4, q0, q2S, q2V, q4;
       void Calculate (const RedundancyCom95 * sitesObj,
-                      const std::string *intermediates,
+		      const Inter3_t & intermediates,
                       const std::string &codon1, const std::string &codon2,
                       double w_path1,double w_path2, double w_path3,
                       double w_path4,double w_path5,double w_path6);

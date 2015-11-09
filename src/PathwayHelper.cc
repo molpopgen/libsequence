@@ -25,14 +25,13 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 #include <cassert>
 #include <cctype>
-
+#include <Sequence/PathwayHelper.hpp>
 using std::string;
 
 namespace Sequence
 {
-  void Intermediates2(string *intermediates,
-		      const std::string &codon1,
-		      const std::string &codon2)
+  Inter2_t Intermediates2(const std::string &codon1,
+			  const std::string &codon2)
   /*!
     \param intermediates a string[2] in which we will place the intermediate codons
     \param codon1 a codon
@@ -41,6 +40,7 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
+    Inter2_t intermediates;
     intermediates[0].resize(3);
     intermediates[1].resize(3);
 
@@ -87,9 +87,10 @@ namespace Sequence
 	intermediates[1][2] = char(std::toupper(codon2[2]));
 	break;
       }
+    return intermediates;
   }
 
-  void Intermediates3(string *intermediates,const std::string &codon1, const std::string &codon2)
+  Inter3_t Intermediates3(const std::string &codon1, const std::string &codon2)
   /*!
     \param intermediates a string[9] in which we will place the intermediate codons
     \param codon1 a codon
@@ -99,6 +100,7 @@ namespace Sequence
     \ingroup CodonPaths
   */
   {
+    Inter3_t intermediates;
     for(int i = 0 ; i < 9 ;++i)
       intermediates[i].resize(3);
 
@@ -137,5 +139,6 @@ namespace Sequence
     intermediates[8][0] = char(std::toupper(codon1[0]));
     intermediates[8][1] = char(std::toupper(codon2[1]));
     intermediates[8][2] = char(std::toupper(codon2[2]));
+    return intermediates;
   }
 }

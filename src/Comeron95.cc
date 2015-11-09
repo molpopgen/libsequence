@@ -160,8 +160,8 @@ namespace Sequence
 				const Sequence::Seq & seqb,
 				int max)
   {
-    GranthamWeights2 w2(impl->code);
-    GranthamWeights3 w3(impl->code);
+    GranthamWeights2 w2;
+    GranthamWeights3 w3;
     return this->operator()(seqa,seqb,&w2,&w3,max);
   }
   

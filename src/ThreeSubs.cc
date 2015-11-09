@@ -57,18 +57,17 @@ namespace Sequence
   */
   {
     assert(codon1.length() == 3 && codon2.length() == 3);
-    string intermediates[9];
-    Intermediates3(intermediates,codon1,codon2);
+    auto intermediates =Intermediates3(codon1,codon2);
     p0 = p2S = p2V = p4 = q0 = q2S = q2V = q4 = 0.0;
 
-    auto weights = weights3->operator()(codon1,codon2);
+    auto weights = weights3->operator()(codon1,codon2,sitesObj->gencode());
     Calculate (sitesObj, intermediates, codon1, codon2, weights[0],
                weights[1], weights[2], weights[3], weights[4], weights[5]);
   }
 
   void
   ThreeSubs::Calculate (const RedundancyCom95 * sitesObj,
-                        const std::string *intermediates,
+                        const Inter3_t & intermediates,
                         const std::string & codon1, const std::string & codon2,
                         double w_path1, double w_path2, double w_path3,
                         double w_path4, double w_path5, double w_path6)

@@ -46,28 +46,14 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
   {
   class Grantham;
-  class GranthamWeights2 : public WeightingScheme2
+  struct GranthamWeights2 : public WeightingScheme2
     {
-    private:
-      Sequence::GeneticCodes code;
-    public:
-      explicit GranthamWeights2(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
-      ~GranthamWeights2(void);
-      weights2_t operator()(const std::string &codon1, const std::string &codon2) const;
-      //void Calculate(const std::string &codon1, const std::string &codon2);
-      //weights2_t weights(void) const;
+      weights2_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const;
     };
 
-  class GranthamWeights3 : public WeightingScheme3
+  struct GranthamWeights3 : public WeightingScheme3
     {
-    private:
-      GeneticCodes code;
-    public:
-      explicit GranthamWeights3(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
-      ~GranthamWeights3(void);
-      weights3_t operator()(const std::string &codon1, const std::string &codon2) const;
-      //void Calculate(const std::string &codon1, const std::string &codon2);
-      //weights3_t weights(void) const;
+      weights3_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const;
     };
 }
 #endif
