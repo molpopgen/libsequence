@@ -33,7 +33,7 @@ namespace Sequence
     \param codon2 a std::string of length 3 representing a sense codon
   */
   {
-    return weights2_t({1.,1.});
+    return weights2_t({{1.,1.}});
   }
 
   WeightingScheme3::weights3_t Unweighted3::operator()(const std::string &, const std::string &,Sequence::GeneticCodes ) const
@@ -43,6 +43,6 @@ namespace Sequence
     \param codon2 a std::string of length 3 representing a sense codon
   */
   {
-    return weights3_t({1.,1.,1.,1.,1.,1.,});
+    return weights3_t({{1.,1.,1.,1.,1.,1.}});
   }
 }

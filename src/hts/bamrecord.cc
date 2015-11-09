@@ -173,7 +173,7 @@ namespace Sequence
   using bamutil::bamCig;
   bamaux::bamaux( ) : size(0),
 		      value_type(char()),
-		      tag{'z','z','z'},
+		      tag({{'z','z','z'}}),
 		      value(string())
   {
   }

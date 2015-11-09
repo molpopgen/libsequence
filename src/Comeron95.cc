@@ -174,26 +174,26 @@ namespace Sequence
     Sites s(impl->sitesObj.get(),&seqa,&seqb,max,impl->code);
     impl->diverge(seqa,seqb,weights2,weights3,max);
     impl->omega(&s,seqa,seqb);
-    return Com95_t({impl->ka(),
-	  impl->ks(),
-	  impl->ratio(),
-	  impl->P0(),
-	  impl->P2S(),
-	  impl->P2V(),
-	  impl->P4(),
-	  impl->Q0(),
-	  impl->Q2S(),
-	  impl->Q2V(),
-	  impl->Q4(),
-	  impl->as(),
-	  impl->aa(),
-	  impl->bs(),
-	  impl->ba(),
-	  impl->L0(&s),
-	  impl->L2S(&s),
-	  impl->L2V(&s),
-	  impl->L4(&s)
-	  });
+    return Com95_t({{impl->ka(),
+	    impl->ks(),
+	    impl->ratio(),
+	    impl->P0(),
+	    impl->P2S(),
+	    impl->P2V(),
+	    impl->P4(),
+	    impl->Q0(),
+	    impl->Q2S(),
+	    impl->Q2V(),
+	    impl->Q4(),
+	    impl->as(),
+	    impl->aa(),
+	    impl->bs(),
+	    impl->ba(),
+	    impl->L0(&s),
+	    impl->L2S(&s),
+	    impl->L2V(&s),
+	    impl->L4(&s)
+	    }});
   }
   
   void Com95impl::omega (const Sites * s,
