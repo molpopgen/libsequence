@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -49,31 +49,32 @@ namespace Sequence
     typedef std::vector<Sequence::stateCounter> _vCounts;
     typedef std::vector< _vCounts > _vvCounts;
     _vvCounts _Counts;
-    mutable unsigned _nsam, _nsites, _npop;
-    mutable double _piB, _piT, _piS, _piD;
+    unsigned _nsam, _nsites, _npop;
+    double _piB, _piT, _piS, _piD;
     vector<unsigned> _config;
     vector<double> _weights;
     vector< pair<unsigned,unsigned> > _indexes;
-    mutable bool _calcsDone;
+    bool _calcsDone;
     polySiteVector pv;
     typedef std::pair< std::set<char>, std::set<char> > PopStateSets;
     PopStateSets getPopStateSets(const unsigned &i,
 				 const unsigned &j,
 				 const unsigned & site);
     FSTimpl(const PolyTable *data, unsigned npop, const unsigned *config,
-		     const double *weights, bool haveOutgroup, unsigned outgroup);
+	    const double *weights, bool haveOutgroup, unsigned outgroup);
+    void doCalcs(void);
   };
 
   FSTimpl::FSTimpl(const PolyTable *data, unsigned npop, const unsigned *config,
-	    const double *weights, bool haveOutgroup, unsigned outgroup) :
-      _Counts( _vvCounts(npop,_vCounts(data->numsites()))),
-      _nsam(unsigned(data->size())),
-      _nsites(data->numsites()),_npop(npop),
-      _piB(0.), _piT(0.), _piS(0.), _piD(0.),
-      _indexes( vector< pair<unsigned,unsigned> >(npop) ),
-      _calcsDone(false),
-      pv( make_polySiteVector(*data) )
-    {
+		   const double *weights, bool haveOutgroup, unsigned outgroup) :
+    _Counts( _vvCounts(npop,_vCounts(data->numsites()))),
+    _nsam(unsigned(data->size())),
+    _nsites(data->numsites()),_npop(npop),
+    _piB(0.), _piT(0.), _piS(0.), _piD(0.),
+    _indexes( vector< pair<unsigned,unsigned> >(npop) ),
+    _calcsDone(false),
+    pv( make_polySiteVector(*data) )
+  {
     if (config == NULL)
       {
         throw SeqException("Seqence::FST -- config vector is NULL");
@@ -106,7 +107,7 @@ namespace Sequence
     for(unsigned i = 1 ; i < _npop ; ++i)
       {
         _indexes[i]  =  pair<unsigned,unsigned>(_indexes[i-1].second,
-						      _indexes[i-1].second+_config[i]);
+						_indexes[i-1].second+_config[i]);
       }
     for (unsigned i = 0 ; i < _npop ; ++i) //over pops
       {
@@ -130,7 +131,8 @@ namespace Sequence
 	    pv[i].second.erase(outgroup,1);
 	  }
       }
-    }
+    this->doCalcs();
+  }
 
   FSTimpl::PopStateSets FSTimpl::getPopStateSets(const unsigned &pop1,
 						 const unsigned &pop2,
@@ -142,8 +144,8 @@ namespace Sequence
 				 0u);
     UTYPE size1 = *(_config.begin()+pop1);
     UTYPE beg2 = std::accumulate(_config.begin(),
-				  _config.begin()+pop2,
-				  0u);
+				 _config.begin()+pop2,
+				 0u);
     UTYPE size2 = *(_config.begin()+pop2);
     
     //we need some rigamarole here to skip missing data
@@ -162,22 +164,22 @@ namespace Sequence
            const double *weights, bool haveOutgroup, unsigned outgroup) 
 
 
-    /*!
-      \param data a Sequence::PolyTable with the data for all populations
-      \param npop the number of populations
-      \param config a list of sample sizes.  the number of elements in \a config must equal \a npop, 
-      otherwise a segfault may occur.  An exception is thrown if the sum of the elements in config
-      does not equal \a data->size(). \note If \a haveOutgroup is true, then the sum of the elements in 
-      \a config must be 1 less than the size of \a data (i.e. it should sum to the size of the 
-      polymorphism sample only!).
-      \param weights a list of weights to assign to each population.  If NULL, all pops are weighted
-      equally.  The number of elements in weights must be >= \a npop.  Also, the sum of the elements
-      in the range &weights[0] to &weights[npop] must be 1, else an exception will be thrown.
-      \param haveOutgroup false if no outgroup sequence is present, set to true otherwise. Please note
-      that it is rather unwise to have an outgroup tested when doing a permutation test of Fst, since
-      the index of the outgroup will likely get scrambled and not correspond to \a outgroup.
-      \param outgroup if \a haveOutgroup is true, \a outgroup is the index of the outgroup in \a data
-    */
+  /*!
+    \param data a Sequence::PolyTable with the data for all populations
+    \param npop the number of populations
+    \param config a list of sample sizes.  the number of elements in \a config must equal \a npop, 
+    otherwise a segfault may occur.  An exception is thrown if the sum of the elements in config
+    does not equal \a data->size(). \note If \a haveOutgroup is true, then the sum of the elements in 
+    \a config must be 1 less than the size of \a data (i.e. it should sum to the size of the 
+    polymorphism sample only!).
+    \param weights a list of weights to assign to each population.  If NULL, all pops are weighted
+    equally.  The number of elements in weights must be >= \a npop.  Also, the sum of the elements
+    in the range &weights[0] to &weights[npop] must be 1, else an exception will be thrown.
+    \param haveOutgroup false if no outgroup sequence is present, set to true otherwise. Please note
+    that it is rather unwise to have an outgroup tested when doing a permutation test of Fst, since
+    the index of the outgroup will likely get scrambled and not correspond to \a outgroup.
+    \param outgroup if \a haveOutgroup is true, \a outgroup is the index of the outgroup in \a data
+  */
   {
     try
       {
@@ -198,91 +200,91 @@ namespace Sequence
     //delete impl;
   }
 
-  void FST::doCalcs(void) const
+  void FSTimpl::doCalcs(void)
   {
     //calculate sums of w/in population weights and heterozygosity
     double w_ii_sq = 0., weighted_Pi_ii = 0.;
 
-    for (unsigned i = 0 ; i < impl->_npop ; ++i) //over pops
+    for (unsigned i = 0 ; i < _npop ; ++i) //over pops
       {
 	double Pi = 0.;
-	w_ii_sq += impl->_weights[i]*impl->_weights[i];
-	for(unsigned j = 0 ; j < impl->_nsites ; ++j)//over sites
+	w_ii_sq += _weights[i]*_weights[i];
+	for(unsigned j = 0 ; j < _nsites ; ++j)//over sites
 	  {
-	    unsigned n = impl->_config[i];
+	    unsigned n = _config[i];
 	    double SSH = 0.;
-	    n -= impl->_Counts[i][j].n;
+	    n -= _Counts[i][j].n;
 	    double denom = (double(n)* (double(n) - 1.0));
-	    SSH += (impl->_Counts[i][j].a > 0) ? double(impl->_Counts[i][j].a) * 
-	      double (impl->_Counts[i][j].a-1) /denom : 0. ;
-	    SSH += (impl->_Counts[i][j].g > 0) ? double(impl->_Counts[i][j].g) * 
-	      double (impl->_Counts[i][j].g-1) /denom : 0. ;
-	    SSH += (impl->_Counts[i][j].c > 0) ? double(impl->_Counts[i][j].c) * 
-	      double (impl->_Counts[i][j].c-1) /denom : 0. ;
-	    SSH += (impl->_Counts[i][j].t > 0) ? double(impl->_Counts[i][j].t) * 
-	      double (impl->_Counts[i][j].t-1) /denom : 0. ;
-	    SSH += (impl->_Counts[i][j].zero > 0) ? double(impl->_Counts[i][j].zero) *
-	      double (impl->_Counts[i][j].zero-1) /denom : 0. ;
-	    SSH += (impl->_Counts[i][j].one > 0) ? double(impl->_Counts[i][j].one) *
-	      double (impl->_Counts[i][j].one-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].a > 0) ? double(_Counts[i][j].a) * 
+	      double (_Counts[i][j].a-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].g > 0) ? double(_Counts[i][j].g) * 
+	      double (_Counts[i][j].g-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].c > 0) ? double(_Counts[i][j].c) * 
+	      double (_Counts[i][j].c-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].t > 0) ? double(_Counts[i][j].t) * 
+	      double (_Counts[i][j].t-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].zero > 0) ? double(_Counts[i][j].zero) *
+	      double (_Counts[i][j].zero-1) /denom : 0. ;
+	    SSH += (_Counts[i][j].one > 0) ? double(_Counts[i][j].one) *
+	      double (_Counts[i][j].one-1) /denom : 0. ;
 	    Pi += (1.0 - SSH);
 	  }//sites
-	weighted_Pi_ii += impl->_weights[i]*impl->_weights[i]*Pi;
+	weighted_Pi_ii += _weights[i]*_weights[i]*Pi;
       }//pops
 
     //now calculate between-population divergence,
-    //using stored state info in impl->_Counts
+    //using stored state info in _Counts
     double sum_wi_wj = 0., weighted_Pi_ij = 0.;
-    for(unsigned i = 0 ; i < impl->_npop - 1 ; ++i)//over pops_i
+    for(unsigned i = 0 ; i < _npop - 1 ; ++i)//over pops_i
       {
-	for(unsigned j = i+1 ; j < impl->_npop ; ++j)//over pops_j
+	for(unsigned j = i+1 ; j < _npop ; ++j)//over pops_j
 	  {
 	    double Pi_i_j = 0.;
-	    sum_wi_wj += impl->_weights[i]*impl->_weights[j];
-	    for(unsigned k = 0 ; k < impl->_nsites ; ++k)//over sites
+	    sum_wi_wj += _weights[i]*_weights[j];
+	    for(unsigned k = 0 ; k < _nsites ; ++k)//over sites
 	      {
-		unsigned ni = impl->_config[i],nj = impl->_config[j];
-		ni -= impl->_Counts[i][k].n;
-		nj -= impl->_Counts[j][k].n;
-		Pi_i_j += (impl->_Counts[i][k].a > 0) ?
-		  (double(impl->_Counts[i][k].a)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].a)/double(nj)):0.;
-		Pi_i_j += (impl->_Counts[i][k].g > 0) ?
-		  (double(impl->_Counts[i][k].g)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].g)/double(nj)):0.;
-		Pi_i_j += (impl->_Counts[i][k].c > 0) ?
-		  (double(impl->_Counts[i][k].c)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].c)/double(nj)):0.;
-		Pi_i_j += (impl->_Counts[i][k].t > 0) ?
-		  (double(impl->_Counts[i][k].t)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].t)/double(nj)):0.;
-		Pi_i_j += (impl->_Counts[i][k].zero > 0) ?
-		  (double(impl->_Counts[i][k].zero)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].zero)/double(nj)):0.;
-		Pi_i_j += (impl->_Counts[i][k].one > 0) ?
-		  (double(impl->_Counts[i][k].one)/double(ni))*
-		  (double(nj-impl->_Counts[j][k].one)/double(nj)):0.;
+		unsigned ni = _config[i],nj = _config[j];
+		ni -= _Counts[i][k].n;
+		nj -= _Counts[j][k].n;
+		Pi_i_j += (_Counts[i][k].a > 0) ?
+		  (double(_Counts[i][k].a)/double(ni))*
+		  (double(nj-_Counts[j][k].a)/double(nj)):0.;
+		Pi_i_j += (_Counts[i][k].g > 0) ?
+		  (double(_Counts[i][k].g)/double(ni))*
+		  (double(nj-_Counts[j][k].g)/double(nj)):0.;
+		Pi_i_j += (_Counts[i][k].c > 0) ?
+		  (double(_Counts[i][k].c)/double(ni))*
+		  (double(nj-_Counts[j][k].c)/double(nj)):0.;
+		Pi_i_j += (_Counts[i][k].t > 0) ?
+		  (double(_Counts[i][k].t)/double(ni))*
+		  (double(nj-_Counts[j][k].t)/double(nj)):0.;
+		Pi_i_j += (_Counts[i][k].zero > 0) ?
+		  (double(_Counts[i][k].zero)/double(ni))*
+		  (double(nj-_Counts[j][k].zero)/double(nj)):0.;
+		Pi_i_j += (_Counts[i][k].one > 0) ?
+		  (double(_Counts[i][k].one)/double(ni))*
+		  (double(nj-_Counts[j][k].one)/double(nj)):0.;
 	      }//sites
-	    weighted_Pi_ij += impl->_weights[i]*impl->_weights[j]*Pi_i_j;
+	    weighted_Pi_ij += _weights[i]*_weights[j]*Pi_i_j;
 	  }//pops_j
       }//pops_i
 
     //calculate measures of diversity/divergence needed to obtain Fst
-    impl->_piT = weighted_Pi_ii + 2.*weighted_Pi_ij;
-    impl->_piS = weighted_Pi_ii / w_ii_sq ;
-    impl->_piB = weighted_Pi_ij / sum_wi_wj;
-    impl->_piD = (impl->_piT - impl->_piS)/(2. * sum_wi_wj);
+    _piT = weighted_Pi_ii + 2.*weighted_Pi_ij;
+    _piS = weighted_Pi_ii / w_ii_sq ;
+    _piB = weighted_Pi_ij / sum_wi_wj;
+    _piD = (_piT - _piS)/(2. * sum_wi_wj);
 
-    impl->_calcsDone = true;
+    _calcsDone = true;
   }
 
   std::set<double> FST::shared(unsigned pop1, unsigned pop2) const
-    /*!
-      \return an object of type std::set<double> representing the positions
-      where shared polymorphisms are inferred
-      \param pop1 a population index
-      \param pop2 a population index
-    */
+  /*!
+    \return an object of type std::set<double> representing the positions
+    where shared polymorphisms are inferred
+    \param pop1 a population index
+    \param pop2 a population index
+  */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
       throw SeqException("Seqence::FST -- indexes out of range");
@@ -314,12 +316,12 @@ namespace Sequence
   }
 
   std::set<double> FST::fixed(unsigned pop1, unsigned pop2)  const
-    /*!
-      \return an object of type std::set<double> representing the positions of sites at which
-      fixed differences occur and a list of positions at which fixed differences occur
-      \param pop1 a population index
-      \param pop2 a population index
-    */
+  /*!
+    \return an object of type std::set<double> representing the positions of sites at which
+    fixed differences occur and a list of positions at which fixed differences occur
+    \param pop1 a population index
+    \param pop2 a population index
+  */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
       throw SeqException("Seqence::FST -- indexes out of range");
@@ -347,15 +349,15 @@ namespace Sequence
 
   std::pair< std::set<double>,std::set<double> >
   FST::Private(unsigned pop1, unsigned pop2) const
-    /*!
-      \return std::pair containing two objects of type std::set<double>
-      The first member of the pair represents the segregating sites with 
-      private mutations in \a pop1,
-      the second member the sites with private polymorphisms in \a pop2. 
-      Returns a pair of empty sets if \a pop1  or \a pop2 are out of range
-      \param pop1 a population index
-      \param pop2 a population index
-    */
+  /*!
+    \return std::pair containing two objects of type std::set<double>
+    The first member of the pair represents the segregating sites with 
+    private mutations in \a pop1,
+    the second member the sites with private polymorphisms in \a pop2. 
+    Returns a pair of empty sets if \a pop1  or \a pop2 are out of range
+    \param pop1 a population index
+    \param pop2 a population index
+  */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
       throw SeqException("Seqence::FST -- indexes out of range");
@@ -394,85 +396,71 @@ namespace Sequence
   }
 
   double FST::HSM(void) const
-    /*!
-      \return \f[F_{ST}=\frac{\pi_{D}}{\pi_S + \pi_D},\f] which is the
-      definition of \f$F_{ST}\f$ according to Hudson, Slatkin and Maddison (1992)
-      Estimation of levels of gene flow from population data. Genetics 132:583-589
-    */
+  /*!
+    \return \f[F_{ST}=\frac{\pi_{D}}{\pi_S + \pi_D},\f] which is the
+    definition of \f$F_{ST}\f$ according to Hudson, Slatkin and Maddison (1992)
+    Estimation of levels of gene flow from population data. Genetics 132:583-589
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piD/(impl->_piS+impl->_piD);
   }
 
   double FST::Slatkin(void) const
-    /*!
-      \return \f[F_{ST}=\frac{\pi_D}{2\pi_S + \pi_D},\f] which is the
-      definition of \f$F_{ST}\f$ according to Slatkin (1993) Isolation by distance in
-      equilibrium and non-equilibrium populations. Evolution 47: 264-279
-    */
+  /*!
+    \return \f[F_{ST}=\frac{\pi_D}{2\pi_S + \pi_D},\f] which is the
+    definition of \f$F_{ST}\f$ according to Slatkin (1993) Isolation by distance in
+    equilibrium and non-equilibrium populations. Evolution 47: 264-279
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piD/(2.*impl->_piS + impl->_piD);
   }
 
   double FST::HBK(void) const
-    /*!
-      \return \f[F_{ST}= 1 - \frac{\pi_S}{\pi_T} , \f] which is the
-      definition of \f$F_{ST}\f$ according to Hudson, Boos, and Kaplan (1992)
-      A statistical test for detecting geographic subdivision. Mol. Biol. Evol.
-      9:138-151
-    */
+  /*!
+    \return \f[F_{ST}= 1 - \frac{\pi_S}{\pi_T} , \f] which is the
+    definition of \f$F_{ST}\f$ according to Hudson, Boos, and Kaplan (1992)
+    A statistical test for detecting geographic subdivision. Mol. Biol. Evol.
+    9:138-151
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return 1.-(impl->_piS/impl->_piT);
   }
 
   double FST::piB(void) const
-    /*!
-      \return \f[\pi_B= \frac{\sum_{i<j}w_i w_j \pi_{ij}}{\sum_{i<j}w_i w_j}, \f]
-      which is the mean parwise divergence between 2 alleles drawn from 2 populations
-    */
+  /*!
+    \return \f[\pi_B= \frac{\sum_{i<j}w_i w_j \pi_{ij}}{\sum_{i<j}w_i w_j}, \f]
+    which is the mean parwise divergence between 2 alleles drawn from 2 populations
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piB;
   }
 
   double FST::piT(void) const
-    /*!
-      \return \f[\pi_T = \sum_i w_i^2 \pi_{ii} + 2\sum_{i<j}w_i w_j \pi_{ij}, \f] which is the 
-      total diversity in the sample
-    */
+  /*!
+    \return \f[\pi_T = \sum_i w_i^2 \pi_{ii} + 2\sum_{i<j}w_i w_j \pi_{ij}, \f] which is the 
+    total diversity in the sample
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piT;
   }
 
   double FST::piS(void) const
-    /*!
-      \return \f[\pi_S = \frac{\sum_i w_i^2 \pi_{ii}}{\sum_i w_i^2},\f] which is the mean within-population
-      diversity
-    */
+  /*!
+    \return \f[\pi_S = \frac{\sum_i w_i^2 \pi_{ii}}{\sum_i w_i^2},\f] which is the mean within-population
+    diversity
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piS;
   }
 
   double FST::piD(void) const
-    /*!
-      \return \f[ \pi_D = \frac{\pi_T - \pi_S}{2 \sum_{i<j}w_i w_j}, \f] which is a measure of
-      between-population divergence that is proportional to \f$t_1 - t_0,\f$ where \f$t_1\f$ is the
-      mean time to coalescence for 2 alleles drawn from different populations, and \f$t_o\f$ is the mean time
-      to coalescence for 2 alleles drawn from the same population
-    */
+  /*!
+    \return \f[ \pi_D = \frac{\pi_T - \pi_S}{2 \sum_{i<j}w_i w_j}, \f] which is a measure of
+    between-population divergence that is proportional to \f$t_1 - t_0,\f$ where \f$t_1\f$ is the
+    mean time to coalescence for 2 alleles drawn from different populations, and \f$t_o\f$ is the mean time
+    to coalescence for 2 alleles drawn from the same population
+  */
   {
-    if(impl->_calcsDone == false)
-      doCalcs();
     return impl->_piD;
   }
 }

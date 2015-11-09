@@ -42,7 +42,6 @@ namespace Sequence
   class FST 
   {
   private:
-    void doCalcs(void) const;
     std::unique_ptr<FSTimpl> impl;
   public:
     explicit FST(const PolyTable *data, unsigned npop, const unsigned *config=NULL,
