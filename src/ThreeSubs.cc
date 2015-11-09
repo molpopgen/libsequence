@@ -62,8 +62,7 @@ namespace Sequence
     Intermediates3(intermediates,codon1,codon2);
     p0 = p2S = p2V = p4 = q0 = q2S = q2V = q4 = 0.0;
 
-    weights3->Calculate(codon1,codon2);
-    double *weights = weights3->weights();
+    auto weights = weights3->operator()(codon1,codon2);
     Calculate (sitesObj, intermediates, codon1, codon2, weights[0],
                weights[1], weights[2], weights[3], weights[4], weights[5]);
   }

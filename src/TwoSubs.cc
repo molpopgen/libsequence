@@ -58,8 +58,8 @@ namespace Sequence
     p0_b4= p2S_b4= p2V_b4= p4_b4= q0_b4= q2S_b4= q2V_b4= q4_b4=0.;
     std::string intermediates[2];
     Intermediates2(intermediates,codon1,codon2);
-    weights2->Calculate(codon1,codon2);
-    double *weights = weights2->weights();
+    //weights2->Calculate(codon1,codon2);
+    auto weights = weights2->operator()(codon1,codon2);//->weights();
     Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);
   }
 

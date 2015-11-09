@@ -43,7 +43,7 @@ namespace Sequence
   GranthamWeights2::~GranthamWeights2(void)
   {}
 
-  void GranthamWeights2::Calculate(const std::string &codon1, const std::string &codon2) const
+    weights2_t GranthamWeights2::operator()(const std::string &codon1, const std::string &codon2) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
@@ -78,6 +78,7 @@ namespace Sequence
       //calculate the weights themselves
       //double w_path1 = 0., w_path2 = 0.,
       double w_tot = 0.;
+      weights2_t __weights;
       __weights[0]=0.;
       __weights[1]=0.;
 
@@ -95,16 +96,16 @@ namespace Sequence
 
       __weights[0] /= w_tot;
       __weights[1] /= w_tot;
-
-    }
-
-  double * GranthamWeights2::weights(void) const
-  /*!
-    \return a double * of size 2 (1 value for each branch)
-  */
-    {
       return __weights;
     }
+
+  // weights2_t GranthamWeights2::weights(void) const
+  // /*!
+  //   \return a double * of size 2 (1 value for each branch)
+  // */
+  //   {
+  //     return __weights;
+  //   }
 
   GranthamWeights3::GranthamWeights3(GeneticCodes genetic_code)
       :code(genetic_code)
@@ -117,7 +118,7 @@ namespace Sequence
   GranthamWeights3::~GranthamWeights3(void)
   {}
 
-  void GranthamWeights3::Calculate(const std::string &codon1, const std::string &codon2) const
+    weights3_t GranthamWeights3::operator()(const std::string &codon1, const std::string &codon2) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
@@ -228,6 +229,7 @@ namespace Sequence
       dist = gdist ((t1)[0],(t2)[0]);
       len_path_6 += dist;
 
+      weights3_t __weights;
       __weights[0] = 1. / len_path_1;
       __weights[1] = 1. /len_path_2;
       __weights[2] = 1. /len_path_3;
@@ -244,13 +246,14 @@ namespace Sequence
       __weights[3] /= w_tot;
       __weights[4] /= w_tot;
       __weights[5] /= w_tot;
-    }
-
-  double * GranthamWeights3::weights(void) const
-  /*!
-    \return a double * of size 6 (1 value for each branch)
-  */
-    {
       return __weights;
     }
+
+    // weights3_t GranthamWeights3::weights(void) const
+    // /*!
+    //   \return a double * of size 6 (1 value for each branch)
+    // */
+    // {
+    //   return __weights;
+    // }
 }

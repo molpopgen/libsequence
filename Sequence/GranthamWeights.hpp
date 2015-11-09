@@ -49,25 +49,25 @@ namespace Sequence
   class GranthamWeights2 : public WeightingScheme2
     {
     private:
-      mutable double __weights[2];//logical const
       Sequence::GeneticCodes code;
     public:
       explicit GranthamWeights2(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights2(void);
-      void Calculate(const std::string &codon1, const std::string &codon2) const;
-      double *weights(void) const;
+      weights2_t operator()(const std::string &codon1, const std::string &codon2) const;
+      //void Calculate(const std::string &codon1, const std::string &codon2);
+      //weights2_t weights(void) const;
     };
 
   class GranthamWeights3 : public WeightingScheme3
     {
     private:
-      mutable double __weights[6];//logical const
       GeneticCodes code;
     public:
       explicit GranthamWeights3(Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
       ~GranthamWeights3(void);
-      void Calculate(const std::string &codon1, const std::string &codon2) const;
-      double *weights(void) const;
+      weights3_t operator()(const std::string &codon1, const std::string &codon2) const;
+      //void Calculate(const std::string &codon1, const std::string &codon2);
+      //weights3_t weights(void) const;
     };
 }
 #endif

@@ -25,6 +25,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __WEIGHTING_SCHEMES_H__
 
 #include <string>
+#include <array>
 
 /*! \file WeightingSchemes.hpp
   \short abstract interface to weighting schemes when codons differ at 2 positions
@@ -76,7 +77,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
   {
-
+    using weights2_t = std::array<double,2>;
+    using weights3_t = std::array<double,6>;
 
   class WeightingScheme2
     {
@@ -86,8 +88,9 @@ namespace Sequence
       {}
       virtual ~WeightingScheme2(void)
       {}
-      virtual void Calculate(const std::string &codon1, const std::string &codon2) const =0;
-      virtual double *weights(void) const = 0;
+      virtual weights2_t operator()(const std::string &codon1, const std::string &codon2) const =0;
+      //virtual void Calculate(const std::string &codon1, const std::string &codon2) =0;
+      //virtual weights2_t weights(void) const = 0;
     };
 
   class WeightingScheme3
@@ -98,8 +101,9 @@ namespace Sequence
       {}
       virtual ~WeightingScheme3(void)
       {}
-      virtual void Calculate(const std::string &codon1, const std::string &codon2)const =0;
-      virtual double *weights(void) const = 0;
+      virtual weights3_t operator()(const std::string &codon1, const std::string &codon2) const =0;
+      //virtual void Calculate(const std::string &codon1, const std::string &codon2) =0;
+      //virtual weights3_t weights(void) const = 0;
     };
 }
 #endif
