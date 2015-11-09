@@ -50,7 +50,6 @@ namespace Sequence
                               const Sequence::WeightingScheme3 *weights3)
   /*!
     \param sitesObj an object of type Sequence::RedundancyCom95
-    \param code see Sequence::GeneticCodes for valid values
     \param codon1 a std::string of length 3
     \param codon2 a std::string of length 3
     \param weights3 a weighting scheme for the pathways
