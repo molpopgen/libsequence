@@ -37,7 +37,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
   void Intermediates2(std::string *intermediates,const std::string &codon1, const std::string &codon2);
-  void Intermediates3(std::string *intermediates, const  std::string &codon1, const std::string &codon2);
+  void Intermediates3(std::string *intermediates, const std::string &codon1, const std::string &codon2);
 }
 #endif
 
