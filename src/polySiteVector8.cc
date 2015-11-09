@@ -30,14 +30,4 @@ namespace Sequence
 		     this->push_back( polymorphicSite8(p.first, Seq8(p.second,dna_poly_alphabet)) );
 		   });
   }
-  
-  polySiteVector8::polySiteVector8( std::vector<polymorphicSite> & p) : base()
-  {
-    this->reserve(p.size());
-    std::for_each( p.begin(), p.end(),
-		   [this]( polymorphicSite & p ) {
-		     this->push_back( polymorphicSite8(p.first,Seq8(p.second,std::ref(dna_poly_alphabet))) );
-		   });
-    p.clear();
-  }
 }

@@ -11,7 +11,7 @@ std::string name("seqname is a seq"),seq("AGCGTAGACAGTAGAGTGAT"),seq_left("AGCGT
 
 BOOST_AUTO_TEST_CASE( ostream_test )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   o << f << std::endl;
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE( ostream_test )
 
 BOOST_AUTO_TEST_CASE( ostream_test_3recs )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   o << f << '\n'
@@ -48,7 +48,7 @@ BOOST_AUTO_TEST_CASE( ostream_test_3recs )
 //No newline @ end of data
 BOOST_AUTO_TEST_CASE( ostream_test_no_newline_end_of_file )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   o << f << '\n'
@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE( ostream_test_no_newline_end_of_file )
 
 BOOST_AUTO_TEST_CASE( ostream_test_newline_within_seq )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   for ( unsigned i = 0 ; i < 3 ; ++i )
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( ostream_test_newline_within_seq )
 
 BOOST_AUTO_TEST_CASE( ostream_test_really_bad_input )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   for ( unsigned i = 0 ; i < 3 ; ++i )
@@ -117,7 +117,7 @@ BOOST_AUTO_TEST_CASE( ostream_test_really_bad_input )
 
 BOOST_AUTO_TEST_CASE( ostream_test_really_bad_input_istream_iterator )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   Sequence::Fasta f(name,seq),f2;
   std::ofstream o(filename);
   for ( unsigned i = 0 ; i < 3 ; ++i )
@@ -140,7 +140,7 @@ BOOST_AUTO_TEST_CASE( ostream_test_really_bad_input_istream_iterator )
 
 BOOST_AUTO_TEST_CASE( exception_test )
 {
-  const char * filename = "fasta_ostream_test_out.fasta";
+  const char * filename = "fasta_exp_ostream_test_out.fasta";
   std::ofstream out(filename);
   //Write a badly-formatted FASTA record (we forgot the >)
   out << name << '\n' << seq;

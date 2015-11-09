@@ -38,7 +38,7 @@ namespace Sequence
       \param offset a pointer to an integer.  This integer is used 
       for repeated pointer arithmetic, and should be initalized to 0
       before the first call.
-      \param pos a position a long a chromosome.  This function
+      \param pos a position along a chromosome.  This function
       asks if pos is contained in the ancestral material of the
       chromosome whose segments begin at \a seg
       \return true if a segment exists that contains the point pos
@@ -46,6 +46,7 @@ namespace Sequence
       \ingroup coalescent
     */
     {
+      //LINEAR SEARCH
       for( ; (seg+*offset)->beg <= pos && (*offset) < nsegs; ++(*offset) )
 	if ((seg+*offset)->end>=pos) return true;
       return false;

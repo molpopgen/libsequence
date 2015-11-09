@@ -221,17 +221,7 @@ namespace Sequence
     class newick_stream_marginal_tree
     {
     private:
-      //newick_stream_marginal_tree_impl * impl;
       std::unique_ptr<newick_stream_marginal_tree_impl> impl;
-      /*
-	marginal::const_iterator mi;
-	const int nsam;
-	std::vector<int> left,right;
-	std::vector<node> tree;
-	void init();
-	std::ostream & parens( const int & noden,
-	std::ostream & o) const;
-      */
     public:
       newick_stream_marginal_tree( const marginal & m );
       newick_stream_marginal_tree( const marginal * m );
