@@ -71,6 +71,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   polymorphism table.  This provides an additional safeguard for cases where Sequence::PolyTable
   objects are created and sites with gaps are left in.
   @short Molecular population genetic analysis
+
+  \deprecated Will be removed in libsequence 2.0
 */
 #include <vector>
 #include <memory>

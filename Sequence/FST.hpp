@@ -32,6 +32,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 /*! \file FST.hpp
   @brief delcaration of a class (Sequence::FST) to analyze population structure
+
+  \deprecated Will be removed in libsequence 2.0
 */
 namespace Sequence
 {
