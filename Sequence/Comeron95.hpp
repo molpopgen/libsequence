@@ -114,47 +114,33 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example gestimator.cc
  */
 #include <Sequence/SeqEnums.hpp>
+#include <Sequence/Seq.hpp>
+#include <array>
 
 namespace Sequence
   {
-    class Seq;
-    class Sites;
     class WeightingScheme2;
     class WeightingScheme3;
     class Com95impl;
+    
+    using Com95_t = std::array<double,19>;
+    
     class Comeron95 
     {
     private:
       std::unique_ptr<Com95impl> impl;
     public:
-      explicit Comeron95 (const Sequence::Seq * seqa,
-                          const Sequence::Seq * seqb,
-                          int max = 3, 
-			  GeneticCodes code = GeneticCodes::UNIVERSAL,
-                          WeightingScheme2 *weights2 = nullptr,
-                          WeightingScheme3 *weights3 = nullptr);
+      explicit Comeron95( GeneticCodes code = GeneticCodes::UNIVERSAL );
       Comeron95( const Comeron95 & ) = delete;
       Comeron95 & operator=(const Comeron95 & ) = delete;
-      ~Comeron95 (void);
-      double ka (void) const;
-      double ks (void) const;
-      double ratio (void) const;
-      double P0 (void) const;
-      double P2S (void) const;
-      double P2V (void) const;
-      double P4 (void) const;
-      double Q0 (void) const;
-      double Q2S (void) const;
-      double Q2V (void) const;
-      double Q4 (void) const;
-      double as (void) const;
-      double aa (void) const;
-      double bs (void) const;
-      double ba (void) const;
-      double L0 (void) const;
-      double L2S (void) const;
-      double L2V (void) const;
-      double L4 (void) const;
+      Com95_t operator()(const Sequence::Seq & seqa,
+			 const Sequence::Seq & seqb,
+			 int max = 3);
+      Com95_t operator()(const Sequence::Seq & seqa,
+			 const Sequence::Seq & seqb,
+			 const WeightingScheme2 *weights2,
+			 const WeightingScheme3 *weights3,
+			 int max = 3);
   };
 }
 

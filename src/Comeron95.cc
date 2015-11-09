@@ -51,43 +51,36 @@ namespace Sequence
 {
   struct Com95impl
   {
-    bool __2wasNULL,__3wasNULL,__red_was_NULL;
-    WeightingScheme2 *weights2;
-    WeightingScheme3 *weights3;
-    int valid, maxhits, genetic_code, weighting_scheme;
-    //see Comeron '95 for a discussion of the method--will document later
-    double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa;
-    double q0, q2S, q2V, q4, p0, p2S, p2V, p4;
-    //Sites *sites;
-    std::unique_ptr<RedundancyCom95> sitesObj;// *sitesObj;
-    std::unique_ptr<Sites> sites;
-    void diverge (const Sequence::Seq * seq1, const Sequence::Seq * seq2,
-		  WeightingScheme2 *_weights2,
-		  WeightingScheme3 *_weights3);
-    void omega (const Sequence::Seq * seqobj1, const Sequence::Seq * seqobj2);
-    double Ka, Ks;
-    Com95impl(const Sequence::Seq * seqa,
-	      const Sequence::Seq * seqb, 
-	      int max, 
-	      //const Sequence::RedundancyCom95 * genetic_code_redundancy,
-	      GeneticCodes code,
-	      WeightingScheme2 *_weights2,
-	      WeightingScheme3 *_weights3):
-      __2wasNULL(false),__3wasNULL(false),__red_was_NULL(false),
-      sitesObj(std::unique_ptr<RedundancyCom95>(new RedundancyCom95(code))),
-      sites(std::unique_ptr<Sites>(new Sites (sitesObj.get(), seqa, seqb, maxhits, code)))
+    double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa,
+      q0, q2S, q2V, q4, p0, p2S, p2V, p4,Ka,Ks;
+    std::unique_ptr<RedundancyCom95> sitesObj;
+    GeneticCodes code;
+    void diverge(const Sequence::Seq & seq1, const Sequence::Seq & seq2,
+		 const WeightingScheme2 *_weights2,
+		 const WeightingScheme3 *_weights3,
+		 const int maxhits);
+    void omega (const Sites * s,
+		const Sequence::Seq & seqobj1, const Sequence::Seq & seqobj2);
+    Com95impl(GeneticCodes __code):
+      Qs(0.), Bs(0.), Qa(0.), Ba(0.), A2S(0.), A4(0.), As(0.), A2V(0.), A0(0.), Aa(0.),
+      q0(0.), q2S(0.), q2V(0.), q4(0.), p0(0.), p2S(0.), p2V(0.), p4(0.),Ka(0.),Ks(0.),
+      sitesObj(std::unique_ptr<RedundancyCom95>(new RedundancyCom95(__code))),
+      code(__code)
     {
+    }
+    
+    /*
       assert (max >= 1 && max <=3);
       //check that data are sane
     
       //must be same length
-      if(! (seqa->length() == seqb->length()))
+      if(! (seqa.length() == seqb.length()))
 	{
 	  throw SeqException("Sequence::Comeron95 -- sequences of unequal lengths");
 	}
       //must be multiples of 3 in length
-      if(!(fabs(double(seqa->length()%3)-0.)<=DBL_EPSILON ) ||
-	 !(fabs(double(seqb->length()%3)-0.)<=DBL_EPSILON ) )
+      if(!(fabs(double(seqa.length()%3)-0.)<=DBL_EPSILON ) ||
+	 !(fabs(double(seqb.length()%3)-0.)<=DBL_EPSILON ) )
 	{
 	  throw (SeqException("Sequence::Comeron95 -- sequence lengths are not multiples of 3"));
 	}
@@ -107,16 +100,7 @@ namespace Sequence
 	}
 
       maxhits = max;
-      // if (genetic_code_redundancy == nullptr)
-      // 	{
-      // 	  sitesObj = new RedundancyCom95 (code);
-      // 	  __red_was_NULL = true;
-      // 	}
-      // else
-      // 	sitesObj = genetic_code_redundancy;
 
-      //sites = new Sites (sitesObj.get(), seqa, seqb, maxhits, code);
-      //sites = std::unique_ptr<Sites>(new Sites (sitesObj.get(), seqa, seqb, maxhits, code));
       q0 = 0.0;
       q2S = 0.0;
       q2V = 0.0;
@@ -125,34 +109,33 @@ namespace Sequence
       p2S = 0.0;
       p2V = 0.0;
       p4 = 0.0;
-
-      diverge (seqa, seqb,weights2,weights3);
-      omega (seqa, seqb);
-    }
-    // ~Com95impl()
-    // {
-    //   delete sites;
-    //   //if we had to initialize weighting schemes,
-    //   //we need to delete them here to
-    //   //prevent memory leaks...
-    //   if(__2wasNULL==true)
-    // 	delete weights2;
-    //   if(__3wasNULL==true)
-    // 	delete weights3;
-    //   // if (__red_was_NULL==true)
-    //   // 	delete sitesObj;
-    // }
+    */
+    
+    double ka (void) const;
+    double ks (void) const;
+    double ratio (void) const;
+    double P0 (void) const;
+    double P2S (void) const;
+    double P2V (void) const;
+    double P4 (void) const;
+    double Q0 (void) const;
+    double Q2S (void) const;
+    double Q2V (void) const;
+    double Q4 (void) const;
+    double as (void) const;
+    double aa (void) const;
+    double bs (void) const;
+    double ba (void) const;
+    double L0 (const Sites *) const;
+    double L2S (const Sites * ) const;
+    double L2V (const Sites *) const;
+    double L4 (const Sites *) const;
   };
 
-  Comeron95::Comeron95 (const Sequence::Seq * seqa,
-                        const Sequence::Seq * seqb, 
-			int max, 
-			//const Sequence::RedundancyCom95 * genetic_code_redundancy,
-			GeneticCodes code,
-                        WeightingScheme2 *_weights2,
-                        WeightingScheme3 *_weights3) : impl(std::unique_ptr<Com95impl>(new Com95impl(seqa,seqb,max,
-												     //genetic_code_redundancy,
-												     code,_weights2,_weights3)))
+  Comeron95::Comeron95( GeneticCodes code ) : impl(std::unique_ptr<Com95impl>(new Com95impl(code)))
+  {
+  }
+									   
     
     /*!
       Initialize and calculate synonymous and nonsynonymous distances between two sequence objects
@@ -172,19 +155,50 @@ namespace Sequence
       \exception Sequence::SeqException if sequence lengths are not equal
       \exception Sequence::SeqException if sequence lengths are not multiples of 3
     */
+
+  Com95_t Comeron95::operator()(const Sequence::Seq & seqa,
+				const Sequence::Seq & seqb,
+				int max)
   {
+    GranthamWeights2 w2(impl->code);
+    GranthamWeights3 w3(impl->code);
+    return this->operator()(seqa,seqb,&w2,&w3,max);
   }
-
-  Comeron95::~Comeron95 (void)
-  /*!
-    deletes a pointer to a Sequence::Sites and a Sequence::RedundancyCom95
-  */
+  
+  Com95_t Comeron95::operator()(const Sequence::Seq & seqa,
+				const Sequence::Seq & seqb,
+				const WeightingScheme2 * weights2,
+				const WeightingScheme3 * weights3,
+				int max)
   {
-
+    Sites s(impl->sitesObj.get(),&seqa,&seqb,max,impl->code);
+    impl->diverge(seqa,seqb,weights2,weights3,max);
+    impl->omega(&s,seqa,seqb);
+    return Com95_t({impl->ka(),
+	  impl->ks(),
+	  impl->ratio(),
+	  impl->P0(),
+	  impl->P2S(),
+	  impl->P2V(),
+	  impl->P4(),
+	  impl->Q0(),
+	  impl->Q2S(),
+	  impl->Q2V(),
+	  impl->Q4(),
+	  impl->as(),
+	  impl->aa(),
+	  impl->bs(),
+	  impl->ba(),
+	  impl->L0(&s),
+	  impl->L2S(&s),
+	  impl->L2V(&s),
+	  impl->L4(&s)
+	  });
   }
-
-  void Com95impl::omega (const Sequence::Seq * seqobj1,
-                         const Sequence::Seq * seqobj2)
+  
+  void Com95impl::omega (const Sites * s,
+			 const Sequence::Seq & seqobj1,
+                         const Sequence::Seq & seqobj2)
   /*!
     calculate values needed to obtain Ka and Ks.
     formulae are from Comeron '95 and use the identical notation
@@ -197,26 +211,14 @@ namespace Sequence
   {
     double log1, log2;
 
-    Qs = (q2V + q4) / (sites->L2V() + sites->L4());
+    Qs = (q2V + q4) / (s->L2V() + s->L4());
 
     if (!std::isfinite (Qs))
       Qs = 0.0;
 
     Bs = (-0.5) * log (1.0 - (2.0 * Qs));
 
-    //     if (isnan (Bs))
-    //       {
-    // 	Kimura80 *K80 = new Kimura80 (seqobj1, seqobj2);
-    // 	//if sites aren't saturated in general (i.e. Kimura's distance < 1.0)
-    // 	//it is likely that Bs is nan due to too few changes, and thus Bs should equal 0.0
-    // 	//otherwise it is due to too many changes.
-    // 	//NOTE--this is an ad-hoc treatment of the analysis!!!
-    // 	if (K80->K () < 1.0)
-    // 	  Bs = 0.0;
-    // 	delete (K80);
-    //       }
-
-    Qa = (q0 + q2S) / (sites->L0() + sites->L2S());
+    Qa = (q0 + q2S) / (s->L0() + s->L2S());
 
     if (!std::isfinite (Qa))
       Qa = 0.0;
@@ -228,18 +230,18 @@ namespace Sequence
         //it is likely that Ba is nan due to too few changes, and thus Ba should equal 0.0
         //otherwise it is due to too many changes.
         //NOTE--this is an ad-hoc treatment of the analysis!!!
-        std::unique_ptr<Kimura80> K80( new Kimura80 (seqobj1, seqobj2));
+        std::unique_ptr<Kimura80> K80( new Kimura80 (&seqobj1, &seqobj2));
         if (K80->K () < 1.0)
           Ba = 0.0;
       }
     
     //calculate numbers of mutation per site type
-    double P2S_site = p2S / sites->L2S();
-    double P2V_site = p2V / sites->L2V();
-    double P0_site = p0 / sites->L0();
-    double Q0_site = q0 / sites->L0();
-    double P4_site = p4 / sites->L4();
-    double Q4_site = q4 / sites->L4();
+    double P2S_site = p2S / s->L2S();
+    double P2V_site = p2V / s->L2V();
+    double P0_site = p0 / s->L0();
+    double Q0_site = q0 / s->L0();
+    double P4_site = p4 / s->L4();
+    double Q4_site = q4 / s->L4();
 
     log1 = std::log (1.0 - (2.0 * P2S_site) - Qa);
     log2 = std::log (1.0 - (2.0 * Qa));
@@ -261,8 +263,8 @@ namespace Sequence
 
     A4 = (-0.5) * log1 + (0.25) * log2;
 
-    As = (sites->L2S() * A2S + sites->L4() * A4) / (sites->L2S() +
-						    sites->L4());
+    As = (s->L2S() * A2S + s->L4() * A4) / (s->L2S() +
+						    s->L4());
 
     log1 = std::log (1.0 - (2.0 * P2V_site) - Qs);
     log2 = std::log (1.0 - (2.0 * Qs));
@@ -283,8 +285,8 @@ namespace Sequence
 
     A0 = (-0.5) * log1 + (0.25) * log2;
 
-    Aa = (sites->L2V() * A2V + sites->L0() * A0) / (sites->L2V() +
-						    sites->L0());
+    Aa = (s->L2V() * A2V + s->L0() * A0) / (s->L2V() +
+						    s->L0());
 
     if (As <= 0.0)
       As = 0.0;
@@ -304,10 +306,11 @@ namespace Sequence
       Ka = std::numeric_limits<double>::quiet_NaN();
   }
 
-  void Com95impl::diverge (const Sequence::Seq * seq1,
-                           const Sequence::Seq * seq2,
-                           WeightingScheme2 *weights2,
-                           WeightingScheme3 *weights3)
+  void Com95impl::diverge (const Sequence::Seq & seq1,
+                           const Sequence::Seq & seq2,
+                           const WeightingScheme2 *weights2,
+                           const WeightingScheme3 *weights3,
+			   const int maxhits)
   /*!
     go through every aligned, ungapped codon,
     and calculate divergence.  maintains a running sum of divergence
@@ -315,8 +318,8 @@ namespace Sequence
   */
   {
     size_t i, j;
-    size_t length = seq1->length ();
-
+    size_t length = seq1.length();
+     q0= q2S= q2V= q4= p0= p2S= p2V= p4 = 0.;
     //the for loop iterates over codons (block of 3 sites)
     std::string codon1, codon2;
     codon1.resize (3);
@@ -327,8 +330,8 @@ namespace Sequence
         for (j = 0; j <= 2; ++j)
           {
             //assign the next codon from each sequence
-            codon1[j] = char(std::toupper((*seq1)[i + j]));
-            codon2[j] = char(std::toupper((*seq2)[i + j]));
+            codon1[j] = char(std::toupper(seq1[i + j]));
+            codon2[j] = char(std::toupper(seq2[i + j]));
           }
         if (  std::find_if(codon1.begin(),codon1.end(),ambiguousNucleotide()) == codon1.end() &&
 	      std::find_if(codon2.begin(),codon2.end(),ambiguousNucleotide()) == codon2.end() )
@@ -416,154 +419,154 @@ namespace Sequence
       q4 = 0.0;
   }
 
-  double Comeron95::L0 (void) const
+  double Com95impl::L0 (const Sites * sites) const
   /*!
     \return the number of nondegenerate sites compared
   */
   {
-    return impl->sites->L0();
+    return sites->L0();
   }
-  double Comeron95::L2S (void) const
+  double Com95impl::L2S (const Sites * sites) const
   /*!
     \return the number of twofold, transitional-degenerate sites compared
   */
   {
-    return impl->sites->L2S();
+    return sites->L2S();
   }
-  double Comeron95::L2V (void) const
+  double Com95impl::L2V (const Sites * sites) const
   /*!
     \return the number of twofold, transversional-degenerate sites compared
   */
   {
-    return impl->sites->L2V();
+    return sites->L2V();
   }
-  double Comeron95::L4 (void) const
+  double Com95impl::L4 (const Sites * sites) const
   /*!
     \return the number of 4-fold degenerate sites compared
   */
   {
-    return impl->sites->L4();
+    return sites->L4();
   }
 
-  double Comeron95::as (void) const
+  double Com95impl::as (void) const
   /*!
     \return corrected synonymous divergence at transitional-degenerate sites
   */
   {
-    if (!std::isfinite ( impl->As))
+    if (!std::isfinite ( As))
       return std::numeric_limits<double>::quiet_NaN();
-    return impl->As;
+    return As;
   }
-  double Comeron95::aa (void) const
+  double Com95impl::aa (void) const
   /*!
     \return corrected nonsynonymous divergence at tranversioal- and non- degenerate sites
   */
   {
-    if (!std::isfinite ( impl->Aa))
+    if (!std::isfinite ( Aa))
       return std::numeric_limits<double>::quiet_NaN();
-    return impl->Aa;
+    return Aa;
   }
-  double Comeron95::bs (void) const
+  double Com95impl::bs (void) const
   /*!
     \return corrected synonymous divergence at transversional- and fourfold-  degenerate sites
   */
   {
-    if (!std::isfinite ( impl->Bs))
+    if (!std::isfinite ( Bs))
       return std::numeric_limits<double>::quiet_NaN();
-    return impl->Bs;
+    return Bs;
   }
-  double Comeron95::ba (void) const
+  double Com95impl::ba (void) const
   /*!
     \return corrected nonsynonymous divergence at transitional- and non- degenerate sites
   */
   {
-    if (!std::isfinite ( impl->Ba))
+    if (!std::isfinite ( Ba))
       return std::numeric_limits<double>::quiet_NaN();
-    return impl->Ba;
+    return Ba;
   }
 
-  double Comeron95::ratio(void) const
+  double Com95impl::ratio(void) const
   /*!
     \return \f$K_a/K_s\f$
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ka/Ks cannot be calculated
   */
   {
-    if ( !std::isfinite(impl->Ka) || !std::isfinite(impl->Ks) || fabs(impl->Ks-0.) <= DBL_EPSILON)
+    if ( !std::isfinite(Ka) || !std::isfinite(Ks) || fabs(Ks-0.) <= DBL_EPSILON)
       return std::numeric_limits<double>::quiet_NaN();
-    return impl->Ka / impl->Ks;
+    return Ka / Ks;
   }
   
-  double Comeron95::ka (void) const
+  double Com95impl::ka (void) const
   /*!
     \return the nonsynonymous distance
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ka cannot be calculated
   */
   {
-    return impl->Ka;
+    return Ka;
   }
-  double Comeron95::ks (void) const
+  double Com95impl::ks (void) const
   /*!
     \return the synonymous distance
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ks cannot be calculated
   */
   {
-    return impl->Ks;
+    return Ks;
   }
 
-  double Comeron95::P0 (void) const
+  double Com95impl::P0 (void) const
   /*!
     \return number of transitions at nondegenerate sites
   */
   {
-    return impl->p0;
+    return p0;
   }
-  double Comeron95::P2S (void) const
+  double Com95impl::P2S (void) const
   /*!
     \return number of transitions at 2-fold, transitional degenerate sites
   */
   {
-    return impl->p2S;
+    return p2S;
   }
-  double Comeron95::P2V (void) const
+  double Com95impl::P2V (void) const
   /*!
     \return number of transitions at  2-fold, transversional degenerate sites
   */
   {
-    return impl->p2V;
+    return p2V;
   }
-  double Comeron95::P4 (void) const
+  double Com95impl::P4 (void) const
   /*!
     \return number of transitions at 4-fold degenerate sites
   */
   {
-    return impl->p4;
+    return p4;
   }
-  double Comeron95::Q0 (void) const
+  double Com95impl::Q0 (void) const
   /*!
     \return number of transversion at nondegenerate sites
   */
   {
-    return impl->q0;
+    return q0;
   }
-  double Comeron95::Q2S (void) const
+  double Com95impl::Q2S (void) const
   /*!
     \return number of transversion at 2-fold, transitional degenerate sites
   */
   {
-    return impl->q2S;
+    return q2S;
   }
-  double Comeron95::Q2V (void) const
+  double Com95impl::Q2V (void) const
   /*!
     \return number of transversion at 2-fold, transversional sites
   */
   {
-    return impl->q2V;
+    return q2V;
   }
-  double Comeron95::Q4 (void) const
+  double Com95impl::Q4 (void) const
   /*!
     \return number of transversion at 4-fold degenerate sites
   */
   {
-    return impl->q4;
+    return q4;
   }
 }
