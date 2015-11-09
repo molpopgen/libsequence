@@ -208,6 +208,5 @@ var files =
     [ "Unweighted.cc", "Unweighted_8cc_source.html", null ],
     [ "Unweighted.hpp", "Unweighted_8hpp.html", null ],
     [ "valid_dna.cc", "valid__dna_8cc_source.html", null ],
-    [ "WeightingSchemes.hpp", "WeightingSchemes_8hpp.html", null ],
-    [ "xdress_extra_types.h", "xdress__extra__types_8h_source.html", null ]
+    [ "WeightingSchemes.hpp", "WeightingSchemes_8hpp.html", null ]
 ];

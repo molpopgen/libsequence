@@ -119,9 +119,6 @@ var NAVTREEINDEX7 =
 "structfirst__is__equal.html":[7,0,1],
 "structoutputFreq.html":[7,0,2],
 "structoutputFreq.html#a1dd12d7db28f83245bba61a5454d1f07":[7,0,2,0],
-"structxd__complex__t.html":[7,0,3],
-"structxd__complex__t.html#afb1d09ccfa0e10044572c8a7bf4806f2":[7,0,3,0],
-"structxd__complex__t.html#afbbb6ed1fe3b729258421cb3eaa8c4d8":[7,0,3,1],
 "testSimDataIO_8cc_source.html":[8,0,182],
 "test__SimDataIO_8cc_source.html":[8,0,181],
 "translateTest_8cc_source.html":[8,0,190],
@@ -130,6 +127,5 @@ var NAVTREEINDEX7 =
 "typedefs_8hpp_source.html":[8,0,194],
 "ufs_8cc_source.html":[8,0,195],
 "valid__dna_8cc_source.html":[8,0,198],
-"valid_dna_8cc-example.html":[9,12],
-"xdress__extra__types_8h_source.html":[8,0,200]
+"valid_dna_8cc-example.html":[9,12]
 };

@@ -70,6 +70,5 @@ var hierarchy =
     [ "Sequence::WeightingScheme3", "classSequence_1_1WeightingScheme3.html", [
       [ "Sequence::GranthamWeights3", "classSequence_1_1GranthamWeights3.html", null ],
       [ "Sequence::Unweighted3", "classSequence_1_1Unweighted3.html", null ]
-    ] ],
-    [ "xd_complex_t", "structxd__complex__t.html", null ]
+    ] ]
 ];
