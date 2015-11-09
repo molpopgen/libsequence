@@ -38,12 +38,13 @@ namespace Sequence
   {
     class stateCounter : public std::unary_function<char,void>
     {
-    private:
-      char _gap;
     public:
       typedef unsigned size_type;
       size_type a,g,c,t,zero,one,gap,n;
       bool ndna;
+    private:
+      char _gap;
+    public:
       stateCounter(char gapchar = '-');
       stateCounter(stateCounter &&) = default;
       stateCounter(const stateCounter &) = default;
