@@ -122,31 +122,19 @@ namespace Sequence
     class RedundancyCom95;
     class WeightingScheme2;
     class WeightingScheme3;
+    class Com95impl;
     class Comeron95 
     {
     private:
-      bool __2wasNULL,__3wasNULL,__red_was_NULL;
-      WeightingScheme2 *weights2;
-      WeightingScheme3 *weights3;
-      int valid, maxhits, genetic_code, weighting_scheme;
-      //see Comeron '95 for a discussion of the method--will document later
-      double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa;
-      double q0, q2S, q2V, q4, p0, p2S, p2V, p4;
-      Sites *sites;
-      const RedundancyCom95 *sitesObj;
-      void diverge (const Sequence::Seq * seq1, const Sequence::Seq * seq2,
-                    WeightingScheme2 *_weights2,
-                    WeightingScheme3 *_weights3);
-      void omega (const Sequence::Seq * seqobj1, const Sequence::Seq * seqobj2);
-      double Ka, Ks;
+      std::unique_ptr<Com95impl> impl;
     public:
       explicit Comeron95 (const Sequence::Seq * seqa,
                           const Sequence::Seq * seqb,
                           int max = 3, 
-			  const Sequence::RedundancyCom95 * genetic_code_redundancy = NULL,
+			  const Sequence::RedundancyCom95 * genetic_code_redundancy = nullptr,
 			  GeneticCodes code = GeneticCodes::UNIVERSAL,
-                          WeightingScheme2 *weights2 = NULL,
-                          WeightingScheme3 *weights3 = NULL);
+                          WeightingScheme2 *weights2 = nullptr,
+                          WeightingScheme3 *weights3 = nullptr);
       Comeron95( const Comeron95 & ) = delete;
       Comeron95 & operator=(const Comeron95 & ) = delete;
       ~Comeron95 (void);
