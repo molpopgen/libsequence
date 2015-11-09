@@ -119,7 +119,6 @@ namespace Sequence
   {
     class Seq;
     class Sites;
-    class RedundancyCom95;
     class WeightingScheme2;
     class WeightingScheme3;
     class Com95impl;
@@ -131,7 +130,6 @@ namespace Sequence
       explicit Comeron95 (const Sequence::Seq * seqa,
                           const Sequence::Seq * seqb,
                           int max = 3, 
-			  const Sequence::RedundancyCom95 * genetic_code_redundancy = nullptr,
 			  GeneticCodes code = GeneticCodes::UNIVERSAL,
                           WeightingScheme2 *weights2 = nullptr,
                           WeightingScheme3 *weights3 = nullptr);

@@ -59,7 +59,7 @@ namespace Sequence
     double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa;
     double q0, q2S, q2V, q4, p0, p2S, p2V, p4;
     Sites *sites;
-    const RedundancyCom95 *sitesObj;
+    std::unique_ptr<RedundancyCom95> sitesObj;// *sitesObj;
     void diverge (const Sequence::Seq * seq1, const Sequence::Seq * seq2,
 		  WeightingScheme2 *_weights2,
 		  WeightingScheme3 *_weights3);
@@ -68,11 +68,12 @@ namespace Sequence
     Com95impl(const Sequence::Seq * seqa,
 	      const Sequence::Seq * seqb, 
 	      int max, 
-	      const Sequence::RedundancyCom95 * genetic_code_redundancy,
+	      //const Sequence::RedundancyCom95 * genetic_code_redundancy,
 	      GeneticCodes code,
 	      WeightingScheme2 *_weights2,
 	      WeightingScheme3 *_weights3):
-      __2wasNULL(false),__3wasNULL(false),__red_was_NULL(false)
+      __2wasNULL(false),__3wasNULL(false),__red_was_NULL(false),
+      sitesObj(std::unique_ptr<RedundancyCom95>(new RedundancyCom95(code)))
     {
       assert (max >= 1 && max <=3);
       //check that data are sane
@@ -104,13 +105,13 @@ namespace Sequence
 	}
 
       maxhits = max;
-      if (genetic_code_redundancy == nullptr)
-	{
-	  sitesObj = new RedundancyCom95 (code);
-	  __red_was_NULL = true;
-	}
-      else
-	sitesObj = genetic_code_redundancy;
+      // if (genetic_code_redundancy == nullptr)
+      // 	{
+      // 	  sitesObj = new RedundancyCom95 (code);
+      // 	  __red_was_NULL = true;
+      // 	}
+      // else
+      // 	sitesObj = genetic_code_redundancy;
 
       sites = new Sites (sitesObj, seqa, seqb, maxhits, code);
       q0 = 0.0;
@@ -125,29 +126,29 @@ namespace Sequence
       diverge (seqa, seqb,weights2,weights3);
       omega (seqa, seqb);
     }
-    ~Com95impl()
-    {
-      delete sites;
-      //if we had to initialize weighting schemes,
-      //we need to delete them here to
-      //prevent memory leaks...
-      if(__2wasNULL==true)
-	delete weights2;
-      if(__3wasNULL==true)
-	delete weights3;
-      if (__red_was_NULL==true)
-	delete sitesObj;
-    }
+    // ~Com95impl()
+    // {
+    //   delete sites;
+    //   //if we had to initialize weighting schemes,
+    //   //we need to delete them here to
+    //   //prevent memory leaks...
+    //   if(__2wasNULL==true)
+    // 	delete weights2;
+    //   if(__3wasNULL==true)
+    // 	delete weights3;
+    //   // if (__red_was_NULL==true)
+    //   // 	delete sitesObj;
+    // }
   };
 
   Comeron95::Comeron95 (const Sequence::Seq * seqa,
                         const Sequence::Seq * seqb, 
 			int max, 
-			const Sequence::RedundancyCom95 * genetic_code_redundancy,
+			//const Sequence::RedundancyCom95 * genetic_code_redundancy,
 			GeneticCodes code,
                         WeightingScheme2 *_weights2,
                         WeightingScheme3 *_weights3) : impl(std::unique_ptr<Com95impl>(new Com95impl(seqa,seqb,max,
-												     genetic_code_redundancy,
+												     //genetic_code_redundancy,
 												     code,_weights2,_weights3)))
     
     /*!
