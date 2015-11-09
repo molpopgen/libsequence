@@ -58,8 +58,9 @@ namespace Sequence
     //see Comeron '95 for a discussion of the method--will document later
     double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa;
     double q0, q2S, q2V, q4, p0, p2S, p2V, p4;
-    Sites *sites;
+    //Sites *sites;
     std::unique_ptr<RedundancyCom95> sitesObj;// *sitesObj;
+    std::unique_ptr<Sites> sites;
     void diverge (const Sequence::Seq * seq1, const Sequence::Seq * seq2,
 		  WeightingScheme2 *_weights2,
 		  WeightingScheme3 *_weights3);
@@ -73,7 +74,8 @@ namespace Sequence
 	      WeightingScheme2 *_weights2,
 	      WeightingScheme3 *_weights3):
       __2wasNULL(false),__3wasNULL(false),__red_was_NULL(false),
-      sitesObj(std::unique_ptr<RedundancyCom95>(new RedundancyCom95(code)))
+      sitesObj(std::unique_ptr<RedundancyCom95>(new RedundancyCom95(code))),
+      sites(std::unique_ptr<Sites>(new Sites (sitesObj.get(), seqa, seqb, maxhits, code)))
     {
       assert (max >= 1 && max <=3);
       //check that data are sane
@@ -113,7 +115,8 @@ namespace Sequence
       // else
       // 	sitesObj = genetic_code_redundancy;
 
-      sites = new Sites (sitesObj.get(), seqa, seqb, maxhits, code);
+      //sites = new Sites (sitesObj.get(), seqa, seqb, maxhits, code);
+      //sites = std::unique_ptr<Sites>(new Sites (sitesObj.get(), seqa, seqb, maxhits, code));
       q0 = 0.0;
       q2S = 0.0;
       q2V = 0.0;
