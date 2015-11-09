@@ -59,14 +59,14 @@ namespace Sequence
     class Sites
     {
     private:
-      int validcds;
-      size_t seqlen;
-      int maxhits;
-      GeneticCodes genetic_code;
       double _L0;
       double _L2S;
       double _L2V;
       double _L4;
+      int validcds;
+      size_t seqlen;
+      int maxhits;
+      GeneticCodes genetic_code;
       void siteinc (const RedundancyCom95 * sitesObj,
                     const std::string & codon1,const  std::string &codon2);
       void count_sites (const Sequence::Seq * sequence1,
