@@ -74,41 +74,18 @@ namespace {
 
     return auxTagSize(valtype);
   }
-}
 
-namespace Sequence 
-{
-  namespace bamutil {
-    const char int2seq[16] = {'=','A','C','M','G','R','S','V','T','W','Y','H','K','D','B','N'};
-    const char bamCig[9] = {'M','I','D','N','S','H','P','=','X'};
-  }
-  using bamutil::int2seq;
-  using bamutil::bamCig;
-  bamaux::bamaux( ) : size(0),
-		      value_type(char()),
-		      tag{'z','z','z'},
-		      value(string())
-  {
-  }
-
-  bamaux::bamaux( size_t __size,
-		  char __tag[3],
-		  char __value_type,
-		  std::unique_ptr<char[]> & __value) : size(std::move(__size)),
-						       value_type(std::move(__value_type))
-						       //value(std::move(__value))
-  {
-    tag[0]=__tag[0];
-    tag[2]=__tag[1];
-    tag[1]=__tag[2];
-    if( __value_type == 'Z' || __value_type == 'A')
-      {
-	value = std::string(__value.get());
-      }
-    else if (__value_type == 'H')
-      {
-	value = std::string("Value type H is not implemented");
-      }
+  std::string process_value_type(char __value_type,std::unique_ptr<char[]> & __value)
+    {
+      std::string value;
+      if( __value_type == 'Z' || __value_type == 'A')
+	{
+	  value = std::string(__value.get());
+	}
+      else if (__value_type == 'H')
+	{
+	  value = std::string("Value type H is not implemented");
+	}
     else if (__value_type == 'B')
       {
 	const char *start = __value.get();
@@ -182,15 +159,40 @@ namespace Sequence
 	    break;
 	  }
       }
+      return value;
+    }
+}
+
+namespace Sequence 
+{
+  namespace bamutil {
+    const char int2seq[16] = {'=','A','C','M','G','R','S','V','T','W','Y','H','K','D','B','N'};
+    const char bamCig[9] = {'M','I','D','N','S','H','P','=','X'};
+  }
+  using bamutil::int2seq;
+  using bamutil::bamCig;
+  bamaux::bamaux( ) : size(0),
+		      value_type(char()),
+		      tag{'z','z','z'},
+		      value(string())
+  {
+  }
+
+  bamaux::bamaux( size_t __size,
+		  std::array<char,3> __tag,
+		  char __value_type,
+		  std::unique_ptr<char[]> & __value) : size(std::move(__size)),
+						       value_type(std::move(__value_type)),
+						       tag(std::move(__tag)),
+						       value(process_value_type(__value_type,__value))
+  {
   }
 
   bamaux::bamaux( bamaux && ba ) : size(std::move(ba.size)),
 				   value_type(std::move(ba.value_type)),
+				   tag(std::move(ba.tag)),
 				   value(std::move(ba.value))
   {
-    tag[0]=ba.tag[0];
-    tag[2]=ba.tag[1];
-    tag[1]=ba.tag[2];
   }
 
   //Implementation class details
@@ -452,7 +454,7 @@ namespace Sequence
   bamaux bamrecord::aux(const char * tag) const {
     const char * tagspot = this->hasTag(tag);
     if( tagspot == nullptr ) return bamaux();
-    char __tag[3];
+    std::array<char,3> __tag;
     __tag[0]=*(tagspot++);
     __tag[1]=*(tagspot++);
     __tag[2] = '\0';
