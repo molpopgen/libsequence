@@ -52,7 +52,7 @@ var NAVTREE =
         [ "BAM files", "md_md_tutorial.html#bam", null ]
       ] ]
     ] ],
-    [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
+    [ "libsequence revision history", "md__home_kevin_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -93,13 +93,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
-"PolyTableFunctions_8hpp.html#a59bf69ad44829dececa75440a9f4e7cf",
+"PolyTableFunctions_8hpp.html#a1d0aa47cde1d6632c9fff3a6be97b509",
 "classSequence_1_1ClustalW.html#a58c2d9cd5575b24548e83bdb20e7a53c",
-"classSequence_1_1PolySites.html#afbac90f82f4e4054377be06c3c8a9f20",
-"classSequence_1_1SimData.html#afe610e36cc38d3a77dfe9d6254deb789",
-"classSequence_1_1fastq.html#a8142facc48cc9f4a206881918ba52e09",
-"group__coalescent.html#ga5a17f57753ba045fb00e008b086f59fa",
-"structSequence_1_1HKAdata.html#abe70b66cc88ddcacc19134a95332d735"
+"classSequence_1_1PolySites.html#af3eac733ba06c44da10b04a4d72c17bd",
+"classSequence_1_1SimData.html#aec9ce40d98cbda31be56389b17a52d71",
+"classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d",
+"group__coalescent.html#ga19b90389f6021ec39447c8119d3c1adb",
+"structSequence_1_1HKAresults.html#a0227596159eb7a6f675fe8a159b984c9"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

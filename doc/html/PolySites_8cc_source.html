@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('PolySites_8cc_source.html','');});
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  }</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  PolySites::PolySites ( std::vector &lt; double &gt; &amp;&amp; List, std::vector &lt; std::string &gt; &amp;&amp; stringList) :</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a>(std::move(List),std::move(stringList))</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a>(std::forward&lt;std::vector &lt; double &gt;&gt;(List),std::forward&lt;std::vector &lt; std::string &gt;&gt;(stringList))</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  {</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  }</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
@@ -200,19 +200,19 @@ $(document).ready(function(){initNavTree('PolySites_8cc_source.html','');});
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
 <div class="ttc" id="classSequence_1_1PolyTable_html"><div class="ttname"><a href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a></div><div class="ttdoc">The base class for polymorphism tables. </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00060">PolyTable.hpp:60</a></div></div>
 <div class="ttc" id="classSequence_1_1PolySites_html_aa9f1477e1e5af9b8c5de61f07bf544c4"><div class="ttname"><a href="classSequence_1_1PolySites.html#aa9f1477e1e5af9b8c5de61f07bf544c4">Sequence::PolySites::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="PolySites_8cc_source.html#l00168">PolySites.cc:168</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a7096e7ad3abcb257a8e7ac8c28a23e5c"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">Sequence::PolyTable::const_site_iterator</a></div><div class="ttdeci">Sequence::polySiteVector::const_iterator const_site_iterator</div><div class="ttdoc">Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00099">PolyTable.hpp:99</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a7096e7ad3abcb257a8e7ac8c28a23e5c"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">Sequence::PolyTable::const_site_iterator</a></div><div class="ttdeci">Sequence::polySiteVector::const_iterator const_site_iterator</div><div class="ttdoc">Const iterator to segregating sites Const iterator to segregating sites. The value_type of this itera...</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00104">PolyTable.hpp:104</a></div></div>
 <div class="ttc" id="PolySites_8hpp_html"><div class="ttname"><a href="PolySites_8hpp.html">PolySites.hpp</a></div><div class="ttdoc">Sequence::PolySites, generates polymorphism tables from data. </div></div>
 <div class="ttc" id="classSequence_1_1PolySites_html_a4a0a41e585985ec94559033cfa77d85b"><div class="ttname"><a href="classSequence_1_1PolySites.html#a4a0a41e585985ec94559033cfa77d85b">Sequence::PolySites::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;stream) const </div><div class="ttdoc">output a tab-delimited array of positions and character states </div><div class="ttdef"><b>Definition:</b> <a href="PolySites_8cc_source.html#l00194">PolySites.cc:194</a></div></div>
 <div class="ttc" id="Fasta_8hpp_html"><div class="ttname"><a href="Fasta_8hpp.html">Fasta.hpp</a></div><div class="ttdoc">Declaration of Sequence::Fasta streams. </div></div>
 <div class="ttc" id="classSequence_1_1badFormat_html"><div class="ttname"><a href="classSequence_1_1badFormat.html">Sequence::badFormat</a></div><div class="ttdef"><b>Definition:</b> <a href="SeqExceptions_8hpp_source.html#l00065">SeqExceptions.hpp:65</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a05f17c6ed162084fb6c1d48d6354b432"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a05f17c6ed162084fb6c1d48d6354b432">Sequence::PolyTable::assign</a></div><div class="ttdeci">bool assign(PolyTable::const_site_iterator beg, PolyTable::const_site_iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00082">PolyTable.cc:82</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a05f17c6ed162084fb6c1d48d6354b432"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a05f17c6ed162084fb6c1d48d6354b432">Sequence::PolyTable::assign</a></div><div class="ttdeci">bool assign(PolyTable::const_site_iterator beg, PolyTable::const_site_iterator end)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00088">PolyTable.cc:88</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>PolySites.cc</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><b>PolySites.cc</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -65,6 +65,8 @@ var files =
     [ "freerec.cc", "freerec_8cc_source.html", null ],
     [ "FST.cc", "FST_8cc_source.html", null ],
     [ "FST.hpp", "FST_8hpp.html", null ],
+    [ "Garud.cc", "Garud_8cc_source.html", null ],
+    [ "Garud.hpp", "Garud_8hpp_source.html", null ],
     [ "Grantham.cc", "Grantham_8cc_source.html", null ],
     [ "Grantham.hpp", "Grantham_8hpp.html", [
       [ "Grantham", "classSequence_1_1Grantham.html", "classSequence_1_1Grantham" ]
@@ -81,17 +83,17 @@ var files =
     [ "IOhelp.hpp", "IOhelp_8hpp_source.html", null ],
     [ "Kimura80.cc", "Kimura80_8cc_source.html", null ],
     [ "Kimura80.hpp", "Kimura80_8hpp.html", null ],
+    [ "lHaf.cc", "lHaf_8cc_source.html", null ],
+    [ "lHaf.hpp", "lHaf_8hpp_source.html", null ],
     [ "libsequenceConfig.cc", "libsequenceConfig_8cc_source.html", null ],
     [ "msmm.cc", "msmm_8cc_source.html", null ],
     [ "msstats.cc", "msstats_8cc_source.html", null ],
     [ "Mutation.hpp", "Mutation_8hpp_source.html", null ],
     [ "Mutation.tcc", "Mutation_8tcc_source.html", null ],
     [ "NeutralSample.hpp", "NeutralSample_8hpp_source.html", null ],
-    [ "nibble.hpp", "nibble_8hpp.html", "nibble_8hpp" ],
     [ "nSL.cc", "nSL_8cc_source.html", null ],
     [ "nSL.hpp", "nSL_8hpp_source.html", null ],
     [ "pack8.cc", "pack8_8cc_source.html", null ],
-    [ "pack8.hpp", "pack8_8hpp.html", "pack8_8hpp" ],
     [ "pack8test.cc", "pack8test_8cc.html", "pack8test_8cc" ],
     [ "PathwayHelper.cc", "PathwayHelper_8cc_source.html", null ],
     [ "PathwayHelper.hpp", "PathwayHelper_8hpp.html", "PathwayHelper_8hpp" ],
@@ -115,8 +117,6 @@ var files =
     [ "polySiteVector.cc", "polySiteVector_8cc_source.html", null ],
     [ "polySiteVector.hpp", "polySiteVector_8hpp.html", "polySiteVector_8hpp" ],
     [ "polySiteVector8.cc", "polySiteVector8_8cc_source.html", null ],
-    [ "polySiteVector8.hpp", "polySiteVector8_8hpp_source.html", null ],
-    [ "polySiteVector8Test.cc", "polySiteVector8Test_8cc_source.html", null ],
     [ "polySiteVector_test.cc", "polySiteVector__test_8cc.html", "polySiteVector__test_8cc" ],
     [ "polySiteVectorTest.cc", "polySiteVectorTest_8cc.html", "polySiteVectorTest_8cc" ],
     [ "PolySNP.cc", "PolySNP_8cc_source.html", null ],
@@ -151,8 +151,6 @@ var files =
     [ "samrecord.hpp", "samrecord_8hpp.html", "samrecord_8hpp" ],
     [ "Seq.cc", "Seq_8cc_source.html", null ],
     [ "Seq.hpp", "Seq_8hpp.html", "Seq_8hpp" ],
-    [ "Seq8.cc", "Seq8_8cc_source.html", null ],
-    [ "Seq8.hpp", "Seq8_8hpp_source.html", null ],
     [ "Seq8test.cc", "Seq8test_8cc.html", "Seq8test_8cc" ],
     [ "SeqAlphabets.cc", "SeqAlphabets_8cc.html", "SeqAlphabets_8cc" ],
     [ "SeqAlphabets.hpp", "SeqAlphabets_8hpp.html", "SeqAlphabets_8hpp" ],
@@ -207,14 +205,9 @@ var files =
     [ "TwoSubs.hpp", "TwoSubs_8hpp.html", null ],
     [ "typedefs.hpp", "typedefs_8hpp.html", "typedefs_8hpp" ],
     [ "ufs.cc", "ufs_8cc_source.html", null ],
-    [ "Uhaps.cc", "Uhaps_8cc_source.html", null ],
-    [ "Uhaps.hpp", "Uhaps_8hpp_source.html", null ],
-    [ "UhapsTest.cc", "UhapsTest_8cc_source.html", null ],
     [ "Unweighted.cc", "Unweighted_8cc_source.html", null ],
     [ "Unweighted.hpp", "Unweighted_8hpp.html", null ],
     [ "valid_dna.cc", "valid__dna_8cc_source.html", null ],
-    [ "vectorizer.hpp", "vectorizer_8hpp.html", [
-      [ "vectorizer", "classSequence_1_1util_1_1vectorizer.html", "classSequence_1_1util_1_1vectorizer" ]
-    ] ],
-    [ "WeightingSchemes.hpp", "WeightingSchemes_8hpp.html", null ]
+    [ "WeightingSchemes.hpp", "WeightingSchemes_8hpp.html", null ],
+    [ "xdress_extra_types.h", "xdress__extra__types_8h_source.html", null ]
 ];

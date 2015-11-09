@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -820,7 +820,7 @@ template&lt;typename uniform_generator , typename uniform01_generator , typename
 <dl class="section return"><dt>Returns</dt><dd>the decrease in current_nsam due to the coalescent event. Usually, the return value is 1. Sometimes, however, it is two, when the two chromosomes being merged have no ancestral material on the same marginal tree. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="fragments_8cc-example.html#a9">fragments.cc</a>, and <a class="el" href="freerec_8cc-example.html#a8">freerec.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="CoalescentCoalesce_8cc_source.html#l00054">54</a> of file <a class="el" href="CoalescentCoalesce_8cc_source.html">CoalescentCoalesce.cc</a>.</p>
+<p>Definition at line <a class="el" href="CoalescentCoalesce_8cc_source.html#l00055">55</a> of file <a class="el" href="CoalescentCoalesce_8cc_source.html">CoalescentCoalesce.cc</a>.</p>
 
 </div>
 </div>
@@ -1853,7 +1853,7 @@ template&lt;typename uniform_generator &gt; </div>
     <tr><td class="paramname">seg</td><td>a pointer to a segment of a chromosome (this should be the 1st segment, such as the return value of <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#abcafee5062a8767aa4a0b5f8234957c8">chromosome::begin()</a>) </td></tr>
     <tr><td class="paramname">nsegs</td><td>the number of segs in the chromosome pointed to by <em>seg</em> </td></tr>
     <tr><td class="paramname">offset</td><td>a pointer to an integer. This integer is used for repeated pointer arithmetic, and should be initalized to 0 before the first call. </td></tr>
-    <tr><td class="paramname">pos</td><td>a position a long a chromosome. This function asks if pos is contained in the ancestral material of the chromosome whose segments begin at <em>seg</em> </td></tr>
+    <tr><td class="paramname">pos</td><td>a position along a chromosome. This function asks if pos is contained in the ancestral material of the chromosome whose segments begin at <em>seg</em> </td></tr>
   </table>
   </dd>
 </dl>
@@ -2516,7 +2516,7 @@ template&lt;typename uniform01_generator &gt; </div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:11 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -94,84 +94,86 @@ $(document).ready(function(){initNavTree('Snn_8cc_source.html','');});
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Sequence/Snn.hpp&gt;</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keywordtype">double</span> Snn_statistic( <span class="keyword">const</span> <span class="keywordtype">unsigned</span> individuals[],</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                        <span class="keyword">const</span> std::vector&lt; std::vector&lt;double&gt; &gt; &amp; dkj,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> config[],</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; npop,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; nsam)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    notation for variables follows Hudson&#39;s paper</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">double</span> snn = 0.;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="comment">//store the d_kj for the whole sample</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">double</span> * d_kj = <span class="keyword">new</span> <span class="keywordtype">double</span>[nsam-1];</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="comment">//store d_kj for within-population comparisons</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::vector&lt;double&gt; d_kj_win;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> k=0; k&lt;nsam ; ++k)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      <span class="comment">//find out which pop ind k is in</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="keywordtype">unsigned</span> pop = 0,ttl=0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordflow">while</span> (pop &lt; npop)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;          ttl += config[pop];</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;          <span class="keywordflow">if</span> (k &lt; ttl)</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;          pop++;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      d_kj_win.clear();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> j = 0,dummy=0; j &lt; nsam ; ++j)</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;          <span class="keywordflow">if</span> (k!=j)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;              <span class="keywordtype">unsigned</span> a=*(individuals+j),b=*(individuals+k);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;              <span class="keywordflow">if</span> (a&gt;b)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                std::swap(a,b);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;              <span class="keywordtype">double</span> ndiffs = dkj[a][b];</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              d_kj[dummy++] = ndiffs;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              <span class="comment">//figure out what pop j is in;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;              <span class="keywordtype">unsigned</span> pop_j=0,ttl=0;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;              <span class="keywordflow">while</span> (pop_j &lt; npop)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                  ttl += config[pop_j];</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                  <span class="keywordflow">if</span> (j &lt; ttl)</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                  pop_j++;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;              <span class="keywordflow">if</span> (pop==pop_j)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                d_kj_win.push_back(ndiffs);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      <span class="comment">//Calculate T_k</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="keywordtype">double</span> min = d_kj[0];</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 1 ; j &lt; nsam-1 ; ++j)</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">if</span> (d_kj[j] &lt; min) min = d_kj[j];</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      std::ptrdiff_t T_k = std::count(d_kj,d_kj+(nsam-1),min);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="comment">//Calculate M_k</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      std::ptrdiff_t M_k = std::count(d_kj_win.begin(),</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                d_kj_win.end(),min);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      snn += double(M_k)/double(T_k);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keyword">delete</span> [] d_kj;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">return</span> snn/double(nsam);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;Sequence/SummStats/Snn.hpp&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a31192429d68096ff856f896cb65a30e4">   28</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="namespaceSequence.html#a31192429d68096ff856f896cb65a30e4">Snn_statistic</a>( <span class="keyword">const</span> <span class="keywordtype">unsigned</span> individuals[],</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                        <span class="keyword">const</span> std::vector&lt; std::vector&lt;double&gt; &gt; &amp; dkj,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> config[],</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> &amp; npop,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                        <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; nsam)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">    notation for variables follows Hudson&#39;s paper</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">double</span> snn = 0.;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="comment">//store the d_kj for the whole sample</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">double</span> * d_kj = <span class="keyword">new</span> <span class="keywordtype">double</span>[nsam-1];</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="comment">//store d_kj for within-population comparisons</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  std::vector&lt;double&gt; d_kj_win;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> k=0; k&lt;nsam ; ++k)</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;      <span class="comment">//find out which pop ind k is in</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      <span class="keywordtype">unsigned</span> pop = 0,ttl=0;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;      <span class="keywordflow">while</span> (pop &lt; npop)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;          ttl += config[pop];</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;          <span class="keywordflow">if</span> (k &lt; ttl)</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;          pop++;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      d_kj_win.clear();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> j = 0,dummy=0; j &lt; nsam ; ++j)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;          <span class="keywordflow">if</span> (k!=j)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;              <span class="keywordtype">unsigned</span> a=*(individuals+j),b=*(individuals+k);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;              <span class="keywordflow">if</span> (a&gt;b)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                std::swap(a,b);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;              <span class="keywordtype">double</span> ndiffs = dkj[a][b];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              d_kj[dummy++] = ndiffs;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;              <span class="comment">//figure out what pop j is in;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;              <span class="keywordtype">unsigned</span> pop_j=0,ttl=0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;              <span class="keywordflow">while</span> (pop_j &lt; npop)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                  ttl += config[pop_j];</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                  <span class="keywordflow">if</span> (j &lt; ttl)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                  pop_j++;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;              <span class="keywordflow">if</span> (pop==pop_j)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                d_kj_win.push_back(ndiffs);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      <span class="comment">//Calculate T_k</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      <span class="keywordtype">double</span> min = d_kj[0];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 1 ; j &lt; nsam-1 ; ++j)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> (d_kj[j] &lt; min) min = d_kj[j];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      std::ptrdiff_t T_k = std::count(d_kj,d_kj+(nsam-1),min);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="comment">//Calculate M_k</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      std::ptrdiff_t M_k = std::count(d_kj_win.begin(),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                d_kj_win.end(),min);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      snn += double(M_k)/double(T_k);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keyword">delete</span> [] d_kj;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordflow">return</span> snn/double(nsam);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="ttc" id="namespaceSequence_html_a31192429d68096ff856f896cb65a30e4"><div class="ttname"><a href="namespaceSequence.html#a31192429d68096ff856f896cb65a30e4">Sequence::Snn_statistic</a></div><div class="ttdeci">double Snn_statistic(const unsigned individuals[], const std::vector&lt; std::vector&lt; double &gt; &gt; &amp;dkj, const unsigned config[], const size_t &amp;npop, const unsigned &amp;nsam)</div><div class="ttdef"><b>Definition:</b> <a href="Snn_8cc_source.html#l00028">Snn.cc:28</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>Snn.cc</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_e8a85d07e04ed257d70c3e3061588c40.html">SummStats</a></li><li class="navelem"><b>Snn.cc</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

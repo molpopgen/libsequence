@@ -17,6 +17,7 @@ var hierarchy =
     [ "Sequence::countStates", "structSequence_1_1countStates.html", null ],
     [ "first_is_equal< key, value >", "structfirst__is__equal.html", null ],
     [ "Sequence::FST", "classSequence_1_1FST.html", null ],
+    [ "Sequence::GarudStats", "structSequence_1_1GarudStats.html", null ],
     [ "Sequence::Grantham", "classSequence_1_1Grantham.html", null ],
     [ "Sequence::HKAdata", "structSequence_1_1HKAdata.html", null ],
     [ "Sequence::HKAresults", "structSequence_1_1HKAresults.html", null ],
@@ -62,10 +63,6 @@ var hierarchy =
     [ "Sequence::ThreeSubs", "classSequence_1_1ThreeSubs.html", null ],
     [ "Sequence::TwoSubs", "classSequence_1_1TwoSubs.html", null ],
     [ "Sequence::upperCrit", "structSequence_1_1upperCrit.html", null ],
-    [ "std::vector< T >", null, [
-      [ "Sequence::util::vectorizer< T, allocator >", "classSequence_1_1util_1_1vectorizer.html", null ],
-      [ "Sequence::util::vectorizer< polymorphicSite8 >", "classSequence_1_1util_1_1vectorizer.html", null ]
-    ] ],
     [ "Sequence::WeightingScheme2", "classSequence_1_1WeightingScheme2.html", [
       [ "Sequence::GranthamWeights2", "classSequence_1_1GranthamWeights2.html", null ],
       [ "Sequence::Unweighted2", "classSequence_1_1Unweighted2.html", null ]
@@ -73,5 +70,6 @@ var hierarchy =
     [ "Sequence::WeightingScheme3", "classSequence_1_1WeightingScheme3.html", [
       [ "Sequence::GranthamWeights3", "classSequence_1_1GranthamWeights3.html", null ],
       [ "Sequence::Unweighted3", "classSequence_1_1Unweighted3.html", null ]
-    ] ]
+    ] ],
+    [ "xd_complex_t", "structxd__complex__t.html", null ]
 ];

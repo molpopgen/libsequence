@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -78,6 +78,8 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1GarudStats.html">Sequence::GarudStats</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analysis of coalescent simulation data.  <a href="classSequence_1_1PolySIM.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -102,9 +104,59 @@ Functions</h2></td></tr>
 &lt; double &gt; &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6">Sequence::Snn_test_pairwise</a> (const PolyTable &amp;snpTable, const unsigned config[], const size_t &amp;npop, shuffler &amp;s, const unsigned &amp;nperms)</td></tr>
 <tr class="memdesc:gaf4a1f267e38e289072e54a22bef1a0e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conducts a permutation-test of Hudson's Snn (sequence nearest-neighbor) statistic, for all pairwise combinations of populations.  <a href="#gaf4a1f267e38e289072e54a22bef1a0e6">More...</a><br/></td></tr>
 <tr class="separator:gaf4a1f267e38e289072e54a22bef1a0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga869acf1b70526bd550cf3c0abdad97f1"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">Sequence::nSL</a> (const unsigned &amp;core, const SimData &amp;d, const double *gmap=nullptr)</td></tr>
+<tr class="separator:ga869acf1b70526bd550cf3c0abdad97f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga99a9890623b981cb9c97f47c4e866ff0"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">Sequence::snSL</a> (const SimData &amp;d, const double minfreq, const double binsize, const double *gmap=nullptr)</td></tr>
+<tr class="separator:ga99a9890623b981cb9c97f47c4e866ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ga869acf1b70526bd550cf3c0abdad97f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pair&lt; double, double &gt; Sequence::nSL </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>core</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const SimData &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>gmap</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The nSL statistic of Ferrer-Admetlla et al. doi: 10.1093/molbev/msu077. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">core</td><td>The index of the "focal/core" SNP </td></tr>
+    <tr><td class="paramname">d</td><td>An object of type <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> </td></tr>
+    <tr><td class="paramname">gmap</td><td>The positions of every marker in d on the genetic map. If nullptr is passed, iHS is calculated using SNP positions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>nSL and iHs, with the latter as defined in doi: 10.1093/molbev/msu077. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This routine was validated by comparing to code provided by Ferrer-Admetlla et al. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The use of 'gmap' is untested. </dd></dl>
+
+<p>Definition at line <a class="el" href="nSL_8cc_source.html#l00050">50</a> of file <a class="el" href="nSL_8cc_source.html">nSL.cc</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ga1937fe206749689bd0d85fdd9bea9f3a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -227,12 +279,64 @@ template&lt;typename shuffler &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ga99a9890623b981cb9c97f47c4e866ff0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">pair&lt; double, double &gt; Sequence::snSL </td>
+          <td>(</td>
+          <td class="paramtype">const SimData &amp;&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>minfreq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>binsize</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double *&#160;</td>
+          <td class="paramname"><em>gmap</em> = <code>nullptr</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calculate max. abs value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td>An object of type <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> </td></tr>
+    <tr><td class="paramname">minfreq</td><td>Exclude mutations with minor allele frequency &lt; minfreq. </td></tr>
+    <tr><td class="paramname">binsize</td><td>The size of frequency bins. </td></tr>
+    <tr><td class="paramname">gmap</td><td>The positions of every marker in d on the genetic map. If nullptr is passed, iHS is calculated using SNP positions. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>maximum absolute value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>The use of 'gmap' is untested.  The first member of the return value is nSL, the second is iHS </dd></dl>
+
+<p>Definition at line <a class="el" href="nSL_8cc_source.html#l00069">69</a> of file <a class="el" href="nSL_8cc_source.html">nSL.cc</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:11 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

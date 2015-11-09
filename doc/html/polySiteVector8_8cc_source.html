@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('polySiteVector8_8cc_source.html','');}
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    this-&gt;reserve(p.size());</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    std::for_each( p.begin(), p.end(),</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                   [<span class="keyword">this</span>]( <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p ) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                     this-&gt;push_back( <a class="code" href="namespaceSequence.html#a5d16c0b50cfe1543dd5a5481c10100f1">polymorphicSite8</a>(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                     this-&gt;push_back( polymorphicSite8(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;                   });</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  }</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  </div>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('polySiteVector8_8cc_source.html','');}
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    this-&gt;reserve(p.numsites());</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::for_each( p.sbegin(), p.send(),</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                   [<span class="keyword">this</span>]( <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p ) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                     this-&gt;push_back( <a class="code" href="namespaceSequence.html#a5d16c0b50cfe1543dd5a5481c10100f1">polymorphicSite8</a>(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                     this-&gt;push_back( polymorphicSite8(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;                   });</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  }</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
@@ -100,21 +100,10 @@ $(document).ready(function(){initNavTree('polySiteVector8_8cc_source.html','');}
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    this-&gt;reserve(p.size());</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    std::for_each( p.cbegin(), p.cend(),</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                   [<span class="keyword">this</span>]( <span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p ) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                     this-&gt;push_back( <a class="code" href="namespaceSequence.html#a5d16c0b50cfe1543dd5a5481c10100f1">polymorphicSite8</a>(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                     this-&gt;push_back( polymorphicSite8(p.first, Seq8(p.second,<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>)) );</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                   });</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  polySiteVector8::polySiteVector8( std::vector&lt;polymorphicSite&gt; &amp; p) : base()</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    this-&gt;reserve(p.size());</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::for_each( p.begin(), p.end(),</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                   [<span class="keyword">this</span>]( <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p ) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                     this-&gt;push_back( <a class="code" href="namespaceSequence.html#a5d16c0b50cfe1543dd5a5481c10100f1">polymorphicSite8</a>(p.first,Seq8(p.second,std::ref(<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>))) );</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                   });</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    p.clear();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
-<div class="ttc" id="namespaceSequence_html_a5d16c0b50cfe1543dd5a5481c10100f1"><div class="ttname"><a href="namespaceSequence.html#a5d16c0b50cfe1543dd5a5481c10100f1">Sequence::polymorphicSite8</a></div><div class="ttdeci">std::pair&lt; double, Seq8 &gt; polymorphicSite8</div><div class="ttdoc">Analog to Sequence::polymorphicSite. </div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector8_8hpp_source.html#l00012">polySiteVector8.hpp:12</a></div></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
 <div class="ttc" id="PolyTable_8hpp_html"><div class="ttname"><a href="PolyTable_8hpp.html">PolyTable.hpp</a></div><div class="ttdoc">Sequence::PolyTable, a virtual base class for polymorphism tables. </div></div>
 <div class="ttc" id="group__Alphabets_html_ga72312cc3c51db6950ecdf31ffaf09159"><div class="ttname"><a href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">Sequence::dna_poly_alphabet</a></div><div class="ttdeci">const alphabet_t dna_poly_alphabet</div><div class="ttdoc">Alphabet for polymorphism (SNP) analysis. 16 characters are used so that we may encode 2 nucleotides ...</div><div class="ttdef"><b>Definition:</b> <a href="SeqAlphabets_8cc_source.html#l00013">SeqAlphabets.cc:13</a></div></div>
 <div class="ttc" id="namespaceSequence_html_a08841c3bd3b0999a40dfdadbee4a6b0d"><div class="ttname"><a href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00045">polySiteVector.hpp:45</a></div></div>
@@ -123,8 +112,8 @@ $(document).ready(function(){initNavTree('polySiteVector8_8cc_source.html','');}
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>polySiteVector8.cc</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><b>polySiteVector8.cc</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

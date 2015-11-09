@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -165,32 +165,22 @@ $(document).ready(function(){initNavTree('SimTypes_8hpp_source.html','');});
 <div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">  221</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a></div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    {</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      <span class="comment">//newick_stream_marginal_tree_impl * impl;</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;      std::unique_ptr&lt;newick_stream_marginal_tree_impl&gt; impl;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <span class="comment">/*</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">        marginal::const_iterator mi;</span></div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">        const int nsam;</span></div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">        std::vector&lt;int&gt; left,right;</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">        std::vector&lt;node&gt; tree;</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">        void init();</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">        std::ostream &amp; parens( const int &amp; noden,</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">        std::ostream &amp; o) const;</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">      */</span></div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( <span class="keyword">const</span> <a class="code" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> &amp; m );</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( <span class="keyword">const</span> <a class="code" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> * m );</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( arg::const_iterator m );</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( arg::iterator m );</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      ~<a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( );</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;      std::vector&lt;node&gt; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a24d4399ed32d225106e8b63496b22879">get_tree</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      std::ostream &amp; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#aed606d998d4a6ab6ae71ec49c652d635">print</a>( std::ostream &amp; o ) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      std::istream &amp; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a83f189b09ba9a328ed979a45938ad939">read</a>( std::istream &amp; i );</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    };</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    std::ostream &amp; <a class="code" href="group__operators.html#ga0b30f677faac69720cdee554171a7c78">operator&lt;&lt;</a>(std::ostream &amp; o, <span class="keyword">const</span> <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a> &amp; n);</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    std::istream &amp; <a class="code" href="namespaceSequence_1_1coalsim.html#a4e20618b16901497849910806974c73a">operator&gt;&gt;</a>(std::istream &amp; i, <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a> &amp; n);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;      std::unique_ptr&lt;newick_stream_marginal_tree_impl&gt; impl;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( <span class="keyword">const</span> <a class="code" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> &amp; m );</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( <span class="keyword">const</span> <a class="code" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> * m );</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( arg::const_iterator m );</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;      <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( arg::iterator m );</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      ~<a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a>( );</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      std::vector&lt;node&gt; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a24d4399ed32d225106e8b63496b22879">get_tree</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;      std::ostream &amp; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#aed606d998d4a6ab6ae71ec49c652d635">print</a>( std::ostream &amp; o ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;      std::istream &amp; <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a83f189b09ba9a328ed979a45938ad939">read</a>( std::istream &amp; i );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    };</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    std::ostream &amp; <a class="code" href="group__operators.html#ga0b30f677faac69720cdee554171a7c78">operator&lt;&lt;</a>(std::ostream &amp; o, <span class="keyword">const</span> <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a> &amp; n);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    std::istream &amp; <a class="code" href="namespaceSequence_1_1coalsim.html#a4e20618b16901497849910806974c73a">operator&gt;&gt;</a>(std::istream &amp; i, <a class="code" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a> &amp; n);</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classSequence_1_1coalsim_1_1newick__stream__marginal__tree_html_a24d4399ed32d225106e8b63496b22879"><div class="ttname"><a href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a24d4399ed32d225106e8b63496b22879">Sequence::coalsim::newick_stream_marginal_tree::get_tree</a></div><div class="ttdeci">std::vector&lt; node &gt; get_tree() const </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00434">CoalescentSimTypes.cc:434</a></div></div>
 <div class="ttc" id="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl_html"><div class="ttname"><a href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl.html">Sequence::coalsim::newick_stream_marginal_tree_impl</a></div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00308">CoalescentSimTypes.cc:308</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1marginal_html_a6a62002818a9358cc410b4f2d8b80476"><div class="ttname"><a href="structSequence_1_1coalsim_1_1marginal.html#a6a62002818a9358cc410b4f2d8b80476">Sequence::coalsim::marginal::begin</a></div><div class="ttdeci">iterator begin()</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00210">CoalescentSimTypes.cc:210</a></div></div>
@@ -234,8 +224,8 @@ $(document).ready(function(){initNavTree('SimTypes_8hpp_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_39455efff3254635e524990ecf200c77.html">Coalescent</a></li><li class="navelem"><a class="el" href="SimTypes_8hpp.html">SimTypes.hpp</a></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_09cc927e16359f4875504d4631183a0c.html">Coalescent</a></li><li class="navelem"><a class="el" href="SimTypes_8hpp.html">SimTypes.hpp</a></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

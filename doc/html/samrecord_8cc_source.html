@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -110,7 +110,7 @@ $(document).ready(function(){initNavTree('samrecord_8cc_source.html','');});
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">return</span> string( value_beg,value_end );</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">string</span> <a class="code" href="namespaceSequence_1_1pack8.html#a5507fd49822e4bf46dd960b2ba14820d">samtag::vtype</a>() const</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keywordtype">string</span> samtag::vtype() const</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  {</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> string( vtype_beg,vtype_end );</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('samrecord_8cc_source.html','');});
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">    Typecast to string</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  {                                                         </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> (tag() + <span class="charliteral">&#39;:&#39;</span> + <a class="code" href="namespaceSequence_1_1pack8.html#a5507fd49822e4bf46dd960b2ba14820d">vtype</a>() + <span class="charliteral">&#39;:&#39;</span> + value());                </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">return</span> (tag() + <span class="charliteral">&#39;:&#39;</span> + vtype() + <span class="charliteral">&#39;:&#39;</span> + value());                </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  samtag::operator string() const</div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('samrecord_8cc_source.html','');});
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">    Typecase to string</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">  */</span></div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> (tag() + <span class="charliteral">&#39;:&#39;</span> + <a class="code" href="namespaceSequence_1_1pack8.html#a5507fd49822e4bf46dd960b2ba14820d">vtype</a>() + <span class="charliteral">&#39;:&#39;</span> + value());</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span> (tag() + <span class="charliteral">&#39;:&#39;</span> + vtype() + <span class="charliteral">&#39;:&#39;</span> + value());</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="namespaceSequence.html#a3ef776db43acd7fad114f653a59de8e1">   74</a></span>&#160;  std::ostream &amp; <a class="code" href="group__operators.html#ga63bec66d7221fc0057e34ba665ebc8b6">operator&lt;&lt;</a>(std::ostream &amp; o, <span class="keyword">const</span> <a class="code" href="structSequence_1_1samtag.html">samtag</a> &amp; st)</div>
@@ -388,7 +388,6 @@ $(document).ready(function(){initNavTree('samrecord_8cc_source.html','');});
 <div class="ttc" id="group__operators_html_gaf30c61f076078e6be679a81646e33437"><div class="ttname"><a href="group__operators.html#gaf30c61f076078e6be679a81646e33437">Sequence::operator&gt;&gt;</a></div><div class="ttdeci">std::istream &amp; operator&gt;&gt;(std::istream &amp;s, AlignStream&lt; T &gt; &amp;c)</div><div class="ttdef"><b>Definition:</b> <a href="AlignStream_8hpp_source.html#l00167">AlignStream.hpp:167</a></div></div>
 <div class="ttc" id="classSequence_1_1samrecord_html_a6153f4ec1782720fcf0d9a989d191fac"><div class="ttname"><a href="classSequence_1_1samrecord.html#a6153f4ec1782720fcf0d9a989d191fac">Sequence::samrecord::tag_end</a></div><div class="ttdeci">tag_iterator tag_end() const </div><div class="ttdef"><b>Definition:</b> <a href="samrecord_8cc_source.html#l00233">samrecord.cc:233</a></div></div>
 <div class="ttc" id="classSequence_1_1samrecord_html_aab9070870b1435433f7fc785a79c9339"><div class="ttname"><a href="classSequence_1_1samrecord.html#aab9070870b1435433f7fc785a79c9339">Sequence::samrecord::mapq</a></div><div class="ttdeci">unsigned long mapq() const </div><div class="ttdef"><b>Definition:</b> <a href="samrecord_8cc_source.html#l00273">samrecord.cc:273</a></div></div>
-<div class="ttc" id="namespaceSequence_1_1pack8_html_a5507fd49822e4bf46dd960b2ba14820d"><div class="ttname"><a href="namespaceSequence_1_1pack8.html#a5507fd49822e4bf46dd960b2ba14820d">Sequence::pack8::vtype</a></div><div class="ttdeci">std::vector&lt; itype &gt; vtype</div><div class="ttdoc">The sequence type. </div><div class="ttdef"><b>Definition:</b> <a href="pack8_8hpp_source.html#l00022">pack8.hpp:22</a></div></div>
 <div class="ttc" id="classSequence_1_1samrecord_html_a00f4c8ab7220838afabeda86f5ce604b"><div class="ttname"><a href="classSequence_1_1samrecord.html#a00f4c8ab7220838afabeda86f5ce604b">Sequence::samrecord::qual</a></div><div class="ttdeci">std::string qual() const </div><div class="ttdef"><b>Definition:</b> <a href="samrecord_8cc_source.html#l00321">samrecord.cc:321</a></div></div>
 <div class="ttc" id="classSequence_1_1samrecord_html_aef91f49aacbc5136e50a06e99cf562fe"><div class="ttname"><a href="classSequence_1_1samrecord.html#aef91f49aacbc5136e50a06e99cf562fe">Sequence::samrecord::cig_begin</a></div><div class="ttdeci">cigar_iterator cig_begin() const </div><div class="ttdef"><b>Definition:</b> <a href="samrecord_8cc_source.html#l00209">samrecord.cc:209</a></div></div>
 <div class="ttc" id="classSequence_1_1samrecord_html_ae5703d81f34e37a2184efa098bdf3ee1"><div class="ttname"><a href="classSequence_1_1samrecord.html#ae5703d81f34e37a2184efa098bdf3ee1">Sequence::samrecord::mpos</a></div><div class="ttdeci">unsigned long mpos() const </div><div class="ttdef"><b>Definition:</b> <a href="samrecord_8cc_source.html#l00297">samrecord.cc:297</a></div></div>
@@ -399,8 +398,8 @@ $(document).ready(function(){initNavTree('samrecord_8cc_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_6bd09f5c0d7c52c9474a019ed995cb05.html">hts</a></li><li class="navelem"><b>samrecord.cc</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_8f68e0e819f73e1be1b7c38ddc74a746.html">hts</a></li><li class="navelem"><b>samrecord.cc</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -75,60 +75,154 @@ $(document).ready(function(){initNavTree('nSL_8cc_source.html','');});
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cmath&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  <span class="keywordtype">double</span> __nSLsum(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                  <span class="keyword">const</span> <a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> &amp; d,</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;                  <span class="keyword">const</span> std::vector&lt;size_t&gt; &amp; coretype)</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keywordtype">unsigned</span> s = 0,nc=0;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; coretype.size() ; ++i )</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;      {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> j = i+1 ; j &lt; coretype.size() ; ++j )</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;          {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">auto</span> right = std::mismatch(d[coretype[i]].cbegin()+core,d[coretype[i]].cend(),</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                  d[coretype[j]].cbegin()+core);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            std::string::const_reverse_iterator ri1(d[coretype[i]].cbegin()+core),</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;              ri2(d[coretype[j]].cbegin()+core);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keyword">auto</span> left = std::mismatch(ri1,d[coretype[i]].crend(),ri2);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span>(left.first != d[coretype[i]].rend() &amp;&amp; right.first != d[coretype[i]].<a class="code" href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">end</a>())</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;              {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                s += unsigned(std::distance(left.first.base(),right.first)) + 1;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                ++nc;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;              }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;          }</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;      }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordflow">return</span> double(s)/double(nc);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>Sequence </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">double</span> nSL(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;             <span class="keyword">const</span> SimData &amp; d)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    std::vector&lt;size_t&gt; der,anc;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i=0;i&lt;d.size();++i)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;      {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span>( d[i][core] == <span class="charliteral">&#39;1&#39;</span> ) der.push_back(i);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">else</span> anc.push_back(i);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">//double SLDK = 2.*double(__nlSsum(core,d,der))/double(der.size()*(der.size()-1));</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">//double SLAK = 2.*double(__nlSsum(core,d,anc))/double(anc.size()*(anc.size()-1));</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">//return log(SLAK) - log(SLDK);</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> log(__nSLsum(core,d,anc)) - log(__nSLsum(core,d,der));</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a1942fc6aeda603ffa5111819e6c55dc8"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">Sequence::PolyTable::end</a></div><div class="ttdeci">data_iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00188">PolyTable.cc:188</a></div></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    Mechanics of the nSL statistic</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    RV = nSL,iHS, as defined in doi:10.1093/molbev/msu077</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  pair&lt;double,double&gt; __nlSsum(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                               <span class="keyword">const</span> <a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> &amp; d,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                               <span class="keyword">const</span> vector&lt;size_t&gt; &amp; coretype,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                               <span class="keyword">const</span> <span class="keywordtype">double</span> * gmap)</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">double</span> s = 0.,s2=0.;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">unsigned</span> nc=0u;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; coretype.size() ; ++i )</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> j = i+1 ; j &lt; coretype.size() ; ++j )</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;          {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keyword">auto</span> right = mismatch(d[coretype[i]].cbegin()+core,d[coretype[i]].cend(),</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                                  d[coretype[j]].cbegin()+core);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            string::const_reverse_iterator ri1(d[coretype[i]].cbegin()+core),</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              ri2(d[coretype[j]].cbegin()+core);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keyword">auto</span> left = mismatch(ri1,d[coretype[i]].crend(),ri2);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="keywordflow">if</span>(left.first != d[coretype[i]].rend() &amp;&amp; right.first != d[coretype[i]].<a class="code" href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">end</a>())</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                s += double(distance(left.first.base(),right.first) + 1);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                s2 += (gmap == <span class="keyword">nullptr</span>) ? fabs(d.<a class="code" href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">position</a>(std::vector&lt;double&gt;::size_type(distance(d[coretype[i]].cbegin(),right.first))-1) - </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                                               d.<a class="code" href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">position</a>(std::vector&lt;double&gt;::size_type(distance(d[coretype[i]].cbegin(),left.first.base()))))</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                  : fabs( gmap[distance(d[coretype[i]].cbegin(),right.first)] -</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                          gmap[distance(d[coretype[i]].cbegin(),left.first.base())] );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                ++nc;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;              }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;          }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;      }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> make_pair( s/<span class="keywordtype">double</span>(nc),s2/<span class="keywordtype">double</span>(nc) );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>Sequence </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">    The nSL statistic of doi:10.1093/molbev/msu077</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">   50</a></span>&#160;  pair&lt;double,double&gt; <a class="code" href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">nSL</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                          <span class="keyword">const</span> <a class="code" href="classSequence_1_1SimData.html">SimData</a> &amp; d,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                          <span class="keyword">const</span> <span class="keywordtype">double</span> * gmap = <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    std::vector&lt;size_t&gt; der,anc;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i=0;i&lt;d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>();++i)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span>( d[i][core] == <span class="charliteral">&#39;1&#39;</span> ) der.push_back(i);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">else</span> anc.push_back(i);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;      }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    pair&lt;double,double&gt; A = __nlSsum(core,d,anc,gmap),</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      D = __nlSsum(core,d,der,gmap);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> make_pair(log(A.first)-log(D.first),</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                     log(A.second)-log(D.second));</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">    Return max. abs value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al.</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">   69</a></span>&#160;  pair&lt;double,double&gt; <a class="code" href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">snSL</a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1SimData.html">SimData</a> &amp; d,<span class="keyword">const</span> <span class="keywordtype">double</span> minfreq, <span class="keyword">const</span> <span class="keywordtype">double</span> binsize, <span class="keyword">const</span> <span class="keywordtype">double</span> * gmap = <span class="keyword">nullptr</span>)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span>(d.<a class="code" href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">empty</a>()) <span class="keywordflow">return</span> make_pair(std::numeric_limits&lt;double&gt;::quiet_NaN(),std::numeric_limits&lt;double&gt;::quiet_NaN());</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    vector&lt;polymorphicSite&gt; filtered;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    for_each(d.<a class="code" href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">sbegin</a>(),d.<a class="code" href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">send</a>(),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;             [&amp;](<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;               <span class="keywordtype">double</span> f = double(count(p.second.begin(),p.second.end(),<span class="charliteral">&#39;1&#39;</span>))/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;               <span class="keywordflow">if</span>( min(f,1.-f) &gt;= minfreq) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                 filtered.push_back(p);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;               }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;             });</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">if</span>(filtered.empty()) <span class="keywordflow">return</span> make_pair(std::numeric_limits&lt;double&gt;::quiet_NaN(),std::numeric_limits&lt;double&gt;::quiet_NaN());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classSequence_1_1SimData.html">SimData</a> __filtered( filtered.begin(), filtered.end() );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//Associate the stats with their DAFs</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    vector&lt; pair&lt;double, pair&lt;double,double&gt; &gt; &gt; binning;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> i=0;i&lt;__filtered.numsites();++i) </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        pair&lt;double,double&gt; rvi = <a class="code" href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">nSL</a>(i,__filtered,gmap);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">unsigned</span> dcount = unsigned(count((__filtered.sbegin()+i)-&gt;second.begin(),</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                         (__filtered.sbegin()+i)-&gt;second.end(),<span class="charliteral">&#39;1&#39;</span>));</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        binning.push_back( make_pair( <span class="keywordtype">double</span>(dcount)/<span class="keywordtype">double</span>(__filtered.size()),</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                                      rvi));</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">double</span> rv = std::numeric_limits&lt;double&gt;::quiet_NaN(), rv2=std::numeric_limits&lt;double&gt;::quiet_NaN();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">//Now, bin, standardise, and move on...</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">double</span> l = minfreq ; l &lt; 1. ; l += binsize )</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        vector&lt; pair&lt;double, pair&lt;double,double&gt; &gt; &gt; thisbin;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        copy_if( binning.begin(),binning.end(),</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                 back_inserter(thisbin),[&amp;]( <span class="keyword">const</span> pair&lt;double, pair&lt;double,double&gt; &gt; &amp; data )</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                 {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                   <span class="keywordflow">return</span> isfinite(data.second.first) &amp;&amp; data.first &gt;= l &amp;&amp; data.first &lt; l+binsize;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                 });</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span>( thisbin.size() &gt; 1 ) <span class="comment">//otherwise SD = 0, so there&#39;s nothing to standardize</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;          {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordtype">double</span> mean1=0.,mean2=0.;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">for</span>( <span class="keyword">const</span> <span class="keyword">auto</span> &amp; p : thisbin )</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;              {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <span class="keywordflow">if</span>(isfinite(p.second.first)) mean1 += p.second.first;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">if</span>(isfinite(p.second.second)) mean2 += p.second.second;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;              }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            mean1 /= double(thisbin.size());</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            mean2 /= double(thisbin.size());</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordtype">double</span> var1=0.,var2=0.;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">for</span>( <span class="keyword">const</span> <span class="keyword">auto</span> &amp; p : thisbin )</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;              {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <span class="keywordflow">if</span>(isfinite(p.second.first)) var1 += pow( p.second.first - mean1, 2.0 );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="keywordflow">if</span>(isfinite(p.second.first)) var2 += pow( p.second.second - mean2, 2.0 );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;              }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            var1 /= double(thisbin.size()-1);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            var2 /= double(thisbin.size()-1);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordtype">double</span> sd1 = sqrt(var1),sd2=sqrt(var2);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            for_each( thisbin.begin(), </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                      thisbin.end(),</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                      [&amp;](<span class="keyword">const</span> pair&lt;double, pair&lt;double,double&gt; &gt; &amp; data ) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                        <span class="keywordtype">double</span> z1 = (isfinite(sd1)) ? (data.second.first-mean1)/sd1  : numeric_limits&lt;double&gt;::quiet_NaN(),</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                          z2 = (isfinite(sd2)) ? (data.second.second-mean2)/sd2 : numeric_limits&lt;double&gt;::quiet_NaN();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                        <span class="comment">//Get max abs val of each stat</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                        <span class="keywordflow">if</span>( isfinite(z1) &amp;&amp; (!isfinite(rv) || fabs(z1) &gt; fabs(rv)) ) rv = z1;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        <span class="keywordflow">if</span>( isfinite(z2) &amp;&amp; (!isfinite(rv2) || fabs(z2) &gt; fabs(rv2)) ) rv2 = z2;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                      });</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;          }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;      }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> make_pair(rv,rv2);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00272">PolyTable.hpp:272</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_afe610e36cc38d3a77dfe9d6254deb789"><div class="ttname"><a href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">Sequence::PolyTable::send</a></div><div class="ttdeci">const_site_iterator send() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00307">PolyTable.cc:307</a></div></div>
+<div class="ttc" id="group__popgenanalysis_html_ga869acf1b70526bd550cf3c0abdad97f1"><div class="ttname"><a href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">Sequence::nSL</a></div><div class="ttdeci">std::pair&lt; double, double &gt; nSL(const unsigned &amp;core, const SimData &amp;d, const double *gmap=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="nSL_8cc_source.html#l00050">nSL.cc:50</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a9c5e337cb00acba2ab83174ac933bb9e"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">Sequence::PolyTable::sbegin</a></div><div class="ttdeci">const_site_iterator sbegin() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00292">PolyTable.cc:292</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a1942fc6aeda603ffa5111819e6c55dc8"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">Sequence::PolyTable::end</a></div><div class="ttdeci">data_iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00194">PolyTable.cc:194</a></div></div>
 <div class="ttc" id="SimData_8hpp_html"><div class="ttname"><a href="SimData_8hpp.html">SimData.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimData, a class representing polymorphism data from coalescent simulations ...</div></div>
+<div class="ttc" id="group__popgenanalysis_html_ga99a9890623b981cb9c97f47c4e866ff0"><div class="ttname"><a href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">Sequence::snSL</a></div><div class="ttdeci">std::pair&lt; double, double &gt; snSL(const SimData &amp;d, const double minfreq, const double binsize, const double *gmap=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="nSL_8cc_source.html#l00069">nSL.cc:69</a></div></div>
 <div class="ttc" id="classSequence_1_1SimData_html"><div class="ttname"><a href="classSequence_1_1SimData.html">Sequence::SimData</a></div><div class="ttdoc">Data from coalescent simulations. </div><div class="ttdef"><b>Definition:</b> <a href="SimData_8hpp_source.html#l00069">SimData.hpp:69</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a08841c3bd3b0999a40dfdadbee4a6b0d"><div class="ttname"><a href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00045">polySiteVector.hpp:45</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_addb66d0f32a7b5e606b2081aeccc42fa"><div class="ttname"><a href="classSequence_1_1PolyTable.html#addb66d0f32a7b5e606b2081aeccc42fa">Sequence::PolyTable::position</a></div><div class="ttdeci">double position(const std::vector&lt; double &gt;::size_type &amp;i) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00281">PolyTable.hpp:281</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a131a61d74eb612a3e419aa4ae1c38a24"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">Sequence::PolyTable::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00083">PolyTable.cc:83</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>nSL.cc</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_e8a85d07e04ed257d70c3e3061588c40.html">SummStats</a></li><li class="navelem"><b>nSL.cc</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

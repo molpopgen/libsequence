@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -81,28 +81,23 @@ $(document).ready(function(){initNavTree('nSL_8hpp_source.html','');});
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="PolySIM_8hpp.html">Sequence/PolySIM.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span>Sequence {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    The nSL statistic of Ferrer-Admetlla et al. doi: 10.1093/molbev/msu077.</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    \param core The index of the &quot;focal/core&quot; SNP</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    \param d An object of type Sequence::SimData</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    \return The nSL statistic with respect to core. If the statistic is </span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    not defined for this site, a non-finite value will be returned.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    \note This routine was validated by comparing to code provided by</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    Ferrer-Admetlla et al.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordtype">double</span> nSL(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;             <span class="keyword">const</span> SimData &amp; d);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  std::pair&lt;double,double&gt; <a class="code" href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">nSL</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; core,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                               <span class="keyword">const</span> SimData &amp; d,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                               <span class="keyword">const</span> <span class="keywordtype">double</span> * gmap = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  std::pair&lt;double,double&gt; <a class="code" href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">snSL</a>(<span class="keyword">const</span> SimData &amp; d,<span class="keyword">const</span> <span class="keywordtype">double</span> minfreq, <span class="keyword">const</span> <span class="keywordtype">double</span> binsize, <span class="keyword">const</span> <span class="keywordtype">double</span> * gmap = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="PolySIM_8hpp_html"><div class="ttname"><a href="PolySIM_8hpp.html">PolySIM.hpp</a></div><div class="ttdoc">declaration of Sequence::PolySIM, a class to analyze coalescent simulation data </div></div>
+<div class="ttc" id="group__popgenanalysis_html_ga869acf1b70526bd550cf3c0abdad97f1"><div class="ttname"><a href="group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1">Sequence::nSL</a></div><div class="ttdeci">std::pair&lt; double, double &gt; nSL(const unsigned &amp;core, const SimData &amp;d, const double *gmap=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="nSL_8cc_source.html#l00050">nSL.cc:50</a></div></div>
+<div class="ttc" id="group__popgenanalysis_html_ga99a9890623b981cb9c97f47c4e866ff0"><div class="ttname"><a href="group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0">Sequence::snSL</a></div><div class="ttdeci">std::pair&lt; double, double &gt; snSL(const SimData &amp;d, const double minfreq, const double binsize, const double *gmap=nullptr)</div><div class="ttdef"><b>Definition:</b> <a href="nSL_8cc_source.html#l00069">nSL.cc:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_6f3fbe4c5ff40b2359afafe0a251c0e5.html">SummStats</a></li><li class="navelem"><b>nSL.hpp</b></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="dir_2779b41f2603a8ad6c51fb4f5c8888c6.html">SummStats</a></li><li class="navelem"><b>nSL.hpp</b></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

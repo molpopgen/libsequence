@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.7</span>
+   &#160;<span id="projectnumber">1.8.8</span>
    </div>
   </td>
  </tr>
@@ -118,10 +118,10 @@ $(document).ready(function(){initNavTree('SeqAlphabets_8cc_source.html','');});
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  </div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structSequence_1_1invalidPolyChar.html#a2180ef4eef13bc382dd702041a086434">   47</a></span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="structSequence_1_1invalidPolyChar.html#a2180ef4eef13bc382dd702041a086434">invalidPolyChar::operator()</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> &amp; nucleotide)<span class="keyword"> const</span></div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">    </span>{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keyword">auto</span> itr = std::find(<a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">dna_alphabet</a>.begin(),</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                           <a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">dna_alphabet</a>.end(),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;      <span class="keyword">auto</span> itr = std::find(<a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>.begin(),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                           <a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>.end(),</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                           std::toupper(nucleotide));</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">if</span>(itr == <a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">dna_alphabet</a>.end()) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;      <span class="keywordflow">if</span>(itr == <a class="code" href="group__Alphabets.html#ga72312cc3c51db6950ecdf31ffaf09159">dna_poly_alphabet</a>.end()) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;      <span class="keyword">auto</span> d = std::distance( <a class="code" href="group__Alphabets.html#ga790250a2ef0192d63a54b94ef646be32">dna_alphabet</a>.begin(),</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                              itr );</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordflow">return</span> ( d &gt; 3 &amp;&amp; d &lt; 14 ); </div>
@@ -141,8 +141,8 @@ $(document).ready(function(){initNavTree('SeqAlphabets_8cc_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="SeqAlphabets_8cc.html">SeqAlphabets.cc</a></li>
-    <li class="footer">Generated on Tue Sep 22 2015 14:38:57 for libsequence by
+    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="SeqAlphabets_8cc.html">SeqAlphabets.cc</a></li>
+    <li class="footer">Generated on Mon Nov 9 2015 09:43:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
