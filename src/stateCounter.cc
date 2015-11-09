@@ -54,14 +54,14 @@ namespace Sequence
   /*! \var bool Sequence::stateCounter::ndna
     true if a non-DNA character has been encountered, false otherwise
   */
-  stateCounter::stateCounter(const char &gapchar):_gap(gapchar),a(0),g(0),c(0),
+  stateCounter::stateCounter( char gapchar):_gap(gapchar),a(0),g(0),c(0),
       t(0),zero(0),one(0),gap(0),n(0),ndna(false)
       /*!
         \param gapchar charcter representing a gap in an alignment
       */
   {}
 
-  void stateCounter::operator()(const char &ch) const
+  void stateCounter::operator()(const char &ch)
   /*!
     \param ch the character in position i,j in an alignment
   */
