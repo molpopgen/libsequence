@@ -38,7 +38,7 @@ namespace Sequence
 #ifndef DOXYGEN_SKIP
   struct RedundancyCom95impl
   {
-    explicit RedundancyCom95impl(const GeneticCodes &code);
+    explicit RedundancyCom95impl(const GeneticCodes code);
 
     const GeneticCodes genetic_code;
       
@@ -60,7 +60,7 @@ namespace Sequence
     void codonPrecondition(const std::string & codon);
   };
 
-  RedundancyCom95impl::RedundancyCom95impl(const GeneticCodes &code) : genetic_code(code)
+  RedundancyCom95impl::RedundancyCom95impl(const GeneticCodes code) : genetic_code(code)
   {
     FillFirstPositionCounts ();
     FillThirdPositionCounts ();
@@ -390,11 +390,13 @@ namespace Sequence
     */
   {
   }
-    
+
+  /*
   RedundancyCom95::~RedundancyCom95(void)
   {
   }
-
+  */
+  
   //the functions below are klugdy, but there is no real loss of efficieny,
   //so it is left alone for now
   double
