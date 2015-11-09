@@ -173,7 +173,7 @@ namespace Sequence
 	The sample size being simulated.  The 2*nsam-1 nodes
 	in the tree are therefore indexed from 0 to 2*nsam-2
       */
-      mutable int nsam;
+      const int nsam;
       /*!
 	The current number of nodes in the tree.  By current, it 
 	is meant the current time in the simulation.  At the start
