@@ -42,16 +42,16 @@ namespace Sequence
       SA is the number of polymorphic sites in species A,
       SB is the same quantity for species B
     */
-    mutable unsigned SA,SB; //# seg sites
+    const unsigned SA,SB; //# seg sites
     /*!
       D is a measure of divergence between species A and B,
       i.e. mean pairwise differences
     */
-    mutable double D;       // divergence
+    const double D;       // divergence
     /*!
       The sample sizes in species A and B
     */
-    mutable unsigned nA,nB; //sample sizes
+    const unsigned nA,nB; //sample sizes
     HKAdata();
     HKAdata(const HKAdata & d);
     HKAdata(unsigned sa,unsigned sb,double d,
