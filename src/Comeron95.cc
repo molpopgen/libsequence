@@ -113,7 +113,7 @@ namespace Sequence
       // else
       // 	sitesObj = genetic_code_redundancy;
 
-      sites = new Sites (sitesObj, seqa, seqb, maxhits, code);
+      sites = new Sites (sitesObj.get(), seqa, seqb, maxhits, code);
       q0 = 0.0;
       q2S = 0.0;
       q2V = 0.0;
@@ -339,7 +339,7 @@ namespace Sequence
                   //codons that only differ at 1 site
                   {
                     SingleSub Single;
-                    Single(sitesObj, codon1, codon2);
+                    Single(sitesObj.get(), codon1, codon2);
                     p0 += Single.P0 ();
                     p2S += Single.P2S ();
                     p2V += Single.P2V ();
@@ -366,7 +366,7 @@ namespace Sequence
                           {	//if codons differ at 2 sites,
                             //use rules of class TwoSubstitutions
                             TwoSubs Double;
-                            Double(sitesObj, codon1, codon2,weights2);
+                            Double(sitesObj.get(), codon1, codon2,weights2);
                             p0 += Double. P0();
                             p2S += Double.P2S ();
                             p2V += Double.P2V ();
@@ -379,7 +379,7 @@ namespace Sequence
                         else if (ndiff == 3 && maxhits > 2)
                           {
                             ThreeSubs Triple;
-                            Triple(sitesObj,codon1, codon2,weights3);
+                            Triple(sitesObj.get(),codon1, codon2,weights3);
                             p0 += Triple. P0 ();
                             p2S += Triple.P2S ();
                             p2V += Triple.P2V ();
