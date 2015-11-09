@@ -26,7 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>
-
+#include <cmath>
 namespace Sequence
 {
   template<typename T>
@@ -34,8 +34,7 @@ namespace Sequence
 				     const PolyTable::const_site_iterator end,
 				     const unsigned & window_size_S,
 				     const unsigned & step_len )
-    : currentSlice(T()),
-      windows( std::vector<range>() )
+    : windows( std::vector<range>() )
   {
     if(!window_size_S)
       throw std::logic_error("window size cannot be 0");
@@ -48,18 +47,35 @@ namespace Sequence
   template<typename T>
   PolyTableSlice<T>::PolyTableSlice( const PolyTable::const_site_iterator beg,
 				     const PolyTable::const_site_iterator end,
+				     const unsigned nwindows)
+    : windows( std::vector<range>() )
+  {
+    if( end-beg < nwindows )
+      {
+	std::cerr << "here\n";
+	process_windows_fixed(beg,end,1,1);
+      }
+    else
+      {
+	unsigned snp_per_window = unsigned(std::ceil(double(end-beg)/double(nwindows)));
+	process_windows_fixed(beg,end,snp_per_window,snp_per_window);
+      }
+  }
+
+  template<typename T>
+  PolyTableSlice<T>::PolyTableSlice( const PolyTable::const_site_iterator beg,
+				     const PolyTable::const_site_iterator end,
 				     const double & window_size,
 				     const double & step_len,
 				     const double & starting_pos,
 				     const double & ending_pos)
-    : currentSlice(T()),
-      windows( std::vector<range>() )
+    : windows( std::vector<range>() )
   {
     if(window_size<=0.)
       throw std::logic_error("window_size must be > 0");
     if(step_len <= 0.)
       throw std::logic_error("step_len must be > 0");
-	process_windows(beg,end,window_size,step_len,starting_pos,ending_pos);
+    process_windows(beg,end,window_size,step_len,starting_pos,ending_pos);
   }
 
 
@@ -86,14 +102,9 @@ namespace Sequence
     variable_pos.push_back(end);
     if(!variable_pos.empty())
       {
-	for( auto vpitr = variable_pos.begin() ; vpitr < variable_pos.end() ; ++vpitr )
+	for( auto vpitr = variable_pos.begin() ; vpitr < variable_pos.end() ; vpitr += window_step_len )
 	  {
-	    unsigned jump=0;
-	    while(jump<window_step_len && (vpitr+jump) < variable_pos.end())
-	      {
-		++jump;
-	      }
-	    windows.push_back(std::make_pair(*vpitr,std::min(*(vpitr+jump),end)));
+	    windows.emplace_back( std::make_pair(*vpitr, (window_step_len < std::distance(*vpitr,end)) ? *(vpitr+window_size_S) : end) );
 	  }
       }
   }
@@ -153,14 +164,15 @@ namespace Sequence
       throw(Sequence::SeqException("PolyTableSlice<T>::get_slice() -- iterator out of range"));
     if(itr->first != itr->second)
       {
-	currentSlice.assign(itr->first,itr->second);
-	return currentSlice;
+	T rv;
+	rv.assign(itr->first,itr->second);
+	return rv;
       }
     return T();
   }
 
   template<typename T>
-  unsigned PolyTableSlice<T>::size() const
+  typename std::vector<typename PolyTableSlice<T>::range>::size_type PolyTableSlice<T>::size() const
   {
     return windows.size();
   }
@@ -172,8 +184,9 @@ namespace Sequence
       throw(Sequence::SeqException("PolyTableSlice::operator[] -- subscript out of range"));
     if(windows[i].first != windows[i].second)
       {
-	currentSlice.assign(windows[i].first,windows[i].second);
-	return currentSlice;
+	T rv;
+	rv.assign(windows[i].first,windows[i].second);
+	return rv;
       }
     return T();
   }

@@ -22,6 +22,16 @@
 #include <iostream>
 #include <functional>
 
+BOOST_AUTO_TEST_CASE( exception1 )
+{
+  std::vector<double> pos = {1,2,3,4,5};
+  std::vector<std::string> data = {"AAAAA",
+				   "AAGAA",
+				   "CTGAA",
+				   "NAAC"}; //Sequence not same length as pos.size()
+  BOOST_REQUIRE_THROW(Sequence::PolySites ps(std::move(pos),std::move(data)), Sequence::SeqException );
+}
+  
 BOOST_AUTO_TEST_CASE( badness1 )
 {
   std::vector<double> pos = {1,2,3,4,5};

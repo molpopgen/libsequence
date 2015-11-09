@@ -18,9 +18,6 @@ However:
 ### TODO:
 
 * Move BAM alphabet to SeqAlphabets
-* Change all references of 8 to 4?  Should the name be based on some int8_t or on the fact that it is 4-bit encoded?  8 > 4, so that is obviously a better choice?
-* Seq8, PolyTable8 ??
-* Explore std::unique_ptr< Sequence::poly8::itype > instead of vector.  It could be faster, but there are implementation/convenience/maintainability costs
 
 1. H12 from Petrov, Messer, et al.
 2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
@@ -32,6 +29,20 @@ However:
 ### ISSUES:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
+
+## libsequence 1.8.8
+
+* l-HAF statistic added (Sequence/SummStats/lHaf.hpp)
+* Garud et al.'s H1, H2H1, etc. added (Sequence/SummStats/Garud.hpp)
+* nSL added (Sequence/SummStats/nSL.hpp)
+* fixed implementation of Sequence::invalidPolyChar, which was checking the wrong alphabet
+* Various documentation fixes
+* Sequence::FST functions shared,Private, and fixed now throw an exception if deme indexes are out of range.  Previously, empty return values were sent, which could be confused with there being no sites in a category.
+* Various code cleanups, esp. removal of commented-out code blocks
+* The 8-bit encoding stuff has been removed.  This was never used in real-world programs, and suffered from some design issues.
+* Sequence::PolyTableSlice has several updates.  First, a bug in "fixed-S" windows was identified through unit testing and fixed.  The previous version would drop the last window in some cases.  This probably didn't affect many people, but the bug was there for years. (In practice, most 'windows' are fixed distance, not fixed no. variable sites, hence my belief that most previous analyses are ok.)  A new constructor supports 'chunking' a PolyTable into equal-sized windows (based on number of variable sites).   The class no longer contains a data member of type T, which was never necessary anways.
+* auto_ptr replaced with unique_ptr in src/Comeron95.cc
+* binning of nSL/iHS statistics is improved, and better handling of non-finite values implemented.
 
 ## libsequence 1.8.7
 

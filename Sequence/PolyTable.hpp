@@ -65,21 +65,26 @@ namespace Sequence
     mutable polySiteVector pv;
     mutable bool non_const_access;
   public:
+    //! Data type to store site positions
+    using pos_container_t = std::vector<double>;
+    //! Data type for storing genotypes
+    using geno_container_t = std::vector<std::string>;
+    
     //typedefs for container types
     //! \brief non-const reference to std::string
-    using reference = std::vector<std::string>::reference;
+    using reference = geno_container_t::reference;
     //! \brief const reference to std::string
-    using const_reference = std::vector<std::string>::const_reference;
+    using const_reference = geno_container_t::const_reference;
     //! \brief The size_type for the haplotype vector
-    using size_type = std::vector<std::string>::size_type;
+    using size_type = geno_container_t::size_type;
     /*!
       \brief non-const iterator to the haplotypes
     */
-    using data_iterator = std::vector<std::string>::iterator;
+    using data_iterator = geno_container_t::iterator;
     /*!
       \brief const iterator to the haplotypes
     */
-    using const_data_iterator = std::vector<std::string>::const_iterator;
+    using const_data_iterator = geno_container_t::const_iterator;
     /*!
       \brief non-const iterator to the positions
     */

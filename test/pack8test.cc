@@ -6,6 +6,20 @@
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
+#include <iostream>
+
+BOOST_AUTO_TEST_CASE( short_test1 )
+{
+  auto x = Sequence::dna_poly_alphabet;
+
+  for(unsigned i=0;i<Sequence::POLYEOS;++i)
+    {
+      std::string seq(1,x[i]);
+      Sequence::pack8::vtype v = Sequence::pack8::dna2vtype(std::cref(seq), Sequence::dna_poly_alphabet);
+      std::string seq2 = Sequence::pack8::vtype2dna( std::cref(v), Sequence::dna_poly_alphabet, seq.length() );
+      BOOST_CHECK_EQUAL(seq,seq2);
+    }
+}
 
 BOOST_AUTO_TEST_CASE( even_dna_string )
 {

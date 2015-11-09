@@ -103,6 +103,7 @@ namespace Sequence
 
       //1. Is pos within a segment, or between segments?
       bool within = false;
+      //LINEAR SEARCH
       chromosome::iterator seg = (sbegin+chromo)->begin();
       for( ; pos >= seg->end ;++seg){};
       assert(seg != (sbegin+chromo)->end());
@@ -154,6 +155,7 @@ namespace Sequence
 	  arg::iterator argbeg = sample_history->begin();
 	  arg::iterator titr=argbeg;
 	  ++titr;
+	  //LINEAR SEARCH
 	  for( ; titr != sample_history->end()
 		 && beg_new_marg > titr->beg-1 ; ++argbeg,++titr ){};
 	  assert(argbeg!=sample_history->end());

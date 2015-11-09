@@ -99,9 +99,6 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	polySiteVector8Test$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	pack8test$(EXEEXT) Seq8test$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	UhapsTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
@@ -205,10 +202,6 @@ am__RedundancyCom95test_SOURCES_DIST = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test.$(OBJEXT)
 RedundancyCom95test_OBJECTS = $(am_RedundancyCom95test_OBJECTS)
 RedundancyCom95test_LDADD = $(LDADD)
-am__Seq8test_SOURCES_DIST = Seq8test.cc
-@BUNIT_TEST_PRESENT_TRUE@am_Seq8test_OBJECTS = Seq8test.$(OBJEXT)
-Seq8test_OBJECTS = $(am_Seq8test_OBJECTS)
-Seq8test_LDADD = $(LDADD)
 am__SeqConversions_SOURCES_DIST = SeqConversions.cc
 @BUNIT_TEST_PRESENT_TRUE@am_SeqConversions_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	SeqConversions.$(OBJEXT)
@@ -219,10 +212,6 @@ am__SimpleSNPIO_SOURCES_DIST = SimpleSNPIO.cc
 @BUNIT_TEST_PRESENT_TRUE@	SimpleSNPIO.$(OBJEXT)
 SimpleSNPIO_OBJECTS = $(am_SimpleSNPIO_OBJECTS)
 SimpleSNPIO_LDADD = $(LDADD)
-am__UhapsTest_SOURCES_DIST = UhapsTest.cc
-@BUNIT_TEST_PRESENT_TRUE@am_UhapsTest_OBJECTS = UhapsTest.$(OBJEXT)
-UhapsTest_OBJECTS = $(am_UhapsTest_OBJECTS)
-UhapsTest_LDADD = $(LDADD)
 am__alphabets_SOURCES_DIST = alphabets.cc
 @BUNIT_TEST_PRESENT_TRUE@am_alphabets_OBJECTS = alphabets.$(OBJEXT)
 alphabets_OBJECTS = $(am_alphabets_OBJECTS)
@@ -236,15 +225,6 @@ am__fastqIO_SOURCES_DIST = fastqIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_fastqIO_OBJECTS = fastqIO.$(OBJEXT)
 fastqIO_OBJECTS = $(am_fastqIO_OBJECTS)
 fastqIO_LDADD = $(LDADD)
-am__pack8test_SOURCES_DIST = pack8test.cc
-@BUNIT_TEST_PRESENT_TRUE@am_pack8test_OBJECTS = pack8test.$(OBJEXT)
-pack8test_OBJECTS = $(am_pack8test_OBJECTS)
-pack8test_LDADD = $(LDADD)
-am__polySiteVector8Test_SOURCES_DIST = polySiteVector8Test.cc
-@BUNIT_TEST_PRESENT_TRUE@am_polySiteVector8Test_OBJECTS =  \
-@BUNIT_TEST_PRESENT_TRUE@	polySiteVector8Test.$(OBJEXT)
-polySiteVector8Test_OBJECTS = $(am_polySiteVector8Test_OBJECTS)
-polySiteVector8Test_LDADD = $(LDADD)
 am__polySiteVectorTest_SOURCES_DIST = polySiteVectorTest.cc
 @BUNIT_TEST_PRESENT_TRUE@am_polySiteVectorTest_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest.$(OBJEXT)
@@ -297,11 +277,9 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableSliceTest_SOURCES) \
 	$(PolyTableTweaking_SOURCES) $(RedundancyCom95test_SOURCES) \
-	$(Seq8test_SOURCES) $(SeqConversions_SOURCES) \
-	$(SimpleSNPIO_SOURCES) $(UhapsTest_SOURCES) \
+	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
 	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
-	$(fastqIO_SOURCES) $(pack8test_SOURCES) \
-	$(polySiteVector8Test_SOURCES) $(polySiteVectorTest_SOURCES) \
+	$(fastqIO_SOURCES) $(polySiteVectorTest_SOURCES) \
 	$(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
@@ -319,13 +297,10 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__PolyTableSliceTest_SOURCES_DIST) \
 	$(am__PolyTableTweaking_SOURCES_DIST) \
 	$(am__RedundancyCom95test_SOURCES_DIST) \
-	$(am__Seq8test_SOURCES_DIST) \
 	$(am__SeqConversions_SOURCES_DIST) \
-	$(am__SimpleSNPIO_SOURCES_DIST) $(am__UhapsTest_SOURCES_DIST) \
-	$(am__alphabets_SOURCES_DIST) \
+	$(am__SimpleSNPIO_SOURCES_DIST) $(am__alphabets_SOURCES_DIST) \
 	$(am__fastqConstructors_SOURCES_DIST) \
-	$(am__fastqIO_SOURCES_DIST) $(am__pack8test_SOURCES_DIST) \
-	$(am__polySiteVector8Test_SOURCES_DIST) \
+	$(am__fastqIO_SOURCES_DIST) \
 	$(am__polySiteVectorTest_SOURCES_DIST) \
 	$(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
@@ -711,12 +686,6 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@RedundancyCom95test_SOURCES = RedundancyCom95test.cc
 @BUNIT_TEST_PRESENT_TRUE@alphabets_SOURCES = alphabets.cc
 @BUNIT_TEST_PRESENT_TRUE@polySiteVectorTest_SOURCES = polySiteVectorTest.cc
-@BUNIT_TEST_PRESENT_TRUE@UhapsTest_SOURCES = UhapsTest.cc
-
-#Poly8Test_SOURCES=Poly8Test.cc
-@BUNIT_TEST_PRESENT_TRUE@polySiteVector8Test_SOURCES = polySiteVector8Test.cc
-@BUNIT_TEST_PRESENT_TRUE@pack8test_SOURCES = pack8test.cc
-@BUNIT_TEST_PRESENT_TRUE@Seq8test_SOURCES = Seq8test.cc
 @BUNIT_TEST_PRESENT_TRUE@PolyTableSliceTest_SOURCES = PolyTableSliceTest.cc
 all: all-am
 
@@ -826,10 +795,6 @@ RedundancyCom95test$(EXEEXT): $(RedundancyCom95test_OBJECTS) $(RedundancyCom95te
 	@rm -f RedundancyCom95test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(RedundancyCom95test_OBJECTS) $(RedundancyCom95test_LDADD) $(LIBS)
 
-Seq8test$(EXEEXT): $(Seq8test_OBJECTS) $(Seq8test_DEPENDENCIES) $(EXTRA_Seq8test_DEPENDENCIES) 
-	@rm -f Seq8test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(Seq8test_OBJECTS) $(Seq8test_LDADD) $(LIBS)
-
 SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES) $(EXTRA_SeqConversions_DEPENDENCIES) 
 	@rm -f SeqConversions$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SeqConversions_OBJECTS) $(SeqConversions_LDADD) $(LIBS)
@@ -837,10 +802,6 @@ SeqConversions$(EXEEXT): $(SeqConversions_OBJECTS) $(SeqConversions_DEPENDENCIES
 SimpleSNPIO$(EXEEXT): $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_DEPENDENCIES) $(EXTRA_SimpleSNPIO_DEPENDENCIES) 
 	@rm -f SimpleSNPIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(SimpleSNPIO_OBJECTS) $(SimpleSNPIO_LDADD) $(LIBS)
-
-UhapsTest$(EXEEXT): $(UhapsTest_OBJECTS) $(UhapsTest_DEPENDENCIES) $(EXTRA_UhapsTest_DEPENDENCIES) 
-	@rm -f UhapsTest$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(UhapsTest_OBJECTS) $(UhapsTest_LDADD) $(LIBS)
 
 alphabets$(EXEEXT): $(alphabets_OBJECTS) $(alphabets_DEPENDENCIES) $(EXTRA_alphabets_DEPENDENCIES) 
 	@rm -f alphabets$(EXEEXT)
@@ -853,14 +814,6 @@ fastqConstructors$(EXEEXT): $(fastqConstructors_OBJECTS) $(fastqConstructors_DEP
 fastqIO$(EXEEXT): $(fastqIO_OBJECTS) $(fastqIO_DEPENDENCIES) $(EXTRA_fastqIO_DEPENDENCIES) 
 	@rm -f fastqIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(fastqIO_OBJECTS) $(fastqIO_LDADD) $(LIBS)
-
-pack8test$(EXEEXT): $(pack8test_OBJECTS) $(pack8test_DEPENDENCIES) $(EXTRA_pack8test_DEPENDENCIES) 
-	@rm -f pack8test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(pack8test_OBJECTS) $(pack8test_LDADD) $(LIBS)
-
-polySiteVector8Test$(EXEEXT): $(polySiteVector8Test_OBJECTS) $(polySiteVector8Test_DEPENDENCIES) $(EXTRA_polySiteVector8Test_DEPENDENCIES) 
-	@rm -f polySiteVector8Test$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(polySiteVector8Test_OBJECTS) $(polySiteVector8Test_LDADD) $(LIBS)
 
 polySiteVectorTest$(EXEEXT): $(polySiteVectorTest_OBJECTS) $(polySiteVectorTest_DEPENDENCIES) $(EXTRA_polySiteVectorTest_DEPENDENCIES) 
 	@rm -f polySiteVectorTest$(EXEEXT)
@@ -891,15 +844,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableSliceTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableTweaking.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Seq8test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConversions.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNPIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/UhapsTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/alphabets.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/pack8test.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector8Test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
@@ -1276,34 +1225,6 @@ alphabets.log: alphabets$(EXEEXT)
 polySiteVectorTest.log: polySiteVectorTest$(EXEEXT)
 	@p='polySiteVectorTest$(EXEEXT)'; \
 	b='polySiteVectorTest'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-polySiteVector8Test.log: polySiteVector8Test$(EXEEXT)
-	@p='polySiteVector8Test$(EXEEXT)'; \
-	b='polySiteVector8Test'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-pack8test.log: pack8test$(EXEEXT)
-	@p='pack8test$(EXEEXT)'; \
-	b='pack8test'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-Seq8test.log: Seq8test$(EXEEXT)
-	@p='Seq8test$(EXEEXT)'; \
-	b='Seq8test'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-UhapsTest.log: UhapsTest$(EXEEXT)
-	@p='UhapsTest$(EXEEXT)'; \
-	b='UhapsTest'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
