@@ -391,11 +391,10 @@ namespace Sequence
   {
   }
 
-  /*
   RedundancyCom95::~RedundancyCom95(void)
   {
   }
-  */
+ 
   
   //the functions below are klugdy, but there is no real loss of efficieny,
   //so it is left alone for now
