@@ -38,7 +38,6 @@ namespace Sequence
     //! The BAM value_type of the aux data
     const char value_type;
     //! The BAM tag type of the aux data
-    //const std::unique_ptr<char[]> tag;
     const std::array<char,3> tag;
     //! The value of the aux data, in raw bits
     const std::string value;
