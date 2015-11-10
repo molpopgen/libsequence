@@ -143,9 +143,9 @@ namespace Sequence
   PolyTable::PolyTable() : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl()))
   {
   }
-  PolyTable::PolyTable( std::vector<double> && __positions,
-			std::vector<std::string> && __data ) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl(std::forward<std::vector<double> >(__positions),
-														     std::forward<std::vector<std::string> >(__data))))
+  PolyTable::PolyTable( std::vector<double> __positions,
+			std::vector<std::string> __data ) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl(std::move(__positions),
+														     std::move(__data))))
   {
   }
 

@@ -124,8 +124,8 @@ namespace Sequence
     explicit PolyTable();
     explicit PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end);
-    explicit PolyTable( std::vector<double> && __positions,
-			std::vector<std::string> && __data );
+    explicit PolyTable( std::vector<double> __positions,
+			std::vector<std::string> __data );
     PolyTable(const PolyTable &) = default;
     PolyTable(PolyTable &) = default;
     PolyTable(PolyTable &&) = default;

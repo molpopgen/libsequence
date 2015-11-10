@@ -131,8 +131,8 @@ namespace Sequence
   // {
   // }
   
-  PolySites::PolySites ( std::vector < double > && List, std::vector < std::string > && stringList) :
-    PolyTable(std::forward<std::vector < double >>(List),std::forward<std::vector < std::string >>(stringList))
+  PolySites::PolySites ( std::vector < double > List, std::vector < std::string > stringList) :
+    PolyTable(std::move(List),std::move(stringList))
   {
   }
 

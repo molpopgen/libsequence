@@ -69,9 +69,9 @@ namespace Sequence
   // {
   // }
 
-  SimData::SimData( std::vector<double> && pos,  
-		    std::vector<std::string> && data) : PolyTable(std::forward<std::vector<double>>(pos),
-								  std::forward<std::vector<std::string>>(data))
+  SimData::SimData( std::vector<double>  pos,  
+		    std::vector<std::string> data) : PolyTable(std::move(pos),
+								  std::move(data))
   {
   }
 
