@@ -39,14 +39,13 @@
 namespace Sequence
 {
   Sites::Sites (const Sequence::RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
-		const Sequence::Seq * seq2, const int max , const GeneticCodes code ):
+		const Sequence::Seq * seq2, const int max) :
     _L0(0.),_L2S(0.),_L2V(0.0),_L4(0.0)
     /*!
       \param sitesObj an initialized object of type Sequence::RedundancyCom95
       \param seq1 a Sequence::Seq
       \param seq2 a Sequence::Seq
       \param max max number of substitutions per codon to analyze
-      \param code see Sequence::GeneticCodes for valid values
       \note sequences must be of same length, this is checked by assert()
       \note sequence lengths must be multiples of 3, this is checked by assert()
     */
@@ -56,7 +55,6 @@ namespace Sequence
             (fabs(seq1->length()%3-0.)<=DBL_EPSILON ) );
     seqlen = seq1->length();
     maxhits = max;
-    genetic_code = code;
     count_sites (seq1,seq2,sitesObj);
   }
 

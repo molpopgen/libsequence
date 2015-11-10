@@ -65,7 +65,6 @@ namespace Sequence
       double _L4;
       size_t seqlen;
       int maxhits;
-      GeneticCodes genetic_code;
       void siteinc (const RedundancyCom95 * sitesObj,
                     const std::string & codon1,const  std::string &codon2);
       void count_sites (const Sequence::Seq * sequence1,
@@ -73,8 +72,7 @@ namespace Sequence
                         const RedundancyCom95 * sitesObj);
     public:
       explicit Sites (const RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
-                      const Sequence::Seq * seq2, const int max = 3,
-                      const GeneticCodes code = GeneticCodes::UNIVERSAL);
+                      const Sequence::Seq * seq2, const int max = 3);
       ~Sites (void);
       double L0(void) const
       /*!

@@ -171,7 +171,7 @@ namespace Sequence
 				const WeightingScheme3 * weights3,
 				int max)
   {
-    Sites s(impl->sitesObj.get(),&seqa,&seqb,max,impl->code);
+    Sites s(impl->sitesObj.get(),&seqa,&seqb,max);
     impl->diverge(seqa,seqb,weights2,weights3,max);
     impl->omega(&s,seqa,seqb);
     return Com95_t({{impl->ka(),
