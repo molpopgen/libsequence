@@ -26,7 +26,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <algorithm>
 #include <iostream>
-
+#include <iterator>
 /*! \defgroup popgen Molecular Population Genetics
  */
 /*!
@@ -35,39 +35,122 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 namespace Sequence
-{ 
-  PolyTable::PolyTable(const size_t & nsam, const size_t nsnps ) 
-  /*!
-    Default constructor
-    \param nsam when non-zero, the table is allocated to contain a vector of nsam
-    strings, each of length nsnps.  Each string is filled with a blank space (the ' ' character).
-    \param nsps when non-zero, the table is allocated to contain nsnps position (each with position 0)
-  */
-    : PolyTableBase( std::vector<double>(nsnps,0.) ,
-		     std::vector< std::string >( nsam, std::string(nsnps,' ') )),
-      pv(polySiteVector()),
-      non_const_access(true)
-  {}
-
-  PolyTable::PolyTable( std::vector<double> && __positions,
-			std::vector<std::string> && __data ) : PolyTableBase( std::forward<std::vector<double> >(__positions),
-									      std::forward<std::vector<std::string> >(__data) ),
-							       non_const_access(true)
+{
+  struct PolyTableImpl
   {
-    std::for_each(second.begin(),second.end(),[this](const std::string & __s) {
-	if(this->first.size()!=__s.size())
+    std::vector<double> pos;
+    std::vector<std::string> data;
+    polySiteVector pv;
+    bool non_const_access;
+    PolyTableImpl() : pos(std::vector<double>()),
+		      data(std::vector<std::string>()),
+		      pv(polySiteVector()),
+		      non_const_access(true)
+    {
+    }
+   
+    PolyTableImpl( std::vector<double> && __positions,
+		   std::vector<std::string> && __data ) : pos(std::forward<std::vector<double> >(__positions)),
+							  data(std::forward<std::vector<std::string> >(__data)),
+							  pv(polySiteVector()),
+							  non_const_access(true)
+    {
+      std::for_each(std::begin(data),std::end(data),[this](const std::string & __s) {
+	  if(this->pos.size()!=__s.size())
+	    {
+	      this->pos.clear();
+	      this->data.clear();
+	      this->pv.clear();
+	      throw Sequence::SeqException("PolyTable: number of positions != length of data element");
+	    }
+	});
+    }
+
+    bool empty() const { return pos.empty() && data.empty(); }
+    void clear() { pos.clear();data.clear();pv.clear(); }
+    bool assign(PolyTable::const_site_iterator beg,
+		PolyTable::const_site_iterator end);
+    bool assign( std::vector<double> && __positions,
+		 std::vector<std::string> && __data );
+  };
+
+  bool PolyTableImpl::assign(PolyTable::const_site_iterator beg,
+			     PolyTable::const_site_iterator end) 
+  /*!
+    Assignment operation, allowing a range of polymorphic sites
+    to be assigned to a polymorphism table.  This exists mainly
+    for two purposes. One is the ability to assign tables from 
+    "slices" of other tables.  Second is to facilitate the 
+    writing of "sliding window" routines.
+    \return true if the assignment was successful, false otherwise.
+    The only case where false is returned is if the number of individuals
+    at each site is not the constan from beg to end.
+   */
+  {
+    non_const_access = true; //set to true in case an exception is thrown
+    this->clear();
+    if(std::distance(beg,end) < 1) return true;
+    pos.resize(std::vector<double>::size_type(end-beg));
+    pv.resize(std::vector<double>::size_type(end-beg));
+    data.resize(beg->second.length());
+    size_t nsam = beg->second.length();
+    std::string::const_iterator sb,se;
+    typedef PolyTable::const_site_iterator::difference_type DTYPE;
+    DTYPE i=0,j=0;
+    while((beg+i)<end)
+      {
+	pv[unsigned(i)]=*(beg+i);
+	if ((beg+i)->second.length() != nsam)
 	  {
-	    this->first.clear();
-	    this->second.clear();
-	    throw Sequence::SeqException("PolyTable: number of positions != length of data element");
+	    //If we toss an exception, let's make sure we leave an empty object.
+	    this->clear();
+	    return false;
 	  }
-      });
+	pos[unsigned(i)] = (beg+i)->first;
+	sb = (beg+i)->second.begin();
+	se = (beg+i)->second.end();
+	j = 0;
+	while( (sb+j) < se )
+	  {
+	    data[unsigned(j)] += *(sb+j);
+	    ++j;
+	  }
+	++i;
+      }
+    non_const_access = false;  //everything worked, all private data are assigned, so set to false
+    return true;
+  }
+
+  bool PolyTableImpl::assign( std::vector<double> && __positions,
+			      std::vector<std::string> && __data )
+  {
+    non_const_access = true;
+    this->clear();
+    std::swap(pos,__positions);
+    std::swap(data,__data);
+
+    if( std::find_if( std::begin(data),std::end(data),
+		      [this](const std::string __s) {
+			return __s.size() != pos.size();
+		      } ) != data.cend() )
+      {
+	this->clear();
+	return false;
+      }
+    return true;
+  }
+  
+  PolyTable::PolyTable() : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl()))
+  {
+  }
+  PolyTable::PolyTable( std::vector<double> && __positions,
+			std::vector<std::string> && __data ) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl(std::forward<std::vector<double> >(__positions),
+														     std::forward<std::vector<std::string> >(__data))))
+  {
   }
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
-		       PolyTable::const_site_iterator end) : 
-    pv(polySiteVector()),
-    non_const_access(true)
+		       PolyTable::const_site_iterator end) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl())) 
   {
     if (beg>=end)
       {
@@ -82,77 +165,7 @@ namespace Sequence
 
   bool PolyTable::empty() const
   {
-    return second.empty()&&first.empty();
-  }
-
-  bool PolyTable::assign(PolyTable::const_site_iterator beg,
-			 PolyTable::const_site_iterator end) 
-  /*!
-    Assignment operation, allowing a range of polymorphic sites
-    to be assigned to a polymorphism table.  This exists mainly
-    for two purposes. One is the ability to assign tables from 
-    "slices" of other tables.  Second is to facilitate the 
-    writing of "sliding window" routines.
-    \return true if the assignment was successful, false otherwise.
-    The only case where false is returned is if the number of individuals
-    at each site is not the constan from beg to end.
-   */
-  {
-    non_const_access = true; //set to true in case an exception is thrown
-    first.clear();
-    second.clear();
-    if(std::distance(beg,end) < 1) return true;
-    first.resize(std::vector<double>::size_type(end-beg));
-    pv.resize(std::vector<double>::size_type(end-beg));
-    second.resize(beg->second.length());
-    size_t nsam = beg->second.length();
-    std::string::const_iterator sb,se;
-    typedef PolyTable::const_site_iterator::difference_type DTYPE;
-    DTYPE i=0,j=0;
-    while((beg+i)<end)
-      {
-	pv[unsigned(i)]=*(beg+i);
-	if ((beg+i)->second.length() != nsam)
-	  {
-	    //If we toss an exception, let's make sure we leave an empty object.
-	    first.clear();
-	    second.clear();
-	    return false;
-	  }
-	first[unsigned(i)] = (beg+i)->first;
-	sb = (beg+i)->second.begin();
-	se = (beg+i)->second.end();
-	j = 0;
-	while( (sb+j) < se )
-	  {
-	    second[unsigned(j)] += *(sb+j);
-	    ++j;
-	  }
-	++i;
-      }
-    non_const_access = false;  //everything worked, all private data are assigned, so set to false
-    return true;
-  }
-
-  bool PolyTable::assign( std::vector<double> && __positions,
-			  std::vector<std::string> && __data )
-  {
-    non_const_access = true;
-    first.clear();
-    second.clear();
-    std::swap(this->first,__positions);
-    std::swap(this->second,__data);
-
-    if( std::find_if( second.cbegin(),second.cend(),
-		      [this](const std::string __s) {
-			return __s.size() != first.size();
-		      } ) != second.cend() )
-      {
-	first.clear();
-	second.clear();
-	return false;
-      }
-    return true;
+    return impl->empty();
   }
 
   bool PolyTable::operator==(const PolyTable &rhs) const
@@ -161,19 +174,8 @@ namespace Sequence
     \warning case-sensitive
    */
   {
-    if (first.size() != rhs.first.size()
-        || second.size() != rhs.second.size())
-      return false;
-
-    for(unsigned i = 0 ; i < first.size() ; ++i)
-      if (first[i] != rhs.first[i])
-        return false;
-
-    for(unsigned i = 0 ; i < second.size() ; ++i)
-      if (second[i] != rhs.second[i])
-        return false;
-
-    return true;
+    return (this->impl->pos == rhs.impl->pos) &&
+      (this->impl->data == rhs.impl->data);
   }
 
   bool PolyTable::operator!=(const PolyTable &rhs) const
@@ -181,14 +183,27 @@ namespace Sequence
     return !(*this==rhs);
   }
 
+  bool PolyTable::assign( std::vector<double> && __positions,
+			      std::vector<std::string> && __data )
+  {
+    return impl->assign(std::forward<std::vector<double> >(__positions),
+		 std::forward<std::vector<std::string> >(__data));
+  }
+
+  bool PolyTable::assign(PolyTable::const_site_iterator beg,
+			     PolyTable::const_site_iterator end)
+  {
+    return impl->assign(beg,end);
+  }
+  
   PolyTable::data_iterator PolyTable::begin()
   /*!
     \return an iterator pointing to the beginning of the std::vector<string> containing
     the data
   */
   {
-    non_const_access=true;
-    return second.begin();
+    impl->non_const_access=true;
+    return impl->data.begin();
   }
 
   PolyTable::data_iterator PolyTable::end()
@@ -197,8 +212,8 @@ namespace Sequence
     the data
   */
   {
-    non_const_access=true;
-    return second.end();
+    impl->non_const_access=true;
+    return impl->data.end();
   }
 
   PolyTable::const_data_iterator PolyTable::begin() const
@@ -207,7 +222,7 @@ namespace Sequence
     the data
   */
   {
-    return second.begin();
+    return impl->data.begin();
   }
 
   PolyTable::const_data_iterator PolyTable::cbegin() const
@@ -216,7 +231,7 @@ namespace Sequence
     the data
   */
   {
-    return second.cbegin();
+    return impl->data.cbegin();
   }
 
   PolyTable::const_data_iterator PolyTable::end() const
@@ -225,7 +240,7 @@ namespace Sequence
     the data
   */
   {
-    return second.end();
+    return impl->data.end();
   }
 
   PolyTable::const_data_iterator PolyTable::cend() const
@@ -234,7 +249,7 @@ namespace Sequence
     the data
   */
   {
-    return second.cend();
+    return impl->data.cend();
   }
 
   PolyTable::pos_iterator PolyTable::pbegin()
@@ -242,8 +257,8 @@ namespace Sequence
     \return an iterator pointing to the beginning of the list of positions
   */
   {
-    non_const_access=true;
-    return first.begin();
+    impl->non_const_access=true;
+    return impl->pos.begin();
   }
 
   PolyTable::pos_iterator PolyTable::pend()
@@ -251,8 +266,8 @@ namespace Sequence
     \return an iterator pointing to the end of the list of positions
   */
   {
-    non_const_access=true;
-    return first.end();
+    impl->non_const_access=true;
+    return impl->pos.end();
   }
 
   PolyTable::const_pos_iterator PolyTable::pbegin() const
@@ -260,7 +275,7 @@ namespace Sequence
     \return a const iterator pointing to the beginning of the list of positions
   */
   {
-    return first.begin();
+    return impl->pos.begin();
   }
 
   PolyTable::const_pos_iterator PolyTable::pend() const
@@ -269,7 +284,7 @@ namespace Sequence
   */
   {
 
-    return first.end();
+    return impl->pos.end();
   }
 
   PolyTable::const_pos_iterator PolyTable::pcbegin() const
@@ -277,7 +292,7 @@ namespace Sequence
     \return a const iterator pointing to the beginning of the list of positions
   */
   {
-    return first.cbegin();
+    return impl->pos.cbegin();
   }
 
   PolyTable::const_pos_iterator PolyTable::pcend() const
@@ -286,7 +301,7 @@ namespace Sequence
   */
   {
 
-    return first.cend();
+    return impl->pos.cend();
   }
 
   PolyTable::const_site_iterator PolyTable::sbegin() const
@@ -296,12 +311,12 @@ namespace Sequence
     polymorphism tables
   */
   {
-    if(non_const_access == true)
+    if(impl->non_const_access == true)
       {
-	pv = polySiteVector(std::move(make_polySiteVector(*this)));
-	non_const_access=false;
+	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->non_const_access=false;
       }
-    return pv.begin();
+    return impl->pv.begin();
   }
   
   PolyTable::const_site_iterator PolyTable::send() const
@@ -311,12 +326,12 @@ namespace Sequence
     polymorphism tables
   */
   {
-    if(non_const_access == true)
+    if(impl->non_const_access == true)
       {
-	pv = polySiteVector(std::move(make_polySiteVector(*this)));
-	non_const_access=false;
+	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->non_const_access=false;
       }
-    return pv.end();
+    return impl->pv.end();
   }
 
   PolyTable::const_site_iterator PolyTable::scbegin() const
@@ -326,12 +341,12 @@ namespace Sequence
     polymorphism tables
   */
   {
-    if(non_const_access == true)
+    if(impl->non_const_access == true)
       {
-	pv = polySiteVector(std::move(make_polySiteVector(*this)));
-	non_const_access=false;
+	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->non_const_access=false;
       }
-    return pv.cbegin();
+    return impl->pv.cbegin();
   }
   
   PolyTable::const_site_iterator PolyTable::scend() const
@@ -341,283 +356,283 @@ namespace Sequence
     polymorphism tables
   */
   {
-    if(non_const_access == true)
+    if(impl->non_const_access == true)
       {
-	pv = polySiteVector(std::move(make_polySiteVector(*this)));
-	non_const_access=false;
+	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->non_const_access=false;
       }
-    return pv.cend();
+    return impl->pv.cend();
   }
 
-  void PolyTable::ApplyFreqFilter(const unsigned & mincount,
-				  const bool & haveOutgroup,
-                                  const unsigned & outgroup)
-  /*!
-    go through the data and remove all positions where there is a
-    variant at count (# of occurences in the sample) < minfreq
-    \param mincount minimum count of a variant in the data.  
-    Variants that occur < mincount times are thrown out.
-    \param haveOutgroup \c true if an outgroup is present in the data,
-    \c false otherwise
-    \param outgroup the index in the data array containing the outgroup
-    (if present)
-    \note This is only a frequency filter based on minor allele counts.
-  */
-  {
-    std::vector<double> newpos;
-    std::vector<std::string> newdata(second.size());
+  // void PolyTable::ApplyFreqFilter(const unsigned & mincount,
+  // 				  const bool & haveOutgroup,
+  //                                 const unsigned & outgroup)
+  // /*!
+  //   go through the data and remove all positions where there is a
+  //   variant at count (# of occurences in the sample) < minfreq
+  //   \param mincount minimum count of a variant in the data.  
+  //   Variants that occur < mincount times are thrown out.
+  //   \param haveOutgroup \c true if an outgroup is present in the data,
+  //   \c false otherwise
+  //   \param outgroup the index in the data array containing the outgroup
+  //   (if present)
+  //   \note This is only a frequency filter based on minor allele counts.
+  // */
+  // {
+  //   std::vector<double> newpos;
+  //   std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < first.size() ; ++i)
-      {
-        stateCounter Counts;
-        for (unsigned j = 0 ; j < second.size() ; ++j)
-          {
-            if(haveOutgroup==false||
-	       (haveOutgroup==true && j != outgroup))
-              {
-                Counts(second[j][i]);
-              }
-          }
-        bool freq = true;
-        if (Counts.a > 0 && Counts.a < mincount)
-          {
-            freq = false;
-          }
-        else if (freq == true && Counts.g > 0 && Counts.g < mincount)
-          {
-            freq = false;
-          }
-        else if (freq == true && Counts.c > 0 && Counts.c < mincount)
-          {
-            freq = false;
-          }
-        else if (freq == true && Counts.t > 0 && Counts.t < mincount)
-          {
-            freq = false;
-          }
-        else if (freq == true && Counts.zero > 0 && Counts.zero < mincount)
-          {
-            freq = false;
-          }
-        else if (freq == true && Counts.one > 0 && Counts.one < mincount)
-          {
-            freq = false;
-          }
-        if(freq == true)
-          {
-            newpos.push_back(first[i]);
-            for(unsigned j = 0 ; j < second.size() ; ++j)
-              {
-                newdata[j] += second[j][i];
-              }
-          }
-      }
-    //take care of case where new data are empty
-    if( newpos.empty()) newdata.clear();
-    //Assign takes care of setting non_const_access = true
-    assign(std::move(newpos),std::move(newdata));
-  }
+  //   for(unsigned i = 0 ; i < first.size() ; ++i)
+  //     {
+  //       stateCounter Counts;
+  //       for (unsigned j = 0 ; j < second.size() ; ++j)
+  //         {
+  //           if(haveOutgroup==false||
+  // 	       (haveOutgroup==true && j != outgroup))
+  //             {
+  //               Counts(second[j][i]);
+  //             }
+  //         }
+  //       bool freq = true;
+  //       if (Counts.a > 0 && Counts.a < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       else if (freq == true && Counts.g > 0 && Counts.g < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       else if (freq == true && Counts.c > 0 && Counts.c < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       else if (freq == true && Counts.t > 0 && Counts.t < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       else if (freq == true && Counts.zero > 0 && Counts.zero < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       else if (freq == true && Counts.one > 0 && Counts.one < mincount)
+  //         {
+  //           freq = false;
+  //         }
+  //       if(freq == true)
+  //         {
+  //           newpos.push_back(first[i]);
+  //           for(unsigned j = 0 ; j < second.size() ; ++j)
+  //             {
+  //               newdata[j] += second[j][i];
+  //             }
+  //         }
+  //     }
+  //   //take care of case where new data are empty
+  //   if( newpos.empty()) newdata.clear();
+  //   //Assign takes care of setting non_const_access = true
+  //   assign(std::move(newpos),std::move(newdata));
+  // }
 
-  void PolyTable::RemoveMultiHits(const bool & skipOutgroup,
-                                  const unsigned & outgroup)
-  /*!
-    go through the data and remove all the sites with more
-    than 2 states segregating.  By default, this routine also removes sites
-    where there are 2 states segregating in the ingroup. and the 
-    outgroup (if present) has a 3rd state.
-    \param skipOutgroup default is \c false.  If \c true, the character
-    state of the outgroup is ignored.
-    \param outgroup the index of the outgroup in the data vector
-  */
-  {
-    std::vector<double> newpos;
-    std::vector<std::string> newdata(second.size());
+  // void PolyTable::RemoveMultiHits(const bool & skipOutgroup,
+  //                                 const unsigned & outgroup)
+  // /*!
+  //   go through the data and remove all the sites with more
+  //   than 2 states segregating.  By default, this routine also removes sites
+  //   where there are 2 states segregating in the ingroup. and the 
+  //   outgroup (if present) has a 3rd state.
+  //   \param skipOutgroup default is \c false.  If \c true, the character
+  //   state of the outgroup is ignored.
+  //   \param outgroup the index of the outgroup in the data vector
+  // */
+  // {
+  //   std::vector<double> newpos;
+  //   std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < first.size() ; ++i)
-      {
-        stateCounter Counts;
-        for (unsigned j = 0 ; j < second.size() ; ++j)
-          {
-            if((skipOutgroup==false)||
-	       (skipOutgroup==true && j != outgroup))
-              {
-                Counts(second[j][i]);
-              }
-          }
-        if(Counts.nStates() <= 2)
-          {
-            newpos.push_back(first[i]);
-            for(unsigned j = 0 ; j < second.size() ; ++j)
-              {
-                newdata[j] += second[j][i];
-              }
-          }
-      }
-    //Assign takes care of setting non_const_access = true
-    assign(std::move(newpos),std::move(newdata));
-  }
+  //   for(unsigned i = 0 ; i < first.size() ; ++i)
+  //     {
+  //       stateCounter Counts;
+  //       for (unsigned j = 0 ; j < second.size() ; ++j)
+  //         {
+  //           if((skipOutgroup==false)||
+  // 	       (skipOutgroup==true && j != outgroup))
+  //             {
+  //               Counts(second[j][i]);
+  //             }
+  //         }
+  //       if(Counts.nStates() <= 2)
+  //         {
+  //           newpos.push_back(first[i]);
+  //           for(unsigned j = 0 ; j < second.size() ; ++j)
+  //             {
+  //               newdata[j] += second[j][i];
+  //             }
+  //         }
+  //     }
+  //   //Assign takes care of setting non_const_access = true
+  //   assign(std::move(newpos),std::move(newdata));
+  // }
 
-  void PolyTable::RemoveMissing(const bool & skipOutgroup,
-                                const unsigned & outgroup)
-  /*!
-    go through the data and remove all the sites with 
-    missing data (the character N).
-    \param skipOutgroup default is \c false.  If \c true, the character
-    state of the outgroup is ignored.
-    \param outgroup the index of the outgroup in the data vector
-  */
-  {
-    std::vector<double> newpos;
-    std::vector<std::string> newdata(second.size());
+  // void PolyTable::RemoveMissing(const bool & skipOutgroup,
+  //                               const unsigned & outgroup)
+  // /*!
+  //   go through the data and remove all the sites with 
+  //   missing data (the character N).
+  //   \param skipOutgroup default is \c false.  If \c true, the character
+  //   state of the outgroup is ignored.
+  //   \param outgroup the index of the outgroup in the data vector
+  // */
+  // {
+  //   std::vector<double> newpos;
+  //   std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < first.size() ; ++i)
-      {
-        bool hasMissing=false;
-        for (unsigned j = 0 ; j < second.size() ; ++j)
-          {
-            if((skipOutgroup==false)||
-	       (skipOutgroup==true && j != outgroup))
-              {
-                switch(char(std::toupper(second[j][i])))
-                  {
-                  case 'N':
-                    hasMissing=true;
-                    break;
-                  }
-              }
-          }
-        if(hasMissing==false)
-          {
-            newpos.push_back(first[i]);
-            for(unsigned j = 0 ; j < second.size() ; ++j)
-              {
-                newdata[j] += second[j][i];
-              }
-          }
-      }
-    if(newpos.empty()) newdata.clear();
-    //assign takes care of setting non_const_access = true
-    assign(std::move(newpos),std::move(newdata));
-  }
+  //   for(unsigned i = 0 ; i < first.size() ; ++i)
+  //     {
+  //       bool hasMissing=false;
+  //       for (unsigned j = 0 ; j < second.size() ; ++j)
+  //         {
+  //           if((skipOutgroup==false)||
+  // 	       (skipOutgroup==true && j != outgroup))
+  //             {
+  //               switch(char(std::toupper(second[j][i])))
+  //                 {
+  //                 case 'N':
+  //                   hasMissing=true;
+  //                   break;
+  //                 }
+  //             }
+  //         }
+  //       if(hasMissing==false)
+  //         {
+  //           newpos.push_back(first[i]);
+  //           for(unsigned j = 0 ; j < second.size() ; ++j)
+  //             {
+  //               newdata[j] += second[j][i];
+  //             }
+  //         }
+  //     }
+  //   if(newpos.empty()) newdata.clear();
+  //   //assign takes care of setting non_const_access = true
+  //   assign(std::move(newpos),std::move(newdata));
+  // }
 
-  void PolyTable::RemoveAmbiguous(const bool & skipOutgroup,
-				  const unsigned & outgroup)
-  /*!
-    go through the data and remove all the sites with 
-    states other than {A,G,C,T,N,-,0,1}
-    \param skipOutgroup default is \c false.  If \c true, the character
-    state of the outgroup is ignored.
-    \param outgroup the index of the outgroup in the data vector
-  */
-  {
-    std::vector<double> newpos;
-    std::vector<std::string> newdata(second.size());
+  // void PolyTable::RemoveAmbiguous(const bool & skipOutgroup,
+  // 				  const unsigned & outgroup)
+  // /*!
+  //   go through the data and remove all the sites with 
+  //   states other than {A,G,C,T,N,-,0,1}
+  //   \param skipOutgroup default is \c false.  If \c true, the character
+  //   state of the outgroup is ignored.
+  //   \param outgroup the index of the outgroup in the data vector
+  // */
+  // {
+  //   std::vector<double> newpos;
+  //   std::vector<std::string> newdata(second.size());
 
-    for(unsigned i = 0 ; i < first.size() ; ++i)
-      {
-	stateCounter c;
-        for (unsigned j = 0 ; j < second.size() ; ++j)
-          {
-            if((skipOutgroup==false)||
-	       (skipOutgroup==true && j != outgroup))
-              {
-		c(second[j][i]);
-              }
-          }
-	if (c.ndna == 0)
-	  {
-	    newpos.push_back(first[i]);
-            for(unsigned j = 0 ; j < second.size() ; ++j)
-              {
-                newdata[j] += second[j][i];
-              }
-	  }
-      }
-    if(newpos.empty()) newdata.clear();
-    //assign takes care of setting non_const_access = true
-    assign(std::move(newpos),std::move(newdata));
-  }
+  //   for(unsigned i = 0 ; i < first.size() ; ++i)
+  //     {
+  // 	stateCounter c;
+  //       for (unsigned j = 0 ; j < second.size() ; ++j)
+  //         {
+  //           if((skipOutgroup==false)||
+  // 	       (skipOutgroup==true && j != outgroup))
+  //             {
+  // 		c(second[j][i]);
+  //             }
+  //         }
+  // 	if (c.ndna == 0)
+  // 	  {
+  // 	    newpos.push_back(first[i]);
+  //           for(unsigned j = 0 ; j < second.size() ; ++j)
+  //             {
+  //               newdata[j] += second[j][i];
+  //             }
+  // 	  }
+  //     }
+  //   if(newpos.empty()) newdata.clear();
+  //   //assign takes care of setting non_const_access = true
+  //   assign(std::move(newpos),std::move(newdata));
+  // }
   
-  void
-  PolyTable::Binary (const bool & haveOutgroup, 
-		     const unsigned & outgroup, 
-		     const bool & strictInfSites )
-  /*!
-    Recode the polymorphism table in 0,1 (binary notation)
-    \param haveOutgroup use \c true if an outgroup is present, \c false otherwise
-    \param outgroup the index of the outgroup in the data vector used to construct the object
-    \param strictInfSites if \c true, 
+  // void
+  // PolyTable::Binary (const bool & haveOutgroup, 
+  // 		     const unsigned & outgroup, 
+  // 		     const bool & strictInfSites )
+  // /*!
+  //   Recode the polymorphism table in 0,1 (binary notation)
+  //   \param haveOutgroup use \c true if an outgroup is present, \c false otherwise
+  //   \param outgroup the index of the outgroup in the data vector used to construct the object
+  //   \param strictInfSites if \c true, 
 
-    \note if haveOutgroup== \c true, then 0 means an ancestral state and 1 a derived state 
-    in the resulting.  
-    /note If haveOutgroup == true, and there are sites with missing data in the outrgroup
-    sequence, those sites are removed from the data, since its assumed you actually want
-    to know ancestral/derived for every site
-  */
-  {
-    unsigned nsites = this->numsites();
+  //   \note if haveOutgroup== \c true, then 0 means an ancestral state and 1 a derived state 
+  //   in the resulting.  
+  //   /note If haveOutgroup == true, and there are sites with missing data in the outrgroup
+  //   sequence, those sites are removed from the data, since its assumed you actually want
+  //   to know ancestral/derived for every site
+  // */
+  // {
+  //   unsigned nsites = this->numsites();
 
-    std::vector<double> newpositions;
-    std::vector<unsigned> _pos_indexes;
-    std::vector<std::string> newdata((*this).size());
+  //   std::vector<double> newpositions;
+  //   std::vector<unsigned> _pos_indexes;
+  //   std::vector<std::string> newdata((*this).size());
 
-    std::string _outgroup;
-    if(haveOutgroup == true)
-      {
-        _outgroup = (*this)[outgroup];
-      }
-    else
-      {
-        _outgroup = (*this)[0];
-      }
+  //   std::string _outgroup;
+  //   if(haveOutgroup == true)
+  //     {
+  //       _outgroup = (*this)[outgroup];
+  //     }
+  //   else
+  //     {
+  //       _outgroup = (*this)[0];
+  //     }
 
-    for(unsigned j =0 ; j < nsites ; ++j)
-      {
-        stateCounter Counts;
-        for(unsigned i = 0 ; i < (*this).size() ; ++i)
-          {
-            Counts ((*this)[i][j]);
-          }
-        if(Counts.nStates()==2)
-          {
-            newpositions.push_back(this->position(j));
-            _pos_indexes.push_back(j);
-          }
-      }
+  //   for(unsigned j =0 ; j < nsites ; ++j)
+  //     {
+  //       stateCounter Counts;
+  //       for(unsigned i = 0 ; i < (*this).size() ; ++i)
+  //         {
+  //           Counts ((*this)[i][j]);
+  //         }
+  //       if(Counts.nStates()==2)
+  //         {
+  //           newpositions.push_back(this->position(j));
+  //           _pos_indexes.push_back(j);
+  //         }
+  //     }
 
-    for(unsigned i = 0 ; i < (*this).size() ; ++i)
-      {
-        for(unsigned j = 0 ; j < _pos_indexes.size() ; ++j)
-          {
-            if(haveOutgroup==false ||
-	       (haveOutgroup==true && _outgroup[j] != 'N'))
-              //skip sites where the ancestral information
-              //is missing AND an outgroup sequence is present
-              {
-                if ( (*this)[i][_pos_indexes[j]] == 'N')
-                  {
-                    //missing data (leave untouched...)
-                    newdata[i] += 'N';
-                  }
-                else if( (*this)[i][_pos_indexes[j]]
-                         != _outgroup[_pos_indexes[j]] )
-                  {
-                    //derived (maybe...)
-                    newdata[i] += '1';
-                  }
-                else if ( (*this)[i][_pos_indexes[j]]
-                          == _outgroup[_pos_indexes[j]] )
-                  {
-                    //ancestral
-                    newdata[i] += '0';
-                  }
+  //   for(unsigned i = 0 ; i < (*this).size() ; ++i)
+  //     {
+  //       for(unsigned j = 0 ; j < _pos_indexes.size() ; ++j)
+  //         {
+  //           if(haveOutgroup==false ||
+  // 	       (haveOutgroup==true && _outgroup[j] != 'N'))
+  //             //skip sites where the ancestral information
+  //             //is missing AND an outgroup sequence is present
+  //             {
+  //               if ( (*this)[i][_pos_indexes[j]] == 'N')
+  //                 {
+  //                   //missing data (leave untouched...)
+  //                   newdata[i] += 'N';
+  //                 }
+  //               else if( (*this)[i][_pos_indexes[j]]
+  //                        != _outgroup[_pos_indexes[j]] )
+  //                 {
+  //                   //derived (maybe...)
+  //                   newdata[i] += '1';
+  //                 }
+  //               else if ( (*this)[i][_pos_indexes[j]]
+  //                         == _outgroup[_pos_indexes[j]] )
+  //                 {
+  //                   //ancestral
+  //                   newdata[i] += '0';
+  //                 }
 
-              }
-          }
-      }
-    //assign takes care of setting non_const_access = true
-    assign(std::move(newpositions),std::move(newdata));
-  }
+  //             }
+  //         }
+  //     }
+  //   //assign takes care of setting non_const_access = true
+  //   assign(std::move(newpositions),std::move(newdata));
+  // }
 
   std::vector < double >
   PolyTable::GetPositions (void) const
@@ -625,7 +640,7 @@ namespace Sequence
     Returns PolyTableBase.first
   */
   {
-    return first;
+    return impl->pos;
   }
 
   std::vector <std::string > PolyTable::GetData (void) const
@@ -636,8 +651,39 @@ namespace Sequence
     of the i-th sequence
   */
   {
-    return second;
+    return impl->data;
   }
+  
+  PolyTable::const_reference PolyTable::operator[] (const size_type & i) const
+    {
+      return (impl->data[i]);
+    }
+
+    /*!
+      Return the i-th element of PolyTable::data.
+      \note range-checking done by assert()
+    */
+  PolyTable::reference PolyTable::operator[] (const size_type & i)
+
+    {
+      impl->non_const_access=true;
+      return (impl->data[i]);
+    }
+
+  PolyTable::size_type PolyTable::size (void) const
+  {
+      return impl->data.size();
+  }
+
+  double PolyTable::position (const std::vector<double>::size_type & i) const
+  {
+    return impl->pos[i];
+  }
+
+  unsigned PolyTable::numsites (void) const
+    {
+      return unsigned(impl->pos.size());
+    }
   
   //non-member functions
   std::istream & operator>> (std::istream & s, PolyTable & c)

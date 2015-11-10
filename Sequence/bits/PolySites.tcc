@@ -180,6 +180,6 @@ namespace Sequence
               }
           }
       }
-    PolyTable::assign(&_positions[0],_positions.size(),&_data[0],_data.size());
+    PolyTable::assign(std::move(_positions),std::move(_data));
   }
 }

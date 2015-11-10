@@ -52,18 +52,17 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <exception>
 #include <type_traits>
 #include <functional>
+#include <memory>
 #include <Sequence/SeqExceptions.hpp>
 #include <Sequence/polySiteVector.hpp>
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
-  class PolyTable : public std::pair< std::vector<double>, std::vector<std::string> >
+  struct PolyTableImpl;
+  class PolyTable 
   {
   private:
-    //! A PolyTable publicly inherits from std::pair< std::vector<double>, std::vector<std::string> >
-    using PolyTableBase = std::pair< std::vector<double>, std::vector<std::string> >;
-    mutable polySiteVector pv;
-    mutable bool non_const_access;
+    std::shared_ptr<PolyTableImpl> impl;
   public:
     //! Data type to store site positions
     using pos_container_t = std::vector<double>;
@@ -122,58 +121,9 @@ namespace Sequence
     const_site_iterator scend() const;
 
     //constructor types
-    explicit PolyTable(const size_t & nsam = 0, const size_t nsnps = 0);   
+    explicit PolyTable();
     explicit PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end);
-    /*!
-      Template constructors simplify compatibility with external data sources.
-      \param pbeg Pointer to start of positions
-      \param pend Pointer to end of positions in "C++-ese", meaning 1 past the last value.
-      \param dbeg Pointer to start of data
-      \param dend Pointer to end of data
-
-      \note pbeg/pend must have value types convertible to double.  dbed/dend must have value types convertible to std::string
-     */
-    template<typename double_type,
-	     typename string_type>
-    explicit PolyTable( const double_type & pbeg,
-			const double_type & pend,
-			const string_type & dbeg,
-			const string_type & dend ) : PolyTableBase(std::vector<double>(pbeg,pend),
-								   std::vector<std::string>(dbeg,dend) ),
-						     non_const_access(true)
-    {
-    }
-    /*!
-      Constructor for data coming from C data structures.
-      \param pbeg Pointer to start of positions
-      \param pend Pointer to end of positions in "C++-ese", meaning 1 past the last value.
-      \param __data Data matrix
-      \param nsam Number of haplotypes in __data
-
-      \note pbeg/pend must have value types convertible to double. 
-
-      Rough guide to usage:
-      double * pos = new double[npos];
-      char ** dmatrix = new char *[nsam];
-      //fill pos and dmatrix with the right stuff...
-      //This assignment fails b/c PolyTable is pure virtual class, but you'll get the idea
-      PolyTable p(pos,pos+npos,dmatrix,nsam);
-     */
-    template<typename double_type>
-    explicit PolyTable( const double_type & pbeg,
-			const double_type & pend,
-			const char ** __data,
-			const size_t & nsam ) : PolyTableBase(std::vector<double>(pbeg,pend),
-							      std::vector<std::string>(nsam)),
-						non_const_access(true)
-    {
-      for( size_t i = 0 ; i < nsam ; ++i )
-	{
-	  second[i] = std::string( __data[i] );
-	}
-    }
-
     explicit PolyTable( std::vector<double> && __positions,
 			std::vector<std::string> && __data );
     PolyTable(const PolyTable &) = default;
@@ -186,18 +136,18 @@ namespace Sequence
     std::vector < std::string > GetData (void) const;
 
     //operations on the data (non-const)
-    virtual void ApplyFreqFilter(const unsigned & mincount,
-				 const bool & haveOutgroup=false,
-				 const unsigned & outgroup = 0);
-    virtual void RemoveMultiHits(const bool & skipOutgroup=false,
-				 const unsigned & outgroup=0);
-    virtual void RemoveMissing(const bool & skipOutgroup=false,
-			       const unsigned & outgroup=0);
-    virtual void RemoveAmbiguous(const bool & skipOutgroup=false,
-				 const unsigned & outgroup=0);
-    virtual void Binary (const bool & haveOutgroup = false,
-			 const unsigned & outgroup = 0,
-			 const bool & strictInfSites = true);
+    // virtual void ApplyFreqFilter(const unsigned & mincount,
+    // 				 const bool & haveOutgroup=false,
+    // 				 const unsigned & outgroup = 0);
+    // virtual void RemoveMultiHits(const bool & skipOutgroup=false,
+    // 				 const unsigned & outgroup=0);
+    // virtual void RemoveMissing(const bool & skipOutgroup=false,
+    // 			       const unsigned & outgroup=0);
+    // virtual void RemoveAmbiguous(const bool & skipOutgroup=false,
+    // 				 const unsigned & outgroup=0);
+    // virtual void Binary (const bool & haveOutgroup = false,
+    // 			 const unsigned & outgroup = 0,
+    // 			 const bool & strictInfSites = true);
 
     //operators and implicit typecasts
     virtual bool operator==(const PolyTable &rhs) const;
@@ -205,27 +155,19 @@ namespace Sequence
     PolyTable & operator=(PolyTable &&) = default;
     PolyTable & operator=(const PolyTable &) = default;
 
-    //The functions below are inlined data access routines.
-    inline const_reference operator[] (const size_type & i) const
-    /*!
-      Return the i-th element of PolyTable::data.
-      \note range-checking done by assert()
-    */
-    {
-      assert(i<second.size());
-      return (second[i]);
-    }
 
-    inline reference operator[] (const size_type & i)
     /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
     */
-    {
-      assert(i<second.size());
-      non_const_access=true;
-      return (second[i]);
-    }
+    const_reference operator[] (const size_type & i) const;
+
+    /*!
+      Return the i-th element of PolyTable::data.
+      \note range-checking done by assert()
+    */
+    reference operator[] (const size_type & i);
+    
     /*!
       \return true if object contains no data, false otherwise
     */
@@ -233,69 +175,18 @@ namespace Sequence
     
     bool assign(PolyTable::const_site_iterator beg,
 		PolyTable::const_site_iterator end);
-    /*! 
-      Assign SNP data to the polymorphism table from a vector/array.
-      \param _positions an array representing the positions of the SNPs
-      \param _num_positions the number of elements in _positions
-      \param _data an array containing the characters for each SNP in 
-      each individual
-      \param _num_individuals the number of elements in _data
-      \note If the length of the elements in _data does not
-      equal _num_positions, the assignment will fail and you
-      will be left with an empty polymorphism table.
-      The following piece of code shows how to assign from a std::vector:
-      \code
-      Sequence::PolySites snpTable;
-      std::vector<double> positions;
-      std::vector<std::string> data;
-      //fill positions and data...
-      if ( snpTable.assign(&positions[0],positions.size(),&data[0],data.size()) == true )
-      {
-      //ok
-      }
-      else
-      {
-      //assignment failed for some reason...
-      }
-      \endcode
-    */
-    template<typename numeric_type,
-	     typename string_type>
-    bool assign( const numeric_type * _positions, 
-		 const size_t & _num_positions,
-		 const string_type * _data,
-		 const size_t & _num_individuals );
 
     bool assign( std::vector<double> && __positions,
 		 std::vector<std::string> && __data );
 
-    inline size_type size (void) const
-      /*!
-        Return how many std::strings are stored
-        in PolyTable::data.
-      */
-    {
-      return second.size();
-    }
+    //! \return Sample size
+    size_type size (void) const;
 
-    inline double position (const std::vector<double>::size_type & i) const
-      /*!
-        Return the i-th position from the PolyTable::positions.
-        \note range-checking done by assert()
-      */
-    {
-      assert( i < first.size());
-      return first[i];
-    }
+    //! \return the i-th position from the PolyTable::positions.
+    double position (const std::vector<double>::size_type & i) const;
 
-    inline unsigned numsites (void) const
-      /*!
-        Return how many positions are stored in
-        PolyTable::positions
-      */
-    {
-      return unsigned(first.size());
-    }
+    //! \return the number of positions (columns)
+    unsigned numsites (void) const;
 
     /*!
       read is a pure virtual function.
@@ -328,5 +219,4 @@ namespace Sequence
   */  
   std::ostream & operator<< (std::ostream & o, const PolyTable & c);
 }
-#include <Sequence/bits/PolyTable.tcc>
 #endif

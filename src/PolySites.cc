@@ -120,15 +120,16 @@ namespace Sequence
   PolySites::PolySites (void) : PolyTable()
   {}
 
-  PolySites::PolySites (const std::vector < double > &List, const std::vector <std::string > &stringList):
-    PolyTable(List.begin(),List.end(),stringList.begin(),stringList.end())
-    /*!
-      Use this constructor if you already have a list of positions and characters
-      \param List a list of doubles representing positions of polymorphic positions
-      \param stringList a vector of strings representing the polymorphic characters
-    */
-  {
-  }
+  
+  // PolySites::PolySites (const std::vector < double > &List, const std::vector <std::string > &stringList):
+  //   PolyTable(List,stringList)
+  //   /*!
+  //     Use this constructor if you already have a list of positions and characters
+  //     \param List a list of doubles representing positions of polymorphic positions
+  //     \param stringList a vector of strings representing the polymorphic characters
+  //   */
+  // {
+  // }
   
   PolySites::PolySites ( std::vector < double > && List, std::vector < std::string > && stringList) :
     PolyTable(std::forward<std::vector < double >>(List),std::forward<std::vector < std::string >>(stringList))

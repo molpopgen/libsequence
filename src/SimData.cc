@@ -55,19 +55,19 @@ namespace Sequence
   {
   }
 
-  SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
-    PolyTable(pos,pos+S,sample,nsam)
-  {
-  }
+  // SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
+  //   PolyTable(pos,pos+S,sample,nsam)
+  // {
+  // }
   
 
-  SimData::SimData(const std::vector<double> & pos, 
-		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
-								      pos.end(),
-								      data.begin(),
-								      data.end())
-  {
-  }
+  // SimData::SimData(const std::vector<double> & pos, 
+  // 		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
+  // 								      pos.end(),
+  // 								      data.begin(),
+  // 								      data.end())
+  // {
+  // }
 
   SimData::SimData( std::vector<double> && pos,  
 		    std::vector<std::string> && data) : PolyTable(std::forward<std::vector<double>>(pos),
