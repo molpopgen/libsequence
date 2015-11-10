@@ -140,17 +140,17 @@ namespace Sequence
     return true;
   }
   
-  PolyTable::PolyTable() : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl()))
+  PolyTable::PolyTable() : impl(std::make_shared<PolyTableImpl>(PolyTableImpl()))
   {
   }
   PolyTable::PolyTable( std::vector<double> __positions,
-			std::vector<std::string> __data ) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl(std::move(__positions),
-														     std::move(__data))))
+			std::vector<std::string> __data ) : impl(std::make_shared<PolyTableImpl>(PolyTableImpl(std::move(__positions),
+													       std::move(__data))))
   {
   }
 
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
-		       PolyTable::const_site_iterator end) : impl(std::shared_ptr<PolyTableImpl>(new PolyTableImpl())) 
+		       PolyTable::const_site_iterator end) : impl(std::make_shared<PolyTableImpl>(PolyTableImpl())) 
   {
     if (beg>=end)
       {
