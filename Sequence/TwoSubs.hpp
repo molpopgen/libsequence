@@ -24,6 +24,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef TWOSUBS_H
 #define TWOSUBS_H
 #include <Sequence/SeqEnums.hpp>
+#include <Sequence/WeightingSchemes.hpp>
 #include <string>
 /*! \file TwoSubs.hpp Sequence/TwoSubs.hpp
   @brief used by Sequence::Comeron95, class Sequence::TwoSubs calculates divergence between codons that differ at two sites
@@ -56,7 +57,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
   {
   class RedundancyCom95;
-  class WeightingScheme2;
   class TwoSubs
     {
     private:

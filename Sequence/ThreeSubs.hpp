@@ -42,13 +42,13 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   @short Deal with codons differing at all 3 positions
 */
 #include <Sequence/PathwayHelper.hpp>
+#include <Sequence/WeightingSchemes.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <string>
 
 namespace Sequence
   {
   class RedundancyCom95;
-  class  WeightingScheme3;
   class ThreeSubs
     {
     private:

@@ -113,15 +113,14 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 /*! \example gestimator.cc
  */
+#include <Sequence/WeightingSchemes.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Seq.hpp>
 #include <array>
 
 namespace Sequence
   {
-    class WeightingScheme2;
-    class WeightingScheme3;
-    class Com95impl;
+    struct Com95impl;
     
     using Com95_t = std::array<double,19>;
     
