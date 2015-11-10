@@ -62,8 +62,8 @@ BOOST_AUTO_TEST_CASE( conversion2 )
 {
   std::vector< Sequence::Fasta >
     data = { Sequence::Fasta("seq1","AATAG"),
-	     Sequence::Fasta("seq2","ATTAC"),
-	     Sequence::Fasta("seq3","AATAC") };
+  	     Sequence::Fasta("seq2","ATTAC"),
+  	     Sequence::Fasta("seq3","AATAC") };
   
   Sequence::PolySites ps(data);
   ps.Binary();
@@ -120,8 +120,7 @@ BOOST_AUTO_TEST_CASE( const_construction_1 )
 
   //Is this picking the const constructor,
   //or the move constructor?
-  Sequence::PolySites ps2(pos,
-			  snps);
+  Sequence::PolySites ps2(std::move(pos),std::move(snps));
 
   BOOST_CHECK_EQUAL( pos.size(), ps2.numsites() );
   BOOST_CHECK_EQUAL( snps.size(), ps2.size() );
@@ -150,7 +149,7 @@ BOOST_AUTO_TEST_CASE( const_construction_2 )
   //Is this picking the const constructor,
   //or the move constructor?
   //It should pick the const
-  Sequence::PolySites ps2(std::cref(pos),
+  Sequence::PolySites ps2(std::move(pos),
 			  std::move(snps));
 
   BOOST_CHECK_EQUAL( pos.size(), ps2.numsites() );
@@ -161,7 +160,7 @@ BOOST_AUTO_TEST_CASE( const_construction_2 )
 
   //Test the reverse
   ps2 = Sequence::PolySites(std::move(pos),
-			    std::cref(snps));
+			    std::move(snps));
 
   BOOST_CHECK_EQUAL( pos.size(), ps2.numsites() );
   BOOST_CHECK_EQUAL( snps.size(), ps2.size() );
@@ -275,8 +274,8 @@ BOOST_AUTO_TEST_CASE( move_conversion_3 )
 {
   std::vector< Sequence::Fasta >
     data = { Sequence::Fasta("seq1","AATAG"),
-	     Sequence::Fasta("seq2","ATTAC"),
-	     Sequence::Fasta("seq3","AATAC") };
+  	     Sequence::Fasta("seq2","ATTAC"),
+  	     Sequence::Fasta("seq3","AATAC") };
   
   Sequence::PolySites ps(data);
   ps.Binary();
@@ -291,8 +290,8 @@ BOOST_AUTO_TEST_CASE( move_conversion_4 )
 {
   std::vector< Sequence::Fasta >
     data = { Sequence::Fasta("seq1","AATAG"),
-	     Sequence::Fasta("seq2","ATTAC"),
-	     Sequence::Fasta("seq3","AATAC") };
+  	     Sequence::Fasta("seq2","ATTAC"),
+  	     Sequence::Fasta("seq3","AATAC") };
   
   Sequence::PolySites ps(data);
   ps.Binary();
