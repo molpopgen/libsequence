@@ -36,6 +36,7 @@ Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style
 
 * War on "mutable". The use of this keyword has been removed from the library to the best extent possible.
 * The API for calculations involving codons has been modernized.  This includes Sequence::Comeron95, Sequence::RedundancyCom95, Sequence::WeightingScheme2 (and derived types), Sequence::WeightingScheme3 (and derived types), Sequence::TwoSubs, Sequence::ThreeSubs, functions in Sequence/PathwayHelper.hpp
+* Private data members for classes have been hidden using the [PIMPL idiom](https://en.wikipedia.org/wiki/Opaque_pointer)
 
 ## libsequence 1.8.8
 
