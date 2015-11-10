@@ -63,7 +63,6 @@ namespace Sequence
       double _L2S;
       double _L2V;
       double _L4;
-      int validcds;
       size_t seqlen;
       int maxhits;
       GeneticCodes genetic_code;
