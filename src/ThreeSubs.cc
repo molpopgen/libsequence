@@ -217,5 +217,44 @@ namespace Sequence
       +  (q4_b[10] + q4_b[13] + q4_b[14]) * w_path6;
   }
 
+  double ThreeSubs::P0 (void) const
+  {
+    return p0;
+  }
+
+  double ThreeSubs::P2S (void) const
+  {
+    return p2S;
+  }
+
+  double ThreeSubs::P2V (void) const
+  {
+    return p2V;
+  }
+
+  double ThreeSubs::P4 (void) const
+  {
+    return p4;
+  }
+
+  double ThreeSubs::Q0 (void) const
+  {
+    return q0;
+  }
+
+  double ThreeSubs::Q2S (void) const
+  {
+    return q2S;
+  }
+
+  double ThreeSubs::Q2V (void) const
+  {
+    return q2V;
+  }
+
+  double ThreeSubs::Q4 (void) const
+  {
+    return q4;
+  }
 }
 

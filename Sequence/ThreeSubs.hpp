@@ -64,77 +64,22 @@ namespace Sequence
                        const std::string &codon1, const std::string &codon2,
                        const Sequence::WeightingScheme3 *weights3);
       ~ThreeSubs(void);
-      double
-      P0 (void) const
-      /*!
-        \return number of transitions at non-degenerate sites in the codon
-      */
-      {
-        return p0;
-      }
-
-      double
-      P2S (void) const
-      /*!
-        \return number of transitions at transitional-degenerate sites in the codon
-      */
-      {
-        return p2S;
-      }
-
-      double
-      P2V (void) const
-      /*!
-        \return number of transitions at transversional-degenerate sites in the codon
-      */
-      {
-        return p2V;
-      }
-
-      double
-      P4 (void) const
-      /*!
-        \return number of transitions at fourfold-degenerate sites in the codon
-      */
-      {
-        return p4;
-      }
-
-      double
-      Q0 (void) const
-      /*!
-        \return number of transversions at non-degenerate sites in the codon
-      */
-      {
-        return q0;
-      }
-
-      double
-      Q2S (void) const
-      /*!
-        \return number of transversions at transitional-degenerate sites in the codon
-      */
-      {
-        return q2S;
-      }
-
-      double
-      Q2V (void) const
-      /*!
-        \return number of transversions at transversional-degenerate sites in the codon
-      */
-      {
-        return q2V;
-      }
-
-      double
-      Q4 (void) const
-      /*!
-        \return number of transversions at fourfold-degenerate sites in the codon
-      */
-      {
-        return q4;
-      }
+      //! \return number of transitions at non-degenerate sites in the codon
+      double P0 (void) const;
+      //! \return number of transitions at transitional-degenerate sites in the codon
+      double P2S (void) const;
+      //! \return number of transitions at transversional-degenerate sites in the codon
+      double P2V (void) const;
+      //! \return number of transitions at fourfold-degenerate sites in the codon
+      double P4 (void) const;
+      //! \return number of transversions at non-degenerate sites in the codon
+      double Q0 (void) const;
+      //! \return number of transversions at transitional-degenerate sites in the codon
+      double Q2S (void) const;
+      //! \return number of transversions at transversional-degenerate sites in the codon
+      double Q2V (void) const;
+      //! \return number of transversions at fourfold-degenerate sites in the codon
+      double Q4 (void) const;
     };
 }
 #endif
