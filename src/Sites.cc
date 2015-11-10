@@ -57,6 +57,7 @@ namespace Sequence
       seqlen(seq1->size()),
       maxhits(max)
     {
+      this->count_sites(seq1,seq1,sitesObj);
     }
   };
   
