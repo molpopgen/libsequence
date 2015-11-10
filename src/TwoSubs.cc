@@ -31,11 +31,27 @@
 
 namespace Sequence
 {
-  TwoSubs:: TwoSubs(void) : p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.),q4(0.),
-			    p0_b1(0.), p2S_b1(0.), p2V_b1(0.), p4_b1(0.), q0_b1(0.), q2S_b1(0.), q2V_b1(0.), q4_b1(0.),
-			    p0_b2(0.), p2S_b2(0.), p2V_b2(0.), p4_b2(0.), q0_b2(0.), q2S_b2(0.), q2V_b2(0.), q4_b2(0.),
-			    p0_b3(0.), p2S_b3(0.), p2V_b3(0.), p4_b3(0.), q0_b3(0.), q2S_b3(0.), q2V_b3(0.), q4_b3(0.),
-			    p0_b4(0.), p2S_b4(0.), p2V_b4(0.), p4_b4(0.), q0_b4(0.), q2S_b4(0.), q2V_b4(0.), q4_b4(0.)
+  struct TwoSubsImpl
+  {
+    double p0, p2S, p2V, p4, q0, q2S, q2V,q4;
+    double p0_b1, p2S_b1, p2V_b1, p4_b1, q0_b1, q2S_b1, q2V_b1, q4_b1;
+    double p0_b2, p2S_b2, p2V_b2, p4_b2, q0_b2, q2S_b2, q2V_b2, q4_b2;
+    double p0_b3, p2S_b3, p2V_b3, p4_b3, q0_b3, q2S_b3, q2V_b3, q4_b3;
+    double p0_b4, p2S_b4, p2V_b4, p4_b4, q0_b4, q2S_b4, q2V_b4, q4_b4;
+    void Calculate (const RedundancyCom95 * sitesObj, const std::string &codon1,
+		    const std::string &int_1, const std::string &int_2,
+		    const std::string &codon2, const double w_path1,
+		    const double w_path2);
+    TwoSubsImpl(void) : p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.),q4(0.),
+			p0_b1(0.), p2S_b1(0.), p2V_b1(0.), p4_b1(0.), q0_b1(0.), q2S_b1(0.), q2V_b1(0.), q4_b1(0.),
+			p0_b2(0.), p2S_b2(0.), p2V_b2(0.), p4_b2(0.), q0_b2(0.), q2S_b2(0.), q2V_b2(0.), q4_b2(0.),
+			p0_b3(0.), p2S_b3(0.), p2V_b3(0.), p4_b3(0.), q0_b3(0.), q2S_b3(0.), q2V_b3(0.), q4_b3(0.),
+			p0_b4(0.), p2S_b4(0.), p2V_b4(0.), p4_b4(0.), q0_b4(0.), q2S_b4(0.), q2V_b4(0.), q4_b4(0.)
+    {
+    }
+  };
+  
+  TwoSubs::TwoSubs() : impl(std::unique_ptr<TwoSubsImpl>(new TwoSubsImpl()))
   {
   }
 
@@ -51,24 +67,24 @@ namespace Sequence
   */
 
   {
-    p0= p2S= p2V= p4= q0= q2S= q2V=q4=0.;
-    p0_b1= p2S_b1= p2V_b1= p4_b1= q0_b1= q2S_b1= q2V_b1= q4_b1=0.;
-    p0_b2= p2S_b2= p2V_b2= p4_b2= q0_b2= q2S_b2= q2V_b2= q4_b2=0.;
-    p0_b3= p2S_b3= p2V_b3= p4_b3= q0_b3= q2S_b3= q2V_b3= q4_b3=0.;
-    p0_b4= p2S_b4= p2V_b4= p4_b4= q0_b4= q2S_b4= q2V_b4= q4_b4=0.;
+    impl->p0= impl->p2S= impl->p2V= impl->p4= impl->q0= impl->q2S= impl->q2V=impl->q4=0.;
+    impl->p0_b1= impl->p2S_b1= impl->p2V_b1= impl->p4_b1= impl->q0_b1= impl->q2S_b1= impl->q2V_b1= impl->q4_b1=0.;
+    impl->p0_b2= impl->p2S_b2= impl->p2V_b2= impl->p4_b2= impl->q0_b2= impl->q2S_b2= impl->q2V_b2= impl->q4_b2=0.;
+    impl->p0_b3= impl->p2S_b3= impl->p2V_b3= impl->p4_b3= impl->q0_b3= impl->q2S_b3= impl->q2V_b3= impl->q4_b3=0.;
+    impl->p0_b4= impl->p2S_b4= impl->p2V_b4= impl->p4_b4= impl->q0_b4= impl->q2S_b4= impl->q2V_b4= impl->q4_b4=0.;
     auto intermediates = Intermediates2(codon1,codon2);
     auto weights = weights2->operator()(codon1,codon2,sitesObj->gencode());
-    Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);
+    impl->Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);
   }
 
   TwoSubs::~TwoSubs (void)
   {}
 
   void
-  TwoSubs::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
-                      const std::string & int_1, const std::string & int_2,
-                      const std::string & codon2, const double w_path1,
-                      const double w_path2)
+  TwoSubsImpl::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
+			  const std::string & int_1, const std::string & int_2,
+			  const std::string & codon2, const double w_path1,
+			  const double w_path2)
   /*!
     count up mutations between the codons
   */
@@ -145,7 +161,7 @@ namespace Sequence
     \return number of transitions at non-degenerate sites in the codon
   */
   {
-    return p0;
+    return impl->p0;
   }
 
   double
@@ -154,7 +170,7 @@ namespace Sequence
     \return number of transitions at transitional-degenerate sites in the codon
   */
   {
-    return p2S;
+    return impl->p2S;
   }
 
   double
@@ -163,7 +179,7 @@ namespace Sequence
     \return number of transitions at transversional-degenerate sites in the codon
   */
   {
-    return p2V;
+    return impl->p2V;
   }
 
   double
@@ -172,7 +188,7 @@ namespace Sequence
     \return number of transitions at fourfold-degenerate sites in the codon
   */
   {
-    return p4;
+    return impl->p4;
   }
 
   double
@@ -181,7 +197,7 @@ namespace Sequence
     \return number of transversions at non-degenerate sites in the codon
   */
   {
-    return q0;
+    return impl->q0;
   }
 
   double
@@ -190,7 +206,7 @@ namespace Sequence
     \return number of transversions at transitional-degenerate sites in the codon
   */
   {
-    return q2S;
+    return impl->q2S;
   }
 
   double
@@ -199,7 +215,7 @@ namespace Sequence
     \return number of transversions at transversional-degenerate sites in the codon
   */
   {
-    return q2V;
+    return impl->q2V;
   }
 
   double
@@ -208,7 +224,7 @@ namespace Sequence
     \return number of transversions at fourfold-degenerate sites in the codon
   */
   {
-    return q4;
+    return impl->q4;
   }
 
 }

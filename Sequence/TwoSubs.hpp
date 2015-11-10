@@ -26,6 +26,7 @@
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/WeightingSchemes.hpp>
 #include <string>
+#include <memory>
 /*! \file TwoSubs.hpp Sequence/TwoSubs.hpp
   @brief used by Sequence::Comeron95, class Sequence::TwoSubs calculates divergence between codons that differ at two sites
 */
@@ -57,18 +58,11 @@
 namespace Sequence
 {
   class RedundancyCom95;
+  struct TwoSubsImpl;
   class TwoSubs
   {
   private:
-    double p0, p2S, p2V, p4, q0, q2S, q2V,q4;
-    double p0_b1, p2S_b1, p2V_b1, p4_b1, q0_b1, q2S_b1, q2V_b1, q4_b1;
-    double p0_b2, p2S_b2, p2V_b2, p4_b2, q0_b2, q2S_b2, q2V_b2, q4_b2;
-    double p0_b3, p2S_b3, p2V_b3, p4_b3, q0_b3, q2S_b3, q2V_b3, q4_b3;
-    double p0_b4, p2S_b4, p2V_b4, p4_b4, q0_b4, q2S_b4, q2V_b4, q4_b4;
-    void Calculate (const RedundancyCom95 * sitesObj, const std::string &codon1,
-		    const std::string &int_1, const std::string &int_2,
-		    const std::string &codon2, const double w_path1,
-		    const double w_path2);
+    std::unique_ptr<TwoSubsImpl> impl;
   public:
     explicit TwoSubs(void);
     void operator() (const RedundancyCom95 * sitesObj,
