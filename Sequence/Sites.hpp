@@ -50,58 +50,36 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <string>
-
+#include <memory>
 namespace Sequence
   {
     class Seq;
     class RedundancyCom95;
-
+    struct SitesImpl;
     class Sites
     {
     private:
-      double _L0;
-      double _L2S;
-      double _L2V;
-      double _L4;
-      size_t seqlen;
-      int maxhits;
-      void siteinc (const RedundancyCom95 * sitesObj,
-                    const std::string & codon1,const  std::string &codon2);
-      void count_sites (const Sequence::Seq * sequence1,
-                        const Sequence::Seq * sequence2,
-                        const RedundancyCom95 * sitesObj);
+      std::unique_ptr<SitesImpl> impl;
     public:
       explicit Sites (const RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
                       const Sequence::Seq * seq2, const int max = 3);
       ~Sites (void);
-      double L0(void) const
       /*!
         \return alignment length in terms of non-degenerate sites
       */
-        {
-          return _L0;
-        }
-      double L2S(void) const
+      double L0(void) const;
       /*!
         \return alignment length in terms of transitional-degenerate sites
       */
-        {
-          return _L2S;
-        }
-      double L2V(void) const
+      double L2S(void) const;
       /*!
         \return alignment length in terms of transversional-degenerate sites
       */
-        {
-          return _L2V;
-        }
-      double L4(void) const
+      double L2V(void) const;
       /*!
         \return alignment length in terms of fourfold-degenerate sites
       */
-        {
-          return _L4;
-        }
+      double L4(void) const;
     };
 }
 #endif
