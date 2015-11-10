@@ -61,8 +61,16 @@ namespace Sequence
     private:
       std::unique_ptr<SitesImpl> impl;
     public:
-      explicit Sites (const RedundancyCom95 * sitesObj, const Sequence::Seq * seq1,
-                      const Sequence::Seq * seq2, const int max = 3);
+      explicit Sites ();
+      explicit Sites(const Sequence::Seq & seq1,
+		     const Sequence::Seq & seq2,
+		     const RedundancyCom95 & sitesObj,
+		     int maxdiffs = 3);
+      Sites(Sites &&) = default;
+      void operator()(const Sequence::Seq & seq1,
+		      const Sequence::Seq & seq2,
+		      const RedundancyCom95 & sitesObj,
+		      int maxdiffs = 3);
       ~Sites (void);
       /*!
         \return alignment length in terms of non-degenerate sites

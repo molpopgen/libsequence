@@ -134,12 +134,12 @@ namespace Sequence
       Comeron95 & operator=(const Comeron95 & ) = delete;
       Com95_t operator()(const Sequence::Seq & seqa,
 			 const Sequence::Seq & seqb,
-			 int max = 3);
+			 int maxdiffs = 3);
       Com95_t operator()(const Sequence::Seq & seqa,
 			 const Sequence::Seq & seqb,
 			 const WeightingScheme2 *weights2,
 			 const WeightingScheme3 *weights3,
-			 int max = 3);
+			 int maxdiffs = 3);
   };
 }
 

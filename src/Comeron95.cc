@@ -169,10 +169,10 @@ namespace Sequence
 				const Sequence::Seq & seqb,
 				const WeightingScheme2 * weights2,
 				const WeightingScheme3 * weights3,
-				int max)
+				int maxdiffs)
   {
-    Sites s(impl->sitesObj.get(),&seqa,&seqb,max);
-    impl->diverge(seqa,seqb,weights2,weights3,max);
+    Sites s(seqa,seqb,(*impl->sitesObj),maxdiffs);
+    impl->diverge(seqa,seqb,weights2,weights3,maxdiffs);
     impl->omega(&s,seqa,seqb);
     return Com95_t({{impl->ka(),
 	    impl->ks(),
@@ -310,7 +310,7 @@ namespace Sequence
                            const Sequence::Seq & seq2,
                            const WeightingScheme2 *weights2,
                            const WeightingScheme3 *weights3,
-			   const int maxhits)
+			   const int maxdiffs)
   /*!
     go through every aligned, ungapped codon,
     and calculate divergence.  maintains a running sum of divergence
@@ -356,7 +356,7 @@ namespace Sequence
                     q4 += Single.Q4 ();
                   }
 
-                if (maxhits > 1)
+                if (maxdiffs > 1)
                   {	//if codons with >1 difference are allowed
                     //iterate over codons, as above
 
@@ -368,7 +368,7 @@ namespace Sequence
 			   codon2);
                         //cout << "CHECK:NDIFF="<<ndiff<<endl;
                         if (ndiff == 2
-                            && maxhits >= 2)
+                            && maxdiffs >= 2)
                           {	//if codons differ at 2 sites,
                             //use rules of class TwoSubstitutions
                             TwoSubs Double;
@@ -382,7 +382,7 @@ namespace Sequence
                             q2V += Double.Q2V ();
                             q4 += Double.Q4 ();
                           }
-                        else if (ndiff == 3 && maxhits > 2)
+                        else if (ndiff == 3 && maxdiffs > 2)
                           {
                             ThreeSubs Triple;
                             Triple(sitesObj.get(),codon1, codon2,weights3);
