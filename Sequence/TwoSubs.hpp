@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -55,34 +55,34 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   @short Deal with codons differing at 2 positions
 */
 namespace Sequence
-  {
+{
   class RedundancyCom95;
   class TwoSubs
-    {
-    private:
-      double p0, p2S, p2V, p4, q0, q2S, q2V,q4;
-      double p0_b1, p2S_b1, p2V_b1, p4_b1, q0_b1, q2S_b1, q2V_b1, q4_b1;
-      double p0_b2, p2S_b2, p2V_b2, p4_b2, q0_b2, q2S_b2, q2V_b2, q4_b2;
-      double p0_b3, p2S_b3, p2V_b3, p4_b3, q0_b3, q2S_b3, q2V_b3, q4_b3;
-      double p0_b4, p2S_b4, p2V_b4, p4_b4, q0_b4, q2S_b4, q2V_b4, q4_b4;
-      void Calculate (const RedundancyCom95 * sitesObj, const std::string &codon1,
-                      const std::string &int_1, const std::string &int_2,
-                      const std::string &codon2, const double w_path1,
-                      const double w_path2);
-    public:
-      explicit TwoSubs(void);
-      void operator() (const RedundancyCom95 * sitesObj,
-                       const std::string &cod1, const std::string &cod2,
-                       const Sequence::WeightingScheme2 *weights2);
-      ~TwoSubs (void);
-      double P0 (void) const;
-      double P2S (void) const;
-      double P2V (void) const;
-      double P4 (void) const;
-      double Q0 (void) const;
-      double Q2S (void) const;
-      double Q2V (void) const;
-      double Q4 (void) const;
-    };
+  {
+  private:
+    double p0, p2S, p2V, p4, q0, q2S, q2V,q4;
+    double p0_b1, p2S_b1, p2V_b1, p4_b1, q0_b1, q2S_b1, q2V_b1, q4_b1;
+    double p0_b2, p2S_b2, p2V_b2, p4_b2, q0_b2, q2S_b2, q2V_b2, q4_b2;
+    double p0_b3, p2S_b3, p2V_b3, p4_b3, q0_b3, q2S_b3, q2V_b3, q4_b3;
+    double p0_b4, p2S_b4, p2V_b4, p4_b4, q0_b4, q2S_b4, q2V_b4, q4_b4;
+    void Calculate (const RedundancyCom95 * sitesObj, const std::string &codon1,
+		    const std::string &int_1, const std::string &int_2,
+		    const std::string &codon2, const double w_path1,
+		    const double w_path2);
+  public:
+    explicit TwoSubs(void);
+    void operator() (const RedundancyCom95 * sitesObj,
+		     const std::string &cod1, const std::string &cod2,
+		     const Sequence::WeightingScheme2 *weights2);
+    ~TwoSubs (void);
+    double P0 (void) const;
+    double P2S (void) const;
+    double P2V (void) const;
+    double P4 (void) const;
+    double Q0 (void) const;
+    double Q2S (void) const;
+    double Q2V (void) const;
+    double Q4 (void) const;
+  };
 }
 #endif
