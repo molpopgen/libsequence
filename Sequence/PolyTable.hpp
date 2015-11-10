@@ -58,10 +58,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
-  struct PolyTableImpl;
   class PolyTable 
   {
   private:
+    struct PolyTableImpl;
     std::shared_ptr<PolyTableImpl> impl;
   public:
     //! Data type to store site positions

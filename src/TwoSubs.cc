@@ -31,7 +31,7 @@
 
 namespace Sequence
 {
-  struct TwoSubsImpl
+  struct TwoSubs::TwoSubsImpl
   {
     double p0, p2S, p2V, p4, q0, q2S, q2V,q4;
     double p0_b1, p2S_b1, p2V_b1, p4_b1, q0_b1, q2S_b1, q2V_b1, q4_b1;
@@ -81,7 +81,7 @@ namespace Sequence
   {}
 
   void
-  TwoSubsImpl::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
+  TwoSubs::TwoSubsImpl::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
 			  const std::string & int_1, const std::string & int_2,
 			  const std::string & codon2, const double w_path1,
 			  const double w_path2)

@@ -49,10 +49,10 @@
 namespace Sequence
 {
   class RedundancyCom95;
-  struct ThreeSubsImpl;
   class ThreeSubs
   {
   private:
+    struct ThreeSubsImpl;
     std::unique_ptr<ThreeSubsImpl> impl;
   public:
     explicit ThreeSubs(void);

@@ -53,10 +53,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
 {
-  class shortestPathImpl;
   class shortestPath 
   {
   private:
+    class shortestPathImpl;
     std::unique_ptr<shortestPathImpl> impl;
   public:
     /*!

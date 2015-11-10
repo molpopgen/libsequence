@@ -38,7 +38,7 @@
 
 namespace Sequence
 {
-  struct SitesImpl
+  struct Sites::SitesImpl
   {
     double _L0;
     double _L2S;
@@ -57,7 +57,7 @@ namespace Sequence
   };
 
   void
-  SitesImpl::count_sites (const Sequence::Seq & sequence1,
+  Sites::SitesImpl::count_sites (const Sequence::Seq & sequence1,
 			  const Sequence::Seq & sequence2,
 			  const RedundancyCom95 & sitesObj,
 			  const int maxdiffs)
@@ -89,7 +89,7 @@ namespace Sequence
   }
 
   void
-  SitesImpl::siteinc (const RedundancyCom95 & sitesObj,
+  Sites::SitesImpl::siteinc (const RedundancyCom95 & sitesObj,
 		      const std::string & codon1,
 		      const std::string & codon2)
   {

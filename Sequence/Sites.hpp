@@ -55,10 +55,10 @@ namespace Sequence
   {
     class Seq;
     class RedundancyCom95;
-    struct SitesImpl;
     class Sites
     {
     private:
+      struct SitesImpl;
       std::unique_ptr<SitesImpl> impl;
     public:
       explicit Sites ();

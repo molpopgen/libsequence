@@ -58,10 +58,10 @@
 namespace Sequence
 {
   class RedundancyCom95;
-  struct TwoSubsImpl;
   class TwoSubs
   {
   private:
+    struct TwoSubsImpl;
     std::unique_ptr<TwoSubsImpl> impl;
   public:
     explicit TwoSubs(void);

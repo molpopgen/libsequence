@@ -36,7 +36,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  struct PolyTableImpl
+  struct PolyTable::PolyTableImpl
   {
     std::vector<double> pos;
     std::vector<std::string> data;
@@ -74,7 +74,7 @@ namespace Sequence
 		 std::vector<std::string> && __data );
   };
 
-  bool PolyTableImpl::assign(PolyTable::const_site_iterator beg,
+  bool PolyTable::PolyTableImpl::assign(PolyTable::const_site_iterator beg,
 			     PolyTable::const_site_iterator end) 
   /*!
     Assignment operation, allowing a range of polymorphic sites
@@ -121,8 +121,8 @@ namespace Sequence
     return true;
   }
 
-  bool PolyTableImpl::assign( std::vector<double> && __positions,
-			      std::vector<std::string> && __data )
+  bool PolyTable::PolyTableImpl::assign( std::vector<double> && __positions,
+					 std::vector<std::string> && __data )
   {
     non_const_access = true;
     this->clear();

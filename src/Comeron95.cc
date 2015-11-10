@@ -49,7 +49,7 @@
 
 namespace Sequence
 {
-  struct Com95impl
+  struct Comeron95::Com95impl
   {
     double Qs, Bs, Qa, Ba, A2S, A4, As, A2V, A0, Aa,
       q0, q2S, q2V, q4, p0, p2S, p2V, p4,Ka,Ks;
@@ -196,9 +196,9 @@ namespace Sequence
 	    }});
   }
   
-  void Com95impl::omega (const Sites * s,
-			 const Sequence::Seq & seqobj1,
-                         const Sequence::Seq & seqobj2)
+  void Comeron95::Com95impl::omega (const Sites * s,
+				    const Sequence::Seq & seqobj1,
+				    const Sequence::Seq & seqobj2)
   /*!
     calculate values needed to obtain Ka and Ks.
     formulae are from Comeron '95 and use the identical notation
@@ -306,11 +306,11 @@ namespace Sequence
       Ka = std::numeric_limits<double>::quiet_NaN();
   }
 
-  void Com95impl::diverge (const Sequence::Seq & seq1,
-                           const Sequence::Seq & seq2,
-                           const WeightingScheme2 *weights2,
-                           const WeightingScheme3 *weights3,
-			   const int maxdiffs)
+  void Comeron95::Com95impl::diverge (const Sequence::Seq & seq1,
+				      const Sequence::Seq & seq2,
+				      const WeightingScheme2 *weights2,
+				      const WeightingScheme3 *weights3,
+				      const int maxdiffs)
   /*!
     go through every aligned, ungapped codon,
     and calculate divergence.  maintains a running sum of divergence
@@ -419,28 +419,28 @@ namespace Sequence
       q4 = 0.0;
   }
 
-  double Com95impl::L0 (const Sites * sites) const
+  double Comeron95::Com95impl::L0 (const Sites * sites) const
   /*!
     \return the number of nondegenerate sites compared
   */
   {
     return sites->L0();
   }
-  double Com95impl::L2S (const Sites * sites) const
+  double Comeron95::Com95impl::L2S (const Sites * sites) const
   /*!
     \return the number of twofold, transitional-degenerate sites compared
   */
   {
     return sites->L2S();
   }
-  double Com95impl::L2V (const Sites * sites) const
+  double Comeron95::Com95impl::L2V (const Sites * sites) const
   /*!
     \return the number of twofold, transversional-degenerate sites compared
   */
   {
     return sites->L2V();
   }
-  double Com95impl::L4 (const Sites * sites) const
+  double Comeron95::Com95impl::L4 (const Sites * sites) const
   /*!
     \return the number of 4-fold degenerate sites compared
   */
@@ -448,7 +448,7 @@ namespace Sequence
     return sites->L4();
   }
 
-  double Com95impl::as (void) const
+  double Comeron95::Com95impl::as (void) const
   /*!
     \return corrected synonymous divergence at transitional-degenerate sites
   */
@@ -457,7 +457,7 @@ namespace Sequence
       return std::numeric_limits<double>::quiet_NaN();
     return As;
   }
-  double Com95impl::aa (void) const
+  double Comeron95::Com95impl::aa (void) const
   /*!
     \return corrected nonsynonymous divergence at tranversioal- and non- degenerate sites
   */
@@ -466,7 +466,7 @@ namespace Sequence
       return std::numeric_limits<double>::quiet_NaN();
     return Aa;
   }
-  double Com95impl::bs (void) const
+  double Comeron95::Com95impl::bs (void) const
   /*!
     \return corrected synonymous divergence at transversional- and fourfold-  degenerate sites
   */
@@ -475,7 +475,7 @@ namespace Sequence
       return std::numeric_limits<double>::quiet_NaN();
     return Bs;
   }
-  double Com95impl::ba (void) const
+  double Comeron95::Com95impl::ba (void) const
   /*!
     \return corrected nonsynonymous divergence at transitional- and non- degenerate sites
   */
@@ -485,7 +485,7 @@ namespace Sequence
     return Ba;
   }
 
-  double Com95impl::ratio(void) const
+  double Comeron95::Com95impl::ratio(void) const
   /*!
     \return \f$K_a/K_s\f$
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ka/Ks cannot be calculated
@@ -496,7 +496,7 @@ namespace Sequence
     return Ka / Ks;
   }
   
-  double Com95impl::ka (void) const
+  double Comeron95::Com95impl::ka (void) const
   /*!
     \return the nonsynonymous distance
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ka cannot be calculated
@@ -504,7 +504,7 @@ namespace Sequence
   {
     return Ka;
   }
-  double Com95impl::ks (void) const
+  double Comeron95::Com95impl::ks (void) const
   /*!
     \return the synonymous distance
     \note std::numeric_limits<double>::quiet_NaN() is returned if Ks cannot be calculated
@@ -513,56 +513,56 @@ namespace Sequence
     return Ks;
   }
 
-  double Com95impl::P0 (void) const
+  double Comeron95::Com95impl::P0 (void) const
   /*!
     \return number of transitions at nondegenerate sites
   */
   {
     return p0;
   }
-  double Com95impl::P2S (void) const
+  double Comeron95::Com95impl::P2S (void) const
   /*!
     \return number of transitions at 2-fold, transitional degenerate sites
   */
   {
     return p2S;
   }
-  double Com95impl::P2V (void) const
+  double Comeron95::Com95impl::P2V (void) const
   /*!
     \return number of transitions at  2-fold, transversional degenerate sites
   */
   {
     return p2V;
   }
-  double Com95impl::P4 (void) const
+  double Comeron95::Com95impl::P4 (void) const
   /*!
     \return number of transitions at 4-fold degenerate sites
   */
   {
     return p4;
   }
-  double Com95impl::Q0 (void) const
+  double Comeron95::Com95impl::Q0 (void) const
   /*!
     \return number of transversion at nondegenerate sites
   */
   {
     return q0;
   }
-  double Com95impl::Q2S (void) const
+  double Comeron95::Com95impl::Q2S (void) const
   /*!
     \return number of transversion at 2-fold, transitional degenerate sites
   */
   {
     return q2S;
   }
-  double Com95impl::Q2V (void) const
+  double Comeron95::Com95impl::Q2V (void) const
   /*!
     \return number of transversion at 2-fold, transversional sites
   */
   {
     return q2V;
   }
-  double Com95impl::Q4 (void) const
+  double Comeron95::Com95impl::Q4 (void) const
   /*!
     \return number of transversion at 4-fold degenerate sites
   */

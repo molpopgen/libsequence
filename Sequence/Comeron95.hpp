@@ -120,13 +120,11 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
   {
-    struct Com95impl;
-    
     using Com95_t = std::array<double,19>;
-    
     class Comeron95 
     {
     private:
+      struct Com95impl;
       std::unique_ptr<Com95impl> impl;
     public:
       explicit Comeron95( GeneticCodes code = GeneticCodes::UNIVERSAL );

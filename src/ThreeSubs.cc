@@ -33,7 +33,7 @@ using std::string;
 //handle cases where codons are fully substituted
 namespace Sequence
 {
-  struct ThreeSubsImpl
+  struct ThreeSubs::ThreeSubsImpl
   {
     double p0, p2S, p2V, p4, q0, q2S, q2V, q4;
     void Calculate (const RedundancyCom95 * sitesObj,
@@ -78,7 +78,7 @@ namespace Sequence
   }
 
   void
-  ThreeSubsImpl::Calculate (const RedundancyCom95 * sitesObj,
+  ThreeSubs::ThreeSubsImpl::Calculate (const RedundancyCom95 * sitesObj,
                         const Inter3_t & intermediates,
                         const std::string & codon1, const std::string & codon2,
                         double w_path1, double w_path2, double w_path3,
