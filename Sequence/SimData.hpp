@@ -71,7 +71,6 @@ namespace Sequence
     public:
       SimData(void);
       SimData( SimData && );
-      SimData( PolyTable && );
       //SimData( SimData & );// = default;
       //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
       //SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
@@ -82,7 +81,7 @@ namespace Sequence
       
       ~ SimData (void){}
       
-      SimData & operator=( PolyTable &&);
+      SimData & operator=( SimData &&);
 
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;
