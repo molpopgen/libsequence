@@ -68,4 +68,12 @@ namespace Sequence
     auto remover = [](const stateCounter & sc) { return !sc.n; };
     return removeColumns(t,remover,skipAnc,anc,gapchar);
   }
+
+  template<typename T> T removeMultiHits(const T & t, const bool skipAnc,
+					 const unsigned anc,
+					 const char gapchar)
+  {
+    auto remover = [](const stateCounter & sc) { return sc.nStates()>2; };
+    return removeColumns(t,remover,skipAnc,anc,gapchar);
+  }
 }

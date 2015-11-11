@@ -63,6 +63,8 @@ namespace Sequence
 					 const char gapchar = '-');
   template<typename T> T removeMissing(const T & t, const bool skipAnc = false, const unsigned anc = 0,
 				       const char gapchar = '-');
+  template<typename T> T removeMultiHits(const T & t, const bool skipAnc = false, const unsigned anc = 0,
+					 const char gapchar = '-');
   
   /*
     void fillIn(PolyTable * t,
