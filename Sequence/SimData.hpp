@@ -70,10 +70,7 @@ namespace Sequence
     {
     public:
       SimData(void);
-      SimData( const SimData & );
-      SimData( SimData & ) = default;
-      SimData( SimData && ) = default;
-      SimData( PolyTable & );
+      SimData( SimData && );
       SimData( PolyTable && );
       //SimData( SimData & );// = default;
       //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
@@ -85,9 +82,6 @@ namespace Sequence
       
       ~ SimData (void){}
       
-      SimData & operator=(const SimData &) = default;
-      SimData & operator=( SimData &&) = default;
-      SimData & operator=(const PolyTable &);
       SimData & operator=( PolyTable &&);
 
       virtual std::istream & read (std::istream & s) ;

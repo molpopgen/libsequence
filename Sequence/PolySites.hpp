@@ -54,14 +54,9 @@ namespace Sequence
       PolySites ( std::vector < double >  List, std::vector < std::string > stringList);
       PolySites (PolyTable::const_site_iterator beg,
 		 PolyTable::const_site_iterator end);
-      PolySites( PolySites & ) = default;
-      PolySites( const PolySites & );
-      PolySites( PolySites && ) = default;
-      PolySites( PolyTable & );
       PolySites( PolyTable && );
       PolySites & operator=( PolySites & ) = default;
       PolySites & operator=( PolySites && ) = default;
-      PolySites & operator=( PolyTable & ); 
       PolySites & operator=( PolyTable && );
       ~PolySites(void){};
       std::istream & read(std::istream &s) ;

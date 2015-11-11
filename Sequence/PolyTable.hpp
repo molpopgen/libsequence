@@ -62,7 +62,7 @@ namespace Sequence
   {
   private:
     struct PolyTableImpl;
-    std::shared_ptr<PolyTableImpl> impl;
+    std::unique_ptr<PolyTableImpl> impl;
   public:
     //! Data type to store site positions
     using pos_container_t = std::vector<double>;
@@ -127,9 +127,7 @@ namespace Sequence
 		       PolyTable::const_site_iterator end);
     explicit PolyTable( std::vector<double> __positions,
 			std::vector<std::string> __data );
-    PolyTable(const PolyTable &) = default;
-    PolyTable(PolyTable &) = default;
-    PolyTable(PolyTable &&) = default;
+    PolyTable(PolyTable &&);
     virtual ~ PolyTable (void);
 
     
@@ -153,10 +151,7 @@ namespace Sequence
     //operators and implicit typecasts
     virtual bool operator==(const PolyTable &rhs) const;
     virtual bool operator!=(const PolyTable &rhs) const;
-    PolyTable & operator=(PolyTable &&) = default;
-    PolyTable & operator=(const PolyTable &) = default;
-
-
+    PolyTable & operator=(PolyTable &&);
     /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()

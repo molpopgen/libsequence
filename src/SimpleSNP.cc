@@ -35,9 +35,6 @@ using std::string;
 
 namespace Sequence
 {
-  SimpleSNP::SimpleSNP( const SimpleSNP & ss ) : PolyTable(ss)
-  {
-  }
 
   std::istream & SimpleSNP::read (std::istream & s)  
 

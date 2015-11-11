@@ -42,15 +42,11 @@ namespace Sequence
   SimData::SimData() : PolyTable() 
   {
   }
+
+  SimData::SimData( SimData && pt) : PolyTable(std::move(pt))
+  {
+  }
   
-  SimData::SimData( const SimData & sd) : PolyTable(sd)
-  {
-  }
-
-  SimData::SimData( PolyTable & pt) : PolyTable(pt)
-  {
-  }
-
   SimData::SimData( PolyTable && pt) : PolyTable(std::move(pt))
   {
   }
@@ -78,12 +74,6 @@ namespace Sequence
   SimData::SimData(const SimData::const_site_iterator & beg, 
 		   const SimData::const_site_iterator & end) : PolyTable(beg,end)
   {
-  }
-
-  SimData & SimData::operator=( const PolyTable & pt)
-  {
-    PolyTable::operator=(pt);
-    return *this;
   }
 
   SimData & SimData::operator=( PolyTable && pt)

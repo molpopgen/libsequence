@@ -142,22 +142,8 @@ namespace Sequence
   {
   }
 
-  PolySites::PolySites( const PolySites & ps ) : PolyTable(ps)
-  {
-  }
-
-  PolySites::PolySites( PolyTable & pt ) : PolyTable(pt)
-  {
-  }
-
   PolySites::PolySites( PolyTable && pt ) : PolyTable(std::move(pt))
   {
-  }
-
-  PolySites & PolySites::operator=(PolyTable & pt)
-  {
-    PolyTable::operator=(pt);
-    return *this;
   }
 
   PolySites & PolySites::operator=(PolyTable && pt)

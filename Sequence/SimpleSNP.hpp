@@ -71,8 +71,6 @@ namespace Sequence
       bool Diploid,isoFemale;
       bool haveOutgroup;
     public:
-      SimpleSNP( const SimpleSNP & );
-      SimpleSNP( SimpleSNP & ) = default;
       SimpleSNP( SimpleSNP && ) = default;
       SimpleSNP (const bool diploid =0,const bool isofemale=0)  : PolyTable(),
           Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)
@@ -97,7 +95,6 @@ namespace Sequence
       {}
       ~ SimpleSNP (void) {}
      
-      SimpleSNP & operator=(SimpleSNP &) = default;
       SimpleSNP & operator=(SimpleSNP &&) = default;
 
       bool outgroup(void) const;

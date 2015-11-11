@@ -6,6 +6,8 @@ namespace Sequence
 {
   template<typename T> T removeGaps( const T & t, const bool skipAnc, const unsigned anc,const char gapchar)
   {
+    static_assert( std::is_base_of<PolyTable,T>::value,
+		   "T must be derived from Sequence::PolyTable" );
     std::vector<typename T::column_t> columns;
     std::for_each( t.sbegin(),t.send(),
 		   [&columns,skipAnc,anc,gapchar](const typename T::column_t & __c) {
@@ -26,6 +28,8 @@ namespace Sequence
 				       const unsigned anc,
 				       const char gapchar)
   {
+    static_assert( std::is_base_of<PolyTable,T>::value,
+		   "T must be derived from Sequence::PolyTable" );
     std::vector<typename T::column_t> columns;
     if(!skipAnc)
       {
