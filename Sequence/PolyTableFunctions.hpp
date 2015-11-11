@@ -49,11 +49,11 @@ namespace Sequence
 		       const char & identical = '.');
 
   void RemoveGaps(PolyTable *t,
-		  const char & gapchar = '-') ;
+		  const char & gapchar = '-');
 
   void RemoveInvariantColumns(PolyTable *t,
 			      const bool & skipOutgroup = false,
-			      const unsigned & outgroup = 0) ;
+			      const unsigned & outgroup = 0);
 
   bool PolyTableValid(const PolyTable * t);
 }
