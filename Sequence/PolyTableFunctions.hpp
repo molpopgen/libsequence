@@ -55,6 +55,12 @@ namespace Sequence
   */
   bool polyTableValid(const PolyTable * t);
 
+  template<typename T> T copyPolyTable(const T & t)
+  {
+    return T(std::vector<double>(t.pbegin(),t.pend()),
+	     std::vector<std::string>(t.begin(),t.end()));
+  }
+  
   template<typename T,typename F> T removeColumns( const T & t, const F & f, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' );
   template<typename T> T removeGaps( const T & t, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' );
   template<typename T> T removeInvariantPos(const T & t, const bool skipAnc = false, const unsigned anc = 0,
@@ -65,7 +71,7 @@ namespace Sequence
 				       const char gapchar = '-');
   template<typename T> T removeMultiHits(const T & t, const bool skipAnc = false, const unsigned anc = 0,
 					 const char gapchar = '-');
-  
+  template<typename T> T polyTableToBinary(const T & t, const unsigned ref = 0, const char gapchar = '-');
   /*
     void fillIn(PolyTable * t,
     const unsigned & refseq = 0,
