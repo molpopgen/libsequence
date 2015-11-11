@@ -31,89 +31,92 @@ BOOST_AUTO_TEST_CASE( exception1 )
 				   "NAAC"}; //Sequence not same length as pos.size()
   BOOST_REQUIRE_THROW(Sequence::PolySites ps(std::move(pos),std::move(data)), Sequence::SeqException );
 }
-  
-BOOST_AUTO_TEST_CASE( badness1 )
-{
-  std::vector<double> pos = {1,2,3,4,5};
-  std::vector<std::string> data = {"AAAAA",
-				   "AAGAA",
-				   "CTGAA",
-				   "NAACT"};
 
-  Sequence::PolySites ps(std::move(pos),std::move(data)),
-    ps2(ps);
+// This test became moot in 1.8.9
+// BOOST_AUTO_TEST_CASE( badness1 )
+// {
+//   std::vector<double> pos = {1,2,3,4,5};
+//   std::vector<std::string> data = {"AAAAA",
+// 				   "AAGAA",
+// 				   "CTGAA",
+// 				   "NAACT"};
 
-  //force the calculation of const_site_iterator's underlying data
-  std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
+//   Sequence::PolySites ps(std::move(pos),std::move(data)),
+//     ps2(Sequence::copyPolyTable(ps));
 
-  //Now, remove that haplo with missing data
-  //by skipping PolyTable's iterator functions (this is BAD)
-  ps.second.erase( std::remove_if(ps.second.begin(),
-				  ps.second.end(),
-				  [](const std::string & __s) {
-				    return __s.find('N') != std::string::npos;
-				  }),
-		   ps.second.end() );
+//   //force the calculation of const_site_iterator's underlying data
+//   std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
 
-  /*
-    Crap!
-    The underlying data did not get reset...
-  */
-  BOOST_CHECK_EQUAL( ps.sbegin()->second,"AACN" );
+//   //Now, remove that haplo with missing data
+//   //by skipping PolyTable's iterator functions (this is BAD)
+//   ps.second.erase( std::remove_if(ps.second.begin(),
+// 				  ps.second.end(),
+// 				  [](const std::string & __s) {
+// 				    return __s.find('N') != std::string::npos;
+// 				  }),
+// 		   ps.second.end() );
 
-  //This will reset the data, as it calls PolyTable::begin in a non-const context
-  auto i = ps.begin();
-  BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
-}
+//   /*
+//     Crap!
+//     The underlying data did not get reset...
+//   */
+//   BOOST_CHECK_EQUAL( ps.sbegin()->second,"AACN" );
 
+//   //This will reset the data, as it calls PolyTable::begin in a non-const context
+//   auto i = ps.begin();
+//   BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
+// }
+
+//Moot in 1.8.9
 //Do the above, but correctly this time
-BOOST_AUTO_TEST_CASE( badness1_fix1 )
-{
-  std::vector<double> pos = {1,2,3,4,5};
-  std::vector<std::string> data = {"AAAAA",
-				   "AAGAA",
-				   "CTGAA",
-				   "NAACT"};
+// BOOST_AUTO_TEST_CASE( badness1_fix1 )
+// {
+//   std::vector<double> pos = {1,2,3,4,5};
+//   std::vector<std::string> data = {"AAAAA",
+// 				   "AAGAA",
+// 				   "CTGAA",
+// 				   "NAACT"};
 
-  Sequence::PolySites ps(std::move(pos),std::move(data)),
-    ps2(ps);
+//   Sequence::PolySites ps(std::move(pos),std::move(data)),
+//     ps2(Sequence::copyPolyTable(ps));
 
-  //force the calculation of const_site_iterator's underlying data
-  std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
+//   //force the calculation of const_site_iterator's underlying data
+//   std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
 
-  //call PolyTable::begin and end
-  ps.second.erase( std::remove_if(ps.begin(),
-				  ps.end(),
-				  [](const std::string & __s) {
-				    return __s.find('N') != std::string::npos;
-				  }),
-		   ps.end() );
-  BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
-}
+//   //call PolyTable::begin and end
+//   ps.second.erase( std::remove_if(ps.begin(),
+// 				  ps.end(),
+// 				  [](const std::string & __s) {
+// 				    return __s.find('N') != std::string::npos;
+// 				  }),
+// 		   ps.end() );
+//   BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
+// }
 
-BOOST_AUTO_TEST_CASE( badness1_fix2 )
-{
-  std::vector<double> pos = {1,2,3,4,5};
-  std::vector<std::string> data = {"AAAAA",
-				   "AAGAA",
-				   "CTGAA",
-				   "NAACT"};
+//Moot in 1.8.9
+// BOOST_AUTO_TEST_CASE( badness1_fix2 )
+// {
+//   std::vector<double> pos = {1,2,3,4,5};
+//   std::vector<std::string> data = {"AAAAA",
+// 				   "AAGAA",
+// 				   "CTGAA",
+// 				   "NAACT"};
 
-  Sequence::PolySites ps(std::move(pos),std::move(data)),
-    ps2(ps);
+//   Sequence::PolySites ps(std::move(pos),std::move(data)),
+//     ps2(Sequence::copyPolyTable(ps));
 
-  //force the calculation of const_site_iterator's underlying data
-  std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
+//   //force the calculation of const_site_iterator's underlying data
+//   std::for_each( ps.sbegin(),ps.send(),[]( const Sequence::PolySites::const_site_iterator::value_type & __p ) {} );
 
-  //uh-oh, remove_if is not using PolyTable's functions!
-  ps.second.erase( std::remove_if(ps.second.begin(),
-				  ps.second.end(),
-				  [](const std::string & __s) {
-				    return __s.find('N') != std::string::npos;
-				  }),
-		   ps.end() ); //but, we call PolyTable::end here, and the context is non-const, so the next call to sbegin will be fine.
-  BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
-}
+//   //uh-oh, remove_if is not using PolyTable's functions!
+//   ps.second.erase( std::remove_if(ps.second.begin(),
+// 				  ps.second.end(),
+// 				  [](const std::string & __s) {
+// 				    return __s.find('N') != std::string::npos;
+// 				  }),
+// 		   ps.end() ); //but, we call PolyTable::end here, and the context is non-const, so the next call to sbegin will be fine.
+//   BOOST_CHECK_EQUAL( ps.sbegin()->second,"AAC" );
+// }
 
 BOOST_AUTO_TEST_CASE( badness2 )
 {
@@ -135,5 +138,5 @@ BOOST_AUTO_TEST_CASE( badness2 )
   //Now, your internal data fail the check that all elements
   //are the same length, which may have unintended consequences
   //for later actions.
-  BOOST_CHECK_EQUAL(Sequence::Alignment::IsAlignment(ps.second), false);
+  BOOST_CHECK_EQUAL(Sequence::Alignment::IsAlignment(std::vector<std::string>(ps.begin(),ps.end())), false);
 }
