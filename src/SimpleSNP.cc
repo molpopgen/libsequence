@@ -222,7 +222,6 @@ namespace Sequence
 	throw (Sequence::badFormat("SimpleSNP::read() -- number of sequences does not match input value"));
       }     
     this->assign(std::move(_positions),std::move(_data));
-    RemoveInvariantColumns(this);
     return s;
   }
 
