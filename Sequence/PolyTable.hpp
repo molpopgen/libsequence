@@ -101,7 +101,8 @@ namespace Sequence
       in the PolyTable (i.e. (*this)[0]), etc.
     */
     using const_site_iterator = Sequence::polySiteVector::const_iterator;
-
+    using row_t = geno_container_t::value_type;
+    using column_t = const_site_iterator::value_type;
     //functions to return iterators
     data_iterator begin();
     data_iterator end();
