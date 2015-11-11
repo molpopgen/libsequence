@@ -92,23 +92,7 @@ namespace Sequence
 
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;
-
-      void Binary (const bool & haveOutgroup = false,
-		   const unsigned & outgroup = 0,
-		   const bool & strictInfSites = true)
-      {
-        //no need to do anything...
-        return;
-      }
       virtual int fromfile( FILE * openedfile );
-      inline unsigned segsites (void) const
-      /*!
-        Returns the number of segregating sites in the 
-        data block.
-      */
-        {
-          return (this->numsites());
-        }
     };
 
 }
