@@ -4,12 +4,6 @@
 #include <Sequence/stateCounter.hpp>
 namespace Sequence
 {
-  template<typename T> T removeGaps( const T & t, const bool skipAnc, const unsigned anc,const char gapchar)
-  {
-    auto remover = [](const stateCounter & sc) { return !sc.gap; };
-    return removeColumns(t,remover,skipAnc,anc,gapchar);
-  }
-
   template<typename T,
 	   typename F> T removeColumns(const T & t,
 				       const F & f,
@@ -36,6 +30,12 @@ namespace Sequence
 	  });
       }
     return T(columns.cbegin(),columns.cend());
+  }
+
+  template<typename T> T removeGaps( const T & t, const bool skipAnc, const unsigned anc,const char gapchar)
+  {
+    auto remover = [](const stateCounter & sc) { return !sc.gap; };
+    return removeColumns(t,remover,skipAnc,anc,gapchar);
   }
   
   template<typename T> T removeInvariantPos(const T & t, const bool skipAnc,
