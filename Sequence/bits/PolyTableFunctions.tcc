@@ -2,24 +2,12 @@
 #include <type_traits>
 #include <algorithm>
 #include <Sequence/stateCounter.hpp>
-
 namespace Sequence
 {
   template<typename T> T removeGaps( const T & t, const bool skipAnc, const unsigned anc,const char gapchar)
   {
-    static_assert( std::is_base_of<PolyTable,T>::value,
-		   "T must be derived from Sequence::PolyTable" );
-    std::vector<typename T::column_t> columns;
-    std::for_each( t.sbegin(),t.send(),
-		   [&columns,skipAnc,anc,gapchar](const typename T::column_t & __c) {
-		     auto p = __c.second.find(gapchar);
-		     if (p == std::string::npos || (skipAnc && unsigned(p) == anc))
-		       {
-			 columns.push_back(__c);
-		       }
-		   }
-		   );
-    return T(columns.cbegin(),columns.cend());
+    auto remover = [](const stateCounter & sc) { return !sc.gap; };
+    return removeColumns(t,remover,skipAnc,anc,gapchar);
   }
 
   template<typename T,
