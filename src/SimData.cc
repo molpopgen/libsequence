@@ -72,7 +72,7 @@ namespace Sequence
   {
   }
 
-  SimData & SimData::operator=( SimData && pt)
+  SimData & SimData::operator=(SimData && pt)
   {
     PolyTable::operator=(std::move(pt));
     return *this;

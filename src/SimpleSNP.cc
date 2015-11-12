@@ -36,6 +36,16 @@ using std::string;
 namespace Sequence
 {
 
+  SimpleSNP::SimpleSNP(SimpleSNP && s) : PolyTable(std::move(s))
+  {
+  }
+
+  SimpleSNP & SimpleSNP::operator=(SimpleSNP && pt)
+  {
+    PolyTable::operator=(std::move(pt));
+    return *this;
+  }
+  
   std::istream & SimpleSNP::read (std::istream & s)  
 
     /*!

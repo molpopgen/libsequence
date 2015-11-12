@@ -141,13 +141,16 @@ namespace Sequence
   {
   }
 
-  PolyTable::PolyTable(PolyTable && rhs) : impl(std::move(rhs.impl))
+  PolyTable::PolyTable(PolyTable && rhs) : impl(std::unique_ptr<PolyTableImpl>(new PolyTableImpl()))
   {
+    std::swap(this->impl,rhs.impl);
   }
 
   PolyTable & PolyTable::operator=(PolyTable && rhs)
   {
-    this->impl=std::move(rhs.impl);
+    auto x = std::unique_ptr<PolyTableImpl>(new PolyTableImpl());
+    std::swap(this->impl,rhs.impl);
+    std::swap(x,rhs.impl);
     return *this;
   }
   
