@@ -190,8 +190,8 @@ namespace Sequence
       Assign data to object
       \return true if successful
     */
-    bool assign( std::vector<double> && __positions,
-		 std::vector<std::string> && __data );
+    bool assign( std::vector<double> __positions,
+		 std::vector<std::string> __data );
 
     //! \return Sample size
     size_type size (void) const;

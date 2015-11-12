@@ -180,11 +180,11 @@ namespace Sequence
     return !(*this==rhs);
   }
 
-  bool PolyTable::assign( std::vector<double> && __positions,
-			      std::vector<std::string> && __data )
+  bool PolyTable::assign( std::vector<double>  __positions,
+			  std::vector<std::string> __data )
   {
-    return impl->assign(std::forward<std::vector<double> >(__positions),
-		 std::forward<std::vector<std::string> >(__data));
+    return impl->assign(std::move(__positions),
+			std::move(__data));
   }
 
   bool PolyTable::assign(PolyTable::const_site_iterator beg,
