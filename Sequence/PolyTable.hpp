@@ -104,21 +104,37 @@ namespace Sequence
     using row_t = geno_container_t::value_type;
     using column_t = const_site_iterator::value_type;
     //functions to return iterators
+    //! \return an iterator pointing to the first "haplotype"
     data_iterator begin();
+    //! \return an iterator pointing the end of the "haplotypes"
     data_iterator end();
+    //! \return a const iterator pointing to the first "haplotype"
     const_data_iterator begin() const;
+    //! \return a const iterator pointing the end of the "haplotypes"
     const_data_iterator end() const;
+    //! \return a const iterator pointing to the first "haplotype"
     const_data_iterator cbegin() const;
+    //! \return a const iterator pointing the end of the "haplotypes"
     const_data_iterator cend() const;
+    //! \return iterator to first position
     pos_iterator pbegin();
+    //! \return iterator to end of positions
     pos_iterator pend();
+    //! \return const iterator to first position
     const_pos_iterator pbegin() const;
+    //! \return const iterator to end of positions
     const_pos_iterator pend() const;
+    //! \return const iterator to first position
     const_pos_iterator pcbegin() const;
+    //! \return const iterator to end of positions
     const_pos_iterator pcend() const;
+    //! \return const iterator to first column (position, variants)
     const_site_iterator sbegin() const;
+    //! \return const iterator to end of columns
     const_site_iterator send() const;
+    //! \return const iterator to first column (position, variants)
     const_site_iterator scbegin() const;
+    //! \return const iterator to first column (position, variants)
     const_site_iterator scend() const;
 
     //constructor types
@@ -130,48 +146,50 @@ namespace Sequence
     PolyTable(PolyTable &&);
     virtual ~ PolyTable (void);
 
-    
+    //! Convenience function to return site positions
     std::vector < double > GetPositions (void) const;
+    //! Conventience function to return data.  Each string is a "haplotype".
     std::vector < std::string > GetData (void) const;
-
-    //operations on the data (non-const)
-    // virtual void ApplyFreqFilter(const unsigned & mincount,
-    // 				 const bool & haveOutgroup=false,
-    // 				 const unsigned & outgroup = 0);
-    // virtual void RemoveMultiHits(const bool & skipOutgroup=false,
-    // 				 const unsigned & outgroup=0);
-    // virtual void RemoveMissing(const bool & skipOutgroup=false,
-    // 			       const unsigned & outgroup=0);
-    // virtual void RemoveAmbiguous(const bool & skipOutgroup=false,
-    // 				 const unsigned & outgroup=0);
-    // virtual void Binary (const bool & haveOutgroup = false,
-    // 			 const unsigned & outgroup = 0,
-    // 			 const bool & strictInfSites = true);
-
+    
     //operators and implicit typecasts
+
+    //! Comparison operator.  Case-sensitive
     virtual bool operator==(const PolyTable &rhs) const;
+    //! Not-equal operator. Case-sensitive
     virtual bool operator!=(const PolyTable &rhs) const;
+    //! Move assignment
     PolyTable & operator=(PolyTable &&);
     /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
     */
     const_reference operator[] (const size_type & i) const;
-
     /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
     */
     reference operator[] (const size_type & i);
     
-    /*!
-      \return true if object contains no data, false otherwise
-    */
+    //! \return true if object contains no data, false otherwise
     bool empty() const;
-    
+
+    /*!
+      Assignment operation, allowing a range of polymorphic sites
+      to be assigned to a polymorphism table.  This exists mainly
+      for two purposes. One is the ability to assign tables from 
+      "slices" of other tables.  Second is to facilitate the 
+      writing of "sliding window" routines.
+      \return true if the assignment was successful, false otherwise.
+      The only case where false is returned is if the number of individuals
+      at each site is not the constant from beg to end.
+    */
     bool assign(PolyTable::const_site_iterator beg,
 		PolyTable::const_site_iterator end);
 
+    /*!
+      Assign data to object
+      \return true if successful
+    */
     bool assign( std::vector<double> && __positions,
 		 std::vector<std::string> && __data );
 
