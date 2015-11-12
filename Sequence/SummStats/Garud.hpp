@@ -12,7 +12,7 @@ namespace Sequence
     \ingroup popgenanalysis
   */
   {
-    const double H1,H12,H2H1;
+    double H1,H12,H2H1;
     GarudStats();
     GarudStats(const double, const double, const double);
   };
