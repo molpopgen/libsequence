@@ -186,6 +186,8 @@ namespace Sequence
     bool assign(PolyTable::const_site_iterator beg,
 		PolyTable::const_site_iterator end);
 
+    //Swap data with another PolyTable
+    void swap( PolyTable & );
     /*!
       Assign data to object
       \return true if successful

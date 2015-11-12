@@ -66,6 +66,7 @@ namespace Sequence
 	});
     }
 
+    
     bool empty() const { return pos.empty() && data.empty(); }
     void clear() { pos.clear();data.clear();pv.clear(); }
     bool assign(PolyTable::const_site_iterator beg,
@@ -191,6 +192,11 @@ namespace Sequence
 			     PolyTable::const_site_iterator end)
   {
     return impl->assign(beg,end);
+  }
+
+  void PolyTable::swap( PolyTable & pt)
+  {
+    std::swap(this->impl,pt.impl);
   }
   
   PolyTable::data_iterator PolyTable::begin()

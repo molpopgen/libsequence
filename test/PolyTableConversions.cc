@@ -244,6 +244,20 @@ BOOST_AUTO_TEST_CASE( move_construction_5 )
   BOOST_CHECK(!d2.empty());
 }
 
+BOOST_AUTO_TEST_CASE(test_swap)
+{
+  std::vector< Sequence::Fasta >
+    data = { Sequence::Fasta("seq1","AATAG"),
+	     Sequence::Fasta("seq2","ATTAC"),
+	     Sequence::Fasta("seq3","AATAC") };
+  
+  //Accessing ps any further is undefined behavior,
+  //and is likely to crash this program
+  Sequence::PolySites ps(data),ps2;
+  ps.swap(ps2);
+  BOOST_CHECK(ps.empty());
+  BOOST_CHECK(!ps2.empty());
+}
 //PolySites can be created via move
 //Moot in 1.8.9
 // BOOST_AUTO_TEST_CASE( move_conversion_1 )
