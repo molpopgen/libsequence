@@ -73,23 +73,6 @@ namespace Sequence
 					 const char gapchar = '-');
   template<typename T> T polyTableToBinary(const T & t, const unsigned ref = 0, const char gapchar = '-');
   template<typename T> T polyTableFreqFilter(const T & t, const unsigned mincount,const bool skipAnc = false, const unsigned anc = 0 , const char gapchar = '-');
-    
-  /*
-    void fillIn(PolyTable * t,
-    const unsigned & refseq = 0,
-    const char & identical = '.');
-
-    void addIdentityChar(PolyTable *t,
-    const unsigned & refseq = 0,
-    const char & identical = '.');
-
-    void RemoveGaps(PolyTable *t,
-    const char & gapchar = '-');
-
-    void RemoveInvariantColumns(PolyTable *t,
-    const bool & skipOutgroup = false,
-    const unsigned & outgroup = 0);
-  */
 }
 #include <Sequence/bits/PolyTableFunctions.tcc>
 #endif
