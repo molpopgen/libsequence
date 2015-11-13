@@ -38,7 +38,7 @@ namespace Sequence
     void Calculate (const RedundancyCom95 & sitesObj, const std::string & cod1,
 		    const std::string & cod2);
     SingleSubImpl(): q0i(0.), q2Si(0.), q2Vi(0.), q4i(0.), q0j(0.), q2Sj(0.), q2Vj(0.), q4j(0.), p0i(0.), p2Si(0.), p2Vi(0.),
-			       p4i(0.), p0j(0.), p2Sj(0.), p2Vj(0.), p4j(0.)
+		     p4i(0.), p0j(0.), p2Sj(0.), p2Vj(0.), p4j(0.)
     {
     }
   };
@@ -137,7 +137,7 @@ namespace Sequence
 
   void
   SingleSub::SingleSubImpl::Calculate (const RedundancyCom95 & sitesObj, const std::string & codon1,
-                        const std::string & codon2)
+				       const std::string & codon2)
   /*!
     count up mutations between the codons
   */
