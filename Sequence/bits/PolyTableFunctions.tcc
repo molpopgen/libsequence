@@ -90,4 +90,38 @@ namespace Sequence
     return T(std::vector<double>(t2.pbegin(),t2.pend()),
 	     std::move(bd));
   }
+
+  template<typename T> T polyTableFreqFilter(const T & t, const unsigned mincount,const bool skipAnc, const unsigned anc, const char gapchar)
+  {
+    auto remover = [mincount](const stateCounter & sc)
+      {
+	bool freq = true;
+        if (sc.a > 0 && sc.a < mincount)
+          {
+            freq = false;
+          }
+        else if (freq == true && sc.g > 0 && sc.g < mincount)
+          {
+            freq = false;
+          }
+        else if (freq == true && sc.c > 0 && sc.c < mincount)
+          {
+            freq = false;
+          }
+        else if (freq == true && sc.t > 0 && sc.t < mincount)
+          {
+            freq = false;
+          }
+        else if (freq == true && sc.zero > 0 && sc.zero < mincount)
+          {
+            freq = false;
+          }
+        else if (freq == true && sc.one > 0 && sc.one < mincount)
+          {
+            freq = false;
+          }
+	return freq;
+      };
+    return removeColumns(t,remover,skipAnc,anc,gapchar);
+  }
 }

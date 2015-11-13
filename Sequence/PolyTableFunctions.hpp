@@ -72,6 +72,8 @@ namespace Sequence
   template<typename T> T removeMultiHits(const T & t, const bool skipAnc = false, const unsigned anc = 0,
 					 const char gapchar = '-');
   template<typename T> T polyTableToBinary(const T & t, const unsigned ref = 0, const char gapchar = '-');
+  template<typename T> T polyTableFreqFilter(const T & t, const unsigned mincount,const bool skipAnc = false, const unsigned anc = 0 , const char gapchar = '-');
+    
   /*
     void fillIn(PolyTable * t,
     const unsigned & refseq = 0,
