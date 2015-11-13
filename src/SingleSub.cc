@@ -36,7 +36,7 @@ namespace Sequence
   {
   }
 
-  void SingleSub::operator() (const RedundancyCom95 * sitesObj,
+  void SingleSub::operator() (const RedundancyCom95 & sitesObj,
 			      const std::string & cod1,
 			      const std::string & cod2)
   /*!
@@ -123,7 +123,7 @@ namespace Sequence
   }
 
   void
-  SingleSub::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
+  SingleSub::Calculate (const RedundancyCom95 & sitesObj, const std::string & codon1,
                         const std::string & codon2)
   /*!
     count up mutations between the codons
@@ -155,10 +155,10 @@ namespace Sequence
 	switch (type)
 	  {
 	  case Mutations::Ts: //transition
-	    d = sitesObj->FirstNon(codon1);
+	    d = sitesObj.FirstNon(codon1);
 	    if( d < 1. )
 	      {
-		d = sitesObj->First2S(codon1);
+		d = sitesObj.First2S(codon1);
 		if(d > 0.)
 		  {
 		    p2Si += 1.;
@@ -172,10 +172,10 @@ namespace Sequence
 	      {
 		p0i += 1.;
 	      }
-	    d = sitesObj->FirstNon(codon2);
+	    d = sitesObj.FirstNon(codon2);
 	    if( d < 1. )
 	      {
-		d = sitesObj->First2S(codon2);
+		d = sitesObj.First2S(codon2);
 		if(d > 0.)
 		  {
 		    p2Sj += 1.;
@@ -191,10 +191,10 @@ namespace Sequence
 	      }
 	    break;
 	  case Mutations::Tv: //transversion
-	    d = sitesObj->FirstNon(codon1);
+	    d = sitesObj.FirstNon(codon1);
 	    if( d < 1. )
 	      {
-		d = sitesObj->First2V(codon1);
+		d = sitesObj.First2V(codon1);
 		if(d > 0.)
 		  {
 		    q2Vi += 1.;
@@ -208,10 +208,10 @@ namespace Sequence
 	      {
 		q0i += 1.;
 	      }
-	    d = sitesObj->FirstNon(codon2);
+	    d = sitesObj.FirstNon(codon2);
 	    if( d < 1. )
 	      {
-		d = sitesObj->First2V(codon2);
+		d = sitesObj.First2V(codon2);
 		if(d > 0.)
 		  {
 		    q2Vj += 1.;
@@ -251,13 +251,13 @@ namespace Sequence
 	switch (type)
 	  {
 	  case Mutations::Ts:
-	    d = sitesObj->ThirdNon (codon1);
+	    d = sitesObj.ThirdNon (codon1);
 	    if ( d < 1.)
 	      {
-		d = sitesObj->ThirdFour (codon1);
+		d = sitesObj.ThirdFour (codon1);
 		if ( d < 1. )
 		  {
-		    d = sitesObj->Third2S (codon1);
+		    d = sitesObj.Third2S (codon1);
 		    if ( d > 0. )
 		      {
 			p2Si += 1.;
@@ -277,13 +277,13 @@ namespace Sequence
 		p0i += 1.;
 	      }
 
-	    d = sitesObj->ThirdNon (codon2);
+	    d = sitesObj.ThirdNon (codon2);
 	    if ( d < 1.)
 	      {
-		d = sitesObj->ThirdFour (codon2);
+		d = sitesObj.ThirdFour (codon2);
 		if ( d < 1. )
 		  {
-		    d = sitesObj->Third2S (codon2);
+		    d = sitesObj.Third2S (codon2);
 		    if ( d > 0. )
 		      {
 			p2Sj += 1.;
@@ -306,13 +306,13 @@ namespace Sequence
 	    break;
 	    //case 2: 
 	  case Mutations::Tv: //transversion
-	    d = sitesObj->ThirdNon (codon1);
+	    d = sitesObj.ThirdNon (codon1);
 	    if ( d < 1.)
 	      {
-		d = sitesObj->ThirdFour (codon1);
+		d = sitesObj.ThirdFour (codon1);
 		if ( d < 1. )
 		  {
-		    d = sitesObj->Third2V (codon1);
+		    d = sitesObj.Third2V (codon1);
 		    if ( d > 0. )
 		      {
 			q2Vi += 1.;
@@ -332,13 +332,13 @@ namespace Sequence
 		q0i += 1.;
 	      }
 
-	    d = sitesObj->ThirdNon (codon2);
+	    d = sitesObj.ThirdNon (codon2);
 	    if ( d < 1.)
 	      {
-		d = sitesObj->ThirdFour (codon2);
+		d = sitesObj.ThirdFour (codon2);
 		if ( d < 1. )
 		  {
-		    d = sitesObj->Third2V (codon2);
+		    d = sitesObj.Third2V (codon2);
 		    if ( d > 0. )
 		      {
 			q2Vj += 1.;

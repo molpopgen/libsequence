@@ -46,11 +46,11 @@ namespace Sequence
     private:
       double q0i, q2Si, q2Vi, q4i, q0j, q2Sj, q2Vj, q4j, p0i, p2Si, p2Vi,
       p4i, p0j, p2Sj, p2Vj, p4j;
-      void Calculate (const RedundancyCom95 * sitesObj, const std::string & cod1,
+      void Calculate (const RedundancyCom95 & sitesObj, const std::string & cod1,
                       const std::string & cod2);
     public:
       explicit SingleSub(void);
-      void operator()(const RedundancyCom95 * sitesObj,
+      void operator()(const RedundancyCom95 & sitesObj,
                       const std::string &cod1,
                       const std::string &cod2);
       ~SingleSub (void)

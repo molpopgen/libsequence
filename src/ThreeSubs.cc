@@ -36,7 +36,7 @@ namespace Sequence
   struct ThreeSubs::ThreeSubsImpl
   {
     double p0, p2S, p2V, p4, q0, q2S, q2V, q4;
-    void Calculate (const RedundancyCom95 * sitesObj,
+    void Calculate (const RedundancyCom95 & sitesObj,
 		    const Inter3_t & intermediates,
 		    const std::string &codon1, const std::string &codon2,
 		    double w_path1,double w_path2, double w_path3,
@@ -57,7 +57,7 @@ namespace Sequence
   {
   }
 
-  void ThreeSubs::operator() (const RedundancyCom95 * sitesObj,
+  void ThreeSubs::operator() (const RedundancyCom95 & sitesObj,
                               const std::string &codon1, const std::string &codon2,
                               const Sequence::WeightingScheme3 *weights3)
   /*!
@@ -72,13 +72,13 @@ namespace Sequence
     auto intermediates =Intermediates3(codon1,codon2);
     impl->p0 = impl->p2S = impl->p2V = impl->p4 = impl->q0 = impl->q2S = impl->q2V = impl->q4 = 0.0;
 
-    auto weights = weights3->operator()(codon1,codon2,sitesObj->gencode());
+    auto weights = weights3->operator()(codon1,codon2,sitesObj.gencode());
     impl->Calculate (sitesObj, intermediates, codon1, codon2, weights[0],
                weights[1], weights[2], weights[3], weights[4], weights[5]);
   }
 
   void
-  ThreeSubs::ThreeSubsImpl::Calculate (const RedundancyCom95 * sitesObj,
+  ThreeSubs::ThreeSubsImpl::Calculate (const RedundancyCom95 & sitesObj,
                         const Inter3_t & intermediates,
                         const std::string & codon1, const std::string & codon2,
                         double w_path1, double w_path2, double w_path3,

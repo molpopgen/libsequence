@@ -56,7 +56,7 @@ namespace Sequence
     std::unique_ptr<ThreeSubsImpl> impl;
   public:
     explicit ThreeSubs(void);
-    void operator() (const RedundancyCom95 * sitesObj,
+    void operator() (const RedundancyCom95 & sitesObj,
 		     const std::string &codon1, const std::string &codon2,
 		     const Sequence::WeightingScheme3 *weights3);
     ~ThreeSubs(void);

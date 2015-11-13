@@ -38,7 +38,7 @@ namespace Sequence
     double p0_b2, p2S_b2, p2V_b2, p4_b2, q0_b2, q2S_b2, q2V_b2, q4_b2;
     double p0_b3, p2S_b3, p2V_b3, p4_b3, q0_b3, q2S_b3, q2V_b3, q4_b3;
     double p0_b4, p2S_b4, p2V_b4, p4_b4, q0_b4, q2S_b4, q2V_b4, q4_b4;
-    void Calculate (const RedundancyCom95 * sitesObj, const std::string &codon1,
+    void Calculate (const RedundancyCom95 & sitesObj, const std::string &codon1,
 		    const std::string &int_1, const std::string &int_2,
 		    const std::string &codon2, const double w_path1,
 		    const double w_path2);
@@ -55,7 +55,7 @@ namespace Sequence
   {
   }
 
-  void TwoSubs::operator() (const RedundancyCom95 * sitesObj,
+  void TwoSubs::operator() (const RedundancyCom95 & sitesObj,
 			    const std::string & codon1, const std::string & codon2,
 			    const Sequence::WeightingScheme2 *weights2)
   /*!
@@ -73,7 +73,7 @@ namespace Sequence
     impl->p0_b3= impl->p2S_b3= impl->p2V_b3= impl->p4_b3= impl->q0_b3= impl->q2S_b3= impl->q2V_b3= impl->q4_b3=0.;
     impl->p0_b4= impl->p2S_b4= impl->p2V_b4= impl->p4_b4= impl->q0_b4= impl->q2S_b4= impl->q2V_b4= impl->q4_b4=0.;
     auto intermediates = Intermediates2(codon1,codon2);
-    auto weights = weights2->operator()(codon1,codon2,sitesObj->gencode());
+    auto weights = weights2->operator()(codon1,codon2,sitesObj.gencode());
     impl->Calculate (sitesObj, codon1, intermediates[0], codon2, intermediates[1], weights[0], weights[1]);
   }
 
@@ -81,7 +81,7 @@ namespace Sequence
   {}
 
   void
-  TwoSubs::TwoSubsImpl::Calculate (const RedundancyCom95 * sitesObj, const std::string & codon1,
+  TwoSubs::TwoSubsImpl::Calculate (const RedundancyCom95 & sitesObj, const std::string & codon1,
 			  const std::string & int_1, const std::string & int_2,
 			  const std::string & codon2, const double w_path1,
 			  const double w_path2)
