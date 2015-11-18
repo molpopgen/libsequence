@@ -34,13 +34,13 @@ namespace Sequence
     auto beg = data.sbegin();
     auto end=data.send();
     unsigned snp_per_thread = unsigned(std::ceil(double(end-beg)/double(nthreads)));
-    for( beg ; beg < end ; beg += snp_per_thread)
+    for(  ; beg < end ; beg += snp_per_thread)
       {
 	vt.emplace_back(std::thread(counter,beg,
 				    (snp_per_thread < std::distance(beg,end)) ? beg + snp_per_thread : end,
-				    &dcounts[beg-data.sbegin()]));
+				    &dcounts[size_t(beg-data.sbegin())]));
       }
-    for( auto i = 0 ; i < vt.size() ; ++i ) vt[i].join();
+    for( auto i = 0u ; i < vt.size() ; ++i ) vt[i].join();
     std::vector<double> rv(data.size(),0.);
     vt.clear();
     const auto counter2 = []( SimData::const_data_iterator beg,
@@ -75,7 +75,7 @@ namespace Sequence
 				    (hap_per_thread < std::distance(i,data.cend())) ? (i + hap_per_thread) : data.cend(),
 				    l,
 				    &dcounts[0],
-				    &rv[i-data.cbegin()]));
+				    &rv[size_t(i-data.cbegin())]));
       }
     for( unsigned j = 0 ; j <vt.size() ; ++j ) vt[j].join();
     return rv;
