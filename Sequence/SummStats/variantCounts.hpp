@@ -15,7 +15,7 @@ namespace Sequence
   struct variableSiteData
   {
     //! Site positions
-    double position;
+    double pos;
     //! State counts
     stateCounter counts;
     //! Derived state counts
