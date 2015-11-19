@@ -1,3 +1,5 @@
+#ifndef SEQUENCE_SUMMSTATS_CLASSIC_HPP
+#define SEQUENCE_SUMMSTATS_CLASSIC_HPP
 /*!
   "Classic" summaries of nucleotide variability.
 
@@ -5,10 +7,17 @@
  */
 
 #include <type_traits>
-#include <Sequence/SummStats/variantCounts.hpp>
 #include <Sequence/SimData.hpp>
+#include <Sequence/SummStats/classic_details.hpp>
+#include <Sequence/SummStats/variantCounts.hpp>
 
 namespace Sequence
 {
-  
+  template<typename T>
+  inline double thetapi(const T & t)
+  {
+    return details::thetapi_details(t.data,t.nsam,typename std::is_same<typename T::type,SimData>::type());
+  }
 }
+
+#endif
