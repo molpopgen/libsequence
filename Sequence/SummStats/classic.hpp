@@ -41,6 +41,12 @@ namespace Sequence
   {
     return details::nmuts_details(t.data);
   }
+
+  template<typename T>
+  inline unsigned singletons(const T & t)
+  {
+    return details::singletons_details(t.data,typename std::is_same<typename T::type,SimData>::type());
+  }
 }
 
 #endif

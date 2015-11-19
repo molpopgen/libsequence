@@ -76,5 +76,33 @@ namespace Sequence
 	}
       return w;
     }
+
+    unsigned singletons_details( const std::vector<variableSiteData> & c, std::true_type )
+    {
+      unsigned rv = 0;
+      for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
+	{
+	  i += (i->counts.one==1||i->counts.zero==1) ? 1 : 0;
+	}
+      return rv;
+    }
+    
+    unsigned singletons_details( const std::vector<variableSiteData> & c, std::false_type )
+    {
+      unsigned rv = 0;
+      for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
+	{
+	  if(!i->counts.gap)
+	    {
+	      rv += (i->counts.a == 1) ? 1u : 0u;
+	      rv += (i->counts.g == 1) ? 1u : 0u;
+	      rv += (i->counts.c == 1) ? 1u : 0u;
+	      rv += (i->counts.t == 1) ? 1u : 0u;
+	      rv += (i->counts.zero == 1) ? 1u : 0u;
+	      rv += (i->counts.one == 1) ? 1u : 0u;
+	    }
+	}
+      return rv;
+    }
   }
 }
