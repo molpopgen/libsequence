@@ -10,6 +10,8 @@
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SimData.hpp>
 #include <iostream>
+#include <limits>
+
 namespace Sequence
 {
   struct variableSiteData
@@ -22,8 +24,8 @@ namespace Sequence
     stateCounter dcounts;
     //! For each site, is the ancestral state present?
     bool ancState;
-    //! Constructo. Copy vs. move left up to caller
-    variableSiteData( double, bool, stateCounter,stateCounter );
+    //! Constructor. Copy vs. move left up to caller
+    variableSiteData( double, bool, stateCounter &&,stateCounter && );
   };
 
   template<typename T>
@@ -32,55 +34,59 @@ namespace Sequence
   public:
     using data_t = std::vector<variableSiteData>;
   private:
-    data_t preprocess(const T & pt, bool haveAnc, unsigned anc, char gapchar)
+    void preprocess(const T & pt, bool haveAnc, unsigned anc, char gapchar)
     {
-      data_t rv;
+      auto nsites = pt.numsites();
+      auto nchrom = pt.size();
+      data.reserve(nsites);
       if(!haveAnc)
 	{
-	  for(unsigned i=0;i<pt.numsites();++i)
+	  for(unsigned i=0;i<nsites;++i)
 	    {
-	      stateCounter c(gapchar);
-	      for(unsigned j=0;j<pt.size();++j)
+	      stateCounter sc(gapchar);
+	      for(unsigned j=0;j<nchrom;++j)
 		{
-		  c(pt[j][i]);
+		  sc(pt[j][i]);
 		}
-	      rv.emplace_back(variableSiteData(pt.position(i),false,std::move(c),stateCounter(gapchar)));
+	      data.emplace_back(pt.position(i),false,std::move(sc),stateCounter(gapchar));
 	    }
 	}
       else
 	{
-	  for( auto i = pt.sbegin() ; i != pt.send() ; ++i )
+	  for(unsigned i=0;i<nsites;++i)
 	    {
-	      //This is the "counts"
-	      auto sc = std::for_each(std::begin(i->second),std::begin(i->second)+anc,stateCounter(gapchar));
-	      sc = std::for_each(std::begin(i->second)+anc+1,std::end(i->second),sc);
-	      
-	      //Now, let's get some 'dcounts'
-	      stateCounter sc2(gapchar);
-	      auto ancState = *(std::begin(i->second)+anc);
-	      bool ancPresent = false;
-	      std::for_each(std::begin(i->second),std::begin(i->second)+anc,
-			    [&sc2,ancState,&ancPresent](const char & c) {
-			      if(c!=ancState) { sc2(c); }
-			      else ancPresent=true;
-			    });
-	      std::for_each(std::begin(i->second)+anc+1,std::end(i->second),
-			    [&sc2,ancState,&ancPresent](const char & c) {
-			      if(c!=ancState) { sc2(c); }
-			      else ancPresent=true;
-			    });
-	      rv.emplace_back(i->first,ancPresent,std::move(sc),std::move(sc2));
+	      bool ancState = false;
+	      auto ancstate = pt[anc][i];
+	      stateCounter sc(gapchar),scd(gapchar);
+	      for(unsigned j=0;j<nchrom;++j)
+		{
+		  if( j != anc )
+		    {
+		      auto c_ = pt[j][i];
+		      if (c_ != ancstate) scd(c_);
+		      else ancState=true;
+		      sc(c_);
+		    }
+		}
+	      data.emplace_back(pt.position(i),ancState,std::move(sc),std::move(scd));
 	    }
 	}
-      return rv;
     }
   public:
     data_t data;
+    double pi;
     const unsigned nsam;
+    unsigned npoly;
     using type = T;
-    variantCounts(const T & t,bool haveAnc = false, unsigned anc = 0, char gapchar = '-') : data( preprocess(t,haveAnc,anc,gapchar) ),nsam(t.size()-unsigned(haveAnc))
+    variantCounts(const T & t,bool haveAnc = false,
+		  unsigned anc = 0, char gapchar = '-') :
+      data( std::vector<variableSiteData>() ),
+      pi(std::numeric_limits<double>::quiet_NaN()),
+      nsam(unsigned(t.size()-unsigned(haveAnc))),
+      npoly(std::numeric_limits<unsigned>::max())
     {
       static_assert(std::is_base_of<PolyTable,T>::value,"T must be derived from Sequence::PolyTable");
+      this->preprocess(t,haveAnc,anc,gapchar);
     }
   };
 
