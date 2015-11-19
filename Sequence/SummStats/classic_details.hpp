@@ -12,8 +12,10 @@ namespace Sequence
     double thetapi_details( const std::vector<variableSiteData> & c, unsigned nsam, std::false_type );
     double thetaw_details( const std::vector<variableSiteData> & c, unsigned nsam, bool totMuts,std::true_type );
     double thetaw_details( const std::vector<variableSiteData> & c, unsigned nsam, bool totMuts,std::false_type );
-    unsigned singletons_details( const std::vector<variableSiteData> & c, std::true_type );
-    unsigned singletons_details( const std::vector<variableSiteData> & c, std::false_type );
+    unsigned singletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::true_type );
+    unsigned singletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::false_type );
+    unsigned dsingletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::true_type );
+    unsigned dsingletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::false_type );
     inline unsigned npoly_details( const std::vector<variableSiteData> & c )
     {
       unsigned np=0;

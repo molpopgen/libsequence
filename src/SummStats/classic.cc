@@ -77,7 +77,7 @@ namespace Sequence
       return w;
     }
 
-    unsigned singletons_details( const std::vector<variableSiteData> & c, std::true_type )
+    unsigned singletons_details( const std::vector<variableSiteData> & c, unsigned, std::true_type )
     {
       unsigned rv = 0;
       for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
@@ -86,13 +86,23 @@ namespace Sequence
 	}
       return rv;
     }
-    
-    unsigned singletons_details( const std::vector<variableSiteData> & c, std::false_type )
+
+    unsigned dsingletons_details( const std::vector<variableSiteData> & c, unsigned, std::true_type )
     {
       unsigned rv = 0;
       for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
 	{
-	  if(!i->counts.gap)
+	  i += (i->counts.one==1) ? 1 : 0;
+	}
+      return rv;
+    }
+    
+    unsigned singletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::false_type )
+    {
+      unsigned rv = 0;
+      for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
+	{
+	  if(!i->counts.gap && (nsam-i->counts.n > 1))
 	    {
 	      rv += (i->counts.a == 1) ? 1u : 0u;
 	      rv += (i->counts.g == 1) ? 1u : 0u;
@@ -100,6 +110,23 @@ namespace Sequence
 	      rv += (i->counts.t == 1) ? 1u : 0u;
 	      rv += (i->counts.zero == 1) ? 1u : 0u;
 	      rv += (i->counts.one == 1) ? 1u : 0u;
+	    }
+	}
+      return rv;
+    }
+    unsigned dsingletons_details( const std::vector<variableSiteData> & c, unsigned nsam, std::false_type )
+    {
+      unsigned rv = 0;
+      for( auto i = std::begin(c) ; i != std::end(c) ; ++ i )
+	{
+	  if(!i->counts.gap&&(nsam-i->counts.n > 1))
+	    {
+	      rv += (i->dcounts.a == 1) ? 1u : 0u;
+	      rv += (i->dcounts.g == 1) ? 1u : 0u;
+	      rv += (i->dcounts.c == 1) ? 1u : 0u;
+	      rv += (i->dcounts.t == 1) ? 1u : 0u;
+	      rv += (i->dcounts.zero == 1) ? 1u : 0u;
+	      rv += (i->dcounts.one == 1) ? 1u : 0u;
 	    }
 	}
       return rv;

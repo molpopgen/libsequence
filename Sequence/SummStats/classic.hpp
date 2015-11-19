@@ -45,7 +45,13 @@ namespace Sequence
   template<typename T>
   inline unsigned singletons(const T & t)
   {
-    return details::singletons_details(t.data,typename std::is_same<typename T::type,SimData>::type());
+    return details::singletons_details(t.data,t.nsam,typename std::is_same<typename T::type,SimData>::type());
+  }
+
+  template<typename T>
+  inline unsigned dsingletons(const T & t)
+  {
+    return details::dsingletons_details(t.data,t.nsam,typename std::is_same<typename T::type,SimData>::type());
   }
 }
 
