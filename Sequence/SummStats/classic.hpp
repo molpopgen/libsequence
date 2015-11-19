@@ -53,6 +53,10 @@ namespace Sequence
   {
     return details::dsingletons_details(t.data,t.nsam,typename std::is_same<typename T::type,SimData>::type());
   }
+
+  std::pair<unsigned,double> hapstats(const PolyTable & t, const bool haveAnc = false, const unsigned anc = 0);
+  std::pair<unsigned,double> hapstats(const SimData & t);
+
 }
 
 #endif

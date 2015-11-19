@@ -1,6 +1,29 @@
-#include <Sequence/SummStats/classic_details.hpp>
 #include <iterator>
 #include <iostream>
+#include <algorithm>
+#include <set>
+#include <Sequence/SummStats/classic_details.hpp>
+#include <Sequence/Comparisons.hpp>
+
+namespace
+{
+  struct uniqueSeq : public std::binary_function<std::string,std::string,bool>
+ {
+    inline bool operator()(const std::string & l, const std::string  & r) const
+    {
+      //use Sequence::Different to prevent missing sites 
+      //causing 2 sequences to be labelled as distinct
+      //return (  Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),lt_nocase()) );
+      return (  Sequence::Different(l,r) && std::lexicographical_compare(l.begin(),l.end(),r.begin(),r.end(),
+									 [](const char & __a, const char __b)
+									 {
+									   return (std::toupper(static_cast<unsigned char>(__a)) 
+										   < std::toupper(static_cast<unsigned char>(__b)));
+									 }) );
+    }
+  };
+}
+
 namespace Sequence
 {
   namespace details
@@ -132,4 +155,61 @@ namespace Sequence
       return rv;
     }
   }
+
+  std::pair<unsigned,double> hapstats(const PolyTable & t, const bool haveAnc, const unsigned anc)
+  {
+    if(t.empty()) return std::make_pair(1u,0.);
+    std::set<std::string,uniqueSeq> unique_haplotypes;
+    if(haveAnc)
+      {
+	unique_haplotypes.insert(std::begin(t),std::begin(t)+anc);
+	unique_haplotypes.insert(std::begin(t)+anc+1,std::end(t));
+      }
+    else
+      {
+	unique_haplotypes.insert(std::begin(t),std::end(t));
+      }
+    double hdiv=1.0;
+    auto beg = std::begin(unique_haplotypes);
+    auto end = std::end(unique_haplotypes);
+    unsigned nsam = unsigned(t.size() - unsigned(haveAnc));
+    for( auto i =beg ; i != end ; ++i )
+      {
+	double c = 0.;
+	if(haveAnc)
+	  {
+	    c += std::count_if(std::begin(t),std::begin(t)+anc,[i](const std::string & __s) {
+		return !Different(__s,*i,false,true);
+	      });
+	    c += std::count_if(std::begin(t)+anc+1,std::end(t),[i](const std::string & __s) {
+		return !Different(__s,*i,false,true);
+	      });
+	  }
+	else
+	  {
+	    c += std::count_if(std::begin(t),std::end(t),[i](const std::string & __s) {
+		return !Different(__s,*i,false,true);
+	      });	    
+	  }
+	hdiv -= std::pow(c/nsam,2.0);
+      }
+    hdiv *= nsam/(nsam-1.);
+    return std::make_pair(unique_haplotypes.size(),hdiv);
+  }
+  
+  std::pair<unsigned,double> hapstats(const SimData & t)
+  {
+    if(t.empty()) return std::make_pair(1u,0.);
+    std::set<std::string> s(t.begin(),t.end());
+    double hdiv = 1.0;
+    double nsam=double(t.size());
+    for(auto i = std::begin(s) ; i != std::end(s) ; ++i )
+      {
+	double c = double(std::count(std::begin(s),std::end(s),*i));
+	hdiv -= std::pow(c/nsam,2.0);
+      }
+    hdiv *= nsam/(nsam-1.);
+    return std::make_pair(s.size(),hdiv);
+  }
+  
 }
