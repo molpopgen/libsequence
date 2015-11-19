@@ -37,7 +37,7 @@ namespace Sequence
   }
 
   template<typename T>
-  inline unsigned nmuts(T & t)
+  inline unsigned nmuts(const T & t)
   {
     return details::nmuts_details(t.data);
   }
