@@ -5,6 +5,13 @@ namespace Sequence
 {
   namespace details
   {
+    double a_sub_n(unsigned n)
+    {
+      double rv=0.;
+      for(unsigned i=0;i<n;++i) rv += 1./double(i);
+      return rv;
+    }
+    
     double thetapi_details( const std::vector<variableSiteData> & c, unsigned nsam_, std::true_type )
     {
       double Pi = 0.0, nsam = double(nsam_);
@@ -46,6 +53,28 @@ namespace Sequence
 	    }
 	}
       return Pi;
+    }
+
+    double thetaw_details( const std::vector<variableSiteData> & c, unsigned nsam, bool, std::true_type )
+    {
+      return double(npoly_details(c))/a_sub_n(nsam);
+    }
+    
+    double thetaw_details( const std::vector<variableSiteData> & c, unsigned nsam, bool totMuts, std::false_type )
+    {
+      double w = 0.;
+      for( auto i = std::begin(c) ; i != std::end(c) ; ++i )
+	{
+	  if(! i->counts.gap )
+	    {
+	      auto ns = i->counts.nStates();
+	      if(ns>1)
+		{
+		  w += (totMuts) ? double(ns-1)/a_sub_n(nsam-i->counts.n) : 1.0/a_sub_n(nsam-i->counts.n);
+		}
+	    }
+	}
+      return w;
     }
   }
 }

@@ -23,26 +23,23 @@ namespace Sequence
   }
 
   template<typename T>
+  inline double thetaw(T & t, bool totMuts = true)
+  {
+    return details::thetaw_details(t.data,t.nsam,totMuts,typename std::is_same<typename T::type,SimData>::type());
+  }
+
+  template<typename T>
   inline unsigned npoly(T & t)
   {
     if(t.npoly != std::numeric_limits<unsigned>::max()) return t.npoly;
-    t.npoly=0;
-    for( auto i = std::begin(t.data) ; i != std::end(t.data) ; ++i )
-      {
-	if(i->counts.nStates()>1&&i->counts.gap==0) ++t.npoly;
-      }
+    t.npoly=details::npoly_details(t.data);
     return t.npoly;
   }
 
   template<typename T>
   inline unsigned nmuts(T & t)
   {
-    unsigned rv = 0;
-    for( auto i = std::begin(t.data) ; i != std::end(t.data) ; ++i )
-      {
-	rv += ( !i->counts.gap ) ? (i->counts.nStates()-1) : 0;
-      }
-    return rv;
+    return details::nmuts_details(t.data);
   }
 }
 
