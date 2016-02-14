@@ -71,8 +71,24 @@ namespace Sequence
     void clear() { pos.clear();data.clear();pv.clear(); }
     bool assign(PolyTable::const_site_iterator beg,
 		PolyTable::const_site_iterator end);
-    bool assign( std::vector<double> && __positions,
-		 std::vector<std::string> && __data );
+    template<typename postype,typename datatype>
+    bool assign_data( postype && __pos,
+		      datatype && __data )
+    {
+      non_const_access=true;
+      pos=std::forward<postype>(__pos);
+      data=std::forward<datatype>(__data);
+      if( std::find_if( std::begin(data),std::end(data),
+			[this](const std::string __s) {
+			  return __s.size() != pos.size();
+			} ) != data.cend() )
+	{
+	  this->clear();
+	  return false;
+	}
+      return true;
+    }
+
   };
 
   bool PolyTable::PolyTableImpl::assign(PolyTable::const_site_iterator beg,
@@ -111,7 +127,7 @@ namespace Sequence
     non_const_access = false;  //everything worked, all private data are assigned, so set to false
     return true;
   }
-
+  /*
   bool PolyTable::PolyTableImpl::assign( std::vector<double> && __positions,
 					 std::vector<std::string> && __data )
   {
@@ -130,7 +146,7 @@ namespace Sequence
       }
     return true;
   }
-  
+  */
   PolyTable::PolyTable() : impl(std::unique_ptr<PolyTableImpl>(new PolyTableImpl()))
   {
   }
@@ -184,15 +200,21 @@ namespace Sequence
     return !(*this==rhs);
   }
 
-  bool PolyTable::assign( std::vector<double>  __positions,
-			  std::vector<std::string> __data )
+  bool PolyTable::assign( const std::vector<double> & __positions,
+			  const std::vector<std::string> & __data )
   {
-    return impl->assign(std::move(__positions),
-			std::move(__data));
+    return impl->assign_data(__positions,__data);
+  }
+
+  bool PolyTable::assign( std::vector<double> && __positions,
+			  std::vector<std::string> && __data )
+  {
+    return impl->assign_data(std::move(__positions),
+			     std::move(__data));
   }
 
   bool PolyTable::assign(PolyTable::const_site_iterator beg,
-			     PolyTable::const_site_iterator end)
+			 PolyTable::const_site_iterator end)
   {
     return impl->assign(beg,end);
   }
