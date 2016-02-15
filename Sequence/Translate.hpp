@@ -49,9 +49,7 @@ namespace Sequence
   */
     std::string Translate(std::string::const_iterator beg,
 			  std::string::const_iterator end,
-			  Sequence::GeneticCodes 
-			  genetic_code = GeneticCodes::UNIVERSAL,
-			  const char & gapchar = '-')
-      ;
+			  Sequence::GeneticCodes  genetic_code = GeneticCodes::UNIVERSAL,
+			  const char & gapchar = '-');
 }
 #endif

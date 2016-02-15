@@ -67,13 +67,11 @@ namespace Sequence
   class SimpleSNP:public PolyTable
     {
     private:
-      mutable bool Diploid,isoFemale;
-      bool haveOutgroup;
       std::vector<std::string> _names;
+      bool Diploid,isoFemale;
+      bool haveOutgroup;
     public:
-      SimpleSNP( const SimpleSNP & );
-      SimpleSNP( SimpleSNP & ) = default;
-      SimpleSNP( SimpleSNP && ) = default;
+      SimpleSNP( SimpleSNP && );
       SimpleSNP (const bool diploid =0,const bool isofemale=0)  : PolyTable(),
           Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)
           /*!
@@ -97,8 +95,7 @@ namespace Sequence
       {}
       ~ SimpleSNP (void) {}
      
-      SimpleSNP & operator=(SimpleSNP &) = default;
-      SimpleSNP & operator=(SimpleSNP &&) = default;
+      SimpleSNP & operator=(SimpleSNP &&);
 
       bool outgroup(void) const;
       void set_outgroup( const bool & b );

@@ -15,6 +15,9 @@ addons:
     - clang
     - zlib1g
     - zlib1g-dev
+    - libboost-dev
+    - libboost-system-dev
+    - libboost-test-dev
 
 notifications:
   email: false

@@ -93,7 +93,8 @@ namespace Sequence
 	  {
 	    int rv = gzread(file,&ch,sizeof(char)); 
 	    if( rv == 0 || rv == -1 || isspace(ch) ) { 
-	      delete[]haplotype;return SimData(pos,data); 
+	      delete[]haplotype;
+	      return SimData(std::move(pos),std::move(data)); 
 	    } //we hit eof or an error or an empty line
 	    gzungetc(ch,file);
 	    gzgets(file,&haplotype[0],int(S)+1);

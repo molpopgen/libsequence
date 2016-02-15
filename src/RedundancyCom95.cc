@@ -38,7 +38,7 @@ namespace Sequence
 #ifndef DOXYGEN_SKIP
   struct RedundancyCom95impl
   {
-    explicit RedundancyCom95impl(const GeneticCodes &code);
+    explicit RedundancyCom95impl(const GeneticCodes code);
 
     const GeneticCodes genetic_code;
       
@@ -60,7 +60,7 @@ namespace Sequence
     void codonPrecondition(const std::string & codon);
   };
 
-  RedundancyCom95impl::RedundancyCom95impl(const GeneticCodes &code) : genetic_code(code)
+  RedundancyCom95impl::RedundancyCom95impl(const GeneticCodes code) : genetic_code(code)
   {
     FillFirstPositionCounts ();
     FillThirdPositionCounts ();
@@ -383,18 +383,19 @@ namespace Sequence
           }
   }
 #endif
-  RedundancyCom95::RedundancyCom95 (const GeneticCodes &code):
+  RedundancyCom95::RedundancyCom95 (GeneticCodes code):
     impl(std::unique_ptr<RedundancyCom95impl>(new RedundancyCom95impl(code)))
     /*!
       \param code see Sequence::GeneticCodes
     */
   {
   }
-    
+
   RedundancyCom95::~RedundancyCom95(void)
   {
   }
-
+ 
+  
   //the functions below are klugdy, but there is no real loss of efficieny,
   //so it is left alone for now
   double
@@ -642,5 +643,10 @@ namespace Sequence
 			 std::find(dna_alphabet.begin(),
 				   dna_alphabet.end(),codon[2]) );
     return impl->l4_vals[i][j][k];
+  }
+  
+  GeneticCodes RedundancyCom95::gencode()const
+  {
+    return impl->genetic_code;
   }
 }

@@ -59,7 +59,8 @@ namespace Sequence
   private:
     std::unique_ptr<RedundancyCom95impl> impl;
   public:
-    explicit RedundancyCom95 (const Sequence::GeneticCodes &genetic_code = GeneticCodes::UNIVERSAL);
+    explicit RedundancyCom95 (Sequence::GeneticCodes genetic_code = GeneticCodes::UNIVERSAL);
+    RedundancyCom95(RedundancyCom95 &&)=default;
     ~RedundancyCom95(void);
     //counting routines, return values from private matrices of same name
     double FirstNon (const std::string &codon) const;
@@ -73,6 +74,7 @@ namespace Sequence
     double L2S_vals (const std::string &codon) const;
     double L2V_vals (const std::string &codon) const;
     double L4_vals (const std::string &codon) const;
+    GeneticCodes gencode()const;
   };
 }
 

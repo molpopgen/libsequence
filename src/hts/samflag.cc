@@ -58,7 +58,7 @@ namespace Sequence
     return i;
   }
 
-  void samflag::process_bits() const
+  void samflag::process_bits()
   /*!
     Takes the integer value of a flag
     and assigns to the boolean members of this class

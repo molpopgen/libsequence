@@ -35,10 +35,17 @@ using std::string;
 
 namespace Sequence
 {
-  SimpleSNP::SimpleSNP( const SimpleSNP & ss ) : PolyTable(ss)
+
+  SimpleSNP::SimpleSNP(SimpleSNP && s) : PolyTable(std::move(s))
   {
   }
 
+  SimpleSNP & SimpleSNP::operator=(SimpleSNP && pt)
+  {
+    PolyTable::operator=(std::move(pt));
+    return *this;
+  }
+  
   std::istream & SimpleSNP::read (std::istream & s)  
 
     /*!
@@ -222,7 +229,6 @@ namespace Sequence
 	throw (Sequence::badFormat("SimpleSNP::read() -- number of sequences does not match input value"));
       }     
     this->assign(std::move(_positions),std::move(_data));
-    RemoveInvariantColumns(this);
     return s;
   }
 

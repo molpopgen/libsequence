@@ -43,13 +43,13 @@ namespace Sequence
   class samflag
   {
   private:
-    void process_bits() const;
+    void process_bits();
   public:
     /*!
       The flag value
     */
-    mutable std::int32_t flag;
-    mutable bool is_paired,is_proper_pair,query_unmapped,
+    std::int32_t flag;
+    bool is_paired,is_proper_pair,query_unmapped,
       mate_unmapped,qstrand,mstrand,first_read,
       second_read,not_primary,qcfail,duplicate,supp_alignment;
     samflag(const std::int32_t & __flag);

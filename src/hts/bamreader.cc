@@ -36,7 +36,7 @@ namespace Sequence
     __htext(nullptr),
     __refdata(std::vector< std::pair<std::string,I32> >())
   {
-    if(gzopen != NULL)
+    if(in != NULL)
       {
 	auto rv = bgzf_read( in, &__magic[0], 4*sizeof(char) );
 	if (!rv) __EOF = true;

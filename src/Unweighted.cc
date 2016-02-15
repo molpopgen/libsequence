@@ -24,71 +24,25 @@
 #include <Sequence/Unweighted.hpp>
 #include <limits>
 
-using std::numeric_limits;
-
 namespace Sequence
 {
-  Unweighted2::Unweighted2(void) : __weights{numeric_limits<double>::quiet_NaN(),numeric_limits<double>::quiet_NaN()}
-  {
-  }
-
-  Unweighted2::~Unweighted2(void)
-  {
-  }
-
-  void Unweighted2::Calculate(const std::string &codon1, const std::string &codon2) const
+  WeightingScheme2::weights2_t Unweighted2::operator()(const std::string &, const std::string &,Sequence::GeneticCodes) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
     \param codon2 a std::string of length 3 representing a sense codon
   */
   {
-    __weights[0] = 0.5;
-    __weights[1] = 0.5;
+    return weights2_t({{1.,1.}});
   }
 
-  double* Unweighted2::weights(void) const
-  /*!
-    \return a double * of size 2 (1 value for each branch)
-  */
-  {
-    return __weights;
-  }
-
-  Unweighted3::Unweighted3(void) : 
-    __weights{numeric_limits<double>::quiet_NaN(),
-      numeric_limits<double>::quiet_NaN(),
-      numeric_limits<double>::quiet_NaN(),
-      numeric_limits<double>::quiet_NaN(),
-      numeric_limits<double>::quiet_NaN(),
-      numeric_limits<double>::quiet_NaN()}
-  {
-  }
-  
-  Unweighted3::~Unweighted3(void)
-  {
-  }
-
-  void Unweighted3::Calculate(const std::string &codon1, const std::string &codon2) const
+  WeightingScheme3::weights3_t Unweighted3::operator()(const std::string &, const std::string &,Sequence::GeneticCodes ) const
   /*!
     Calculate actually calculates the weights for each branch
     \param codon1 a std::string of length 3 representing a sense codon
     \param codon2 a std::string of length 3 representing a sense codon
   */
   {
-    __weights[0] = 1.0/6.0;
-    __weights[1] = 1.0/6.0;
-    __weights[2] = 1.0/6.0;
-    __weights[3] = 1.0/6.0;
-    __weights[4] = 1.0/6.0;
-    __weights[5] = 1.0/6.0;
-  }
-
-  double* Unweighted3::weights(void) const
-  /*!
-    \return a double * of size 6 (1 value for each branch)
-  */
-  {
-    return __weights;
+    return weights3_t({{1.,1.,1.,1.,1.,1.}});
   }
 }

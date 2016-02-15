@@ -33,8 +33,20 @@ using std::string;
 //handle cases where codons are fully substituted
 namespace Sequence
 {
-
-  ThreeSubs::ThreeSubs() : p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.), q4(0.)
+  struct ThreeSubs::ThreeSubsImpl
+  {
+    double p0, p2S, p2V, p4, q0, q2S, q2V, q4;
+    void Calculate (const RedundancyCom95 & sitesObj,
+		    const Inter3_t & intermediates,
+		    const std::string &codon1, const std::string &codon2,
+		    double w_path1,double w_path2, double w_path3,
+		    double w_path4,double w_path5,double w_path6);
+    ThreeSubsImpl():p0(0.), p2S(0.), p2V(0.), p4(0.), q0(0.), q2S(0.), q2V(0.), q4(0.)
+    {
+    }
+  };
+  
+  ThreeSubs::ThreeSubs() : impl(std::unique_ptr<ThreeSubsImpl>(new ThreeSubsImpl()))
   {
   }
 
@@ -45,12 +57,11 @@ namespace Sequence
   {
   }
 
-  void ThreeSubs::operator() (const RedundancyCom95 * sitesObj,
+  void ThreeSubs::operator() (const RedundancyCom95 & sitesObj,
                               const std::string &codon1, const std::string &codon2,
                               const Sequence::WeightingScheme3 *weights3)
   /*!
     \param sitesObj an object of type Sequence::RedundancyCom95
-    \param code see Sequence::GeneticCodes for valid values
     \param codon1 a std::string of length 3
     \param codon2 a std::string of length 3
     \param weights3 a weighting scheme for the pathways
@@ -58,19 +69,17 @@ namespace Sequence
   */
   {
     assert(codon1.length() == 3 && codon2.length() == 3);
-    string intermediates[9];
-    Intermediates3(intermediates,codon1,codon2);
-    p0 = p2S = p2V = p4 = q0 = q2S = q2V = q4 = 0.0;
+    auto intermediates =Intermediates3(codon1,codon2);
+    impl->p0 = impl->p2S = impl->p2V = impl->p4 = impl->q0 = impl->q2S = impl->q2V = impl->q4 = 0.0;
 
-    weights3->Calculate(codon1,codon2);
-    double *weights = weights3->weights();
-    Calculate (sitesObj, intermediates, codon1, codon2, weights[0],
+    auto weights = weights3->operator()(codon1,codon2,sitesObj.gencode());
+    impl->Calculate (sitesObj, intermediates, codon1, codon2, weights[0],
                weights[1], weights[2], weights[3], weights[4], weights[5]);
   }
 
   void
-  ThreeSubs::Calculate (const RedundancyCom95 * sitesObj,
-                        const std::string *intermediates,
+  ThreeSubs::ThreeSubsImpl::Calculate (const RedundancyCom95 & sitesObj,
+                        const Inter3_t & intermediates,
                         const std::string & codon1, const std::string & codon2,
                         double w_path1, double w_path2, double w_path3,
                         double w_path4, double w_path5, double w_path6)
@@ -220,5 +229,44 @@ namespace Sequence
       +  (q4_b[10] + q4_b[13] + q4_b[14]) * w_path6;
   }
 
+  double ThreeSubs::P0 (void) const
+  {
+    return impl->p0;
+  }
+
+  double ThreeSubs::P2S (void) const
+  {
+    return impl->p2S;
+  }
+
+  double ThreeSubs::P2V (void) const
+  {
+    return impl->p2V;
+  }
+
+  double ThreeSubs::P4 (void) const
+  {
+    return impl->p4;
+  }
+
+  double ThreeSubs::Q0 (void) const
+  {
+    return impl->q0;
+  }
+
+  double ThreeSubs::Q2S (void) const
+  {
+    return impl->q2S;
+  }
+
+  double ThreeSubs::Q2V (void) const
+  {
+    return impl->q2V;
+  }
+
+  double ThreeSubs::Q4 (void) const
+  {
+    return impl->q4;
+  }
 }
 

@@ -44,26 +44,16 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 */
 namespace Sequence
   {
-  class Unweighted2 : public WeightingScheme2
+  struct Unweighted2 : public WeightingScheme2
     {
-    private:
-      mutable double __weights[2];//logical const
-    public:
-      explicit Unweighted2(void);
-      ~Unweighted2(void);
-      void Calculate(const std::string &codon1, const std::string &codon2) const;
-      double *weights(void) const;
+      weights2_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const;
     };
 
-  class Unweighted3 : public WeightingScheme3
+    struct Unweighted3 : public WeightingScheme3
     {
-    private:
-      mutable double __weights[6];//logical const
     public:
-      explicit Unweighted3(void);
-      ~Unweighted3(void);
-      void Calculate(const std::string &codon1, const std::string &codon2) const;
-      double *weights(void) const;
+      weights3_t operator()(const std::string &codon1, const std::string &codon2,Sequence::GeneticCodes genetic_code) const;
     };
 }
 #endif
+

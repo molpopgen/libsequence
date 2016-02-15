@@ -38,14 +38,19 @@ namespace Sequence
   {
     class stateCounter : public std::unary_function<char,void>
     {
-    private:
-      mutable char _gap;
     public:
       typedef unsigned size_type;
-      mutable size_type a,g,c,t,zero,one,gap,n;
-      mutable bool ndna;
-      stateCounter(const char &gapchar = '-');
-      void operator()(const char &ch) const;
+      size_type a,g,c,t,zero,one,gap,n;
+      bool ndna;
+    private:
+      char _gap;
+    public:
+      stateCounter(char gapchar = '-');
+      stateCounter(stateCounter &&) = default;
+      stateCounter(const stateCounter &) = default;
+      stateCounter & operator=(const stateCounter &)=default;
+      stateCounter & operator=( stateCounter &&)=default;
+      void operator()(const char &ch);
       size_type nStates(void) const;
     };
 }
