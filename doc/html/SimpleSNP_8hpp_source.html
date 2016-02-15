@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -104,45 +104,42 @@ $(document).ready(function(){initNavTree('SimpleSNP_8hpp_source.html','');});
 <div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classSequence_1_1SimpleSNP.html">   67</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a>:<span class="keyword">public</span> <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      <span class="keyword">mutable</span> <span class="keywordtype">bool</span> Diploid,isoFemale;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordtype">bool</span> haveOutgroup;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      std::vector&lt;std::string&gt; _names;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      std::vector&lt;std::string&gt; _names;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      <span class="keywordtype">bool</span> Diploid,isoFemale;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;      <span class="keywordtype">bool</span> haveOutgroup;</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a>( <span class="keyword">const</span> <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp; );</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a>( <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp; ) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a>( <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&amp; ) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">   77</a></span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">SimpleSNP</a> (<span class="keyword">const</span> <span class="keywordtype">bool</span> diploid =0,<span class="keyword">const</span> <span class="keywordtype">bool</span> isofemale=0)  : <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a>(),</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;          Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      {}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      ~<a class="code" href="classSequence_1_1SimpleSNP.html"> SimpleSNP</a> (<span class="keywordtype">void</span>) {}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;     </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      SimpleSNP &amp; operator=(SimpleSNP &amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      SimpleSNP &amp; operator=(SimpleSNP &amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      <span class="keywordtype">bool</span> <a class="code" href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">outgroup</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      <span class="keywordtype">void</span> set_outgroup( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; b );</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;      std::string <a class="code" href="classSequence_1_1SimpleSNP.html#a9a7a2fb74edb7498e96709813f0cbe85">label</a>(<span class="keywordtype">unsigned</span> i) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      std::istream &amp; <a class="code" href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">read</a> (std::istream &amp; s) ;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      std::ostream &amp; <a class="code" href="classSequence_1_1SimpleSNP.html#af46f1bb7a71ee3e849e04cdcd6f340b1">print</a>(std::ostream &amp;o) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    };</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keyword">typedef</span> SimpleSNP Hudson2001;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html"><div class="ttname"><a href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a></div><div class="ttdoc">The base class for polymorphism tables. </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00060">PolyTable.hpp:60</a></div></div>
-<div class="ttc" id="classSequence_1_1SimpleSNP_html_a05672105cbb169f5a122ec83836e1000"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">Sequence::SimpleSNP::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00042">SimpleSNP.cc:42</a></div></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a>( <a class="code" href="classSequence_1_1SimpleSNP.html">SimpleSNP</a> &amp;&amp; );</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">   75</a></span>&#160;      <a class="code" href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">SimpleSNP</a> (<span class="keyword">const</span> <span class="keywordtype">bool</span> diploid =0,<span class="keyword">const</span> <span class="keywordtype">bool</span> isofemale=0)  : <a class="code" href="classSequence_1_1PolyTable.html">PolyTable</a>(),</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;          Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      {}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      ~<a class="code" href="classSequence_1_1SimpleSNP.html"> SimpleSNP</a> (<span class="keywordtype">void</span>) {}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;     </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      SimpleSNP &amp; operator=(SimpleSNP &amp;&amp;);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      <span class="keywordtype">bool</span> <a class="code" href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">outgroup</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keywordtype">void</span> set_outgroup( <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; b );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      std::string <a class="code" href="classSequence_1_1SimpleSNP.html#a9a7a2fb74edb7498e96709813f0cbe85">label</a>(<span class="keywordtype">unsigned</span> i) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;      std::istream &amp; <a class="code" href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">read</a> (std::istream &amp; s) ;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      std::ostream &amp; <a class="code" href="classSequence_1_1SimpleSNP.html#af46f1bb7a71ee3e849e04cdcd6f340b1">print</a>(std::ostream &amp;o) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    };</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">typedef</span> SimpleSNP Hudson2001;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html"><div class="ttname"><a href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a></div><div class="ttdoc">The base class for polymorphism tables. </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00061">PolyTable.hpp:61</a></div></div>
+<div class="ttc" id="classSequence_1_1SimpleSNP_html_a05672105cbb169f5a122ec83836e1000"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">Sequence::SimpleSNP::read</a></div><div class="ttdeci">std::istream &amp; read(std::istream &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00049">SimpleSNP.cc:49</a></div></div>
 <div class="ttc" id="PolyTable_8hpp_html"><div class="ttname"><a href="PolyTable_8hpp.html">PolyTable.hpp</a></div><div class="ttdoc">Sequence::PolyTable, a virtual base class for polymorphism tables. </div></div>
-<div class="ttc" id="classSequence_1_1SimpleSNP_html_a9a7a2fb74edb7498e96709813f0cbe85"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a9a7a2fb74edb7498e96709813f0cbe85">Sequence::SimpleSNP::label</a></div><div class="ttdeci">std::string label(unsigned i) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00299">SimpleSNP.cc:299</a></div></div>
-<div class="ttc" id="classSequence_1_1SimpleSNP_html_a0bf7f64722e47b991d315b9b19e3391b"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">Sequence::SimpleSNP::SimpleSNP</a></div><div class="ttdeci">SimpleSNP(const bool diploid=0, const bool isofemale=0)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8hpp_source.html#l00077">SimpleSNP.hpp:77</a></div></div>
-<div class="ttc" id="classSequence_1_1SimpleSNP_html_aafe563bd07ea1f112bc792215870eb65"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">Sequence::SimpleSNP::outgroup</a></div><div class="ttdeci">bool outgroup(void) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00319">SimpleSNP.cc:319</a></div></div>
+<div class="ttc" id="classSequence_1_1SimpleSNP_html_a9a7a2fb74edb7498e96709813f0cbe85"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a9a7a2fb74edb7498e96709813f0cbe85">Sequence::SimpleSNP::label</a></div><div class="ttdeci">std::string label(unsigned i) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00305">SimpleSNP.cc:305</a></div></div>
+<div class="ttc" id="classSequence_1_1SimpleSNP_html_a0bf7f64722e47b991d315b9b19e3391b"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#a0bf7f64722e47b991d315b9b19e3391b">Sequence::SimpleSNP::SimpleSNP</a></div><div class="ttdeci">SimpleSNP(const bool diploid=0, const bool isofemale=0)</div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8hpp_source.html#l00075">SimpleSNP.hpp:75</a></div></div>
+<div class="ttc" id="classSequence_1_1SimpleSNP_html_aafe563bd07ea1f112bc792215870eb65"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#aafe563bd07ea1f112bc792215870eb65">Sequence::SimpleSNP::outgroup</a></div><div class="ttdeci">bool outgroup(void) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00325">SimpleSNP.cc:325</a></div></div>
 <div class="ttc" id="classSequence_1_1SimpleSNP_html"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html">Sequence::SimpleSNP</a></div><div class="ttdoc">SNP table data format. </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8hpp_source.html#l00067">SimpleSNP.hpp:67</a></div></div>
-<div class="ttc" id="classSequence_1_1SimpleSNP_html_af46f1bb7a71ee3e849e04cdcd6f340b1"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#af46f1bb7a71ee3e849e04cdcd6f340b1">Sequence::SimpleSNP::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;o) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00229">SimpleSNP.cc:229</a></div></div>
+<div class="ttc" id="classSequence_1_1SimpleSNP_html_af46f1bb7a71ee3e849e04cdcd6f340b1"><div class="ttname"><a href="classSequence_1_1SimpleSNP.html#af46f1bb7a71ee3e849e04cdcd6f340b1">Sequence::SimpleSNP::print</a></div><div class="ttdeci">std::ostream &amp; print(std::ostream &amp;o) const </div><div class="ttdef"><b>Definition:</b> <a href="SimpleSNP_8cc_source.html#l00235">SimpleSNP.cc:235</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="SimpleSNP_8hpp.html">SimpleSNP.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="SimpleSNP_8hpp.html">SimpleSNP.hpp</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

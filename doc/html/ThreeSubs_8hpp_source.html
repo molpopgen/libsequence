@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -73,123 +73,83 @@ $(document).ready(function(){initNavTree('ThreeSubs_8hpp_source.html','');});
 <div class="contents">
 <a href="ThreeSubs_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">Remove the brackets to email me.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  Remove the brackets to email me.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">This file is part of libsequence.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  This file is part of libsequence.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">libsequence is free software: you can redistribute it and/or modify</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">it under the terms of the GNU General Public License as published by</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">the Free Software Foundation, either version 3 of the License, or</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">(at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  libsequence is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">  (at your option) any later version.</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">libsequence is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">  libsequence is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">  GNU General Public License for more details.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">long with libsequence.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">  long with libsequence.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef THREESUBS_H</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define THREESUBS_H</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SeqEnums_8hpp.html">Sequence/SeqEnums.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <span class="keyword">class </span>RedundancyCom95;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <span class="keyword">class  </span>WeightingScheme3;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html">   51</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1ThreeSubs.html">ThreeSubs</a></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;      <span class="keywordtype">double</span> p0, p2S, p2V, p4, q0, q2S, q2V, q4;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;      <span class="keywordtype">void</span> Calculate (<span class="keyword">const</span> <a class="code" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> * sitesObj,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                      <span class="keyword">const</span> std::string *intermediates,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                      <span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                      <span class="keywordtype">double</span> w_path1,<span class="keywordtype">double</span> w_path2, <span class="keywordtype">double</span> w_path3,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                      <span class="keywordtype">double</span> w_path4,<span class="keywordtype">double</span> w_path5,<span class="keywordtype">double</span> w_path6);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keyword">explicit</span> <a class="code" href="classSequence_1_1ThreeSubs.html">ThreeSubs</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      <span class="keywordtype">void</span> <a class="code" href="classSequence_1_1ThreeSubs.html#af1fab04a024880c3f40a94b0bd4729c6">operator() </a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> * sitesObj,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                       <span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                       <span class="keyword">const</span> <a class="code" href="classSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a> *weights3);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#ab9a67241bd0e3547eb66ef004272e82d">~ThreeSubs</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#aa3ea200cf66106df4c760845dd156b94">   67</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#aa3ea200cf66106df4c760845dd156b94">P0</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;      {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> p0;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#ac10e82a41451321a70be6356784bbbbf">   76</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#ac10e82a41451321a70be6356784bbbbf">P2S</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> p2S;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#a3c64ebabbf90750f607e4fc39dc82d00">   85</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#a3c64ebabbf90750f607e4fc39dc82d00">P2V</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> p2V;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;      }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#a1b89f0c2d373298b2a4cf6d9126769b1">   94</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#a1b89f0c2d373298b2a4cf6d9126769b1">P4</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">return</span> p4;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#a43f4b11b1d1a5c9661ca00c92fbde487">  103</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#a43f4b11b1d1a5c9661ca00c92fbde487">Q0</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;      {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordflow">return</span> q0;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;      }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#a898d858cba143a866f0c6355548f75f4">  112</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#a898d858cba143a866f0c6355548f75f4">Q2S</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      {</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> q2S;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;      }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#ac444909622fb5b0ae1e63345a5b66036">  121</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#ac444909622fb5b0ae1e63345a5b66036">Q2V</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;      {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span> q2V;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;      }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;      <span class="keywordtype">double</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html#a15579b094552a4c65409d8f5ba8719f4">  130</a></span>&#160;      <a class="code" href="classSequence_1_1ThreeSubs.html#a15579b094552a4c65409d8f5ba8719f4">Q4</a> (<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;      {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">return</span> q4;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;      }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    };</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_a898d858cba143a866f0c6355548f75f4"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a898d858cba143a866f0c6355548f75f4">Sequence::ThreeSubs::Q2S</a></div><div class="ttdeci">double Q2S(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00112">ThreeSubs.hpp:112</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_ab9a67241bd0e3547eb66ef004272e82d"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ab9a67241bd0e3547eb66ef004272e82d">Sequence::ThreeSubs::~ThreeSubs</a></div><div class="ttdeci">~ThreeSubs(void)</div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00041">ThreeSubs.cc:41</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_a1b89f0c2d373298b2a4cf6d9126769b1"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a1b89f0c2d373298b2a4cf6d9126769b1">Sequence::ThreeSubs::P4</a></div><div class="ttdeci">double P4(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00094">ThreeSubs.hpp:94</a></div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme3_html"><div class="ttname"><a href="classSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 3 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00093">WeightingSchemes.hpp:93</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_ac444909622fb5b0ae1e63345a5b66036"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ac444909622fb5b0ae1e63345a5b66036">Sequence::ThreeSubs::Q2V</a></div><div class="ttdeci">double Q2V(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00121">ThreeSubs.hpp:121</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_a3c64ebabbf90750f607e4fc39dc82d00"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a3c64ebabbf90750f607e4fc39dc82d00">Sequence::ThreeSubs::P2V</a></div><div class="ttdeci">double P2V(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00085">ThreeSubs.hpp:85</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_a15579b094552a4c65409d8f5ba8719f4"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a15579b094552a4c65409d8f5ba8719f4">Sequence::ThreeSubs::Q4</a></div><div class="ttdeci">double Q4(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00130">ThreeSubs.hpp:130</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_a43f4b11b1d1a5c9661ca00c92fbde487"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a43f4b11b1d1a5c9661ca00c92fbde487">Sequence::ThreeSubs::Q0</a></div><div class="ttdeci">double Q0(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00103">ThreeSubs.hpp:103</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_af1fab04a024880c3f40a94b0bd4729c6"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#af1fab04a024880c3f40a94b0bd4729c6">Sequence::ThreeSubs::operator()</a></div><div class="ttdeci">void operator()(const RedundancyCom95 *sitesObj, const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::WeightingScheme3 *weights3)</div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00048">ThreeSubs.cc:48</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_aa3ea200cf66106df4c760845dd156b94"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#aa3ea200cf66106df4c760845dd156b94">Sequence::ThreeSubs::P0</a></div><div class="ttdeci">double P0(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00067">ThreeSubs.hpp:67</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html">Sequence::ThreeSubs</a></div><div class="ttdoc">Deal with codons differing at all 3 positions. </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00051">ThreeSubs.hpp:51</a></div></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="PathwayHelper_8hpp.html">Sequence/PathwayHelper.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="WeightingSchemes_8hpp.html">Sequence/WeightingSchemes.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SeqEnums_8hpp.html">Sequence/SeqEnums.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keyword">class </span>RedundancyCom95;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classSequence_1_1ThreeSubs.html">   52</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1ThreeSubs.html">ThreeSubs</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">struct </span>ThreeSubsImpl;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    std::unique_ptr&lt;ThreeSubsImpl&gt; impl;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classSequence_1_1ThreeSubs.html">ThreeSubs</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a175193af68672324258fb5cb62c64435">operator() </a>(<span class="keyword">const</span> <a class="code" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp; sitesObj,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                     <span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                     <span class="keyword">const</span> <a class="code" href="structSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a> *weights3);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classSequence_1_1ThreeSubs.html#ab9a67241bd0e3547eb66ef004272e82d">~ThreeSubs</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#aa3ea200cf66106df4c760845dd156b94">P0</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#ac10e82a41451321a70be6356784bbbbf">P2S</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a3c64ebabbf90750f607e4fc39dc82d00">P2V</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a1b89f0c2d373298b2a4cf6d9126769b1">P4</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a43f4b11b1d1a5c9661ca00c92fbde487">Q0</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a898d858cba143a866f0c6355548f75f4">Q2S</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#ac444909622fb5b0ae1e63345a5b66036">Q2V</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classSequence_1_1ThreeSubs.html#a15579b094552a4c65409d8f5ba8719f4">Q4</a> (<span class="keywordtype">void</span>) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  };</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a898d858cba143a866f0c6355548f75f4"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a898d858cba143a866f0c6355548f75f4">Sequence::ThreeSubs::Q2S</a></div><div class="ttdeci">double Q2S(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00257">ThreeSubs.cc:257</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_ab9a67241bd0e3547eb66ef004272e82d"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ab9a67241bd0e3547eb66ef004272e82d">Sequence::ThreeSubs::~ThreeSubs</a></div><div class="ttdeci">~ThreeSubs(void)</div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00053">ThreeSubs.cc:53</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a1b89f0c2d373298b2a4cf6d9126769b1"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a1b89f0c2d373298b2a4cf6d9126769b1">Sequence::ThreeSubs::P4</a></div><div class="ttdeci">double P4(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00247">ThreeSubs.cc:247</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_ac444909622fb5b0ae1e63345a5b66036"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ac444909622fb5b0ae1e63345a5b66036">Sequence::ThreeSubs::Q2V</a></div><div class="ttdeci">double Q2V(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00262">ThreeSubs.cc:262</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a3c64ebabbf90750f607e4fc39dc82d00"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a3c64ebabbf90750f607e4fc39dc82d00">Sequence::ThreeSubs::P2V</a></div><div class="ttdeci">double P2V(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00242">ThreeSubs.cc:242</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a175193af68672324258fb5cb62c64435"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a175193af68672324258fb5cb62c64435">Sequence::ThreeSubs::operator()</a></div><div class="ttdeci">void operator()(const RedundancyCom95 &amp;sitesObj, const std::string &amp;codon1, const std::string &amp;codon2, const Sequence::WeightingScheme3 *weights3)</div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00060">ThreeSubs.cc:60</a></div></div>
+<div class="ttc" id="structSequence_1_1WeightingScheme3_html"><div class="ttname"><a href="structSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 3 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00090">WeightingSchemes.hpp:90</a></div></div>
+<div class="ttc" id="PathwayHelper_8hpp_html"><div class="ttname"><a href="PathwayHelper_8hpp.html">PathwayHelper.hpp</a></div><div class="ttdoc">declarations of Sequence::Intermediates2 and Sequence::Intermediates3 </div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a15579b094552a4c65409d8f5ba8719f4"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a15579b094552a4c65409d8f5ba8719f4">Sequence::ThreeSubs::Q4</a></div><div class="ttdeci">double Q4(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00267">ThreeSubs.cc:267</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_a43f4b11b1d1a5c9661ca00c92fbde487"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#a43f4b11b1d1a5c9661ca00c92fbde487">Sequence::ThreeSubs::Q0</a></div><div class="ttdeci">double Q0(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00252">ThreeSubs.cc:252</a></div></div>
+<div class="ttc" id="WeightingSchemes_8hpp_html"><div class="ttname"><a href="WeightingSchemes_8hpp.html">WeightingSchemes.hpp</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 2 positions </div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_aa3ea200cf66106df4c760845dd156b94"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#aa3ea200cf66106df4c760845dd156b94">Sequence::ThreeSubs::P0</a></div><div class="ttdeci">double P0(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00232">ThreeSubs.cc:232</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html">Sequence::ThreeSubs</a></div><div class="ttdoc">Deal with codons differing at all 3 positions. </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00052">ThreeSubs.hpp:52</a></div></div>
 <div class="ttc" id="classSequence_1_1RedundancyCom95_html"><div class="ttname"><a href="classSequence_1_1RedundancyCom95.html">Sequence::RedundancyCom95</a></div><div class="ttdoc">Calculate redundancy of a genetic code using Comeron&#39;s counting scheme. </div><div class="ttdef"><b>Definition:</b> <a href="RedundancyCom95_8hpp_source.html#l00057">RedundancyCom95.hpp:57</a></div></div>
-<div class="ttc" id="classSequence_1_1ThreeSubs_html_ac10e82a41451321a70be6356784bbbbf"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ac10e82a41451321a70be6356784bbbbf">Sequence::ThreeSubs::P2S</a></div><div class="ttdeci">double P2S(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8hpp_source.html#l00076">ThreeSubs.hpp:76</a></div></div>
+<div class="ttc" id="classSequence_1_1ThreeSubs_html_ac10e82a41451321a70be6356784bbbbf"><div class="ttname"><a href="classSequence_1_1ThreeSubs.html#ac10e82a41451321a70be6356784bbbbf">Sequence::ThreeSubs::P2S</a></div><div class="ttdeci">double P2S(void) const </div><div class="ttdef"><b>Definition:</b> <a href="ThreeSubs_8cc_source.html#l00237">ThreeSubs.cc:237</a></div></div>
 <div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="ThreeSubs_8hpp.html">ThreeSubs.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="ThreeSubs_8hpp.html">ThreeSubs.hpp</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

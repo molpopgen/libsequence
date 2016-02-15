@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -84,8 +84,8 @@ $(document).ready(function(){initNavTree('classSequence_1_1TwoSubs.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6c45083d3500cc81e0b6b8d6e76740ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1TwoSubs.html#a6c45083d3500cc81e0b6b8d6e76740ec">operator()</a> (const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *sitesObj, const std::string &amp;cod1, const std::string &amp;cod2, const <a class="el" href="classSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a> *weights2)</td></tr>
-<tr class="separator:a6c45083d3500cc81e0b6b8d6e76740ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae95835b1277a03515742a3da5a2c30df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1TwoSubs.html#ae95835b1277a03515742a3da5a2c30df">operator()</a> (const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, const std::string &amp;cod1, const std::string &amp;cod2, const <a class="el" href="structSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a> *weights2)</td></tr>
+<tr class="separator:ae95835b1277a03515742a3da5a2c30df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad656ae5d5538df4dd85081f03fff3f98"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1TwoSubs.html#ad656ae5d5538df4dd85081f03fff3f98">P0</a> (void) const </td></tr>
 <tr class="separator:ad656ae5d5538df4dd85081f03fff3f98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77873ae33df1292bb417374393e34dc5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1TwoSubs.html#a77873ae33df1292bb417374393e34dc5">P2S</a> (void) const </td></tr>
@@ -114,19 +114,19 @@ the correct weights to apply to changes for each path are:<br/>
 p1 = changes on b1 + changes on b2<br/>
 p2 = changes on b3 + changes on b4<br/>
  A function object to obtain divergence statistics for Comeron's method for codons that differ at two positions. Alternate paths are weighted by <a class="el" href="classSequence_1_1Grantham.html" title="Grantham&#39;s distances. ">Grantham</a>'s distances. Used by <a class="el" href="classSequence_1_1Comeron95.html" title="Ka and Ks by Comeron&#39;s (1995) method. ">Sequence::Comeron95</a>.</p>
-<dl class="section note"><dt>Note</dt><dd>In the above figure, codon1 and intermediate1 differ at the first of the 2 substitued sites (either the first or second codon position). Likewise, codon1 and intermedate2 differ at the seconf of the 2 substituted positions (i.e. the second or the third codon position). This is important information, because if you want to implement your own scheme to weight these pathways (done by deriving a class from <a class="el" href="classSequence_1_1WeightingScheme2.html" title="abstract interface to weighting schemes when codons differ at 2 positions ">Sequence::WeightingScheme2</a> and <a class="el" href="classSequence_1_1WeightingScheme3.html" title="abstract interface to weighting schemes when codons differ at 3 positions ">Sequence::WeightingScheme3</a>), you must know how this class names and assigns the intermediate steps and the branches. In other words, you must study the implementation of this class. You may also want to refer to the implementations of <a class="el" href="classSequence_1_1GranthamWeights2.html" title="Weights paths by Grantham&#39;s distances for codons differing at 2 sites. ">Sequence::GranthamWeights2</a> and <a class="el" href="classSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. ">Sequence::GranthamWeights3</a> for an example of implementing weighting schemes. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>In the above figure, codon1 and intermediate1 differ at the first of the 2 substitued sites (either the first or second codon position). Likewise, codon1 and intermedate2 differ at the seconf of the 2 substituted positions (i.e. the second or the third codon position). This is important information, because if you want to implement your own scheme to weight these pathways (done by deriving a class from <a class="el" href="structSequence_1_1WeightingScheme2.html" title="abstract interface to weighting schemes when codons differ at 2 positions ">Sequence::WeightingScheme2</a> and <a class="el" href="structSequence_1_1WeightingScheme3.html" title="abstract interface to weighting schemes when codons differ at 3 positions ">Sequence::WeightingScheme3</a>), you must know how this class names and assigns the intermediate steps and the branches. In other words, you must study the implementation of this class. You may also want to refer to the implementations of <a class="el" href="structSequence_1_1GranthamWeights2.html" title="Weights paths by Grantham&#39;s distances for codons differing at 2 sites. ">Sequence::GranthamWeights2</a> and <a class="el" href="structSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. ">Sequence::GranthamWeights3</a> for an example of implementing weighting schemes. </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8hpp_source.html#l00060">60</a> of file <a class="el" href="TwoSubs_8hpp_source.html">TwoSubs.hpp</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8hpp_source.html#l00061">61</a> of file <a class="el" href="TwoSubs_8hpp_source.html">TwoSubs.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a6c45083d3500cc81e0b6b8d6e76740ec"></a>
+<a class="anchor" id="ae95835b1277a03515742a3da5a2c30df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Sequence::TwoSubs::operator() </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;&#160;</td>
           <td class="paramname"><em>sitesObj</em>, </td>
         </tr>
         <tr>
@@ -144,7 +144,7 @@ p2 = changes on b3 + changes on b4<br/>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a> *&#160;</td>
           <td class="paramname"><em>weights2</em>&#160;</td>
         </tr>
         <tr>
@@ -165,7 +165,7 @@ p2 = changes on b3 + changes on b4<br/>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00042">42</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00058">58</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -184,7 +184,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at non-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00145">145</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00159">159</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -203,7 +203,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at transitional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00154">154</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00168">168</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -222,7 +222,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at transversional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00163">163</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00177">177</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -241,7 +241,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at fourfold-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00172">172</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00186">186</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -260,7 +260,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at non-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00181">181</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00195">195</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at transitional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00190">190</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00204">204</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -298,7 +298,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at transversional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00199">199</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00213">213</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -317,7 +317,7 @@ p2 = changes on b3 + changes on b4<br/>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at fourfold-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00208">208</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
+<p>Definition at line <a class="el" href="TwoSubs_8cc_source.html#l00222">222</a> of file <a class="el" href="TwoSubs_8cc_source.html">TwoSubs.cc</a>.</p>
 
 </div>
 </div>
@@ -331,7 +331,7 @@ p2 = changes on b3 + changes on b4<br/>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1TwoSubs.html">TwoSubs</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

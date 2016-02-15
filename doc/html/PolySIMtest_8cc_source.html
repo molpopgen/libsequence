@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -94,12 +94,12 @@ $(document).ready(function(){initNavTree('PolySIMtest_8cc_source.html','');});
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  <span class="keywordtype">unsigned</span> ndiffs=0,ncomps=0;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>() - 1 ; ++i )</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> i = 0 ; i &lt; d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>() - 1 ; ++i )</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> j = i + 1 ; j &lt; d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>() ; ++j )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;      <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> j = i + 1 ; j &lt; d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>() ; ++j )</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;          ++ncomps;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;          <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> k = 0 ; k &lt; d[i].<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>() ; ++k )</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;          <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> k = 0 ; k &lt; d[i].<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>() ; ++k )</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;              ndiffs += (d[i][k] != d[j][k]) ? 1 : 0;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            }</div>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('PolySIMtest_8cc_source.html','');});
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::for_each(d.<a class="code" href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">sbegin</a>(),d.<a class="code" href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">send</a>(),</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                [&amp;nsing,&amp;d](<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a> &amp; __ps) {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                  <span class="keyword">auto</span> c = std::count(__ps.second.begin(),__ps.second.end(),<span class="charliteral">&#39;1&#39;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                  nsing += ( unsigned(c) == 1 || unsigned(c) == d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>() - 1 ) ? 1 : 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                  nsing += ( unsigned(c) == 1 || unsigned(c) == d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>() - 1 ) ? 1 : 0;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                });</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">return</span> nsing;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
@@ -259,33 +259,33 @@ $(document).ready(function(){initNavTree('PolySIMtest_8cc_source.html','');});
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keywordflow">for</span>( <span class="keyword">auto</span> h : uhaps )</div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;      <span class="keyword">auto</span> c = std::count( d.<a class="code" href="classSequence_1_1PolyTable.html#a195d5e98a644b375422da1a41c0004bc">begin</a>(),d.<a class="code" href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">end</a>(), h );</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      hdiv += ( double(c)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>()) )*(double(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>()-c)/<span class="keywordtype">double</span>(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>()-1));</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      hhom += ( double(c)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>()) )*(double(c-1)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>()-1));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;      hdiv += ( double(c)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>()) )*(double(d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>()-c)/<span class="keywordtype">double</span>(d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>()-1));</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;      hhom += ( double(c)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>()) )*(double(c-1)/double(d.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>()-1));</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordtype">double</span> hdiv2 = 1. - hhom;</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">double</span> lseqvalue = ad.DandVH();</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  BOOST_REQUIRE_CLOSE( lseqvalue, hdiv, 1e-3);</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  BOOST_REQUIRE_CLOSE( lseqvalue, hdiv2, 1e-3);</div>
 <div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00291">PolyTable.hpp:291</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a0ad9fa4c28b8568a1bde74e13d10f1b3"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8hpp_source.html#l00272">PolyTable.hpp:272</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_afe610e36cc38d3a77dfe9d6254deb789"><div class="ttname"><a href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">Sequence::PolyTable::send</a></div><div class="ttdeci">const_site_iterator send() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00307">PolyTable.cc:307</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_ad4a3c9e456be37dd7cb46b3956d539c5"><div class="ttname"><a href="classSequence_1_1PolyTable.html#ad4a3c9e456be37dd7cb46b3956d539c5">Sequence::PolyTable::numsites</a></div><div class="ttdeci">unsigned numsites(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00367">PolyTable.cc:367</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a7769799f86d43a0b5e146d7a82e41c82"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">Sequence::PolyTable::size</a></div><div class="ttdeci">size_type size(void) const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00357">PolyTable.cc:357</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_afe610e36cc38d3a77dfe9d6254deb789"><div class="ttname"><a href="classSequence_1_1PolyTable.html#afe610e36cc38d3a77dfe9d6254deb789">Sequence::PolyTable::send</a></div><div class="ttdeci">const_site_iterator send() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00302">PolyTable.cc:302</a></div></div>
 <div class="ttc" id="PolySIM_8hpp_html"><div class="ttname"><a href="PolySIM_8hpp.html">PolySIM.hpp</a></div><div class="ttdoc">declaration of Sequence::PolySIM, a class to analyze coalescent simulation data </div></div>
 <div class="ttc" id="classSequence_1_1PolyTable_html_a9c5e337cb00acba2ab83174ac933bb9e"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a9c5e337cb00acba2ab83174ac933bb9e">Sequence::PolyTable::sbegin</a></div><div class="ttdeci">const_site_iterator sbegin() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00292">PolyTable.cc:292</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a1942fc6aeda603ffa5111819e6c55dc8"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">Sequence::PolyTable::end</a></div><div class="ttdeci">data_iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00194">PolyTable.cc:194</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a1942fc6aeda603ffa5111819e6c55dc8"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a1942fc6aeda603ffa5111819e6c55dc8">Sequence::PolyTable::end</a></div><div class="ttdeci">data_iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00233">PolyTable.cc:233</a></div></div>
 <div class="ttc" id="SimData_8hpp_html"><div class="ttname"><a href="SimData_8hpp.html">SimData.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimData, a class representing polymorphism data from coalescent simulations ...</div></div>
 <div class="ttc" id="classSequence_1_1SimData_html"><div class="ttname"><a href="classSequence_1_1SimData.html">Sequence::SimData</a></div><div class="ttdoc">Data from coalescent simulations. </div><div class="ttdef"><b>Definition:</b> <a href="SimData_8hpp_source.html#l00069">SimData.hpp:69</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a195d5e98a644b375422da1a41c0004bc"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a195d5e98a644b375422da1a41c0004bc">Sequence::PolyTable::begin</a></div><div class="ttdeci">data_iterator begin()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00184">PolyTable.cc:184</a></div></div>
-<div class="ttc" id="classSequence_1_1PolySIM_html"><div class="ttname"><a href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a></div><div class="ttdoc">Analysis of coalescent simulation data. </div><div class="ttdef"><b>Definition:</b> <a href="PolySIM_8hpp_source.html#l00044">PolySIM.hpp:44</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a195d5e98a644b375422da1a41c0004bc"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a195d5e98a644b375422da1a41c0004bc">Sequence::PolyTable::begin</a></div><div class="ttdeci">data_iterator begin()</div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00227">PolyTable.cc:227</a></div></div>
+<div class="ttc" id="classSequence_1_1PolySIM_html"><div class="ttname"><a href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a></div><div class="ttdoc">Analysis of coalescent simulation data. </div><div class="ttdef"><b>Definition:</b> <a href="PolySIM_8hpp_source.html#l00046">PolySIM.hpp:46</a></div></div>
 <div class="ttc" id="namespaceSequence_html_a08841c3bd3b0999a40dfdadbee4a6b0d"><div class="ttname"><a href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">Sequence::polymorphicSite</a></div><div class="ttdeci">std::pair&lt; double, std::string &gt; polymorphicSite</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00045">polySiteVector.hpp:45</a></div></div>
-<div class="ttc" id="classSequence_1_1PolyTable_html_a131a61d74eb612a3e419aa4ae1c38a24"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">Sequence::PolyTable::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00083">PolyTable.cc:83</a></div></div>
+<div class="ttc" id="classSequence_1_1PolyTable_html_a131a61d74eb612a3e419aa4ae1c38a24"><div class="ttname"><a href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">Sequence::PolyTable::empty</a></div><div class="ttdeci">bool empty() const </div><div class="ttdef"><b>Definition:</b> <a href="PolyTable_8cc_source.html#l00187">PolyTable.cc:187</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_6539135c11c307fe7c816251825245d2.html">test</a></li><li class="navelem"><b>PolySIMtest.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_009f7b6e59b9ec4a57c1bd4d1bd3178a.html">test</a></li><li class="navelem"><b>PolySIMtest.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

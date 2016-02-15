@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -76,39 +76,42 @@ $(document).ready(function(){initNavTree('SummStats_8cc_source.html','');});
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;numeric&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;cctype&gt;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;  <span class="keywordtype">double</span> Dij(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; j)</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keywordtype">unsigned</span> rv = 0;</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> N = 0;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">unsigned</span> start1 = accumulate(config.begin(),config.begin()+i,0u),</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;      start2 = accumulate(config.begin(),config.begin()+j,0u);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> x = start1 ; x &lt; start1 + config[i] ; ++x )</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;      {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> y = start2 ; y &lt; start2 + config[j] ; ++y)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;          {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="keywordtype">char</span> ch1 = char(std::toupper(p.second[x])),ch2=char(std::toupper(p.second[y]));</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordflow">if</span>(ch1 != <span class="charliteral">&#39;N&#39;</span> &amp;&amp; ch2 != <span class="charliteral">&#39;N&#39;</span>)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;              {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;                rv += (ch1 != ch2) ? 1u : 0u;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;              }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;              {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                ++N;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;              }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;          }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;      }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> double(rv)/(double(config[i]+config[j]-N));</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordtype">double</span> Gmin(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">polySiteVector</a> &amp; pt, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">unsigned</span> mdxy = numeric_limits&lt;unsigned&gt;::max(),sumdxy=0;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;}<span class="comment">//ns Sequence</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  <span class="keywordtype">double</span> Dij(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#a08841c3bd3b0999a40dfdadbee4a6b0d">polymorphicSite</a> &amp; p, <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; config, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; i, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; j)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;  {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keywordtype">unsigned</span> rv = 0;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keywordtype">unsigned</span> N = 0;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordtype">unsigned</span> start1 = accumulate(config.begin(),config.begin()+i,0u),</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;      start2 = accumulate(config.begin(),config.begin()+j,0u);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">unsigned</span> x = start1 ; x &lt; start1 + config[i] ; ++x )</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;      {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> y = start2 ; y &lt; start2 + config[j] ; ++y)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;          {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keywordtype">char</span> ch1 = char(std::toupper(p.second[x])),ch2=char(std::toupper(p.second[y]));</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="keywordflow">if</span>(ch1 != <span class="charliteral">&#39;N&#39;</span> &amp;&amp; ch2 != <span class="charliteral">&#39;N&#39;</span>)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;              {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;                rv += (ch1 != ch2) ? 1u : 0u;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;              }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;              {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                ++N;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;              }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;          }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;      }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">return</span> double(rv)/(double(config[i]+config[j]-N));</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <span class="keywordtype">double</span> Gmin(<span class="keyword">const</span> <a class="code" href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">polySiteVector</a> &amp; , <span class="keyword">const</span> std::vector&lt; unsigned &gt; &amp; )</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;not implemented yet&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">unsigned</span> mdxy = numeric_limits&lt;unsigned&gt;::max();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> mdxy;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}<span class="comment">//ns Sequence</span></div>
 <div class="ttc" id="namespaceSequence_html_aa52c570782b66af0cddf21ccaa86c768"><div class="ttname"><a href="namespaceSequence.html#aa52c570782b66af0cddf21ccaa86c768">Sequence::polySiteVector</a></div><div class="ttdeci">std::vector&lt; polymorphicSite &gt; polySiteVector</div><div class="ttdef"><b>Definition:</b> <a href="polySiteVector_8hpp_source.html#l00051">polySiteVector.hpp:51</a></div></div>
 <div class="ttc" id="polySiteVector_8hpp_html"><div class="ttname"><a href="polySiteVector_8hpp.html">polySiteVector.hpp</a></div><div class="ttdoc">Site-major variation tables in ASCII format. </div></div>
 <div class="ttc" id="SimData_8hpp_html"><div class="ttname"><a href="SimData_8hpp.html">SimData.hpp</a></div><div class="ttdoc">Declaration of Sequence::SimData, a class representing polymorphism data from coalescent simulations ...</div></div>
@@ -118,8 +121,8 @@ $(document).ready(function(){initNavTree('SummStats_8cc_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_e8a85d07e04ed257d70c3e3061588c40.html">SummStats</a></li><li class="navelem"><b>SummStats.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>SummStats.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

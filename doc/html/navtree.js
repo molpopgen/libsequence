@@ -52,7 +52,7 @@ var NAVTREE =
         [ "BAM files", "md_md_tutorial.html#bam", null ]
       ] ]
     ] ],
-    [ "libsequence revision history", "md__home_kevin_src_libsequence_REVISION_HISTORY.html", null ],
+    [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -93,13 +93,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
-"PolyTableFunctions_8hpp.html#a1d0aa47cde1d6632c9fff3a6be97b509",
-"classSequence_1_1ClustalW.html#a58c2d9cd5575b24548e83bdb20e7a53c",
-"classSequence_1_1PolySites.html#af3eac733ba06c44da10b04a4d72c17bd",
-"classSequence_1_1SimData.html#aec9ce40d98cbda31be56389b17a52d71",
-"classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d",
-"group__coalescent.html#ga19b90389f6021ec39447c8119d3c1adb",
-"structSequence_1_1HKAresults.html#a0227596159eb7a6f675fe8a159b984c9"
+"PolyTableFunctions_8hpp.html#a1f387d8e7065ae7ff8da76d2cd1c62cc",
+"classSequence_1_1ClustalW.html#a469d68b804d8b2ac601cec2931f6981c",
+"classSequence_1_1PolyTable.html#a844842098408c31dde153a03b3243434",
+"classSequence_1_1SimpleSNP.html#addb66d0f32a7b5e606b2081aeccc42fa",
+"classSequence_1_1samflag.html#af831de6c7940e6a2ea642f5dad6ba3be",
+"group__seqio.html",
+"structSequence_1_1coalsim_1_1chromosome.html#a37c073510f60807f84aa49c4d881d58e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

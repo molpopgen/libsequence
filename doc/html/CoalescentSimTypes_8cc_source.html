@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -232,7 +232,7 @@ $(document).ready(function(){initNavTree('CoalescentSimTypes_8cc_source.html',''
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
 <div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="structSequence_1_1coalsim_1_1marginal.html#ac0b359912cd5ac00b7ece6226ba4dc29">  242</a></span>&#160;    marginal::reference <a class="code" href="structSequence_1_1coalsim_1_1marginal.html#ac0b359912cd5ac00b7ece6226ba4dc29">marginal::operator[]</a>(<span class="keyword">const</span> std::vector&lt;node&gt;::size_type &amp;i)</div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    {</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      assert( <span class="keywordtype">int</span>(i) &lt;= 2*<a class="code" href="structSequence_1_1coalsim_1_1marginal.html#ae811a70b8e382335c96d6d9f1f6a5a77">nsam</a>-2 );</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;      assert( <span class="keywordtype">int</span>(i) &lt;= 2*<a class="code" href="structSequence_1_1coalsim_1_1marginal.html#ae54539082a912b531b78d17b8ce49780">nsam</a>-2 );</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <span class="keywordflow">return</span> <a class="code" href="structSequence_1_1coalsim_1_1marginal.html#a3fd69de7d02238b8d165880fa43b5938">tree</a>[i];</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
@@ -427,7 +427,6 @@ $(document).ready(function(){initNavTree('CoalescentSimTypes_8cc_source.html',''
 <div class="ttc" id="structSequence_1_1coalsim_1_1chromosome_html_a37c073510f60807f84aa49c4d881d58e"><div class="ttname"><a href="structSequence_1_1coalsim_1_1chromosome.html#a37c073510f60807f84aa49c4d881d58e">Sequence::coalsim::chromosome::chromosome</a></div><div class="ttdeci">chromosome()</div><div class="ttdoc">constructor sets segs to NULL, pop to 0, and nsegs to 0 </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00053">CoalescentSimTypes.cc:53</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1chromosome_html_a446f6e31e2c56d74530b7e1ecaf7f43c"><div class="ttname"><a href="structSequence_1_1coalsim_1_1chromosome.html#a446f6e31e2c56d74530b7e1ecaf7f43c">Sequence::coalsim::chromosome::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00154">CoalescentSimTypes.cc:154</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1marginal_html_a563f3c49141c1cdcb8faaf88146a7263"><div class="ttname"><a href="structSequence_1_1coalsim_1_1marginal.html#a563f3c49141c1cdcb8faaf88146a7263">Sequence::coalsim::marginal::end</a></div><div class="ttdeci">iterator end()</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00218">CoalescentSimTypes.cc:218</a></div></div>
-<div class="ttc" id="structSequence_1_1coalsim_1_1marginal_html_ae811a70b8e382335c96d6d9f1f6a5a77"><div class="ttname"><a href="structSequence_1_1coalsim_1_1marginal.html#ae811a70b8e382335c96d6d9f1f6a5a77">Sequence::coalsim::marginal::nsam</a></div><div class="ttdeci">int nsam</div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00176">SimTypes.hpp:176</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1marginal_html_aa7b619732d1cd81254dd744a5e55911b"><div class="ttname"><a href="structSequence_1_1coalsim_1_1marginal.html#aa7b619732d1cd81254dd744a5e55911b">Sequence::coalsim::marginal::operator&lt;</a></div><div class="ttdeci">bool operator&lt;(const marginal &amp;rhs) const </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00262">CoalescentSimTypes.cc:262</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1node_html"><div class="ttname"><a href="structSequence_1_1coalsim_1_1node.html">Sequence::coalsim::node</a></div><div class="ttdoc">A point on a marginal tree at which a coalescent event occurs. </div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00151">SimTypes.hpp:151</a></div></div>
 <div class="ttc" id="structSequence_1_1coalsim_1_1chromosome_html_a9d3a58c7e072fe9947e2067677f81f23"><div class="ttname"><a href="structSequence_1_1coalsim_1_1chromosome.html#a9d3a58c7e072fe9947e2067677f81f23">Sequence::coalsim::chromosome::segs</a></div><div class="ttdeci">segment * segs</div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00105">SimTypes.hpp:105</a></div></div>
@@ -456,13 +455,14 @@ $(document).ready(function(){initNavTree('CoalescentSimTypes_8cc_source.html',''
 <div class="ttc" id="structSequence_1_1coalsim_1_1chromosome_html_a7ad7cf518ab529e21eee38d2c3dc242d"><div class="ttname"><a href="structSequence_1_1coalsim_1_1chromosome.html#a7ad7cf518ab529e21eee38d2c3dc242d">Sequence::coalsim::chromosome::links</a></div><div class="ttdeci">int links() const </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00178">CoalescentSimTypes.cc:178</a></div></div>
 <div class="ttc" id="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl_html_a4aab2f9fa54e263c5442d927ee823082"><div class="ttname"><a href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl.html#a4aab2f9fa54e263c5442d927ee823082">Sequence::coalsim::newick_stream_marginal_tree_impl::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00391">CoalescentSimTypes.cc:391</a></div></div>
 <div class="ttc" id="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl_html_aaa3cb896791ccaae641a14c02f1a6950"><div class="ttname"><a href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree__impl.html#aaa3cb896791ccaae641a14c02f1a6950">Sequence::coalsim::newick_stream_marginal_tree_impl::parens</a></div><div class="ttdeci">std::ostream &amp; parens(const int &amp;noden, std::ostream &amp;o) const </div><div class="ttdef"><b>Definition:</b> <a href="CoalescentSimTypes_8cc_source.html#l00360">CoalescentSimTypes.cc:360</a></div></div>
+<div class="ttc" id="structSequence_1_1coalsim_1_1marginal_html_ae54539082a912b531b78d17b8ce49780"><div class="ttname"><a href="structSequence_1_1coalsim_1_1marginal.html#ae54539082a912b531b78d17b8ce49780">Sequence::coalsim::marginal::nsam</a></div><div class="ttdeci">const int nsam</div><div class="ttdef"><b>Definition:</b> <a href="SimTypes_8hpp_source.html#l00176">SimTypes.hpp:176</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_4beae286e92ca346d77f090b7c4e1742.html">Coalescent</a></li><li class="navelem"><b>CoalescentSimTypes.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_9fd8caeef21e173623d6525addbfdbeb.html">Coalescent</a></li><li class="navelem"><b>CoalescentSimTypes.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

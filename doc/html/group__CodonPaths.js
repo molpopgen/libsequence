@@ -22,7 +22,7 @@ var group__CodonPaths =
       [ "path_distance", "classSequence_1_1shortestPath.html#a4d42c6f4b5396ac5fba2bd97864334f8", null ],
       [ "type", "classSequence_1_1shortestPath.html#a55c25859bf4b4d692041488bcf91e177", null ]
     ] ],
-    [ "Intermediates2", "group__CodonPaths.html#ga3640124ef623404694e650ba8a757e78", null ],
-    [ "Intermediates3", "group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f", null ],
+    [ "Intermediates2", "group__CodonPaths.html#ga33d928804be22f46b2703ee8157b7151", null ],
+    [ "Intermediates3", "group__CodonPaths.html#ga18e7188a3767413ef84000f082b164a7", null ],
     [ "mutsShortestPath", "group__CodonPaths.html#gab409f485553367b1cc3c0df7fd82b3a2", null ]
 ];

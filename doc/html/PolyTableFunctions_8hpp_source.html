@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -73,69 +73,71 @@ $(document).ready(function(){initNavTree('PolyTableFunctions_8hpp_source.html','
 <div class="contents">
 <a href="PolyTableFunctions_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">Remove the brackets to email me.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  Remove the brackets to email me.</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">This file is part of libsequence.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  This file is part of libsequence.</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">libsequence is free software: you can redistribute it and/or modify</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">it under the terms of the GNU General Public License as published by</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">the Free Software Foundation, either version 3 of the License, or</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">(at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  libsequence is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">  (at your option) any later version.</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">libsequence is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">  libsequence is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">  GNU General Public License for more details.</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">long with libsequence.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">  long with libsequence.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef __POLYTABLE_FUNCTIONS_HPP__</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __POLYTABLE_FUNCTIONS_HPP__</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="SeqExceptions_8hpp.html">Sequence/SeqExceptions.hpp</a>&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keyword">class </span>PolyTable;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence.html#ad5a3bdc53e14704400f877e6953d0792">containsCharacter</a>(<span class="keyword">const</span> PolyTable * t,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; ch);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a6df882d04ca426b57df54a2b418880aa">fillIn</a>(PolyTable * t,</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; refseq = 0,</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; identical = <span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a3d4409f91640da9f1f093f76dd859649">addIdentityChar</a>(PolyTable *t,</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; refseq = 0,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                       <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; identical = <span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a1d0aa47cde1d6632c9fff3a6be97b509">RemoveGaps</a>(PolyTable *t,</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                  <span class="keyword">const</span> <span class="keywordtype">char</span> &amp; gapchar = <span class="charliteral">&#39;-&#39;</span>) ;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a21736523aa0d62767da47627190730a4">RemoveInvariantColumns</a>(PolyTable *t,</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp; skipOutgroup = <span class="keyword">false</span>,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                              <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; outgroup = 0) ;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="PolyTable_8hpp.html">Sequence/PolyTable.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SeqExceptions_8hpp.html">Sequence/SeqExceptions.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence.html#ac58d565313751e1b2f2b83c23dcdcf7a">containsCharacter</a>(<span class="keyword">const</span> PolyTable * t,<span class="keyword">const</span> <span class="keywordtype">char</span> ch);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence.html#a2ae1d4ea53761aa3012b645861afc2d0">polyTableValid</a>(<span class="keyword">const</span> PolyTable * t);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence.html#a59bf69ad44829dececa75440a9f4e7cf">PolyTableValid</a>(<span class="keyword">const</span> PolyTable * t);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T copyPolyTable(<span class="keyword">const</span> T &amp; t)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> T(std::vector&lt;double&gt;(t.pbegin(),t.pend()),</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;             std::vector&lt;std::string&gt;(t.begin(),t.end()));</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> F&gt; T removeColumns( <span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> F &amp; f, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,<span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span> );</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T removeGaps( <span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,<span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span> );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T removeInvariantPos(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                            <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T removeAmbiguous(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                                         <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T removeMissing(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                                       <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T removeMultiHits(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0,</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                                         <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T polyTableToBinary(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> ref = 0, <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; T polyTableFreqFilter(<span class="keyword">const</span> T &amp; t, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> mincount,<span class="keyword">const</span> <span class="keywordtype">bool</span> skipAnc = <span class="keyword">false</span>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> anc = 0 , <span class="keyword">const</span> <span class="keywordtype">char</span> gapchar = <span class="charliteral">&#39;-&#39;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#include &lt;Sequence/bits/PolyTableFunctions.tcc&gt;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="SeqExceptions_8hpp_html"><div class="ttname"><a href="SeqExceptions_8hpp.html">SeqExceptions.hpp</a></div><div class="ttdoc">declaration of exception classes used in namespace Sequence, including class Sequence::SeqException ...</div></div>
-<div class="ttc" id="namespaceSequence_html_a3d4409f91640da9f1f093f76dd859649"><div class="ttname"><a href="namespaceSequence.html#a3d4409f91640da9f1f093f76dd859649">Sequence::addIdentityChar</a></div><div class="ttdeci">void addIdentityChar(PolyTable *t, const unsigned &amp;refseq=0, const char &amp;identical= '.')</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00079">PolyTableFunctions.cc:79</a></div></div>
-<div class="ttc" id="namespaceSequence_html_ad5a3bdc53e14704400f877e6953d0792"><div class="ttname"><a href="namespaceSequence.html#ad5a3bdc53e14704400f877e6953d0792">Sequence::containsCharacter</a></div><div class="ttdeci">bool containsCharacter(const PolyTable *t, const char &amp;ch)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00033">PolyTableFunctions.cc:33</a></div></div>
-<div class="ttc" id="namespaceSequence_html_a21736523aa0d62767da47627190730a4"><div class="ttname"><a href="namespaceSequence.html#a21736523aa0d62767da47627190730a4">Sequence::RemoveInvariantColumns</a></div><div class="ttdeci">void RemoveInvariantColumns(PolyTable *t, const bool &amp;skipOutgroup=false, const unsigned &amp;outgroup=0)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00145">PolyTableFunctions.cc:145</a></div></div>
-<div class="ttc" id="namespaceSequence_html_a6df882d04ca426b57df54a2b418880aa"><div class="ttname"><a href="namespaceSequence.html#a6df882d04ca426b57df54a2b418880aa">Sequence::fillIn</a></div><div class="ttdeci">void fillIn(PolyTable *t, const unsigned &amp;refseq=0, const char &amp;identical= '.')</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00051">PolyTableFunctions.cc:51</a></div></div>
-<div class="ttc" id="namespaceSequence_html_a59bf69ad44829dececa75440a9f4e7cf"><div class="ttname"><a href="namespaceSequence.html#a59bf69ad44829dececa75440a9f4e7cf">Sequence::PolyTableValid</a></div><div class="ttdeci">bool PolyTableValid(const PolyTable *t)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00189">PolyTableFunctions.cc:189</a></div></div>
-<div class="ttc" id="namespaceSequence_html_a1d0aa47cde1d6632c9fff3a6be97b509"><div class="ttname"><a href="namespaceSequence.html#a1d0aa47cde1d6632c9fff3a6be97b509">Sequence::RemoveGaps</a></div><div class="ttdeci">void RemoveGaps(PolyTable *t, const char &amp;gapchar= '-')</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00108">PolyTableFunctions.cc:108</a></div></div>
+<div class="ttc" id="PolyTable_8hpp_html"><div class="ttname"><a href="PolyTable_8hpp.html">PolyTable.hpp</a></div><div class="ttdoc">Sequence::PolyTable, a virtual base class for polymorphism tables. </div></div>
+<div class="ttc" id="namespaceSequence_html_ac58d565313751e1b2f2b83c23dcdcf7a"><div class="ttname"><a href="namespaceSequence.html#ac58d565313751e1b2f2b83c23dcdcf7a">Sequence::containsCharacter</a></div><div class="ttdeci">bool containsCharacter(const PolyTable *t, const char ch)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00033">PolyTableFunctions.cc:33</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a2ae1d4ea53761aa3012b645861afc2d0"><div class="ttname"><a href="namespaceSequence.html#a2ae1d4ea53761aa3012b645861afc2d0">Sequence::polyTableValid</a></div><div class="ttdeci">bool polyTableValid(const PolyTable *t)</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00048">PolyTableFunctions.cc:48</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="PolyTableFunctions_8hpp.html">PolyTableFunctions.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="PolyTableFunctions_8hpp.html">PolyTableFunctions.hpp</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

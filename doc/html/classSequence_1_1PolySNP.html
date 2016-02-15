@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -216,9 +216,10 @@ std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_P
 </div><!-- fragment --> <dl class="section warning"><dt>Warning</dt><dd>The routines to calculate nucleotide diversity, numbers of singletons, etc. all handle missing data (the <code>N</code> character). However, all summary statistics involved in "tests of 
 neutrality" are, strictly speaking, undefined if missing data are present. The reason for this is because the denominators of the statistics are functions of the sample sizes, and no explicit formulae exist when the sample size varies from site to site (which is the case when there are missing data). In short, if you want to be rigorous, you can only really count up nucleotide diversity and a few other statistics if your data contain untyped SNPs. However, the routines present in <code>libsequence</code> will happily go and calculate the summary statistics for you, and it is up to you to be aware that you are writing a program that may give biased results. To date, the magnitude and direction of the bias remains unknown. Functions (and hence the statistics) that are affected have warnings in their documentation. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>As of libsequence 1.4.1, the routines in this class explicity check for gaps in the polymorphism table. This provides an additional safeguard for cases where <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> objects are created and sites with gaps are left in. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">Deprecated:</a></b></dt><dd>Will be removed in libsequence 2.0 </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#_a5">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#_a4">slidingWindow2.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolySNP_8hpp_source.html#l00083">83</a> of file <a class="el" href="PolySNP_8hpp_source.html">PolySNP.hpp</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8hpp_source.html#l00085">85</a> of file <a class="el" href="PolySNP_8hpp_source.html">PolySNP.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afa3702f4a95a35c3b5fac9d84370b017"></a>
 <div class="memitem">
@@ -1316,7 +1317,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_18.png"/> is eit
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

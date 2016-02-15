@@ -2,7 +2,7 @@ var classSequence_1_1TwoSubs =
 [
     [ "TwoSubs", "classSequence_1_1TwoSubs.html#a2bdf0b3ff6d0c32b3e0078255391c6c4", null ],
     [ "~TwoSubs", "classSequence_1_1TwoSubs.html#af5ff2a94be36ec44caf5436b11fe3a60", null ],
-    [ "operator()", "classSequence_1_1TwoSubs.html#a6c45083d3500cc81e0b6b8d6e76740ec", null ],
+    [ "operator()", "classSequence_1_1TwoSubs.html#ae95835b1277a03515742a3da5a2c30df", null ],
     [ "P0", "classSequence_1_1TwoSubs.html#ad656ae5d5538df4dd85081f03fff3f98", null ],
     [ "P2S", "classSequence_1_1TwoSubs.html#a77873ae33df1292bb417374393e34dc5", null ],
     [ "P2V", "classSequence_1_1TwoSubs.html#aaef13d336f4d78a9d82e3006a19c77e9", null ],

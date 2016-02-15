@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -84,8 +84,15 @@ $(document).ready(function(){initNavTree('classSequence_1_1Sites.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a30eca5fa7ae058267a0ee03f70fcf594"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#a30eca5fa7ae058267a0ee03f70fcf594">Sites</a> (const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *sitesObj, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seq2, const int max=3, const <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">GeneticCodes</a> code=GeneticCodes::UNIVERSAL)</td></tr>
-<tr class="separator:a30eca5fa7ae058267a0ee03f70fcf594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5da87c3a1e7de36dd4b704325181ab3a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Sites</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq2, const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, int maxdiffs=3)</td></tr>
+<tr class="separator:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9bca7b38bb2c825a96a8abb08309ea5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9bca7b38bb2c825a96a8abb08309ea5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Sites</b> (<a class="el" href="classSequence_1_1Sites.html">Sites</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:ae9bca7b38bb2c825a96a8abb08309ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99acfc20fc217d489826523ce56b72ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99acfc20fc217d489826523ce56b72ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq2, const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, int maxdiffs=3)</td></tr>
+<tr class="separator:a99acfc20fc217d489826523ce56b72ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadc806ee083fd3f959387ec558512faa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#aadc806ee083fd3f959387ec558512faa">L0</a> (void) const </td></tr>
 <tr class="separator:aadc806ee083fd3f959387ec558512faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d50d3e4d8aa720095cb121ed9512060"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#a0d50d3e4d8aa720095cb121ed9512060">L2S</a> (void) const </td></tr>
@@ -106,82 +113,11 @@ Public Member Functions</h2></td></tr>
 In order to count these numbers, one has to know how degenerate each codon is, which is why objects of this type must be constructed with objects of type <a class="el" href="classSequence_1_1RedundancyCom95.html" title="Calculate redundancy of a genetic code using Comeron&#39;s counting scheme. ">Sequence::RedundancyCom95</a>.</p>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00059">59</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a30eca5fa7ae058267a0ee03f70fcf594"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Sequence::Sites::Sites </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *&#160;</td>
-          <td class="paramname"><em>sitesObj</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *&#160;</td>
-          <td class="paramname"><em>seq1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *&#160;</td>
-          <td class="paramname"><em>seq2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>max</em> = <code>3</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">GeneticCodes</a>&#160;</td>
-          <td class="paramname"><em>code</em> = <code>GeneticCodes::UNIVERSAL</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">sitesObj</td><td>an initialized object of type <a class="el" href="classSequence_1_1RedundancyCom95.html" title="Calculate redundancy of a genetic code using Comeron&#39;s counting scheme. ">Sequence::RedundancyCom95</a> </td></tr>
-    <tr><td class="paramname">seq1</td><td>a <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> </td></tr>
-    <tr><td class="paramname">seq2</td><td>a <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> </td></tr>
-    <tr><td class="paramname">max</td><td>max number of substitutions per codon to analyze </td></tr>
-    <tr><td class="paramname">code</td><td>see <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> for valid values </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>sequences must be of same length, this is checked by assert() </dd>
-<dd>
-sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
-
-<p>Definition at line <a class="el" href="Sites_8cc_source.html#l00041">41</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
+<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00058">58</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aadc806ee083fd3f959387ec558512faa"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double Sequence::Sites::L0 </td>
@@ -191,24 +127,16 @@ sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>alignment length in terms of non-degenerate sites </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00080">80</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sites_8cc_source.html#l00133">133</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a0d50d3e4d8aa720095cb121ed9512060"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double Sequence::Sites::L2S </td>
@@ -218,24 +146,16 @@ sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>alignment length in terms of transitional-degenerate sites </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00087">87</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sites_8cc_source.html#l00140">140</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a8c0ca46fb51473ae9261ba507564a07a"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double Sequence::Sites::L2V </td>
@@ -245,24 +165,16 @@ sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>alignment length in terms of transversional-degenerate sites </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00094">94</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sites_8cc_source.html#l00147">147</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
 
 </div>
 </div>
 <a class="anchor" id="a82ff09f2e08d55775e5b6609ad2d37f6"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">double Sequence::Sites::L4 </td>
@@ -272,15 +184,10 @@ sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
           <td> const</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>alignment length in terms of fourfold-degenerate sites </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00101">101</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sites_8cc_source.html#l00154">154</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
 
 </div>
 </div>
@@ -294,7 +201,7 @@ sequence lengths must be multiples of 3, this is checked by assert() </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Sites.html">Sites</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

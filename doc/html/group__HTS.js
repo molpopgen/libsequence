@@ -25,12 +25,12 @@ var group__HTS =
     ] ],
     [ "bamaux", "structSequence_1_1bamaux.html", [
       [ "bamaux", "structSequence_1_1bamaux.html#abbb1ce41abd5566ae762015baf5996f4", null ],
-      [ "bamaux", "structSequence_1_1bamaux.html#a3569d1f64a181c6bab1abb171487296d", null ],
+      [ "bamaux", "structSequence_1_1bamaux.html#a5f404a16a70a5f75525a4483bc6654ad", null ],
       [ "bamaux", "structSequence_1_1bamaux.html#a1dbd661c2270b5768361e7fae75df00d", null ],
-      [ "size", "structSequence_1_1bamaux.html#a0a4cbd2455fc047c5b210532191cb7a5", null ],
-      [ "tag", "structSequence_1_1bamaux.html#ae0834088a824dbc81a0a43df684be235", null ],
-      [ "value", "structSequence_1_1bamaux.html#adbd5a3eee468f3f158e397cef9566a93", null ],
-      [ "value_type", "structSequence_1_1bamaux.html#aa8a979e8fb917675214e8b50459f311a", null ]
+      [ "size", "structSequence_1_1bamaux.html#a801a14d6944f2072ba4b4fa62598a47b", null ],
+      [ "tag", "structSequence_1_1bamaux.html#a2c4ab4dec148e7473a7884eddeb74448", null ],
+      [ "value", "structSequence_1_1bamaux.html#a036c766b5ce51fb029c19a276cc2f1e6", null ],
+      [ "value_type", "structSequence_1_1bamaux.html#a572d97ef05afe74ec43d1e5622215798", null ]
     ] ],
     [ "bamrecord", "classSequence_1_1bamrecord.html", [
       [ "bamrecord", "classSequence_1_1bamrecord.html#a887b13c1d9d31f3686184fd9686ba247", null ],

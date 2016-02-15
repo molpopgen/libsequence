@@ -1,5 +1,7 @@
 var PathwayHelper_8hpp =
 [
-    [ "Intermediates2", "PathwayHelper_8hpp.html#ga3640124ef623404694e650ba8a757e78", null ],
-    [ "Intermediates3", "PathwayHelper_8hpp.html#gab933905f221fb3d14014dbf130e7e17f", null ]
+    [ "Inter2_t", "PathwayHelper_8hpp.html#a719723dfc3bf596c1a3848c9208e1129", null ],
+    [ "Inter3_t", "PathwayHelper_8hpp.html#a5262a40abc48eeb48b5e2de769b5ff1e", null ],
+    [ "Intermediates2", "PathwayHelper_8hpp.html#ga33d928804be22f46b2703ee8157b7151", null ],
+    [ "Intermediates3", "PathwayHelper_8hpp.html#ga18e7188a3767413ef84000f082b164a7", null ]
 ];

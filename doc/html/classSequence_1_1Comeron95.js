@@ -1,26 +1,8 @@
 var classSequence_1_1Comeron95 =
 [
-    [ "Comeron95", "classSequence_1_1Comeron95.html#a1bc9b8d789761e6f901af05bbe1dc446", null ],
+    [ "Comeron95", "classSequence_1_1Comeron95.html#aaff1ba6d51cc82e012861b104b48d239", null ],
     [ "Comeron95", "classSequence_1_1Comeron95.html#ab203d470e3cc76d35bd0e169a177ee76", null ],
-    [ "~Comeron95", "classSequence_1_1Comeron95.html#a4f95d6a0871d308d57162dc55b7fc692", null ],
-    [ "aa", "classSequence_1_1Comeron95.html#ac3d6d403aed0ddd35cc35bcc74dd5d03", null ],
-    [ "as", "classSequence_1_1Comeron95.html#a0ae9d752e3a99dc31380f914cfa34d81", null ],
-    [ "ba", "classSequence_1_1Comeron95.html#a94abc3715315232e48b3cbd17b3fd272", null ],
-    [ "bs", "classSequence_1_1Comeron95.html#abe8ac90357078bfad7bc6371f5e70267", null ],
-    [ "ka", "classSequence_1_1Comeron95.html#a42c3d4d6b9112477ed8dbb2fad1b25dd", null ],
-    [ "ks", "classSequence_1_1Comeron95.html#ae896a245b971730d0704aec6f41f09f3", null ],
-    [ "L0", "classSequence_1_1Comeron95.html#a6fcb8335363c499102d2e531a4b1bcef", null ],
-    [ "L2S", "classSequence_1_1Comeron95.html#a58b3d41a001ff834ec308e893267424b", null ],
-    [ "L2V", "classSequence_1_1Comeron95.html#a9998e1faab1803e031e43110f18ca4a9", null ],
-    [ "L4", "classSequence_1_1Comeron95.html#a2cf95f9683a6660d05073609c7d898c5", null ],
-    [ "operator=", "classSequence_1_1Comeron95.html#a0cdb6a41e309499f8417ed1659df1bdd", null ],
-    [ "P0", "classSequence_1_1Comeron95.html#adadc57d5e6a2038163a33cbd09cb5691", null ],
-    [ "P2S", "classSequence_1_1Comeron95.html#a43223b5440a37713d3b3843ee131c977", null ],
-    [ "P2V", "classSequence_1_1Comeron95.html#a3939ffc6bd202fc52eaf86c68399a102", null ],
-    [ "P4", "classSequence_1_1Comeron95.html#adb009ba5789d37bb9d947915e73268a7", null ],
-    [ "Q0", "classSequence_1_1Comeron95.html#aa9a07707da4be59a9039720bcc0442d5", null ],
-    [ "Q2S", "classSequence_1_1Comeron95.html#a1d7d858712ef036b5c403c3192b7610a", null ],
-    [ "Q2V", "classSequence_1_1Comeron95.html#a6e45ba1f420b2d145db609665fb3fd6c", null ],
-    [ "Q4", "classSequence_1_1Comeron95.html#a0862003c1ead174d65b7ef830e6b90f2", null ],
-    [ "ratio", "classSequence_1_1Comeron95.html#aa74801f38cf6a0114fa973c821b570a2", null ]
+    [ "operator()", "classSequence_1_1Comeron95.html#a887d3bedea66e3b1135411aa55eccd33", null ],
+    [ "operator()", "classSequence_1_1Comeron95.html#a2ce23bbc343366fb9ac559f83372dab8", null ],
+    [ "operator=", "classSequence_1_1Comeron95.html#a0cdb6a41e309499f8417ed1659df1bdd", null ]
 ];

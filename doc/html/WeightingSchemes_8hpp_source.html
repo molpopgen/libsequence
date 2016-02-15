@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -98,49 +98,42 @@ $(document).ready(function(){initNavTree('WeightingSchemes_8hpp_source.html','')
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define __WEIGHTING_SCHEMES_H__</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classSequence_1_1WeightingScheme2.html">   81</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1WeightingScheme2.html">WeightingScheme2</a></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keyword">explicit</span> <a class="code" href="classSequence_1_1WeightingScheme2.html">WeightingScheme2</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="SeqEnums_8hpp.html">Sequence/SeqEnums.hpp</a>&gt;</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  {</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="structSequence_1_1WeightingScheme2.html">   80</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structSequence_1_1WeightingScheme2.html">WeightingScheme2</a></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;      <span class="keyword">using</span> weights2_t = std::array&lt;double,2&gt;;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;      <span class="keyword">explicit</span> <a class="code" href="structSequence_1_1WeightingScheme2.html">WeightingScheme2</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      {}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="keyword">virtual</span> ~<a class="code" href="structSequence_1_1WeightingScheme2.html">WeightingScheme2</a>(<span class="keywordtype">void</span>)</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      {}</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keyword">virtual</span> ~<a class="code" href="classSequence_1_1WeightingScheme2.html">WeightingScheme2</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;      {}</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSequence_1_1WeightingScheme2.html#a33ab2b615486ddddb78f3cade69f3712">Calculate</a>(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2) <span class="keyword">const</span> =0;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">double</span> *<a class="code" href="classSequence_1_1WeightingScheme2.html#a9fe15764f2773c8570af3014e100570a">weights</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    };</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="classSequence_1_1WeightingScheme3.html">   93</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classSequence_1_1WeightingScheme3.html">WeightingScheme3</a></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keyword">explicit</span> <a class="code" href="classSequence_1_1WeightingScheme3.html">WeightingScheme3</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      {}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;      <span class="keyword">virtual</span> ~<a class="code" href="classSequence_1_1WeightingScheme3.html">WeightingScheme3</a>(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      {}</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classSequence_1_1WeightingScheme3.html#a9163ccd089c8e8b83598ace72282f9bf">Calculate</a>(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2)<span class="keyword">const</span> =0;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;      <span class="keyword">virtual</span> <span class="keywordtype">double</span> *<a class="code" href="classSequence_1_1WeightingScheme3.html#ab80c35b1d43f5605eedd38f16dbf5577">weights</a>(<span class="keywordtype">void</span>) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    };</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme2_html_a33ab2b615486ddddb78f3cade69f3712"><div class="ttname"><a href="classSequence_1_1WeightingScheme2.html#a33ab2b615486ddddb78f3cade69f3712">Sequence::WeightingScheme2::Calculate</a></div><div class="ttdeci">virtual void Calculate(const std::string &amp;codon1, const std::string &amp;codon2) const =0</div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme3_html"><div class="ttname"><a href="classSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 3 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00093">WeightingSchemes.hpp:93</a></div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme3_html_a9163ccd089c8e8b83598ace72282f9bf"><div class="ttname"><a href="classSequence_1_1WeightingScheme3.html#a9163ccd089c8e8b83598ace72282f9bf">Sequence::WeightingScheme3::Calculate</a></div><div class="ttdeci">virtual void Calculate(const std::string &amp;codon1, const std::string &amp;codon2) const =0</div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme2_html"><div class="ttname"><a href="classSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 2 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00081">WeightingSchemes.hpp:81</a></div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme3_html_ab80c35b1d43f5605eedd38f16dbf5577"><div class="ttname"><a href="classSequence_1_1WeightingScheme3.html#ab80c35b1d43f5605eedd38f16dbf5577">Sequence::WeightingScheme3::weights</a></div><div class="ttdeci">virtual double * weights(void) const =0</div></div>
-<div class="ttc" id="classSequence_1_1WeightingScheme2_html_a9fe15764f2773c8570af3014e100570a"><div class="ttname"><a href="classSequence_1_1WeightingScheme2.html#a9fe15764f2773c8570af3014e100570a">Sequence::WeightingScheme2::weights</a></div><div class="ttdeci">virtual double * weights(void) const =0</div></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      <span class="keyword">virtual</span> weights2_t operator()(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2,<a class="code" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) <span class="keyword">const</span> =0;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    };</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structSequence_1_1WeightingScheme3.html">   90</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structSequence_1_1WeightingScheme3.html">WeightingScheme3</a></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;      <span class="keyword">using</span> weights3_t = std::array&lt;double,6&gt;;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      <span class="keyword">explicit</span> <a class="code" href="structSequence_1_1WeightingScheme3.html">WeightingScheme3</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;      {}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;      <span class="keyword">virtual</span> ~<a class="code" href="structSequence_1_1WeightingScheme3.html">WeightingScheme3</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;      {}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;      <span class="keyword">virtual</span> weights3_t operator()(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2,<a class="code" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) <span class="keyword">const</span> =0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    };</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structSequence_1_1WeightingScheme2_html"><div class="ttname"><a href="structSequence_1_1WeightingScheme2.html">Sequence::WeightingScheme2</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 2 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00080">WeightingSchemes.hpp:80</a></div></div>
+<div class="ttc" id="structSequence_1_1WeightingScheme3_html"><div class="ttname"><a href="structSequence_1_1WeightingScheme3.html">Sequence::WeightingScheme3</a></div><div class="ttdoc">abstract interface to weighting schemes when codons differ at 3 positions </div><div class="ttdef"><b>Definition:</b> <a href="WeightingSchemes_8hpp_source.html#l00090">WeightingSchemes.hpp:90</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a5e0228ffad6c8cf2441604124c8b9961"><div class="ttname"><a href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a></div><div class="ttdeci">GeneticCodes</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00040">SeqEnums.hpp:40</a></div></div>
+<div class="ttc" id="SeqEnums_8hpp_html"><div class="ttname"><a href="SeqEnums_8hpp.html">SeqEnums.hpp</a></div><div class="ttdoc">Definition of enumeration types. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="WeightingSchemes_8hpp.html">WeightingSchemes.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="WeightingSchemes_8hpp.html">WeightingSchemes.hpp</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

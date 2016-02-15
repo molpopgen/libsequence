@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -77,25 +77,25 @@ $(document).ready(function(){initNavTree('fastq_8cc_source.html','');});
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>Sequence {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  fastq::fastq(<span class="keywordtype">void</span>) : Seq(),quality(std::string())</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;  fastq::fastq(<span class="keywordtype">void</span>) : Seq(),quality(std::string()),repeat_name(true)</div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;  {</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;  }</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;   </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;  fastq::fastq (<span class="keyword">const</span> std::string &amp;name, <span class="keyword">const</span> std::string &amp;seq,</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                <span class="keyword">const</span> std::string &amp; qual) : Seq(name,seq),repeat_name(true),quality(qual)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                <span class="keyword">const</span> std::string &amp; qual) : Seq(name,seq),quality(qual),repeat_name(true)</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  }</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  fastq::fastq ( std::string &amp;&amp; name, std::string &amp;&amp; seq,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                 std::string &amp;&amp; qual) : Seq(std::move(name),std::move(seq)),repeat_name(true),quality(std::move(qual))</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                 std::string &amp;&amp; qual) : Seq(std::move(name),std::move(seq)),quality(std::move(qual)),repeat_name(true)</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  {</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  }</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#a3472f892b2ecbe9dcec6d885dca3c0be">   21</a></span>&#160;  fastq::fastq (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; s) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(s.first,s.second),repeat_name(true),quality(std::string())</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#a3472f892b2ecbe9dcec6d885dca3c0be">   21</a></span>&#160;  fastq::fastq (<span class="keyword">const</span> <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp; s) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(s.first,s.second),quality(std::string()),repeat_name(true)</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  {</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  }</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#ac6a4a2e9ad768e9a78351c2ff09596f4">   25</a></span>&#160;  fastq::fastq ( <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp; s) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::move(s)),repeat_name(true),quality(std::string())</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classSequence_1_1fastq.html#ac6a4a2e9ad768e9a78351c2ff09596f4">   25</a></span>&#160;  fastq::fastq ( <a class="code" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp; s) : <a class="code" href="classSequence_1_1Seq.html">Seq</a>(std::move(s)),quality(std::string()),repeat_name(true)</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  {</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  }</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
@@ -152,8 +152,8 @@ $(document).ready(function(){initNavTree('fastq_8cc_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_3f74eaea681a92f9db7ad04780478e92.html">Seq</a></li><li class="navelem"><b>fastq.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_4f06051c9df016f874d2786f7a52ea77.html">Seq</a></li><li class="navelem"><b>fastq.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

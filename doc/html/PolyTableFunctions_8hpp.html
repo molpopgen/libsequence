@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -77,7 +77,9 @@ $(document).ready(function(){initNavTree('PolyTableFunctions_8hpp.html','');});
 
 <p>Operations on non-const <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> objects.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="SeqExceptions_8hpp_source.html">Sequence/SeqExceptions.hpp</a>&gt;</code><br/>
+<div class="textblock"><code>#include &lt;<a class="el" href="PolyTable_8hpp_source.html">Sequence/PolyTable.hpp</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="SeqExceptions_8hpp_source.html">Sequence/SeqExceptions.hpp</a>&gt;</code><br/>
+<code>#include &lt;Sequence/bits/PolyTableFunctions.tcc&gt;</code><br/>
 </div>
 <p><a href="PolyTableFunctions_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -89,18 +91,46 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad5a3bdc53e14704400f877e6953d0792"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#ad5a3bdc53e14704400f877e6953d0792">Sequence::containsCharacter</a> (const PolyTable *t, const char &amp;ch)</td></tr>
-<tr class="separator:ad5a3bdc53e14704400f877e6953d0792"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6df882d04ca426b57df54a2b418880aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a6df882d04ca426b57df54a2b418880aa">Sequence::fillIn</a> (PolyTable *t, const unsigned &amp;refseq=0, const char &amp;identical= '.')</td></tr>
-<tr class="separator:a6df882d04ca426b57df54a2b418880aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d4409f91640da9f1f093f76dd859649"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a3d4409f91640da9f1f093f76dd859649">Sequence::addIdentityChar</a> (PolyTable *t, const unsigned &amp;refseq=0, const char &amp;identical= '.')</td></tr>
-<tr class="separator:a3d4409f91640da9f1f093f76dd859649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d0aa47cde1d6632c9fff3a6be97b509"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a1d0aa47cde1d6632c9fff3a6be97b509">Sequence::RemoveGaps</a> (PolyTable *t, const char &amp;gapchar= '-')</td></tr>
-<tr class="separator:a1d0aa47cde1d6632c9fff3a6be97b509"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21736523aa0d62767da47627190730a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a21736523aa0d62767da47627190730a4">Sequence::RemoveInvariantColumns</a> (PolyTable *t, const bool &amp;skipOutgroup=false, const unsigned &amp;outgroup=0)</td></tr>
-<tr class="separator:a21736523aa0d62767da47627190730a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59bf69ad44829dececa75440a9f4e7cf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a59bf69ad44829dececa75440a9f4e7cf">Sequence::PolyTableValid</a> (const PolyTable *t)</td></tr>
-<tr class="separator:a59bf69ad44829dececa75440a9f4e7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac58d565313751e1b2f2b83c23dcdcf7a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#ac58d565313751e1b2f2b83c23dcdcf7a">Sequence::containsCharacter</a> (const PolyTable *t, const char ch)</td></tr>
+<tr class="separator:ac58d565313751e1b2f2b83c23dcdcf7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ae1d4ea53761aa3012b645861afc2d0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a2ae1d4ea53761aa3012b645861afc2d0">Sequence::polyTableValid</a> (const PolyTable *t)</td></tr>
+<tr class="separator:a2ae1d4ea53761aa3012b645861afc2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede8292e7cb49634577e32d023695ee4"><td class="memTemplParams" colspan="2"><a class="anchor" id="aede8292e7cb49634577e32d023695ee4"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aede8292e7cb49634577e32d023695ee4"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::copyPolyTable</b> (const T &amp;t)</td></tr>
+<tr class="separator:aede8292e7cb49634577e32d023695ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac27793225a3523330aa71071536ba9d2"><td class="memTemplParams" colspan="2"><a class="anchor" id="ac27793225a3523330aa71071536ba9d2"></a>
+template&lt;typename T , typename F &gt; </td></tr>
+<tr class="memitem:ac27793225a3523330aa71071536ba9d2"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeColumns</b> (const T &amp;t, const F &amp;f, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:ac27793225a3523330aa71071536ba9d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5df1b5943f25f72db47669ec86776185"><td class="memTemplParams" colspan="2"><a class="anchor" id="a5df1b5943f25f72db47669ec86776185"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a5df1b5943f25f72db47669ec86776185"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeGaps</b> (const T &amp;t, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:a5df1b5943f25f72db47669ec86776185"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68a35357507ebbdb8562e8c51acc91b7"><td class="memTemplParams" colspan="2"><a class="anchor" id="a68a35357507ebbdb8562e8c51acc91b7"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a68a35357507ebbdb8562e8c51acc91b7"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeInvariantPos</b> (const T &amp;t, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:a68a35357507ebbdb8562e8c51acc91b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa36f4d08c950142731244809ceb2aa0f"><td class="memTemplParams" colspan="2"><a class="anchor" id="aa36f4d08c950142731244809ceb2aa0f"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aa36f4d08c950142731244809ceb2aa0f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeAmbiguous</b> (const T &amp;t, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:aa36f4d08c950142731244809ceb2aa0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f387d8e7065ae7ff8da76d2cd1c62cc"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1f387d8e7065ae7ff8da76d2cd1c62cc"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a1f387d8e7065ae7ff8da76d2cd1c62cc"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeMissing</b> (const T &amp;t, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:a1f387d8e7065ae7ff8da76d2cd1c62cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dce45e440b36549f826ed6275e0381c"><td class="memTemplParams" colspan="2"><a class="anchor" id="a3dce45e440b36549f826ed6275e0381c"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3dce45e440b36549f826ed6275e0381c"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::removeMultiHits</b> (const T &amp;t, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:a3dce45e440b36549f826ed6275e0381c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac72c2f80896453c1e0c96e3c5c5ef8a"><td class="memTemplParams" colspan="2"><a class="anchor" id="aac72c2f80896453c1e0c96e3c5c5ef8a"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aac72c2f80896453c1e0c96e3c5c5ef8a"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::polyTableToBinary</b> (const T &amp;t, const unsigned ref, const char gapchar)</td></tr>
+<tr class="separator:aac72c2f80896453c1e0c96e3c5c5ef8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20cdd46bd2828f07bf6c9cdc45aa4835"><td class="memTemplParams" colspan="2"><a class="anchor" id="a20cdd46bd2828f07bf6c9cdc45aa4835"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a20cdd46bd2828f07bf6c9cdc45aa4835"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Sequence::polyTableFreqFilter</b> (const T &amp;t, const unsigned mincount, const bool skipAnc, const unsigned anc, const char gapchar)</td></tr>
+<tr class="separator:a20cdd46bd2828f07bf6c9cdc45aa4835"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Operations on non-const <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> objects. </p>
@@ -112,8 +142,8 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_0cbd0e13241e9fe219c81bf40d56b960.html">Sequence</a></li><li class="navelem"><a class="el" href="PolyTableFunctions_8hpp.html">PolyTableFunctions.hpp</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_dc42130981810df7964949c66f46a847.html">Sequence</a></li><li class="navelem"><a class="el" href="PolyTableFunctions_8hpp.html">PolyTableFunctions.hpp</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

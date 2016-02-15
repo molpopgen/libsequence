@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -97,68 +97,29 @@ $(document).ready(function(){initNavTree('Unweighted_8cc_source.html','');});
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="Unweighted_8hpp.html">Sequence/Unweighted.hpp</a>&gt;</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;limits&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">using</span> std::numeric_limits;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span>Sequence</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  Unweighted2::Unweighted2(<span class="keywordtype">void</span>) : __weights{numeric_limits&lt;double&gt;::quiet_NaN(),numeric_limits&lt;double&gt;::quiet_NaN()}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  }</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  Unweighted2::~Unweighted2(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>Sequence</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structSequence_1_1Unweighted2.html#a307ff5985f570eeedb5290785030b0fc">   29</a></span>&#160;  WeightingScheme2::weights2_t <a class="code" href="structSequence_1_1Unweighted2.html#a307ff5985f570eeedb5290785030b0fc">Unweighted2::operator()</a>(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;,<a class="code" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a>) const</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> weights2_t({{1.,1.}});</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classSequence_1_1Unweighted2.html#acd63716a049b2fb67532ebd2c90e3bfb">   39</a></span>&#160;  <span class="keywordtype">void</span> Unweighted2::Calculate(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2) <span class="keyword">const</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structSequence_1_1Unweighted3.html#a2524a6da7c28a39b3d2f8fc944c77c2c">   39</a></span>&#160;  WeightingScheme3::weights3_t <a class="code" href="structSequence_1_1Unweighted3.html#a2524a6da7c28a39b3d2f8fc944c77c2c">Unweighted3::operator()</a>(<span class="keyword">const</span> std::string &amp;, <span class="keyword">const</span> std::string &amp;,<a class="code" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> ) const</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    __weights[0] = 0.5;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    __weights[1] = 0.5;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classSequence_1_1Unweighted2.html#ad78e3f1491b19a18d7fe570228b06589">   50</a></span>&#160;  <span class="keywordtype">double</span>* Unweighted2::weights(<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> __weights;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  Unweighted3::Unweighted3(<span class="keywordtype">void</span>) : </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    __weights{numeric_limits&lt;double&gt;::quiet_NaN(),</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      numeric_limits&lt;double&gt;::quiet_NaN(),</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      numeric_limits&lt;double&gt;::quiet_NaN(),</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;      numeric_limits&lt;double&gt;::quiet_NaN(),</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;      numeric_limits&lt;double&gt;::quiet_NaN(),</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      numeric_limits&lt;double&gt;::quiet_NaN()}</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  Unweighted3::~Unweighted3(<span class="keywordtype">void</span>)</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classSequence_1_1Unweighted3.html#a41f6a3a3e8575d90509245d7063bb6b5">   72</a></span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classSequence_1_1Unweighted3.html#a41f6a3a3e8575d90509245d7063bb6b5">Unweighted3::Calculate</a>(<span class="keyword">const</span> std::string &amp;codon1, <span class="keyword">const</span> std::string &amp;codon2) <span class="keyword">const</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    __weights[0] = 1.0/6.0;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    __weights[1] = 1.0/6.0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    __weights[2] = 1.0/6.0;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    __weights[3] = 1.0/6.0;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    __weights[4] = 1.0/6.0;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    __weights[5] = 1.0/6.0;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classSequence_1_1Unweighted3.html#af833934cbec60e11550f45b04c37ecc6">   87</a></span>&#160;  <span class="keywordtype">double</span>* <a class="code" href="classSequence_1_1Unweighted3.html#af833934cbec60e11550f45b04c37ecc6">Unweighted3::weights</a>(<span class="keywordtype">void</span>) const</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> __weights;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="ttc" id="classSequence_1_1Unweighted3_html_a41f6a3a3e8575d90509245d7063bb6b5"><div class="ttname"><a href="classSequence_1_1Unweighted3.html#a41f6a3a3e8575d90509245d7063bb6b5">Sequence::Unweighted3::Calculate</a></div><div class="ttdeci">void Calculate(const std::string &amp;codon1, const std::string &amp;codon2) const </div><div class="ttdef"><b>Definition:</b> <a href="Unweighted_8cc_source.html#l00072">Unweighted.cc:72</a></div></div>
-<div class="ttc" id="classSequence_1_1Unweighted3_html_af833934cbec60e11550f45b04c37ecc6"><div class="ttname"><a href="classSequence_1_1Unweighted3.html#af833934cbec60e11550f45b04c37ecc6">Sequence::Unweighted3::weights</a></div><div class="ttdeci">double * weights(void) const </div><div class="ttdef"><b>Definition:</b> <a href="Unweighted_8cc_source.html#l00087">Unweighted.cc:87</a></div></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> weights3_t({{1.,1.,1.,1.,1.,1.}});</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="ttc" id="structSequence_1_1Unweighted3_html_a2524a6da7c28a39b3d2f8fc944c77c2c"><div class="ttname"><a href="structSequence_1_1Unweighted3.html#a2524a6da7c28a39b3d2f8fc944c77c2c">Sequence::Unweighted3::operator()</a></div><div class="ttdeci">weights3_t operator()(const std::string &amp;codon1, const std::string &amp;codon2, Sequence::GeneticCodes genetic_code) const </div><div class="ttdef"><b>Definition:</b> <a href="Unweighted_8cc_source.html#l00039">Unweighted.cc:39</a></div></div>
+<div class="ttc" id="structSequence_1_1Unweighted2_html_a307ff5985f570eeedb5290785030b0fc"><div class="ttname"><a href="structSequence_1_1Unweighted2.html#a307ff5985f570eeedb5290785030b0fc">Sequence::Unweighted2::operator()</a></div><div class="ttdeci">weights2_t operator()(const std::string &amp;codon1, const std::string &amp;codon2, Sequence::GeneticCodes genetic_code) const </div><div class="ttdef"><b>Definition:</b> <a href="Unweighted_8cc_source.html#l00029">Unweighted.cc:29</a></div></div>
+<div class="ttc" id="namespaceSequence_html_a5e0228ffad6c8cf2441604124c8b9961"><div class="ttname"><a href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a></div><div class="ttdeci">GeneticCodes</div><div class="ttdef"><b>Definition:</b> <a href="SeqEnums_8hpp_source.html#l00040">SeqEnums.hpp:40</a></div></div>
 <div class="ttc" id="Unweighted_8hpp_html"><div class="ttname"><a href="Unweighted_8hpp.html">Unweighted.hpp</a></div><div class="ttdoc">declares Sequence::Unweighted2 and Sequence::Unweighted3 </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><b>Unweighted.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><b>Unweighted.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

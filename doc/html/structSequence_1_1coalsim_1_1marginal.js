@@ -15,6 +15,6 @@ var structSequence_1_1coalsim_1_1marginal =
     [ "operator[]", "structSequence_1_1coalsim_1_1marginal.html#a304f086a593ea6fdb6e8b0aca7c88b7b", null ],
     [ "beg", "structSequence_1_1coalsim_1_1marginal.html#a23884e37bc210e35f5beb0068c6dcb00", null ],
     [ "nnodes", "structSequence_1_1coalsim_1_1marginal.html#a235660e8bc856becc5b0ab949785117e", null ],
-    [ "nsam", "structSequence_1_1coalsim_1_1marginal.html#ae811a70b8e382335c96d6d9f1f6a5a77", null ],
+    [ "nsam", "structSequence_1_1coalsim_1_1marginal.html#ae54539082a912b531b78d17b8ce49780", null ],
     [ "tree", "structSequence_1_1coalsim_1_1marginal.html#a3fd69de7d02238b8d165880fa43b5938", null ]
 ];

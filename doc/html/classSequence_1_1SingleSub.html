@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -84,8 +84,8 @@ $(document).ready(function(){initNavTree('classSequence_1_1SingleSub.html','');}
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a18a2b8bf69e3d5924289649e3aca24a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SingleSub.html#a18a2b8bf69e3d5924289649e3aca24a5">operator()</a> (const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *sitesObj, const std::string &amp;cod1, const std::string &amp;cod2)</td></tr>
-<tr class="separator:a18a2b8bf69e3d5924289649e3aca24a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eeb8f678db0085f9dfc2c60be9b1fa1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SingleSub.html#a2eeb8f678db0085f9dfc2c60be9b1fa1">operator()</a> (const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, const std::string &amp;cod1, const std::string &amp;cod2)</td></tr>
+<tr class="separator:a2eeb8f678db0085f9dfc2c60be9b1fa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaccaf737fec84f2dea5ae9280af51a7e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SingleSub.html#aaccaf737fec84f2dea5ae9280af51a7e">P0</a> (void) const </td></tr>
 <tr class="separator:aaccaf737fec84f2dea5ae9280af51a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0904b765ca857b77027f4c1ec93cb1de"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SingleSub.html#a0904b765ca857b77027f4c1ec93cb1de">P2S</a> (void) const </td></tr>
@@ -108,16 +108,16 @@ Public Member Functions</h2></td></tr>
 <p>A functor to obtain divergence statistics for Comeron's method for codons that differ at one position. Used by <a class="el" href="classSequence_1_1Comeron95.html" title="Ka and Ks by Comeron&#39;s (1995) method. ">Sequence::Comeron95</a></p>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8hpp_source.html#l00044">44</a> of file <a class="el" href="SingleSub_8hpp_source.html">SingleSub.hpp</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8hpp_source.html#l00045">45</a> of file <a class="el" href="SingleSub_8hpp_source.html">SingleSub.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a18a2b8bf69e3d5924289649e3aca24a5"></a>
+<a class="anchor" id="a2eeb8f678db0085f9dfc2c60be9b1fa1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Sequence::SingleSub::operator() </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;&#160;</td>
           <td class="paramname"><em>sitesObj</em>, </td>
         </tr>
         <tr>
@@ -149,7 +149,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>cod1 and cod2 lengths are verified by assert() </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00039">39</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00054">54</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -168,7 +168,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at non-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00055">55</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00068">68</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -187,7 +187,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at transitional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00064">64</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00077">77</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -206,7 +206,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at transversional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00073">73</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00086">86</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -225,7 +225,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transitions at fourfold-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00082">82</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00095">95</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -244,7 +244,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at non-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00090">90</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00103">103</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -263,7 +263,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at transitional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00099">99</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00112">112</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at transversional-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00108">108</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00121">121</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -301,7 +301,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of transversions at fourfold-degenerate sites in the codon </dd></dl>
 
-<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00117">117</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
+<p>Definition at line <a class="el" href="SingleSub_8cc_source.html#l00130">130</a> of file <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>.</p>
 
 </div>
 </div>
@@ -315,7 +315,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1SingleSub.html">SingleSub</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

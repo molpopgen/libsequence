@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -265,10 +265,10 @@ Handling custom input formats</h3>
 <div class="line">        myPT( myPT &amp;&amp; ) = <span class="keywordflow">default</span>;</div>
 <div class="line">        myPT( myPT &amp; ) = <span class="keywordflow">default</span>;</div>
 <div class="line">        myPT( <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> &amp; ); <span class="comment">//you&#39;ll need to define this elsewhere</span></div>
-<div class="line">        myPT &amp; operator=( myPT &amp; ) = <span class="keywordflow">default</span>;</div>
-<div class="line">        myPT &amp; operator=( myPT &amp;&amp; ) = <span class="keywordflow">default</span>;</div>
-<div class="line">        myPT &amp; operator=( <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> &amp; ); <span class="comment">//you&#39;ll need to define this elsewhere</span></div>
-<div class="line">        myPT &amp; operator=( <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> &amp;&amp; ); <span class="comment">//you&#39;ll need to define this elsewhere</span></div>
+<div class="line">        myPT &amp; <a class="code" href="classSequence_1_1PolyTable.html#a72dc7fa01ada9d692a6a702dd688e525">operator=</a>( myPT &amp; ) = <span class="keywordflow">default</span>;</div>
+<div class="line">        myPT &amp; <a class="code" href="classSequence_1_1PolyTable.html#a72dc7fa01ada9d692a6a702dd688e525">operator=</a>( myPT &amp;&amp; ) = <span class="keywordflow">default</span>;</div>
+<div class="line">        myPT &amp; <a class="code" href="classSequence_1_1PolyTable.html#a72dc7fa01ada9d692a6a702dd688e525">operator=</a>( <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> &amp; ); <span class="comment">//you&#39;ll need to define this elsewhere</span></div>
+<div class="line">        myPT &amp; <a class="code" href="classSequence_1_1PolyTable.html#a72dc7fa01ada9d692a6a702dd688e525">operator=</a>( <a class="code" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> &amp;&amp; ); <span class="comment">//you&#39;ll need to define this elsewhere</span></div>
 <div class="line">};</div>
 </div><!-- fragment --><ul>
 <li>Write unit tests showing that all of the above works. See the following unit tests for examples: <a class="el" href="testSimDataIO_8cc_source.html">testSimDataIO.cc</a>, <a class="el" href="PolyTableConversions_8cc_source.html">PolyTableConversions.cc</a> <a class="el" href="SimpleSNPIO_8cc_source.html">SimpleSNPIO.cc</a> <a class="el" href="PolySitesIO_8cc_source.html">PolySitesIO.cc</a></li>
@@ -354,11 +354,11 @@ Accessing the data</h3>
 <div class="line"><span class="comment">//fill p somehow...</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">//Write the haplotypes to stdout</span></div>
-<div class="line"><span class="keywordflow">for</span>( <a class="code" href="classSequence_1_1PolyTable.html#a0a3c5f364c60a09446b9de27521e047b">Sequence::PolySites::size_type</a> i = 0 ; i &lt; p.<a class="code" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">size</a>() ; ++i )</div>
+<div class="line"><span class="keywordflow">for</span>( <a class="code" href="classSequence_1_1PolyTable.html#a0a3c5f364c60a09446b9de27521e047b">Sequence::PolySites::size_type</a> i = 0 ; i &lt; p.<a class="code" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">size</a>() ; ++i )</div>
 <div class="line">{</div>
 <div class="line">        std::cout &lt;&lt; p[i] &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>The above example shows us that <a class="el" href="classSequence_1_1PolyTable.html#a0ad9fa4c28b8568a1bde74e13d10f1b3">Sequence::PolyTable::size</a> exists. There is also <a class="el" href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">Sequence::PolyTable::empty</a>.</p>
+</div><!-- fragment --><p>The above example shows us that <a class="el" href="classSequence_1_1PolyTable.html#a7769799f86d43a0b5e146d7a82e41c82">Sequence::PolyTable::size</a> exists. There is also <a class="el" href="classSequence_1_1PolyTable.html#a131a61d74eb612a3e419aa4ae1c38a24">Sequence::PolyTable::empty</a>.</p>
 <p>Let's do the above using iteration:</p>
 <div class="fragment"><div class="line"><a class="code" href="classSequence_1_1PolySites.html">Sequence::PolySites</a> p;</div>
 <div class="line"><span class="comment">//fill p somehow...</span></div>
@@ -685,7 +685,7 @@ BAM files</h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

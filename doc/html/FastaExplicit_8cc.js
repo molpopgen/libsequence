@@ -5,7 +5,7 @@ var FastaExplicit_8cc =
     [ "GetData", "FastaExplicit_8cc.html#a181c695f0db6f966be78a84e1d966c76", null ],
     [ "IsAlignment", "FastaExplicit_8cc.html#a8d045f00ee6e4f7988350b2fe4b58d51", null ],
     [ "ReadNObjects", "FastaExplicit_8cc.html#ab197fdab592234bb6bc062994a899f6c", null ],
-    [ "RemoveFixedOutgroupInsertions", "FastaExplicit_8cc.html#ad30f152c0cd4db8785a427911a9a4810", null ],
+    [ "RemoveFixedOutgroupInsertions", "FastaExplicit_8cc.html#ad8f31767d53e7229a64171eb65670c38", null ],
     [ "RemoveGaps", "FastaExplicit_8cc.html#a8b4fbd490f8439ec3e2c9d0b05cbf19f", null ],
     [ "RemoveTerminalGaps", "FastaExplicit_8cc.html#a115f0e1535d07cc6c166e9704ce947ce", null ],
     [ "Trim", "FastaExplicit_8cc.html#a09b490d7164afc33210c5514f850224c", null ],

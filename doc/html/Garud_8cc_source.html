@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('Garud_8cc_source.html','');});
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    set&lt;string&gt; uhaps(d.begin(),d.end());</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    vector&lt;double&gt; hapcounts;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//GarudStats G;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span> H1 = 0.,H12=0.,H2H1=0.;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">double</span> H1 = 0.;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    for_each(uhaps.cbegin(),uhaps.cend(),</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;             [&amp;](<span class="keyword">const</span> <span class="keywordtype">string</span> &amp; hap) {</div>
@@ -112,9 +112,9 @@ $(document).ready(function(){initNavTree('Garud_8cc_source.html','');});
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;             });</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    sort(hapcounts.begin(),hapcounts.end(),</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;         std::bind(greater&lt;double&gt;(),std::placeholders::_1,std::placeholders::_2));</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    H12 = H1 + 2.*hapcounts[0]*hapcounts[1]/std::pow(<span class="keywordtype">double</span>(d.size()),2.);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    H2H1 = (H1-double(hapcounts[0]*(hapcounts[0]-1))/double(d.size()*(d.size()-1)))/H1;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> GarudStats(H1,H1,H2H1);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">double</span> H12 = H1 + 2.*hapcounts[0]*hapcounts[1]/std::pow(<span class="keywordtype">double</span>(d.size()),2.);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">double</span> H2H1 = (H1-double(hapcounts[0]*(hapcounts[0]-1))/double(d.size()*(d.size()-1)))/H1;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> GarudStats(H1,H12,H2H1);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  }</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
@@ -122,8 +122,8 @@ $(document).ready(function(){initNavTree('Garud_8cc_source.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_e8a85d07e04ed257d70c3e3061588c40.html">SummStats</a></li><li class="navelem"><b>Garud.cc</b></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_02741eaf561faced77e143857ecf637c.html">SummStats</a></li><li class="navelem"><b>Garud.cc</b></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

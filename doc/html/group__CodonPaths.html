@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -77,31 +77,25 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga3640124ef623404694e650ba8a757e78"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#ga3640124ef623404694e650ba8a757e78">Sequence::Intermediates2</a> (string *intermediates, const std::string &amp;codon1, const std::string &amp;codon2)</td></tr>
-<tr class="memdesc:ga3640124ef623404694e650ba8a757e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the intermediate codons between a pair of codons diverged at 2 positions.  <a href="#ga3640124ef623404694e650ba8a757e78">More...</a><br/></td></tr>
-<tr class="separator:ga3640124ef623404694e650ba8a757e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab933905f221fb3d14014dbf130e7e17f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#gab933905f221fb3d14014dbf130e7e17f">Sequence::Intermediates3</a> (string *intermediates, const std::string &amp;codon1, const std::string &amp;codon2)</td></tr>
-<tr class="memdesc:gab933905f221fb3d14014dbf130e7e17f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the intermediate codons between a pair of codons diverged at 3 positions.  <a href="#gab933905f221fb3d14014dbf130e7e17f">More...</a><br/></td></tr>
-<tr class="separator:gab933905f221fb3d14014dbf130e7e17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga33d928804be22f46b2703ee8157b7151"><td class="memItemLeft" align="right" valign="top">Inter2_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#ga33d928804be22f46b2703ee8157b7151">Sequence::Intermediates2</a> (const std::string &amp;codon1, const std::string &amp;codon2)</td></tr>
+<tr class="memdesc:ga33d928804be22f46b2703ee8157b7151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the intermediate codons between a pair of codons diverged at 2 positions.  <a href="#ga33d928804be22f46b2703ee8157b7151">More...</a><br/></td></tr>
+<tr class="separator:ga33d928804be22f46b2703ee8157b7151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18e7188a3767413ef84000f082b164a7"><td class="memItemLeft" align="right" valign="top">Inter3_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#ga18e7188a3767413ef84000f082b164a7">Sequence::Intermediates3</a> (const std::string &amp;codon1, const std::string &amp;codon2)</td></tr>
+<tr class="memdesc:ga18e7188a3767413ef84000f082b164a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the intermediate codons between a pair of codons diverged at 3 positions.  <a href="#ga18e7188a3767413ef84000f082b164a7">More...</a><br/></td></tr>
+<tr class="separator:ga18e7188a3767413ef84000f082b164a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab409f485553367b1cc3c0df7fd82b3a2"><td class="memItemLeft" align="right" valign="top">std::pair&lt; unsigned, unsigned &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__CodonPaths.html#gab409f485553367b1cc3c0df7fd82b3a2">Sequence::mutsShortestPath</a> (const std::string &amp;codon1, const std::string &amp;codon2, const <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> &amp;code=GeneticCodes::UNIVERSAL)</td></tr>
 <tr class="separator:gab409f485553367b1cc3c0df7fd82b3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>This group of classes and functions deals with determining either the counts of silent and replacement differences between codons or the intermedate codons that occurs between two different codons </p>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ga3640124ef623404694e650ba8a757e78"></a>
+<a class="anchor" id="ga33d928804be22f46b2703ee8157b7151"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Sequence::Intermediates2 </td>
+          <td class="memname">Inter2_t Sequence::Intermediates2 </td>
           <td>(</td>
-          <td class="paramtype">string *&#160;</td>
-          <td class="paramname"><em>intermediates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>codon1</em>, </td>
         </tr>
@@ -133,19 +127,13 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gab933905f221fb3d14014dbf130e7e17f"></a>
+<a class="anchor" id="ga18e7188a3767413ef84000f082b164a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Sequence::Intermediates3 </td>
+          <td class="memname">Inter3_t Sequence::Intermediates3 </td>
           <td>(</td>
-          <td class="paramtype">string *&#160;</td>
-          <td class="paramname"><em>intermediates</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>codon1</em>, </td>
         </tr>
@@ -174,7 +162,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>the storage of the intermediate codons follows the illustration in the documentation of <a class="el" href="classSequence_1_1ThreeSubs.html" title="Deal with codons differing at all 3 positions. ">Sequence::ThreeSubs</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="PathwayHelper_8cc_source.html#l00092">92</a> of file <a class="el" href="PathwayHelper_8cc_source.html">PathwayHelper.cc</a>.</p>
+<p>Definition at line <a class="el" href="PathwayHelper_8cc_source.html#l00091">91</a> of file <a class="el" href="PathwayHelper_8cc_source.html">PathwayHelper.cc</a>.</p>
 
 </div>
 </div>
@@ -222,7 +210,7 @@ Functions</h2></td></tr>
 <div class="line">&lt;&lt; std::endl;</div>
 <div class="line">}</div>
 </div><!-- fragment --> 
-<p>Definition at line <a class="el" href="shortestPath_8cc_source.html#l00324">324</a> of file <a class="el" href="shortestPath_8cc_source.html">shortestPath.cc</a>.</p>
+<p>Definition at line <a class="el" href="shortestPath_8cc_source.html#l00322">322</a> of file <a class="el" href="shortestPath_8cc_source.html">shortestPath.cc</a>.</p>
 
 </div>
 </div>
@@ -231,7 +219,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:54 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

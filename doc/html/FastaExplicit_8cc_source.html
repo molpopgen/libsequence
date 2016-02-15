@@ -25,7 +25,7 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.8.8</span>
+   &#160;<span id="projectnumber">1.8.9</span>
    </div>
   </td>
  </tr>
@@ -114,44 +114,43 @@ $(document).ready(function(){initNavTree('FastaExplicit_8cc_source.html','');});
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">bool</span> <a class="code" href="namespaceSequence_1_1Alignment.html#afdb72eb0407c97126da52258ad7f23f5">validForPolyAnalysis</a>(std::vector&lt;Sequence::Fasta&gt;::const_iterator beg,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                                       std::vector&lt;Sequence::Fasta&gt;::const_iterator end);</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">unsigned</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a5fa976952712dc2b2353a2e13d7ab737">UnGappedLength</a>(<span class="keyword">const</span> std::vector&lt;Sequence::Fasta&gt; &amp;);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code" href="namespaceSequence.html#a1d0aa47cde1d6632c9fff3a6be97b509">RemoveGaps</a>(std::vector&lt;Sequence::Fasta&gt; &amp;);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a8b4fbd490f8439ec3e2c9d0b05cbf19f">RemoveGaps</a>(std::vector&lt;Sequence::Fasta&gt; &amp;);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#a115f0e1535d07cc6c166e9704ce947ce">RemoveTerminalGaps</a>(std::vector&lt;Sequence::Fasta&gt; &amp;);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#ad30f152c0cd4db8785a427911a9a4810">RemoveFixedOutgroupInsertions</a>( std::vector&lt;Sequence::Fasta&gt; &amp; data,</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                 <span class="keywordtype">unsigned</span> site,</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                                                 <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; ref );</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">template</span> std::vector&lt;Sequence::Fasta&gt;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="namespaceSequence_1_1Alignment.html#a09b490d7164afc33210c5514f850224c">Trim</a>(<span class="keyword">const</span> std::vector&lt;Sequence::Fasta&gt; &amp;,</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;         <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">template</span> std::vector&lt;Sequence::Fasta&gt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="namespaceSequence_1_1Alignment.html#aaa69bb942512e21d7bec02a8b3377efe">TrimComplement</a>(<span class="keyword">const</span> std::vector&lt;Sequence::Fasta&gt; &amp;,</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                   <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">template</span> <span class="keywordtype">void</span> <a class="code" href="namespaceSequence_1_1Alignment.html#ad8f31767d53e7229a64171eb65670c38">RemoveFixedOutgroupInsertions</a>( std::vector&lt;Sequence::Fasta&gt; &amp; data,</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                                                 <span class="keyword">const</span> <span class="keywordtype">unsigned</span> &amp; ref );</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">template</span> std::vector&lt;Sequence::Fasta&gt;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="namespaceSequence_1_1Alignment.html#a09b490d7164afc33210c5514f850224c">Trim</a>(<span class="keyword">const</span> std::vector&lt;Sequence::Fasta&gt; &amp;,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;         <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">template</span> std::vector&lt;Sequence::Fasta&gt;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="namespaceSequence_1_1Alignment.html#aaa69bb942512e21d7bec02a8b3377efe">TrimComplement</a>(<span class="keyword">const</span> std::vector&lt;Sequence::Fasta&gt; &amp;,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                   <span class="keyword">const</span> std::vector&lt;int&gt; &amp;);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_afdb72eb0407c97126da52258ad7f23f5"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#afdb72eb0407c97126da52258ad7f23f5">Sequence::Alignment::validForPolyAnalysis</a></div><div class="ttdeci">template bool validForPolyAnalysis(std::vector&lt; Sequence::Fasta &gt;::const_iterator beg, std::vector&lt; Sequence::Fasta &gt;::const_iterator end)</div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_a8b4fbd490f8439ec3e2c9d0b05cbf19f"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a8b4fbd490f8439ec3e2c9d0b05cbf19f">Sequence::Alignment::RemoveGaps</a></div><div class="ttdeci">template void RemoveGaps(std::vector&lt; Sequence::Fasta &gt; &amp;)</div></div>
 <div class="ttc" id="classSequence_1_1phylipData_html"><div class="ttname"><a href="classSequence_1_1phylipData.html">Sequence::phylipData</a></div><div class="ttdef"><b>Definition:</b> <a href="phylipData_8hpp_source.html#l00036">phylipData.hpp:36</a></div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a8d045f00ee6e4f7988350b2fe4b58d51"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a8d045f00ee6e4f7988350b2fe4b58d51">Sequence::Alignment::IsAlignment</a></div><div class="ttdeci">template bool IsAlignment(const std::vector&lt; Sequence::Fasta &gt; &amp;)</div></div>
 <div class="ttc" id="phylipData_8hpp_html"><div class="ttname"><a href="phylipData_8hpp.html">phylipData.hpp</a></div><div class="ttdoc">Sequence::phylipData – read in phylip alignments. </div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a115f0e1535d07cc6c166e9704ce947ce"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a115f0e1535d07cc6c166e9704ce947ce">Sequence::Alignment::RemoveTerminalGaps</a></div><div class="ttdeci">template void RemoveTerminalGaps(std::vector&lt; Sequence::Fasta &gt; &amp;)</div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_ab197fdab592234bb6bc062994a899f6c"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ab197fdab592234bb6bc062994a899f6c">Sequence::Alignment::ReadNObjects</a></div><div class="ttdeci">template std::istream &amp; ReadNObjects(std::vector&lt; Sequence::Fasta &gt; &amp;, const unsigned &amp;, std::istream &amp;)</div></div>
-<div class="ttc" id="namespaceSequence_1_1Alignment_html_ad30f152c0cd4db8785a427911a9a4810"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ad30f152c0cd4db8785a427911a9a4810">Sequence::Alignment::RemoveFixedOutgroupInsertions</a></div><div class="ttdeci">template void RemoveFixedOutgroupInsertions(std::vector&lt; Sequence::Fasta &gt; &amp;data, unsigned site, const unsigned &amp;ref)</div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a09b490d7164afc33210c5514f850224c"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a09b490d7164afc33210c5514f850224c">Sequence::Alignment::Trim</a></div><div class="ttdeci">template std::vector&lt; Sequence::Fasta &gt; Trim(const std::vector&lt; Sequence::Fasta &gt; &amp;, const std::vector&lt; int &gt; &amp;)</div></div>
 <div class="ttc" id="Alignment_8hpp_html"><div class="ttname"><a href="Alignment_8hpp.html">Alignment.hpp</a></div><div class="ttdoc">Declaration of namespace Sequence::Alignment. </div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a181c695f0db6f966be78a84e1d966c76"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a181c695f0db6f966be78a84e1d966c76">Sequence::Alignment::GetData</a></div><div class="ttdeci">template std::istream &amp; GetData(std::vector&lt; Sequence::Fasta &gt; &amp;, std::istream &amp;)</div></div>
-<div class="ttc" id="namespaceSequence_html_a1d0aa47cde1d6632c9fff3a6be97b509"><div class="ttname"><a href="namespaceSequence.html#a1d0aa47cde1d6632c9fff3a6be97b509">Sequence::RemoveGaps</a></div><div class="ttdeci">void RemoveGaps(PolyTable *t, const char &amp;gapchar= '-')</div><div class="ttdef"><b>Definition:</b> <a href="PolyTableFunctions_8cc_source.html#l00108">PolyTableFunctions.cc:108</a></div></div>
 <div class="ttc" id="Fasta_8hpp_html"><div class="ttname"><a href="Fasta_8hpp.html">Fasta.hpp</a></div><div class="ttdoc">Declaration of Sequence::Fasta streams. </div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_aaa69bb942512e21d7bec02a8b3377efe"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#aaa69bb942512e21d7bec02a8b3377efe">Sequence::Alignment::TrimComplement</a></div><div class="ttdeci">template std::vector&lt; Sequence::Fasta &gt; TrimComplement(const std::vector&lt; Sequence::Fasta &gt; &amp;, const std::vector&lt; int &gt; &amp;)</div></div>
 <div class="ttc" id="namespaceSequence_1_1Alignment_html_a5fa976952712dc2b2353a2e13d7ab737"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#a5fa976952712dc2b2353a2e13d7ab737">Sequence::Alignment::UnGappedLength</a></div><div class="ttdeci">template unsigned UnGappedLength(const std::vector&lt; Sequence::Fasta &gt; &amp;)</div></div>
 <div class="ttc" id="classSequence_1_1ClustalW_html"><div class="ttname"><a href="classSequence_1_1ClustalW.html">Sequence::ClustalW</a></div><div class="ttdoc">ClustalW streams. </div><div class="ttdef"><b>Definition:</b> <a href="Clustalw_8hpp_source.html#l00077">Clustalw.hpp:77</a></div></div>
 <div class="ttc" id="Clustalw_8hpp_html"><div class="ttname"><a href="Clustalw_8hpp.html">Clustalw.hpp</a></div><div class="ttdoc">Declaration of Sequence::ClustalW streams. </div></div>
 <div class="ttc" id="namespaceSequence_html_a6b8d03d21bed077f2f95790a2bc55a3a"><div class="ttname"><a href="namespaceSequence.html#a6b8d03d21bed077f2f95790a2bc55a3a">Sequence::Gapped</a></div><div class="ttdeci">bool Gapped(const std::string &amp;s)</div><div class="ttdef"><b>Definition:</b> <a href="Comparisons_8cc_source.html#l00184">Comparisons.cc:184</a></div></div>
+<div class="ttc" id="namespaceSequence_1_1Alignment_html_ad8f31767d53e7229a64171eb65670c38"><div class="ttname"><a href="namespaceSequence_1_1Alignment.html#ad8f31767d53e7229a64171eb65670c38">Sequence::Alignment::RemoveFixedOutgroupInsertions</a></div><div class="ttdeci">template void RemoveFixedOutgroupInsertions(std::vector&lt; Sequence::Fasta &gt; &amp;data, const unsigned &amp;ref)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_048f7f5f9e389026a4a37356a257c211.html">src</a></li><li class="navelem"><a class="el" href="dir_3f74eaea681a92f9db7ad04780478e92.html">Seq</a></li><li class="navelem"><a class="el" href="FastaExplicit_8cc.html">FastaExplicit.cc</a></li>
-    <li class="footer">Generated on Mon Nov 9 2015 09:43:51 for libsequence by
+    <li class="navelem"><a class="el" href="dir_798cb8ab720ab87524173805cf21d5e0.html">src</a></li><li class="navelem"><a class="el" href="dir_4f06051c9df016f874d2786f7a52ea77.html">Seq</a></li><li class="navelem"><a class="el" href="FastaExplicit_8cc.html">FastaExplicit.cc</a></li>
+    <li class="footer">Generated on Mon Feb 15 2016 14:45:53 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
