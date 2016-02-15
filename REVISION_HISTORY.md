@@ -38,7 +38,7 @@ Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style
 * Sequence::PolyTableSlice will throw std::runtime_error if input range is not properly sorted
 * War on "mutable". The use of this keyword has been removed from the library to the best extent possible.
 * The API for calculations involving codons has been modernized.  This includes Sequence::Comeron95, Sequence::RedundancyCom95, Sequence::WeightingScheme2 (and derived types), Sequence::WeightingScheme3 (and derived types), Sequence::TwoSubs, Sequence::ThreeSubs, functions in Sequence/PathwayHelper.hpp
-* Sequence::PolyTable (and derived types) have been refactored.  The fundamental idea is the same, but the API is modernized and will hopefully be robust to future changes, if any are made.
+* Sequence::PolyTable (and derived types) have been refactored.  The fundamental idea is the same, but the API is modernized.  IMO, it is still imperfect, and can be further changed to reflect more idiomatic C++11, but that'll have to wait.
 * Private data members for classes have been hidden using the [PIMPL idiom](https://en.wikipedia.org/wiki/Opaque_pointer).  This goes a long way to future-proofing the ABI compatibility of these types against further implementation changes such as bug fixes.
 * Sequence/SummStats/classic.hpp provides a sneak previous of how summary statistics will work in the future, once the deprecated Sequence::PolySNP and Sequence::PolySIM can finally be removed
 
