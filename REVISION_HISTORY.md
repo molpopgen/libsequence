@@ -40,6 +40,7 @@ Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style
 * The API for calculations involving codons has been modernized.  This includes Sequence::Comeron95, Sequence::RedundancyCom95, Sequence::WeightingScheme2 (and derived types), Sequence::WeightingScheme3 (and derived types), Sequence::TwoSubs, Sequence::ThreeSubs, functions in Sequence/PathwayHelper.hpp
 * Sequence::PolyTable (and derived types) have been refactored.  The fundamental idea is the same, but the API is modernized and will hopefully be robust to future changes, if any are made.
 * Private data members for classes have been hidden using the [PIMPL idiom](https://en.wikipedia.org/wiki/Opaque_pointer).  This goes a long way to future-proofing the ABI compatibility of these types against further implementation changes such as bug fixes.
+* Sequence/SummStats/classic.hpp provides a sneak previous of how summary statistics will work in the future, once the deprecated Sequence::PolySNP and Sequence::PolySIM can finally be removed
 
 ## libsequence 1.8.8
 
