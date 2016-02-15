@@ -178,18 +178,18 @@ namespace Sequence
 	double c = 0.;
 	if(haveAnc)
 	  {
-	    c += std::count_if(std::begin(t),std::begin(t)+anc,[i](const std::string & __s) {
-		return !Different(__s,*i,false,true);
-	      });
-	    c += std::count_if(std::begin(t)+anc+1,std::end(t),[i](const std::string & __s) {
-		return !Different(__s,*i,false,true);
-	      });
+	    c += double(std::count_if(std::begin(t),std::begin(t)+anc,[i](const std::string & __s) {
+		  return !Different(__s,*i,false,true);
+		}));
+	    c += double(std::count_if(std::begin(t)+anc+1,std::end(t),[i](const std::string & __s) {
+		  return !Different(__s,*i,false,true);
+		}));
 	  }
 	else
 	  {
-	    c += std::count_if(std::begin(t),std::end(t),[i](const std::string & __s) {
-		return !Different(__s,*i,false,true);
-	      });	    
+	    c += double(std::count_if(std::begin(t),std::end(t),[i](const std::string & __s) {
+		  return !Different(__s,*i,false,true);
+		}));	    
 	  }
 	hdiv -= std::pow(c/nsam,2.0);
       }
