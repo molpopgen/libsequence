@@ -32,6 +32,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 /*! \file FST.hpp
   @brief delcaration of a class (Sequence::FST) to analyze population structure
+
+  \deprecated Will be removed in libsequence 2.0
 */
 namespace Sequence
 {
@@ -40,8 +42,7 @@ namespace Sequence
   class FST 
   {
   private:
-    void doCalcs(void) const;
-    mutable std::unique_ptr<FSTimpl> impl;
+    std::unique_ptr<FSTimpl> impl;
   public:
     explicit FST(const PolyTable *data, unsigned npop, const unsigned *config=NULL,
 		 const double *weights=NULL, bool haveOutgroup = false,

@@ -35,6 +35,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   that outgroup information is not required, as the 0,1 coding of a
   SimData object (usually) reflects ancestral and derived.
   @short Analysis of coalescent simulation data
+
+  \deprecated Will be removed in libsequence 2.0
 */
 #include <Sequence/PolySNP.hpp>
 

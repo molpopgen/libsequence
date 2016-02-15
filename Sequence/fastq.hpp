@@ -17,11 +17,12 @@ namespace Sequence
   {
   class fastq : public Seq
     {
+    public:
+      std::string quality;
     private:
-      mutable bool repeat_name;
+      bool repeat_name;
     public:
       using Seq::Seq;
-      std::string quality;
       fastq(void);
       fastq (const std::string &name, const std::string &seq,
 	     const std::string & qual);

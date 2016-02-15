@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -41,99 +41,41 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   of implementing weighting schemes.
   @short Deal with codons differing at all 3 positions
 */
+#include <Sequence/PathwayHelper.hpp>
+#include <Sequence/WeightingSchemes.hpp>
 #include <Sequence/SeqEnums.hpp>
 #include <string>
-
+#include <memory>
 namespace Sequence
-  {
+{
   class RedundancyCom95;
-  class  WeightingScheme3;
   class ThreeSubs
-    {
-    private:
-      double p0, p2S, p2V, p4, q0, q2S, q2V, q4;
-      void Calculate (const RedundancyCom95 * sitesObj,
-                      const std::string *intermediates,
-                      const std::string &codon1, const std::string &codon2,
-                      double w_path1,double w_path2, double w_path3,
-                      double w_path4,double w_path5,double w_path6);
-    public:
-      explicit ThreeSubs(void);
-      void operator() (const RedundancyCom95 * sitesObj,
-                       const std::string &codon1, const std::string &codon2,
-                       const Sequence::WeightingScheme3 *weights3);
-      ~ThreeSubs(void);
-      double
-      P0 (void) const
-      /*!
-        \return number of transitions at non-degenerate sites in the codon
-      */
-      {
-        return p0;
-      }
-
-      double
-      P2S (void) const
-      /*!
-        \return number of transitions at transitional-degenerate sites in the codon
-      */
-      {
-        return p2S;
-      }
-
-      double
-      P2V (void) const
-      /*!
-        \return number of transitions at transversional-degenerate sites in the codon
-      */
-      {
-        return p2V;
-      }
-
-      double
-      P4 (void) const
-      /*!
-        \return number of transitions at fourfold-degenerate sites in the codon
-      */
-      {
-        return p4;
-      }
-
-      double
-      Q0 (void) const
-      /*!
-        \return number of transversions at non-degenerate sites in the codon
-      */
-      {
-        return q0;
-      }
-
-      double
-      Q2S (void) const
-      /*!
-        \return number of transversions at transitional-degenerate sites in the codon
-      */
-      {
-        return q2S;
-      }
-
-      double
-      Q2V (void) const
-      /*!
-        \return number of transversions at transversional-degenerate sites in the codon
-      */
-      {
-        return q2V;
-      }
-
-      double
-      Q4 (void) const
-      /*!
-        \return number of transversions at fourfold-degenerate sites in the codon
-      */
-      {
-        return q4;
-      }
-    };
+  {
+  private:
+    struct ThreeSubsImpl;
+    std::unique_ptr<ThreeSubsImpl> impl;
+  public:
+    explicit ThreeSubs(void);
+    void operator() (const RedundancyCom95 & sitesObj,
+		     const std::string &codon1, const std::string &codon2,
+		     const Sequence::WeightingScheme3 *weights3);
+    ~ThreeSubs(void);
+    //! \return number of transitions at non-degenerate sites in the codon
+    double P0 (void) const;
+    //! \return number of transitions at transitional-degenerate sites in the codon
+    double P2S (void) const;
+    //! \return number of transitions at transversional-degenerate sites in the codon
+    double P2V (void) const;
+    //! \return number of transitions at fourfold-degenerate sites in the codon
+    double P4 (void) const;
+    //! \return number of transversions at non-degenerate sites in the codon
+    double Q0 (void) const;
+    //! \return number of transversions at transitional-degenerate sites in the codon
+    double Q2S (void) const;
+    //! \return number of transversions at transversional-degenerate sites in the codon
+    double Q2V (void) const;
+    //! \return number of transversions at fourfold-degenerate sites in the codon
+    double Q4 (void) const;
+  };
 }
 #endif

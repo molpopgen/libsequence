@@ -84,7 +84,6 @@ namespace Sequence
       See file documentation for FastaExplicit.hpp
     */
     template void RemoveFixedOutgroupInsertions( std::vector<Sequence::Fasta> & data,
-						 unsigned site,
 						 const unsigned & ref );
     /*! An explicit instantation for type Sequence::Fasta for GNU systems.
       See file documentation for FastaExplicit.hpp

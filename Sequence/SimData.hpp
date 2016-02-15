@@ -70,45 +70,22 @@ namespace Sequence
     {
     public:
       SimData(void);
-      SimData( const SimData & );
-      SimData( SimData & ) = default;
-      SimData( SimData && ) = default;
-      SimData( PolyTable & );
-      SimData( PolyTable && );
+      SimData( SimData && );
       //SimData( SimData & );// = default;
       //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
-      SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
-      SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
-      SimData(std::vector<double> && pos,  std::vector<std::string> && data);
+      //SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
+      //SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
+      SimData(std::vector<double> pos,  std::vector<std::string> data);
       SimData(const SimData::const_site_iterator & beg, 
 	      const SimData::const_site_iterator & end);
       
       ~ SimData (void){}
       
-      SimData & operator=(const SimData &) = default;
-      SimData & operator=( SimData &&) = default;
-      SimData & operator=(const PolyTable &);
-      SimData & operator=( PolyTable &&);
+      SimData & operator=( SimData &&);
 
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;
-
-      void Binary (const bool & haveOutgroup = false,
-		   const unsigned & outgroup = 0,
-		   const bool & strictInfSites = true)
-      {
-        //no need to do anything...
-        return;
-      }
       virtual int fromfile( FILE * openedfile );
-      inline unsigned segsites (void) const
-      /*!
-        Returns the number of segregating sites in the 
-        data block.
-      */
-        {
-          return (this->numsites());
-        }
     };
 
 }

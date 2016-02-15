@@ -19,7 +19,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 	RedundancyCom95test \
 	alphabets \
 	polySiteVectorTest \
-	PolyTableSliceTest
+	PolyTableSliceTest \
+	stateCounterTest
 
 TESTS=$(check_PROGRAMS)
 
@@ -91,5 +92,7 @@ alphabets_SOURCES=alphabets.cc
 polySiteVectorTest_SOURCES=polySiteVectorTest.cc
 
 PolyTableSliceTest_SOURCES=PolyTableSliceTest.cc
+
+stateCounterTest_SOURCES=stateCounterTest.cc
 
 endif #if BUNIT_TEST_PRESENT

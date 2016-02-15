@@ -361,7 +361,6 @@ namespace Sequence
 
     template < typename T >
     void RemoveFixedOutgroupInsertions( std::vector<T> & data,
-					unsigned site,
 					const unsigned & ref )
     /*!
       Removes all positions from data that for which the outgroup

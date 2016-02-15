@@ -4,25 +4,25 @@
 #include <iostream>
 
 namespace Sequence {
-  fastq::fastq(void) : Seq(),quality(std::string())
+  fastq::fastq(void) : Seq(),quality(std::string()),repeat_name(true)
   {
   }
    
   fastq::fastq (const std::string &name, const std::string &seq,
-		const std::string & qual) : Seq(name,seq),repeat_name(true),quality(qual)
+		const std::string & qual) : Seq(name,seq),quality(qual),repeat_name(true)
   {
   }
 
   fastq::fastq ( std::string && name, std::string && seq,
-		 std::string && qual) : Seq(std::move(name),std::move(seq)),repeat_name(true),quality(std::move(qual))
+		 std::string && qual) : Seq(std::move(name),std::move(seq)),quality(std::move(qual)),repeat_name(true)
   {
   }
 
-  fastq::fastq (const Seq & s) : Seq(s.first,s.second),repeat_name(true),quality(std::string())
+  fastq::fastq (const Seq & s) : Seq(s.first,s.second),quality(std::string()),repeat_name(true)
   {
   }
 
-  fastq::fastq ( Seq && s) : Seq(std::move(s)),repeat_name(true),quality(std::string())
+  fastq::fastq ( Seq && s) : Seq(std::move(s)),quality(std::string()),repeat_name(true)
   {
   }
 

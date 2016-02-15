@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <numeric>
 #include <cctype>
+#include <stdexcept>
 using namespace std;
 
 namespace Sequence
@@ -31,8 +32,10 @@ namespace Sequence
     return double(rv)/(double(config[i]+config[j]-N));
   }
   
-  double Gmin(const polySiteVector & pt, const std::vector< unsigned > & config)
+  double Gmin(const polySiteVector & , const std::vector< unsigned > & )
   {
-    unsigned mdxy = numeric_limits<unsigned>::max(),sumdxy=0;
+    throw std::runtime_error("not implemented yet");
+    unsigned mdxy = numeric_limits<unsigned>::max();
+    return mdxy;
   }
 }//ns Sequence

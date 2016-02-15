@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -33,7 +33,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
 #ifndef DOXYGEN_SKIP //doxygen should skip this
-  class shortestPathImpl
+  class shortestPath::shortestPathImpl
   {
   public:
     shortestPath::pathType _type;
@@ -51,9 +51,9 @@ namespace Sequence
 		     const Sequence::GeneticCodes & code);
   };
 
-  shortestPathImpl::shortestPathImpl(const std::string &codon1,
-				     const std::string &codon2,
-				     const Sequence::GeneticCodes & code):
+  shortestPath::shortestPathImpl::shortestPathImpl(const std::string &codon1,
+						   const std::string &codon2,
+						   const Sequence::GeneticCodes & code):
     _type(shortestPath::pathType::AMBIG),
     distances(Sequence::Grantham()),
     _distance(0.)
@@ -95,8 +95,7 @@ namespace Sequence
 	  }
 	else if (ndiffs == 2)
 	  {
-	    std::string intermediates[2];
-	    Sequence::Intermediates2(intermediates,codon1,codon2);
+	    auto intermediates = Sequence::Intermediates2(codon1,codon2);
 
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(2,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
@@ -119,8 +118,7 @@ namespace Sequence
 	  }
 	else if (ndiffs == 3)
 	  {
-	    std::string intermediates[9];
-	    Sequence::Intermediates3(intermediates,codon1,codon2);
+	    auto intermediates = Sequence::Intermediates3(codon1,codon2);
 	    std::vector< std::pair<double, shortestPath::pathType> > 
 	      paths(6,std::pair<double, shortestPath::pathType>(0.,shortestPath::pathType::AMBIG));
 	    //there are 6 paths b/w codons that differ at all 3 sites
@@ -182,8 +180,8 @@ namespace Sequence
   }
 
   std::pair<double,shortestPath::pathType> 
-  shortestPathImpl::process_path(const std::string &intermediate,
-				 const Sequence::GeneticCodes & code)
+  shortestPath::shortestPathImpl::process_path(const std::string &intermediate,
+					       const Sequence::GeneticCodes & code)
   {
     std::string tint = Sequence::Translate(intermediate.begin(),intermediate.end(),
 					   code);
@@ -206,9 +204,9 @@ namespace Sequence
   }
 
   std::pair<double,shortestPath::pathType> 
-  shortestPathImpl::process_path2(const std::string &intermediate1,
-				  const std::string &intermediate2,
-				  const Sequence::GeneticCodes & code)
+  shortestPath::shortestPathImpl::process_path2(const std::string &intermediate1,
+						const std::string &intermediate2,
+						const Sequence::GeneticCodes & code)
   {
     std::string tint1 = Sequence::Translate(intermediate1.begin(),
 					    intermediate1.end(),code);
@@ -264,7 +262,7 @@ namespace Sequence
   {
     try
       {
-	impl = std::unique_ptr<shortestPathImpl>(new shortestPathImpl(codon1,codon2,code));
+	impl = std::unique_ptr<shortestPath::shortestPathImpl>(new shortestPath::shortestPathImpl(codon1,codon2,code));
       }
     catch(Sequence::SeqException &e)
       {
@@ -493,7 +491,7 @@ namespace Sequence
     is most useful at identifying mutations that can be unambiguously classifies as silent
     or replacement.  Note that, if one considers the pathways possible between codons,
     all sites can be assigned as N or S.  For such applications, use Sequence::shortestPath.
-   */
+  */
   {
     try
       {

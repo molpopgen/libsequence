@@ -42,36 +42,28 @@ namespace Sequence
   SimData::SimData() : PolyTable() 
   {
   }
-  
-  SimData::SimData( const SimData & sd) : PolyTable(sd)
+
+  SimData::SimData( SimData && pt) : PolyTable(std::move(pt))
   {
   }
 
-  SimData::SimData( PolyTable & pt) : PolyTable(pt)
-  {
-  }
-
-  SimData::SimData( PolyTable && pt) : PolyTable(std::move(pt))
-  {
-  }
-
-  SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
-    PolyTable(pos,pos+S,sample,nsam)
-  {
-  }
+  // SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
+  //   PolyTable(pos,pos+S,sample,nsam)
+  // {
+  // }
   
 
-  SimData::SimData(const std::vector<double> & pos, 
-		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
-								      pos.end(),
-								      data.begin(),
-								      data.end())
-  {
-  }
+  // SimData::SimData(const std::vector<double> & pos, 
+  // 		   const std::vector<std::string> & data) : PolyTable(pos.begin(),
+  // 								      pos.end(),
+  // 								      data.begin(),
+  // 								      data.end())
+  // {
+  // }
 
-  SimData::SimData( std::vector<double> && pos,  
-		    std::vector<std::string> && data) : PolyTable(std::forward<std::vector<double>>(pos),
-								  std::forward<std::vector<std::string>>(data))
+  SimData::SimData( std::vector<double>  pos,  
+		    std::vector<std::string> data) : PolyTable(std::move(pos),
+								  std::move(data))
   {
   }
 
@@ -80,13 +72,7 @@ namespace Sequence
   {
   }
 
-  SimData & SimData::operator=( const PolyTable & pt)
-  {
-    PolyTable::operator=(pt);
-    return *this;
-  }
-
-  SimData & SimData::operator=( PolyTable && pt)
+  SimData & SimData::operator=(SimData && pt)
   {
     PolyTable::operator=(std::move(pt));
     return *this;

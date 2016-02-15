@@ -99,7 +99,8 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	RedundancyCom95test$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	alphabets$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest$(EXEEXT)
+@BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest$(EXEEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	stateCounterTest$(EXEEXT)
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 @BUNIT_TEST_PRESENT_TRUE@@DEBUG_TRUE@am__append_3 = -g
@@ -230,6 +231,11 @@ am__polySiteVectorTest_SOURCES_DIST = polySiteVectorTest.cc
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest.$(OBJEXT)
 polySiteVectorTest_OBJECTS = $(am_polySiteVectorTest_OBJECTS)
 polySiteVectorTest_LDADD = $(LDADD)
+am__stateCounterTest_SOURCES_DIST = stateCounterTest.cc
+@BUNIT_TEST_PRESENT_TRUE@am_stateCounterTest_OBJECTS =  \
+@BUNIT_TEST_PRESENT_TRUE@	stateCounterTest.$(OBJEXT)
+stateCounterTest_OBJECTS = $(am_stateCounterTest_OBJECTS)
+stateCounterTest_LDADD = $(LDADD)
 am__testSimDataIO_SOURCES_DIST = testSimDataIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_testSimDataIO_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	testSimDataIO.$(OBJEXT)
@@ -280,7 +286,7 @@ SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
 	$(alphabets_SOURCES) $(fastqConstructors_SOURCES) \
 	$(fastqIO_SOURCES) $(polySiteVectorTest_SOURCES) \
-	$(testSimDataIO_SOURCES)
+	$(stateCounterTest_SOURCES) $(testSimDataIO_SOURCES)
 DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__AlignmentTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
@@ -302,6 +308,7 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__fastqConstructors_SOURCES_DIST) \
 	$(am__fastqIO_SOURCES_DIST) \
 	$(am__polySiteVectorTest_SOURCES_DIST) \
+	$(am__stateCounterTest_SOURCES_DIST) \
 	$(am__testSimDataIO_SOURCES_DIST)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
@@ -687,6 +694,7 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@alphabets_SOURCES = alphabets.cc
 @BUNIT_TEST_PRESENT_TRUE@polySiteVectorTest_SOURCES = polySiteVectorTest.cc
 @BUNIT_TEST_PRESENT_TRUE@PolyTableSliceTest_SOURCES = PolyTableSliceTest.cc
+@BUNIT_TEST_PRESENT_TRUE@stateCounterTest_SOURCES = stateCounterTest.cc
 all: all-am
 
 .SUFFIXES:
@@ -819,6 +827,10 @@ polySiteVectorTest$(EXEEXT): $(polySiteVectorTest_OBJECTS) $(polySiteVectorTest_
 	@rm -f polySiteVectorTest$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(polySiteVectorTest_OBJECTS) $(polySiteVectorTest_LDADD) $(LIBS)
 
+stateCounterTest$(EXEEXT): $(stateCounterTest_OBJECTS) $(stateCounterTest_DEPENDENCIES) $(EXTRA_stateCounterTest_DEPENDENCIES) 
+	@rm -f stateCounterTest$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(stateCounterTest_OBJECTS) $(stateCounterTest_LDADD) $(LIBS)
+
 testSimDataIO$(EXEEXT): $(testSimDataIO_OBJECTS) $(testSimDataIO_DEPENDENCIES) $(EXTRA_testSimDataIO_DEPENDENCIES) 
 	@rm -f testSimDataIO$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(testSimDataIO_OBJECTS) $(testSimDataIO_LDADD) $(LIBS)
@@ -850,6 +862,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounterTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:
@@ -1232,6 +1245,13 @@ polySiteVectorTest.log: polySiteVectorTest$(EXEEXT)
 PolyTableSliceTest.log: PolyTableSliceTest$(EXEEXT)
 	@p='PolyTableSliceTest$(EXEEXT)'; \
 	b='PolyTableSliceTest'; \
+	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+	--log-file $$b.log --trs-file $$b.trs \
+	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+	"$$tst" $(AM_TESTS_FD_REDIRECT)
+stateCounterTest.log: stateCounterTest$(EXEEXT)
+	@p='stateCounterTest$(EXEEXT)'; \
+	b='stateCounterTest'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

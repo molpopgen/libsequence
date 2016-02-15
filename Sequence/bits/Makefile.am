@@ -10,4 +10,5 @@ pkginclude_HEADERS = PolySites.tcc\
 		phylipData.tcc\
 		Correlations.tcc\
 		descriptiveStats.tcc\
+		PolyTableFunctions.tcc\
 		Snn.tcc

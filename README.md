@@ -22,6 +22,10 @@ Comments are welcome.
 
 	- Kevin Thornton <krthornt@uci.edu>
 
+# User's group
+
+Please post to the [libsequence user group](https://groups.google.com/forum/#!forum/libsequence-users) for help.
+
 # Build status
 
 * master branch: [![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=master)](https://travis-ci.org/molpopgen/libsequence)

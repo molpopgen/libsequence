@@ -15,6 +15,7 @@
 #include <cstdint>
 #include <memory>
 #include <string>
+#include <array>
 #include <Sequence/samrecord.hpp>
 
 namespace Sequence
@@ -33,14 +34,13 @@ namespace Sequence
       data field from and alignment, and that 
       data field does not exist.
    */
-    mutable size_t size;
+    const size_t size;
     //! The BAM value_type of the aux data
-    mutable char value_type;
+    const char value_type;
     //! The BAM tag type of the aux data
-    //mutable std::unique_ptr<char[]> tag;
-    mutable char tag[3];
+    const std::array<char,3> tag;
     //! The value of the aux data, in raw bits
-    mutable std::string value;
+    const std::string value;
     //Constructors
 
     /*! For an empty data set.  
@@ -50,7 +50,7 @@ namespace Sequence
     bamaux(); 
     //! For non-empty data
     bamaux( size_t,
-	    char[3],
+	    std::array<char,3>,
 	    char,
 	    std::unique_ptr<char[]> & );
     //! Move constructor

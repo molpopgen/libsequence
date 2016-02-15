@@ -40,7 +40,14 @@ namespace Sequence
       throw std::logic_error("window size cannot be 0");
     if(!step_len)
       throw std::logic_error("step_len cannot be 0");
-    
+    if(!std::is_sorted(beg,end,[](const polymorphicSite & a, 
+				  const polymorphicSite & b)
+		       {
+			 return a.first<b.first;
+		       }))
+      {
+	throw std::runtime_error("range (beg,end) must be sorted in increasing order");
+      }
     process_windows_fixed(beg,end,window_size_S,step_len);
   }
 
@@ -50,6 +57,14 @@ namespace Sequence
 				     const unsigned nwindows)
     : windows( std::vector<range>() )
   {
+    if(!std::is_sorted(beg,end,[](const polymorphicSite & a, 
+				  const polymorphicSite & b)
+		       {
+			 return a.first<b.first;
+		       }))
+      {
+	throw std::runtime_error("range (beg,end) must be sorted in increasing order");
+      }
     if( end-beg < nwindows )
       {
 	std::cerr << "here\n";
@@ -75,6 +90,14 @@ namespace Sequence
       throw std::logic_error("window_size must be > 0");
     if(step_len <= 0.)
       throw std::logic_error("step_len must be > 0");
+    if(!std::is_sorted(beg,end,[](const polymorphicSite & a, 
+				  const polymorphicSite & b)
+		       {
+			 return a.first<b.first;
+		       }))
+      {
+	throw std::runtime_error("range (beg,end) must be sorted in increasing order");
+      }
     process_windows(beg,end,window_size,step_len,starting_pos,ending_pos);
   }
 

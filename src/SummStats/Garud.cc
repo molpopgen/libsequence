@@ -28,7 +28,7 @@ namespace Sequence
     set<string> uhaps(d.begin(),d.end());
     vector<double> hapcounts;
     //GarudStats G;
-    double H1 = 0.,H12=0.,H2H1=0.;
+    double H1 = 0.;
     
     for_each(uhaps.cbegin(),uhaps.cend(),
 	     [&](const string & hap) {
@@ -39,8 +39,8 @@ namespace Sequence
 	     });
     sort(hapcounts.begin(),hapcounts.end(),
 	 std::bind(greater<double>(),std::placeholders::_1,std::placeholders::_2));
-    H12 = H1 + 2.*hapcounts[0]*hapcounts[1]/std::pow(double(d.size()),2.);
-    H2H1 = (H1-double(hapcounts[0]*(hapcounts[0]-1))/double(d.size()*(d.size()-1)))/H1;
-    return GarudStats(H1,H1,H2H1);
+    double H12 = H1 + 2.*hapcounts[0]*hapcounts[1]/std::pow(double(d.size()),2.);
+    double H2H1 = (H1-double(hapcounts[0]*(hapcounts[0]-1))/double(d.size()*(d.size()-1)))/H1;
+    return GarudStats(H1,H12,H2H1);
   }
 }
