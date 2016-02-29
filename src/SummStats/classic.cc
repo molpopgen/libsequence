@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <set>
+#include <cmath>
 #include <Sequence/SummStats/classic_details.hpp>
 #include <Sequence/Comparisons.hpp>
 
