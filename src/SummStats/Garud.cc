@@ -23,6 +23,12 @@ namespace Sequence
   }
   
   GarudStats H1H12(const SimData & d)
+  /*!
+    H1 is total haplotype homozygosity.
+    H2 is haplotype homozygosity, combining two most common haplotypes.  H2 = H1 + 2p1p2
+    H2H1 = H2/H1, where H2 is haplotype homozygosity for all but most common haplotype.
+    H2H1 = (H1 - p1^2)/H1
+   */
   {
     if( d.empty() ) return GarudStats();
     set<string> uhaps(d.begin(),d.end());
