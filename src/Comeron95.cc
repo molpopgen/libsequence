@@ -136,7 +136,8 @@ namespace Sequence
   {
   }
 									   
-    
+   Comeron95::~Comeron95(){}
+
     /*!
       Initialize and calculate synonymous and nonsynonymous distances between two sequence objects
       \param seqa an object of type or derived from type Sequence::Seq
