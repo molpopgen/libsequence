@@ -30,6 +30,10 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.0
+
+* Fixed issues with Sequence::Comeron95 that made it impossible to allocate on the stack.
+
 ## libsequence 1.8.9
 
 Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style release.
