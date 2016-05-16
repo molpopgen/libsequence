@@ -117,6 +117,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Seq.hpp>
 #include <array>
+#include <memory>
 
 namespace Sequence
   {
