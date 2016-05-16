@@ -117,6 +117,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/Seq.hpp>
 #include <array>
+#include <memory>
 
 namespace Sequence
   {
@@ -130,6 +131,7 @@ namespace Sequence
       explicit Comeron95( GeneticCodes code = GeneticCodes::UNIVERSAL );
       Comeron95( const Comeron95 & ) = delete;
       Comeron95 & operator=(const Comeron95 & ) = delete;
+      ~Comeron95();
       Com95_t operator()(const Sequence::Seq & seqa,
 			 const Sequence::Seq & seqb,
 			 int maxdiffs = 3);
