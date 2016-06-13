@@ -79,7 +79,7 @@ namespace Sequence
       pos=std::forward<postype>(__pos);
       data=std::forward<datatype>(__data);
       if( std::find_if( std::begin(data),std::end(data),
-			[this](const std::string __s) {
+			[this](const std::string & __s) {
 			  return __s.size() != pos.size();
 			} ) != data.cend() )
 	{
