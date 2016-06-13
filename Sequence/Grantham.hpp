@@ -33,6 +33,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
  
   @short Grantham's distances
 */
+#include <limits>
 
 namespace Sequence
   {
@@ -40,8 +41,9 @@ namespace Sequence
     {
     private:
       double D[60][60];
+      const double stopweight;
     public:
-      Grantham(void);
+      Grantham(const double stop = std::numeric_limits<double>::max());
       double operator()(char aa1, char aa2) const;
     };
 }
