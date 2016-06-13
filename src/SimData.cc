@@ -47,6 +47,11 @@ namespace Sequence
   {
   }
 
+  SimData::SimData(const SimData & rhs) : PolyTable(rhs)
+  {
+  }
+ 
+
   // SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
   //   PolyTable(pos,pos+S,sample,nsam)
   // {

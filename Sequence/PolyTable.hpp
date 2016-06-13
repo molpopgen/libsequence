@@ -144,6 +144,7 @@ namespace Sequence
     explicit PolyTable( std::vector<double> __positions,
 			std::vector<std::string> __data );
     PolyTable(PolyTable &&);
+    PolyTable(const PolyTable &);
     virtual ~ PolyTable (void);
 
     //! Convenience function to return site positions

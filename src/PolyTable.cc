@@ -162,6 +162,10 @@ namespace Sequence
     std::swap(this->impl,rhs.impl);
   }
 
+  PolyTable::PolyTable(const PolyTable & rhs) : impl(std::unique_ptr<PolyTableImpl>(new PolyTableImpl(*rhs.impl.get())))
+  {
+  }
+  
   PolyTable & PolyTable::operator=(PolyTable && rhs)
   {
     auto x = std::unique_ptr<PolyTableImpl>(new PolyTableImpl());
