@@ -156,6 +156,12 @@ namespace Sequence
     return *this;
   }
 
+  PolySites & PolySites::operator=(const PolySites & pt)
+  {
+    PolyTable::operator=(pt);
+    return *this;
+  }
+
   std::istream & PolySites::read(std::istream &s) 
   {
     std::vector<double> _pos;

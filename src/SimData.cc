@@ -83,6 +83,12 @@ namespace Sequence
     return *this;
   }
 
+  SimData & SimData::operator=(const SimData & pt)
+  {
+    PolyTable::operator=(pt);
+    return *this;
+  }
+
   std::istream & SimData::read (std::istream & stream) 
 
   /*!

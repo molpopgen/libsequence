@@ -173,6 +173,13 @@ namespace Sequence
     std::swap(x,rhs.impl);
     return *this;
   }
+
+  PolyTable & PolyTable::operator=(const PolyTable & rhs)
+  {
+    this->impl->pos = rhs.impl->pos;
+    this->impl->data = rhs.impl->data;
+    return *this;
+  }
   
   PolyTable::PolyTable(PolyTable::const_site_iterator beg,
 		       PolyTable::const_site_iterator end) : impl(std::unique_ptr<PolyTableImpl>(new PolyTableImpl())) 

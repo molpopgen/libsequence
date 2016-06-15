@@ -82,7 +82,8 @@ namespace Sequence
       
       ~ SimData (void){}
       
-      SimData & operator=( SimData &&);
+      SimData & operator=(SimData &&);
+      SimData & operator=(const SimData &);
 
       virtual std::istream & read (std::istream & s) ;
       virtual std::ostream & print(std::ostream &o) const;

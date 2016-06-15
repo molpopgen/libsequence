@@ -160,6 +160,8 @@ namespace Sequence
     virtual bool operator!=(const PolyTable &rhs) const;
     //! Move assignment
     PolyTable & operator=(PolyTable &&);
+    //! Copy assignment
+    PolyTable & operator=(const PolyTable &);
     /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
