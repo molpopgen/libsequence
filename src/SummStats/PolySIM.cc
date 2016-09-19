@@ -124,9 +124,12 @@ namespace Sequence
 	  {
 	    num_changes += (*rep->_data)[seq][site] == state ? 1 : 0;
 	  }
+	if(num_changes<nsam)
+	{
 	double nc = double (num_changes);
 	thetal +=  nc / (nsam - 1.0);
       }
+	  }
     return thetal;
   }
 
