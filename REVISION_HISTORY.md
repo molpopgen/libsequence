@@ -33,6 +33,7 @@ However:
 ## libsequence 1.9.0
 
 * Fixed issues with Sequence::Comeron95 that made it impossible to allocate on the stack.
+* Removed threaded implementation of the l-Haf statistic, as the naive approach didn't speed things up.
 
 ## libsequence 1.8.9
 
