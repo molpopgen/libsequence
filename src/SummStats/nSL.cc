@@ -6,6 +6,30 @@ using namespace std;
 
 namespace
 {
+    double
+    update_s2(std::pair<std::string::const_reverse_iterator,
+                        std::string::const_reverse_iterator> &left,
+              std::pair<std::string::const_iterator,
+                        std::string::const_iterator> &right,
+              const Sequence::SimData &d, const vector<size_t> &coretype,
+              const unsigned i, const double *gmap)
+    {
+        if (gmap == nullptr)
+            {
+                // return phyisical distance
+                auto p1 = d.position(std::vector<double>::size_type(distance(
+                                         d[coretype[i]].cbegin(), right.first))
+                                     - 1);
+                auto p2 = -d.position(std::vector<double>::size_type(
+                    distance(d[coretype[i]].cbegin(), left.first.base())));
+                return fabs(p1 - p2);
+            }
+        // return distance along genetic map,
+        // in whatever units those are.
+        return fabs(
+            gmap[distance(d[coretype[i]].cbegin(), right.first)]
+            - gmap[distance(d[coretype[i]].cbegin(), left.first.base())]);
+    }
     /*
       Mechanics of the nSL statistic
 
@@ -34,27 +58,8 @@ namespace
                                 s += double(
                                     distance(left.first.base(), right.first)
                                     + 1);
-                                s2 += (gmap == nullptr)
-                                          ? fabs(d.position(
-                                                     std::vector<double>::
-                                                         size_type(distance(
-                                                             d[coretype[i]]
-                                                                 .cbegin(),
-                                                             right.first))
-                                                     - 1)
-                                                 - d.position(
-                                                       std::vector<double>::
-                                                           size_type(distance(
-                                                               d[coretype[i]]
-                                                                   .cbegin(),
-                                                               left.first
-                                                                   .base()))))
-                                          : fabs(gmap[distance(
-                                                     d[coretype[i]].cbegin(),
-                                                     right.first)]
-                                                 - gmap[distance(
-                                                       d[coretype[i]].cbegin(),
-                                                       left.first.base())]);
+                                s2 += update_s2(left, right, d, coretype, i,
+                                                gmap);
                                 ++nc;
                             }
                     }
@@ -108,7 +113,7 @@ namespace Sequence
                     if (min(f, 1. - f) >= minfreq)
                         {
                             filtered.push_back(p);
-							dcounts.push_back(dcount);
+                            dcounts.push_back(dcount);
                         }
                 }
         });
@@ -136,8 +141,8 @@ namespace Sequence
                                    && data.first >= l
                                    && data.first < l + binsize;
                         });
-                if (thisbin.size()
-                    > 1) // otherwise SD = 0, so there's nothing to standardize
+                if (thisbin.size() > 1) // otherwise SD = 0, so there's
+                                        // nothing to standardize
                     {
                         double mean1 = 0., mean2 = 0.;
                         for (const auto &p : thisbin)
