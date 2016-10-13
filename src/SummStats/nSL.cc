@@ -97,12 +97,19 @@ namespace Sequence
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
                              std::numeric_limits<double>::quiet_NaN());
         vector<polymorphicSite> filtered;
+        vector<unsigned> dcounts;
+        dcounts.reserve(d.numsites());
         for_each(d.sbegin(), d.send(), [&](const polymorphicSite &p) {
-            double f = double(count(p.second.begin(), p.second.end(), '1'))
-                       / double(d.size());
-            if (min(f, 1. - f) >= minfreq)
+            unsigned dcount = static_cast<unsigned>(
+                count(p.second.begin(), p.second.end(), '1'));
+            if (dcount && dcount < d.size())
                 {
-                    filtered.push_back(p);
+                    double f = double(dcount) / double(d.size());
+                    if (min(f, 1. - f) >= minfreq)
+                        {
+                            filtered.push_back(p);
+							dcounts.push_back(dcount);
+                        }
                 }
         });
         if (filtered.empty())
@@ -114,11 +121,8 @@ namespace Sequence
         for (unsigned i = 0; i < __filtered.numsites(); ++i)
             {
                 pair<double, double> rvi = nSL(i, __filtered, gmap);
-                unsigned dcount = unsigned(
-                    count((__filtered.sbegin() + i)->second.begin(),
-                          (__filtered.sbegin() + i)->second.end(), '1'));
                 binning.push_back(make_pair(
-                    double(dcount) / double(__filtered.size()), rvi));
+                    double(dcounts[i]) / double(__filtered.size()), rvi));
             }
         double rv = std::numeric_limits<double>::quiet_NaN(),
                rv2 = std::numeric_limits<double>::quiet_NaN();
