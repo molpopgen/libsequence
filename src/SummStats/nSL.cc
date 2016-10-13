@@ -55,7 +55,7 @@ namespace
                         auto left = mismatch(ri1, eri, ri2);
                         if (left.first != eri && right.first != ei)
                             {
-                                s += double(
+                                s += static_cast<double>(
                                     distance(left.first.base(), right.first)
                                     + 1);
                                 s2 += update_s2(left, right, d, coretype, i,
@@ -64,7 +64,7 @@ namespace
                             }
                     }
             }
-        return make_pair(s / double(nc), s2 / double(nc));
+        return make_pair(s / static_cast<double>(nc), s2 / static_cast<double>(nc));
     }
 }
 
@@ -111,7 +111,7 @@ namespace Sequence
                 count(p.second.begin(), p.second.end(), '1'));
             if (dcount && dcount < d.size())
                 {
-                    double f = double(dcount) / double(d.size());
+                    double f = static_cast<double>(dcount) / static_cast<double>(d.size());
                     if (min(f, 1. - f) >= minfreq)
                         {
                             filtered.push_back(p);
@@ -129,7 +129,7 @@ namespace Sequence
             {
                 pair<double, double> rvi = nSL(i, __filtered, gmap);
                 binning.push_back(make_pair(
-                    double(dcounts[i]) / double(__filtered.size()), rvi));
+                    static_cast<double>(dcounts[i]) / static_cast<double>(__filtered.size()), rvi));
             }
         double rv = std::numeric_limits<double>::quiet_NaN(),
                rv2 = std::numeric_limits<double>::quiet_NaN();
@@ -154,8 +154,8 @@ namespace Sequence
                                 if (isfinite(p.second.second))
                                     mean2 += p.second.second;
                             }
-                        mean1 /= double(thisbin.size());
-                        mean2 /= double(thisbin.size());
+                        mean1 /= static_cast<double>(thisbin.size());
+                        mean2 /= static_cast<double>(thisbin.size());
                         double var1 = 0., var2 = 0.;
                         for (const auto &p : thisbin)
                             {
@@ -164,8 +164,8 @@ namespace Sequence
                                 if (isfinite(p.second.first))
                                     var2 += pow(p.second.second - mean2, 2.0);
                             }
-                        var1 /= double(thisbin.size() - 1);
-                        var2 /= double(thisbin.size() - 1);
+                        var1 /= static_cast<double>(thisbin.size() - 1);
+                        var2 /= static_cast<double>(thisbin.size() - 1);
                         double sd1 = sqrt(var1), sd2 = sqrt(var2);
                         for_each(
                             thisbin.begin(), thisbin.end(),
