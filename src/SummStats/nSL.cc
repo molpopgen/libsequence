@@ -12,7 +12,7 @@ namespace
               std::pair<std::string::const_iterator,
                         std::string::const_iterator> &right,
               const Sequence::SimData &d, const vector<size_t> &coretype,
-              const unsigned i, const double *gmap)
+              const size_t i, const double *gmap)
     {
         if (gmap == nullptr)
             {
@@ -20,7 +20,7 @@ namespace
                 auto p1 = d.position(std::vector<double>::size_type(distance(
                                          d[coretype[i]].cbegin(), right.first))
                                      - 1);
-                auto p2 = -d.position(std::vector<double>::size_type(
+                auto p2 = d.position(std::vector<double>::size_type(
                     distance(d[coretype[i]].cbegin(), left.first.base())));
                 return fabs(p1 - p2);
             }
@@ -41,19 +41,19 @@ namespace
     {
         double s = 0., s2 = 0.;
         unsigned nc = 0u;
-        for (unsigned i = 0; i < coretype.size(); ++i)
+        auto csize = coretype.size();
+        for (size_t i = 0; i < csize; ++i)
             {
-                for (unsigned j = i + 1; j < coretype.size(); ++j)
+                auto bi = d[coretype[i]].cbegin() + core;
+                auto eri = d[coretype[i]].crend();
+                auto ei = d[coretype[i]].cend();
+                for (size_t j = i + 1; j < csize; ++j)
                     {
-                        auto right = mismatch(d[coretype[i]].cbegin() + core,
-                                              d[coretype[i]].cend(),
-                                              d[coretype[j]].cbegin() + core);
-                        string::const_reverse_iterator ri1(
-                            d[coretype[i]].cbegin() + core),
-                            ri2(d[coretype[j]].cbegin() + core);
-                        auto left = mismatch(ri1, d[coretype[i]].crend(), ri2);
-                        if (left.first != d[coretype[i]].rend()
-                            && right.first != d[coretype[i]].end())
+                        auto bj = d[coretype[j]].cbegin() + core;
+                        auto right = mismatch(bi, ei, bj);
+                        string::const_reverse_iterator ri1(bi), ri2(bj);
+                        auto left = mismatch(ri1, eri, ri2);
+                        if (left.first != eri && right.first != ei)
                             {
                                 s += double(
                                     distance(left.first.base(), right.first)
@@ -77,6 +77,8 @@ namespace Sequence
     nSL(const unsigned &core, const SimData &d, const double *gmap = nullptr)
     {
         std::vector<size_t> der, anc;
+        der.reserve(d.size());
+        anc.reserve(d.size());
         for (unsigned i = 0; i < d.size(); ++i)
             {
                 if (d[i][core] == '1')
