@@ -1,6 +1,7 @@
 #include <Sequence/SimData.hpp>
 #include <algorithm>
 #include <cmath>
+#include <unordered_map>
 
 using namespace std;
 
@@ -12,23 +13,28 @@ namespace
               std::pair<std::string::const_iterator,
                         std::string::const_iterator> &right,
               const Sequence::SimData &d, const vector<size_t> &coretype,
-              const size_t i, const double *gmap)
+              const size_t i, const std::unordered_map<double, double> &gmap)
     {
-        if (gmap == nullptr)
+        auto p1 = d.position(std::vector<double>::size_type(distance(
+                                 d[coretype[i]].cbegin(), right.first))
+                             - 1);
+        auto p2 = d.position(std::vector<double>::size_type(
+            distance(d[coretype[i]].cbegin(), left.first.base())));
+        if (gmap.empty())
             {
                 // return phyisical distance
-                auto p1 = d.position(std::vector<double>::size_type(distance(
-                                         d[coretype[i]].cbegin(), right.first))
-                                     - 1);
-                auto p2 = d.position(std::vector<double>::size_type(
-                    distance(d[coretype[i]].cbegin(), left.first.base())));
                 return fabs(p1 - p2);
             }
         // return distance along genetic map,
         // in whatever units those are.
-        return fabs(
-            gmap[distance(d[coretype[i]].cbegin(), right.first)]
-            - gmap[distance(d[coretype[i]].cbegin(), left.first.base())]);
+        auto fp1 = gmap.find(p1);
+		auto fp2 = gmap.find(p2);
+        if(fp1==gmap.end()||fp2==gmap.end())
+		{
+			throw std::runtime_error("position could not be found in genetic map, " + std::string(__FILE__) +
+					" line " + std::to_string(__LINE__));
+		}
+        return fabs(fp1->second - fp2->second);
     }
     /*
       Mechanics of the nSL statistic
@@ -37,7 +43,8 @@ namespace
     */
     pair<double, double>
     __nlSsum(const unsigned &core, const Sequence::SimData &d,
-             const vector<size_t> &coretype, const double *gmap)
+             const vector<size_t> &coretype,
+             const std::unordered_map<double, double> &gmap)
     {
         double s = 0., s2 = 0.;
         unsigned nc = 0u;
@@ -64,7 +71,8 @@ namespace
                             }
                     }
             }
-        return make_pair(s / static_cast<double>(nc), s2 / static_cast<double>(nc));
+        return make_pair(s / static_cast<double>(nc),
+                         s2 / static_cast<double>(nc));
     }
 }
 
@@ -74,7 +82,8 @@ namespace Sequence
       The nSL statistic of doi:10.1093/molbev/msu077
     */
     pair<double, double>
-    nSL(const unsigned &core, const SimData &d, const double *gmap = nullptr)
+    nSL(const unsigned &core, const SimData &d,
+        const std::unordered_map<double, double> &gmap=std::unordered_map<double,double>())
     {
         std::vector<size_t> der, anc;
         der.reserve(d.size());
@@ -98,7 +107,7 @@ namespace Sequence
     */
     pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,
-         const double *gmap = nullptr)
+         const std::unordered_map<double, double> &gmap = std::unordered_map<double,double>())
     {
         if (d.empty())
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
@@ -111,7 +120,8 @@ namespace Sequence
                 count(p.second.begin(), p.second.end(), '1'));
             if (dcount && dcount < d.size())
                 {
-                    double f = static_cast<double>(dcount) / static_cast<double>(d.size());
+                    double f = static_cast<double>(dcount)
+                               / static_cast<double>(d.size());
                     if (min(f, 1. - f) >= minfreq)
                         {
                             filtered.push_back(p);
@@ -128,8 +138,10 @@ namespace Sequence
         for (unsigned i = 0; i < __filtered.numsites(); ++i)
             {
                 pair<double, double> rvi = nSL(i, __filtered, gmap);
-                binning.push_back(make_pair(
-                    static_cast<double>(dcounts[i]) / static_cast<double>(__filtered.size()), rvi));
+                binning.push_back(
+                    make_pair(static_cast<double>(dcounts[i])
+                                  / static_cast<double>(__filtered.size()),
+                              rvi));
             }
         double rv = std::numeric_limits<double>::quiet_NaN(),
                rv2 = std::numeric_limits<double>::quiet_NaN();
