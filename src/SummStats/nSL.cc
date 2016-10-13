@@ -8,18 +8,14 @@ using namespace std;
 namespace
 {
     double
-    update_s2(std::pair<std::string::const_reverse_iterator,
-                        std::string::const_reverse_iterator> &left,
-              std::pair<std::string::const_iterator,
-                        std::string::const_iterator> &right,
-              const Sequence::SimData &d, const vector<size_t> &coretype,
-              const size_t i, const std::unordered_map<double, double> &gmap)
+    update_s2(std::string::const_iterator start, std::string::const_iterator left,
+              std::string::const_iterator right, const Sequence::SimData &d,
+              const std::unordered_map<double, double> &gmap)
     {
-        auto p1 = d.position(std::vector<double>::size_type(distance(
-                                 d[coretype[i]].cbegin(), right.first))
-                             - 1);
-        auto p2 = d.position(std::vector<double>::size_type(
-            distance(d[coretype[i]].cbegin(), left.first.base())));
+        auto p1 = d.position(
+            std::vector<double>::size_type(distance(start, right)) - 1);
+        auto p2
+            = d.position(std::vector<double>::size_type(distance(start, left)));
         if (gmap.empty())
             {
                 // return phyisical distance
@@ -28,12 +24,14 @@ namespace
         // return distance along genetic map,
         // in whatever units those are.
         auto fp1 = gmap.find(p1);
-		auto fp2 = gmap.find(p2);
-        if(fp1==gmap.end()||fp2==gmap.end())
-		{
-			throw std::runtime_error("position could not be found in genetic map, " + std::string(__FILE__) +
-					" line " + std::to_string(__LINE__));
-		}
+        auto fp2 = gmap.find(p2);
+        if (fp1 == gmap.end() || fp2 == gmap.end())
+            {
+                throw std::runtime_error(
+                    "position could not be found in genetic map, "
+                    + std::string(__FILE__) + " line "
+                    + std::to_string(__LINE__));
+            }
         return fabs(fp1->second - fp2->second);
     }
     /*
@@ -51,7 +49,8 @@ namespace
         auto csize = coretype.size();
         for (size_t i = 0; i < csize; ++i)
             {
-                auto bi = d[coretype[i]].cbegin() + core;
+				auto start = d[coretype[i]].cbegin();
+                auto bi =  start + core;
                 auto eri = d[coretype[i]].crend();
                 auto ei = d[coretype[i]].cend();
                 for (size_t j = i + 1; j < csize; ++j)
@@ -65,8 +64,8 @@ namespace
                                 s += static_cast<double>(
                                     distance(left.first.base(), right.first)
                                     + 1);
-                                s2 += update_s2(left, right, d, coretype, i,
-                                                gmap);
+                                s2 += update_s2(start, left.first.base(), right.first,
+                                                d, gmap);
                                 ++nc;
                             }
                     }
@@ -83,7 +82,8 @@ namespace Sequence
     */
     pair<double, double>
     nSL(const unsigned &core, const SimData &d,
-        const std::unordered_map<double, double> &gmap=std::unordered_map<double,double>())
+        const std::unordered_map<double, double> &gmap
+        = std::unordered_map<double, double>())
     {
         std::vector<size_t> der, anc;
         der.reserve(d.size());
@@ -107,7 +107,8 @@ namespace Sequence
     */
     pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,
-         const std::unordered_map<double, double> &gmap = std::unordered_map<double,double>())
+         const std::unordered_map<double, double> &gmap
+         = std::unordered_map<double, double>())
     {
         if (d.empty())
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
