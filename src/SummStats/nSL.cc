@@ -6,6 +6,7 @@
 #include <unordered_map>
 // For parallelizing nSL:
 #include <functional>
+#include <iostream>
 #include <tbb/parallel_for.h>
 #include <tbb/task_scheduler_init.h>
 using namespace std;
@@ -171,8 +172,8 @@ namespace Sequence
     */
     pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,
-         const std::unordered_map<double, double> &gmap
-         = std::unordered_map<double, double>())
+         const int nthreads = 1, const std::unordered_map<double, double> &gmap
+                                 = std::unordered_map<double, double>())
     {
         if (d.empty())
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
@@ -198,28 +199,54 @@ namespace Sequence
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
                              std::numeric_limits<double>::quiet_NaN());
         SimData __filtered(filtered.begin(), filtered.end());
+        // Get the stats
+        auto nSLstats = nSL_t(__filtered, nthreads, gmap);
         // Associate the stats with their DAFs
-        vector<pair<double, pair<double, double>>> binning;
+        using pp = pair<double, pair<double, double>>;
+        vector<pp> binning;
         for (unsigned i = 0; i < __filtered.numsites(); ++i)
             {
-                pair<double, double> rvi = nSL(i, __filtered, gmap);
+                // pair<double, double> rvi = nSL(i, __filtered, gmap);
                 binning.push_back(
                     make_pair(static_cast<double>(dcounts[i])
                                   / static_cast<double>(__filtered.size()),
-                              rvi));
+                              nSLstats[i]));
             }
+        // sort based on DAF
+        std::sort(binning.begin(), binning.end(),
+                  [](const pp &a, const pp &b) { return a.first < b.first; });
         double rv = std::numeric_limits<double>::quiet_NaN(),
                rv2 = std::numeric_limits<double>::quiet_NaN();
         // Now, bin, standardise, and move on...
+        vector<pp> thisbin;
+        auto bstart = binning.begin();
+        size_t ttlSNPs = 0;
         for (double l = minfreq; l < 1.; l += binsize)
             {
-                vector<pair<double, pair<double, double>>> thisbin;
-                copy_if(binning.begin(), binning.end(), back_inserter(thisbin),
-                        [&](const pair<double, pair<double, double>> &data) {
-                            return isfinite(data.second.first)
-                                   && data.first >= l
-                                   && data.first < l + binsize;
-                        });
+                thisbin.clear();
+                auto first = lower_bound(
+                    bstart, binning.end(), l,
+                    [](const pp &p, const double d) { return p.first < d; });
+                auto last = upper_bound(
+                    first, binning.end(), l + binsize,
+                    [](const double d, const pp &p) { return d <= p.first; });
+                for_each(first, last, [l, binsize](const pp &p) {
+                    if (p.first < l || p.first >= l + binsize)
+                        {
+                            throw runtime_error("fuck off");
+                        }
+                });
+                thisbin.insert(thisbin.end(), first, last);
+                ttlSNPs += thisbin.size();
+                bstart = last;
+                /*
+copy_if(binning.begin(), binning.end(), back_inserter(thisbin),
+        [&](const pair<double, pair<double, double>> &data) {
+            return isfinite(data.second.first)
+                   && data.first >= l
+                   && data.first < l + binsize;
+        });
+                */
                 if (thisbin.size() > 1) // otherwise SD = 0, so there's
                                         // nothing to standardize
                     {
@@ -267,6 +294,10 @@ namespace Sequence
                                     rv2 = z2;
                             });
                     }
+            }
+        if (ttlSNPs != __filtered.numsites())
+            {
+                throw runtime_error("Incorrect number of SNPs processed");
             }
         return make_pair(rv, rv2);
     }
