@@ -29,6 +29,19 @@ namespace Sequence
         const std::unordered_map<double, double> &gmap
         = std::unordered_map<double, double>());
 
+	/*!
+	 * Threaded implementation of the nSL statistic.
+	 *
+	 * Parameters are as for Sequence::nSL.
+	 *
+	 * If libsequence is compiled without the Intel TBB library,
+	 * this function defaults to a single-threaded implementation.
+	 */
+	std::vector<std::pair<double, double>>
+    nSL_t(const SimData &d, const int nthreads = 1,
+          const std::unordered_map<double, double> &gmap
+          = std::unordered_map<double, double>());
+
     /*!
       Calculate max. abs value of standardized nSL and iHS, with the latter as
       defined by Ferrer-Admetella et al.

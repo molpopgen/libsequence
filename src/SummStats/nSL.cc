@@ -3,7 +3,11 @@
 #include <array>
 #include <cmath>
 #include <unordered_map>
-
+// For parallelizing nSL:
+#include <functional>
+#include <iostream>
+#include <tbb/parallel_for.h>
+#include <tbb/task_scheduler_init.h>
 using namespace std;
 
 namespace
@@ -41,13 +45,11 @@ namespace
 
       RV = nSL,iHS, as defined in doi:10.1093/molbev/msu077
     */
-    // pair<double, double>
     std::array<double, 4>
     __nlSsum(const unsigned &core, const Sequence::SimData &d,
              // const vector<size_t> &coretype,
              const std::unordered_map<double, double> &gmap)
     {
-        // double s = 0., s2 = 0.;
         auto csize = d.size();
         // This tracks s,s2 for ancestral and derived
         // mutation, resp:
@@ -82,17 +84,6 @@ namespace
                                             start, left.first.base(),
                                             right.first, d, gmap);
                                         nc[iIsDer]++;
-                                        /*
-                                                                          s +=
-                                        static_cast<double>(
-                                            distance(left.first.base(),
-                                        right.first)
-                                            + 1);
-                                        s2 += update_s2(start,
-                                        left.first.base(), right.first,
-                                                        d, gmap);
-                                        */
-                                        //					++nc;
                                     }
                             }
                     }
@@ -102,9 +93,27 @@ namespace
         rv[2] /= static_cast<double>(nc[1]);
         rv[3] /= static_cast<double>(nc[1]);
         return rv;
-        // return make_pair(s / static_cast<double>(nc),
-        //                 s2 / static_cast<double>(nc));
     }
+
+    struct nSLtask
+    {
+        using value_type = std::array<double, 4>;
+        value_type value;
+        unsigned core;
+        nSLtask(unsigned core_) : value{ value_type() }, core{ core_ } {}
+        void
+        operator()(const Sequence::SimData &d,
+                   const std::unordered_map<double, double> &gmap)
+        {
+            value = __nlSsum(core, d, gmap);
+        }
+
+        value_type
+        get() const
+        {
+            return value;
+        }
+    };
 }
 
 namespace Sequence
@@ -117,26 +126,38 @@ namespace Sequence
         const std::unordered_map<double, double> &gmap
         = std::unordered_map<double, double>())
     {
-        /*
-std::vector<size_t> der, anc;
-der.reserve(d.size());
-anc.reserve(d.size());
-for (unsigned i = 0; i < d.size(); ++i)
-    {
-        if (d[i][core] == '1')
-            der.push_back(i);
-        else
-            anc.push_back(i);
-    }
-pair<double, double> A = __nlSsum(core, d, anc, gmap),
-                     D = __nlSsum(core, d, der, gmap);
-        */
         auto nsl = __nlSsum(core, d, gmap);
         return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
-        // return make_pair(log(A.first) - log(D.first),
-        //                 log(A.second) - log(D.second));
     }
 
+    vector<pair<double, double>>
+    nSL_t(const SimData &d, const int nthreads = 1,
+          const std::unordered_map<double, double> &gmap
+          = std::unordered_map<double, double>())
+    {
+        tbb::task_scheduler_init init(nthreads);
+        vector<nSLtask> tasks;
+        for (unsigned i = 0; i < d.numsites(); ++i)
+            {
+                tasks.emplace_back(nSLtask(i));
+            }
+        tbb::parallel_for(
+            tbb::blocked_range<std::size_t>(0, tasks.size()),
+            [&tasks, &d, &gmap](const tbb::blocked_range<std::size_t> &r) {
+                for (std::size_t i = r.begin(); i < r.end(); ++i)
+                    tasks[i](d, gmap);
+            });
+
+        vector<pair<double, double>> rv;
+        rv.reserve(tasks.size());
+        for (auto &&t : tasks)
+            {
+                auto temp = t.get();
+                rv.emplace_back(log(temp[0]) - log(temp[2]),
+                                log(temp[1]) - log(temp[3]));
+            }
+        return rv;
+    }
     /*
       Return max. abs value of standardized nSL and iHS, with the latter as
       defined by Ferrer-Admetella et al.
