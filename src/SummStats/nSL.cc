@@ -59,8 +59,6 @@ namespace
             {
                 auto start = d[i].cbegin();
                 auto bi = start + core;
-                auto eri = d[i].crend();
-                auto ei = d[i].cend();
                 size_t iIsDer = (*bi == '1');
                 for (size_t j = i + 1; j < csize; ++j)
                     {
@@ -68,6 +66,8 @@ namespace
                         size_t jIsDer = (*bj == '1');
                         if (iIsDer == jIsDer)
                             {
+                                auto eri = d[i].crend();
+                                auto ei = d[i].cend();
                                 auto right = mismatch(bi, ei, bj);
                                 string::const_reverse_iterator ri1(bi),
                                     ri2(bj);
