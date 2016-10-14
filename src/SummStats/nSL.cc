@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <array>
 #include <cmath>
+#include <limits>
 #include <unordered_map>
 // For parallelizing nSL:
 #include <functional>
@@ -99,7 +100,14 @@ namespace
         using value_type = std::array<double, 4>;
         value_type value;
         unsigned core;
-        nSLtask(unsigned core_) : value{ value_type() }, core{ core_ } {}
+        nSLtask(unsigned core_)
+            : value{ numeric_limits<double>::quiet_NaN(),
+                     numeric_limits<double>::quiet_NaN(),
+                     numeric_limits<double>::quiet_NaN(),
+                     numeric_limits<double>::quiet_NaN() },
+              core{ core_ }
+        {
+        }
         void
         operator()(const Sequence::SimData &d,
                    const std::unordered_map<double, double> &gmap)
