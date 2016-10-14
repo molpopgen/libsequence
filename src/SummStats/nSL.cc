@@ -1,22 +1,23 @@
 #include <Sequence/SimData.hpp>
 #include <algorithm>
+#include <array>
 #include <cmath>
 #include <unordered_map>
-#include <array>
 
 using namespace std;
 
 namespace
 {
     double
-    update_s2(std::string::const_iterator start, std::string::const_iterator left,
+    update_s2(std::string::const_iterator start,
+              std::string::const_iterator left,
               std::string::const_iterator right, const Sequence::SimData &d,
               const std::unordered_map<double, double> &gmap)
     {
         auto p1 = d.position(
             std::vector<double>::size_type(distance(start, right)) - 1);
-        auto p2
-            = d.position(std::vector<double>::size_type(distance(start, left)));
+        auto p2 = d.position(
+            std::vector<double>::size_type(distance(start, left)));
         if (gmap.empty())
             {
                 // return phyisical distance
@@ -40,62 +41,68 @@ namespace
 
       RV = nSL,iHS, as defined in doi:10.1093/molbev/msu077
     */
-    //pair<double, double>
-	std::array<double,4>
+    // pair<double, double>
+    std::array<double, 4>
     __nlSsum(const unsigned &core, const Sequence::SimData &d,
-             //const vector<size_t> &coretype,
+             // const vector<size_t> &coretype,
              const std::unordered_map<double, double> &gmap)
     {
-        //double s = 0., s2 = 0.;
+        // double s = 0., s2 = 0.;
         auto csize = d.size();
-		//This tracks s,s2 for ancestral and derived
-		//mutation, resp:
-		std::array<double,4> rv={0.,0.,0.,0.};
-		//number of comparisons for ancestral and
-		//derived, resp:
-		std::array<unsigned,2> nc={0u,0u};
+        // This tracks s,s2 for ancestral and derived
+        // mutation, resp:
+        std::array<double, 4> rv = { 0., 0., 0., 0. };
+        // number of comparisons for ancestral and
+        // derived, resp:
+        std::array<unsigned, 2> nc = { 0u, 0u };
         for (size_t i = 0; i < csize; ++i)
             {
-				auto start = d[i].cbegin();
-                auto bi =  start + core;
+                auto start = d[i].cbegin();
+                auto bi = start + core;
                 auto eri = d[i].crend();
                 auto ei = d[i].cend();
-				size_t iIsDer = (*bi=='1');
+                size_t iIsDer = (*bi == '1');
                 for (size_t j = i + 1; j < csize; ++j)
                     {
                         auto bj = d[j].cbegin() + core;
-				size_t jIsDer = (*bj=='1');
-				if(iIsDer==jIsDer)
-				{
-                        auto right = mismatch(bi, ei, bj);
-                        string::const_reverse_iterator ri1(bi), ri2(bj);
-                        auto left = mismatch(ri1, eri, ri2);
-                        if (left.first != eri && right.first != ei)
+                        size_t jIsDer = (*bj == '1');
+                        if (iIsDer == jIsDer)
                             {
-								rv[2*iIsDer] += static_cast<double>(
-                                    distance(left.first.base(), right.first)
-                                    + 1);
-                                rv[2*iIsDer+1] += update_s2(start, left.first.base(), right.first,
-                                                d, gmap);
-								nc[iIsDer]++;
-                                /*
-								  s += static_cast<double>(
-                                    distance(left.first.base(), right.first)
-                                    + 1);
-                                s2 += update_s2(start, left.first.base(), right.first,
-                                                d, gmap);
-                                */
-							//					++nc;
+                                auto right = mismatch(bi, ei, bj);
+                                string::const_reverse_iterator ri1(bi),
+                                    ri2(bj);
+                                auto left = mismatch(ri1, eri, ri2);
+                                if (left.first != eri && right.first != ei)
+                                    {
+                                        rv[2 * iIsDer] += static_cast<double>(
+                                            distance(left.first.base(),
+                                                     right.first)
+                                            + 1);
+                                        rv[2 * iIsDer + 1] += update_s2(
+                                            start, left.first.base(),
+                                            right.first, d, gmap);
+                                        nc[iIsDer]++;
+                                        /*
+                                                                          s +=
+                                        static_cast<double>(
+                                            distance(left.first.base(),
+                                        right.first)
+                                            + 1);
+                                        s2 += update_s2(start,
+                                        left.first.base(), right.first,
+                                                        d, gmap);
+                                        */
+                                        //					++nc;
+                                    }
                             }
                     }
-					}
             }
-		rv[0]/=static_cast<double>(nc[0]);
-		rv[1]/=static_cast<double>(nc[0]);
-		rv[2]/=static_cast<double>(nc[1]);
-		rv[3]/=static_cast<double>(nc[1]);
-		return rv;
-        //return make_pair(s / static_cast<double>(nc),
+        rv[0] /= static_cast<double>(nc[0]);
+        rv[1] /= static_cast<double>(nc[0]);
+        rv[2] /= static_cast<double>(nc[1]);
+        rv[3] /= static_cast<double>(nc[1]);
+        return rv;
+        // return make_pair(s / static_cast<double>(nc),
         //                 s2 / static_cast<double>(nc));
     }
 }
@@ -109,25 +116,24 @@ namespace Sequence
     nSL(const unsigned &core, const SimData &d,
         const std::unordered_map<double, double> &gmap
         = std::unordered_map<double, double>())
-	{
-		/*
-        std::vector<size_t> der, anc;
-        der.reserve(d.size());
-        anc.reserve(d.size());
-        for (unsigned i = 0; i < d.size(); ++i)
-            {
-                if (d[i][core] == '1')
-                    der.push_back(i);
-                else
-                    anc.push_back(i);
-            }
-        pair<double, double> A = __nlSsum(core, d, anc, gmap),
-                             D = __nlSsum(core, d, der, gmap);
-		*/
-		auto nsl = __nlSsum(core,d,gmap);
-		return make_pair( log(nsl[0])-log(nsl[2]),
-					log(nsl[1])-log(nsl[3]) );
-        //return make_pair(log(A.first) - log(D.first),
+    {
+        /*
+std::vector<size_t> der, anc;
+der.reserve(d.size());
+anc.reserve(d.size());
+for (unsigned i = 0; i < d.size(); ++i)
+    {
+        if (d[i][core] == '1')
+            der.push_back(i);
+        else
+            anc.push_back(i);
+    }
+pair<double, double> A = __nlSsum(core, d, anc, gmap),
+                     D = __nlSsum(core, d, der, gmap);
+        */
+        auto nsl = __nlSsum(core, d, gmap);
+        return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
+        // return make_pair(log(A.first) - log(D.first),
         //                 log(A.second) - log(D.second));
     }
 
