@@ -83,4 +83,5 @@ else
 PROFILE=
 endif
 
-
+#Link to Intel's TBB runtime library
+AM_LDFLAGS+=-ltbb

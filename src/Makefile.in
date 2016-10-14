@@ -346,6 +346,7 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
+runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -415,7 +416,9 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/variantCounts.cc \
 	SummStats/classic.cc
 
-AM_LDFLAGS = -version-info 20:0:0 $(am__append_2)
+
+#Link to Intel's TBB runtime library
+AM_LDFLAGS = -version-info 20:0:0 $(am__append_2) -ltbb
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
 	-Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo \
 	-Wsynth $(am__append_1) $(am__append_3) $(am__append_4)
