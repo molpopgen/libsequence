@@ -95,33 +95,6 @@ namespace
         rv[3] /= static_cast<double>(nc[1]);
         return rv;
     }
-
-    struct nSLtask
-    {
-        using value_type = std::array<double, 4>;
-        value_type value;
-        unsigned core;
-        nSLtask(unsigned core_)
-            : value{ numeric_limits<double>::quiet_NaN(),
-                     numeric_limits<double>::quiet_NaN(),
-                     numeric_limits<double>::quiet_NaN(),
-                     numeric_limits<double>::quiet_NaN() },
-              core{ core_ }
-        {
-        }
-        void
-        operator()(const Sequence::SimData &d,
-                   const std::unordered_map<double, double> &gmap)
-        {
-            value = __nlSsum(core, d, gmap);
-        }
-
-        value_type
-        get() const
-        {
-            return value;
-        }
-    };
 }
 
 namespace Sequence
@@ -144,26 +117,17 @@ namespace Sequence
           = std::unordered_map<double, double>())
     {
         tbb::task_scheduler_init init(nthreads);
-        vector<nSLtask> tasks;
-        for (unsigned i = 0; i < d.numsites(); ++i)
-            {
-                tasks.emplace_back(nSLtask(i));
-            }
+        vector<pair<double, double>> rv(d.numsites());
         tbb::parallel_for(
-            tbb::blocked_range<std::size_t>(0, tasks.size()),
-            [&tasks, &d, &gmap](const tbb::blocked_range<std::size_t> &r) {
+            tbb::blocked_range<std::size_t>(0, rv.size()),
+            [&rv, &d, &gmap](const tbb::blocked_range<std::size_t> &r) {
                 for (std::size_t i = r.begin(); i < r.end(); ++i)
-                    tasks[i](d, gmap);
+                    {
+                        auto temp = __nlSsum(i, d, gmap);
+                        rv[i] = make_pair(log(temp[0]) - log(temp[2]),
+                                          log(temp[1]) - log(temp[3]));
+                    }
             });
-
-        vector<pair<double, double>> rv;
-        rv.reserve(tasks.size());
-        for (auto &&t : tasks)
-            {
-                auto temp = t.get();
-                rv.emplace_back(log(temp[0]) - log(temp[2]),
-                                log(temp[1]) - log(temp[3]));
-            }
         return rv;
     }
     /*
