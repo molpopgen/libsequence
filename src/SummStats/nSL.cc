@@ -213,26 +213,32 @@ namespace Sequence
                 if (thisbin.size() > 1) // otherwise SD = 0, so there's
                                         // nothing to standardize
                     {
-                        double mean1 = 0., mean2 = 0.;
+                        double sum1 = 0., sum2 = 0., sumsq1 = 0., sumsq2 = 0.;
                         for (const auto &p : thisbin)
                             {
                                 if (isfinite(p.second.first))
-                                    mean1 += p.second.first;
+                                    {
+                                        sum1 += p.second.first;
+                                        sumsq1 += pow(p.second.first, 2.);
+                                    }
                                 if (isfinite(p.second.second))
-                                    mean2 += p.second.second;
+                                    {
+                                        sum2 += p.second.second;
+                                        sumsq2 += pow(p.second.second, 2.);
+                                    }
                             }
-                        mean1 /= static_cast<double>(thisbin.size());
-                        mean2 /= static_cast<double>(thisbin.size());
-                        double var1 = 0., var2 = 0.;
-                        for (const auto &p : thisbin)
-                            {
-                                if (isfinite(p.second.first))
-                                    var1 += pow(p.second.first - mean1, 2.0);
-                                if (isfinite(p.second.first))
-                                    var2 += pow(p.second.second - mean2, 2.0);
-                            }
-                        var1 /= static_cast<double>(thisbin.size() - 1);
-                        var2 /= static_cast<double>(thisbin.size() - 1);
+                        double mean1
+                            = sum1 / static_cast<double>(thisbin.size());
+                        double mean2
+                            = sum2 / static_cast<double>(thisbin.size());
+                        double C = static_cast<double>(thisbin.size())
+                                   / static_cast<double>(thisbin.size() - 1);
+                        double var1
+                            = C * (sumsq1 / static_cast<double>(thisbin.size())
+                                   - pow(mean1, 2.));
+                        double var2
+                            = C * (sumsq2 / static_cast<double>(thisbin.size())
+                                   - pow(mean2, 2.));
                         double sd1 = sqrt(var1), sd2 = sqrt(var2);
                         for (const auto &data : thisbin)
                             {
