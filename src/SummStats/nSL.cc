@@ -14,16 +14,17 @@ using namespace std;
 
 namespace
 {
-	inline double maxabs(double score,double mean,double sd, double rv)
-	{
-		if(isfinite(score))
-		{
-			double zscore=(score-mean)/sd;
-			if(!isfinite(rv)||fabs(zscore)>fabs(rv))
-				return zscore;
-		}
-		return rv;
-	}
+    inline double
+    maxabs(double score, double mean, double sd, double rv)
+    {
+        if (isfinite(score))
+            {
+                double zscore = (score - mean) / sd;
+                if (!isfinite(rv) || fabs(zscore) > fabs(rv))
+                    return zscore;
+            }
+        return rv;
+    }
 
     double
     update_s2(std::string::const_iterator start,
@@ -60,8 +61,8 @@ namespace
     */
     std::array<double, 4>
     __nSLdetails(const std::size_t &core, const Sequence::SimData &d,
-             // const vector<size_t> &coretype,
-             const std::unordered_map<double, double> &gmap)
+                 // const vector<size_t> &coretype,
+                 const std::unordered_map<double, double> &gmap)
     {
         auto csize = d.size();
         // This tracks s,s2 for ancestral and derived
@@ -209,7 +210,7 @@ namespace Sequence
                 thisbin.insert(thisbin.end(), first, last);
                 ttlSNPs += thisbin.size();
                 bstart = last;
-               if (thisbin.size() > 1) // otherwise SD = 0, so there's
+                if (thisbin.size() > 1) // otherwise SD = 0, so there's
                                         // nothing to standardize
                     {
                         double mean1 = 0., mean2 = 0.;
@@ -233,11 +234,12 @@ namespace Sequence
                         var1 /= static_cast<double>(thisbin.size() - 1);
                         var2 /= static_cast<double>(thisbin.size() - 1);
                         double sd1 = sqrt(var1), sd2 = sqrt(var2);
-						for(const auto & data : thisbin )
-						{
-							rv=maxabs(data.second.first,mean1,sd1,rv);
-							rv2=maxabs(data.second.second,mean2,sd2,rv2);
-							}
+                        for (const auto &data : thisbin)
+                            {
+                                rv = maxabs(data.second.first, mean1, sd1, rv);
+                                rv2 = maxabs(data.second.second, mean2, sd2,
+                                             rv2);
+                            }
                     }
             }
         if (ttlSNPs != __filtered.numsites())
