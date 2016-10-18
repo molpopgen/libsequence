@@ -198,15 +198,7 @@ namespace Sequence
                 thisbin.insert(thisbin.end(), first, last);
                 ttlSNPs += thisbin.size();
                 bstart = last;
-                /*
-copy_if(binning.begin(), binning.end(), back_inserter(thisbin),
-        [&](const pair<double, pair<double, double>> &data) {
-            return isfinite(data.second.first)
-                   && data.first >= l
-                   && data.first < l + binsize;
-        });
-                */
-                if (thisbin.size() > 1) // otherwise SD = 0, so there's
+               if (thisbin.size() > 1) // otherwise SD = 0, so there's
                                         // nothing to standardize
                     {
                         double mean1 = 0., mean2 = 0.;
