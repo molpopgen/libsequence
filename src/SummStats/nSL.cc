@@ -230,11 +230,9 @@ copy_if(binning.begin(), binning.end(), back_inserter(thisbin),
                         var1 /= static_cast<double>(thisbin.size() - 1);
                         var2 /= static_cast<double>(thisbin.size() - 1);
                         double sd1 = sqrt(var1), sd2 = sqrt(var2);
-                        for_each(
-                            thisbin.begin(), thisbin.end(),
-                            [&](const pair<double, pair<double, double>>
-                                    &data) {
-                                double z1
+						for(const auto & data : thisbin )
+						{
+								double z1
                                     = (isfinite(sd1))
                                           ? (data.second.first - mean1) / sd1
                                           : numeric_limits<double>::
@@ -251,7 +249,7 @@ copy_if(binning.begin(), binning.end(), back_inserter(thisbin),
                                 if (isfinite(z2) && (!isfinite(rv2)
                                                      || fabs(z2) > fabs(rv2)))
                                     rv2 = z2;
-                            });
+                            }
                     }
             }
         if (ttlSNPs != __filtered.numsites())
