@@ -160,7 +160,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo SummStats/Garud.lo \
 	IOhelp.lo hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
 	SummStats/lHaf.lo SummStats/variantCounts.lo \
-	SummStats/classic.lo
+	SummStats/classic.lo threading.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -414,7 +414,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	SummStats/variantCounts.cc \
-	SummStats/classic.cc
+	SummStats/classic.cc \
+	threading.cc 
 
 
 #Link to Intel's TBB runtime library
@@ -667,6 +668,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threading.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentFragmentsRescaling.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentInitialize.Plo@am__quote@
