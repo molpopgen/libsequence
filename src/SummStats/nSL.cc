@@ -14,6 +14,17 @@ using namespace std;
 
 namespace
 {
+	inline double maxabs(double score,double mean,double sd, double rv)
+	{
+		if(isfinite(score))
+		{
+			double zscore=(score-mean)/sd;
+			if(!isfinite(rv)||fabs(zscore)>fabs(rv))
+				return zscore;
+		}
+		return rv;
+	}
+
     double
     update_s2(std::string::const_iterator start,
               std::string::const_iterator left,
@@ -224,24 +235,9 @@ namespace Sequence
                         double sd1 = sqrt(var1), sd2 = sqrt(var2);
 						for(const auto & data : thisbin )
 						{
-								double z1
-                                    = (isfinite(sd1))
-                                          ? (data.second.first - mean1) / sd1
-                                          : numeric_limits<double>::
-                                                quiet_NaN(),
-                                    z2
-                                    = (isfinite(sd2))
-                                          ? (data.second.second - mean2) / sd2
-                                          : numeric_limits<double>::
-                                                quiet_NaN();
-                                // Get max abs val of each stat
-                                if (isfinite(z1)
-                                    && (!isfinite(rv) || fabs(z1) > fabs(rv)))
-                                    rv = z1;
-                                if (isfinite(z2) && (!isfinite(rv2)
-                                                     || fabs(z2) > fabs(rv2)))
-                                    rv2 = z2;
-                            }
+							rv=maxabs(data.second.first,mean1,sd1,rv);
+							rv2=maxabs(data.second.second,mean2,sd2,rv2);
+							}
                     }
             }
         if (ttlSNPs != __filtered.numsites())
