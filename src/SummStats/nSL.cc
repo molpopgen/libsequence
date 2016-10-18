@@ -1,4 +1,5 @@
 #include <Sequence/SimData.hpp>
+#include <Sequence/SummStats/nSL.hpp>
 #include <algorithm>
 #include <array>
 #include <cmath>
@@ -8,7 +9,7 @@
 #include <functional>
 #include <iostream>
 #include <tbb/parallel_for.h>
-#include <tbb/task_scheduler_init.h>
+
 using namespace std;
 
 namespace
@@ -47,7 +48,7 @@ namespace
       RV = nSL,iHS, as defined in doi:10.1093/molbev/msu077
     */
     std::array<double, 4>
-    __nlSsum(const unsigned &core, const Sequence::SimData &d,
+    __nlSsum(const std::size_t &core, const Sequence::SimData &d,
              // const vector<size_t> &coretype,
              const std::unordered_map<double, double> &gmap)
     {
@@ -61,11 +62,16 @@ namespace
         for (size_t i = 0; i < csize; ++i)
             {
                 auto start = d[i].cbegin();
-                auto bi = start + core;
+                auto bi
+                    = start
+                      + static_cast<decltype(start)::difference_type>(core);
                 size_t iIsDer = (*bi == '1');
                 for (size_t j = i + 1; j < csize; ++j)
                     {
-                        auto bj = d[j].cbegin() + core;
+                        auto bj
+                            = d[j].cbegin()
+                              + static_cast<decltype(start)::difference_type>(
+                                    core);
                         size_t jIsDer = (*bj == '1');
                         if (iIsDer == jIsDer)
                             {
@@ -103,20 +109,16 @@ namespace Sequence
       The nSL statistic of doi:10.1093/molbev/msu077
     */
     pair<double, double>
-    nSL(const unsigned &core, const SimData &d,
-        const std::unordered_map<double, double> &gmap
-        = std::unordered_map<double, double>())
+    nSL(const std::size_t &core, const SimData &d,
+        const std::unordered_map<double, double> &gmap)
     {
         auto nsl = __nlSsum(core, d, gmap);
         return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
     }
 
     vector<pair<double, double>>
-    nSL_t(const SimData &d, const int nthreads = 1,
-          const std::unordered_map<double, double> &gmap
-          = std::unordered_map<double, double>())
+    nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap)
     {
-        tbb::task_scheduler_init init(nthreads);
         vector<pair<double, double>> rv(d.numsites());
         tbb::parallel_for(
             tbb::blocked_range<std::size_t>(0, rv.size()),
@@ -136,8 +138,7 @@ namespace Sequence
     */
     pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,
-         const int nthreads = 1, const std::unordered_map<double, double> &gmap
-                                 = std::unordered_map<double, double>())
+         const std::unordered_map<double, double> &gmap)
     {
         if (d.empty())
             return make_pair(std::numeric_limits<double>::quiet_NaN(),
@@ -164,7 +165,7 @@ namespace Sequence
                              std::numeric_limits<double>::quiet_NaN());
         SimData __filtered(filtered.begin(), filtered.end());
         // Get the stats
-        auto nSLstats = nSL_t(__filtered, nthreads, gmap);
+        auto nSLstats = nSL_t(__filtered, gmap);
         // Associate the stats with their DAFs
         using pp = pair<double, pair<double, double>>;
         vector<pp> binning;

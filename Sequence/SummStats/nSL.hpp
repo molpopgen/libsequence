@@ -25,7 +25,7 @@ namespace Sequence
       \ingroup popgenanalysis
      */
     std::pair<double, double>
-    nSL(const unsigned &core, const SimData &d,
+    nSL(const std::size_t &core, const SimData &d,
         const std::unordered_map<double, double> &gmap
         = std::unordered_map<double, double>());
 
@@ -34,13 +34,12 @@ namespace Sequence
      *
      * Parameters are as for Sequence::nSL.
      *
-     * If libsequence is compiled without the Intel TBB library,
-     * this function defaults to a single-threaded implementation.
+	 * \ingroup popgenanalysis
+	 * \ingroup threads
      */
     std::vector<std::pair<double, double>>
-    nSL_t(const SimData &d, const int nthreads = 1,
-          const std::unordered_map<double, double> &gmap
-          = std::unordered_map<double, double>());
+    nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
+                            = std::unordered_map<double, double>());
 
     /*!
       Calculate max. abs value of standardized nSL and iHS, with the latter as
@@ -56,10 +55,11 @@ namespace Sequence
       \warning The use of 'gmap' is untested.
       \item The first member of the return value is nSL, the second is iHS
       \ingroup popgenanalysis
+	  \ingroup threads
     */
     std::pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,
-         const int nthreads = 1, const std::unordered_map<double, double> &gmap
-                                 = std::unordered_map<double, double>());
+         const std::unordered_map<double, double> &gmap
+         = std::unordered_map<double, double>());
 }
 #endif
