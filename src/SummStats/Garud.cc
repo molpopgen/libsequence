@@ -35,9 +35,9 @@ namespace Sequence
   {
     if( d.empty() ) return GarudStats();
     set<string> uhaps(d.begin(),d.end());
-	vector<string> vuhaps(std::make_move_iterator(uhaps.begin()),
-			std::make_move_iterator(uhaps.end()));
+	vector<string> vuhaps(uhaps.size());
     vector<double> hapcounts(uhaps.size());
+	std::move(uhaps.begin(),uhaps.end(),vuhaps.begin());
 	tbb::parallel_for(tbb::blocked_range<std::size_t>(0,uhaps.size()),
 			[&d,&vuhaps,&hapcounts](const tbb::blocked_range<std::size_t> & r) {
 			for(auto i = r.begin();i<r.end();++i)
