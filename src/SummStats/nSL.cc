@@ -48,7 +48,7 @@ namespace
       RV = nSL,iHS, as defined in doi:10.1093/molbev/msu077
     */
     std::array<double, 4>
-    __nlSsum(const std::size_t &core, const Sequence::SimData &d,
+    __nSLdetails(const std::size_t &core, const Sequence::SimData &d,
              // const vector<size_t> &coretype,
              const std::unordered_map<double, double> &gmap)
     {
@@ -112,7 +112,7 @@ namespace Sequence
     nSL(const std::size_t &core, const SimData &d,
         const std::unordered_map<double, double> &gmap)
     {
-        auto nsl = __nlSsum(core, d, gmap);
+        auto nsl = __nSLdetails(core, d, gmap);
         return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
     }
 
@@ -125,7 +125,7 @@ namespace Sequence
             [&rv, &d, &gmap](const tbb::blocked_range<std::size_t> &r) {
                 for (std::size_t i = r.begin(); i < r.end(); ++i)
                     {
-                        auto temp = __nlSsum(i, d, gmap);
+                        auto temp = __nSLdetails(i, d, gmap);
                         rv[i] = make_pair(log(temp[0]) - log(temp[2]),
                                           log(temp[1]) - log(temp[3]));
                     }
@@ -195,12 +195,6 @@ namespace Sequence
                 auto last = upper_bound(
                     first, binning.end(), l + binsize,
                     [](const double d, const pp &p) { return d <= p.first; });
-                for_each(first, last, [l, binsize](const pp &p) {
-                    if (p.first < l || p.first >= l + binsize)
-                        {
-                            throw runtime_error("fuck off");
-                        }
-                });
                 thisbin.insert(thisbin.end(), first, last);
                 ttlSNPs += thisbin.size();
                 bstart = last;
