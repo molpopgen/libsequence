@@ -36,7 +36,8 @@ However:
 * Removed threaded implementation of the l-Haf statistic, as the naive approach didn't speed things up.
 * Weights on stop codons used in Grantham distance calculations is now configurable, and defaults to the max value of a double.  Previous library versions arbitrarily used 999.0.
 * PolySIM::ThetaL now correctly will not include fixed differences in the calculation.
-* Code for nSL/iHS improved by both simplifying it a bit and by saving results of some data accesses to improve performance.
+* nSL/iHS, H1, H12, H2H1, and haplotype homozygosity statistics are now calculated in parallel.
+* Intel's TBB is now a dependency.
 
 ## libsequence 1.8.9
 
