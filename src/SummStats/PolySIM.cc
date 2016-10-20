@@ -593,12 +593,12 @@ namespace Sequence
                                 n00 = n01 = n10 = n11 = n0site1 = n0site2 = 0;
                                 for (unsigned i = 0; i < rep->_nsam; ++i)
                                     {
+										auto site2state = (*rep->_data)[i][site2];
                                         switch ((*rep->_data)[i][site1])
                                             {
                                             case '0':
                                                 ++n0site1;
-                                                switch (
-                                                    (*rep->_data)[i][site2])
+                                                switch (site2state)
                                                     {
                                                     case '0':
                                                         ++n0site2;
@@ -610,8 +610,7 @@ namespace Sequence
                                                     }
                                                 break;
                                             case '1':
-                                                switch (
-                                                    (*rep->_data)[i][site2])
+                                                switch (site2state)
                                                     {
                                                     case '0':
                                                         ++n0site2;
