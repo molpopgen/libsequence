@@ -64,18 +64,6 @@ namespace Sequence
             },
             std::plus<double>());
         // GarudStats G;
-        /*
-            double H1 = 0.;
-
-        for_each(uhaps.cbegin(),uhaps.cend(),
-                 [&](const string & hap) {
-                   unsigned hapcount = unsigned(count(d.begin(),d.end(),hap));
-                   //Unbiased calc. of homozygosity in finite sample
-                   H1 +=
-        double(hapcount)*double(hapcount-1)/(double(d.size())*double(d.size()-1));
-                   hapcounts.push_back(double(hapcount));
-                 });
-            */
         sort(hapcounts.begin(), hapcounts.end(),
              std::bind(greater<double>(), std::placeholders::_1,
                        std::placeholders::_2));
