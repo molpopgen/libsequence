@@ -30,12 +30,10 @@ namespace Sequence
         = std::unordered_map<double, double>());
 
     /*!
-     * Threaded implementation of the nSL statistic.
-     *
-     * Parameters are as for Sequence::nSL.
-     *
-	 * \ingroup popgenanalysis
-	 * \ingroup threads
+     * Threaded implementation of the nSL statistic. See \ref threads.
+     * \param d A Sequence::SimData
+     * \param gmap A map relating positions in @a d to genetic map location
+     * \ingroup popgenanalysis
      */
     std::vector<std::pair<double, double>>
     nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
@@ -43,7 +41,9 @@ namespace Sequence
 
     /*!
       Calculate max. abs value of standardized nSL and iHS, with the latter as
-      defined by Ferrer-Admetella et al.
+      defined by Ferrer-Admetella et al. The statistics are calculated in
+      parallel.
+	  See \ref threads for details.
       \param d An object of type Sequence::SimData
       \param minfreq Exclude mutations with minor allele frequency < minfreq.
       \param binsize The size of frequency bins.
@@ -55,7 +55,6 @@ namespace Sequence
       \warning The use of 'gmap' is untested.
       \item The first member of the return value is nSL, the second is iHS
       \ingroup popgenanalysis
-	  \ingroup threads
     */
     std::pair<double, double>
     snSL(const SimData &d, const double minfreq, const double binsize,

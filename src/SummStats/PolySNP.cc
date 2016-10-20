@@ -1057,7 +1057,7 @@ namespace Sequence
       different (as they would be if you
       simply used the std::string comparison operators == or !=)
 
-          \ingroup threaded
+          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
