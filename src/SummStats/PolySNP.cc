@@ -447,8 +447,8 @@ namespace Sequence
                                 unsigned numDer
                                     = rep->_derivedCounts[i].second.nStates();
                                 if (numDer == 1)
-                                    { // simple if there is only one derived
-                                      // state inferred
+                                    {   // simple if there is only one derived
+                                        // state inferred
                                         samplesize
                                             -= rep->_derivedCounts[i].second.n;
                                         double denom
@@ -516,13 +516,12 @@ namespace Sequence
                                                        / denom
                                                  : 0.;
                                     }
-                                else if (
-                                    numDer == 2
-                                    && rep->_haveOutgroup) // MUST have
-                                                           // outgroup--else
-                                                           // can't proceed
-                                    { // use a "missing data" scheme if there
-                                      // is >1 derived state
+                                else if (numDer == 2
+                                         && rep->_haveOutgroup) // MUST have
+                                    // outgroup--else
+                                    // can't proceed
+                                    {   // use a "missing data" scheme if there
+                                        // is >1 derived state
                                         // iterate over derived states
                                         unsigned config[2];
                                         unsigned k = 0;
@@ -673,8 +672,8 @@ namespace Sequence
                                 unsigned numDer
                                     = rep->_derivedCounts[i].second.nStates();
                                 if (numDer == 1)
-                                    { // simple if there is only one derived
-                                      // state inferred
+                                    {   // simple if there is only one derived
+                                        // state inferred
                                         samplesize
                                             -= rep->_derivedCounts[i].second.n;
                                         double denom
@@ -730,13 +729,12 @@ namespace Sequence
                                                          / denom
                                                    : 0.;
                                     }
-                                else if (
-                                    numDer == 2
-                                    && rep->_haveOutgroup) // MUST have
-                                                           // outgroup--else
-                                                           // can't proceed
-                                    { // use a "missing data" scheme if there
-                                      // is >1 derived state
+                                else if (numDer == 2
+                                         && rep->_haveOutgroup) // MUST have
+                                    // outgroup--else
+                                    // can't proceed
+                                    {   // use a "missing data" scheme if there
+                                        // is >1 derived state
                                         // iterate over derived states
                                         unsigned config[2];
                                         unsigned k = 0;
@@ -1059,7 +1057,7 @@ namespace Sequence
       different (as they would be if you
       simply used the std::string comparison operators == or !=)
 
-	  \ingroup threaded
+          \ingroup threaded
     */
     {
         assert(rep->_preprocessed);
@@ -1091,40 +1089,58 @@ namespace Sequence
                                 unique_haplotypes.insert(rep->_data->begin(),
                                                          rep->_data->end());
                             }
-						std::vector<std::string> vuhaps(unique_haplotypes.size());
+                        std::vector<std::string> vuhaps(
+                            unique_haplotypes.size());
                         rep->_DVK = unsigned(unique_haplotypes.size());
-						std::move(unique_haplotypes.begin(),unique_haplotypes.end(),vuhaps.begin());
+                        std::move(unique_haplotypes.begin(),
+                                  unique_haplotypes.end(), vuhaps.begin());
                         // now do the real work via parallel reduction
-						auto homozygosity_reduce = [&vuhaps,this]( const tbb::blocked_range<std::size_t> & range )
-						{
-							return tbb::parallel_reduce(range,0.,
-									[&vuhaps,this](const tbb::blocked_range<std::size_t> & r, double value)
-									{
-									for(auto i=r.begin();i<r.end();++i)
-									{
-									  auto c = std::count_if(rep->_data->begin(),rep->_data->end(),
-											  [&vuhaps,i,this](const std::string & __s){
-											  return !Different(__s,vuhaps[i],false,true);
-											  });
-										value += pow(static_cast<double>(c)/static_cast<double>(rep->_totsam),2.);
-									}
-									return value;
-									},
-									std::plus<double>());
-							
-						};
-						
-						if(rep->_haveOutgroup)
-						{
-						double homozygosity = homozygosity_reduce(tbb::blocked_range<std::size_t>(0,rep->_outgroup));
-						homozygosity -= homozygosity_reduce(tbb::blocked_range<std::size_t>(rep->_outgroup+1,rep->_nsam));
-							rep->_DVH -= homozygosity;
-									
-						}
-						else
-						{
-							rep->_DVH -= homozygosity_reduce(tbb::blocked_range<std::size_t>(0,rep->_nsam));
-						}
+                        auto homozygosity_reduce = [&vuhaps, this](
+                            const tbb::blocked_range<std::size_t> &range) {
+                            return tbb::parallel_reduce(
+                                range, 0.,
+                                [&vuhaps, this](
+                                    const tbb::blocked_range<std::size_t> &r,
+                                    double value) {
+                                    for (auto i = r.begin(); i < r.end(); ++i)
+                                        {
+                                            auto c = std::count_if(
+                                                rep->_data->begin(),
+                                                rep->_data->end(),
+                                                [&vuhaps, i, this](
+                                                    const std::string &__s) {
+                                                    return !Different(
+                                                        __s, vuhaps[i], false,
+                                                        true);
+                                                });
+                                            value += pow(
+                                                static_cast<double>(c)
+                                                    / static_cast<double>(
+                                                          rep->_totsam),
+                                                2.);
+                                        }
+                                    return value;
+                                },
+                                std::plus<double>());
+
+                        };
+
+                        if (rep->_haveOutgroup)
+                            {
+                                double homozygosity = homozygosity_reduce(
+                                    tbb::blocked_range<std::size_t>(
+                                        0, rep->_outgroup));
+                                homozygosity -= homozygosity_reduce(
+                                    tbb::blocked_range<std::size_t>(
+                                        rep->_outgroup + 1, rep->_nsam));
+                                rep->_DVH -= homozygosity;
+                            }
+                        else
+                            {
+                                rep->_DVH -= homozygosity_reduce(
+                                    tbb::blocked_range<std::size_t>(
+                                        0, rep->_nsam));
+                            }
                         rep->_DVH *= rep->_totsam / (rep->_totsam - 1.0);
                         rep->_CalculatedDandV = 1;
                     }
