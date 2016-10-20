@@ -38,6 +38,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/PolySNPimpl.hpp>
+#include <tbb/blocked_range.h>
+#include <tbb/parallel_reduce.h>
 /*!
   \defgroup popgenanalysis Analysis of molecular population genetic data
   \ingroup popgen
@@ -1056,6 +1058,8 @@ namespace Sequence
       allow missing data to result in 2 sequences being considered
       different (as they would be if you
       simply used the std::string comparison operators == or !=)
+
+	  \ingroup threaded
     */
     {
         assert(rep->_preprocessed);
@@ -1087,47 +1091,40 @@ namespace Sequence
                                 unique_haplotypes.insert(rep->_data->begin(),
                                                          rep->_data->end());
                             }
-                        // now do the real work
-                        std::set<string, uniqueSeq>::const_iterator beg
-                            = unique_haplotypes.begin(),
-                            end = unique_haplotypes.end();
+						std::vector<std::string> vuhaps(unique_haplotypes.size());
                         rep->_DVK = unsigned(unique_haplotypes.size());
-                        while (beg != end)
-                            {
-                                std::ptrdiff_t _count = 0;
-                                if (rep->_haveOutgroup)
-                                    {
-                                        _count += std::count_if(
-                                            rep->_data->begin(),
-                                            rep->_data->begin()
-                                                + rep->_outgroup,
-                                            [&beg](const std::string __s) {
-                                                return !Different(__s, *beg,
-                                                                  false, true);
-                                            });
-                                        _count += std::count_if(
-                                            rep->_data->begin()
-                                                + rep->_outgroup + 1,
-                                            rep->_data->end(),
-                                            [&beg](const std::string __s) {
-                                                return !Different(__s, *beg,
-                                                                  false, true);
-                                            });
-                                    }
-                                else
-                                    {
-                                        _count += std::count_if(
-                                            rep->_data->begin(),
-                                            rep->_data->end(),
-                                            [&beg](const std::string __s) {
-                                                return !Different(__s, *beg,
-                                                                  false, true);
-                                            });
-                                    }
-                                rep->_DVH
-                                    -= pow(double(_count) / rep->_totsam, 2.0);
-                                ++beg;
-                            }
+						std::move(unique_haplotypes.begin(),unique_haplotypes.end(),vuhaps.begin());
+                        // now do the real work via parallel reduction
+						auto homozygosity_reduce = [&vuhaps,this]( const tbb::blocked_range<std::size_t> & range )
+						{
+							return tbb::parallel_reduce(range,0.,
+									[&vuhaps,this](const tbb::blocked_range<std::size_t> & r, double value)
+									{
+									for(auto i=r.begin();i<r.end();++i)
+									{
+									  auto c = std::count_if(rep->_data->begin(),rep->_data->end(),
+											  [&vuhaps,i,this](const std::string & __s){
+											  return !Different(__s,vuhaps[i],false,true);
+											  });
+										value += pow(static_cast<double>(c)/static_cast<double>(rep->_totsam),2.);
+									}
+									return value;
+									},
+									std::plus<double>());
+							
+						};
+						
+						if(rep->_haveOutgroup)
+						{
+						double homozygosity = homozygosity_reduce(tbb::blocked_range<std::size_t>(0,rep->_outgroup));
+						homozygosity -= homozygosity_reduce(tbb::blocked_range<std::size_t>(rep->_outgroup+1,rep->_nsam));
+							rep->_DVH -= homozygosity;
+									
+						}
+						else
+						{
+							rep->_DVH -= homozygosity_reduce(tbb::blocked_range<std::size_t>(0,rep->_nsam));
+						}
                         rep->_DVH *= rep->_totsam / (rep->_totsam - 1.0);
                         rep->_CalculatedDandV = 1;
                     }
