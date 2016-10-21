@@ -64,11 +64,18 @@ namespace Sequence
         double HudsonsC(const Sequence::PolyTable *data,
                         const bool &haveOutgroup, const unsigned &outgroup);
         /*!
-                 \return a list of 6 doubles: sitei sitej rsq D D', and the 6th
-                 element is 1 if the site pair was skipped (in which case the
-           other 5
-                 elements are meaningless), and 0 otherwise
-                         */
+		 * \brief Calculate pairwise LD for a Sequence::PolyTable
+		 * \param data A Sequence::PolyTable
+		 * \param haveOutgroup A boolean
+		 * \param outgroup. If \a haveOutgroup is true, then this is
+         * the index
+		 * of the outgroup sequence in \a data
+		 * \param mincount  Minimum sample count to include a mutation.
+         * E.g., 2 =
+		 * exclude singletons, etc.
+		 * \param max_distance Do not include sites > this value apart
+		 * \return A std::vector of Sequence::PairwiseLDstats
+		 */
         std::vector<PairwiseLDstats> Disequilibrium(
             const Sequence::PolyTable *data, const bool &haveOutgroup = false,
             const unsigned &outgroup = 0, const unsigned &mincount = 1,
@@ -76,7 +83,7 @@ namespace Sequence
 
         /*!
          Calculates LD statistics for sites i and j, where j>1;
-                 \param data The polymorphism data
+		 \param data The polymorphism data
          \param i Index for site in data
          \param j Index for site in data
          \param haveOutgroup true if \a data contains an outgroup, false
