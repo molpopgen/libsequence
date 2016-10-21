@@ -78,6 +78,10 @@ namespace Sequence
                         const bool &haveOutgroup, const unsigned &outgroup);
         /*!
 		 * \brief Calculate pairwise LD for a Sequence::PolyTable
+		 *
+		 * This function is threaded (see \ref threads) and implemented
+		 * in terms of Sequence::PairwiseLD.
+		 *
 		 * \param data A Sequence::PolyTable
 		 * \param haveOutgroup A boolean
 		 * \param outgroup. If \a haveOutgroup is true, then this is
@@ -95,7 +99,7 @@ namespace Sequence
             const double max_distance = std::numeric_limits<double>::max());
 
         /*!
-         Calculates LD statistics for sites i and j, where j>1;
+         Calculates LD statistics for sites i and j, where j>1.
 		 \param data The polymorphism data
          \param i Index for site in data
          \param j Index for site in data

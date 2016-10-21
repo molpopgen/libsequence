@@ -1859,6 +1859,8 @@ namespace Sequence
       If there is an outgroup, it is based on the genotype of derived alleles
       at both
       sites.
+
+	  \ingroup threads
     */
     {
         assert(rep->_preprocessed);

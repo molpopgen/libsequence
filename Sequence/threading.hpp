@@ -38,6 +38,7 @@
  * - Sequence::nSL_t
  * - Sequence::snSL
  * - Sequence::GarudStats
+ * - Sequence::Recombination::Disequilibrium
  *
  * While there are lots of calculations that may be parallelized, not all
  * will benefit.  We have to test each function individually and make the 
