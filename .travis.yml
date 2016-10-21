@@ -18,6 +18,7 @@ addons:
     - libboost-dev
     - libboost-system-dev
     - libboost-test-dev
+    - libtbb-dev
 
 notifications:
   email: false

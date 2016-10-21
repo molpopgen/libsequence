@@ -45,7 +45,7 @@ namespace Sequence
           {
             s += data[j][i];
           }
-	L.emplace_back( std::move(polymorphicSite(data.position(i), s)) );
+	L.emplace_back( polymorphicSite(data.position(i), s));
       }
     return L;
   }

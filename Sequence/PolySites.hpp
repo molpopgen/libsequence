@@ -55,7 +55,9 @@ namespace Sequence
       PolySites (PolyTable::const_site_iterator beg,
 		 PolyTable::const_site_iterator end);
       PolySites( PolySites && );
+      PolySites( const PolySites & );
       PolySites & operator=( PolySites && );
+      PolySites & operator=( const PolySites & );
       ~PolySites(void){};
       std::istream & read(std::istream &s) ;
       std::ostream & print(std::ostream &stream) const;

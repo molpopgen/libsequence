@@ -31,14 +31,19 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \namespace Sequence::Recombination
   \ingroup popgenanalysis
   This namespace exists primarily so that the file Poly.cc (which defines
-  Sequence::Poly) does not get too large.  The routines defined in this namespace
-  all have to do with properties of the association between sites.  Current methods implemented
+  Sequence::Poly) does not get too large.  The routines defined in this
+  namespace
+  all have to do with properties of the association between sites.  Current
+  methods implemented
   are:\n
-  1.) Recombination::HudsonsC, which calculates Hudson's C, aka \f$\rho_{87}\f$\n
+  1.) Recombination::HudsonsC, which calculates Hudson's C, aka
+  \f$\rho_{87}\f$\n
   \n
-  2.) Recombination::Disequilibrium, which calculated several measures of LD for all pairs of sites,
-  and implements a frequency filter to remove low-frequency variants if desired.
- 
+  2.) Recombination::Disequilibrium, which calculated several measures of LD
+  for all pairs of sites,
+  and implements a frequency filter to remove low-frequency variants if
+  desired.
+
   @short Methods dealing with recombination
 */
 #include <vector>
@@ -46,25 +51,74 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  class PolyTable;
-  namespace Recombination
-  {
-    double HudsonsC (const Sequence::PolyTable * data, const bool & haveOutgroup,
-		     const unsigned & outgroup);
-    std::vector < std::vector<double> > Disequilibrium (const Sequence::PolyTable * data,
-							const bool & haveOutgroup=false,
-							const unsigned & outgroup=0,
-							const unsigned & mincount = 1,
-							const double max_distance = std::numeric_limits<double>::max());
+    struct PairwiseLDstats
+		/*! \brief Pairwise linkage disequilibrium (LD) stats
+		 * \ingroup popgenanalysis
+		 */
+    {
+		//! Position of site i
+        double i;
+		//! Position of site j
+		double j;
+		//! $r^2$ between sites i and j
+		double rsq;
+		//! The D statistics
+		double D;
+		//! D'
+		double Dprime;
+		//! If the site fails and filters, this is true
+        bool skipped;
+        PairwiseLDstats();
+    };
 
-    bool Disequilibrium (const Sequence::PolyTable *data,
-			 std::vector<double> & return_values,
-			 unsigned * i , unsigned * j,
-			 const bool & haveOutgroup = false,
-			 const unsigned & outgroup = 0,
-			 const unsigned & mincount = 1,
-			 const double max_distance = std::numeric_limits<double>::max());
+    class PolyTable;
+    namespace Recombination
+    {
+        double HudsonsC(const Sequence::PolyTable *data,
+                        const bool &haveOutgroup, const unsigned &outgroup);
+        /*!
+		 * \brief Calculate pairwise LD for a Sequence::PolyTable
+		 *
+		 * This function is threaded (see \ref threads) and implemented
+		 * in terms of Sequence::PairwiseLD.
+		 *
+		 * \param data A Sequence::PolyTable
+		 * \param haveOutgroup A boolean
+		 * \param outgroup. If \a haveOutgroup is true, then this is
+         * the index
+		 * of the outgroup sequence in \a data
+		 * \param mincount  Minimum sample count to include a mutation.
+         * E.g., 2 =
+		 * exclude singletons, etc.
+		 * \param max_distance Do not include sites > this value apart
+		 * \return A std::vector of Sequence::PairwiseLDstats
+		 */
+        std::vector<PairwiseLDstats> Disequilibrium(
+            const Sequence::PolyTable *data, const bool &haveOutgroup = false,
+            const unsigned &outgroup = 0, const unsigned &mincount = 1,
+            const double max_distance = std::numeric_limits<double>::max());
 
-  }
+        /*!
+         Calculates LD statistics for sites i and j, where j>1.
+		 \param data The polymorphism data
+         \param i Index for site in data
+         \param j Index for site in data
+         \param haveOutgroup true if \a data contains an outgroup, false
+         otherwise
+         \param outgroup the index of the outgroup in \a data \a haveOutgroup
+         is true
+         \param mincount the minimum sample frequency to include
+         \param max_distance max distance between markers (on scale in which
+         positions in \a data are stored) for inclusion
+		 \return Sequence::PairwiseLDstats
+       */
+        PairwiseLDstats PairwiseLD(const Sequence::PolyTable *data, unsigned i,
+                                   unsigned j,
+                                   const bool &haveOutgroup = false,
+                                   const unsigned &outgroup = 0,
+                                   const unsigned &mincount = 1,
+                                   const double max_distance
+                                   = std::numeric_limits<double>::max());
+    }
 }
 #endif

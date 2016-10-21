@@ -60,11 +60,12 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	SummStats/variantCounts.cc \
-	SummStats/classic.cc
+	SummStats/classic.cc \
+	threading.cc 
 
 AM_LDFLAGS=-version-info 20:0:0
 
-AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth -ffor-scope 
+AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth
 
 if HAVE_HTSLIB
 AM_CXXFLAGS+=-DHAVE_HTSLIB
@@ -83,4 +84,5 @@ else
 PROFILE=
 endif
 
-
+#Link to Intel's TBB runtime library
+AM_LDFLAGS+=-ltbb

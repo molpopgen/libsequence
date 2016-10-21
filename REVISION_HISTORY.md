@@ -30,6 +30,16 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.0
+
+* Fixed issues with Sequence::Comeron95 that made it impossible to allocate on the stack.
+* Updated threaded implementation of the l-Haf statistic to use TBB.
+* Weights on stop codons used in Grantham distance calculations is now configurable, and defaults to the max value of a double.  Previous library versions arbitrarily used 999.0.
+* PolySIM::ThetaL now correctly will not include fixed differences in the calculation.
+* nSL/iHS, H1, H12, H2H1, and haplotype homozygosity statistics are now calculated in parallel.
+* Sequence::Disequilibrium parallelized.
+* Intel's TBB is now a dependency.
+
 ## libsequence 1.8.9
 
 Major API and ABI changes!  This release is a __big__ step towards a "2.0"-style release.

@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-AC_INIT([libsequence], [1.8.9], [https://github.com/molpopgen/libsequence])
+AC_INIT([libsequence], [1.9.0], [https://github.com/molpopgen/libsequence])
 AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
 AC_CONFIG_SRCDIR([test/FastaIO.cc])
 AC_CONFIG_SRCDIR([examples/msstats.cc])
@@ -57,4 +57,10 @@ dnl htslib runtime
 AC_CHECK_LIB([hts],bgzf_read,FOUND_HTSLIB_RUNTIME=1,[echo "htslib runtime not found.  Will not compile features requiring htslib"])
 AM_CONDITIONAL([HAVE_HTSLIB],test x$FOUND_HTSLIB_RUNTIME = x1 )
 
+dnl check for Intel TBB headers that we need
+AC_CHECK_HEADER(tbb/parallel_for.h,,[AC_MSG_ERROR([tbb/parallel_for.h not found.  Please either install Intel's TBB library or make sure your CXXFLAGS are set correctly])])
+AC_CHECK_HEADER(tbb/task_scheduler_init.h,,[AC_MSG_ERROR([tbb/task_scheduler_init.h not found.  Please either install Intel's TBB library or make sure your CXXFLAGS are set correctly])])
+
+dnl check for Intel TBB library
+AC_CHECK_LIB([tbb],main,FOUND_TBB_RUNTIME=1,[AC_MSG_ERROR([tbb runtime library not found.  Please install Intel's TBB library.])])
 AC_OUTPUT

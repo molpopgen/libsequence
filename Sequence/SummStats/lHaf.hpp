@@ -10,7 +10,6 @@ namespace Sequence
     \ingroup popgenanalysis
   */
   std::vector<double> lHaf( const SimData & data, const double l );
-  std::vector<double> lHaf_t( const SimData & data, const double l, const int nthreads );
 }
 
 
