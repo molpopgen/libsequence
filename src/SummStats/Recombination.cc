@@ -357,12 +357,12 @@ namespace Sequence
             return_type values;
             LDtask() : values(return_type()) {}
             inline void
-            operator()(const PolyTable *data, const std::size_t i,
+            operator()(const PolyTable *data, const unsigned i,
                        const bool haveOutgroup, const unsigned outgroup,
                        const unsigned mincount, const double max_distance)
             {
                 values.reserve(data->numsites() - i);
-                for (std::size_t j = i + 1; j < data->numsites(); ++j)
+                for (unsigned j = i + 1; j < data->numsites(); ++j)
                     {
                         values.emplace_back(
                             PairwiseLD(data, i, j, haveOutgroup, outgroup,
@@ -383,9 +383,9 @@ namespace Sequence
             auto nsites = data->numsites();
             vector<LDtask> tasks(nsites - 1);
             tbb::parallel_for(
-                tbb::blocked_range<std::size_t>(0, nsites - 1),
+                tbb::blocked_range<unsigned>(0, nsites - 1),
                 [&data, &tasks, nsites, haveOutgroup, outgroup, mincount,
-                 max_distance](const tbb::blocked_range<std::size_t> &r) {
+                 max_distance](const tbb::blocked_range<unsigned> &r) {
                     for (auto i = r.begin(); i < r.end(); ++i)
                         {
                             tasks[i](data, i, haveOutgroup, outgroup, mincount,

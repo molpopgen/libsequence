@@ -304,7 +304,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.begin();
@@ -314,7 +314,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.end();
@@ -324,7 +324,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.cbegin();
@@ -334,7 +334,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.cend();
