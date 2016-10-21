@@ -24,7 +24,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/PolyTable.hpp>
 #include <Sequence/stateCounter.hpp>
 #include <string>
-
+#include <mutex>
 namespace Sequence
 {
   struct _PolySNPImpl
@@ -51,6 +51,7 @@ namespace Sequence
     bool _calculated_wall_stats;
     std::vector< Sequence::stateCounter > _counts;
     std::vector< std::pair< bool, Sequence::stateCounter > > _derivedCounts;
+	std::mutex instance_lock;
     bool _preprocessed;
     void preprocess(void);
 

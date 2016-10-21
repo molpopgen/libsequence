@@ -79,7 +79,7 @@ namespace Sequence
       pos=std::forward<postype>(__pos);
       data=std::forward<datatype>(__data);
       if( std::find_if( std::begin(data),std::end(data),
-			[this](const std::string __s) {
+			[this](const std::string & __s) {
 			  return __s.size() != pos.size();
 			} ) != data.cend() )
 	{
@@ -162,11 +162,22 @@ namespace Sequence
     std::swap(this->impl,rhs.impl);
   }
 
+  PolyTable::PolyTable(const PolyTable & rhs) : impl(std::unique_ptr<PolyTableImpl>(new PolyTableImpl(*rhs.impl.get())))
+  {
+  }
+  
   PolyTable & PolyTable::operator=(PolyTable && rhs)
   {
     auto x = std::unique_ptr<PolyTableImpl>(new PolyTableImpl());
     std::swap(this->impl,rhs.impl);
     std::swap(x,rhs.impl);
+    return *this;
+  }
+
+  PolyTable & PolyTable::operator=(const PolyTable & rhs)
+  {
+    this->impl->pos = rhs.impl->pos;
+    this->impl->data = rhs.impl->data;
     return *this;
   }
   
@@ -293,7 +304,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.begin();
@@ -303,7 +314,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.end();
@@ -313,7 +324,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.cbegin();
@@ -323,7 +334,7 @@ namespace Sequence
   {
     if(impl->non_const_access == true)
       {
-	impl->pv = polySiteVector(std::move(make_polySiteVector(*this)));
+	impl->pv = polySiteVector(make_polySiteVector(*this));
 	impl->non_const_access=false;
       }
     return impl->pv.cend();

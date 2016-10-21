@@ -6,36 +6,59 @@
 */
 
 #include <Sequence/PolySIM.hpp>
+#include <unordered_map>
 
-namespace Sequence {
-  /*!
-    The nSL statistic of Ferrer-Admetlla et al. doi: 10.1093/molbev/msu077.
-    \param core The index of the "focal/core" SNP
-    \param d An object of type Sequence::SimData
-    \param gmap The positions of every marker in d on the genetic map.  If nullptr is passed,
-    iHS is calculated using SNP positions.
-    \return nSL and iHs, with the latter as defined in doi: 10.1093/molbev/msu077.
-    \note This routine was validated by comparing to code provided by
-    Ferrer-Admetlla et al.
-    \warning The use of 'gmap' is untested.
-    \ingroup popgenanalysis
-   */
-  std::pair<double,double> nSL(const unsigned & core,
-			       const SimData & d,
-			       const double * gmap = nullptr);
+namespace Sequence
+{
+    /*!
+      The nSL statistic of Ferrer-Admetlla et al. doi: 10.1093/molbev/msu077.
+      \param core The index of the "focal/core" SNP
+      \param d An object of type Sequence::SimData
+      \param gmap The positions of every marker in d on the genetic map.  If
+      std::unordered_map<double,double>() is passed,
+      iHS is calculated using SNP positions.
+      \return nSL and iHs, with the latter as defined in doi:
+      10.1093/molbev/msu077.
+      \note This routine was validated by comparing to code provided by
+      Ferrer-Admetlla et al.
+      \warning The use of 'gmap' is untested.
+      \ingroup popgenanalysis
+     */
+    std::pair<double, double>
+    nSL(const std::size_t &core, const SimData &d,
+        const std::unordered_map<double, double> &gmap
+        = std::unordered_map<double, double>());
 
-  /*!
-    Calculate max. abs value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al.
-    \param d An object of type Sequence::SimData
-    \param minfreq Exclude mutations with minor allele frequency < minfreq.
-    \param binsize The size of frequency bins.
-    \param gmap The positions of every marker in d on the genetic map. If nullptr is passed,
-    iHS is calculated using SNP positions.
-    \return maximum absolute value of standardized nSL and iHS, with the latter as defined by Ferrer-Admetella et al.
-    \warning The use of 'gmap' is untested.
-    \item The first member of the return value is nSL, the second is iHS
-    \ingroup popgenanalysis
-  */
-  std::pair<double,double> snSL(const SimData & d,const double minfreq, const double binsize, const double * gmap = nullptr);
+    /*!
+     * Threaded implementation of the nSL statistic. See \ref threads.
+     * \param d A Sequence::SimData
+     * \param gmap A map relating positions in @a d to genetic map location
+     * \ingroup popgenanalysis
+     */
+    std::vector<std::pair<double, double>>
+    nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
+                            = std::unordered_map<double, double>());
+
+    /*!
+      Calculate max. abs value of standardized nSL and iHS, with the latter as
+      defined by Ferrer-Admetella et al. The statistics are calculated in
+      parallel.
+	  See \ref threads for details.
+      \param d An object of type Sequence::SimData
+      \param minfreq Exclude mutations with minor allele frequency < minfreq.
+      \param binsize The size of frequency bins.
+      \param gmap The positions of every marker in d on the genetic map. If
+      std::unordered_map<double,double>() is passed,
+      iHS is calculated using SNP positions.
+      \return maximum absolute value of standardized nSL and iHS, with the
+      latter as defined by Ferrer-Admetella et al.
+      \warning The use of 'gmap' is untested.
+      \item The first member of the return value is nSL, the second is iHS
+      \ingroup popgenanalysis
+    */
+    std::pair<double, double>
+    snSL(const SimData &d, const double minfreq, const double binsize,
+         const std::unordered_map<double, double> &gmap
+         = std::unordered_map<double, double>());
 }
 #endif

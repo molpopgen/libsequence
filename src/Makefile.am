@@ -60,7 +60,8 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	SummStats/variantCounts.cc \
-	SummStats/classic.cc
+	SummStats/classic.cc \
+	threading.cc 
 
 AM_LDFLAGS=-version-info 20:0:0
 
@@ -83,4 +84,5 @@ else
 PROFILE=
 endif
 
-
+#Link to Intel's TBB runtime library
+AM_LDFLAGS+=-ltbb

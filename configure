@@ -750,6 +750,7 @@ infodir
 docdir
 oldincludedir
 includedir
+runstatedir
 localstatedir
 sharedstatedir
 sysconfdir
@@ -836,6 +837,7 @@ datadir='${datarootdir}'
 sysconfdir='${prefix}/etc'
 sharedstatedir='${prefix}/com'
 localstatedir='${prefix}/var'
+runstatedir='${localstatedir}/run'
 includedir='${prefix}/include'
 oldincludedir='/usr/include'
 docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
@@ -1088,6 +1090,15 @@ do
   | -silent | --silent | --silen | --sile | --sil)
     silent=yes ;;
 
+  -runstatedir | --runstatedir | --runstatedi | --runstated \
+  | --runstate | --runstat | --runsta | --runst | --runs \
+  | --run | --ru | --r)
+    ac_prev=runstatedir ;;
+  -runstatedir=* | --runstatedir=* | --runstatedi=* | --runstated=* \
+  | --runstate=* | --runstat=* | --runsta=* | --runst=* | --runs=* \
+  | --run=* | --ru=* | --r=*)
+    runstatedir=$ac_optarg ;;
+
   -sbindir | --sbindir | --sbindi | --sbind | --sbin | --sbi | --sb)
     ac_prev=sbindir ;;
   -sbindir=* | --sbindir=* | --sbindi=* | --sbind=* | --sbin=* \
@@ -1225,7 +1236,7 @@ fi
 for ac_var in	exec_prefix prefix bindir sbindir libexecdir datarootdir \
 		datadir sysconfdir sharedstatedir localstatedir includedir \
 		oldincludedir docdir infodir htmldir dvidir pdfdir psdir \
-		libdir localedir mandir
+		libdir localedir mandir runstatedir
 do
   eval ac_val=\$$ac_var
   # Remove trailing slashes.
@@ -1378,6 +1389,7 @@ Fine tuning of the installation directories:
   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
   --libdir=DIR            object code libraries [EPREFIX/lib]
   --includedir=DIR        C header files [PREFIX/include]
   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
@@ -15633,6 +15645,59 @@ else
   HAVE_HTSLIB_FALSE=
 fi
 
+
+ac_fn_cxx_check_header_mongrel "$LINENO" "tbb/parallel_for.h" "ac_cv_header_tbb_parallel_for_h" "$ac_includes_default"
+if test "x$ac_cv_header_tbb_parallel_for_h" = xyes; then :
+
+else
+  as_fn_error $? "tbb/parallel_for.h not found.  Please either install Intel's TBB library or make sure your CXXFLAGS are set correctly" "$LINENO" 5
+fi
+
+
+ac_fn_cxx_check_header_mongrel "$LINENO" "tbb/task_scheduler_init.h" "ac_cv_header_tbb_task_scheduler_init_h" "$ac_includes_default"
+if test "x$ac_cv_header_tbb_task_scheduler_init_h" = xyes; then :
+
+else
+  as_fn_error $? "tbb/task_scheduler_init.h not found.  Please either install Intel's TBB library or make sure your CXXFLAGS are set correctly" "$LINENO" 5
+fi
+
+
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for main in -ltbb" >&5
+$as_echo_n "checking for main in -ltbb... " >&6; }
+if ${ac_cv_lib_tbb_main+:} false; then :
+  $as_echo_n "(cached) " >&6
+else
+  ac_check_lib_save_LIBS=$LIBS
+LIBS="-ltbb  $LIBS"
+cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+/* end confdefs.h.  */
+
+
+int
+main ()
+{
+return main ();
+  ;
+  return 0;
+}
+_ACEOF
+if ac_fn_cxx_try_link "$LINENO"; then :
+  ac_cv_lib_tbb_main=yes
+else
+  ac_cv_lib_tbb_main=no
+fi
+rm -f core conftest.err conftest.$ac_objext \
+    conftest$ac_exeext conftest.$ac_ext
+LIBS=$ac_check_lib_save_LIBS
+fi
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_tbb_main" >&5
+$as_echo "$ac_cv_lib_tbb_main" >&6; }
+if test "x$ac_cv_lib_tbb_main" = xyes; then :
+  FOUND_TBB_RUNTIME=1
+else
+  as_fn_error $? "tbb runtime library not found.  Please install Intel's TBB library." "$LINENO" 5
+fi
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure

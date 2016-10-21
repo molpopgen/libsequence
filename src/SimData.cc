@@ -47,6 +47,11 @@ namespace Sequence
   {
   }
 
+  SimData::SimData(const SimData & rhs) : PolyTable(rhs)
+  {
+  }
+ 
+
   // SimData::SimData(double *pos, const char **sample, const unsigned & nsam, const unsigned & S):
   //   PolyTable(pos,pos+S,sample,nsam)
   // {
@@ -75,6 +80,12 @@ namespace Sequence
   SimData & SimData::operator=(SimData && pt)
   {
     PolyTable::operator=(std::move(pt));
+    return *this;
+  }
+
+  SimData & SimData::operator=(const SimData & pt)
+  {
+    PolyTable::operator=(pt);
     return *this;
   }
 

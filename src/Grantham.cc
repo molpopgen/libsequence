@@ -1,23 +1,23 @@
 /*
 
-Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
+  Copyright (C) 2003-2009 Kevin Thornton, krthornt[]@[]uci.edu
 
-Remove the brackets to email me.
+  Remove the brackets to email me.
 
-This file is part of libsequence.
+  This file is part of libsequence.
 
-libsequence is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
+  libsequence is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-libsequence is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  libsequence is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
-long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -25,8 +25,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cctype>
 #include <limits>
 namespace Sequence
-  {
-  Grantham::Grantham (void)
+{
+  Grantham::Grantham (const double stop) :
+    stopweight(stop)
   {
     D['T'-38]['M'-38]=81.03969279;
     D['T'-38]['N'-38]=64.77428784;
@@ -38,7 +39,7 @@ namespace Sequence
     D['T'-38]['V'-38]=69.49621703;
     D['T'-38]['W'-38]=150.752701;
     D['T'-38]['Y'-38]=92.24764162;
-    D['E'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['E'-38]['*'-38]=stopweight;
     D['E'-38]['A'-38]=106.7125514;
     D['E'-38]['C'-38]=169.4374593;
     D['E'-38]['D'-38]=44.60463645;
@@ -59,8 +60,8 @@ namespace Sequence
     D['E'-38]['V'-38]=121.3285063;
     D['E'-38]['W'-38]=160.4382217;
     D['E'-38]['Y'-38]=122.7768651;
-    D['P'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
-    D['K'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['P'-38]['*'-38]=stopweight;
+    D['K'-38]['*'-38]=stopweight;
     D['P'-38]['A'-38]=26.87433834;
     D['P'-38]['C'-38]=168.5906208;
     D['P'-38]['D'-38]=107.9096634;
@@ -69,7 +70,7 @@ namespace Sequence
     D['P'-38]['G'-38]=41.62910033;
     D['P'-38]['H'-38]=76.27712277;
     D['P'-38]['I'-38]=95.3760884;
-    D['F'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['F'-38]['*'-38]=stopweight;
     D['P'-38]['K'-38]=102.7139942;
     D['P'-38]['L'-38]=97.77619789;
     D['P'-38]['M'-38]=86.59479895;
@@ -90,7 +91,7 @@ namespace Sequence
     D['K'-38]['H'-38]=32.40288701;
     D['K'-38]['I'-38]=101.6123327;
     D['P'-38]['Y'-38]=109.6155723;
-    D['A'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['A'-38]['*'-38]=stopweight;
     D['K'-38]['K'-38]=0.;
     D['K'-38]['L'-38]=106.3355126;
     D['K'-38]['M'-38]=94.4900972;
@@ -130,7 +131,7 @@ namespace Sequence
     D['F'-38]['W'-38]=142.6771181;
     D['A'-38]['H'-38]=85.49373612;
     D['A'-38]['I'-38]=93.66243338;
-    D['V'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['V'-38]['*'-38]=stopweight;
     D['F'-38]['Y'-38]=21.60966489;
     D['A'-38]['K'-38]=105.5709011;
     D['A'-38]['L'-38]=96.18707223;
@@ -144,7 +145,7 @@ namespace Sequence
     D['A'-38]['V'-38]=64.43025059;
     D['A'-38]['W'-38]=201.5127248;
     D['A'-38]['Y'-38]=111.5882137;
-    D['Q'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['Q'-38]['*'-38]=stopweight;
     D['V'-38]['A'-38]=64.43025059;
     D['V'-38]['C'-38]=191.232501;
     D['V'-38]['D'-38]=152.013397;
@@ -153,7 +154,7 @@ namespace Sequence
     D['V'-38]['G'-38]=108.7873884;
     D['V'-38]['H'-38]=83.892947;
     D['V'-38]['I'-38]=29.60907063;
-    D['L'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['L'-38]['*'-38]=stopweight;
     D['V'-38]['K'-38]=96.9973994;
     D['V'-38]['L'-38]=31.78478998;
     D['V'-38]['M'-38]=21.52179938;
@@ -174,7 +175,7 @@ namespace Sequence
     D['V'-38]['Y'-38]=54.66278181;
     D['Q'-38]['H'-38]=24.08398867;
     D['Q'-38]['I'-38]=108.566243;
-    D['G'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['G'-38]['*'-38]=stopweight;
     D['Q'-38]['K'-38]=53.22834015;
     D['Q'-38]['L'-38]=112.4414772;
     D['Q'-38]['M'-38]=100.8991435;
@@ -227,8 +228,8 @@ namespace Sequence
     D['G'-38]['V'-38]=108.7873884;
     D['G'-38]['W'-38]=198.7740455;
     D['G'-38]['Y'-38]=146.9262927;
-    D['W'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
-    D['R'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['W'-38]['*'-38]=stopweight;
+    D['R'-38]['*'-38]=stopweight;
     D['W'-38]['A'-38]=201.5127248;
     D['W'-38]['C'-38]=127.4031665;
     D['W'-38]['D'-38]=175.3689846;
@@ -238,7 +239,7 @@ namespace Sequence
     D['W'-38]['H'-38]=147.2364297;
     D['W'-38]['I'-38]=149.826083;
     D['W'-38]['K'-38]=157.923034;
-    D['M'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['M'-38]['*'-38]=stopweight;
     D['W'-38]['L'-38]=150.0095229;
     D['W'-38]['M'-38]=152.3965508;
     D['W'-38]['N'-38]=159.7688325;
@@ -258,7 +259,7 @@ namespace Sequence
     D['W'-38]['Y'-38]=128.9732994;
     D['R'-38]['H'-38]=28.81922224;
     D['R'-38]['I'-38]=97.58656354;
-    D['H'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['H'-38]['*'-38]=stopweight;
     D['R'-38]['K'-38]=26.00394626;
     D['R'-38]['L'-38]=101.8802928;
     D['R'-38]['M'-38]=91.63827667;
@@ -279,7 +280,7 @@ namespace Sequence
     D['M'-38]['H'-38]=86.34392904;
     D['M'-38]['I'-38]=10.12098632;
     D['R'-38]['Y'-38]=77.10764416;
-    D['C'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['C'-38]['*'-38]=stopweight;
     D['M'-38]['K'-38]=94.4900972;
     D['M'-38]['L'-38]=14.30316651;
     D['M'-38]['M'-38]=0.;
@@ -331,9 +332,9 @@ namespace Sequence
     D['C'-38]['T'-38]=148.9294552;
     D['C'-38]['V'-38]=191.232501;
     D['C'-38]['W'-38]=127.4031665;
-    D['S'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['S'-38]['*'-38]=stopweight;
     D['C'-38]['Y'-38]=193.7247005;
-    D['N'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['N'-38]['*'-38]=stopweight;
     D['S'-38]['A'-38]=99.13249708;
     D['S'-38]['C'-38]=111.6724957;
     D['S'-38]['D'-38]=65.47081516;
@@ -342,7 +343,7 @@ namespace Sequence
     D['S'-38]['G'-38]=55.26736276;
     D['S'-38]['H'-38]=88.93552755;
     D['S'-38]['I'-38]=141.7979605;
-    D['I'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['I'-38]['*'-38]=stopweight;
     D['S'-38]['K'-38]=120.5325805;
     D['*'-38]['*'-38]=0.;
     D['S'-38]['L'-38]=144.0792346;
@@ -364,7 +365,7 @@ namespace Sequence
     D['N'-38]['H'-38]=68.35485568;
     D['S'-38]['Y'-38]=143.1073844;
     D['N'-38]['I'-38]=148.9140957;
-    D['D'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['D'-38]['*'-38]=stopweight;
     D['N'-38]['K'-38]=93.88268262;
     D['N'-38]['L'-38]=152.3309797;
     D['N'-38]['M'-38]=141.1526466;
@@ -374,59 +375,59 @@ namespace Sequence
     D['I'-38]['A'-38]=93.66243338;
     D['N'-38]['R'-38]=85.11393761;
     D['N'-38]['S'-38]=46.23977508;
-    D['*'-38]['A'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['A'-38]=stopweight;
     D['I'-38]['C'-38]=197.2497963;
     D['N'-38]['T'-38]=64.77428784;
     D['I'-38]['D'-38]=168.0809621;
-    D['*'-38]['C'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['C'-38]=stopweight;
     D['I'-38]['E'-38]=134.1621451;
     D['N'-38]['V'-38]=132.8777227;
-    D['*'-38]['D'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['D'-38]=stopweight;
     D['I'-38]['F'-38]=21.27701376;
     D['N'-38]['W'-38]=159.7688325;
-    D['*'-38]['E'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['E'-38]=stopweight;
     D['I'-38]['G'-38]=135.4188097;
-    D['*'-38]['F'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['F'-38]=stopweight;
     D['I'-38]['H'-38]=94.33752851;
     D['N'-38]['Y'-38]=142.2293696;
-    D['*'-38]['G'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['G'-38]=stopweight;
     D['I'-38]['I'-38]=0.;
-    D['*'-38]['H'-38]=std::numeric_limits<double>::quiet_NaN();
-    D['*'-38]['I'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['H'-38]=stopweight;
+    D['*'-38]['I'-38]=stopweight;
     D['I'-38]['K'-38]=101.6123327;
     D['I'-38]['L'-38]=4.855121198;
-    D['*'-38]['K'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['K'-38]=stopweight;
     D['I'-38]['M'-38]=10.12098632;
-    D['*'-38]['L'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['L'-38]=stopweight;
     D['I'-38]['N'-38]=148.9140957;
-    D['*'-38]['M'-38]=std::numeric_limits<double>::quiet_NaN();
-    D['*'-38]['N'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['M'-38]=stopweight;
+    D['*'-38]['N'-38]=stopweight;
     D['I'-38]['P'-38]=95.3760884;
     D['D'-38]['A'-38]=125.7485902;
     D['I'-38]['Q'-38]=108.566243;
-    D['*'-38]['P'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['P'-38]=stopweight;
     D['I'-38]['R'-38]=97.58656354;
     D['D'-38]['C'-38]=153.5743572;
-    D['*'-38]['Q'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['Q'-38]=stopweight;
     D['I'-38]['S'-38]=141.7979605;
     D['D'-38]['D'-38]=0.;
-    D['*'-38]['R'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['R'-38]=stopweight;
     D['I'-38]['T'-38]=89.2829021;
     D['D'-38]['E'-38]=44.60463645;
-    D['*'-38]['S'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['S'-38]=stopweight;
     D['D'-38]['F'-38]=176.5261931;
-    D['*'-38]['T'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['T'-38]=stopweight;
     D['I'-38]['V'-38]=29.60907063;
     D['D'-38]['G'-38]=93.76755083;
     D['I'-38]['W'-38]=149.826083;
     D['D'-38]['H'-38]=81.2379796;
-    D['*'-38]['V'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['V'-38]=stopweight;
     D['D'-38]['I'-38]=168.0809621;
-    D['*'-38]['W'-38]=std::numeric_limits<double>::quiet_NaN();
-    D['Y'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['W'-38]=stopweight;
+    D['Y'-38]['*'-38]=stopweight;
     D['I'-38]['Y'-38]=33.04769862;
     D['D'-38]['K'-38]=101.4568985;
-    D['*'-38]['Y'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['*'-38]['Y'-38]=stopweight;
     D['D'-38]['L'-38]=171.7572022;
     D['D'-38]['M'-38]=160.0267338;
     D['D'-38]['N'-38]=23.005355;
@@ -438,7 +439,7 @@ namespace Sequence
     D['D'-38]['V'-38]=152.013397;
     D['D'-38]['W'-38]=175.3689846;
     D['D'-38]['Y'-38]=159.9374066;
-    D['T'-38]['*'-38]=std::numeric_limits<double>::quiet_NaN();
+    D['T'-38]['*'-38]=stopweight;
     D['Y'-38]['A'-38]=111.5882137;
     D['Y'-38]['C'-38]=193.7247005;
     D['Y'-38]['D'-38]=159.9374066;
@@ -471,11 +472,11 @@ namespace Sequence
     D['T'-38]['L'-38]=92.35427468;
   }
 
-    double
-    Grantham::operator() (char aa1, char aa2) const
+  double
+  Grantham::operator() (char aa1, char aa2) const
   /*!
     Returns the distance between two amino acids.
-    A distance of std::numeric_limits<double>::quiet_NaN()
+    A distance of "stopweight"
     is used if one of the amino
     acids is a stop (a '*' character).
   */
