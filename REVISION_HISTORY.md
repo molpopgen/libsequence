@@ -33,10 +33,11 @@ However:
 ## libsequence 1.9.0
 
 * Fixed issues with Sequence::Comeron95 that made it impossible to allocate on the stack.
-* Removed threaded implementation of the l-Haf statistic, as the naive approach didn't speed things up.
+* Updated threaded implementation of the l-Haf statistic to use TBB.
 * Weights on stop codons used in Grantham distance calculations is now configurable, and defaults to the max value of a double.  Previous library versions arbitrarily used 999.0.
 * PolySIM::ThetaL now correctly will not include fixed differences in the calculation.
 * nSL/iHS, H1, H12, H2H1, and haplotype homozygosity statistics are now calculated in parallel.
+* Sequence::Disequilibrium parallelized.
 * Intel's TBB is now a dependency.
 
 ## libsequence 1.8.9
