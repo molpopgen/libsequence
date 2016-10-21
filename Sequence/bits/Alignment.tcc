@@ -494,11 +494,11 @@ namespace Sequence
           for (i = 1; i < numIntervals; ++i)
             {
               odd_even = i+1;
-              if (odd_even%2==0.)
+              if (odd_even%2==0)
                 {
                   newSites.push_back (sites[i] +  1);
                 }
-              else if (odd_even%2!=0.)
+              else if (odd_even%2!=0)
                 {
                   newSites.push_back (sites[i] -  1);
                 }
@@ -510,11 +510,11 @@ namespace Sequence
           for (i = 0; i < numIntervals; ++i)
             {
               odd_even = i+1;
-              if (odd_even%2==0.)
+              if (odd_even%2==0)
                 {
                   newSites.push_back (sites[i] +  1);
                 }
-              else if (odd_even%2!=0.)
+              else if (odd_even%2!=0)
                 {
                   newSites.push_back (sites[i] -  1);
                 }

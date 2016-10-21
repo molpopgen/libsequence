@@ -61,9 +61,9 @@ namespace Sequence
 	  throw SeqException(message.c_str());
 	}
       auto type = k + l;
-      if (type%2 != 0.)	//if odd
+      if (type%2 != 0)	//if odd
         return (Mutations::Tv);	//a transversion
-      else if (type%2==0.)	//if even
+      else if (type%2==0)	//if even
         return (Mutations::Ts);	//a transition
       return (Mutations::Unknown);	//can be used for error checking
     }
