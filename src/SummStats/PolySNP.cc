@@ -1098,51 +1098,64 @@ namespace Sequence
                                   unique_haplotypes.end(), vuhaps.begin());
                         // now do the real work via parallel reduction
                         auto homozygosity_reduce = [&vuhaps, this](
-                            const tbb::blocked_range<std::size_t> &range) {
+                            const tbb::blocked_range<std::size_t> &range,
+                            const bool haveOutgroup, const unsigned outgroup) {
                             return tbb::parallel_reduce(
                                 range, 0.,
-                                [&vuhaps, this](
+                                [&vuhaps, this, haveOutgroup, outgroup](
                                     const tbb::blocked_range<std::size_t> &r,
                                     double value) {
                                     for (auto i = r.begin(); i < r.end(); ++i)
                                         {
-                                            auto c = std::count_if(
-                                                rep->_data->begin(),
-                                                rep->_data->end(),
-                                                [&vuhaps, i, this](
-                                                    const std::string &__s) {
-                                                    return !Different(
-                                                        __s, vuhaps[i], false,
-                                                        true);
-                                                });
-                                            value += pow(
-                                                static_cast<double>(c)
-                                                    / static_cast<double>(
-                                                          rep->_totsam),
-                                                2.);
+                                            double c = 0.;
+                                            if (haveOutgroup)
+                                                {
+                                                    c = static_cast<double>(std::count_if(
+                                                        rep->_data->begin(),
+                                                        rep->_data->begin()+outgroup,
+                                                        [&vuhaps, i, this](
+                                                            const std::string
+                                                                &__s) {
+                                                            return !Different(
+                                                                __s, vuhaps[i],
+                                                                false, true);
+                                                        }));
+													c += static_cast<double>(std::count_if(
+                                                        rep->_data->begin()+outgroup+1,
+                                                        rep->_data->end(),
+                                                        [&vuhaps, i, this](
+                                                            const std::string
+                                                                &__s) {
+                                                            return !Different(
+                                                                __s, vuhaps[i],
+                                                                false, true);
+                                                        }));
+													
+                                                }
+                                            else
+                                                {
+                                                    c = static_cast<double>(std::count_if(
+                                                        rep->_data->begin(),
+                                                        rep->_data->end(),
+                                                        [&vuhaps, i, this](
+                                                            const std::string
+                                                                &__s) {
+                                                            return !Different(
+                                                                __s, vuhaps[i],
+                                                                false, true);
+                                                        }));
+												}
+											c /= static_cast<double>(rep->_totsam);
+											value += pow(c,2.);
+											return value;
                                         }
                                     return value;
                                 },
                                 std::plus<double>());
-
                         };
-
-                        if (rep->_haveOutgroup)
-                            {
-                                double homozygosity = homozygosity_reduce(
-                                    tbb::blocked_range<std::size_t>(
-                                        0, rep->_outgroup));
-                                homozygosity -= homozygosity_reduce(
-                                    tbb::blocked_range<std::size_t>(
-                                        rep->_outgroup + 1, rep->_nsam));
-                                rep->_DVH -= homozygosity;
-                            }
-                        else
-                            {
-                                rep->_DVH -= homozygosity_reduce(
-                                    tbb::blocked_range<std::size_t>(
-                                        0, rep->_nsam));
-                            }
+                        double homozygosity = homozygosity_reduce(
+                            tbb::blocked_range<std::size_t>(0, vuhaps.size()),rep->_haveOutgroup,rep->_outgroup);
+                        rep->_DVH -= homozygosity;
                         rep->_DVH *= rep->_totsam / (rep->_totsam - 1.0);
                         rep->_CalculatedDandV = 1;
                     }
@@ -1860,7 +1873,7 @@ namespace Sequence
       at both
       sites.
 
-	  \ingroup threads
+          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
