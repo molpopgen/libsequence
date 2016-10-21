@@ -233,6 +233,7 @@ namespace Sequence
     */
     {
         assert(rep->_preprocessed);
+        std::lock_guard<std::mutex> lock(rep->instance_lock);
         if (rep->_know_pi == false)
             {
                 double Pi = 0.0;
@@ -447,7 +448,7 @@ namespace Sequence
                                 unsigned numDer
                                     = rep->_derivedCounts[i].second.nStates();
                                 if (numDer == 1)
-                                    {   // simple if there is only one derived
+                                    { // simple if there is only one derived
                                         // state inferred
                                         samplesize
                                             -= rep->_derivedCounts[i].second.n;
@@ -520,7 +521,7 @@ namespace Sequence
                                          && rep->_haveOutgroup) // MUST have
                                     // outgroup--else
                                     // can't proceed
-                                    {   // use a "missing data" scheme if there
+                                    { // use a "missing data" scheme if there
                                         // is >1 derived state
                                         // iterate over derived states
                                         unsigned config[2];
@@ -672,7 +673,7 @@ namespace Sequence
                                 unsigned numDer
                                     = rep->_derivedCounts[i].second.nStates();
                                 if (numDer == 1)
-                                    {   // simple if there is only one derived
+                                    { // simple if there is only one derived
                                         // state inferred
                                         samplesize
                                             -= rep->_derivedCounts[i].second.n;
@@ -733,7 +734,7 @@ namespace Sequence
                                          && rep->_haveOutgroup) // MUST have
                                     // outgroup--else
                                     // can't proceed
-                                    {   // use a "missing data" scheme if there
+                                    { // use a "missing data" scheme if there
                                         // is >1 derived state
                                         // iterate over derived states
                                         unsigned config[2];
@@ -1061,6 +1062,7 @@ namespace Sequence
     */
     {
         assert(rep->_preprocessed);
+        std::lock_guard<std::mutex> lock(rep->instance_lock);
         if (!(rep->_CalculatedDandV))
             {
                 if (rep->_NumPoly == 0)
@@ -1156,10 +1158,7 @@ namespace Sequence
     */
     {
         assert(rep->_preprocessed);
-        if (rep->_calculated_wall_stats == false)
-            {
-                WallStats();
-            }
+        WallStats();
         return rep->_walls_B;
     }
 
@@ -1167,89 +1166,103 @@ namespace Sequence
     PolySNP::WallStats(void) const
     {
         assert(rep->_preprocessed);
-        unsigned S = 0;
-        // explicity count # of bi-allelic sites,
-        // since that's the proper denominator
-        for (std::vector<stateCounter>::const_iterator itr
-             = rep->_counts.begin();
-             itr < rep->_counts.end(); ++itr)
+        if (!rep->_calculated_wall_stats)
             {
-                if (itr->nStates() == 2 && itr->gap == 0)
-                    ++S;
-            }
-        if (S > 1)
-            {
-                // std::ptrdiff_t nhap_curr, nhap_left;
-                std::set<std::basic_string<char>,
-                         Sequence::uniqueSeq>::size_type nhap_curr,
-                    nhap_left;
-
-                nhap_left = SEQMAXUNSIGNED;
-
-                unsigned A
-                    = 0; // number of partitions with D' = 1 (see Wall 1999)
-                // iterate over sites (actually, adjacent pairs of sites)
-                for (unsigned site1 = 0; site1 < rep->_nsites - 1; ++site1)
+                unsigned S = 0;
+                // explicity count # of bi-allelic sites,
+                // since that's the proper denominator
+                for (std::vector<stateCounter>::const_iterator itr
+                     = rep->_counts.begin();
+                     itr < rep->_counts.end(); ++itr)
                     {
-                        for (unsigned site2 = site1 + 1; site2 < rep->_nsites;
-                             ++site2)
+                        if (itr->nStates() == 2 && itr->gap == 0)
+                            ++S;
+                    }
+                if (S > 1)
+                    {
+                        // std::ptrdiff_t nhap_curr, nhap_left;
+                        std::set<std::basic_string<char>,
+                                 Sequence::uniqueSeq>::size_type nhap_curr,
+                            nhap_left;
+
+                        nhap_left = SEQMAXUNSIGNED;
+
+                        unsigned A = 0; // number of partitions with D' = 1
+                                        // (see Wall 1999)
+                        // iterate over sites (actually, adjacent pairs of
+                        // sites)
+                        for (unsigned site1 = 0; site1 < rep->_nsites - 1;
+                             ++site1)
                             {
-                                if (rep->_counts[site1].nStates() == 2
-                                    && rep->_counts[site2].nStates() == 2)
+                                for (unsigned site2 = site1 + 1;
+                                     site2 < rep->_nsites; ++site2)
                                     {
-                                        std::string config;
-                                        config.resize(2);
-                                        std::set<string, uniqueSeq>
-                                            unique_haplotypes;
-                                        nhap_curr = 0;
-                                        for (unsigned i = 0; i < rep->_nsam;
-                                             ++i)
+                                        if (rep->_counts[site1].nStates() == 2
+                                            && rep->_counts[site2].nStates()
+                                                   == 2)
                                             {
-                                                if ((!rep->_haveOutgroup)
-                                                    || (rep->_haveOutgroup
-                                                        && i != rep->_outgroup))
+                                                std::string config;
+                                                config.resize(2);
+                                                std::set<string, uniqueSeq>
+                                                    unique_haplotypes;
+                                                nhap_curr = 0;
+                                                for (unsigned i = 0;
+                                                     i < rep->_nsam; ++i)
                                                     {
-                                                        config[0]
-                                                            = (*rep->_data)
-                                                                [i][site1];
-                                                        config[1]
-                                                            = (*rep->_data)
-                                                                [i][site2];
-                                                        unique_haplotypes
-                                                            .insert(config);
+                                                        if ((!rep->_haveOutgroup)
+                                                            || (rep->_haveOutgroup
+                                                                && i != rep->_outgroup))
+                                                            {
+                                                                config[0]
+                                                                    = (*rep->_data)
+                                                                        [i]
+                                                                        [site1];
+                                                                config[1]
+                                                                    = (*rep->_data)
+                                                                        [i]
+                                                                        [site2];
+                                                                unique_haplotypes
+                                                                    .insert(
+                                                                        config);
+                                                            }
                                                     }
-                                            }
-                                        nhap_curr = unique_haplotypes.size();
-                                        if (site1 == 0)
-                                            {
-                                                if (nhap_curr == 2)
+                                                nhap_curr
+                                                    = unique_haplotypes.size();
+                                                if (site1 == 0)
                                                     {
-                                                        ++rep->_walls_Bprime;
-                                                        ++A;
+                                                        if (nhap_curr == 2)
+                                                            {
+                                                                ++rep->_walls_Bprime;
+                                                                ++A;
+                                                            }
                                                     }
+                                                else
+                                                    {
+                                                        if (nhap_curr == 2)
+                                                            ++rep->_walls_Bprime;
+                                                        if (nhap_curr == 2
+                                                            && nhap_left != 2)
+                                                            ++A;
+                                                    }
+                                                nhap_left = nhap_curr;
+                                                site1 = site2;
                                             }
-                                        else
-                                            {
-                                                if (nhap_curr == 2)
-                                                    ++rep->_walls_Bprime;
-                                                if (nhap_curr == 2
-                                                    && nhap_left != 2)
-                                                    ++A;
-                                            }
-                                        nhap_left = nhap_curr;
-                                        site1 = site2;
                                     }
                             }
+                        rep->_walls_B
+                            = double(rep->_walls_Bprime) / (double(S - 1));
+                        rep->_walls_Q
+                            = (double(rep->_walls_Bprime) + double(A))
+                              / (double(S));
                     }
-                rep->_walls_B = double(rep->_walls_Bprime) / (double(S - 1));
-                rep->_walls_Q
-                    = (double(rep->_walls_Bprime) + double(A)) / (double(S));
-            }
-        else
-            {
-                rep->_walls_B = std::numeric_limits<double>::quiet_NaN();
-                rep->_walls_Bprime = 0;
-                rep->_walls_Q = std::numeric_limits<double>::quiet_NaN();
+                else
+                    {
+                        rep->_walls_B
+                            = std::numeric_limits<double>::quiet_NaN();
+                        rep->_walls_Bprime = 0;
+                        rep->_walls_Q
+                            = std::numeric_limits<double>::quiet_NaN();
+                    }
             }
         rep->_calculated_wall_stats = true;
     }
@@ -1263,10 +1276,7 @@ namespace Sequence
     */
     {
         assert(rep->_preprocessed);
-        if (rep->_calculated_wall_stats == false)
-            {
-                WallStats();
-            }
+        WallStats();
         return rep->_walls_Bprime;
     }
 
@@ -1279,10 +1289,7 @@ namespace Sequence
     */
     {
         assert(rep->_preprocessed);
-        if (rep->_calculated_wall_stats == false)
-            {
-                WallStats();
-            }
+        WallStats();
         return rep->_walls_Q;
     }
 

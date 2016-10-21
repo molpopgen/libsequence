@@ -57,6 +57,7 @@ namespace Sequence
       A simpler version of PolySNP::ThetaPi
     */
     {
+        std::lock_guard<std::mutex> lock(rep->instance_lock);
         if (rep->_know_pi == false)
             {
                 double Pi = 0.0, nsam = double(rep->_nsam);
@@ -574,93 +575,109 @@ namespace Sequence
     void
     PolySIM::WallStats(void) const
     {
-        unsigned S = rep->_NumPoly;
-        if (S > 1)
+        std::lock_guard<std::mutex> lock(rep->instance_lock);
+        if (!rep->_calculated_wall_stats)
             {
-                unsigned n00, n01, n10, n11;
-                unsigned nhap_curr, nhap_left;
-                unsigned n0site1, n0site2;
-                nhap_left = SEQMAXUNSIGNED;
-                unsigned A
-                    = 0; // number of partitions with D' = 1 (see Wall 1999)
-                for (unsigned site1 = 0; site1 < rep->_nsites - 1; ++site1)
-                    // iterate over sites (actually, adjacent pairs of sites)
+                unsigned S = rep->_NumPoly;
+                if (S > 1)
                     {
-                        for (unsigned site2 = site1 + 1; site2 < rep->_nsites;
-                             ++site2)
+                        unsigned n00, n01, n10, n11;
+                        unsigned nhap_curr, nhap_left;
+                        unsigned n0site1, n0site2;
+                        nhap_left = SEQMAXUNSIGNED;
+                        unsigned A = 0; // number of partitions with D' = 1
+                                        // (see Wall 1999)
+                        for (unsigned site1 = 0; site1 < rep->_nsites - 1;
+                             ++site1)
+                            // iterate over sites (actually, adjacent pairs of
+                            // sites)
                             {
-                                nhap_curr = 0;
-                                n00 = n01 = n10 = n11 = n0site1 = n0site2 = 0;
-                                for (unsigned i = 0; i < rep->_nsam; ++i)
+                                for (unsigned site2 = site1 + 1;
+                                     site2 < rep->_nsites; ++site2)
                                     {
-										auto site2state = (*rep->_data)[i][site2];
-                                        switch ((*rep->_data)[i][site1])
+                                        nhap_curr = 0;
+                                        n00 = n01 = n10 = n11 = n0site1
+                                            = n0site2 = 0;
+                                        for (unsigned i = 0; i < rep->_nsam;
+                                             ++i)
                                             {
-                                            case '0':
-                                                ++n0site1;
-                                                switch (site2state)
+                                                auto site2state
+                                                    = (*rep->_data)[i][site2];
+                                                switch (
+                                                    (*rep->_data)[i][site1])
                                                     {
                                                     case '0':
-                                                        ++n0site2;
-                                                        ++n00;
+                                                        ++n0site1;
+                                                        switch (site2state)
+                                                            {
+                                                            case '0':
+                                                                ++n0site2;
+                                                                ++n00;
+                                                                break;
+                                                            case '1':
+                                                                ++n01;
+                                                                break;
+                                                            }
                                                         break;
                                                     case '1':
-                                                        ++n01;
+                                                        switch (site2state)
+                                                            {
+                                                            case '0':
+                                                                ++n0site2;
+                                                                ++n10;
+                                                                break;
+                                                            case '1':
+                                                                ++n11;
+                                                                break;
+                                                            }
                                                         break;
                                                     }
-                                                break;
-                                            case '1':
-                                                switch (site2state)
-                                                    {
-                                                    case '0':
-                                                        ++n0site2;
-                                                        ++n10;
-                                                        break;
-                                                    case '1':
-                                                        ++n11;
-                                                        break;
-                                                    }
-                                                break;
                                             }
-                                    }
-                                // the if statement checks to make
-                                // sure that both sites are polymorphic
-                                if ((n0site1 > 0 && n0site1 < rep->_nsam)
-                                    && (n0site2 > 0 && n0site2 < rep->_nsam))
-                                    {
-                                        nhap_curr += (n00 > 0) ? 1 : 0;
-                                        nhap_curr += (n01 > 0) ? 1 : 0;
-                                        nhap_curr += (n10 > 0) ? 1 : 0;
-                                        nhap_curr += (n11 > 0) ? 1 : 0;
-                                        if (site1 == 0)
+                                        // the if statement checks to make
+                                        // sure that both sites are polymorphic
+                                        if ((n0site1 > 0
+                                             && n0site1 < rep->_nsam)
+                                            && (n0site2 > 0
+                                                && n0site2 < rep->_nsam))
                                             {
-                                                if (nhap_curr == 2)
+                                                nhap_curr += (n00 > 0) ? 1 : 0;
+                                                nhap_curr += (n01 > 0) ? 1 : 0;
+                                                nhap_curr += (n10 > 0) ? 1 : 0;
+                                                nhap_curr += (n11 > 0) ? 1 : 0;
+                                                if (site1 == 0)
                                                     {
-                                                        ++rep->_walls_Bprime;
-                                                        ++A;
+                                                        if (nhap_curr == 2)
+                                                            {
+                                                                ++rep->_walls_Bprime;
+                                                                ++A;
+                                                            }
                                                     }
+                                                else
+                                                    {
+                                                        if (nhap_curr == 2)
+                                                            ++rep->_walls_Bprime;
+                                                        if (nhap_curr == 2
+                                                            && nhap_left != 2)
+                                                            ++A;
+                                                    }
+                                                site1 = site2;
                                             }
-                                        else
-                                            {
-                                                if (nhap_curr == 2)
-                                                    ++rep->_walls_Bprime;
-                                                if (nhap_curr == 2
-                                                    && nhap_left != 2)
-                                                    ++A;
-                                            }
-                                        site1 = site2;
+                                        nhap_left = nhap_curr;
                                     }
-                                nhap_left = nhap_curr;
                             }
+                        rep->_walls_B
+                            = double(rep->_walls_Bprime) / (double(S - 1));
+                        rep->_walls_Q
+                            = (rep->_walls_Bprime + double(A)) / (double(S));
                     }
-                rep->_walls_B = double(rep->_walls_Bprime) / (double(S - 1));
-                rep->_walls_Q = (rep->_walls_Bprime + double(A)) / (double(S));
-            }
-        else
-            {
-                rep->_walls_B = std::numeric_limits<double>::quiet_NaN();
-                rep->_walls_Bprime = 0;
-                rep->_walls_Q = std::numeric_limits<double>::quiet_NaN();
+                else
+                    {
+                        rep->_walls_B
+                            = std::numeric_limits<double>::quiet_NaN();
+                        rep->_walls_Bprime = 0;
+                        rep->_walls_Q
+                            = std::numeric_limits<double>::quiet_NaN();
+                    }
             }
         rep->_calculated_wall_stats = true;
     }
@@ -668,22 +685,19 @@ namespace Sequence
     double
     PolySIM::WallsB(void) const
     {
-        if (rep->_calculated_wall_stats == false)
-            WallStats();
+        WallStats();
         return rep->_walls_B;
     }
     unsigned
     PolySIM::WallsBprime(void) const
     {
-        if (rep->_calculated_wall_stats == false)
-            WallStats();
+        WallStats();
         return rep->_walls_Bprime;
     }
     double
     PolySIM::WallsQ(void) const
     {
-        if (rep->_calculated_wall_stats == false)
-            WallStats();
+        WallStats();
         return rep->_walls_Q;
     }
 }
