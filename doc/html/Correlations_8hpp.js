@@ -1,5 +1,5 @@
 var Correlations_8hpp =
 [
-    [ "PermuteCorrelation", "Correlations_8hpp.html#a8ad6da6579788349c3f9f442c31c3805", null ],
-    [ "PermuteCorrelation", "Correlations_8hpp.html#ac24509f39ce9d1735556d677555fabfb", null ]
+    [ "PermuteCorrelation", "Correlations_8hpp.html#a0a32c26bd78e91f70d8a517279b9437c", null ],
+    [ "PermuteCorrelation", "Correlations_8hpp.html#a01ef3ae984b6aa0d2002faf3979ef9ce", null ]
 ];

@@ -30,6 +30,7 @@ var hierarchy =
     [ "Sequence::nmuts< counter >", "structSequence_1_1nmuts.html", null ],
     [ "Sequence::coalsim::node", "structSequence_1_1coalsim_1_1node.html", null ],
     [ "outputFreq", "structoutputFreq.html", null ],
+    [ "Sequence::PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html", null ],
     [ "Sequence::PolySNP", "classSequence_1_1PolySNP.html", [
       [ "Sequence::PolySIM", "classSequence_1_1PolySIM.html", null ]
     ] ],

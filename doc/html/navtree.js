@@ -1,111 +1,3 @@
-var NAVTREE =
-[
-  [ "libsequence", "index.html", [
-    [ "References to primary sources", "md_md_literature.html", [
-      [ "General", "md_md_literature.html#genref", null ],
-      [ "Sequence::PolySNP", "md_md_literature.html#poly", null ],
-      [ "namespace Sequence::Recombination", "md_md_literature.html#rec", null ],
-      [ "Sequence::Comeron95", "md_md_literature.html#com", null ],
-      [ "Sequence::Kimura80", "md_md_literature.html#kim", null ]
-    ] ],
-    [ "Tutorial/overview", "md_md_tutorial.html", [
-      [ "Background", "md_md_tutorial.html#background", [
-        [ "A quick note on streams", "md_md_tutorial.html#streams", null ]
-      ] ],
-      [ "Handling biological sequences.", "md_md_tutorial.html#seq", [
-        [ "Reading and writing", "md_md_tutorial.html#seqio", [
-          [ "Gzipped files, etc.", "md_md_tutorial.html#seqgz", null ]
-        ] ],
-        [ "Manipulating a sequence", "md_md_tutorial.html#manip", null ]
-      ] ],
-      [ "Testing for correct character sets", "md_md_tutorial.html#alphabet", null ],
-      [ "Input and output of DNA sequence alignments", "md_md_tutorial.html#alignments", null ],
-      [ "Polymorphism tables", "md_md_tutorial.html#polymorphism_tables", [
-        [ "Definitions of terms", "md_md_tutorial.html#polytable_terms", null ],
-        [ "Sequence::PolyTable in detail", "md_md_tutorial.html#polytable", [
-          [ "The inheritance hierarchy.", "md_md_tutorial.html#polytables", null ],
-          [ "Handling custom input formats", "md_md_tutorial.html#customptables", null ],
-          [ "Constructing PolyTables", "md_md_tutorial.html#polytable_construct", [
-            [ "From streams", "md_md_tutorial.html#polytable_read", null ]
-          ] ],
-          [ "Using move construction", "md_md_tutorial.html#polytable_move", null ],
-          [ "Accessing the data", "md_md_tutorial.html#polytable_access", null ],
-          [ "Manipulating PolyTables", "md_md_tutorial.html#polytable_manip", null ],
-          [ "Methods provided", "md_md_tutorial.html#polytable_manip_builtin", [
-            [ "Don't be this guy", "md_md_tutorial.html#polytable_idiot", null ]
-          ] ],
-          [ "Iterating over sites directly", "md_md_tutorial.html#polytable_csi", null ]
-        ] ],
-        [ "Sequence::polySiteVector in detail", "md_md_tutorial.html#ptable_detail", null ],
-        [ "The relationship between PolyTable and polySiteVector", "md_md_tutorial.html#polytable_ptable", null ]
-      ] ],
-      [ "Summary statistics", "md_md_tutorial.html#summstats", [
-        [ "Standard summary statistics", "md_md_tutorial.html#classic", null ],
-        [ "FST", "md_md_tutorial.html#classic_fst", null ],
-        [ "The HKA test", "md_md_tutorial.html#hka", null ],
-        [ "The future", "md_md_tutorial.html#stat_future", null ]
-      ] ],
-      [ "Coalescent simulation", "md_md_tutorial.html#coalsim", null ],
-      [ "High-throughput sequencing", "md_md_tutorial.html#hts_tut", [
-        [ "SAM records", "md_md_tutorial.html#sam", null ],
-        [ "SAM flags and bit fields", "md_md_tutorial.html#samflags", null ],
-        [ "BAM files", "md_md_tutorial.html#bam", null ]
-      ] ]
-    ] ],
-    [ "libsequence revision history", "md__home_kevin_git_libsequence_8git_REVISION_HISTORY.html", null ],
-    [ "Deprecated List", "deprecated.html", null ],
-    [ "Bibliography", "citelist.html", null ],
-    [ "Modules", "modules.html", "modules" ],
-    [ "Namespaces", null, [
-      [ "Namespace List", "namespaces.html", "namespaces" ],
-      [ "Namespace Members", "namespacemembers.html", [
-        [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
-        [ "Variables", "namespacemembers_vars.html", null ],
-        [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ]
-      ] ]
-    ] ],
-    [ "Classes", null, [
-      [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", null ],
-      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
-      [ "Class Members", "functions.html", [
-        [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", null ],
-        [ "Typedefs", "functions_type.html", null ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Related Functions", "functions_rela.html", null ]
-      ] ]
-    ] ],
-    [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ]
-      ] ]
-    ] ],
-    [ "Examples", "examples.html", "examples" ]
-  ] ]
-];
-
-var NAVTREEINDEX =
-[
-"AlignStreamTest_8cc.html",
-"PolyTableFunctions_8hpp.html#a1f387d8e7065ae7ff8da76d2cd1c62cc",
-"classSequence_1_1ClustalW.html#a469d68b804d8b2ac601cec2931f6981c",
-"classSequence_1_1PolyTable.html#a844842098408c31dde153a03b3243434",
-"classSequence_1_1SimpleSNP.html#addb66d0f32a7b5e606b2081aeccc42fa",
-"classSequence_1_1samflag.html#af831de6c7940e6a2ea642f5dad6ba3be",
-"group__seqio.html",
-"structSequence_1_1coalsim_1_1chromosome.html#a37c073510f60807f84aa49c4d881d58e"
-];
-
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
-var SYNCONMSG = 'click to disable panel synchronisation';
-var SYNCOFFMSG = 'click to enable panel synchronisation';
 var navTreeSubIndices = new Array();
 
 function getData(varName)
@@ -126,6 +18,21 @@ function stripPath2(uri)
   var s = uri.substring(i+1);
   var m = uri.substring(0,i+1).match(/\/d\w\/d\w\w\/$/);
   return m ? uri.substring(i-6) : s;
+}
+
+function hashValue()
+{
+  return $(location).attr('hash').substring(1).replace(/[^\w\-]/g,'');
+}
+
+function hashUrl()
+{
+  return '#'+hashValue();
+}
+
+function pathName()
+{
+  return $(location).attr('pathname').replace(/[^-A-Za-z0-9+&@#/%?=~_|!:,.;\(\)]/g, '');
 }
 
 function localStorageSupported()
@@ -150,7 +57,7 @@ function deleteLink()
 {
   if (localStorageSupported()) {
     window.localStorage.setItem('navpath','');
-  } 
+  }
 }
 
 function cachedLink()
@@ -198,7 +105,7 @@ function createIndent(o,domNode,node,level)
     node.expandToggle.onclick = function() {
       if (node.expanded) {
         $(node.getChildrenUL()).slideUp("fast");
-        node.plus_img.src = node.relpath+"ftv2pnode.png";
+        node.plus_img.src = node.relpath+"arrowright.png";
         node.expanded = false;
       } else {
         expandNode(o, node, false, false);
@@ -206,7 +113,7 @@ function createIndent(o,domNode,node,level)
     }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
-    imgNode.src = node.relpath+"ftv2pnode.png";
+    imgNode.src = node.relpath+"arrowright.png";
   } else {
     var span = document.createElement("span");
     span.style.display = 'inline-block';
@@ -222,11 +129,13 @@ var animationInProgress = false;
 function gotoAnchor(anchor,aname,updateLocation)
 {
   var pos, docContent = $('#doc-content');
-  if (anchor.parent().attr('class')=='memItemLeft' ||
-      anchor.parent().attr('class')=='fieldtype' ||
-      anchor.parent().is(':header')) 
+  var ancParent = $(anchor.parent());
+  if (ancParent.hasClass('memItemLeft') ||
+      ancParent.hasClass('fieldname') ||
+      ancParent.hasClass('fieldtype') ||
+      ancParent.is(':header'))
   {
-    pos = anchor.parent().position().top;
+    pos = ancParent.position().top;
   } else if (anchor.position()) {
     pos = anchor.position().top;
   }
@@ -284,7 +193,7 @@ function newNode(o, po, text, link, childrenData, lastNode)
     a.className = stripPath(link.replace('#',':'));
     if (link.indexOf('#')!=-1) {
       var aname = '#'+link.split('#')[1];
-      var srcPage = stripPath($(location).attr('pathname'));
+      var srcPage = stripPath(pathName());
       var targetPage = stripPath(link.split('#')[0]);
       a.href = srcPage!=targetPage ? url : "javascript:void(0)"; 
       a.onclick = function(){
@@ -360,9 +269,9 @@ function expandNode(o, node, imm, showRoot)
         $(node.getChildrenUL()).slideDown("fast");
       }
       if (node.isLast) {
-        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
+        node.plus_img.src = node.relpath+"arrowdown.png";
       } else {
-        node.plus_img.src = node.relpath+"ftv2mnode.png";
+        node.plus_img.src = node.relpath+"arrowdown.png";
       }
       node.expanded = true;
     }
@@ -378,14 +287,13 @@ function glowEffect(n,duration)
 
 function highlightAnchor()
 {
-  var aname = $(location).attr('hash');
+  var aname = hashUrl();
   var anchor = $(aname);
   if (anchor.parent().attr('class')=='memItemLeft'){
-    var rows = $('.memberdecls tr[class$="'+
-               window.location.hash.substring(1)+'"]');
+    var rows = $('.memberdecls tr[class$="'+hashValue()+'"]');
     glowEffect(rows.children(),300); // member without details
-  } else if (anchor.parents().slice(2).prop('tagName')=='TR') {
-    glowEffect(anchor.parents('div.memitem'),1000); // enum value
+  } else if (anchor.parent().attr('class')=='fieldname'){
+    glowEffect(anchor.parent().parent(),1000); // enum value
   } else if (anchor.parent().attr('class')=='fieldtype'){
     glowEffect(anchor.parent().parent(),1000); // struct field
   } else if (anchor.parent().is(":header")) {
@@ -400,7 +308,7 @@ function selectAndHighlight(hash,n)
 {
   var a;
   if (hash) {
-    var link=stripPath($(location).attr('pathname'))+':'+hash.substring(1);
+    var link=stripPath(pathName())+':'+hash.substring(1);
     a=$('.item a[class$="'+link+'"]');
   }
   if (a && a.length) {
@@ -433,11 +341,7 @@ function showNode(o, node, index, hash)
         getNode(o, node);
       }
       $(node.getChildrenUL()).css({'display':'block'});
-      if (node.isLast) {
-        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
-      } else {
-        node.plus_img.src = node.relpath+"ftv2mnode.png";
-      }
+      node.plus_img.src = node.relpath+"arrowdown.png";
       node.expanded = true;
       var n = node.children[o.breadcrumbs[index]];
       if (index+1<o.breadcrumbs.length) {
@@ -511,14 +415,13 @@ function navTo(o,root,hash,relpath)
   if (link) {
     var parts = link.split('#');
     root = parts[0];
-    if (parts.length>1) hash = '#'+parts[1];
+    if (parts.length>1) hash = '#'+parts[1].replace(/[^\w\-]/g,'');
     else hash='';
   }
   if (hash.match(/^#l\d+$/)) {
     var anchor=$('a[name='+hash.substring(1)+']');
     glowEffect(anchor.parent(),1000); // line number
     hash=''; // strip line number anchors
-    //root=root.replace(/_source\./,'.'); // source link to doc link
   }
   var url=root+hash;
   var i=-1;
@@ -552,7 +455,7 @@ function toggleSyncButton(relpath)
   if (navSync.hasClass('sync')) {
     navSync.removeClass('sync');
     showSyncOff(navSync,relpath);
-    storeLink(stripPath2($(location).attr('pathname'))+$(location).attr('hash'));
+    storeLink(stripPath2(pathName())+hashUrl());
   } else {
     navSync.addClass('sync');
     showSyncOn(navSync,relpath);
@@ -576,7 +479,7 @@ function initNavTree(toroot,relpath)
   o.node.expanded = false;
   o.node.isLast = true;
   o.node.plus_img = document.createElement("img");
-  o.node.plus_img.src = relpath+"ftv2pnode.png";
+  o.node.plus_img.src = relpath+"arrowright.png";
   o.node.plus_img.width = 16;
   o.node.plus_img.height = 22;
 
@@ -592,7 +495,7 @@ function initNavTree(toroot,relpath)
   }
 
   $(window).load(function(){
-    navTo(o,toroot,window.location.hash,relpath);
+    navTo(o,toroot,hashUrl(),relpath);
     showRoot();
   });
 
@@ -600,21 +503,20 @@ function initNavTree(toroot,relpath)
      if (window.location.hash && window.location.hash.length>1){
        var a;
        if ($(location).attr('hash')){
-         var clslink=stripPath($(location).attr('pathname'))+':'+
-                               $(location).attr('hash').substring(1);
-         a=$('.item a[class$="'+clslink+'"]');
+         var clslink=stripPath(pathName())+':'+hashValue();
+         a=$('.item a[class$="'+clslink.replace(/</g,'\\3c ')+'"]');
        }
        if (a==null || !$(a).parent().parent().hasClass('selected')){
          $('.item').removeClass('selected');
          $('.item').removeAttr('id');
        }
-       var link=stripPath2($(location).attr('pathname'));
-       navTo(o,link,$(location).attr('hash'),relpath);
+       var link=stripPath2(pathName());
+       navTo(o,link,hashUrl(),relpath);
      } else if (!animationInProgress) {
        $('#doc-content').scrollTop(0);
        $('.item').removeClass('selected');
        $('.item').removeAttr('id');
-       navTo(o,toroot,window.location.hash,relpath);
+       navTo(o,toroot,hashUrl(),relpath);
      }
   })
 }

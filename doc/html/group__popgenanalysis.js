@@ -1,6 +1,15 @@
 var group__popgenanalysis =
 [
     [ "Recombination", "namespaceSequence_1_1Recombination.html", null ],
+    [ "PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html", [
+      [ "PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html#a9a7194d33c532812bdccba95a357a852", null ],
+      [ "D", "structSequence_1_1PairwiseLDstats.html#a1e01b313c642d10b246bb8c75a969578", null ],
+      [ "Dprime", "structSequence_1_1PairwiseLDstats.html#a252b799ff4f543cd75b4e4d642d6d6d1", null ],
+      [ "i", "structSequence_1_1PairwiseLDstats.html#a1afc956d0ca438eadb94b5747a3950f0", null ],
+      [ "j", "structSequence_1_1PairwiseLDstats.html#a29ecc3c3f9ec2ad7f9fb358d518b2c24", null ],
+      [ "rsq", "structSequence_1_1PairwiseLDstats.html#ac67e51ef1bf78b99b2c162ba2879149f", null ],
+      [ "skipped", "structSequence_1_1PairwiseLDstats.html#aaad16c0cb2a9ead7d0fcaa3e2b249b91", null ]
+    ] ],
     [ "GarudStats", "structSequence_1_1GarudStats.html", [
       [ "GarudStats", "structSequence_1_1GarudStats.html#a791c27c1a70cfc418e56a53545b7e42a", null ],
       [ "GarudStats", "structSequence_1_1GarudStats.html#a019aec3528ef10476219c39cda46babc", null ],
@@ -19,8 +28,8 @@ var group__popgenanalysis =
       [ "d_sub_n", "classSequence_1_1PolySIM.html#a383727692316e4e110010b2429f6f8f1", null ],
       [ "DandVH", "classSequence_1_1PolySIM.html#a5cb1e8e0583eaf95f8baf5d4383e8cca", null ],
       [ "DandVK", "classSequence_1_1PolySIM.html#a1be376ce9d69d7bc0016fac306124454", null ],
-      [ "DepaulisVeuilleStatistics", "classSequence_1_1PolySIM.html#af89d438b6bb1df23dac3b2162e42d260", null ],
-      [ "Disequilibrium", "classSequence_1_1PolySIM.html#a50eea85970a1e0a4eb3a049ded42b10d", null ],
+      [ "DepaulisVeuilleStatistics", "classSequence_1_1PolySIM.html#gaf89d438b6bb1df23dac3b2162e42d260", null ],
+      [ "Disequilibrium", "classSequence_1_1PolySIM.html#ga314650fdc926b8387f6727c84e18f920", null ],
       [ "Dnominator", "classSequence_1_1PolySIM.html#a8f8b95b3331ac33c19e9b9cec4b5e23e", null ],
       [ "FuLiD", "classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b", null ],
       [ "FuLiDStar", "classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101", null ],
@@ -61,8 +70,8 @@ var group__popgenanalysis =
       [ "d_sub_n", "classSequence_1_1PolySNP.html#a383727692316e4e110010b2429f6f8f1", null ],
       [ "DandVH", "classSequence_1_1PolySNP.html#a5cb1e8e0583eaf95f8baf5d4383e8cca", null ],
       [ "DandVK", "classSequence_1_1PolySNP.html#a1be376ce9d69d7bc0016fac306124454", null ],
-      [ "DepaulisVeuilleStatistics", "classSequence_1_1PolySNP.html#af89d438b6bb1df23dac3b2162e42d260", null ],
-      [ "Disequilibrium", "classSequence_1_1PolySNP.html#a50eea85970a1e0a4eb3a049ded42b10d", null ],
+      [ "DepaulisVeuilleStatistics", "group__threads.html#gaf89d438b6bb1df23dac3b2162e42d260", null ],
+      [ "Disequilibrium", "group__threads.html#ga314650fdc926b8387f6727c84e18f920", null ],
       [ "Dnominator", "classSequence_1_1PolySNP.html#a2c28e0c7330d05bc8fec1039eb64abe7", null ],
       [ "FuLiD", "classSequence_1_1PolySNP.html#a0c31e0d79d1aff7c51349b1ae23052c0", null ],
       [ "FuLiDStar", "classSequence_1_1PolySNP.html#a2b71875afc4f53de1ed5338e3a70c29f", null ],
@@ -97,11 +106,11 @@ var group__popgenanalysis =
       [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e", null ],
       [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html#a5061a9f5abcc553b119960500a1faffa", null ],
       [ "PolyTableSlice", "classSequence_1_1PolyTableSlice.html#ae7a2d9a3b0878ea3f0019d336a21f3a2", null ],
-      [ "cbegin", "classSequence_1_1PolyTableSlice.html#a4f3886fbbcd57959a1e65350c1f5035f", null ],
-      [ "cend", "classSequence_1_1PolyTableSlice.html#a6ce33a9e1f4b4fb4cbc07f94442d423e", null ],
+      [ "cbegin", "classSequence_1_1PolyTableSlice.html#a52be507555bb0515a8f085dc49e51a5a", null ],
+      [ "cend", "classSequence_1_1PolyTableSlice.html#a7caf14128343b20670996947f16af32d", null ],
       [ "get_slice", "classSequence_1_1PolyTableSlice.html#a2cc1577a3ca75e0ae384683b2a375b9e", null ],
       [ "operator[]", "classSequence_1_1PolyTableSlice.html#a984bd1fcffbf0e930e8832fa609c7dbe", null ],
-      [ "size", "classSequence_1_1PolyTableSlice.html#a82898c9a679614d4b5903ee5ed7ea401", null ]
+      [ "size", "classSequence_1_1PolyTableSlice.html#ab0589bcfa287ce327c84eb1d28a0ecf8", null ]
     ] ],
     [ "FST", "classSequence_1_1FST.html", [
       [ "FST", "classSequence_1_1FST.html#a995a97fe657cd2b51c543dfd3f5984e9", null ],
@@ -119,8 +128,7 @@ var group__popgenanalysis =
       [ "shared", "classSequence_1_1FST.html#ace63e30cfc5a69c251cf23525240b65d", null ],
       [ "Slatkin", "classSequence_1_1FST.html#a5cd2e1d1a0c294efda4da6b3e4a08961", null ]
     ] ],
-    [ "nSL", "group__popgenanalysis.html#ga869acf1b70526bd550cf3c0abdad97f1", null ],
-    [ "Snn_test", "group__popgenanalysis.html#ga1937fe206749689bd0d85fdd9bea9f3a", null ],
-    [ "Snn_test_pairwise", "group__popgenanalysis.html#gaf4a1f267e38e289072e54a22bef1a0e6", null ],
-    [ "snSL", "group__popgenanalysis.html#ga99a9890623b981cb9c97f47c4e866ff0", null ]
+    [ "nSL", "group__popgenanalysis.html#gaf618f6fb8a99e812eec75925d4e6cc1f", null ],
+    [ "nSL_t", "group__popgenanalysis.html#gaeae093ea56cd1d50ea0609987b082fad", null ],
+    [ "snSL", "group__popgenanalysis.html#ga163c9f6dafed33516499acce496c3307", null ]
 ];

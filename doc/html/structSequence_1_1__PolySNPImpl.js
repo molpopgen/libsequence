@@ -23,5 +23,6 @@ var structSequence_1_1__PolySNPImpl =
     [ "_totsam", "structSequence_1_1__PolySNPImpl.html#a231a782441aee5903fe9295fed3511c8", null ],
     [ "_walls_B", "structSequence_1_1__PolySNPImpl.html#afef6a6e1a860bac015e48e8bee4003b5", null ],
     [ "_walls_Bprime", "structSequence_1_1__PolySNPImpl.html#a51e753e10587d1440323eca33e412646", null ],
-    [ "_walls_Q", "structSequence_1_1__PolySNPImpl.html#af1977f9b0d9c3126b53a049b1d9821db", null ]
+    [ "_walls_Q", "structSequence_1_1__PolySNPImpl.html#af1977f9b0d9c3126b53a049b1d9821db", null ],
+    [ "instance_lock", "structSequence_1_1__PolySNPImpl.html#a890ca7715583077fe4bdf27902cb23bd", null ]
 ];
