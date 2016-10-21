@@ -1842,7 +1842,7 @@ namespace Sequence
         return Rmin;
     }
 
-    std::vector<std::vector<double>>
+    std::vector<PairwiseLDstats>
     PolySNP::Disequilibrium(const unsigned &mincount,
                             const double &max_marker_distance) const
     /*!
@@ -1863,7 +1863,7 @@ namespace Sequence
     {
         assert(rep->_preprocessed);
         if (rep->_NumPoly < 2)
-            return std::vector<std::vector<double>>();
+            return std::vector<PairwiseLDstats>();
         return Recombination::Disequilibrium(rep->_data, rep->_haveOutgroup,
                                              rep->_outgroup, mincount,
                                              max_marker_distance);

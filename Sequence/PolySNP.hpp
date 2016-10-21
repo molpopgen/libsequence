@@ -77,6 +77,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <vector>
 #include <memory>
 #include <limits>
+#include <Sequence/Recombination.hpp>
 
 namespace Sequence 
   {
@@ -135,7 +136,7 @@ namespace Sequence
       //recombination
       double HudsonsC (void) const;                                  //Dick Hudson's (1987) Chat = 4Nr
       virtual unsigned Minrec (void) const;                          //Hudson & Kaplan's (1985) min # of recombination events
-      std::vector < std::vector < double > >
+      std::vector <PairwiseLDstats>
       Disequilibrium( const unsigned & mincount = 1,
 		      const double & max_marker_distance = std::numeric_limits<double>::max()) const;                 //summary stats of pairwise LD
     };
