@@ -52,8 +52,21 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
 {
     struct PairwiseLDstats
+		/*! \brief Pairwise linkage disequilibrium (LD) stats
+		 * \ingroup popgenanalysis
+		 */
     {
-        double i, j, rsq, D, Dprime;
+		//! Position of site i
+        double i;
+		//! Position of site j
+		double j;
+		//! $r^2$ between sites i and j
+		double rsq;
+		//! The D statistics
+		double D;
+		//! D'
+		double Dprime;
+		//! If the site fails and filters, this is true
         bool skipped;
         PairwiseLDstats();
     };
