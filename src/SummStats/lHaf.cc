@@ -4,16 +4,7 @@
 #include <cmath>
 #include <tbb/blocked_range.h>
 #include <tbb/parallel_for.h>
-/*
-  TODO:  A thread_site and thread_hap wrapper that apply some fxn to a site
-  or a hap, using <thread>, filling up a vector of return values.
 
-  Need to read/remind myself of this:
-
-  http://www.aristeia.com/TalkNotes/ACCU2011_CPUCaches.pdf
-
-  This sounds cool, too: c++ concurrency book
- */
 namespace Sequence
 {
     std::vector<double>
