@@ -288,7 +288,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw std::runtime_error("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
 
     std::set<double> sharedList;
     
@@ -325,7 +325,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw std::runtime_error("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
     std::set<double> fixedList;
     for(unsigned site = 0 ; site < impl->_nsites ; ++site)
       {
@@ -361,7 +361,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw std::runtime_error("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
 
     std::set<double> p1,p2;
     for(unsigned site = 0 ; site < impl->_nsites ; ++site)
