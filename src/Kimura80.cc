@@ -43,7 +43,7 @@ namespace Sequence
       /*!
         \param seqa an object of type Sequence::Seq
         \param seqb an object of type Sequence::Seq
-        \exception Sequence::std::runtime_error if sequences are of different lengths
+        \exception std::runtime_error if sequences are of different lengths
       */
   {
     if (seqa->length () != seqb->length ())
