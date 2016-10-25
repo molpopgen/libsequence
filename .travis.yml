@@ -26,5 +26,5 @@ notifications:
 script:
  - export LD_LIBRARY_PATH=$HOME/lib
  - ./configure --prefix=$HOME && make  && make install
- - make test
+ - make check
  - $HOME/bin/libsequenceConfig --version
