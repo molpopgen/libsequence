@@ -27,7 +27,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <utility>
 #include <type_traits>
 #include <Sequence/SeqConstants.hpp>
-#include <Sequence/SeqExceptions.hpp>
 
 /*! \file PolyTableSlice.hpp
   Template class for sliding window analysis

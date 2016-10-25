@@ -23,12 +23,12 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/SeqEnums.hpp>
 #include <Sequence/SeqAlphabets.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <algorithm>
 #include <iterator>
 #include <cassert>
 #include <string>
 #include <cctype>
+#include <stdexcept>
 
 namespace Sequence
   {
@@ -47,7 +47,7 @@ namespace Sequence
 	  std::string message("Sequence::TsTv error: ");
 	  message += i;
 	  message += " is not A,G,C, nor T.";
-	  throw SeqException(message.c_str());
+	  throw std::runtime_error(message.c_str());
 	}
       auto l = std::distance( dna_alphabet.begin(),
 			      std::find( dna_alphabet.begin(),
@@ -58,7 +58,7 @@ namespace Sequence
 	  std::string message("Sequence::TsTv error: ");
 	  message += j;
 	  message += " is not A,G,C, nor T.";
-	  throw SeqException(message.c_str());
+	  throw std::runtime_error(message.c_str());
 	}
       auto type = k + l;
       if (type%2 != 0)	//if odd

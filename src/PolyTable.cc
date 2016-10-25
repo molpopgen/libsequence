@@ -27,6 +27,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+#include <stdexcept>
+
 /*! \defgroup popgen Molecular Population Genetics
  */
 /*!
@@ -61,7 +63,7 @@ namespace Sequence
 	      this->pos.clear();
 	      this->data.clear();
 	      this->pv.clear();
-	      throw Sequence::SeqException("PolyTable: number of positions != length of data element");
+	      throw std::runtime_error("PolyTable: number of positions != length of data element");
 	    }
 	});
     }

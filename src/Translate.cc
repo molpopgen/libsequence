@@ -24,6 +24,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/Translate.hpp>
 #include <algorithm>
 #include <cctype>
+#include <stdexcept>
 
 namespace
 {
@@ -243,7 +244,7 @@ namespace Sequence
             translation += Universal (codon,gapchar);
             break;
           default:
-            throw SeqException ("Translate.cc: Translate(), invalid genetic code passed");
+            throw std::runtime_error ("Translate.cc: Translate(), invalid genetic code passed");
             break;
           }
         beg += 3;

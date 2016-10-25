@@ -79,7 +79,7 @@ namespace Sequence
     if ( codon.length() != 3 ||
 	 std::find_if(codon.begin(),codon.end(),ambiguousNucleotide()) != codon.end() )
       {
-	throw(SeqException("Sequence::RedundancyCom95 -- precondition failed, invalid codon"));
+	throw(std::runtime_error("Sequence::RedundancyCom95 -- precondition failed, invalid codon"));
       }
   }
 
@@ -404,7 +404,7 @@ namespace Sequence
   /*!
     \return number of times the first codon position is non-degenerate
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -426,7 +426,7 @@ namespace Sequence
   /*!
     \return number of times the first codon position is synonymous via a transition
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
 
   {
@@ -449,7 +449,7 @@ namespace Sequence
   /*!
     \return number of times the first codon position is synonymous via a transversion
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -471,7 +471,7 @@ namespace Sequence
   /*!
     \return number of times the third position is non-degenerate
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -493,7 +493,7 @@ namespace Sequence
   /*!
     \return number of times the third position is fourfold-degenerate
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -515,7 +515,7 @@ namespace Sequence
   /*!
     \return number of times the third position is synonymous via a transition
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -537,7 +537,7 @@ namespace Sequence
   /*!
     \return number of times the third position is synonymous via a transversion
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
   */
   {
     impl->codonPrecondition(codon);
@@ -559,7 +559,7 @@ namespace Sequence
   /*!
     \return the number of non-degenerate positions in \a codon
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
     \note the return value = 1.0+FirstNon(\a codon )+ThirdNon(\a codon)
   */
   {
@@ -582,7 +582,7 @@ namespace Sequence
   /*!
     \return the number of transitional silent sites in \a codon
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
     \note the return value = First2S(\a codon )+Third2S(\a codon )
   */
   {
@@ -605,7 +605,7 @@ namespace Sequence
   /*!
     \return the number of transversional silent sites in \a codon
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
     \note the return value = First2V(\a codon )+Third2V(\a codon )
   */
   {
@@ -628,7 +628,7 @@ namespace Sequence
   /*!
     \return the number of fourfold silent sites in \a codon
     \pre codon is of length 3, is all uppercase, and only contains the characters {A,G,C,T}
-    \throw Sequence::SeqException if precondition is not met
+    \throw Sequence::std::runtime_error if precondition is not met
     \note the return value = ThirdFour(\a codon )
   */
   {

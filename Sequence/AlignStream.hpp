@@ -26,10 +26,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/Alignment.hpp>
 #include <Sequence/Seq.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <type_traits>
 #include <utility>
 #include <string>
+#include <stdexcept>
 
 /*! \file AlignStream.hpp
   @brief declaration of virtual base class for alignment streams (Sequence::AlignStream)

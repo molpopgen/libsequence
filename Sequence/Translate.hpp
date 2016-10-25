@@ -25,7 +25,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #define __TRANSLATE_HPP__
 #include <string>
 #include <Sequence/SeqEnums.hpp>
-#include <Sequence/SeqExceptions.hpp>
 /*! \file Translate.hpp
   @brief declares Sequence::Translate,a function to translate CDS sequences into peptide sequences
 */

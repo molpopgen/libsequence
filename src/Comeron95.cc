@@ -39,7 +39,6 @@
 #include <Sequence/Sites.hpp>
 #include <Sequence/Kimura80.hpp>
 #include <Sequence/RedundancyCom95.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <Sequence/Comeron95.hpp>
 
 /*!
@@ -153,8 +152,6 @@ namespace Sequence
       use your own classes, make sure they clean up after themselves if they
       throw exceptions!!!
 
-      \exception Sequence::SeqException if sequence lengths are not equal
-      \exception Sequence::SeqException if sequence lengths are not multiples of 3
     */
 
   Com95_t Comeron95::operator()(const Sequence::Seq & seqa,

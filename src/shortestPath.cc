@@ -60,7 +60,7 @@ namespace Sequence
   {
     if(codon1.length()!=3 || codon2.length() != 3)
       {
-	throw Sequence::SeqException("Codons are not both of length 3");
+	throw std::runtime_error("Codons are not both of length 3");
       }
     t1 = Sequence::Translate(codon1.begin(),codon1.end(),code);
     t2 = Sequence::Translate(codon2.begin(),codon2.end(),code);
@@ -264,17 +264,17 @@ namespace Sequence
       {
 	impl = std::unique_ptr<shortestPath::shortestPathImpl>(new shortestPath::shortestPathImpl(codon1,codon2,code));
       }
-    catch(Sequence::SeqException &e)
+    catch(std::runtime_error &e)
       {
 	throw;
       }
     catch(std::exception &e)
       {
-	throw (Sequence::SeqException(e.what()));
+	throw (std::runtime_error(e.what()));
       }
     catch (...)
       {
-	throw (Sequence::SeqException("caught exception of unknown type"));
+	throw (std::runtime_error("caught exception of unknown type"));
       }
   }
 
@@ -415,7 +415,7 @@ namespace Sequence
 	  }
 	return std::make_pair(SEQMAXUNSIGNED,SEQMAXUNSIGNED);
       }
-    catch (SeqException &e)
+    catch (std::runtime_error &e)
       {
 	throw;
       }
@@ -468,7 +468,7 @@ namespace Sequence
 	  }
 	return std::make_pair(site,type);
       }
-    catch (Sequence::SeqException &e)
+    catch (std::runtime_error &e)
       {
 	throw;
       }
@@ -512,7 +512,7 @@ namespace Sequence
 	  }
 	return std::make_tuple(p[0],p[1],p[2]);
       }
-    catch(Sequence::SeqException &e)
+    catch(std::runtime_error &e)
       {
 	throw;
       }

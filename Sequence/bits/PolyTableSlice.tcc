@@ -184,7 +184,7 @@ namespace Sequence
   T PolyTableSlice<T>::get_slice(const_iterator itr) const
   {
     if (itr >= windows.end())
-      throw(Sequence::SeqException("PolyTableSlice<T>::get_slice() -- iterator out of range"));
+      throw(std::out_of_range("PolyTableSlice<T>::get_slice() -- iterator out of range"));
     if(itr->first != itr->second)
       {
 	T rv;
@@ -204,7 +204,7 @@ namespace Sequence
   T PolyTableSlice<T>::operator[](const unsigned & i) const 
   {
     if (i > windows.size())
-      throw(Sequence::SeqException("PolyTableSlice::operator[] -- subscript out of range"));
+      throw(std::out_of_range("PolyTableSlice::operator[] -- subscript out of range"));
     if(windows[i].first != windows[i].second)
       {
 	T rv;

@@ -64,7 +64,7 @@ namespace Sequence
       const char *infile = foo;
       try {
       Alignment::GetData(&data,foo);
-      } catch (SeqException &e) {
+      } catch (std::runtime_error &e) {
       cerr << "whoa--exception caught"<<endl;
       e.print(cerr);
       cerr << endl;
@@ -403,8 +403,8 @@ namespace Sequence
     /*!
       Returns a copy of the data vector, modified in the following way.  The sites vector
       contains an even number of sites (whose values are sorted). If sites 
-      does not contain an even number of values Sequence::SeqException is thrown.
-      If sites is empty, Sequence::SeqException is thrown.  The values in sites
+      does not contain an even number of values std::runtime_error is thrown.
+      If sites is empty, std::runtime_error is thrown.  The values in sites
       represent a series of intervals that you wish to keep, and the return vector is
       consists only of those--i.e. all positions not present
       in the intervals defined in sites are lost.  For example, if you pass a 
@@ -415,7 +415,7 @@ namespace Sequence
       \param data the original data
       \param sites vector<int> containing an even number of integers 
       specifying the intervals of data to keep
-      \exception Sequence::SeqException
+      \exception std::runtime_error
     */
     {
      static_assert( std::is_base_of<std::pair<std::string,std::string>,T>::value ||
@@ -426,11 +426,11 @@ namespace Sequence
       std::vector < std::string > trimmedTemp(numseqs);
       if (sites.empty ())
         {
-          throw SeqException ("Sequence::Alignment::Trim(): empty vector of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::Trim(): empty vector of positions passed to function");
         }
       if (numIntervals % 2 != 0)
         {
-          throw SeqException ("Sequence::Alignment::Trim(): odd number of positions passed");
+          throw std::runtime_error ("Sequence::Alignment::Trim(): odd number of positions passed");
         }
 
       for (i = 0; i < numIntervals; i += 2)
@@ -459,8 +459,8 @@ namespace Sequence
     /*!
       Returns a copy the data vector, modified in the following way.  The sites vector
       contains an even number of sites (whose values are sorted). If sites 
-      does not contain an even number of values Sequence::SeqException is thrown.
-      If sites is empty, Sequence::SeqException is thrown.  The values in sites
+      does not contain an even number of values std::runtime_error is thrown.
+      If sites is empty, std::runtime_error is thrown.  The values in sites
       represent a series of intervals that you wish to keep, and the return vector 
       consists only of sites not present in \a sites--i.e. all positions not present
       in the intervals defined in sites are kept.  For example, if you pass a 
@@ -470,7 +470,7 @@ namespace Sequence
       \param data the original data
       \param sites vector<int> containing an even number of integers 
       specifying the intervals of data to throw away
-      \exception Sequence::SeqException
+      \exception std::runtime_error
     */
     {
       std::vector < int >newSites;
@@ -478,11 +478,11 @@ namespace Sequence
       
       if (sites.empty ())
         {
-          throw SeqException ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
         }
       if (numIntervals % 2 != 0)
         {
-          throw SeqException ("Sequence::Alignment::TrimComplement(): odd numer of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::TrimComplement(): odd numer of positions passed to function");
         }
 
       std::vector < T >trimmedData(numseqs);

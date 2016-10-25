@@ -53,7 +53,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <type_traits>
 #include <functional>
 #include <memory>
-#include <Sequence/SeqExceptions.hpp>
 #include <Sequence/polySiteVector.hpp>
 /*! \example PolyTableIterators.cc */
 namespace Sequence

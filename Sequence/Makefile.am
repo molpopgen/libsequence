@@ -35,7 +35,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	Seq.hpp\
 	SeqConstants.hpp\
 	SeqEnums.hpp\
-	SeqExceptions.hpp\
 	SeqFunctors.hpp\
 	SeqProperties.hpp\
 	SeqRegexes.hpp\

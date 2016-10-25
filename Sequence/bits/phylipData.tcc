@@ -48,7 +48,7 @@ namespace Sequence
 	  {
 	    if(name.find(c) != std::string::npos)
 	      {
-		throw badFormat("Sequence::phylipData::read -- invalid character found in sequence name");
+		throw std::runtime_error("Sequence::phylipData::read -- invalid character found in sequence name");
 	      }
 	  }
 	std::getline(s,temp);

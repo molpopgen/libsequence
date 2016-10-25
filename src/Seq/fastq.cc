@@ -1,5 +1,4 @@
 #include <Sequence/fastq.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <functional>
 #include <iostream>
 
@@ -35,21 +34,21 @@ namespace Sequence {
   {
     if( stream.peek() == EOF) return stream;
     if ( char(stream.peek()) != '@' ) 
-      throw badFormat("Sequence::fastq::read - error: record did not begin with \'@\'");
+      throw std::runtime_error("Sequence::fastq::read - error: record did not begin with \'@\'");
     std::string temp;
     stream.ignore(1,'@');
     std::getline(stream,first);
     std::getline(stream,second);
     stream >> std::ws;
     if ( char(stream.peek()) != '+' ) 
-      throw badFormat("Sequence::fastq::read - error: third line did not begin with \'+\'");
+      throw std::runtime_error("Sequence::fastq::read - error: third line did not begin with \'+\'");
     stream >> temp >> std::ws;
     if(temp.size() == 1) repeat_name = false;
     quality.resize(second.length());
     stream.read( &quality[0], std::streamsize(second.length()) );
     stream >> std::ws;
     if( second.length() != quality.length() )
-      throw badFormat("Sequence::fastq::read - error: sequence and quality strings differ in length");
+      throw std::runtime_error("Sequence::fastq::read - error: sequence and quality strings differ in length");
     return stream;
   }
 
