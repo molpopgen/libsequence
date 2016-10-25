@@ -41,7 +41,7 @@ namespace Sequence
     \param genetic_code must be a value from the enumeration list Sequence::GeneticCodes
     \param gapchar a character representing an alignment gap
     \return a string representing the translation of the range
-    \throw Sequence::SeqException if \a genetic_code is invalid
+    \throw std::runtime_error if \a genetic_code is invalid
     \code
     #include <Sequence/Translate.hpp>
     \endcode

@@ -218,7 +218,7 @@ namespace Sequence
     /*!
       \param itr An iterator from the current object
       \return The window pointed to by the iterator itr.
-      \throw Sequence::SeqException if itr is out of range
+      \throw std::out_of_range if itr is out of range
     */
     T get_slice(const const_iterator) const ;
     /*!
@@ -228,7 +228,7 @@ namespace Sequence
     /*!
       \param i The window to return, 0 <= i < object.size()
       \return the i-th window
-      \throw Sequence::SeqException if i is out of range
+      \throw std::out_of_range if i is out of range
     */
     T operator[](const unsigned &) const ;
   };
