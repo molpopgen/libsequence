@@ -1,13 +1,15 @@
 sudo: false
 language: cpp
-os:
-  - linux
-  - osx
-compiler:
-  - gcc
-  - clang
-install:
-- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+matrix:
+    include:
+    - os: linux
+      dist: trusty
+    - os: osx 
+      osx_image: xcode8
+      osx_image: xcode7.2
+
+#install:
+#- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 addons:
   apt:
     sources:
@@ -22,12 +24,15 @@ addons:
     - libboost-system-dev
     - libboost-test-dev
     - libtbb-dev
+ brew-packages:
+    - tbb
 
 notifications:
   email: false
 
 script:
  - export LD_LIBRARY_PATH=$HOME/lib
+ - if [ "$TRAVIS_OS_NAME" == "linux" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
  - ./configure --prefix=$HOME && make  && make install
  - make check
  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then make check; fi
