@@ -1,5 +1,6 @@
 sudo: false
 language: cpp
+
 matrix:
     include:
     - os: linux
@@ -24,7 +25,7 @@ addons:
     - libboost-system-dev
     - libboost-test-dev
     - libtbb-dev
- brew-packages:
+  brew-packages:
     - tbb
 
 notifications:
