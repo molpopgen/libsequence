@@ -27,7 +27,7 @@ TESTS=$(check_PROGRAMS)
 #BOOST_LIBS=-lboost_unit_test_framework
 #	SEQUENCE=-lsequence
 
-AM_CXXFLAGS=
+AM_CXXFLAGS=-g
 AM_LDFLAGS=-L../src/.libs -static
 AM_LIBS=-lboost_unit_test_framework -lsequence
 
@@ -36,17 +36,17 @@ AM_CXXFLAGS+=-DHAVE_HTSLIB
 AM_LIBS+=-lhts
 endif
 
-if DEBUG
-AM_CXXFLAGS+=-g
-else
-AM_CXXFLAGS+=-DNDEBUG
-endif
-
-if PROFILING
-PROFILE= -pg
-else
-PROFILE=
-endif
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 LIBS+=$(AM_LIBS)
 
