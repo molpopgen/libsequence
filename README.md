@@ -57,21 +57,18 @@ The revision history of the library is [here](REVISION_HISTORY.md).  The documen
 
 ### Obtaining the master branch
 You have a few options:
-<ol>
-<li> Clone the repo (best option): git clone https://github.com/molpopgen/libsequence.git</li>
-<li> Click on "Download Zip" at https://github.com/molpopgen/libsequence </li>
-</ol>
+
+* Clone the repo (best option): git clone https://github.com/molpopgen/libsequence.git
+* Click on "Download Zip" at https://github.com/molpopgen/libsequence
+
 
 ### Obtaining a specific release
 Again, a few options:
-<ol>
-<li> Click on "Releases" at https://github.com/molpopgen/libsequence, then download the one you want </li>
-<li> Clone the repo (see previous section)</li>
-<ol>
-<li> Get a list of releases by saying "git tag -l" </li>
-<li> Checkout the release you want.  For example "git checkout 1.8.0"</li>
-</ol>
-</ol>
+
+* Click on "Releases" at https://github.com/molpopgen/libsequence, then download the one you want
+* Clone the repo (see previous section)
+* Get a list of releases by saying "git tag -l"
+* Checkout the release you want.  For example "git checkout 1.8.0"
 
 ## Installation
 
@@ -109,6 +106,24 @@ make
 sudo make install
 ~~~
 
+The build conditions can be adjusted via the usual environment variables.  To compile an optimized "release" build:
+
+~~~
+./configure CXXFLAGS="-O3 -DNDEBUG"
+~~~
+
+To compile a debugger-friendly build:
+
+~~~
+./configure CXXFLAGS="-O0 -g"
+~~~
+
+To change the compiler, set the C and C++ compiler variables:
+
+~~~
+./configure CC=gcc CXX=g++
+~~~
+
 #### Compiling unit tests and examples
 
 To compile unit testing suite and example programs
@@ -136,13 +151,15 @@ cd test && sh runTests.sh
 
 Some users may not have the dependent libraries installed in the standard locations on their systems.  Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking.  This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly.  In order to accomodate such situations, the user must provide the correct path to the include and lib directories.  For example, assume that the dependend libraries are in /opt on your system.  You would install libsequence as follows:
 
-CXXFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib" ./configure
+CPPFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib" ./configure
 
 make
 
+~~~
 sudo make install
+~~~
 
-Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists.  This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable.  (One could also do the same with CXXFLAGS, FYI.)
+Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists.  This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable.  (One could also do the same with CPPFLAGS, FYI.)
 
 ### Installing libsequence locally
 
@@ -152,15 +169,18 @@ If you do not have permission to "sudo make install", you can install the librar
 
 Then, when compiling any program using libsequence, you need to add
 
-> -I$HOME/include
-
+~~~
+-I$HOME/include
+~~~
 to any compilation commands and
 
-> -L$HOME/lib
+~~~
+-L$HOME/lib
+~~~
 
 to any linking commands.
 
-When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD _ LIBRARY _ PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
+When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD_LIBRARY_PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
 
 ### Another installation option (not supported by the libsequence author)
 
