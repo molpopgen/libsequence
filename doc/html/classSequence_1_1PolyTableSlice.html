@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1PolyTableSlice.html',
 <p>A container class for "sliding windows" along a polymorphism table.  
  <a href="classSequence_1_1PolyTableSlice.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="PolyTableSlice_8hpp_source.html">Sequence/PolyTableSlice.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2PolyTableSlice_8hpp_source.html">Sequence/PolyTableSlice.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -92,9 +92,31 @@ typedef std::pair&lt; <a class="el" href="classSequence_1_1PolyTable.html#a7096e
 <tr class="separator:a0ee886630059cdca3f7257f5955636c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd719b5503b2885593594ac758635f67"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a> &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a></td></tr>
 <tr class="separator:acd719b5503b2885593594ac758635f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee886630059cdca3f7257f5955636c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ee886630059cdca3f7257f5955636c2"></a>
+typedef std::pair&lt; <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>, <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a></td></tr>
+<tr class="memdesc:a0ee886630059cdca3f7257f5955636c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range of a window = [first,second) <br /></td></tr>
+<tr class="separator:a0ee886630059cdca3f7257f5955636c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd719b5503b2885593594ac758635f67"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a> &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a></td></tr>
+<tr class="separator:acd719b5503b2885593594ac758635f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
+<tr class="separator:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5061a9f5abcc553b119960500a1faffa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5061a9f5abcc553b119960500a1faffa">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned nwindows)</td></tr>
+<tr class="separator:a5061a9f5abcc553b119960500a1faffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#ae7a2d9a3b0878ea3f0019d336a21f3a2">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const double &amp;window_size, const double &amp;step_len, const double &amp;starting_pos=0., const double &amp;ending_pos=1.0)</td></tr>
+<tr class="separator:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52be507555bb0515a8f085dc49e51a5a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a52be507555bb0515a8f085dc49e51a5a">cbegin</a> () const </td></tr>
+<tr class="separator:a52be507555bb0515a8f085dc49e51a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7caf14128343b20670996947f16af32d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a7caf14128343b20670996947f16af32d">cend</a> () const </td></tr>
+<tr class="separator:a7caf14128343b20670996947f16af32d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc1577a3ca75e0ae384683b2a375b9e"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a2cc1577a3ca75e0ae384683b2a375b9e">get_slice</a> (const <a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>) const </td></tr>
+<tr class="separator:a2cc1577a3ca75e0ae384683b2a375b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0589bcfa287ce327c84eb1d28a0ecf8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a> &gt;::size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#ab0589bcfa287ce327c84eb1d28a0ecf8">size</a> () const </td></tr>
+<tr class="separator:ab0589bcfa287ce327c84eb1d28a0ecf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984bd1fcffbf0e930e8832fa609c7dbe"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a984bd1fcffbf0e930e8832fa609c7dbe">operator[]</a> (const unsigned &amp;) const </td></tr>
+<tr class="separator:a984bd1fcffbf0e930e8832fa609c7dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
 <tr class="separator:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5061a9f5abcc553b119960500a1faffa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5061a9f5abcc553b119960500a1faffa">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned nwindows)</td></tr>
@@ -124,10 +146,10 @@ class Sequence::PolyTableSlice&lt; T &gt;</h3>
 Drosophila melanogaster from patterns of polymorphism and divergence." Genetics 127: 565 describe a clever variant of the sliding window. They slide along the physical sequence, but keep the number of synonymous/silent sites constant. Their procedure mitigates some of the difficulties mentioned above, but it is not implemented here because it relies on having an annotation for the SNP table available.</p>
 <p>The user is also referred to Andolfatto, P., J. D. Wall and M. Kreitman, 1999 "Unusual haplotype structure at the proximal breakpoint of In(2L)t in a 
 natural population of Drosophila melanogaster." Genetics 153:1397-1399, which discusses the multiple testing issue.</p>
-<p>The following example reads in data from Hudson's program ms. Tajima's D is calculated for non-overlapping windows of size 0.1: </p><div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="SimData_8hpp.html">Sequence/SimData.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="SimParams_8hpp.html">Sequence/SimParams.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="PolyTableSlice_8hpp.html">Sequence/PolyTableSlice.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="PolySIM_8hpp.html">Sequence/PolySIM.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;cstdio&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1SimParams.html">Sequence::SimParams</a> p;</div><div class="line">std::cin &gt;&gt; p;</div><div class="line"><a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> d(p.totsam());</div><div class="line"><span class="keywordtype">int</span> i;</div><div class="line"><span class="keywordflow">while</span>( (i=d.fromstdin()) &amp;&amp; i != EOF) <span class="comment">//read simulated data from stdin</span></div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice&lt;Sequence::SimData&gt;</a> windows(d.sbegin(),d.send(),0.1,0.1,0);</div><div class="line"><span class="comment">//The object only alows const iterations, and libsequence 1.8.5 changed</span></div><div class="line"><span class="comment">//the API to use the &quot;C++11-ese&quot; syntax of cbegin/cend&quot;</span></div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">PolyTableSlice&lt;Sequence::SimData&gt;::const_iterator</a> itr = windows.cbegin();</div><div class="line"><span class="keywordflow">while</span>(itr &lt; windows.cend()) <span class="comment">//iterate over windows</span></div><div class="line">{</div><div class="line"><span class="comment">//create a data object for the current window</span></div><div class="line">SimData window = windows.get_slice(itr);</div><div class="line"><span class="comment">//calculate and print Tajima&#39;s D for the window</span></div><div class="line">PolySIM analyze(&amp;window); </div><div class="line">std::cout &lt;&lt; analyze.<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span>;</div><div class="line">}</div><div class="line">std::cout &lt;&lt; std::endl;</div><div class="line">}</div><div class="line">}</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The two constructors are left ambiguous intentionally! See their documentation below. The ambiguity is so that the progammer is forced to thing about which type of slding window to use. </dd></dl>
+<p>The following example reads in data from Hudson's program ms. Tajima's D is calculated for non-overlapping windows of size 0.1: </p><div class="fragment"><div class="line"><span class="preprocessor">#include&lt;Sequence/SimData.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;Sequence/SimParams.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;Sequence/PolyTableSlice.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;Sequence/PolySIM.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;cstdio&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1SimParams.html">Sequence::SimParams</a> p;</div><div class="line">std::cin &gt;&gt; p;</div><div class="line"><a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> d(p.totsam());</div><div class="line"><span class="keywordtype">int</span> i;</div><div class="line"><span class="keywordflow">while</span>( (i=d.fromstdin()) &amp;&amp; i != EOF) <span class="comment">//read simulated data from stdin</span></div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice&lt;Sequence::SimData&gt;</a> windows(d.sbegin(),d.send(),0.1,0.1,0);</div><div class="line"><span class="comment">//The object only alows const iterations, and libsequence 1.8.5 changed</span></div><div class="line"><span class="comment">//the API to use the &quot;C++11-ese&quot; syntax of cbegin/cend&quot;</span></div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">PolyTableSlice&lt;Sequence::SimData&gt;::const_iterator</a> itr = windows.cbegin();</div><div class="line"><span class="keywordflow">while</span>(itr &lt; windows.cend()) <span class="comment">//iterate over windows</span></div><div class="line">{</div><div class="line"><span class="comment">//create a data object for the current window</span></div><div class="line">SimData window = windows.get_slice(itr);</div><div class="line"><span class="comment">//calculate and print Tajima&#39;s D for the window</span></div><div class="line">PolySIM analyze(&amp;window); </div><div class="line">std::cout &lt;&lt; analyze.<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span>;</div><div class="line">}</div><div class="line">std::cout &lt;&lt; std::endl;</div><div class="line">}</div><div class="line">}</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The two constructors are left ambiguous intentionally! See their documentation below. The ambiguity is so that the progammer is forced to thing about which type of slding window to use. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#_a4">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#_a3">slidingWindow2.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolyTableSlice_8hpp_source.html#l00118">118</a> of file <a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2PolyTableSlice_8hpp_source.html#l00117">117</a> of file <a class="el" href="release_2include_2Sequence_2PolyTableSlice_8hpp_source.html">release/include/Sequence/PolyTableSlice.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="acd719b5503b2885593594ac758635f67"></a>
 <div class="memitem">
@@ -142,11 +164,221 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>const_iterator type to access windows </p>
 
-<p>Definition at line <a class="el" href="PolyTableSlice_8hpp_source.html#l00210">210</a> of file <a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2PolyTableSlice_8hpp_source.html#l00209">209</a> of file <a class="el" href="release_2include_2Sequence_2PolyTableSlice_8hpp_source.html">release/include/Sequence/PolyTableSlice.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acd719b5503b2885593594ac758635f67"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;<a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a>&gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a> <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>const_iterator type to access windows </p>
+
+<p>Definition at line <a class="el" href="Sequence_2PolyTableSlice_8hpp_source.html#l00209">209</a> of file <a class="el" href="Sequence_2PolyTableSlice_8hpp_source.html">Sequence/PolyTableSlice.hpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a5f20a15b959e6533b3c75d1b440cfc2e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>window_size_S</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>window_step_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This constructor calculates sliding windows of a fixed number of segregating sites. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beg</td><td>A pointer the first segregating site in the data </td></tr>
+    <tr><td class="paramname">end</td><td>A pointer to one-past-the-last segregating site in the data </td></tr>
+    <tr><td class="paramname">window_size_S</td><td>The number of segregating sites in each window </td></tr>
+    <tr><td class="paramname">step_len</td><td>The number of segregating sites by which to "jump" for each new window </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>In order to use this constructor, you must make sure that the compiler sees unsigned values, otherwise compilation will fail with an ambiguity error: <div class="fragment"><div class="line">PolyTableSlice&lt;PolySites&gt; windows(data,100u,10u);</div></div><!-- fragment --></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if window_size_S or window_step_len == 0 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5061a9f5abcc553b119960500a1faffa"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>nwindows</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Create a specific number of windows with an equal number of segregating sites per window. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beg</td><td>A pointer the first segregating site in the data </td></tr>
+    <tr><td class="paramname">end</td><td>A pointer to one-past-the-last segregating site in the data </td></tr>
+    <tr><td class="paramname">nwindows</td><td>The desired number of windows. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>The intended use of this fxn is to break an interval up into approximately equal-sized chunks. When end-beg is small relative to nwindows, you will end up with fewer than nwindows "slices". The primary use scenario envisioned for this type of window is downstream parallelization of computation on large <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">PolyTable</a> objects. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae7a2d9a3b0878ea3f0019d336a21f3a2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>window_size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>step_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>starting_pos</em> = <code>0.</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>ending_pos</em> = <code>1.0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Use this constructor to generate a sliding window accross the sequence itself. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">beg</td><td>A pointer the first segregating site in the data </td></tr>
+    <tr><td class="paramname">end</td><td>A pointer to one-past-the-last segregating site in the data </td></tr>
+    <tr><td class="paramname">window_size</td><td>The size of the sliding window (in units of physical distance) </td></tr>
+    <tr><td class="paramname">step_len</td><td>The distance by which the window jumps (in units of physical distance) </td></tr>
+    <tr><td class="paramname">starting_pos</td><td>The starting position for your data. </td></tr>
+    <tr><td class="paramname">ending_pos.</td><td>The last position for the data. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>For most situations involving "ms-like" data, and probably for most genomic data, a starting_pos of 0 is appropriate. However, there are situations where your data may be something like a segment from the middle of a genome, and your SNP positions are annotated with respect to the reference contig. In that case, starting_pos is best set to the appropriate position along the reference, else you will be returned a lot of empty windows should you start from 0. Likewise, for "normal" ms runs, ending_pos should be 1.0. For other scenario, such as "real" data, you'll have to set starting_pos and ending_pos to the appropriate values. In order to use this constructor, you must make sure that the compiler sees doubles, otherwise compilation will fail with an ambiguity error: <div class="fragment"><div class="line">PolyTableSlice&lt;SimData&gt; windows(data,0.1,0.01);</div></div><!-- fragment --></dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::logic_error</td><td>if window_size or step_len &lt;= 0. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a5f20a15b959e6533b3c75d1b440cfc2e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -360,6 +592,42 @@ template&lt;typename T&gt; </div>
 </dl>
 </div>
 </div>
+<a class="anchor" id="a52be507555bb0515a8f085dc49e51a5a"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a> <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::cbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Const iterator to begin </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7caf14128343b20670996947f16af32d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a> <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::cend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Const iterator to end </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a7caf14128343b20670996947f16af32d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -402,7 +670,38 @@ template&lt;typename T&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>The window pointed to by the iterator itr. </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if itr is out of range </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>if itr is out of range </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a2cc1577a3ca75e0ae384683b2a375b9e"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::get_slice </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itr</td><td>An iterator from the current object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The window pointed to by the iterator itr. </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if itr is out of range </td></tr>
   </table>
   </dd>
 </dl>
@@ -433,7 +732,38 @@ template&lt;typename T&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>the i-th window </dd></dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if i is out of range </td></tr>
+    <tr><td class="paramname">std::out_of_range</td><td>if i is out of range </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a984bd1fcffbf0e930e8832fa609c7dbe"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The window to return, 0 &lt;= i &lt; object.size() </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the i-th window </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::out_of_range</td><td>if i is out of range </td></tr>
   </table>
   </dd>
 </dl>
@@ -458,8 +788,26 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="ab0589bcfa287ce327c84eb1d28a0ecf8"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a>&gt;::size_type <a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The number of windows stored </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2PolyTableSlice_8hpp_source.html">release/include/Sequence/PolyTableSlice.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -467,7 +815,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

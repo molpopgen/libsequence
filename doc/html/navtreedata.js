@@ -53,7 +53,8 @@ var NAVTREE =
         [ "BAM files", "md_md_tutorial.html#bam", null ]
       ] ]
     ] ],
-    [ "libsequence revision history", "md__home_kevin_src_libsequence.git_REVISION_HISTORY.html", null ],
+    [ "The libsequence home page", "md__home_kevin_src_libsequence_index.html", null ],
+    [ "libsequence revision history", "md__home_kevin_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -81,11 +82,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Functions", "globals_func.html", null ]
-      ] ]
+      [ "File List", "files.html", "files" ]
     ] ],
     [ "Examples", "examples.html", "examples" ]
   ] ]
@@ -94,13 +91,16 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
-"PolyTableSliceTest_8cc.html#a9290cd76dcad75a791f6db9abd519021",
-"classSequence_1_1ClustalW.html#adde61086bae6670ee579dd474229d639",
-"classSequence_1_1PolyTable.html#aea06bae99d8479c06b313f7dd8301555",
-"classSequence_1_1SingleSub.html#a0904b765ca857b77027f4c1ec93cb1de",
-"classSequence_1_1samrecord.html#a9847f74f9b96a52cebd7890db554f1de",
-"md_md_tutorial.html#polytable",
-"structSequence_1_1coalsim_1_1marginal.html#a563f3c49141c1cdcb8faaf88146a7263"
+"Specializations_8cc.html#a4084883c9810848f2e7e5ae549eb3c8e",
+"classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989",
+"classSequence_1_1PolySites.html#a647d2ae280a8294dd6be176b6383c0ff",
+"classSequence_1_1Seq.html#a57bef972a13cff830d0b1236f61407d8",
+"classSequence_1_1SimData.html#afa88a7af813d8833bee7df82a5bcc5b7",
+"classSequence_1_1bamreader.html#a68f0428c0edff111d4a0df72d5705e16",
+"classSequence_1_1phylipData.html#a9ea759103b63e7c55ce0d10f43e86f82",
+"functions_v.html",
+"release_2include_2Sequence_2bits_2Correlations_8tcc_source.html",
+"structSequence_1_1coalsim_1_1segment.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

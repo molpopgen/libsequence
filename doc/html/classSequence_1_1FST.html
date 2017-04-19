@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1FST.html','');});
 <p>analysis of population structure using <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/>  
  <a href="classSequence_1_1FST.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="FST_8hpp_source.html">Sequence/FST.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2FST_8hpp_source.html">Sequence/FST.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -113,11 +113,50 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a68e0ef82219163930ff035cb8ec1d988"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33bc9ea9a5d4abb55f3a2b1159ad8e5a"><td class="memItemLeft" align="right" valign="top">std::pair&lt; std::set&lt; double &gt;, std::set&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1FST.html#a33bc9ea9a5d4abb55f3a2b1159ad8e5a">Private</a> (unsigned pop1, unsigned pop2) const </td></tr>
 <tr class="separator:a33bc9ea9a5d4abb55f3a2b1159ad8e5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995a97fe657cd2b51c543dfd3f5984e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a995a97fe657cd2b51c543dfd3f5984e9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FST</b> (const <a class="el" href="classSequence_1_1PolyTable.html">PolyTable</a> *data, unsigned npop, const unsigned *config=NULL, const double *weights=NULL, bool haveOutgroup=false, unsigned outgroup=0)</td></tr>
+<tr class="separator:a995a97fe657cd2b51c543dfd3f5984e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b4f8d417fe7c88ba9ac29dc7f38e60d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b4f8d417fe7c88ba9ac29dc7f38e60d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>FST</b> (const <a class="el" href="classSequence_1_1FST.html">FST</a> &amp;)=delete</td></tr>
+<tr class="separator:a5b4f8d417fe7c88ba9ac29dc7f38e60d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1061b1a78c4c7a0c2ec7402955db7e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1061b1a78c4c7a0c2ec7402955db7e8"></a>
+<a class="el" href="classSequence_1_1FST.html">FST</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1FST.html">FST</a> &amp;)=delete</td></tr>
+<tr class="separator:af1061b1a78c4c7a0c2ec7402955db7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dd9879a02a26cba6a812cd3906759d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4dd9879a02a26cba6a812cd3906759d5"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>HSM</b> (void) const </td></tr>
+<tr class="separator:a4dd9879a02a26cba6a812cd3906759d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd2e1d1a0c294efda4da6b3e4a08961"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cd2e1d1a0c294efda4da6b3e4a08961"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>Slatkin</b> (void) const </td></tr>
+<tr class="separator:a5cd2e1d1a0c294efda4da6b3e4a08961"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3dc3987daf9d4e4b7f6c39fdba53b68e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3dc3987daf9d4e4b7f6c39fdba53b68e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>HBK</b> (void) const </td></tr>
+<tr class="separator:a3dc3987daf9d4e4b7f6c39fdba53b68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ab1a7c5245c7996a28c0e47725c3981"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ab1a7c5245c7996a28c0e47725c3981"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>piB</b> (void) const </td></tr>
+<tr class="separator:a4ab1a7c5245c7996a28c0e47725c3981"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9f60ece6acda7ec3a8681178fec1cbe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9f60ece6acda7ec3a8681178fec1cbe"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>piT</b> (void) const </td></tr>
+<tr class="separator:ab9f60ece6acda7ec3a8681178fec1cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36de7e880aa6b30d7393882fee76e1f4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36de7e880aa6b30d7393882fee76e1f4"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>piS</b> (void) const </td></tr>
+<tr class="separator:a36de7e880aa6b30d7393882fee76e1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaaa32ea53b5654a0a9c741b7f6e9e2e0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaaa32ea53b5654a0a9c741b7f6e9e2e0"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>piD</b> (void) const </td></tr>
+<tr class="separator:aaaa32ea53b5654a0a9c741b7f6e9e2e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2bcf377b8b92969ae768524afee86c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8f2bcf377b8b92969ae768524afee86c"></a>
+std::set&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>shared</b> (unsigned pop1, unsigned pop2) const </td></tr>
+<tr class="separator:a8f2bcf377b8b92969ae768524afee86c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad75c31b1328b8d4125f0fb4ca91c0d5b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad75c31b1328b8d4125f0fb4ca91c0d5b"></a>
+std::set&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>fixed</b> (unsigned pop1, unsigned pop2) const </td></tr>
+<tr class="separator:ad75c31b1328b8d4125f0fb4ca91c0d5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c88efabd1e09dbdfadd173e13d3e5f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3c88efabd1e09dbdfadd173e13d3e5f3"></a>
+std::pair&lt; std::set&lt; double &gt;, std::set&lt; double &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Private</b> (unsigned pop1, unsigned pop2) const </td></tr>
+<tr class="separator:a3c88efabd1e09dbdfadd173e13d3e5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>analysis of population structure using <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/> </p>
 
-<p>Definition at line <a class="el" href="FST_8hpp_source.html#l00042">42</a> of file <a class="el" href="FST_8hpp_source.html">FST.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2FST_8hpp_source.html#l00041">41</a> of file <a class="el" href="release_2include_2Sequence_2FST_8hpp_source.html">release/include/Sequence/FST.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a995a97fe657cd2b51c543dfd3f5984e9"></a>
 <div class="memitem">
@@ -192,7 +231,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00163">163</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00164">164</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -229,7 +268,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00318">318</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00319">319</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -251,7 +290,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the definition of <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/> according to Hudson, Boos, and Kaplan (1992) A statistical test for detecting geographic subdivision. Mol. Biol. Evol. 9:138-151 </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00418">418</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00419">419</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -273,7 +312,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the definition of <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/> according to Hudson, Slatkin and Maddison (1992) Estimation of levels of gene flow from population data. Genetics 132:583-589 </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00398">398</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00399">399</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -295,7 +334,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the mean parwise divergence between 2 alleles drawn from 2 populations </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00429">429</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00430">430</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -317,7 +356,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is a measure of between-population divergence that is proportional to <img class="formulaInl" alt="$t_1 - t_0,$" src="form_13.png"/> where <img class="formulaInl" alt="$t_1$" src="form_14.png"/> is the mean time to coalescence for 2 alleles drawn from different populations, and <img class="formulaInl" alt="$t_o$" src="form_15.png"/> is the mean time to coalescence for 2 alleles drawn from the same population </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00456">456</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00457">457</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -339,7 +378,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the mean within-population diversity </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00447">447</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00448">448</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -361,7 +400,7 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the total diversity in the sample </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00438">438</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00439">439</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -397,7 +436,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00351">351</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00352">352</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -433,7 +472,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00281">281</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00282">282</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
@@ -455,12 +494,12 @@ Public Member Functions</h2></td></tr>
 </p>
  which is the definition of <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/> according to Slatkin (1993) Isolation by distance in equilibrium and non-equilibrium populations. Evolution 47: 264-279 </dd></dl>
 
-<p>Definition at line <a class="el" href="FST_8cc_source.html#l00408">408</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
+<p>Definition at line <a class="el" href="FST_8cc_source.html#l00409">409</a> of file <a class="el" href="FST_8cc_source.html">FST.cc</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="FST_8hpp_source.html">FST.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2FST_8hpp_source.html">release/include/Sequence/FST.hpp</a></li>
 <li><a class="el" href="FST_8cc_source.html">FST.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -469,7 +508,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1FST.html">FST</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

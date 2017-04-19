@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,10 +82,22 @@ $(document).ready(function(){initNavTree('classSequence_1_1bamreader.html','');}
 <p>A class managing input from BAM files.  
  <a href="classSequence_1_1bamreader.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="bamreader_8hpp_source.html">Sequence/bamreader.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2bamreader_8hpp_source.html">Sequence/bamreader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a762ae8b063f7a67686011e10567bb7a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a762ae8b063f7a67686011e10567bb7a7"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a> = std::vector&lt; std::pair&lt; std::string, std::int32_t &gt; &gt;::const_iterator</td></tr>
+<tr class="memdesc:a762ae8b063f7a67686011e10567bb7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator type (const only!) <br /></td></tr>
+<tr class="separator:a762ae8b063f7a67686011e10567bb7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42b2fc044125847704c16c542acfd8a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42b2fc044125847704c16c542acfd8a9"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a42b2fc044125847704c16c542acfd8a9">size_type</a> = std::vector&lt; std::pair&lt; std::string, std::int32_t &gt; &gt;::<a class="el" href="classSequence_1_1bamreader.html#a42b2fc044125847704c16c542acfd8a9">size_type</a></td></tr>
+<tr class="memdesc:a42b2fc044125847704c16c542acfd8a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">size_type for the container of reference data <br /></td></tr>
+<tr class="separator:a42b2fc044125847704c16c542acfd8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0b6030aa946a37148a6c1673e225547"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac0b6030aa946a37148a6c1673e225547"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#ac0b6030aa946a37148a6c1673e225547">refdataObj</a> = std::pair&lt; std::string, std::int32_t &gt;</td></tr>
+<tr class="memdesc:ac0b6030aa946a37148a6c1673e225547"><td class="mdescLeft">&#160;</td><td class="mdescRight">Typedef for reference data (sequence name, length) <br /></td></tr>
+<tr class="separator:ac0b6030aa946a37148a6c1673e225547"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a762ae8b063f7a67686011e10567bb7a7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a762ae8b063f7a67686011e10567bb7a7"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a> = std::vector&lt; std::pair&lt; std::string, std::int32_t &gt; &gt;::const_iterator</td></tr>
 <tr class="memdesc:a762ae8b063f7a67686011e10567bb7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator type (const only!) <br /></td></tr>
@@ -135,11 +147,45 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a09798434cd979cb8659db4c3f37fbb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a826ecd14d21e1e33be18976bdc3139f5"><td class="memItemLeft" align="right" valign="top">std::int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a826ecd14d21e1e33be18976bdc3139f5">n_ref</a> () const </td></tr>
 <tr class="separator:a826ecd14d21e1e33be18976bdc3139f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a815e70b7a15fd0f79b1b52f190b5b7e5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a815e70b7a15fd0f79b1b52f190b5b7e5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a815e70b7a15fd0f79b1b52f190b5b7e5">bamreader</a> (const char *bamfilename=nullptr)</td></tr>
+<tr class="memdesc:a815e70b7a15fd0f79b1b52f190b5b7e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize a bamreader object with a file name. <br /></td></tr>
+<tr class="separator:a815e70b7a15fd0f79b1b52f190b5b7e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89a8ae80000afaea8de6cd4818b5469e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1bamrecord.html">bamrecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a89a8ae80000afaea8de6cd4818b5469e">next_record</a> () const </td></tr>
+<tr class="separator:a89a8ae80000afaea8de6cd4818b5469e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a467509fe4791585ce0bc59c18a1fd381"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1bamrecord.html">bamrecord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a467509fe4791585ce0bc59c18a1fd381">record_at_pos</a> (std::int64_t) const </td></tr>
+<tr class="separator:a467509fe4791585ce0bc59c18a1fd381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab11a84e0fd03cc761aca0b7506a19f18"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#ab11a84e0fd03cc761aca0b7506a19f18">eof</a> () const </td></tr>
+<tr class="separator:ab11a84e0fd03cc761aca0b7506a19f18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35fa4deeaf975165703b18ed5f468ae4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a35fa4deeaf975165703b18ed5f468ae4">has_eof</a> () const </td></tr>
+<tr class="separator:a35fa4deeaf975165703b18ed5f468ae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6858fc9de6f5900b6a1d525626a1528"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#ae6858fc9de6f5900b6a1d525626a1528">error</a> () const </td></tr>
+<tr class="separator:ae6858fc9de6f5900b6a1d525626a1528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d2751edea28c08390f45f7c5efeb4d3"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a6d2751edea28c08390f45f7c5efeb4d3">rewind</a> ()</td></tr>
+<tr class="separator:a6d2751edea28c08390f45f7c5efeb4d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b0d16e4d971b9b5a58eab0337a00c7"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#ad1b0d16e4d971b9b5a58eab0337a00c7">seek</a> (std::int64_t offset, int whence)</td></tr>
+<tr class="separator:ad1b0d16e4d971b9b5a58eab0337a00c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37b589aba410bafda9c03f67c121951c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a37b589aba410bafda9c03f67c121951c">close</a> ()</td></tr>
+<tr class="separator:a37b589aba410bafda9c03f67c121951c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56c484ee236e4fe9657c6ce8caf48fc9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a56c484ee236e4fe9657c6ce8caf48fc9">operator bool</a> () const </td></tr>
+<tr class="separator:a56c484ee236e4fe9657c6ce8caf48fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4308d773b783ec4dc24c393c3f24e7cb"><td class="memItemLeft" align="right" valign="top">std::int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a4308d773b783ec4dc24c393c3f24e7cb">tell</a> ()</td></tr>
+<tr class="separator:a4308d773b783ec4dc24c393c3f24e7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad50a35dd49f81f63821d2290e2874831"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#ad50a35dd49f81f63821d2290e2874831">ref_cbegin</a> () const </td></tr>
+<tr class="separator:ad50a35dd49f81f63821d2290e2874831"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c5f5e81431729a291048c6a06c1c6f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a0c5f5e81431729a291048c6a06c1c6f7">ref_cend</a> () const </td></tr>
+<tr class="separator:a0c5f5e81431729a291048c6a06c1c6f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948cb7fc826587927cb6bf765c6a3fa4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1bamreader.html#ac0b6030aa946a37148a6c1673e225547">refdataObj</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a948cb7fc826587927cb6bf765c6a3fa4">operator[]</a> (const <a class="el" href="classSequence_1_1bamreader.html#a42b2fc044125847704c16c542acfd8a9">size_type</a> &amp;i) const </td></tr>
+<tr class="separator:a948cb7fc826587927cb6bf765c6a3fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09798434cd979cb8659db4c3f37fbb48"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a09798434cd979cb8659db4c3f37fbb48">header</a> () const </td></tr>
+<tr class="separator:a09798434cd979cb8659db4c3f37fbb48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a826ecd14d21e1e33be18976bdc3139f5"><td class="memItemLeft" align="right" valign="top">std::int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1bamreader.html#a826ecd14d21e1e33be18976bdc3139f5">n_ref</a> () const </td></tr>
+<tr class="separator:a826ecd14d21e1e33be18976bdc3139f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class managing input from BAM files. </p>
 
-<p>Definition at line <a class="el" href="bamreader_8hpp_source.html#l00027">27</a> of file <a class="el" href="bamreader_8hpp_source.html">bamreader.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2bamreader_8hpp_source.html#l00027">27</a> of file <a class="el" href="release_2include_2Sequence_2bamreader_8hpp_source.html">release/include/Sequence/bamreader.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a37b589aba410bafda9c03f67c121951c"></a>
 <div class="memitem">
@@ -156,6 +202,38 @@ Public Member Functions</h2></td></tr>
 <p>Calls bgzf_close on the input file </p><dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_close </dd></dl>
 
 <p>Definition at line <a class="el" href="bamreader_8cc_source.html#l00153">153</a> of file <a class="el" href="bamreader_8cc_source.html">bamreader.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a37b589aba410bafda9c03f67c121951c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sequence::bamreader::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calls bgzf_close on the input file </p><dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_close </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab11a84e0fd03cc761aca0b7506a19f18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sequence::bamreader::eof </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>True if bam file is at EOF, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -195,6 +273,38 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae6858fc9de6f5900b6a1d525626a1528"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sequence::bamreader::error </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>True if an error was encountered while reading the bam file, false otherwise </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a35fa4deeaf975165703b18ed5f468ae4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sequence::bamreader::has_eof </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_check_EOF, which checks for whether or not an EOF marker is present in the file. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a35fa4deeaf975165703b18ed5f468ae4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -231,6 +341,22 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a09798434cd979cb8659db4c3f37fbb48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::bamreader::header </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The complete header </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a826ecd14d21e1e33be18976bdc3139f5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,6 +372,38 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The number of sequences in the reference </dd></dl>
 
 <p>Definition at line <a class="el" href="bamreader_8cc_source.html#l00187">187</a> of file <a class="el" href="bamreader_8cc_source.html">bamreader.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a826ecd14d21e1e33be18976bdc3139f5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int32_t Sequence::bamreader::n_ref </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The number of sequences in the reference </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a89a8ae80000afaea8de6cd4818b5469e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1bamrecord.html">bamrecord</a> Sequence::bamreader::next_record </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The next alignment in the file </dd></dl>
 
 </div>
 </div>
@@ -282,6 +440,39 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if file handle is not NULL </dd></dl>
 
 <p>Definition at line <a class="el" href="bamreader_8cc_source.html#l00163">163</a> of file <a class="el" href="bamreader_8cc_source.html">bamreader.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a56c484ee236e4fe9657c6ce8caf48fc9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Sequence::bamreader::operator bool </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if file handle is not NULL </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a948cb7fc826587927cb6bf765c6a3fa4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1bamreader.html#ac0b6030aa946a37148a6c1673e225547">refdataObj</a> Sequence::bamreader::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1bamreader.html#a42b2fc044125847704c16c542acfd8a9">size_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the i-th reference name/length pair </dd></dl>
 
 </div>
 </div>
@@ -325,6 +516,25 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a467509fe4791585ce0bc59c18a1fd381"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1bamrecord.html">bamrecord</a> Sequence::bamreader::record_at_pos </td>
+          <td>(</td>
+          <td class="paramtype">std::int64_t&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>An alignment record from a specific offset. Will return an empty record if the bgzf_seek functions return an error state. </dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>If you give an offset that is not the start of a record, the results are undefined </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The stream offset is restored to where it was prior to making the call </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac0a75ae7e8b9645271adabef0ae513b6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -340,6 +550,38 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>Const iterator pointing to info for first reference sequence </dd></dl>
 
 <p>Definition at line <a class="el" href="bamreader_8cc_source.html#l00172">172</a> of file <a class="el" href="bamreader_8cc_source.html">bamreader.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad50a35dd49f81f63821d2290e2874831"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a> Sequence::bamreader::ref_cbegin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Const iterator pointing to info for first reference sequence </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0c5f5e81431729a291048c6a06c1c6f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSequence_1_1bamreader.html#a762ae8b063f7a67686011e10567bb7a7">refdata_citr</a> Sequence::bamreader::ref_cend </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>Const iterator to end of reference data </dd></dl>
 
 </div>
 </div>
@@ -379,6 +621,22 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a6d2751edea28c08390f45f7c5efeb4d3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t Sequence::bamreader::rewind </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rewinds bam file to the beginning (position 0L) </p><dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_seek </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ad1b0d16e4d971b9b5a58eab0337a00c7"></a>
 <div class="memitem">
 <div class="memproto">
@@ -408,6 +666,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad1b0d16e4d971b9b5a58eab0337a00c7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t Sequence::bamreader::seek </td>
+          <td>(</td>
+          <td class="paramtype">std::int64_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>whence</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calls bgzf_seek on the input file </p><dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_seek </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a4308d773b783ec4dc24c393c3f24e7cb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -426,8 +711,24 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4308d773b783ec4dc24c393c3f24e7cb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int64_t Sequence::bamreader::tell </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Calls bgzf_tell on input file </p><dl class="section return"><dt>Returns</dt><dd>The return value of bgzf_tell </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="bamreader_8hpp_source.html">bamreader.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2bamreader_8hpp_source.html">release/include/Sequence/bamreader.hpp</a></li>
 <li><a class="el" href="bamreader_8cc_source.html">bamreader.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -436,7 +737,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1bamreader.html">bamreader</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1SimParams.html','');}
 <p>Parameters for Hudson's simulation program.  
  <a href="classSequence_1_1SimParams.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SimParams_8hpp_source.html">Sequence/SimParams.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2SimParams_8hpp_source.html">Sequence/SimParams.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -97,9 +97,23 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>fromfile</b> (FILE *op
 <tr class="separator:ae2bef3da83f2f87bb4fbf8ce8540054a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a378fd71418f41da727a1095c9bc78007"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#a378fd71418f41da727a1095c9bc78007">runs</a> (void) const </td></tr>
 <tr class="separator:a378fd71418f41da727a1095c9bc78007"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6a40fcd4ec9985d7b107114c771224"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aef6a40fcd4ec9985d7b107114c771224"></a>
+std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (std::istream &amp;s)</td></tr>
+<tr class="separator:aef6a40fcd4ec9985d7b107114c771224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3416df9aff3362182073b4f468a672a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3416df9aff3362182073b4f468a672a"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>fromfile</b> (FILE *openfile)</td></tr>
+<tr class="separator:aa3416df9aff3362182073b4f468a672a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c2c46aa94ae215ac4a8fb58111cba14"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#a9c2c46aa94ae215ac4a8fb58111cba14">params</a> (void) const </td></tr>
+<tr class="separator:a9c2c46aa94ae215ac4a8fb58111cba14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2bef3da83f2f87bb4fbf8ce8540054a"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#ae2bef3da83f2f87bb4fbf8ce8540054a">totsam</a> (void) const </td></tr>
+<tr class="separator:ae2bef3da83f2f87bb4fbf8ce8540054a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a378fd71418f41da727a1095c9bc78007"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#a378fd71418f41da727a1095c9bc78007">runs</a> (void) const </td></tr>
+<tr class="separator:a378fd71418f41da727a1095c9bc78007"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
+<tr class="memitem:aee8e5a6d7f5f9a9ccb45239026511186"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#aee8e5a6d7f5f9a9ccb45239026511186">operator&lt;&lt;</a> (std::ostream &amp;, class <a class="el" href="classSequence_1_1SimParams.html">SimParams</a> &amp;object)</td></tr>
+<tr class="separator:aee8e5a6d7f5f9a9ccb45239026511186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee8e5a6d7f5f9a9ccb45239026511186"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1SimParams.html#aee8e5a6d7f5f9a9ccb45239026511186">operator&lt;&lt;</a> (std::ostream &amp;, class <a class="el" href="classSequence_1_1SimParams.html">SimParams</a> &amp;object)</td></tr>
 <tr class="separator:aee8e5a6d7f5f9a9ccb45239026511186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -109,7 +123,7 @@ Friends</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="msstats_8cc-example.html#_a0">msstats.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="SimParams_8hpp_source.html#l00048">48</a> of file <a class="el" href="SimParams_8hpp_source.html">SimParams.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html#l00048">48</a> of file <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html">release/include/Sequence/SimParams.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a9c2c46aa94ae215ac4a8fb58111cba14"></a>
 <div class="memitem">
@@ -135,7 +149,35 @@ Friends</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>the command-line input to ms </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>for complicated models, this can be parsed with a stringstream to figure out what the parameters are </dd></dl>
 
-<p>Definition at line <a class="el" href="SimParams_8hpp_source.html#l00058">58</a> of file <a class="el" href="SimParams_8hpp_source.html">SimParams.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sequence_2SimParams_8hpp_source.html#l00058">58</a> of file <a class="el" href="Sequence_2SimParams_8hpp_source.html">Sequence/SimParams.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a9c2c46aa94ae215ac4a8fb58111cba14"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::SimParams::params </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the command-line input to ms </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>for complicated models, this can be parsed with a stringstream to figure out what the parameters are </dd></dl>
+
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html#l00058">58</a> of file <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html">release/include/Sequence/SimParams.hpp</a>.</p>
 
 </div>
 </div>
@@ -181,7 +223,34 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of genealogies to generate </dd></dl>
 
-<p>Definition at line <a class="el" href="SimParams_8hpp_source.html#l00074">74</a> of file <a class="el" href="SimParams_8hpp_source.html">SimParams.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html#l00074">74</a> of file <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html">release/include/Sequence/SimParams.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a378fd71418f41da727a1095c9bc78007"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Sequence::SimParams::runs </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>number of genealogies to generate </dd></dl>
+
+<p>Definition at line <a class="el" href="Sequence_2SimParams_8hpp_source.html#l00074">74</a> of file <a class="el" href="Sequence_2SimParams_8hpp_source.html">Sequence/SimParams.hpp</a>.</p>
 
 </div>
 </div>
@@ -208,7 +277,34 @@ Friends</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the total sample size (# gametes) </dd></dl>
 
-<p>Definition at line <a class="el" href="SimParams_8hpp_source.html#l00067">67</a> of file <a class="el" href="SimParams_8hpp_source.html">SimParams.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html#l00067">67</a> of file <a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html">release/include/Sequence/SimParams.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae2bef3da83f2f87bb4fbf8ce8540054a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned Sequence::SimParams::totsam </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the total sample size (# gametes) </dd></dl>
+
+<p>Definition at line <a class="el" href="Sequence_2SimParams_8hpp_source.html#l00067">67</a> of file <a class="el" href="Sequence_2SimParams_8hpp_source.html">Sequence/SimParams.hpp</a>.</p>
 
 </div>
 </div>
@@ -250,8 +346,45 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aee8e5a6d7f5f9a9ccb45239026511186"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class <a class="el" href="classSequence_1_1SimParams.html">SimParams</a> &amp;&#160;</td>
+          <td class="paramname"><em>object</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Writes the parameters passed to Dick Hudson's coalescent simulation program to an output stream. </p>
+
+<p>Definition at line <a class="el" href="SimParams_8cc_source.html#l00099">99</a> of file <a class="el" href="SimParams_8cc_source.html">SimParams.cc</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="SimParams_8hpp_source.html">SimParams.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2SimParams_8hpp_source.html">release/include/Sequence/SimParams.hpp</a></li>
 <li><a class="el" href="SimParams_8cc_source.html">SimParams.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -260,7 +393,7 @@ Friends</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1SimParams.html">SimParams</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

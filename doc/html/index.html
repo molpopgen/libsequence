@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -86,25 +86,19 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>The revision history of the library is <a class="el" href="REVISION__HISTORY_8md_source.html">here</a>. The document describes what changed for a given release.</p>
 <h2>Obtaining the source code</h2>
 <h3>Obtaining the master branch</h3>
-<p>You have a few options: </p><ol>
-<li>
-Clone the repo (best option): git clone <a href="https://github.com/molpopgen/libsequence.git">https://github.com/molpopgen/libsequence.git</a> </li>
-<li>
-Click on "Download Zip" at <a href="https://github.com/molpopgen/libsequence">https://github.com/molpopgen/libsequence</a>  </li>
-</ol>
+<p>You have a few options:</p>
+<ul>
+<li>Clone the repo (best option): git clone <a href="https://github.com/molpopgen/libsequence.git">https://github.com/molpopgen/libsequence.git</a></li>
+<li>Click on "Download Zip" at <a href="https://github.com/molpopgen/libsequence">https://github.com/molpopgen/libsequence</a></li>
+</ul>
 <h3>Obtaining a specific release</h3>
-<p>Again, a few options: </p><ol>
-<li>
-Click on "Releases" at <a href="https://github.com/molpopgen/libsequence,">https://github.com/molpopgen/libsequence,</a> then download the one you want  </li>
-<li>
-Clone the repo (see previous section) <ol>
-<li>
-Get a list of releases by saying "git tag -l"  </li>
-<li>
-Checkout the release you want. For example "git checkout 1.8.0" </li>
-</ol>
-</li>
-</ol>
+<p>Again, a few options:</p>
+<ul>
+<li>Click on "Releases" at <a href="https://github.com/molpopgen/libsequence,">https://github.com/molpopgen/libsequence,</a> then download the one you want</li>
+<li>Clone the repo (see previous section)</li>
+<li>Get a list of releases by saying "git tag -l"</li>
+<li>Checkout the release you want. For example "git checkout 1.8.0"</li>
+</ul>
 <h2>Installation</h2>
 <h3>Dependencies</h3>
 <ol type="1">
@@ -132,30 +126,26 @@ Checkout the release you want. For example "git checkout 1.8.0" </li>
 <li><a href="http://htslib.org">htslib</a> The configure script will attempt to detect the presence of htslib on your system. If the library is present, then libsequence will compile with support for features like direct reading from BAM files. If htslib is not present, those features will not be compiled.</li>
 </ol>
 <h3>Simplest installation instructions</h3>
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;sudo make install</div></div><!-- fragment --><h4>Compiling unit tests and examples</h4>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;sudo make install</div></div><!-- fragment --><p>The build conditions can be adjusted via the usual environment variables. To compile an optimized "release" build:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure CXXFLAGS=&quot;-O3 -DNDEBUG&quot;</div></div><!-- fragment --><p>To compile a debugger-friendly build:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure CXXFLAGS=&quot;-O0 -g&quot;</div></div><!-- fragment --><p>To change the compiler, set the C and C++ compiler variables:</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;./configure CC=gcc CXX=g++</div></div><!-- fragment --><h4>Compiling unit tests and examples</h4>
 <p>To compile unit testing suite and example programs</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;make check</div></div><!-- fragment --><p>or</p>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;cd test</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;make check</div></div><!-- fragment --><p>Note that the library must be built prior to "make check", but <em>you do not have to install the library prior ot "make check"</em>. The examples and unit tests are statically-linked to the version of the library that will be found in src/.libs after a "make" command. I do this so that one can perform unit tests without having to install the library. I use static linking here to avoid any possible confusion with an existing libsequence installation.</p>
 <h4>Running the unit tests</h4>
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;cd test &amp;&amp; sh runTests.sh</div></div><!-- fragment --><h3>More complex installation scenarios</h3>
 <p>Some users may not have the dependent libraries installed in the standard locations on their systems. Note that "standard" means wherever the compiler system looks for header files during compilation and libraries during linking. This scenario is common on OS X systems where users have used some sort of "system" to install various libraries rather than installing from source directly. In order to accomodate such situations, the user must provide the correct path to the include and lib directories. For example, assume that the dependend libraries are in /opt on your system. You would install libsequence as follows:</p>
-<p>CXXFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib" ./configure</p>
+<p>CPPFLAGS=-I/opt/include LDFLAGS="$LDFLAGS -l/opt/lib" ./configure</p>
 <p>make</p>
-<p>sudo make install</p>
-<p>Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists. This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable. (One could also do the same with CXXFLAGS, FYI.)</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;sudo make install</div></div><!-- fragment --><p>Note that the modification of LDFLAGS prepends the current value of LDFLAGS if it exists. This allows for scenarios where the system's search path for libraries may have been modified by the user or sysadmin via a modification of that shell variable. (One could also do the same with CPPFLAGS, FYI.)</p>
 <h3>Installing libsequence locally</h3>
 <p>If you do not have permission to "sudo make install", you can install the library in your $HOME:</p>
 <p>./configure &ndash;prefix=$HOME</p>
 <p>Then, when compiling any program using libsequence, you need to add</p>
-<blockquote class="doxtable">
-<p>-I$HOME/include </p>
-</blockquote>
-<p>to any compilation commands and</p>
-<blockquote class="doxtable">
-<p>-L$HOME/lib </p>
-</blockquote>
-<p>to any linking commands.</p>
-<p>When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD _ LIBRARY _ PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;-I$HOME/include</div></div><!-- fragment --><p> to any compilation commands and</p>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;-L$HOME/lib</div></div><!-- fragment --><p>to any linking commands.</p>
+<p>When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD_LIBRARY_PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.</p>
 <h3>Another installation option (not supported by the libsequence author)</h3>
 <p>I've recently been made aware that there is a method for installing libsequence using the <a href="http://brew.sh/">brew.sh</a> system. This system allows the <a href="https://github.com/Homebrew/homebrew-science">homebrew-science</a> git repo to be used to obtain libsequence. I do not use this system myself, nor do I know how to.</p>
 <h2>Using libsequence to compile other programs</h2>
@@ -167,7 +157,7 @@ Checkout the release you want. For example "git checkout 1.8.0" </li>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Oct 21 2016 13:50:01 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:58 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

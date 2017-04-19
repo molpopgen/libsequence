@@ -1,12 +1,28 @@
 var structSequence_1_1HKAresults =
 [
     [ "chisq_tuple", "structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6", null ],
+    [ "chisq_tuple", "structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6", null ],
     [ "chisq_tuple_element", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c", [
+      [ "POLY", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca711f44effcbd8619148b829b6aa2ed4f", null ],
+      [ "DIV", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca29bbf66f7f8529ec47e394fb5a36c646", null ],
+      [ "POLYA", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8cae0f019e974eca924c988c72ed40e6303", null ],
+      [ "POLYB", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca04e3be35d494406665e75be49b847bc0", null ],
       [ "POLY", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca711f44effcbd8619148b829b6aa2ed4f", null ],
       [ "DIV", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca29bbf66f7f8529ec47e394fb5a36c646", null ],
       [ "POLYA", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8cae0f019e974eca924c988c72ed40e6303", null ],
       [ "POLYB", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca04e3be35d494406665e75be49b847bc0", null ]
     ] ],
+    [ "chisq_tuple_element", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c", [
+      [ "POLY", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca711f44effcbd8619148b829b6aa2ed4f", null ],
+      [ "DIV", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca29bbf66f7f8529ec47e394fb5a36c646", null ],
+      [ "POLYA", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8cae0f019e974eca924c988c72ed40e6303", null ],
+      [ "POLYB", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca04e3be35d494406665e75be49b847bc0", null ],
+      [ "POLY", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca711f44effcbd8619148b829b6aa2ed4f", null ],
+      [ "DIV", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca29bbf66f7f8529ec47e394fb5a36c646", null ],
+      [ "POLYA", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8cae0f019e974eca924c988c72ed40e6303", null ],
+      [ "POLYB", "structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8ca04e3be35d494406665e75be49b847bc0", null ]
+    ] ],
+    [ "HKAresults", "structSequence_1_1HKAresults.html#a5ca9644c36b49ade80f4bdbb430fd400", null ],
     [ "HKAresults", "structSequence_1_1HKAresults.html#a5ca9644c36b49ade80f4bdbb430fd400", null ],
     [ "chisquareds", "structSequence_1_1HKAresults.html#a0227596159eb7a6f675fe8a159b984c9", null ],
     [ "fhat", "structSequence_1_1HKAresults.html#aafa1aa6f0bd8b84eb7b51e2dfd3f152a", null ],

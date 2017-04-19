@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('structSequence_1_1WeightingScheme3.htm
 <p>abstract interface to weighting schemes when codons differ at 3 positions  
  <a href="structSequence_1_1WeightingScheme3.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="WeightingSchemes_8hpp_source.html">Sequence/WeightingSchemes.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2WeightingSchemes_8hpp_source.html">Sequence/WeightingSchemes.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Sequence::WeightingScheme3:</div>
 <div class="dyncontent">
@@ -90,12 +90,17 @@ Inheritance diagram for Sequence::WeightingScheme3:</div>
   <img src="structSequence_1_1WeightingScheme3.png" usemap="#Sequence::WeightingScheme3_map" alt=""/>
   <map id="Sequence::WeightingScheme3_map" name="Sequence::WeightingScheme3_map">
 <area href="structSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. " alt="Sequence::GranthamWeights3" shape="rect" coords="0,56,181,80"/>
-<area href="structSequence_1_1Unweighted3.html" title="weights all pathways equally " alt="Sequence::Unweighted3" shape="rect" coords="191,56,372,80"/>
+<area href="structSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. " alt="Sequence::GranthamWeights3" shape="rect" coords="191,56,372,80"/>
+<area href="structSequence_1_1Unweighted3.html" title="weights all pathways equally " alt="Sequence::Unweighted3" shape="rect" coords="382,56,563,80"/>
+<area href="structSequence_1_1Unweighted3.html" title="weights all pathways equally " alt="Sequence::Unweighted3" shape="rect" coords="573,56,754,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a60d90a972531abd256dc26fbf1d0c25f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60d90a972531abd256dc26fbf1d0c25f"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>weights3_t</b> = std::array&lt; double, 6 &gt;</td></tr>
+<tr class="separator:a60d90a972531abd256dc26fbf1d0c25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60d90a972531abd256dc26fbf1d0c25f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60d90a972531abd256dc26fbf1d0c25f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>weights3_t</b> = std::array&lt; double, 6 &gt;</td></tr>
 <tr class="separator:a60d90a972531abd256dc26fbf1d0c25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -105,14 +110,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4be9e715da1f32c3ed420ea966ce2edd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4be9e715da1f32c3ed420ea966ce2edd"></a>
 virtual weights3_t&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const std::string &amp;codon1, const std::string &amp;codon2, <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) const =0</td></tr>
 <tr class="separator:a4be9e715da1f32c3ed420ea966ce2edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4be9e715da1f32c3ed420ea966ce2edd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4be9e715da1f32c3ed420ea966ce2edd"></a>
+virtual weights3_t&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const std::string &amp;codon1, const std::string &amp;codon2, <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) const =0</td></tr>
+<tr class="separator:a4be9e715da1f32c3ed420ea966ce2edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>abstract interface to weighting schemes when codons differ at 3 positions </p>
 <dl class="section warning"><dt>Warning</dt><dd>Before deriving classes from this base, please study the implementations of <a class="el" href="classSequence_1_1ThreeSubs.html" title="Deal with codons differing at all 3 positions. ">Sequence::ThreeSubs</a>. You should also study <a class="el" href="structSequence_1_1GranthamWeights3.html" title="Weights paths by Grantham&#39;s distances for codons differing at 3 sites. ">Sequence::GranthamWeights3</a> for an example of a class derived from this one </dd></dl>
 
-<p>Definition at line <a class="el" href="WeightingSchemes_8hpp_source.html#l00090">90</a> of file <a class="el" href="WeightingSchemes_8hpp_source.html">WeightingSchemes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2WeightingSchemes_8hpp_source.html#l00090">90</a> of file <a class="el" href="release_2include_2Sequence_2WeightingSchemes_8hpp_source.html">release/include/Sequence/WeightingSchemes.hpp</a>.</p>
 </div><hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="WeightingSchemes_8hpp_source.html">WeightingSchemes.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2WeightingSchemes_8hpp_source.html">release/include/Sequence/WeightingSchemes.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -120,7 +128,7 @@ virtual weights3_t&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1WeightingScheme3.html">WeightingScheme3</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

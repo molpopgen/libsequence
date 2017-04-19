@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -84,14 +84,14 @@ Functions</h2></td></tr>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a27f1d75d0ac948dab690542f574b792e"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>GetData</b> (std::vector&lt; T &gt; &amp;seqarray, const char *infilename)</td></tr>
 <tr class="separator:a27f1d75d0ac948dab690542f574b792e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d58b4b9baabedf2bdacfe97a7cac832"><td class="memTemplParams" colspan="2"><a class="anchor" id="a1d58b4b9baabedf2bdacfe97a7cac832"></a>
+<tr class="memitem:a0419492baef914d83295dd87e9a4a849"><td class="memTemplParams" colspan="2"><a class="anchor" id="a0419492baef914d83295dd87e9a4a849"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1d58b4b9baabedf2bdacfe97a7cac832"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>GetData</b> (std::vector&lt; T &gt; &amp;seqarray, std::istream &amp;input_stream)</td></tr>
-<tr class="separator:a1d58b4b9baabedf2bdacfe97a7cac832"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae850aafb794827dba5a4f9695cbdf2fe"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae850aafb794827dba5a4f9695cbdf2fe"></a>
+<tr class="memitem:a0419492baef914d83295dd87e9a4a849"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>GetData</b> (std::vector&lt; T &gt; &amp;seqarray, std::istream &amp;input_stream)</td></tr>
+<tr class="separator:a0419492baef914d83295dd87e9a4a849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065fe1cd11fa9b34a65d10a43ef7e6a5"><td class="memTemplParams" colspan="2"><a class="anchor" id="a065fe1cd11fa9b34a65d10a43ef7e6a5"></a>
 template&lt;typename T &gt; </td></tr>
-<tr class="memitem:ae850aafb794827dba5a4f9695cbdf2fe"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>ReadNObjects</b> (std::vector&lt; T &gt; &amp;seqarray, const unsigned &amp;n, std::istream &amp;input_stream)</td></tr>
-<tr class="separator:ae850aafb794827dba5a4f9695cbdf2fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a065fe1cd11fa9b34a65d10a43ef7e6a5"><td class="memTemplItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>ReadNObjects</b> (std::vector&lt; T &gt; &amp;seqarray, const unsigned &amp;n, std::istream &amp;input_stream)</td></tr>
+<tr class="separator:a065fe1cd11fa9b34a65d10a43ef7e6a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33d5a07667bc2645600f8b7ca2882d3a"><td class="memTemplParams" colspan="2"><a class="anchor" id="a33d5a07667bc2645600f8b7ca2882d3a"></a>
 template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a33d5a07667bc2645600f8b7ca2882d3a"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>Gapped</b> (const std::vector&lt; T &gt; &amp;data)</td></tr>
@@ -187,7 +187,7 @@ template&lt;&gt; </td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Routines fundamental to aligned data. </p>
-<p>#include&lt;<a class="el" href="Alignment_8hpp.html" title="Declaration of namespace Sequence::Alignment. ">Sequence/Alignment.hpp</a>&gt; <br />
+<p>#include&lt;Sequence/Alignment.hpp&gt; <br />
 This namespace defines a series of template routines used for manipulating aligned sequence data. The routines may be used on their own, and are also the building blocks for alignment I/O as defined in <a class="el" href="classSequence_1_1AlignStream.html" title="Virtual interface to alignment streams. ">Sequence::AlignStream</a>.</p>
 <dl class="section note"><dt>Note</dt><dd>Valid types for instantiation of these templates are the following: std::pair&lt;std::string,std::string&gt;, or anything derived from there, which include <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a>, etc. This requirment is checked at compile time via compile-time assertions using the static_assert function. There are also specializations such that std::string is also a valid type. </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -204,7 +204,7 @@ This namespace defines a series of template routines used for manipulating align
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -252,7 +252,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -279,7 +279,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -296,7 +296,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -350,7 +350,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -377,7 +377,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -432,7 +432,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -480,7 +480,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -538,7 +538,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -586,7 +586,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -634,7 +634,7 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for <a class="el" href="FastaExplicit_8hpp.html" title="delcaration of explicit instantiations of namespace Sequence::Alignment and Sequence::ClustalW for ty...">FastaExplicit.hpp</a> </p>
+<p>An explicit instantation for type <a class="el" href="classSequence_1_1Fasta.html" title="FASTA sequence stream. ">Sequence::Fasta</a> for GNU systems. See file documentation for FastaExplicit.hpp </p>
 
 </div>
 </div>
@@ -675,7 +675,7 @@ template&lt;&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="namespaceSequence_1_1Alignment.html">Alignment</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

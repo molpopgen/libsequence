@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -78,19 +78,22 @@ $(document).ready(function(){initNavTree('structSequence_1_1ComplementBase.html'
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="ComplementBase_8hpp_source.html">Sequence/ComplementBase.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2ComplementBase_8hpp_source.html">Sequence/ComplementBase.hpp</a>&gt;</code></p>
 
-<p>Inherits unary_function&lt; char, void &gt;.</p>
+<p>Inherits unary_function&lt; char, void &gt;, and unary_function&lt; char, void &gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:acc1704abe7bd547dde7d1daf890ad390"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1ComplementBase.html#acc1704abe7bd547dde7d1daf890ad390">operator()</a> (char &amp;ch) const </td></tr>
 <tr class="separator:acc1704abe7bd547dde7d1daf890ad390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc1704abe7bd547dde7d1daf890ad390"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc1704abe7bd547dde7d1daf890ad390"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (char &amp;ch) const </td></tr>
+<tr class="separator:acc1704abe7bd547dde7d1daf890ad390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>a functor to complement a sequence<br />
-example use: </p><div class="fragment"><div class="line"><span class="comment">//reverse and complement a std::string</span></div><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="SeqFunctors_8hpp.html">Sequence/SeqFunctors.hpp</a>&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main ()</div><div class="line">{</div><div class="line">std::string seq;</div><div class="line"><span class="comment">//fill seq with DNA characters</span></div><div class="line">std::reverse(seq.begin(),seq.end());</div><div class="line">std::for_each(seq.begin(),seq.end(),<a class="code" href="structSequence_1_1ComplementBase.html">Sequence::ComplementBase</a>());</div><div class="line">}</div></div><!-- fragment --> 
-<p>Definition at line <a class="el" href="ComplementBase_8hpp_source.html#l00053">53</a> of file <a class="el" href="ComplementBase_8hpp_source.html">ComplementBase.hpp</a>.</p>
+example use: </p><div class="fragment"><div class="line"><span class="comment">//reverse and complement a std::string</span></div><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/SeqFunctors.hpp&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main ()</div><div class="line">{</div><div class="line">std::string seq;</div><div class="line"><span class="comment">//fill seq with DNA characters</span></div><div class="line">std::reverse(seq.begin(),seq.end());</div><div class="line">std::for_each(seq.begin(),seq.end(),<a class="code" href="structSequence_1_1ComplementBase.html">Sequence::ComplementBase</a>());</div><div class="line">}</div></div><!-- fragment --> 
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2ComplementBase_8hpp_source.html#l00053">53</a> of file <a class="el" href="release_2include_2Sequence_2ComplementBase_8hpp_source.html">release/include/Sequence/ComplementBase.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="acc1704abe7bd547dde7d1daf890ad390"></a>
 <div class="memitem">
@@ -112,7 +115,7 @@ example use: </p><div class="fragment"><div class="line"><span class="comment">/
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="ComplementBase_8hpp_source.html">ComplementBase.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2ComplementBase_8hpp_source.html">release/include/Sequence/ComplementBase.hpp</a></li>
 <li><a class="el" href="ComplementBase_8cc_source.html">ComplementBase.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -121,7 +124,7 @@ example use: </p><div class="fragment"><div class="line"><span class="comment">/
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1ComplementBase.html">ComplementBase</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

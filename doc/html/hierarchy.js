@@ -3,6 +3,8 @@ var hierarchy =
     [ "Sequence::_PolySNPImpl", "structSequence_1_1__PolySNPImpl.html", null ],
     [ "Sequence::AlignStream< T >", "classSequence_1_1AlignStream.html", [
       [ "Sequence::ClustalW< T >", "classSequence_1_1ClustalW.html", null ],
+      [ "Sequence::ClustalW< T >", "classSequence_1_1ClustalW.html", null ],
+      [ "Sequence::phylipData< T >", "classSequence_1_1phylipData.html", null ],
       [ "Sequence::phylipData< T >", "classSequence_1_1phylipData.html", null ]
     ] ],
     [ "Sequence::ambiguousNucleotide", "structSequence_1_1ambiguousNucleotide.html", null ],
@@ -15,6 +17,7 @@ var hierarchy =
     [ "Sequence::ComplementBase", "structSequence_1_1ComplementBase.html", null ],
     [ "Sequence::countDerivedStates", "structSequence_1_1countDerivedStates.html", null ],
     [ "Sequence::countStates", "structSequence_1_1countStates.html", null ],
+    [ "first_is_equal< key, value >", "structfirst__is__equal.html", null ],
     [ "first_is_equal< key, value >", "structfirst__is__equal.html", null ],
     [ "Sequence::FST", "classSequence_1_1FST.html", null ],
     [ "Sequence::GarudStats", "structSequence_1_1GarudStats.html", null ],
@@ -32,11 +35,15 @@ var hierarchy =
     [ "outputFreq", "structoutputFreq.html", null ],
     [ "Sequence::PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html", null ],
     [ "Sequence::PolySNP", "classSequence_1_1PolySNP.html", [
+      [ "Sequence::PolySIM", "classSequence_1_1PolySIM.html", null ],
       [ "Sequence::PolySIM", "classSequence_1_1PolySIM.html", null ]
     ] ],
     [ "Sequence::PolyTable", "classSequence_1_1PolyTable.html", [
       [ "Sequence::PolySites", "classSequence_1_1PolySites.html", null ],
+      [ "Sequence::PolySites", "classSequence_1_1PolySites.html", null ],
       [ "Sequence::SimData", "classSequence_1_1SimData.html", null ],
+      [ "Sequence::SimData", "classSequence_1_1SimData.html", null ],
+      [ "Sequence::SimpleSNP", "classSequence_1_1SimpleSNP.html", null ],
       [ "Sequence::SimpleSNP", "classSequence_1_1SimpleSNP.html", null ]
     ] ],
     [ "Sequence::PolyTableSlice< T >", "classSequence_1_1PolyTableSlice.html", null ],
@@ -48,10 +55,9 @@ var hierarchy =
     [ "Sequence::coalsim::segment", "structSequence_1_1coalsim_1_1segment.html", null ],
     [ "Sequence::Seq", "classSequence_1_1Seq.html", [
       [ "Sequence::Fasta", "classSequence_1_1Fasta.html", null ],
+      [ "Sequence::Fasta", "classSequence_1_1Fasta.html", null ],
+      [ "Sequence::fastq", "classSequence_1_1fastq.html", null ],
       [ "Sequence::fastq", "classSequence_1_1fastq.html", null ]
-    ] ],
-    [ "Sequence::SeqException", "classSequence_1_1SeqException.html", [
-      [ "Sequence::badFormat", "classSequence_1_1badFormat.html", null ]
     ] ],
     [ "Sequence::shortestPath", "classSequence_1_1shortestPath.html", null ],
     [ "Sequence::SimParams", "classSequence_1_1SimParams.html", null ],
@@ -66,10 +72,14 @@ var hierarchy =
     [ "Sequence::upperCrit", "structSequence_1_1upperCrit.html", null ],
     [ "Sequence::WeightingScheme2", "structSequence_1_1WeightingScheme2.html", [
       [ "Sequence::GranthamWeights2", "structSequence_1_1GranthamWeights2.html", null ],
+      [ "Sequence::GranthamWeights2", "structSequence_1_1GranthamWeights2.html", null ],
+      [ "Sequence::Unweighted2", "structSequence_1_1Unweighted2.html", null ],
       [ "Sequence::Unweighted2", "structSequence_1_1Unweighted2.html", null ]
     ] ],
     [ "Sequence::WeightingScheme3", "structSequence_1_1WeightingScheme3.html", [
       [ "Sequence::GranthamWeights3", "structSequence_1_1GranthamWeights3.html", null ],
+      [ "Sequence::GranthamWeights3", "structSequence_1_1GranthamWeights3.html", null ],
+      [ "Sequence::Unweighted3", "structSequence_1_1Unweighted3.html", null ],
       [ "Sequence::Unweighted3", "structSequence_1_1Unweighted3.html", null ]
     ] ]
 ];

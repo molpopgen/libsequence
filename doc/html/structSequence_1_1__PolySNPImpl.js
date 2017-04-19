@@ -1,12 +1,14 @@
 var structSequence_1_1__PolySNPImpl =
 [
     [ "_PolySNPImpl", "structSequence_1_1__PolySNPImpl.html#a229250fa139f1e0240e32aaa4eeae367", null ],
+    [ "_PolySNPImpl", "structSequence_1_1__PolySNPImpl.html#a229250fa139f1e0240e32aaa4eeae367", null ],
+    [ "preprocess", "structSequence_1_1__PolySNPImpl.html#a029eac0f5a4a9327fc3ef8ce6279a1e6", null ],
     [ "preprocess", "structSequence_1_1__PolySNPImpl.html#a029eac0f5a4a9327fc3ef8ce6279a1e6", null ],
     [ "_calculated_wall_stats", "structSequence_1_1__PolySNPImpl.html#ae97562ac13fa829283b310f565b4fcd3", null ],
     [ "_CalculatedDandV", "structSequence_1_1__PolySNPImpl.html#a7c85c9ab6b692e2960317d32870cc041", null ],
     [ "_counted_singletons", "structSequence_1_1__PolySNPImpl.html#ab890651a6c04eb3560115233586ad24c", null ],
     [ "_counts", "structSequence_1_1__PolySNPImpl.html#a4f4e50f966d3af8cd69713546e8b8178", null ],
-    [ "_data", "structSequence_1_1__PolySNPImpl.html#a70d4044e038c48738a6ec1f88eef15d3", null ],
+    [ "_data", "structSequence_1_1__PolySNPImpl.html#a47cd731537d5246db3c1797fbd1558f3", null ],
     [ "_derivedCounts", "structSequence_1_1__PolySNPImpl.html#a93bcae2b235d752535bc669bd894ab8d", null ],
     [ "_DVH", "structSequence_1_1__PolySNPImpl.html#ae2bb5f9d7cfce9fa75cbff84a1292dd7", null ],
     [ "_DVK", "structSequence_1_1__PolySNPImpl.html#a2348a42f700a334996839a707ffc6f1e", null ],

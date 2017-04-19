@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -83,12 +83,15 @@ $(document).ready(function(){initNavTree('classSequence_1_1stateCounter.html',''
 <p>keep track of state counts at a site in an alignment or along a sequence  
  <a href="classSequence_1_1stateCounter.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="stateCounter_8hpp_source.html">Sequence/stateCounter.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2stateCounter_8hpp_source.html">Sequence/stateCounter.hpp</a>&gt;</code></p>
 
-<p>Inherits unary_function&lt; char, void &gt;.</p>
+<p>Inherits unary_function&lt; char, void &gt;, and unary_function&lt; char, void &gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a92db1b118f7bd70ebc5453a401583086"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92db1b118f7bd70ebc5453a401583086"></a>
+typedef unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
+<tr class="separator:a92db1b118f7bd70ebc5453a401583086"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a92db1b118f7bd70ebc5453a401583086"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a92db1b118f7bd70ebc5453a401583086"></a>
 typedef unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
 <tr class="separator:a92db1b118f7bd70ebc5453a401583086"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +116,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab8ef8119747adcd9698c3891563cad0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0438d1be139e33e267e16a4f77cc6317"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1stateCounter.html#a0438d1be139e33e267e16a4f77cc6317">nStates</a> (void) const </td></tr>
 <tr class="separator:a0438d1be139e33e267e16a4f77cc6317"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad80cd58b10ab6ff1fc38095b8ec6783a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad80cd58b10ab6ff1fc38095b8ec6783a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>stateCounter</b> (char gapchar= '-')</td></tr>
+<tr class="separator:ad80cd58b10ab6ff1fc38095b8ec6783a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a276260a5bbf27f7c0907da8caaaa7fd3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a276260a5bbf27f7c0907da8caaaa7fd3"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>stateCounter</b> (<a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a276260a5bbf27f7c0907da8caaaa7fd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43ed5256ecdfd9a6af1c7ac9faeeab4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa43ed5256ecdfd9a6af1c7ac9faeeab4"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>stateCounter</b> (const <a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;)=default</td></tr>
+<tr class="separator:aa43ed5256ecdfd9a6af1c7ac9faeeab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8002c4b57ca2f633da4cbe46d860ebe7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8002c4b57ca2f633da4cbe46d860ebe7"></a>
+<a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;)=default</td></tr>
+<tr class="separator:a8002c4b57ca2f633da4cbe46d860ebe7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c599e6dd71e50c6fa27d6da2eb3b118"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c599e6dd71e50c6fa27d6da2eb3b118"></a>
+<a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:a5c599e6dd71e50c6fa27d6da2eb3b118"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8ef8119747adcd9698c3891563cad0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab8ef8119747adcd9698c3891563cad0c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const char &amp;ch)</td></tr>
+<tr class="separator:ab8ef8119747adcd9698c3891563cad0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f3648a7174984fb0c561342d3e10002"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f3648a7174984fb0c561342d3e10002"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>nStates</b> (void) const </td></tr>
+<tr class="separator:a0f3648a7174984fb0c561342d3e10002"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -139,7 +163,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>keep track of state counts at a site in an alignment or along a sequence </p>
 <dl class="section warning"><dt>Warning</dt><dd>class data are public. Use responsibly. </dd></dl>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00039">39</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00039">39</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad80cd58b10ab6ff1fc38095b8ec6783a"></a>
 <div class="memitem">
@@ -221,7 +245,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character 'a' or 'A' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -236,7 +260,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character 'c' or 'C' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -251,7 +275,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character 'g' or 'G' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -266,7 +290,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the gap character has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +305,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the missing data character 'N' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -296,7 +320,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>true if a non-DNA character has been encountered, false otherwise </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00044">44</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00044">44</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -311,7 +335,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character '1' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -326,7 +350,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character 't' or 'T' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
@@ -341,12 +365,12 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the number of times the character '0' has been counted </p>
 
-<p>Definition at line <a class="el" href="stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html#l00043">43</a> of file <a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="stateCounter_8hpp_source.html">stateCounter.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2stateCounter_8hpp_source.html">release/include/Sequence/stateCounter.hpp</a></li>
 <li><a class="el" href="stateCounter_8cc_source.html">stateCounter.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -355,7 +379,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1stateCounter.html">stateCounter</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

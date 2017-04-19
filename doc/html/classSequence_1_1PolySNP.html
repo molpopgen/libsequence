@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -83,7 +83,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1PolySNP.html','');});
 <p>Molecular population genetic analysis.  
  <a href="classSequence_1_1PolySNP.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="PolySNP_8hpp_source.html">Sequence/PolySNP.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2PolySNP_8hpp_source.html">Sequence/PolySNP.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Sequence::PolySNP:</div>
 <div class="dyncontent">
@@ -91,6 +91,7 @@ Inheritance diagram for Sequence::PolySNP:</div>
   <img src="classSequence_1_1PolySNP.png" usemap="#Sequence::PolySNP_map" alt=""/>
   <map id="Sequence::PolySNP_map" name="Sequence::PolySNP_map">
 <area href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. " alt="Sequence::PolySIM" shape="rect" coords="0,56,124,80"/>
+<area href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. " alt="Sequence::PolySIM" shape="rect" coords="134,56,258,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -158,6 +159,96 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a16f0711c46a6b693cdb20b0956416585"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga314650fdc926b8387f6727c84e18f920"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1PairwiseLDstats.html">PairwiseLDstats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__threads.html#ga314650fdc926b8387f6727c84e18f920">Disequilibrium</a> (const unsigned &amp;mincount=1, const double &amp;max_marker_distance=std::numeric_limits&lt; double &gt;::max()) const </td></tr>
 <tr class="separator:ga314650fdc926b8387f6727c84e18f920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa3702f4a95a35c3b5fac9d84370b017"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afa3702f4a95a35c3b5fac9d84370b017"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PolySNP</b> (const <a class="el" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data, bool haveOutgroup=false, unsigned outgroup=0, bool totMuts=true)</td></tr>
+<tr class="separator:afa3702f4a95a35c3b5fac9d84370b017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac96be71be8e14862df2c8f232a19b1b6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac96be71be8e14862df2c8f232a19b1b6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PolySNP</b> (const <a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a> &amp;)=delete</td></tr>
+<tr class="separator:ac96be71be8e14862df2c8f232a19b1b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a421c381faaa312ee410063b1b132de48"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a421c381faaa312ee410063b1b132de48"></a>
+<a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a> &amp;)=delete</td></tr>
+<tr class="separator:a421c381faaa312ee410063b1b132de48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a55a0da9e96d0e9cab5fb927abb1623"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a55a0da9e96d0e9cab5fb927abb1623"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>ThetaPi</b> (void) const </td></tr>
+<tr class="separator:a9a55a0da9e96d0e9cab5fb927abb1623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a346895b9e35462280d24b4434d9da148"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a346895b9e35462280d24b4434d9da148"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>ThetaW</b> (void) const </td></tr>
+<tr class="separator:a346895b9e35462280d24b4434d9da148"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e1afc4603c880a9aa723d95ca7d3cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a02e1afc4603c880a9aa723d95ca7d3cb"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>ThetaH</b> (void) const </td></tr>
+<tr class="separator:a02e1afc4603c880a9aa723d95ca7d3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70a04edb5405ac2d0f9a5102568c1835"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70a04edb5405ac2d0f9a5102568c1835"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>ThetaL</b> (void) const </td></tr>
+<tr class="separator:a70a04edb5405ac2d0f9a5102568c1835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5614fba76be5730e4618032820a9b0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5614fba76be5730e4618032820a9b0c"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>VarPi</b> (void) const </td></tr>
+<tr class="separator:aa5614fba76be5730e4618032820a9b0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22535bbb53cf745498c7c84b774319e3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22535bbb53cf745498c7c84b774319e3"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>StochasticVarPi</b> (void) const </td></tr>
+<tr class="separator:a22535bbb53cf745498c7c84b774319e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a816138ea5c26ba2923a60b128d54f4e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a816138ea5c26ba2923a60b128d54f4e1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>SamplingVarPi</b> (void) const </td></tr>
+<tr class="separator:a816138ea5c26ba2923a60b128d54f4e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05276ed08aa7184738228045dd87ec15"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05276ed08aa7184738228045dd87ec15"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>VarThetaW</b> (void) const </td></tr>
+<tr class="separator:a05276ed08aa7184738228045dd87ec15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a582904af09c17b0644b1baa3bc3366d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a582904af09c17b0644b1baa3bc3366d5"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>NumPoly</b> (void) const </td></tr>
+<tr class="separator:a582904af09c17b0644b1baa3bc3366d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a760abe2178dcfb5ad9063af62f76779b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a760abe2178dcfb5ad9063af62f76779b"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>NumMutations</b> (void) const </td></tr>
+<tr class="separator:a760abe2178dcfb5ad9063af62f76779b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa6f05820a0e4ae220727fb998d7390"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3fa6f05820a0e4ae220727fb998d7390"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>NumSingletons</b> (void) const </td></tr>
+<tr class="separator:a3fa6f05820a0e4ae220727fb998d7390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a264e1d6915af88f9148960704c1e8ec3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a264e1d6915af88f9148960704c1e8ec3"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>NumExternalMutations</b> (void) const </td></tr>
+<tr class="separator:a264e1d6915af88f9148960704c1e8ec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6699fc25aa7e932878e47e05c7efdef4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6699fc25aa7e932878e47e05c7efdef4"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>TajimasD</b> (void) const </td></tr>
+<tr class="separator:a6699fc25aa7e932878e47e05c7efdef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5b4b79edc5329722bd3862bb208bb45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac5b4b79edc5329722bd3862bb208bb45"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>Hprime</b> (const bool &amp;likeThorntonAndolfatto=false) const </td></tr>
+<tr class="separator:ac5b4b79edc5329722bd3862bb208bb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10bc5000c7cefd3ec4b256d7c982ab6b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10bc5000c7cefd3ec4b256d7c982ab6b"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>Dnominator</b> (void) const </td></tr>
+<tr class="separator:a10bc5000c7cefd3ec4b256d7c982ab6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82a6538dbfb148ff8a97bba445a975f9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82a6538dbfb148ff8a97bba445a975f9"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>FuLiD</b> (void) const </td></tr>
+<tr class="separator:a82a6538dbfb148ff8a97bba445a975f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b6ba83f8c604cfc5a0176c195e39095"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5b6ba83f8c604cfc5a0176c195e39095"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>FuLiF</b> (void) const </td></tr>
+<tr class="separator:a5b6ba83f8c604cfc5a0176c195e39095"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77e960dbf84e4b1a7b916440163632c1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a77e960dbf84e4b1a7b916440163632c1"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>FuLiDStar</b> (void) const </td></tr>
+<tr class="separator:a77e960dbf84e4b1a7b916440163632c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b15628d856b4180d8a6b21b269043a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91b15628d856b4180d8a6b21b269043a"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>FuLiFStar</b> (void) const </td></tr>
+<tr class="separator:a91b15628d856b4180d8a6b21b269043a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cb1e8e0583eaf95f8baf5d4383e8cca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cb1e8e0583eaf95f8baf5d4383e8cca"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>DandVH</b> (void) const </td></tr>
+<tr class="separator:a5cb1e8e0583eaf95f8baf5d4383e8cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1be376ce9d69d7bc0016fac306124454"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1be376ce9d69d7bc0016fac306124454"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>DandVK</b> (void) const </td></tr>
+<tr class="separator:a1be376ce9d69d7bc0016fac306124454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4d8ddba5a8d2c79cc4c1a77cb19e338"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4d8ddba5a8d2c79cc4c1a77cb19e338"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>WallsB</b> (void) const </td></tr>
+<tr class="separator:aa4d8ddba5a8d2c79cc4c1a77cb19e338"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b74b764c8466d98c2a6ef81fdd6ef02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b74b764c8466d98c2a6ef81fdd6ef02"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>WallsBprime</b> (void) const </td></tr>
+<tr class="separator:a6b74b764c8466d98c2a6ef81fdd6ef02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac01b7a9b09a515f52e9584159e5d8d6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac01b7a9b09a515f52e9584159e5d8d6c"></a>
+virtual double&#160;</td><td class="memItemRight" valign="bottom"><b>WallsQ</b> (void) const </td></tr>
+<tr class="separator:ac01b7a9b09a515f52e9584159e5d8d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaaf1b0dc8b931eaaa7a801a4db12229"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afaaf1b0dc8b931eaaa7a801a4db12229"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>HudsonsC</b> (void) const </td></tr>
+<tr class="separator:afaaf1b0dc8b931eaaa7a801a4db12229"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a870b149c9bc7c3cd566e69fa9b6d6e55"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a870b149c9bc7c3cd566e69fa9b6d6e55"></a>
+virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>Minrec</b> (void) const </td></tr>
+<tr class="separator:a870b149c9bc7c3cd566e69fa9b6d6e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac89c1b519061d0d19595202f4d83739b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac89c1b519061d0d19595202f4d83739b"></a>
+std::vector&lt; <a class="el" href="structSequence_1_1PairwiseLDstats.html">PairwiseLDstats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Disequilibrium</b> (const unsigned &amp;mincount=1, const double &amp;max_marker_distance=std::numeric_limits&lt; double &gt;::max()) const </td></tr>
+<tr class="separator:ac89c1b519061d0d19595202f4d83739b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -178,24 +269,54 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>WallStats</b>
 <tr class="separator:a480d29911ebea7edfaba976f47035d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a383727692316e4e110010b2429f6f8f1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySNP.html#a383727692316e4e110010b2429f6f8f1">d_sub_n</a> (void) const </td></tr>
 <tr class="separator:a383727692316e4e110010b2429f6f8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af89d438b6bb1df23dac3b2162e42d260"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af89d438b6bb1df23dac3b2162e42d260"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>DepaulisVeuilleStatistics</b> (void) const </td></tr>
+<tr class="separator:af89d438b6bb1df23dac3b2162e42d260"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f37e8ca27463f07bd268e2d6ca435ed"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f37e8ca27463f07bd268e2d6ca435ed"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>WallStats</b> (void) const </td></tr>
+<tr class="separator:a5f37e8ca27463f07bd268e2d6ca435ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2e80d4fe8be5231aa99993949c123e7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2e80d4fe8be5231aa99993949c123e7"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>a_sub_n</b> (void) const </td></tr>
+<tr class="separator:ac2e80d4fe8be5231aa99993949c123e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac930e586b07a9b64ce3c4c53c8b3d401"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac930e586b07a9b64ce3c4c53c8b3d401"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>a_sub_n_plus1</b> (void) const </td></tr>
+<tr class="separator:ac930e586b07a9b64ce3c4c53c8b3d401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f4687d987b2548be37d902321b7d9aa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0f4687d987b2548be37d902321b7d9aa"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>b_sub_n</b> (void) const </td></tr>
+<tr class="separator:a0f4687d987b2548be37d902321b7d9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add59a3ecc2737306b4856046b86a0581"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="add59a3ecc2737306b4856046b86a0581"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>b_sub_n_plus1</b> (void) const </td></tr>
+<tr class="separator:add59a3ecc2737306b4856046b86a0581"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a480d29911ebea7edfaba976f47035d76"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a480d29911ebea7edfaba976f47035d76"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>c_sub_n</b> (void) const </td></tr>
+<tr class="separator:a480d29911ebea7edfaba976f47035d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a383727692316e4e110010b2429f6f8f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a383727692316e4e110010b2429f6f8f1"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>d_sub_n</b> (void) const </td></tr>
+<tr class="separator:a383727692316e4e110010b2429f6f8f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a927043714e78254f032ce6581b04ea12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a927043714e78254f032ce6581b04ea12"></a>
+<tr class="memitem:a6d862deb40e3352228c77d949a2d2324"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d862deb40e3352228c77d949a2d2324"></a>
 std::unique_ptr&lt; <a class="el" href="structSequence_1_1__PolySNPImpl.html">_PolySNPImpl</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>rep</b></td></tr>
-<tr class="separator:a927043714e78254f032ce6581b04ea12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a6d862deb40e3352228c77d949a2d2324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Molecular population genetic analysis. </p>
 <p>Example Use:<br />
 <br />
-</p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PolySNP_8hpp.html">Sequence/PolySNP.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Fasta_8hpp.html">Sequence/Fasta.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="PolySites_8hpp.html">Sequence/PolySites.hpp</a>&gt;</span></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceSequence.html">Sequence</a>;</div><div class="line"><span class="keywordtype">int</span> main</div><div class="line">{</div><div class="line">  vector&lt;Fasta&gt; data;</div><div class="line">  Alignment::GetData(data,<span class="stringliteral">&quot;popdata.fasta&quot;</span>);</div><div class="line">  assert(Alignment::IsAlignment(data))</div><div class="line">  if (Alignment::<a class="code" href="namespaceSequence.html#a6b8d03d21bed077f2f95790a2bc55a3a">Gapped</a>(data))</div><div class="line">  {</div><div class="line">    Alignment::RemoveTerminalGaps(data);</div><div class="line">  }</div><div class="line">  <a class="code" href="classSequence_1_1PolySites.html">PolySites</a> *polytable = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySites.html">PolySites</a>(data);</div><div class="line">  <a class="code" href="classSequence_1_1PolySNP.html">PolySNP</a> *analyze = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySNP.html#afa3702f4a95a35c3b5fac9d84370b017">PolySNP</a>(data,<span class="keyword">false</span>,0);</div><div class="line">  cout &lt;&lt; <span class="stringliteral">&quot;Tajima&#39;s D is &quot;</span> &lt;&lt; analyze-&gt;<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; endl;</div><div class="line">  <span class="keyword">delete</span> polytable;</div><div class="line">  <span class="keyword">delete</span> analyze;</div><div class="line">  exit(1);</div><div class="line">}</div></div><!-- fragment --> <dl class="section warning"><dt>Warning</dt><dd>The routines to calculate nucleotide diversity, numbers of singletons, etc. all handle missing data (the <code>N</code> character). However, all summary statistics involved in "tests of 
+</p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/PolySNP.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/Fasta.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/PolySites.hpp&gt;</span></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceSequence.html">Sequence</a>;</div><div class="line"><span class="keywordtype">int</span> main</div><div class="line">{</div><div class="line">  vector&lt;Fasta&gt; data;</div><div class="line">  Alignment::GetData(data,<span class="stringliteral">&quot;popdata.fasta&quot;</span>);</div><div class="line">  assert(Alignment::IsAlignment(data))</div><div class="line">  if (Alignment::<a class="code" href="namespaceSequence.html#a6b8d03d21bed077f2f95790a2bc55a3a">Gapped</a>(data))</div><div class="line">  {</div><div class="line">    Alignment::RemoveTerminalGaps(data);</div><div class="line">  }</div><div class="line">  <a class="code" href="classSequence_1_1PolySites.html">PolySites</a> *polytable = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySites.html">PolySites</a>(data);</div><div class="line">  <a class="code" href="classSequence_1_1PolySNP.html">PolySNP</a> *analyze = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySNP.html#afa3702f4a95a35c3b5fac9d84370b017">PolySNP</a>(data,<span class="keyword">false</span>,0);</div><div class="line">  cout &lt;&lt; <span class="stringliteral">&quot;Tajima&#39;s D is &quot;</span> &lt;&lt; analyze-&gt;<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; endl;</div><div class="line">  <span class="keyword">delete</span> polytable;</div><div class="line">  <span class="keyword">delete</span> analyze;</div><div class="line">  exit(1);</div><div class="line">}</div></div><!-- fragment --> <dl class="section warning"><dt>Warning</dt><dd>The routines to calculate nucleotide diversity, numbers of singletons, etc. all handle missing data (the <code>N</code> character). However, all summary statistics involved in "tests of 
 neutrality" are, strictly speaking, undefined if missing data are present. The reason for this is because the denominators of the statistics are functions of the sample sizes, and no explicit formulae exist when the sample size varies from site to site (which is the case when there are missing data). In short, if you want to be rigorous, you can only really count up nucleotide diversity and a few other statistics if your data contain untyped SNPs. However, the routines present in <code>libsequence</code> will happily go and calculate the summary statistics for you, and it is up to you to be aware that you are writing a program that may give biased results. To date, the magnitude and direction of the bias remains unknown. Functions (and hence the statistics) that are affected have warnings in their documentation. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>As of libsequence 1.4.1, the routines in this class explicity check for gaps in the polymorphism table. This provides an additional safeguard for cases where <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> objects are created and sites with gaps are left in. </dd></dl>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000005">Deprecated:</a></b></dt><dd>Will be removed in libsequence 2.0 </dd></dl>
+<p>Example Use:<br />
+<br />
+</p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/PolySNP.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/Fasta.hpp&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/PolySites.hpp&gt;</span></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespacestd.html">std</a>;</div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceSequence.html">Sequence</a>;</div><div class="line"><span class="keywordtype">int</span> main</div><div class="line">{</div><div class="line">  vector&lt;Fasta&gt; data;</div><div class="line">  Alignment::GetData(data,<span class="stringliteral">&quot;popdata.fasta&quot;</span>);</div><div class="line">  assert(Alignment::IsAlignment(data))</div><div class="line">  if (Alignment::<a class="code" href="namespaceSequence.html#a6b8d03d21bed077f2f95790a2bc55a3a">Gapped</a>(data))</div><div class="line">  {</div><div class="line">    Alignment::RemoveTerminalGaps(data);</div><div class="line">  }</div><div class="line">  <a class="code" href="classSequence_1_1PolySites.html">PolySites</a> *polytable = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySites.html">PolySites</a>(data);</div><div class="line">  <a class="code" href="classSequence_1_1PolySNP.html">PolySNP</a> *analyze = <span class="keyword">new</span> <a class="code" href="classSequence_1_1PolySNP.html#afa3702f4a95a35c3b5fac9d84370b017">PolySNP</a>(data,<span class="keyword">false</span>,0);</div><div class="line">  cout &lt;&lt; <span class="stringliteral">&quot;Tajima&#39;s D is &quot;</span> &lt;&lt; analyze-&gt;<a class="code" href="classSequence_1_1PolySNP.html#ad236330defb0426b61265d3b955c6bef">TajimasD</a>() &lt;&lt; endl;</div><div class="line">  <span class="keyword">delete</span> polytable;</div><div class="line">  <span class="keyword">delete</span> analyze;</div><div class="line">  exit(1);</div><div class="line">}</div></div><!-- fragment --> <dl class="section warning"><dt>Warning</dt><dd>The routines to calculate nucleotide diversity, numbers of singletons, etc. all handle missing data (the <code>N</code> character). However, all summary statistics involved in "tests of 
+neutrality" are, strictly speaking, undefined if missing data are present. The reason for this is because the denominators of the statistics are functions of the sample sizes, and no explicit formulae exist when the sample size varies from site to site (which is the case when there are missing data). In short, if you want to be rigorous, you can only really count up nucleotide diversity and a few other statistics if your data contain untyped SNPs. However, the routines present in <code>libsequence</code> will happily go and calculate the summary statistics for you, and it is up to you to be aware that you are writing a program that may give biased results. To date, the magnitude and direction of the bias remains unknown. Functions (and hence the statistics) that are affected have warnings in their documentation. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>As of libsequence 1.4.1, the routines in this class explicity check for gaps in the polymorphism table. This provides an additional safeguard for cases where <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a> objects are created and sites with gaps are left in. </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000015">Deprecated:</a></b></dt><dd>Will be removed in libsequence 2.0 </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#_a2">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#_a1">slidingWindow2.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolySNP_8hpp_source.html#l00086">86</a> of file <a class="el" href="PolySNP_8hpp_source.html">PolySNP.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2PolySNP_8hpp_source.html#l00086">86</a> of file <a class="el" href="release_2include_2Sequence_2PolySNP_8hpp_source.html">release/include/Sequence/PolySNP.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afa3702f4a95a35c3b5fac9d84370b017"></a>
 <div class="memitem">
@@ -282,7 +403,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </p>
 <p> This is the denominator of Watterson's Theta (see <a class="el" href="classSequence_1_1PolySNP.html#a942cec5aec3bd820c9029609969d4b57">PolySNP::ThetaW</a>) </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01513">1513</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01529">1529</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -312,7 +433,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01529">1529</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01545">1545</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -342,7 +463,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01546">1546</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01562">1562</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -373,7 +494,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01561">1561</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01577">1577</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -403,7 +524,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01577">1577</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01593">1593</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -433,7 +554,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01604">1604</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01620">1620</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -453,7 +574,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <p>To check if two sequences are unique, Sequence::Comparisons::Different is used, which does not allow missing data to result in 2 sequences being considered different (as they would be if you simply used thestd::string comparison operators == or !=) </p><dl class="section return"><dt>Returns</dt><dd>the haplotype diversity of the data. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="bottleneck_8cc-example.html#a9">bottleneck.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01623">1623</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01639">1639</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -472,7 +593,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>To check if two sequences are unique, Sequence::Comparisons::Different is used, which does not allow missing data to result in 2 sequences being considered different (as they would be if you simply used the std::string comparison operators == or !=) </p><dl class="section return"><dt>Returns</dt><dd>number of haplotypes in the sample </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01640">1640</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01656">1656</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -500,9 +621,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Denominator of Tajima's D, or nan if there are no polymorphic sites </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a8f8b95b3331ac33c19e9b9cec4b5e23e">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a8f8b95b3331ac33c19e9b9cec4b5e23e">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a8f8b95b3331ac33c19e9b9cec4b5e23e">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01011">1011</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01014">1014</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -531,9 +652,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#ae185098e0ce4ae373601a61d6175486b">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01368">1368</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01384">1384</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -561,9 +682,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Fu and Li (1993) D*, or nan if there are no polymorphic sites </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a06911f2e977e72104eb16075157cb101">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01437">1437</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01453">1453</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -592,9 +713,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required, else undefined </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a2aaaaf19c345bab6cdb9e8b3ed048f04">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a2aaaaf19c345bab6cdb9e8b3ed048f04">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a2aaaaf19c345bab6cdb9e8b3ed048f04">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01397">1397</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01413">1413</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -622,9 +743,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <p>Fu and Li (1993) F* statistic. Incorporates correction from Simonsen et al. (1995) Genetics 141: 413, eqn A5. </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Fu and Li (1993) F* statistic, or nan if there are no polymorphic sites </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ad9db7aeb8cfb4ff579bb87b0dd73fd5c">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ad9db7aeb8cfb4ff579bb87b0dd73fd5c">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#ad9db7aeb8cfb4ff579bb87b0dd73fd5c">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01471">1471</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01487">1487</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -659,9 +780,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section note"><dt>Note</dt><dd>returns nan if there are 0 polymorphic sites </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ade50b9770220227efa863e4d47c727d5">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ade50b9770220227efa863e4d47c727d5">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#ade50b9770220227efa863e4d47c727d5">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00949">949</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00952">952</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -681,7 +802,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_36.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a69224c56b3ca7cfe9a28685217e02a08">Recombination::HudsonsC</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Will return nan if there are no polymorphic sites </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01657">1657</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01673">1673</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -709,9 +830,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>The minimum number of recombination events observed in the sample (Hudson and Kaplan 1985). Will return SEQMAXUNSIGNED if there are &lt; 2 segregating sites. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Code is a modification of that provided by Jeff Wall </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a11ef31f008a3619deb28ccfee32832d6">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a11ef31f008a3619deb28ccfee32832d6">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a11ef31f008a3619deb28ccfee32832d6">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01674">1674</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01690">1690</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -739,9 +860,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>the number of derived singletons. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. Will return SEQMAXUNSIGNED if that is not the case. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ae40261c55f9ffffdeed02c9336ebb64e">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#ae40261c55f9ffffdeed02c9336ebb64e">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#ae40261c55f9ffffdeed02c9336ebb64e">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00882">882</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00885">885</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -768,9 +889,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the total number of mutations in the data. The number of mutations per site = number of states per site - 1 </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#af156389d7b2d1c7b8b91a7823a6a11ca">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#af156389d7b2d1c7b8b91a7823a6a11ca">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#af156389d7b2d1c7b8b91a7823a6a11ca">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00820">820</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00823">823</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -790,7 +911,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>the number of polymorphic (segregating) sites in data </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="msstats_8cc-example.html#a4">msstats.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00804">804</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00807">807</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -817,9 +938,9 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>number of polymorphisms that appear once in the data, without respect to ancestral/derived </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a9467d836e65e2a81f90b6a8da4e81bd2">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a9467d836e65e2a81f90b6a8da4e81bd2">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a9467d836e65e2a81f90b6a8da4e81bd2">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00841">841</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00844">844</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -838,7 +959,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>Component of variance of mean pairwise differences from sampling. Tajima in Takahata/Clark book, (15) </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01333">1333</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01349">1349</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -857,7 +978,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>Stochastic variance of mean pairwise differences. Tajima in Takahata/Clark book, (14). </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01315">1315</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01331">1331</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -885,10 +1006,10 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_26.png"/>. This routine does calculate the denominator of the test statistic. </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Tajima's D, or nan if there are no polymorphic sites </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a9b1af310ffc68287837f2c5ef039ee9b">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a9b1af310ffc68287837f2c5ef039ee9b">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a9b1af310ffc68287837f2c5ef039ee9b">Sequence::PolySIM</a>.</p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#a3">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#a2">slidingWindow2.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00926">926</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00929">929</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -935,7 +1056,7 @@ N T<br />
 <br />
 This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>When using <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>, an outgroup is required. When using <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">PolySIM</a>, which is constructed with a <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">SimData</a> *, an outgroup is not required (as the 0,1 coding of the data refers to ancestral and derived, respectively). </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a0aa19c3cdfddc2bc5b04142b85ab2499">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a0aa19c3cdfddc2bc5b04142b85ab2499">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a0aa19c3cdfddc2bc5b04142b85ab2499">Sequence::PolySIM</a>.</p>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00372">372</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
@@ -985,7 +1106,7 @@ N T<br />
 This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#adf157e278c3b0d2cc61d2e106bec01f2">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#adf157e278c3b0d2cc61d2e106bec01f2">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#adf157e278c3b0d2cc61d2e106bec01f2">Sequence::PolySIM</a>.</p>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00594">594</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
@@ -1035,7 +1156,7 @@ Then ThetaPi is calculated for that site as if the sample size were 4 (not 6), a
 <br />
 </p>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#aab65a802f26b230fa9d0bfd58070fe7c">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#aab65a802f26b230fa9d0bfd58070fe7c">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#aab65a802f26b230fa9d0bfd58070fe7c">Sequence::PolySIM</a>.</p>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00199">199</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
@@ -1068,7 +1189,7 @@ Then ThetaPi is calculated for that site as if the sample size were 4 (not 6), a
 <p><br />
 For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is either the number of segregating sites, or the number of mutations on the genealogy and <img class="formulaInl" alt="$n_i$" src="form_21.png"/> is the sample size at site i. If totMuts == 1, the number of mutations is used, else the number ofsegregating sites is used. </p><dl class="section warning"><dt>Warning</dt><dd>Statistic undefined if there are untyped SNPs. In the presence of missing data, ThetaW is calculated as the sum (over all segregating sites) of 1/a_sub_n, where a_sub_n is the denominator of ThetaW, using the number of alleles without missing data as the sample size. More formally, the routine returns a calculation base on an unweighted sample size adjustment accross sites. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a593e8e6121bcf8477a2319b5f47a27c1">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a593e8e6121bcf8477a2319b5f47a27c1">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a593e8e6121bcf8477a2319b5f47a27c1">Sequence::PolySIM</a>.</p>
 
 <p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l00320">320</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
@@ -1089,7 +1210,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 </div><div class="memdoc">
 <p>Total variance of mean pairwise differences. Tajima in Takahata/Clark book, (13). </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01297">1297</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01313">1313</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1230,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Variance of Watterson's Theta (<a class="el" href="classSequence_1_1PolySNP.html#a942cec5aec3bd820c9029609969d4b57">ThetaW()</a>). </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01350">1350</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01366">1366</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1137,9 +1258,9 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's B Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a06ce66b3dd03060754375ba534aba018">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a06ce66b3dd03060754375ba534aba018">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a06ce66b3dd03060754375ba534aba018">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01153">1153</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01169">1169</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1167,9 +1288,9 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's B' Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a8377b823e8358c426ad92d277f2a77ad">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a8377b823e8358c426ad92d277f2a77ad">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a8377b823e8358c426ad92d277f2a77ad">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01271">1271</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01287">1287</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1197,14 +1318,14 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's Q Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a737f566ec959c25729840b8f1bcf8c10">Sequence::PolySIM</a>.</p>
+<p>Reimplemented in <a class="el" href="classSequence_1_1PolySIM.html#a737f566ec959c25729840b8f1bcf8c10">Sequence::PolySIM</a>, and <a class="el" href="classSequence_1_1PolySIM.html#a737f566ec959c25729840b8f1bcf8c10">Sequence::PolySIM</a>.</p>
 
-<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01284">1284</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p>Definition at line <a class="el" href="PolySNP_8cc_source.html#l01300">1300</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="PolySNP_8hpp_source.html">PolySNP.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2PolySNP_8hpp_source.html">release/include/Sequence/PolySNP.hpp</a></li>
 <li><a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -1213,7 +1334,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

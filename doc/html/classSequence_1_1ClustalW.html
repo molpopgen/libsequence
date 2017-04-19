@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1ClustalW.html','');})
 <p><a class="el" href="classSequence_1_1ClustalW.html" title="ClustalW streams. ">ClustalW</a> streams.  
  <a href="classSequence_1_1ClustalW.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Clustalw_8hpp_source.html">Sequence/Clustalw.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Clustalw_8hpp_source.html">Sequence/Clustalw.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Sequence::ClustalW&lt; T &gt;:</div>
 <div class="dyncontent">
@@ -90,6 +90,7 @@ Inheritance diagram for Sequence::ClustalW&lt; T &gt;:</div>
   <img src="classSequence_1_1ClustalW.png" usemap="#Sequence::ClustalW_3C_20T_20_3E_map" alt=""/>
   <map id="Sequence::ClustalW_3C_20T_20_3E_map" name="Sequence::ClustalW&lt; T &gt;_map">
 <area href="classSequence_1_1AlignStream.html" title="Virtual interface to alignment streams. " alt="Sequence::AlignStream&lt; T &gt;" shape="rect" coords="0,0,173,24"/>
+<area href="classSequence_1_1AlignStream.html" title="Virtual interface to alignment streams. " alt="Sequence::AlignStream&lt; T &gt;" shape="rect" coords="183,0,356,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -98,14 +99,27 @@ Public Types</h2></td></tr>
 <tr class="memitem:a1d01b9024f167daa20f0c8e4fc8e48f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d01b9024f167daa20f0c8e4fc8e48f3"></a>
 typedef std::vector&lt; T &gt;::size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
 <tr class="separator:a1d01b9024f167daa20f0c8e4fc8e48f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d01b9024f167daa20f0c8e4fc8e48f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d01b9024f167daa20f0c8e4fc8e48f3"></a>
+typedef std::vector&lt; T &gt;::size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
+<tr class="separator:a1d01b9024f167daa20f0c8e4fc8e48f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2afb882b81b177d0e276c02e1d91df4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2afb882b81b177d0e276c02e1d91df4"></a>
+typedef std::vector&lt; T &gt;::reference&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
+<tr class="separator:ad2afb882b81b177d0e276c02e1d91df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2afb882b81b177d0e276c02e1d91df4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad2afb882b81b177d0e276c02e1d91df4"></a>
 typedef std::vector&lt; T &gt;::reference&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
 <tr class="separator:ad2afb882b81b177d0e276c02e1d91df4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15cfe04db94d7047f2a5f613b6684a68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15cfe04db94d7047f2a5f613b6684a68"></a>
 typedef std::vector&lt; T &gt;::const_reference&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b></td></tr>
 <tr class="separator:a15cfe04db94d7047f2a5f613b6684a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15cfe04db94d7047f2a5f613b6684a68"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15cfe04db94d7047f2a5f613b6684a68"></a>
+typedef std::vector&lt; T &gt;::const_reference&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b></td></tr>
+<tr class="separator:a15cfe04db94d7047f2a5f613b6684a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8855777b5338d105a3e0467525c5aac"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a></td></tr>
 <tr class="separator:aa8855777b5338d105a3e0467525c5aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8855777b5338d105a3e0467525c5aac"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a></td></tr>
+<tr class="separator:aa8855777b5338d105a3e0467525c5aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6c8259cc984ffad79fe250363bf498"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a></td></tr>
+<tr class="separator:a1a6c8259cc984ffad79fe250363bf498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a6c8259cc984ffad79fe250363bf498"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a></td></tr>
 <tr class="separator:a1a6c8259cc984ffad79fe250363bf498"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -136,14 +150,53 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adde61086bae6670ee579dd474229d639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adde61086bae6670ee579dd474229d639"></a>
 <a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1AlignStream.html">AlignStream</a>&lt; T &gt; &amp;rhs)</td></tr>
 <tr class="separator:adde61086bae6670ee579dd474229d639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56fe3116641b293a16eb439b187a9595"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a56fe3116641b293a16eb439b187a9595"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (const <a class="el" href="classSequence_1_1AlignStream.html">AlignStream</a>&lt; T &gt; &amp;a)</td></tr>
+<tr class="separator:a56fe3116641b293a16eb439b187a9595"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4a63c00f0e1deff5fc35dc5daa923fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa4a63c00f0e1deff5fc35dc5daa923fc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (const <a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a>&lt; T &gt; &amp;a)</td></tr>
+<tr class="separator:aa4a63c00f0e1deff5fc35dc5daa923fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05d5e64ad5ee8152f4afdd1cf96f2070"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05d5e64ad5ee8152f4afdd1cf96f2070"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (const std::vector&lt; T &gt; &amp;a)</td></tr>
+<tr class="separator:a05d5e64ad5ee8152f4afdd1cf96f2070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c2d9cd5575b24548e83bdb20e7a53c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a58c2d9cd5575b24548e83bdb20e7a53c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (<a class="el" href="classSequence_1_1AlignStream.html">AlignStream</a>&lt; T &gt; &amp;&amp;a)</td></tr>
+<tr class="separator:a58c2d9cd5575b24548e83bdb20e7a53c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e9815fba2e37d936c17341024edb8d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65e9815fba2e37d936c17341024edb8d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (<a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a>&lt; T &gt; &amp;&amp;a)</td></tr>
+<tr class="separator:a65e9815fba2e37d936c17341024edb8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa608bd8abab1777d1dc4d6146b8d338a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa608bd8abab1777d1dc4d6146b8d338a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ClustalW</b> (std::vector&lt; T &gt; &amp;&amp;a)</td></tr>
+<tr class="separator:aa608bd8abab1777d1dc4d6146b8d338a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8db95fc7a4027221b4e035e1d0e98c57"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1ClustalW.html#a8db95fc7a4027221b4e035e1d0e98c57">read</a> (std::istream &amp;s)</td></tr>
+<tr class="separator:a8db95fc7a4027221b4e035e1d0e98c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f0caaa400a1d22cf8df5f04b492d048"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1ClustalW.html#a4f0caaa400a1d22cf8df5f04b492d048">print</a> (std::ostream &amp;s) const </td></tr>
+<tr class="separator:a4f0caaa400a1d22cf8df5f04b492d048"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adde61086bae6670ee579dd474229d639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adde61086bae6670ee579dd474229d639"></a>
+<a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a>&lt; T &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1AlignStream.html">AlignStream</a>&lt; T &gt; &amp;rhs)</td></tr>
+<tr class="separator:adde61086bae6670ee579dd474229d639"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad226680da084db3314b34dd215bf0c9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#ad226680da084db3314b34dd215bf0c9d">empty</a> () const </td></tr>
 <tr class="separator:ad226680da084db3314b34dd215bf0c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad226680da084db3314b34dd215bf0c9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#ad226680da084db3314b34dd215bf0c9d">empty</a> () const </td></tr>
+<tr class="separator:ad226680da084db3314b34dd215bf0c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51a20ae5dba14cb93954658a8b472c47"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a51a20ae5dba14cb93954658a8b472c47">size</a> (void) const </td></tr>
+<tr class="separator:a51a20ae5dba14cb93954658a8b472c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51a20ae5dba14cb93954658a8b472c47"><td class="memItemLeft" align="right" valign="top">size_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a51a20ae5dba14cb93954658a8b472c47">size</a> (void) const </td></tr>
 <tr class="separator:a51a20ae5dba14cb93954658a8b472c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23ffb12214e3c0d5bf9d30bfee1849c9"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a23ffb12214e3c0d5bf9d30bfee1849c9">operator[]</a> (const size_type &amp;i)</td></tr>
 <tr class="separator:a23ffb12214e3c0d5bf9d30bfee1849c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae54a3f5062ac78c9b75a86e730bc5009"><td class="memItemLeft" align="right" valign="top">const_reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#ae54a3f5062ac78c9b75a86e730bc5009">operator[]</a> (const size_type &amp;i) const </td></tr>
 <tr class="separator:ae54a3f5062ac78c9b75a86e730bc5009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23ffb12214e3c0d5bf9d30bfee1849c9"><td class="memItemLeft" align="right" valign="top">reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a23ffb12214e3c0d5bf9d30bfee1849c9">operator[]</a> (const size_type &amp;i)</td></tr>
+<tr class="separator:a23ffb12214e3c0d5bf9d30bfee1849c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae54a3f5062ac78c9b75a86e730bc5009"><td class="memItemLeft" align="right" valign="top">const_reference&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#ae54a3f5062ac78c9b75a86e730bc5009">operator[]</a> (const size_type &amp;i) const </td></tr>
+<tr class="separator:ae54a3f5062ac78c9b75a86e730bc5009"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab1a77f944e22a82f634c9bf59ee74bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab1a77f944e22a82f634c9bf59ee74bd"></a>
+<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="separator:aab1a77f944e22a82f634c9bf59ee74bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36aa1f4e9117042ed80c90bd2743e62a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a36aa1f4e9117042ed80c90bd2743e62a"></a>
+<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
+<tr class="separator:a36aa1f4e9117042ed80c90bd2743e62a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab1a77f944e22a82f634c9bf59ee74bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab1a77f944e22a82f634c9bf59ee74bd"></a>
 <a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
 <tr class="separator:aab1a77f944e22a82f634c9bf59ee74bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,30 +209,64 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae0849d28890f8bd9d10dfdd01b463042"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0849d28890f8bd9d10dfdd01b463042"></a>
 <a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
 <tr class="separator:ae0849d28890f8bd9d10dfdd01b463042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f7c6b312c8058215aa2a90cb829f381"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f7c6b312c8058215aa2a90cb829f381"></a>
+<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr class="separator:a7f7c6b312c8058215aa2a90cb829f381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0849d28890f8bd9d10dfdd01b463042"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0849d28890f8bd9d10dfdd01b463042"></a>
+<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
+<tr class="separator:ae0849d28890f8bd9d10dfdd01b463042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853def5dd38dbfcda94a8276b17b8b3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a853def5dd38dbfcda94a8276b17b8b3d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAlignment</b> (void)</td></tr>
+<tr class="separator:a853def5dd38dbfcda94a8276b17b8b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a853def5dd38dbfcda94a8276b17b8b3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a853def5dd38dbfcda94a8276b17b8b3d"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsAlignment</b> (void)</td></tr>
 <tr class="separator:a853def5dd38dbfcda94a8276b17b8b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac53aa680cdb83ea8e07f28139110fb18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac53aa680cdb83ea8e07f28139110fb18"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>Gapped</b> (void)</td></tr>
 <tr class="separator:ac53aa680cdb83ea8e07f28139110fb18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac53aa680cdb83ea8e07f28139110fb18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac53aa680cdb83ea8e07f28139110fb18"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Gapped</b> (void)</td></tr>
+<tr class="separator:ac53aa680cdb83ea8e07f28139110fb18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa47883cb24f02c761c8fd5daeb9b4cf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa47883cb24f02c761c8fd5daeb9b4cf9"></a>
+unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>UnGappedLength</b> (void)</td></tr>
+<tr class="separator:aa47883cb24f02c761c8fd5daeb9b4cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa47883cb24f02c761c8fd5daeb9b4cf9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa47883cb24f02c761c8fd5daeb9b4cf9"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>UnGappedLength</b> (void)</td></tr>
 <tr class="separator:aa47883cb24f02c761c8fd5daeb9b4cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15d0690f107058e120599c08a359789d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15d0690f107058e120599c08a359789d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveGaps</b> (void)</td></tr>
 <tr class="separator:a15d0690f107058e120599c08a359789d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15d0690f107058e120599c08a359789d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15d0690f107058e120599c08a359789d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveGaps</b> (void)</td></tr>
+<tr class="separator:a15d0690f107058e120599c08a359789d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ac66d2d75ea2c6cf2e1d59dcce09bb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ac66d2d75ea2c6cf2e1d59dcce09bb5"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveTerminalGaps</b> (void)</td></tr>
+<tr class="separator:a1ac66d2d75ea2c6cf2e1d59dcce09bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ac66d2d75ea2c6cf2e1d59dcce09bb5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1ac66d2d75ea2c6cf2e1d59dcce09bb5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>RemoveTerminalGaps</b> (void)</td></tr>
 <tr class="separator:a1ac66d2d75ea2c6cf2e1d59dcce09bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c11f5305669e6ad5ef6b89e163cdda2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c11f5305669e6ad5ef6b89e163cdda2"></a>
 std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Trim</b> (std::vector&lt; int &gt;sites)</td></tr>
 <tr class="separator:a2c11f5305669e6ad5ef6b89e163cdda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c11f5305669e6ad5ef6b89e163cdda2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c11f5305669e6ad5ef6b89e163cdda2"></a>
+std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Trim</b> (std::vector&lt; int &gt;sites)</td></tr>
+<tr class="separator:a2c11f5305669e6ad5ef6b89e163cdda2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5792de92263c6be88fd9e33a7cbca9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5792de92263c6be88fd9e33a7cbca9c"></a>
+std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>TrimComplement</b> (std::vector&lt; int &gt;sites)</td></tr>
+<tr class="separator:ab5792de92263c6be88fd9e33a7cbca9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5792de92263c6be88fd9e33a7cbca9c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5792de92263c6be88fd9e33a7cbca9c"></a>
 std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>TrimComplement</b> (std::vector&lt; int &gt;sites)</td></tr>
 <tr class="separator:ab5792de92263c6be88fd9e33a7cbca9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fb540638431be57c23f4de0631ecb24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fb540638431be57c23f4de0631ecb24"></a>
 const std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Data</b> (void)</td></tr>
 <tr class="separator:a4fb540638431be57c23f4de0631ecb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb540638431be57c23f4de0631ecb24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4fb540638431be57c23f4de0631ecb24"></a>
+const std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Data</b> (void)</td></tr>
+<tr class="separator:a4fb540638431be57c23f4de0631ecb24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbbbd9ed68d7e5a0e698e5f9192f40b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#adbbbd9ed68d7e5a0e698e5f9192f40b1">assign</a> (<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a> beg, <a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a> end)</td></tr>
+<tr class="separator:adbbbd9ed68d7e5a0e698e5f9192f40b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469d68b804d8b2ac601cec2931f6981c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a469d68b804d8b2ac601cec2931f6981c">assign</a> (std::vector&lt; T &gt; &amp;&amp;_data)</td></tr>
+<tr class="separator:a469d68b804d8b2ac601cec2931f6981c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbbbd9ed68d7e5a0e698e5f9192f40b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#adbbbd9ed68d7e5a0e698e5f9192f40b1">assign</a> (<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a> beg, <a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a> end)</td></tr>
 <tr class="separator:adbbbd9ed68d7e5a0e698e5f9192f40b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a469d68b804d8b2ac601cec2931f6981c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1AlignStream.html#a469d68b804d8b2ac601cec2931f6981c">assign</a> (std::vector&lt; T &gt; &amp;&amp;_data)</td></tr>
@@ -190,8 +277,8 @@ const std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom">
 class Sequence::ClustalW&lt; T &gt;</h3>
 
 <p><a class="el" href="classSequence_1_1ClustalW.html" title="ClustalW streams. ">ClustalW</a> streams. </p>
-<p>This class defines an input routine for alignments in <a class="el" href="classSequence_1_1ClustalW.html" title="ClustalW streams. ">ClustalW</a> format. This class template can be instantiated with the following types: </p><div class="fragment"><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">Sequence::ClustalW&lt; Sequence::Fasta &gt;</a>; <span class="comment">//or anything derived from Sequence::Seq</span></div><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">Sequence::ClustalW&lt; std::pair&lt;std::string, std::string&gt;</a> &gt;;</div></div><!-- fragment --> <div class="fragment"><div class="line"><span class="comment">//example: a std::pair&lt;std::string,std::string&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;utility&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;<a class="code" href="Clustalw_8hpp.html">Sequence/Clustalw.hpp</a>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">//using namespace std;</span></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceSequence.html">Sequence</a>;</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main()</div><div class="line">{</div><div class="line"><span class="comment">//instantiate the template</span></div><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">ClustalW&lt; std::pair&lt;string,string&gt;</a> &gt; x;</div><div class="line"><span class="comment">//read in an object from stdin</span></div><div class="line">cin &gt;&gt; x;</div><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0 ; i &lt; x.size() ; ++i)</div><div class="line">{</div><div class="line"><span class="comment">//output each element in Fasta format</span></div><div class="line"><span class="comment">//but without using Sequence::Fasta</span></div><div class="line">cout &lt;&lt; &#39;&gt;<span class="stringliteral">&#39;</span></div><div class="line"><span class="stringliteral">&lt;&lt; x[i].first</span></div><div class="line"><span class="stringliteral">&lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;</span></div><div class="line"><span class="stringliteral">&lt;&lt; x[i].second</span></div><div class="line"><span class="stringliteral">&lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;;</span></div><div class="line"><span class="stringliteral">}</span></div><div class="line"><span class="stringliteral">}</span></div></div><!-- fragment --> 
-<p>Definition at line <a class="el" href="Clustalw_8hpp_source.html#l00077">77</a> of file <a class="el" href="Clustalw_8hpp_source.html">Clustalw.hpp</a>.</p>
+<p>This class defines an input routine for alignments in <a class="el" href="classSequence_1_1ClustalW.html" title="ClustalW streams. ">ClustalW</a> format. This class template can be instantiated with the following types: </p><div class="fragment"><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">Sequence::ClustalW&lt; Sequence::Fasta &gt;</a>; <span class="comment">//or anything derived from Sequence::Seq</span></div><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">Sequence::ClustalW&lt; std::pair&lt;std::string, std::string&gt;</a> &gt;;</div></div><!-- fragment --> <div class="fragment"><div class="line"><span class="comment">//example: a std::pair&lt;std::string,std::string&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;utility&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include &lt;Sequence/Clustalw.hpp&gt;</span></div><div class="line"></div><div class="line"><span class="comment">//using namespace std;</span></div><div class="line"><span class="keyword">using namespace </span><a class="code" href="namespaceSequence.html">Sequence</a>;</div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main()</div><div class="line">{</div><div class="line"><span class="comment">//instantiate the template</span></div><div class="line"><a class="code" href="classSequence_1_1ClustalW.html">ClustalW&lt; std::pair&lt;string,string&gt;</a> &gt; x;</div><div class="line"><span class="comment">//read in an object from stdin</span></div><div class="line">cin &gt;&gt; x;</div><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0 ; i &lt; x.size() ; ++i)</div><div class="line">{</div><div class="line"><span class="comment">//output each element in Fasta format</span></div><div class="line"><span class="comment">//but without using Sequence::Fasta</span></div><div class="line">cout &lt;&lt; &#39;&gt;<span class="stringliteral">&#39;</span></div><div class="line"><span class="stringliteral">&lt;&lt; x[i].first</span></div><div class="line"><span class="stringliteral">&lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;</span></div><div class="line"><span class="stringliteral">&lt;&lt; x[i].second</span></div><div class="line"><span class="stringliteral">&lt;&lt; &#39;</span>\n<span class="stringliteral">&#39;;</span></div><div class="line"><span class="stringliteral">}</span></div><div class="line"><span class="stringliteral">}</span></div></div><!-- fragment --> 
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Clustalw_8hpp_source.html#l00077">77</a> of file <a class="el" href="release_2include_2Sequence_2Clustalw_8hpp_source.html">release/include/Sequence/Clustalw.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a1a6c8259cc984ffad79fe250363bf498"></a>
 <div class="memitem">
@@ -214,7 +301,32 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>value type is std::vector&lt;T&gt;::const_iterator </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00124">124</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00124">124</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a6c8259cc984ffad79fe250363bf498"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;T&gt;::<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a> <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value type is std::vector&lt;T&gt;::const_iterator </p>
+
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00124">124</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -239,7 +351,32 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>value type is std::vector&lt;T&gt;::iterator </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00120">120</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00120">120</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa8855777b5338d105a3e0467525c5aac"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;T&gt;::<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a> <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::<a class="el" href="classSequence_1_1AlignStream.html#aa8855777b5338d105a3e0467525c5aac">iterator</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>value type is std::vector&lt;T&gt;::iterator </p>
+
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00120">120</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -279,7 +416,49 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Assign data to object. Since the value type for these iterators evaluates to std::vector&lt;T&gt;::const_iterator, any vector&lt;T&gt; can be the data source </p><dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>is thrown if all data elements in the range (beg,end] are not of the same length </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>is thrown if all data elements in the range (beg,end] are not of the same length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="adbbbd9ed68d7e5a0e698e5f9192f40b1"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::assign </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classSequence_1_1AlignStream.html#a1a6c8259cc984ffad79fe250363bf498">const_iterator</a>&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assign data to object. Since the value type for these iterators evaluates to std::vector&lt;T&gt;::const_iterator, any vector&lt;T&gt; can be the data source </p><dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>is thrown if all data elements in the range (beg,end] are not of the same length </td></tr>
   </table>
   </dd>
 </dl>
@@ -312,7 +491,40 @@ template&lt;typename T&gt; </div>
 <p>Assign via a move operation</p>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>is thrown if all data elements are not of the same length </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>is thrown if all data elements are not of the same length </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a469d68b804d8b2ac601cec2931f6981c"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::assign </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>_data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Assign via a move operation</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname">std::runtime_error</td><td>is thrown if all data elements are not of the same length </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,7 +555,35 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns data.empty() </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00085">85</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00085">85</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad226680da084db3314b34dd215bf0c9d"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::empty </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns data.empty() </p>
+
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00085">85</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -372,7 +612,36 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns the i-th object of type T in the vector data </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00101">101</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00101">101</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a23ffb12214e3c0d5bf9d30bfee1849c9"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">reference <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">const size_type &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the i-th object of type T in the vector data </p>
+
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00101">101</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
 
 </div>
 </div>
@@ -401,7 +670,65 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns the i-th object of type T in the vector data </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00109">109</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00109">109</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae54a3f5062ac78c9b75a86e730bc5009"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const_reference <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::operator[] </td>
+          <td>(</td>
+          <td class="paramtype">const size_type &amp;&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns the i-th object of type T in the vector data </p>
+
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00109">109</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f0caaa400a1d22cf8df5f04b492d048"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; <a class="el" href="classSequence_1_1ClustalW.html">Sequence::ClustalW</a>&lt; T &gt;::print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>To define a non-abstract <a class="el" href="classSequence_1_1AlignStream.html" title="Virtual interface to alignment streams. ">AlignStream</a>, print must be defined </p>
+
+<p>Implements <a class="el" href="classSequence_1_1AlignStream.html#af9e369a5a6100e20961bd4b6f75768bd">Sequence::AlignStream&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -463,6 +790,35 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a8db95fc7a4027221b4e035e1d0e98c57"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::istream&amp; <a class="el" href="classSequence_1_1ClustalW.html">Sequence::ClustalW</a>&lt; T &gt;::read </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>To define a non-abstract <a class="el" href="classSequence_1_1AlignStream.html" title="Virtual interface to alignment streams. ">AlignStream</a>, read must be defined </p>
+
+<p>Implements <a class="el" href="classSequence_1_1AlignStream.html#af543b2c8983fa1251bed8a09c41d27fd">Sequence::AlignStream&lt; T &gt;</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a51a20ae5dba14cb93954658a8b472c47"></a>
 <div class="memitem">
 <div class="memproto">
@@ -488,12 +844,41 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 <p>Returns data.size() </p>
 
-<p>Definition at line <a class="el" href="AlignStream_8hpp_source.html#l00093">93</a> of file <a class="el" href="AlignStream_8hpp_source.html">AlignStream.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html#l00093">93</a> of file <a class="el" href="release_2include_2Sequence_2AlignStream_8hpp_source.html">release/include/Sequence/AlignStream.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a51a20ae5dba14cb93954658a8b472c47"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_type <a class="el" href="classSequence_1_1AlignStream.html">Sequence::AlignStream</a>&lt; T &gt;::size </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns data.size() </p>
+
+<p>Definition at line <a class="el" href="Sequence_2AlignStream_8hpp_source.html#l00093">93</a> of file <a class="el" href="Sequence_2AlignStream_8hpp_source.html">Sequence/AlignStream.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li><a class="el" href="Clustalw_8hpp_source.html">Clustalw.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Clustalw_8hpp_source.html">release/include/Sequence/Clustalw.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -501,7 +886,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1ClustalW.html">ClustalW</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

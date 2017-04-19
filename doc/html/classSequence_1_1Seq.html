@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1Seq.html','');});
 <p>Abstract interface to sequence objects.  
  <a href="classSequence_1_1Seq.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Seq_8hpp_source.html">Sequence/Seq.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Seq_8hpp_source.html">Sequence/Seq.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Sequence::Seq:</div>
 <div class="dyncontent">
@@ -90,12 +90,27 @@ Inheritance diagram for Sequence::Seq:</div>
   <img src="classSequence_1_1Seq.png" usemap="#Sequence::Seq_map" alt=""/>
   <map id="Sequence::Seq_map" name="Sequence::Seq_map">
 <area href="classSequence_1_1Fasta.html" title="FASTA sequence stream. " alt="Sequence::Fasta" shape="rect" coords="0,56,105,80"/>
-<area href="classSequence_1_1fastq.html" alt="Sequence::fastq" shape="rect" coords="115,56,220,80"/>
+<area href="classSequence_1_1Fasta.html" title="FASTA sequence stream. " alt="Sequence::Fasta" shape="rect" coords="115,56,220,80"/>
+<area href="classSequence_1_1fastq.html" alt="Sequence::fastq" shape="rect" coords="230,56,335,80"/>
+<area href="classSequence_1_1fastq.html" alt="Sequence::fastq" shape="rect" coords="345,56,450,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:adb43091e3e7065307d6605a51fbfd20c"><td class="memItemLeft" align="right" valign="top">typedef std::string::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#adb43091e3e7065307d6605a51fbfd20c">iterator</a></td></tr>
+<tr class="separator:adb43091e3e7065307d6605a51fbfd20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceac25903eddf617a24fcd35321f01a8"><td class="memItemLeft" align="right" valign="top">typedef std::string::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a></td></tr>
+<tr class="separator:aceac25903eddf617a24fcd35321f01a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a815ac2802bbb34cd1462955848bd0002"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a815ac2802bbb34cd1462955848bd0002"></a>
+typedef std::string::reference&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b></td></tr>
+<tr class="separator:a815ac2802bbb34cd1462955848bd0002"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42ab05292585ae4f71a12e3bef2e2d14"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42ab05292585ae4f71a12e3bef2e2d14"></a>
+typedef std::string::const_reference&#160;</td><td class="memItemRight" valign="bottom"><b>const_reference</b></td></tr>
+<tr class="separator:a42ab05292585ae4f71a12e3bef2e2d14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ebbac8c2aa65ae452738448b2b42422"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ebbac8c2aa65ae452738448b2b42422"></a>
+typedef std::string::size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size_type</b></td></tr>
+<tr class="separator:a5ebbac8c2aa65ae452738448b2b42422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb43091e3e7065307d6605a51fbfd20c"><td class="memItemLeft" align="right" valign="top">typedef std::string::iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#adb43091e3e7065307d6605a51fbfd20c">iterator</a></td></tr>
 <tr class="separator:adb43091e3e7065307d6605a51fbfd20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aceac25903eddf617a24fcd35321f01a8"><td class="memItemLeft" align="right" valign="top">typedef std::string::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a></td></tr>
@@ -185,12 +200,102 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6e8fd025d52d0183b70ecc327a9f2eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14cfe4a0853b7bcb42b5f9e395804e72"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a14cfe4a0853b7bcb42b5f9e395804e72">print</a> (std::ostream &amp;s) const =0</td></tr>
 <tr class="separator:a14cfe4a0853b7bcb42b5f9e395804e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b1ca17074d3b92a9b92a1415c55d5ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3b1ca17074d3b92a9b92a1415c55d5ba"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Seq</b> (std::string &amp;&amp;name, std::string &amp;&amp;seq)</td></tr>
+<tr class="separator:a3b1ca17074d3b92a9b92a1415c55d5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4952883567a9d8cb04224203f119d78d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4952883567a9d8cb04224203f119d78d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Seq</b> (const std::string &amp;name, const std::string &amp;seq)</td></tr>
+<tr class="separator:a4952883567a9d8cb04224203f119d78d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dc7bdb9122b151abd374bc0ce5f6dea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dc7bdb9122b151abd374bc0ce5f6dea"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Seq</b> (const char *name, const char *seq)</td></tr>
+<tr class="separator:a7dc7bdb9122b151abd374bc0ce5f6dea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dc380ef956b05378b3a9142eabe6929"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9dc380ef956b05378b3a9142eabe6929"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Seq</b> (const <a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;seq)=default</td></tr>
+<tr class="separator:a9dc380ef956b05378b3a9142eabe6929"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15eacb158eaeb74a67e6285b4d8d1a5c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15eacb158eaeb74a67e6285b4d8d1a5c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Seq</b> (<a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp;seq)=default</td></tr>
+<tr class="separator:a15eacb158eaeb74a67e6285b4d8d1a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a784d4aa70b2b4ca2321406b7771297e6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a784d4aa70b2b4ca2321406b7771297e6">GetName</a> (void) const </td></tr>
+<tr class="separator:a784d4aa70b2b4ca2321406b7771297e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a442e91967dec7522485e52fa2ee8eeeb"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a442e91967dec7522485e52fa2ee8eeeb">GetSeq</a> (void) const </td></tr>
+<tr class="separator:a442e91967dec7522485e52fa2ee8eeeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f3045484fa0da5c1ddd2282f3897b58"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a1f3045484fa0da5c1ddd2282f3897b58">substr</a> (std::string::size_type beg, std::string::size_type len) const </td></tr>
+<tr class="separator:a1f3045484fa0da5c1ddd2282f3897b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4e419845ee91cd80ae5e3f91c770215"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#af4e419845ee91cd80ae5e3f91c770215">substr</a> (std::string::size_type beg) const </td></tr>
+<tr class="separator:af4e419845ee91cd80ae5e3f91c770215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b7423ec21a45d56a313db53640f00ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b7423ec21a45d56a313db53640f00ea"></a>
+<a class="el" href="classSequence_1_1Seq.html#adb43091e3e7065307d6605a51fbfd20c">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="separator:a2b7423ec21a45d56a313db53640f00ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473f6595a4108d69f71ef49fa1c1223a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a473f6595a4108d69f71ef49fa1c1223a"></a>
+<a class="el" href="classSequence_1_1Seq.html#adb43091e3e7065307d6605a51fbfd20c">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr class="separator:a473f6595a4108d69f71ef49fa1c1223a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c858fe742c9c6b4a895efa662ae2f1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a80c858fe742c9c6b4a895efa662ae2f1"></a>
+<a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
+<tr class="separator:a80c858fe742c9c6b4a895efa662ae2f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ec592128f844fb2047bfd47d89c3ef6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9ec592128f844fb2047bfd47d89c3ef6"></a>
+<a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
+<tr class="separator:a9ec592128f844fb2047bfd47d89c3ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ac56ed223cae5f3f55dc10954eb1ee8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2ac56ed223cae5f3f55dc10954eb1ee8"></a>
+<a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cbegin</b> () const </td></tr>
+<tr class="separator:a2ac56ed223cae5f3f55dc10954eb1ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a559d3731322b9c49723e3e96834e8f53"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a559d3731322b9c49723e3e96834e8f53"></a>
+<a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>cend</b> () const </td></tr>
+<tr class="separator:a559d3731322b9c49723e3e96834e8f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac83a47f3bb7de9a0be61de360fccf623"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac83a47f3bb7de9a0be61de360fccf623"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Revcom</b> (void)</td></tr>
+<tr class="separator:ac83a47f3bb7de9a0be61de360fccf623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a682ffb0f223ab4ba842b7ea4d82163db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a682ffb0f223ab4ba842b7ea4d82163db"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Subseq</b> (const unsigned &amp;, const unsigned &amp;)</td></tr>
+<tr class="separator:a682ffb0f223ab4ba842b7ea4d82163db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6acf0cc98e65acf2851036906b3e32ac"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6acf0cc98e65acf2851036906b3e32ac"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Complement</b> (void)</td></tr>
+<tr class="separator:a6acf0cc98e65acf2851036906b3e32ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4659025418a2cbfa759afdbc315202"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc4659025418a2cbfa759afdbc315202"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>length</b> (void) const </td></tr>
+<tr class="separator:abc4659025418a2cbfa759afdbc315202"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42e21b2020f273a5433fc9de5eb1cd9f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42e21b2020f273a5433fc9de5eb1cd9f"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> (void) const </td></tr>
+<tr class="separator:a42e21b2020f273a5433fc9de5eb1cd9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d20f5ccae6e2dd4e8b04f809f8009d5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1d20f5ccae6e2dd4e8b04f809f8009d5"></a>
+size_type&#160;</td><td class="memItemRight" valign="bottom"><b>UngappedLength</b> (void) const </td></tr>
+<tr class="separator:a1d20f5ccae6e2dd4e8b04f809f8009d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57bef972a13cff830d0b1236f61407d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57bef972a13cff830d0b1236f61407d8"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsGapped</b> (void) const </td></tr>
+<tr class="separator:a57bef972a13cff830d0b1236f61407d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a571d0a66ee8d12c381ede0899a84d549"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a571d0a66ee8d12c381ede0899a84d549"></a>
+reference&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_type &amp;i)</td></tr>
+<tr class="separator:a571d0a66ee8d12c381ede0899a84d549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e77598ae6fe59facc0224c438dbf2eb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4e77598ae6fe59facc0224c438dbf2eb"></a>
+const_reference&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (const size_type &amp;i) const </td></tr>
+<tr class="separator:a4e77598ae6fe59facc0224c438dbf2eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf66d0cd2a190ea3371dec50f5ca964f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acf66d0cd2a190ea3371dec50f5ca964f"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;rhs) const </td></tr>
+<tr class="separator:acf66d0cd2a190ea3371dec50f5ca964f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae8ebbf176327a0f7effde85d57654e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ae8ebbf176327a0f7effde85d57654e"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;rhs) const </td></tr>
+<tr class="separator:a0ae8ebbf176327a0f7effde85d57654e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c74d795784e5cd5623a611b8a163797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c74d795784e5cd5623a611b8a163797"></a>
+<a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;rhs)=default</td></tr>
+<tr class="separator:a0c74d795784e5cd5623a611b8a163797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af54e747a2bbdcfe07adc0de765438dc0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af54e747a2bbdcfe07adc0de765438dc0"></a>
+<a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classSequence_1_1Seq.html">Seq</a> &amp;&amp;rhs)=default</td></tr>
+<tr class="separator:af54e747a2bbdcfe07adc0de765438dc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73bb251f310c65dc80eb2e5ff8d6b620"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a73bb251f310c65dc80eb2e5ff8d6b620"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>operator std::string</b> () const </td></tr>
+<tr class="separator:a73bb251f310c65dc80eb2e5ff8d6b620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf811a10a9b8ed2601232d44b00e69bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaf811a10a9b8ed2601232d44b00e69bf"></a>
+const char *&#160;</td><td class="memItemRight" valign="bottom"><b>c_str</b> (void) const </td></tr>
+<tr class="separator:aaf811a10a9b8ed2601232d44b00e69bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e8fd025d52d0183b70ecc327a9f2eb4"><td class="memItemLeft" align="right" valign="top">virtual std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a6e8fd025d52d0183b70ecc327a9f2eb4">read</a> (std::istream &amp;s)=0</td></tr>
+<tr class="separator:a6e8fd025d52d0183b70ecc327a9f2eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14cfe4a0853b7bcb42b5f9e395804e72"><td class="memItemLeft" align="right" valign="top">virtual std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a14cfe4a0853b7bcb42b5f9e395804e72">print</a> (std::ostream &amp;s) const =0</td></tr>
+<tr class="separator:a14cfe4a0853b7bcb42b5f9e395804e72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract interface to sequence objects. </p>
 <p>Abstract interface to sequence objects. A sequence consists of a name and a sequence, both of which are stored as C++ std::strings. <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> inherits publicly from std::pair&lt;std::string,std::string&gt; to store the sequence name and data. The public member "first" is the name, and "second" is the data. These can be used to directly access the name and/or data. Most of the rest of the member functions of this class are to make the behavior of <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> more "std::string"-like. </p>
 
-<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00049">49</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html#l00048">48</a> of file <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html">release/include/Sequence/Seq.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="aceac25903eddf617a24fcd35321f01a8"></a>
 <div class="memitem">
@@ -203,7 +308,22 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Const iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00080">80</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html#l00079">79</a> of file <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html">release/include/Sequence/Seq.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aceac25903eddf617a24fcd35321f01a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::string::const_iterator <a class="el" href="classSequence_1_1Seq.html#aceac25903eddf617a24fcd35321f01a8">Sequence::Seq::const_iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Const iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
+
+<p>Definition at line <a class="el" href="Sequence_2Seq_8hpp_source.html#l00079">79</a> of file <a class="el" href="Sequence_2Seq_8hpp_source.html">Sequence/Seq.hpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +338,22 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p>Definition at line <a class="el" href="Seq_8hpp_source.html#l00074">74</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html#l00073">73</a> of file <a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html">release/include/Sequence/Seq.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adb43091e3e7065307d6605a51fbfd20c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::string::iterator <a class="el" href="classSequence_1_1Seq.html#adb43091e3e7065307d6605a51fbfd20c">Sequence::Seq::iterator</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
+
+<p>Definition at line <a class="el" href="Sequence_2Seq_8hpp_source.html#l00073">73</a> of file <a class="el" href="Sequence_2Seq_8hpp_source.html">Sequence/Seq.hpp</a>.</p>
 
 </div>
 </div>
@@ -411,6 +546,23 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a784d4aa70b2b4ca2321406b7771297e6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::Seq::GetName </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000016">Deprecated:</a></b></dt><dd>Access first directly </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a442e91967dec7522485e52fa2ee8eeeb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -428,6 +580,23 @@ Public Member Functions</h2></td></tr>
 <p>Return the sequence itself </p>
 
 <p>Definition at line <a class="el" href="Seq_8cc_source.html#l00061">61</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a442e91967dec7522485e52fa2ee8eeeb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::Seq::GetSeq </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000017">Deprecated:</a></b></dt><dd>Access second directly </dd></dl>
 
 </div>
 </div>
@@ -464,7 +633,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Return the total length of the sequence in bytes </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="codons_8cc-example.html#a2">codons.cc</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="codons_8cc-example.html#a1">codons.cc</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="Seq_8cc_source.html#l00085">85</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
@@ -589,7 +758,34 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>read an object of type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> from an istream </p>
 
-<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta</a>, and <a class="el" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">Sequence::fastq</a>.</p>
+<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1Fasta.html#a654d91b1111806cfceb97e561588dfa7">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">Sequence::fastq</a>, and <a class="el" href="classSequence_1_1fastq.html#a2fea2eefca72295122ae61b9f64739a0">Sequence::fastq</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a14cfe4a0853b7bcb42b5f9e395804e72"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::ostream&amp; Sequence::Seq::print </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>read an object of type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> from an istream </p>
+
+<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a5e71e5adf3dad82a87e5f00ce074ab4a">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1Fasta.html#a654d91b1111806cfceb97e561588dfa7">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1fastq.html#a4ae8a07988f6d98765f40b1f3465983d">Sequence::fastq</a>, and <a class="el" href="classSequence_1_1fastq.html#a2fea2eefca72295122ae61b9f64739a0">Sequence::fastq</a>.</p>
 
 </div>
 </div>
@@ -616,7 +812,34 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>read an object of type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> from an istream </p>
 
-<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta</a>, and <a class="el" href="classSequence_1_1fastq.html#ae95bca7411b9d1b63b7abd1570be791f">Sequence::fastq</a>.</p>
+<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1Fasta.html#aaae2ace64d374f10c4330ce80b8e3f87">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1fastq.html#ae95bca7411b9d1b63b7abd1570be791f">Sequence::fastq</a>, and <a class="el" href="classSequence_1_1fastq.html#a580ab43fc96b62f88b8e4b66223f4ac2">Sequence::fastq</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6e8fd025d52d0183b70ecc327a9f2eb4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::istream&amp; Sequence::Seq::read </td>
+          <td>(</td>
+          <td class="paramtype">std::istream &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>read an object of type <a class="el" href="classSequence_1_1Seq.html" title="Abstract interface to sequence objects. ">Sequence::Seq</a> from an istream </p>
+
+<p>Implemented in <a class="el" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1Fasta.html#aaae2ace64d374f10c4330ce80b8e3f87">Sequence::Fasta</a>, <a class="el" href="classSequence_1_1fastq.html#ae95bca7411b9d1b63b7abd1570be791f">Sequence::fastq</a>, and <a class="el" href="classSequence_1_1fastq.html#a580ab43fc96b62f88b8e4b66223f4ac2">Sequence::fastq</a>.</p>
 
 </div>
 </div>
@@ -725,6 +948,33 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a1f3045484fa0da5c1ddd2282f3897b58"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::Seq::substr </td>
+          <td>(</td>
+          <td class="paramtype">std::string::size_type&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string::size_type&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000018">Deprecated:</a></b></dt><dd>access .second.substr directly </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="af4e419845ee91cd80ae5e3f91c770215"></a>
 <div class="memitem">
 <div class="memproto">
@@ -742,6 +992,23 @@ Public Member Functions</h2></td></tr>
 <p>Mimics the standardstd::string member function of the same name. </p>
 
 <p>Definition at line <a class="el" href="Seq_8cc_source.html#l00077">77</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af4e419845ee91cd80ae5e3f91c770215"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Sequence::Seq::substr </td>
+          <td>(</td>
+          <td class="paramtype">std::string::size_type&#160;</td>
+          <td class="paramname"><em>beg</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000019">Deprecated:</a></b></dt><dd>access .second.substr directly </dd></dl>
 
 </div>
 </div>
@@ -765,7 +1032,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="Seq_8hpp_source.html">Seq.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Seq_8hpp_source.html">release/include/Sequence/Seq.hpp</a></li>
 <li><a class="el" href="Seq_8cc_source.html">Seq.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -774,7 +1041,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Seq.html">Seq</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

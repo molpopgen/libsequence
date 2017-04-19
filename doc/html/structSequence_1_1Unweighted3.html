@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -82,7 +82,7 @@ $(document).ready(function(){initNavTree('structSequence_1_1Unweighted3.html',''
 <p>weights all pathways equally  
  <a href="structSequence_1_1Unweighted3.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Unweighted_8hpp_source.html">Sequence/Unweighted.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Unweighted_8hpp_source.html">Sequence/Unweighted.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Sequence::Unweighted3:</div>
 <div class="dyncontent">
@@ -90,6 +90,7 @@ Inheritance diagram for Sequence::Unweighted3:</div>
   <img src="structSequence_1_1Unweighted3.png" usemap="#Sequence::Unweighted3_map" alt=""/>
   <map id="Sequence::Unweighted3_map" name="Sequence::Unweighted3_map">
 <area href="structSequence_1_1WeightingScheme3.html" title="abstract interface to weighting schemes when codons differ at 3 positions " alt="Sequence::WeightingScheme3" shape="rect" coords="0,0,181,24"/>
+<area href="structSequence_1_1WeightingScheme3.html" title="abstract interface to weighting schemes when codons differ at 3 positions " alt="Sequence::WeightingScheme3" shape="rect" coords="191,0,372,24"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -98,17 +99,23 @@ Public Types</h2></td></tr>
 <tr class="memitem:a60d90a972531abd256dc26fbf1d0c25f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60d90a972531abd256dc26fbf1d0c25f"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>weights3_t</b> = std::array&lt; double, 6 &gt;</td></tr>
 <tr class="separator:a60d90a972531abd256dc26fbf1d0c25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60d90a972531abd256dc26fbf1d0c25f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60d90a972531abd256dc26fbf1d0c25f"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>weights3_t</b> = std::array&lt; double, 6 &gt;</td></tr>
+<tr class="separator:a60d90a972531abd256dc26fbf1d0c25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2524a6da7c28a39b3d2f8fc944c77c2c"><td class="memItemLeft" align="right" valign="top">weights3_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1Unweighted3.html#a2524a6da7c28a39b3d2f8fc944c77c2c">operator()</a> (const std::string &amp;codon1, const std::string &amp;codon2, <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) const </td></tr>
 <tr class="separator:a2524a6da7c28a39b3d2f8fc944c77c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49ea885180d59a3756e9db3dcc39ddf7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a49ea885180d59a3756e9db3dcc39ddf7"></a>
+weights3_t&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const std::string &amp;codon1, const std::string &amp;codon2, <a class="el" href="namespaceSequence.html#a5e0228ffad6c8cf2441604124c8b9961">Sequence::GeneticCodes</a> genetic_code) const </td></tr>
+<tr class="separator:a49ea885180d59a3756e9db3dcc39ddf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>weights all pathways equally </p>
 <dl class="section note"><dt>Note</dt><dd>This is generally not what you want to use (it biases the result to a higher Ka/Ks ratio) </dd></dl>
 
-<p>Definition at line <a class="el" href="Unweighted_8hpp_source.html#l00052">52</a> of file <a class="el" href="Unweighted_8hpp_source.html">Unweighted.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Unweighted_8hpp_source.html#l00052">52</a> of file <a class="el" href="release_2include_2Sequence_2Unweighted_8hpp_source.html">release/include/Sequence/Unweighted.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a2524a6da7c28a39b3d2f8fc944c77c2c"></a>
 <div class="memitem">
@@ -162,7 +169,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="Unweighted_8hpp_source.html">Unweighted.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Unweighted_8hpp_source.html">release/include/Sequence/Unweighted.hpp</a></li>
 <li><a class="el" href="Unweighted_8cc_source.html">Unweighted.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -171,7 +178,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1Unweighted3.html">Unweighted3</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

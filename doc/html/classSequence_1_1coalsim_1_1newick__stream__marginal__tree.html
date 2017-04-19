@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1coalsim_1_1newick__st
 <p>Class that provides a typecast-on-output of a marginal tree to a newick tree Example use:  
  <a href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -103,11 +103,32 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aed606d998d4a6ab6ae71ec49c652d635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83f189b09ba9a328ed979a45938ad939"><td class="memItemLeft" align="right" valign="top">std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html#a83f189b09ba9a328ed979a45938ad939">read</a> (std::istream &amp;i)</td></tr>
 <tr class="separator:a83f189b09ba9a328ed979a45938ad939"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98c57b6b85fdc4233f6a277e61861a44"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98c57b6b85fdc4233f6a277e61861a44"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>newick_stream_marginal_tree</b> (const <a class="el" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> &amp;m)</td></tr>
+<tr class="separator:a98c57b6b85fdc4233f6a277e61861a44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3937c0ba65d7a2a6a563a4c9e1ca7ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3937c0ba65d7a2a6a563a4c9e1ca7ba"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>newick_stream_marginal_tree</b> (const <a class="el" href="structSequence_1_1coalsim_1_1marginal.html">marginal</a> *m)</td></tr>
+<tr class="separator:af3937c0ba65d7a2a6a563a4c9e1ca7ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad88e19162ef464708b67474c726b7ca8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad88e19162ef464708b67474c726b7ca8"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>newick_stream_marginal_tree</b> (arg::const_iterator m)</td></tr>
+<tr class="separator:ad88e19162ef464708b67474c726b7ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1dbf77f10632f58e0e1cf4085263ff70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dbf77f10632f58e0e1cf4085263ff70"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>newick_stream_marginal_tree</b> (arg::iterator m)</td></tr>
+<tr class="separator:a1dbf77f10632f58e0e1cf4085263ff70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82efd30ad0268663f801761047e295c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac82efd30ad0268663f801761047e295c"></a>
+std::vector&lt; <a class="el" href="structSequence_1_1coalsim_1_1node.html">node</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_tree</b> () const </td></tr>
+<tr class="separator:ac82efd30ad0268663f801761047e295c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea0698fa5b74726367cdfba596254766"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aea0698fa5b74726367cdfba596254766"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>print</b> (std::ostream &amp;o) const </td></tr>
+<tr class="separator:aea0698fa5b74726367cdfba596254766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf7d8dd56bf363750ff13f405185d1ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf7d8dd56bf363750ff13f405185d1ef"></a>
+std::istream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>read</b> (std::istream &amp;i)</td></tr>
+<tr class="separator:abf7d8dd56bf363750ff13f405185d1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that provides a typecast-on-output of a marginal tree to a newick tree Example use: </p>
 <div class="fragment"><div class="line"><span class="comment">//assume we&#39;ve done something useful to get</span></div><div class="line"><span class="comment">//data into an arg called sample_history</span></div><div class="line"><span class="comment">//tlength is the total length of the region being simulated</span></div><div class="line"><span class="keywordtype">int</span> seg = 0,nsegs=sample_history.size();</div><div class="line">arg::iterator i = sample_history.begin(),j=i;</div><div class="line">++j;</div><div class="line"><span class="keywordflow">for</span>( seg=0 ; seg &lt; nsegs ; ++seg,++i,++j)</div><div class="line">{</div><div class="line"><span class="keywordtype">int</span> length = ( (seg&lt;nsegs-1) ? (j-&gt;beg-i-&gt;beg) : (tlength-i-&gt;beg) );</div><div class="line">cout &lt;&lt; <span class="charliteral">&#39;[&#39;</span> </div><div class="line">&lt;&lt; length</div><div class="line">&lt;&lt; <span class="charliteral">&#39;]&#39;</span></div><div class="line">&lt;&lt; newick_stream_marginal_tree(i)</div><div class="line">&lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div><div class="line">}</div></div><!-- fragment --> 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00221">221</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00221">221</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a24d4399ed32d225106e8b63496b22879"></a>
 <div class="memitem">
@@ -166,7 +187,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a></li>
 <li><a class="el" href="CoalescentSimTypes_8cc_source.html">CoalescentSimTypes.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -175,7 +196,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="namespaceSequence_1_1coalsim.html">coalsim</a></li><li class="navelem"><a class="el" href="classSequence_1_1coalsim_1_1newick__stream__marginal__tree.html">newick_stream_marginal_tree</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

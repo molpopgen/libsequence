@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,10 +81,13 @@ $(document).ready(function(){initNavTree('structSequence_1_1lowerCrit.html','');
 <p>Find the upper critical value of a sorted list.  
  <a href="structSequence_1_1lowerCrit.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Crit_8hpp_source.html">Crit.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html">Crit.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a3271c53294e6cf210689f313bf130376"><td class="memTemplParams" colspan="2">template&lt;typename FwdIter &gt; </td></tr>
+<tr class="memitem:a3271c53294e6cf210689f313bf130376"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; FwdIter, double &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structSequence_1_1lowerCrit.html#a3271c53294e6cf210689f313bf130376">operator()</a> (FwdIter beg, FwdIter end, double alpha=0.05)</td></tr>
+<tr class="separator:a3271c53294e6cf210689f313bf130376"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3271c53294e6cf210689f313bf130376"><td class="memTemplParams" colspan="2">template&lt;typename FwdIter &gt; </td></tr>
 <tr class="memitem:a3271c53294e6cf210689f313bf130376"><td class="memTemplItemLeft" align="right" valign="top">std::pair&lt; FwdIter, double &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structSequence_1_1lowerCrit.html#a3271c53294e6cf210689f313bf130376">operator()</a> (FwdIter beg, FwdIter end, double alpha=0.05)</td></tr>
 <tr class="separator:a3271c53294e6cf210689f313bf130376"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,7 +96,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>Find the upper critical value of a sorted list. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="critical_values_8cc-example.html#_a1">critical_values.cc</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="Crit_8hpp_source.html#l00109">109</a> of file <a class="el" href="Crit_8hpp_source.html">Crit.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html#l00109">109</a> of file <a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html">release/include/Sequence/Crit.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a3271c53294e6cf210689f313bf130376"></a>
 <div class="memitem">
@@ -136,12 +139,57 @@ template&lt;typename FwdIter &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>A std::pair. The first member of the pair is an iterator pointing to the critical value of the list at probability <em>alpha</em>. The second member of the pair is a double representin the actual probability of the value stored at the first member. </dd></dl>
 
-<p>Definition at line <a class="el" href="Crit_8hpp_source.html#l00118">118</a> of file <a class="el" href="Crit_8hpp_source.html">Crit.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html#l00118">118</a> of file <a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html">release/include/Sequence/Crit.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3271c53294e6cf210689f313bf130376"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename FwdIter &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::pair&lt; FwdIter, double &gt; Sequence::lowerCrit::operator() </td>
+          <td>(</td>
+          <td class="paramtype">FwdIter&#160;</td>
+          <td class="paramname"><em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">FwdIter&#160;</td>
+          <td class="paramname"><em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>alpha</em> = <code>0.05</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A std::pair. The first member of the pair is an iterator pointing to the critical value of the list at probability <em>alpha</em>. The second member of the pair is a double representin the actual probability of the value stored at the first member. </dd></dl>
+
+<p>Definition at line <a class="el" href="Sequence_2Crit_8hpp_source.html#l00118">118</a> of file <a class="el" href="Sequence_2Crit_8hpp_source.html">Sequence/Crit.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="Crit_8hpp_source.html">Crit.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Crit_8hpp_source.html">release/include/Sequence/Crit.hpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -149,7 +197,7 @@ template&lt;typename FwdIter &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1lowerCrit.html">lowerCrit</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

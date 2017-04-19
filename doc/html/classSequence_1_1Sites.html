@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,10 +81,27 @@ $(document).ready(function(){initNavTree('classSequence_1_1Sites.html','');});
 <p>Calculate length statistics for divergence calculations.  
  <a href="classSequence_1_1Sites.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Sites_8hpp_source.html">Sequence/Sites.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Sites_8hpp_source.html">Sequence/Sites.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5da87c3a1e7de36dd4b704325181ab3a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Sites</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq2, const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, int maxdiffs=3)</td></tr>
+<tr class="separator:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9bca7b38bb2c825a96a8abb08309ea5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae9bca7b38bb2c825a96a8abb08309ea5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Sites</b> (<a class="el" href="classSequence_1_1Sites.html">Sites</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:ae9bca7b38bb2c825a96a8abb08309ea5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99acfc20fc217d489826523ce56b72ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a99acfc20fc217d489826523ce56b72ae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq2, const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, int maxdiffs=3)</td></tr>
+<tr class="separator:a99acfc20fc217d489826523ce56b72ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadc806ee083fd3f959387ec558512faa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#aadc806ee083fd3f959387ec558512faa">L0</a> (void) const </td></tr>
+<tr class="separator:aadc806ee083fd3f959387ec558512faa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d50d3e4d8aa720095cb121ed9512060"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#a0d50d3e4d8aa720095cb121ed9512060">L2S</a> (void) const </td></tr>
+<tr class="separator:a0d50d3e4d8aa720095cb121ed9512060"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c0ca46fb51473ae9261ba507564a07a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#a8c0ca46fb51473ae9261ba507564a07a">L2V</a> (void) const </td></tr>
+<tr class="separator:a8c0ca46fb51473ae9261ba507564a07a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82ff09f2e08d55775e5b6609ad2d37f6"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Sites.html#a82ff09f2e08d55775e5b6609ad2d37f6">L4</a> (void) const </td></tr>
+<tr class="separator:a82ff09f2e08d55775e5b6609ad2d37f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5da87c3a1e7de36dd4b704325181ab3a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Sites</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq1, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> &amp;seq2, const <a class="el" href="classSequence_1_1RedundancyCom95.html">RedundancyCom95</a> &amp;sitesObj, int maxdiffs=3)</td></tr>
 <tr class="separator:a5da87c3a1e7de36dd4b704325181ab3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,7 +131,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const
 In order to count these numbers, one has to know how degenerate each codon is, which is why objects of this type must be constructed with objects of type <a class="el" href="classSequence_1_1RedundancyCom95.html" title="Calculate redundancy of a genetic code using Comeron&#39;s counting scheme. ">Sequence::RedundancyCom95</a>.</p>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p>Definition at line <a class="el" href="Sites_8hpp_source.html#l00058">58</a> of file <a class="el" href="Sites_8hpp_source.html">Sites.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Sites_8hpp_source.html#l00058">58</a> of file <a class="el" href="release_2include_2Sequence_2Sites_8hpp_source.html">release/include/Sequence/Sites.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="aadc806ee083fd3f959387ec558512faa"></a>
 <div class="memitem">
@@ -135,6 +152,40 @@ In order to count these numbers, one has to know how degenerate each codon is, w
 
 </div>
 </div>
+<a class="anchor" id="aadc806ee083fd3f959387ec558512faa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::Sites::L0 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>alignment length in terms of non-degenerate sites </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0d50d3e4d8aa720095cb121ed9512060"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::Sites::L2S </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>alignment length in terms of transitional-degenerate sites </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0d50d3e4d8aa720095cb121ed9512060"></a>
 <div class="memitem">
 <div class="memproto">
@@ -151,6 +202,23 @@ In order to count these numbers, one has to know how degenerate each codon is, w
 <dl class="section return"><dt>Returns</dt><dd>alignment length in terms of transitional-degenerate sites </dd></dl>
 
 <p>Definition at line <a class="el" href="Sites_8cc_source.html#l00140">140</a> of file <a class="el" href="Sites_8cc_source.html">Sites.cc</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8c0ca46fb51473ae9261ba507564a07a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::Sites::L2V </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>alignment length in terms of transversional-degenerate sites </dd></dl>
 
 </div>
 </div>
@@ -192,8 +260,25 @@ In order to count these numbers, one has to know how degenerate each codon is, w
 
 </div>
 </div>
+<a class="anchor" id="a82ff09f2e08d55775e5b6609ad2d37f6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::Sites::L4 </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>alignment length in terms of fourfold-degenerate sites </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="Sites_8hpp_source.html">Sites.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Sites_8hpp_source.html">release/include/Sequence/Sites.hpp</a></li>
 <li><a class="el" href="Sites_8cc_source.html">Sites.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -202,7 +287,7 @@ In order to count these numbers, one has to know how degenerate each codon is, w
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Sites.html">Sites</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

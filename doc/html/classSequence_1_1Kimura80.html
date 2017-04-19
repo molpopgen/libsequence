@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,7 +81,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1Kimura80.html','');})
 <p>Kimura's 2-parameter distance.  
  <a href="classSequence_1_1Kimura80.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Kimura80_8hpp_source.html">Sequence/Kimura80.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Kimura80_8hpp_source.html">Sequence/Kimura80.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -90,6 +90,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#aab7daa2ca6bb6ddc39051818c133eb6e">K</a> () const </td></tr>
 <tr class="separator:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa987104cbb72653f423c0d550e9be33b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Kimura80.html#aa987104cbb72653f423c0d550e9be33b">sites</a> (void) const </td></tr>
+<tr class="separator:aa987104cbb72653f423c0d550e9be33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd42998079763d43af88873724e2c7bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afd42998079763d43af88873724e2c7bd"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Kimura80</b> (const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqa, const <a class="el" href="classSequence_1_1Seq.html">Sequence::Seq</a> *seqb)</td></tr>
+<tr class="separator:afd42998079763d43af88873724e2c7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab7daa2ca6bb6ddc39051818c133eb6e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>K</b> () const </td></tr>
+<tr class="separator:aab7daa2ca6bb6ddc39051818c133eb6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa987104cbb72653f423c0d550e9be33b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa987104cbb72653f423c0d550e9be33b"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>sites</b> (void) const </td></tr>
 <tr class="separator:aa987104cbb72653f423c0d550e9be33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -107,12 +116,12 @@ The implementation of this class does the following:<br />
 <br />
 </p><dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if the two sequences are of unequal length. </td></tr>
+    <tr><td class="paramname">Sequence::SeqException</td><td>if the two sequences are of unequal length. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="Kimura80_8hpp_source.html#l00051">51</a> of file <a class="el" href="Kimura80_8hpp_source.html">Kimura80.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Kimura80_8hpp_source.html#l00051">51</a> of file <a class="el" href="release_2include_2Sequence_2Kimura80_8hpp_source.html">release/include/Sequence/Kimura80.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afd42998079763d43af88873724e2c7bd"></a>
 <div class="memitem">
@@ -154,7 +163,7 @@ The implementation of this class does the following:<br />
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classSequence_1_1SeqException.html" title="Base class for exceptions that may be thrown. ">Sequence::SeqException</a></td><td>if sequences are of different lengths </td></tr>
+    <tr><td class="paramname">std::runtime_error</td><td>if sequences are of different lengths </td></tr>
   </table>
   </dd>
 </dl>
@@ -204,7 +213,7 @@ The implementation of this class does the following:<br />
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="Kimura80_8hpp_source.html">Kimura80.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Kimura80_8hpp_source.html">release/include/Sequence/Kimura80.hpp</a></li>
 <li><a class="el" href="Kimura80_8cc_source.html">Kimura80.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -213,7 +222,7 @@ The implementation of this class does the following:<br />
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Kimura80.html">Kimura80</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

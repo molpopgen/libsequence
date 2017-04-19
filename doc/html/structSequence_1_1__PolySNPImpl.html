@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -79,7 +79,7 @@ $(document).ready(function(){initNavTree('structSequence_1_1__PolySNPImpl.html',
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &lt;<a class="el" href="PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="release_2include_2Sequence_2PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -88,12 +88,18 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a229250fa139f1e0240e32aaa4eeae367"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229250fa139f1e0240e32aaa4eeae367"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>_PolySNPImpl</b> (const <a class="el" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data, const bool &amp;haveOutgroup, const unsigned &amp;outgroup, const bool &amp;totMuts)</td></tr>
 <tr class="separator:a229250fa139f1e0240e32aaa4eeae367"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a029eac0f5a4a9327fc3ef8ce6279a1e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a029eac0f5a4a9327fc3ef8ce6279a1e6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>preprocess</b> (void)</td></tr>
+<tr class="separator:a029eac0f5a4a9327fc3ef8ce6279a1e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229250fa139f1e0240e32aaa4eeae367"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a229250fa139f1e0240e32aaa4eeae367"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>_PolySNPImpl</b> (const <a class="el" href="classSequence_1_1PolyTable.html">Sequence::PolyTable</a> *data, const bool &amp;haveOutgroup, const unsigned &amp;outgroup, const bool &amp;totMuts)</td></tr>
+<tr class="separator:a229250fa139f1e0240e32aaa4eeae367"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a70d4044e038c48738a6ec1f88eef15d3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a70d4044e038c48738a6ec1f88eef15d3"></a>
+<tr class="memitem:a47cd731537d5246db3c1797fbd1558f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a47cd731537d5246db3c1797fbd1558f3"></a>
 const <a class="el" href="classSequence_1_1PolyTable.html">PolyTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>_data</b></td></tr>
-<tr class="separator:a70d4044e038c48738a6ec1f88eef15d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:a47cd731537d5246db3c1797fbd1558f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab16da1d1baabf53c7dcfb35cf62233e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab16da1d1baabf53c7dcfb35cf62233e1"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>_nsites</b></td></tr>
 <tr class="separator:ab16da1d1baabf53c7dcfb35cf62233e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,7 +170,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_preprocessed</b></td
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementation details for <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>. This class is visible so that it can be accessed from classes derived from <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>. A <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a> object contains a pointer to an instance of this class that is storage class protected. </p>
 
-<p>Definition at line <a class="el" href="PolySNPimpl_8hpp_source.html#l00030">30</a> of file <a class="el" href="PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2PolySNPimpl_8hpp_source.html#l00030">30</a> of file <a class="el" href="release_2include_2Sequence_2PolySNPimpl_8hpp_source.html">release/include/Sequence/PolySNPimpl.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a029eac0f5a4a9327fc3ef8ce6279a1e6"></a>
 <div class="memitem">
@@ -186,7 +192,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_preprocessed</b></td
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="PolySNPimpl_8hpp_source.html">PolySNPimpl.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2PolySNPimpl_8hpp_source.html">release/include/Sequence/PolySNPimpl.hpp</a></li>
 <li><a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -195,7 +201,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_preprocessed</b></td
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1__PolySNPImpl.html">_PolySNPImpl</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

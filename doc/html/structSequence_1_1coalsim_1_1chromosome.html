@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -83,10 +83,16 @@ $(document).ready(function(){initNavTree('structSequence_1_1coalsim_1_1chromosom
 <p>A chromosome is a container of segments.  
  <a href="structSequence_1_1coalsim_1_1chromosome.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:aa0f04844d5e6111d36d758f58ba99028"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0f04844d5e6111d36d758f58ba99028"></a>
+typedef <a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b></td></tr>
+<tr class="separator:aa0f04844d5e6111d36d758f58ba99028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42c79f64063564e9031c2862fa232fce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42c79f64063564e9031c2862fa232fce"></a>
+typedef const <a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>const_iterator</b></td></tr>
+<tr class="separator:a42c79f64063564e9031c2862fa232fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0f04844d5e6111d36d758f58ba99028"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0f04844d5e6111d36d758f58ba99028"></a>
 typedef <a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b></td></tr>
 <tr class="separator:aa0f04844d5e6111d36d758f58ba99028"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,11 +137,45 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:add8f0349e431d836bfe3261f04d17077"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cc049b837643d7f9701a22a35e7dffb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSequence_1_1coalsim_1_1segment.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a3cc049b837643d7f9701a22a35e7dffb">end</a> () const </td></tr>
 <tr class="separator:a3cc049b837643d7f9701a22a35e7dffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3891aebd01c30703a9c9e7a09e654f43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3891aebd01c30703a9c9e7a09e654f43"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>chromosome</b> (const <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html">chromosome</a> &amp;ch)</td></tr>
+<tr class="separator:a3891aebd01c30703a9c9e7a09e654f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bd50481ed9996359c7f8a860b5f0113"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bd50481ed9996359c7f8a860b5f0113"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>chromosome</b> (const std::vector&lt; <a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> &gt; &amp;initial_segs, const int &amp;population=0)</td></tr>
+<tr class="separator:a7bd50481ed9996359c7f8a860b5f0113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7fff5aa725263f0097bc909590f499a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af7fff5aa725263f0097bc909590f499a"></a>
+<a class="el" href="structSequence_1_1coalsim_1_1chromosome.html">chromosome</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html">chromosome</a> &amp;ch)</td></tr>
+<tr class="separator:af7fff5aa725263f0097bc909590f499a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb74f498e6569e818cad101629bf0797"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb74f498e6569e818cad101629bf0797"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>swap_with</b> (<a class="el" href="structSequence_1_1coalsim_1_1chromosome.html">chromosome</a> &amp;ch)</td></tr>
+<tr class="separator:abb74f498e6569e818cad101629bf0797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55f940130408564c6f00cdd11dd36a4c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55f940130408564c6f00cdd11dd36a4c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>assign_allocated_segs</b> (<a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *newsegs, const unsigned &amp;new_nsegs)</td></tr>
+<tr class="separator:a55f940130408564c6f00cdd11dd36a4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a781253cb4443c40dc89b7211a3c4bfdb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a781253cb4443c40dc89b7211a3c4bfdb">first</a> () const </td></tr>
+<tr class="separator:a781253cb4443c40dc89b7211a3c4bfdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dab80ab36ff8408f202afad55b18d5a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a4dab80ab36ff8408f202afad55b18d5a">last</a> () const </td></tr>
+<tr class="separator:a4dab80ab36ff8408f202afad55b18d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ad7cf518ab529e21eee38d2c3dc242d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ad7cf518ab529e21eee38d2c3dc242d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>links</b> () const </td></tr>
+<tr class="separator:a7ad7cf518ab529e21eee38d2c3dc242d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac840c230e7b5d861ee8f7435b839cbfb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac840c230e7b5d861ee8f7435b839cbfb"></a>
+<a class="el" href="structSequence_1_1coalsim_1_1segment.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> ()</td></tr>
+<tr class="separator:ac840c230e7b5d861ee8f7435b839cbfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba039aea8f7ab10ea0ea457ab6e5a96f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aba039aea8f7ab10ea0ea457ab6e5a96f"></a>
+<a class="el" href="structSequence_1_1coalsim_1_1segment.html">iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> ()</td></tr>
+<tr class="separator:aba039aea8f7ab10ea0ea457ab6e5a96f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa28084a1d8b3b656490606d1011dfb45"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa28084a1d8b3b656490606d1011dfb45"></a>
+<a class="el" href="structSequence_1_1coalsim_1_1segment.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>begin</b> () const </td></tr>
+<tr class="separator:aa28084a1d8b3b656490606d1011dfb45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a116020ee43bddb1a31d58b684a2aa615"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a116020ee43bddb1a31d58b684a2aa615"></a>
+<a class="el" href="structSequence_1_1coalsim_1_1segment.html">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><b>end</b> () const </td></tr>
+<tr class="separator:a116020ee43bddb1a31d58b684a2aa615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a9d3a58c7e072fe9947e2067677f81f23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a9d3a58c7e072fe9947e2067677f81f23">segs</a></td></tr>
-<tr class="separator:a9d3a58c7e072fe9947e2067677f81f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cc4d635a89d04381098559e780419f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a0cc4d635a89d04381098559e780419f9">segs</a></td></tr>
+<tr class="separator:a0cc4d635a89d04381098559e780419f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8565024c587e2b1df3215038be05343"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#ad8565024c587e2b1df3215038be05343">pop</a></td></tr>
 <tr class="separator:ad8565024c587e2b1df3215038be05343"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5da84b1fb9d48b4a466abc0dd6169ff3"><td class="memItemLeft" align="right" valign="top">unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a5da84b1fb9d48b4a466abc0dd6169ff3">nsegs</a></td></tr>
@@ -145,7 +185,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>A chromosome is a container of segments. </p>
 <dl class="section note"><dt>Note</dt><dd>this is a malloc-based container </dd></dl>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00092">92</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00092">92</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7bd50481ed9996359c7f8a860b5f0113"></a>
 <div class="memitem">
@@ -333,7 +373,33 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the first position in the chromosome </dd></dl>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00125">125</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00125">125</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a781253cb4443c40dc89b7211a3c4bfdb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sequence::coalsim::chromosome::first </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the first position in the chromosome </dd></dl>
+
+<p>Definition at line <a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00125">125</a> of file <a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +425,33 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the last position in the chromosome </dd></dl>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00134">134</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00134">134</a> of file <a class="el" href="Sequence_2Coalescent_2SimTypes_8hpp_source.html">Sequence/Coalescent/SimTypes.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4dab80ab36ff8408f202afad55b18d5a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Sequence::coalsim::chromosome::last </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>the last position in the chromosome </dd></dl>
+
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00134">134</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 
 </div>
 </div>
@@ -412,7 +504,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The number of segments contained in the pointer segs </p>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00115">115</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00115">115</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 
 </div>
 </div>
@@ -427,27 +519,27 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>the population in which the chromosome is currently found </p>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00111">111</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00111">111</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9d3a58c7e072fe9947e2067677f81f23"></a>
+<a class="anchor" id="a0cc4d635a89d04381098559e780419f9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a>* Sequence::coalsim::chromosome::segs</td>
+          <td class="memname"><a class="el" href="structSequence_1_1coalsim_1_1segment.html">segment</a> * Sequence::coalsim::chromosome::segs</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>The list of segments making up the ancestral material of a chromosome at the current point in the simulation. </p><dl class="section note"><dt>Note</dt><dd>Please be aware that allocation of this array is done via malloc, rather than operator new. As coalescent simulations are all about copying segments, the use of malloc is more efficient for simulation purposes, as it results in many fewer calls to the default constructor. But this means you cannot assign to this pointer something allocated with operator new, else bad things will happen. </dd></dl>
 
-<p>Definition at line <a class="el" href="SimTypes_8hpp_source.html#l00105">105</a> of file <a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html#l00105">105</a> of file <a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="SimTypes_8hpp_source.html">SimTypes.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2Coalescent_2SimTypes_8hpp_source.html">release/include/Sequence/Coalescent/SimTypes.hpp</a></li>
 <li><a class="el" href="CoalescentSimTypes_8cc_source.html">CoalescentSimTypes.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -456,7 +548,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="namespaceSequence_1_1coalsim.html">coalsim</a></li><li class="navelem"><a class="el" href="structSequence_1_1coalsim_1_1chromosome.html">chromosome</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

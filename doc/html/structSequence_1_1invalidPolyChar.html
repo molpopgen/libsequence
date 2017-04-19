@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -81,19 +81,21 @@ $(document).ready(function(){initNavTree('structSequence_1_1invalidPolyChar.html
 <p>This functor can be used to determine if a range contains characters that the SNP analysis routines in this library cannot handle gracefully.  
  <a href="structSequence_1_1invalidPolyChar.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="SeqAlphabets_8hpp_source.html">Sequence/SeqAlphabets.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2SeqAlphabets_8hpp_source.html">Sequence/SeqAlphabets.hpp</a>&gt;</code></p>
 
-<p>Inherits unary_function&lt; char, bool &gt;.</p>
+<p>Inherits unary_function&lt; char, bool &gt;, and unary_function&lt; char, bool &gt;.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a2180ef4eef13bc382dd702041a086434"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1invalidPolyChar.html#a2180ef4eef13bc382dd702041a086434">operator()</a> (const char &amp;nucleotide) const </td></tr>
+<tr class="separator:a2180ef4eef13bc382dd702041a086434"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2180ef4eef13bc382dd702041a086434"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1invalidPolyChar.html#a2180ef4eef13bc382dd702041a086434">operator()</a> (const char &amp;nucleotide) const </td></tr>
 <tr class="separator:a2180ef4eef13bc382dd702041a086434"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This functor can be used to determine if a range contains characters that the SNP analysis routines in this library cannot handle gracefully. </p>
 
-<p>Definition at line <a class="el" href="SeqAlphabets_8hpp_source.html#l00083">83</a> of file <a class="el" href="SeqAlphabets_8hpp_source.html">SeqAlphabets.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2SeqAlphabets_8hpp_source.html#l00083">83</a> of file <a class="el" href="release_2include_2Sequence_2SeqAlphabets_8hpp_source.html">release/include/Sequence/SeqAlphabets.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a2180ef4eef13bc382dd702041a086434"></a>
 <div class="memitem">
@@ -115,8 +117,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2180ef4eef13bc382dd702041a086434"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Sequence::invalidPolyChar::operator() </td>
+          <td>(</td>
+          <td class="paramtype">const char &amp;&#160;</td>
+          <td class="paramname"><em>nucleotide</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>true if c is not in the set {A,G,C,T,N,-,.,0,1}, false otherwise. The period (.) can be used as an "identical to the 1st seq in a file" character, so should be considered valid </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Case-insensitive </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="SeqAlphabets_8hpp_source.html">SeqAlphabets.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2SeqAlphabets_8hpp_source.html">release/include/Sequence/SeqAlphabets.hpp</a></li>
 <li><a class="el" href="SeqAlphabets_8cc_source.html">SeqAlphabets.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -125,7 +145,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1invalidPolyChar.html">invalidPolyChar</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

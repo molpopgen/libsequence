@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.0</span>
+   &#160;<span id="projectnumber">1.9.1</span>
    </div>
   </td>
  </tr>
@@ -83,22 +83,47 @@ $(document).ready(function(){initNavTree('structSequence_1_1HKAresults.html','')
 <p>results of calculations of the HKA test  
  <a href="structSequence_1_1HKAresults.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="HKA_8hpp_source.html">Sequence/HKA.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Sequence_2HKA_8hpp_source.html">Sequence/HKA.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae7b3e12d5dd8ffdde5c59b34023c4f8c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c">chisq_tuple_element</a> : std::int8_t { <b>POLY</b>, 
+<tr class="memitem:ae7b3e12d5dd8ffdde5c59b34023c4f8c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c">chisq_tuple_element</a> : std::int8_t { <br />
+&#160;&#160;<b>POLY</b>, 
+<b>DIV</b>, 
+<b>POLYA</b>, 
+<b>POLYB</b>, 
+<br />
+&#160;&#160;<b>POLY</b>, 
 <b>DIV</b>, 
 <b>POLYA</b>, 
 <b>POLYB</b>
+<br />
  }</td></tr>
 <tr class="separator:ae7b3e12d5dd8ffdde5c59b34023c4f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7b3e12d5dd8ffdde5c59b34023c4f8c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c">chisq_tuple_element</a> : std::int8_t { <br />
+&#160;&#160;<b>POLY</b>, 
+<b>DIV</b>, 
+<b>POLYA</b>, 
+<b>POLYB</b>, 
+<br />
+&#160;&#160;<b>POLY</b>, 
+<b>DIV</b>, 
+<b>POLYA</b>, 
+<b>POLYB</b>
+<br />
+ }</td></tr>
+<tr class="separator:ae7b3e12d5dd8ffdde5c59b34023c4f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ada34cfcf4319b034d007dc23d4a7b6"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a></td></tr>
+<tr class="separator:a6ada34cfcf4319b034d007dc23d4a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ada34cfcf4319b034d007dc23d4a7b6"><td class="memItemLeft" align="right" valign="top">typedef std::tuple&lt; double, double, double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a></td></tr>
 <tr class="separator:a6ada34cfcf4319b034d007dc23d4a7b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1HKAresults.html#a5ca9644c36b49ade80f4bdbb430fd400">HKAresults</a> (const std::vector&lt; double &gt; &amp;_thetas, const std::vector&lt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a> &gt; &amp;_chisquareds, const double &amp;_fhat, const double &amp;_That, const double &amp;_xsq, const double &amp;_xsqA, const double &amp;_xsqB)</td></tr>
+<tr class="separator:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ca9644c36b49ade80f4bdbb430fd400"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>HKAresults</b> (const std::vector&lt; double &gt; &amp;_thetas, const std::vector&lt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">chisq_tuple</a> &gt; &amp;_chisquareds, const double &amp;_fhat, const double &amp;_That, const double &amp;_xsq, const double &amp;_xsqA, const double &amp;_xsqB)</td></tr>
 <tr class="separator:a5ca9644c36b49ade80f4bdbb430fd400"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -122,7 +147,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>results of calculations of the HKA test </p>
 <p>Store the list of estimates of theta for each locus, as well as f (ratio of Ne of spp B relative to sppA), and T, the divergence time between species (on the scale of the Ne of spp A). </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00069">69</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00069">69</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a class="anchor" id="a6ada34cfcf4319b034d007dc23d4a7b6"></a>
 <div class="memitem">
@@ -135,7 +160,22 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The tuple represents the contribution of a locus to the total value of the HKA chi-squared statistic </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00081">81</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00081">81</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6ada34cfcf4319b034d007dc23d4a7b6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tuple&lt;double,double,double,double&gt; <a class="el" href="structSequence_1_1HKAresults.html#a6ada34cfcf4319b034d007dc23d4a7b6">Sequence::HKAresults::chisq_tuple</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The tuple represents the contribution of a locus to the total value of the HKA chi-squared statistic </p>
+
+<p>Definition at line <a class="el" href="Sequence_2HKA_8hpp_source.html#l00081">81</a> of file <a class="el" href="Sequence_2HKA_8hpp_source.html">Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -159,7 +199,30 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The enum documents the order in which the deviations are stored in chisq_tuple </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00086">86</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00086">86</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae7b3e12d5dd8ffdde5c59b34023c4f8c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="structSequence_1_1HKAresults.html#ae7b3e12d5dd8ffdde5c59b34023c4f8c">Sequence::HKAresults::chisq_tuple_element</a> : std::int8_t</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The enum documents the order in which the deviations are stored in chisq_tuple </p>
+
+<p>Definition at line <a class="el" href="Sequence_2HKA_8hpp_source.html#l00086">86</a> of file <a class="el" href="Sequence_2HKA_8hpp_source.html">Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +317,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The order of elements is the same as the loci that were placed in the std::vector&lt; HKAdata &gt; passed to calcHKA. Members of the tuple are accessed via the std::get&lt;int&gt; template function. For example, if you have an <a class="el" href="structSequence_1_1HKAresults.html" title="results of calculations of the HKA test ">HKAresults</a> object called hkares, and you want to retrieve the deviation in divergence of the first locus: </p><div class="fragment"><div class="line">std::get&lt; DIV &gt;(hkares.chisquareds[0]);</div></div><!-- fragment --><p> The template argument to std::get can be taken from chisq_tuple_elements so that it's readable. </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00100">100</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00100">100</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -269,7 +332,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The relative Ne of species B relative to species A </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00105">105</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00105">105</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -284,7 +347,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The estimate of the species divergence time, on the scale (1+fhat)*4Ne generations </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00110">110</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00110">110</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -299,7 +362,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>Vector of theta estimates from the HKA test. They are in the same order as the loci that were placed in the std::vector&lt; HKAdata &gt; passed to calcHKA </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00076">76</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00076">76</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -314,7 +377,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The HKA chi-squared statistic </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00114">114</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00114">114</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -329,7 +392,7 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The HKA chi-squared statistic, only considering species A </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00119">119</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00119">119</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
@@ -344,12 +407,12 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <p>The HKA chi-squared statistic, only considering species B </p>
 
-<p>Definition at line <a class="el" href="HKA_8hpp_source.html#l00124">124</a> of file <a class="el" href="HKA_8hpp_source.html">HKA.hpp</a>.</p>
+<p>Definition at line <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html#l00124">124</a> of file <a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following files:<ul>
-<li><a class="el" href="HKA_8hpp_source.html">HKA.hpp</a></li>
+<li><a class="el" href="release_2include_2Sequence_2HKA_8hpp_source.html">release/include/Sequence/HKA.hpp</a></li>
 <li><a class="el" href="HKA_8cc_source.html">HKA.cc</a></li>
 </ul>
 </div><!-- contents -->
@@ -358,7 +421,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1HKAresults.html">HKAresults</a></li>
-    <li class="footer">Generated on Fri Oct 21 2016 13:49:54 for libsequence by
+    <li class="footer">Generated on Wed Apr 19 2017 09:49:52 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
