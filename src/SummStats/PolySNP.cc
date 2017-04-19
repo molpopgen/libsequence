@@ -631,7 +631,10 @@ namespace Sequence
       @author Joshua Shapiro
     */
     {
-        assert(rep->_haveOutgroup == true);
+		if(!rep->_haveOutgroup)
+		{
+			return std::numeric_limits<double>::quiet_NaN();
+		}
         assert(rep->_preprocessed);
         double thetal = 0.0;
         if (rep->_NumPoly == 0)

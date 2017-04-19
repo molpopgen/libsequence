@@ -30,7 +30,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <tuple>
 #include <cstdint>
 #include <Sequence/SeqEnums.hpp>
-#include <Sequence/SeqExceptions.hpp>
 
 /*! \file shortestPath.hpp
   @short Routines to find the shortest distance between any 2 codons, using

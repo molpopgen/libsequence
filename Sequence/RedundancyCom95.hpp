@@ -47,7 +47,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <memory>
 #include <Sequence/SeqEnums.hpp>
-#include <Sequence/SeqExceptions.hpp>
 
 using Sequence::GeneticCodes;
 

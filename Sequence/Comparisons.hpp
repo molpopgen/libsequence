@@ -37,7 +37,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <algorithm>
 #include <type_traits>
-#include <Sequence/SeqExceptions.hpp>
 #include <Sequence/SeqEnums.hpp>
 
 namespace Sequence

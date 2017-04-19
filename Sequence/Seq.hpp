@@ -42,7 +42,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <string>
 #include <exception>
 #include <utility>
-#include <Sequence/SeqExceptions.hpp>
 
 namespace Sequence
   {

@@ -153,7 +153,7 @@ BOOST_AUTO_TEST_CASE( exception_test )
 
   std::ifstream in(filename);
   Sequence::Fasta f;
-  BOOST_CHECK_THROW( in >> f >> std::ws, Sequence::badFormat );
+  BOOST_CHECK_THROW( in >> f >> std::ws, std::runtime_error );
   unlink(filename);
 }
 

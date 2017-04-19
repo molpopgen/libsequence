@@ -1,6 +1,6 @@
 AC_PREREQ(2.59)
 
-AC_INIT([libsequence], [1.9.0], [https://github.com/molpopgen/libsequence])
+AC_INIT([libsequence], [1.9.1], [https://github.com/molpopgen/libsequence])
 AC_CONFIG_SRCDIR([src/Seq/Seq.cc])
 AC_CONFIG_SRCDIR([test/FastaIO.cc])
 AC_CONFIG_SRCDIR([examples/msstats.cc])
@@ -21,23 +21,23 @@ AC_PROG_LIBTOOL
 AC_LANG(C++)
 AC_CONFIG_FILES([Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile Sequence/SummStats/Makefile test/Makefile examples/Makefile doc/libsequence.doxygen])
 
-AC_ARG_ENABLE(debug,
-[  --enable-debug    Turn on debugging],
-[case "${enableval}" in
-  yes) debug=true ;;
-  no)  debug=false ;;
-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
-esac],[debug=false])
-AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
-
-AC_ARG_ENABLE(profiling,
-[  --enable-profiling    Turn on profiling],
-[case "${enableval}" in
-  yes) profiling=true ;;
-  no)  profiling=false ;;
-  *) AC_MSG_ERROR(bad value ${enableval} for --enable-profiling) ;;
-esac],[profiling=false])
-AM_CONDITIONAL(PROFILING, test x$profiling = xtrue)
+dnl AC_ARG_ENABLE(debug,
+dnl [  --enable-debug    Turn on debugging],
+dnl [case "${enableval}" in
+dnl   yes) debug=true ;;
+dnl   no)  debug=false ;;
+dnl   *) AC_MSG_ERROR(bad value ${enableval} for --enable-debug) ;;
+dnl esac],[debug=false])
+dnl AM_CONDITIONAL(DEBUG, test x$debug = xtrue)
+dnl 
+dnl AC_ARG_ENABLE(profiling,
+dnl [  --enable-profiling    Turn on profiling],
+dnl [case "${enableval}" in
+dnl   yes) profiling=true ;;
+dnl   no)  profiling=false ;;
+dnl   *) AC_MSG_ERROR(bad value ${enableval} for --enable-profiling) ;;
+dnl esac],[profiling=false])
+dnl AM_CONDITIONAL(PROFILING, test x$profiling = xtrue)
 
 
 dnl zlib header

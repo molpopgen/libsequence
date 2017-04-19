@@ -49,14 +49,14 @@ namespace Sequence
   std::istream & SimpleSNP::read (std::istream & s)  
 
     /*!
-      \exception Sequence::badFormat
+      \exception std::runtime_error
     */
   {
     unsigned nsam, nsites, i, j;
     char ch;
     if(!(s >> nsam >> nsites))
       {
-	throw badFormat("SimpleSNP.cc: file did not start with nsam nsites");
+	throw std::runtime_error("SimpleSNP.cc: file did not start with nsam nsites");
       }
     if (Diploid)
       nsam *= 2;
@@ -65,7 +65,7 @@ namespace Sequence
     for (i = 0; i < nsites; ++i)
       {
         if (! (s >> _positions[i] >> std::ws))
-          throw badFormat("SimpleSNP.cc: error in processing site positions");
+          throw std::runtime_error("SimpleSNP.cc: error in processing site positions");
       }
     std::string outgroup,temp,temp2;
     std::getline(s,temp);
@@ -87,7 +87,7 @@ namespace Sequence
       {
  	if(!(check2 >> ch))
  	  {
- 	    throw badFormat("SimpleSNP.cc: error reading in seg. sites");
+ 	    throw std::runtime_error("SimpleSNP.cc: error reading in seg. sites");
  	  }
         ch = char(toupper(ch));
         switch (ch)
@@ -136,7 +136,7 @@ namespace Sequence
       {
         string name;	//don't store the name
         if(!(s >> name))
-          throw badFormat("SimpleSNP.cc: error processing sequences");
+          throw std::runtime_error("SimpleSNP.cc: error processing sequences");
         //_names[i-(haveOG+haveOGlabel)] = name;
 	_names[i-haveOG+1] = name;
         char *temp = new char[nsites+1];
@@ -153,7 +153,7 @@ namespace Sequence
 	      {
 		delete [] temp;
 		if(temp2 != nullptr) delete [] temp2;
-		throw badFormat("SimpleSNP.cc: error processing sequenes");
+		throw std::runtime_error("SimpleSNP.cc: error processing sequenes");
 	      }
             ch = char(toupper(ch));
             if (Diploid)
@@ -226,7 +226,7 @@ namespace Sequence
     //assign the data to the base class
     if (_data.size() != nsam+haveOG)
       {
-	throw (Sequence::badFormat("SimpleSNP::read() -- number of sequences does not match input value"));
+	throw (std::runtime_error("SimpleSNP::read() -- number of sequences does not match input value"));
       }     
     this->assign(std::move(_positions),std::move(_data));
     return s;

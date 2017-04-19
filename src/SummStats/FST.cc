@@ -30,6 +30,7 @@
 #include <vector>
 #include <cmath>
 #include <limits>
+#include <stdexcept>
 /*!
   \class Sequence::FST Sequence/FST.hpp
   \ingroup popgenanalysis
@@ -77,7 +78,7 @@ namespace Sequence
   {
     if (config == NULL)
       {
-        throw SeqException("Seqence::FST -- config vector is NULL");
+        throw std::runtime_error("Seqence::FST -- config vector is NULL");
       }
     else
       {
@@ -85,7 +86,7 @@ namespace Sequence
         if(accumulate(_config.begin(),_config.end(),
 		      unsigned(0))+unsigned(haveOutgroup) != _nsam)
           {
-            throw SeqException("Seqence::FST -- sum of elements in config does not equal the sample size stored in data");
+            throw std::runtime_error("Seqence::FST -- sum of elements in config does not equal the sample size stored in data");
           }
       }
     if (weights == NULL)
@@ -99,7 +100,7 @@ namespace Sequence
 	double sum = accumulate(_weights.begin(),_weights.end(),0.);
         if ( std::fabs(sum-1.) > std::numeric_limits<double>::epsilon() )
           {
-            throw SeqException("Seqence::FST -- weights do not sum to 1");
+            throw std::runtime_error("Seqence::FST -- weights do not sum to 1");
           }
       }
 
@@ -185,13 +186,13 @@ namespace Sequence
       {
 	impl = std::unique_ptr<FSTimpl>(new FSTimpl(data,npop,config,weights,haveOutgroup,outgroup));
       }
-    catch(Sequence::SeqException &e)
+    catch(std::runtime_error &e)
       { 
 	throw;
       }
     catch (...)
       {
-	throw (Sequence::SeqException("Sequence::FST : unknown exception caught by constructor"));
+	throw (std::runtime_error("Sequence::FST : unknown exception caught by constructor"));
       }
   }
 
@@ -287,7 +288,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw SeqException("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
 
     std::set<double> sharedList;
     
@@ -324,7 +325,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw SeqException("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
     std::set<double> fixedList;
     for(unsigned site = 0 ; site < impl->_nsites ; ++site)
       {
@@ -360,7 +361,7 @@ namespace Sequence
   */
   {
     if (pop1 > impl->_npop-1 || pop2 > impl->_npop-1)
-      throw SeqException("Seqence::FST -- indexes out of range");
+      throw std::out_of_range("Seqence::FST -- indexes out of range");
 
     std::set<double> p1,p2;
     for(unsigned site = 0 ; site < impl->_nsites ; ++site)

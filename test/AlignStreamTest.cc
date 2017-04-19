@@ -150,14 +150,14 @@ BOOST_AUTO_TEST_CASE( should_throw1 )
   std::vector< Sequence::Fasta > vf = { Sequence::Fasta("seq1","ATG"),
 					Sequence::Fasta("seq2","ATCAA") };
 
-  BOOST_REQUIRE_THROW( clustal c(vf), Sequence::SeqException );
-  BOOST_REQUIRE_THROW( phylip  c(vf), Sequence::SeqException );
+  BOOST_REQUIRE_THROW( clustal c(vf), std::runtime_error );
+  BOOST_REQUIRE_THROW( phylip  c(vf), std::runtime_error );
   BOOST_REQUIRE_THROW( clustal c( std::vector< Sequence::Fasta >({ Sequence::Fasta("seq1","ATG"),
 	    Sequence::Fasta("seq2","ATCAA") })),
-    Sequence::SeqException );
+    std::runtime_error );
   BOOST_REQUIRE_THROW( clustal c( std::move(std::vector< Sequence::Fasta >({ Sequence::Fasta("seq1","ATG"),
 	      Sequence::Fasta("seq2","ATCAA") }))),
-    Sequence::SeqException );
+    std::runtime_error );
 }
 
 BOOST_AUTO_TEST_CASE( should_throw2 ) 
@@ -174,7 +174,7 @@ BOOST_AUTO_TEST_CASE( should_throw2 )
   BOOST_REQUIRE_EQUAL( c.IsAlignment(),false );
 
   //And the user did not check and then tries to copy
-  BOOST_REQUIRE_THROW( clustal c2(c), Sequence::SeqException );
+  BOOST_REQUIRE_THROW( clustal c2(c), std::runtime_error );
 }
 
 BOOST_AUTO_TEST_CASE( should_throw3 )
@@ -184,10 +184,10 @@ BOOST_AUTO_TEST_CASE( should_throw3 )
 					Sequence::Fasta("seq2","ATCAA") };
   clustal c;
   BOOST_REQUIRE_THROW( c.assign(vf.begin(),
-				vf.end()), Sequence::SeqException );
+				vf.end()), std::runtime_error );
   //And make sure it works with c++11-style iterator fxns
   BOOST_REQUIRE_THROW( c.assign(vf.cbegin(),
-				vf.cend()), Sequence::SeqException );
+				vf.cend()), std::runtime_error );
 }
 
 //Test IO routines

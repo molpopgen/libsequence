@@ -27,8 +27,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <fstream>
 #include <vector>
 #include <string>
-#include <Sequence/SeqExceptions.hpp>
-
+#include <stdexcept>
 /*! \file Alignment.hpp
   @brief Declaration of namespace Sequence::Alignment
 */

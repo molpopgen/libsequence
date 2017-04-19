@@ -183,7 +183,7 @@ namespace Sequence
       }
     if (! assign( std::move(_pos), std::move(_ind) ) )
       {
-	throw badFormat("PolySites::read() -- format error, unable to assign data");
+	throw std::runtime_error("PolySites::read() -- format error, unable to assign data");
       }
     return s;
   }

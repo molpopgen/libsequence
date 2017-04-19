@@ -28,16 +28,16 @@ AM_CXXFLAGS+=-DHAVE_HTSLIB
 AM_LIBS+=-lhts
 endif
 
-if DEBUG
-AM_CXXFLAGS+=-g
-else
-AM_CXXFLAGS+=-DNDEBUG
-endif
-
-if PROFILING
-PROFILE= -pg
-else
-PROFILE=
-endif
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 LIBS+=$(AM_LIBS)

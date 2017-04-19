@@ -19,7 +19,7 @@ BOOST_AUTO_TEST_CASE( check_empty_table )
   //Estimators of theta = 4Neu, numbers of various types of polymorhpisms
   BOOST_CHECK_EQUAL( ad.ThetaPi(), 0. );
   BOOST_CHECK_EQUAL( ad.ThetaH(), 0. );
-  BOOST_CHECK_EQUAL( ad.ThetaL(), 0. );
+  BOOST_CHECK_EQUAL( std::isnan(ad.ThetaL()), true );
   BOOST_CHECK_EQUAL( ad.NumPoly(), 0 );
   BOOST_CHECK_EQUAL( ad.NumMutations(), 0 );
   BOOST_CHECK_EQUAL( ad.NumSingletons(), 0 );

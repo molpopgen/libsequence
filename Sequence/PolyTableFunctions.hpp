@@ -25,7 +25,6 @@
 #define __POLYTABLE_FUNCTIONS_HPP__
 
 #include <Sequence/PolyTable.hpp>
-#include <Sequence/SeqExceptions.hpp>
 
 /*! \file PolyTableFunctions.hpp
   There are lots of ways one may want to manipulate a Sequence::PolyTable.

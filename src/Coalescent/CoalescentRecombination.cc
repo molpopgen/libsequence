@@ -27,13 +27,13 @@
 #ifndef NDEBUG
 namespace 
 {
-  bool arg_is_sorted( const Sequence::arg * sample_history )
+  bool arg_is_sorted( const Sequence::coalsim::arg * sample_history )
   {
-    for( Sequence::arg::const_iterator i = sample_history->begin() ;
+    for( auto i = sample_history->begin() ;
 	 i != sample_history->end() ;
 	 ++i )
       {
-	Sequence::arg::const_iterator j=i;
+	auto j=i;
 	++j;
 	if( j != sample_history->end() )
 	  {

@@ -252,11 +252,11 @@ namespace Sequence
       std::vector < std::string > trimmedTemp(numseqs);
       if (sites.empty ())
         {
-          throw SeqException ("Sequence::Alignment::Trim(): empty vector of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::Trim(): empty vector of positions passed to function");
         }
       if (numIntervals % 2 != 0)
         {
-          throw SeqException ("Sequence::Alignment::Trim(): odd number of positions passed");
+          throw std::runtime_error ("Sequence::Alignment::Trim(): odd number of positions passed");
         }
 
       for (i = 0; i < numIntervals; i += 2)
@@ -286,11 +286,11 @@ namespace Sequence
       
       if (sites.empty ())
         {
-          throw SeqException ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::TrimComplement(): empty vector of positions passed to function");
         }
       if (sites.size() % 2 != 0)
         {
-          throw SeqException ("Sequence::Alignment::TrimComplement(): odd number of positions passed to function");
+          throw std::runtime_error ("Sequence::Alignment::TrimComplement(): odd number of positions passed to function");
         }
 
       std::vector < std::string > trimmedTemp(numseqs);

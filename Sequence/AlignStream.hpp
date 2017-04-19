@@ -26,10 +26,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <Sequence/Alignment.hpp>
 #include <Sequence/Seq.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <type_traits>
 #include <utility>
 #include <string>
+#include <stdexcept>
 
 /*! \file AlignStream.hpp
   @brief declaration of virtual base class for alignment streams (Sequence::AlignStream)
@@ -148,7 +148,7 @@ namespace Sequence
 	for these iterators evaluates to
 	std::vector<T>::const_iterator, any vector<T>
 	can be the data source
-	\exception Sequence::SeqException is thrown
+	\exception std::runtime_error is thrown
 	if all data elements in the range (beg,end]
 	are not of the same length
       */
@@ -156,7 +156,7 @@ namespace Sequence
       /*!
 	Assign via a move operation
 
-	\exception Sequence::SeqException is thrown
+	\exception std::runtime_error is thrown
 	if all data elements are not of the same length
       */
       void assign( std::vector<T> && _data);

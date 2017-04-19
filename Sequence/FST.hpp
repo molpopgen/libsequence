@@ -28,7 +28,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <set>
 #include <memory>
 #include <Sequence/stateCounter.hpp>
-#include <Sequence/SeqExceptions.hpp>
 
 /*! \file FST.hpp
   @brief delcaration of a class (Sequence::FST) to analyze population structure

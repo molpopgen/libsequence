@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE( exception1 )
 				   "AAGAA",
 				   "CTGAA",
 				   "NAAC"}; //Sequence not same length as pos.size()
-  BOOST_REQUIRE_THROW(Sequence::PolySites ps(std::move(pos),std::move(data)), Sequence::SeqException );
+  BOOST_REQUIRE_THROW(Sequence::PolySites ps(std::move(pos),std::move(data)), std::runtime_error );
 }
 
 // This test became moot in 1.8.9

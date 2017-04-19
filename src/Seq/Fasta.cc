@@ -47,7 +47,7 @@ namespace Sequence
     if( stream.eof() ) { return stream; }
     if (char(ch) != '>')
       {
-        throw badFormat("Fasta.cc: error, file not in FASTA format");
+        throw std::runtime_error("Fasta.cc: error, file not in FASTA format");
       }
     //Read in name
     //stream >> ch >> std::ws;
