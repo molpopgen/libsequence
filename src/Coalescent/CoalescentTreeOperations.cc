@@ -22,11 +22,10 @@
 */
 
 #include <Sequence/Coalescent/TreeOperations.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <cassert>
 #include <cmath>
 #include <limits>
-
+#include <stdexcept>
 namespace Sequence
 {
   namespace coalsim {
@@ -136,7 +135,7 @@ namespace Sequence
       \param total_number_of_sites the number of "sites" simulated on the ARG
       \return The total time on an ancestral recombination graph.
       \note The time is in terms of whatever units are recorded on the nodes of the mariginals of the ARG
-      \throws Sequence::SeqException if the beginning of any marginal tree is >= total_number_of_sites
+      \throws std::runtime_error if the beginning of any marginal tree is >= total_number_of_sites
       \ingroup coalescent
     */
     {
@@ -153,7 +152,7 @@ namespace Sequence
 	  assert( i->beg < total_number_of_sites );
 	  if( i->beg > total_number_of_sites )
 	    {
-	      throw Sequence::SeqException("Sequence::coalsim::total_time_on_arg - beginning of marginal tree > number of sites simulated");
+	      throw std::runtime_error("Sequence::coalsim::total_time_on_arg - beginning of marginal tree > number of sites simulated");
 	    }
 	  //get the beginning and end of the current marginal tree
 	  int end = (seg<nsegs-1) ? j->beg : total_number_of_sites;

@@ -27,6 +27,7 @@
 #include <Sequence/SingleSub.hpp>
 #include <Sequence/Translate.hpp>
 #include <sstream>
+#include <stdexcept>
 using namespace std;
 
 namespace Sequence
@@ -161,7 +162,7 @@ namespace Sequence
 	o << "SingleSub.cc: mutation between " << codon1 << " and " << codon2
 	  << " at position " << pos
 	  << " is neither a transition nor a transversion";
-	throw SeqException(o.str().c_str());
+	throw std::runtime_error(o.str().c_str());
       }
     assert(type==Mutations::Ts || type==Mutations::Tv);
 
@@ -243,7 +244,7 @@ namespace Sequence
 	      }
 	    break;
 	  case Mutations::Unknown:
-	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
+	    throw std::runtime_error( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;
@@ -259,7 +260,7 @@ namespace Sequence
 	    q0j += 1.0;
 	    break;
 	  case Mutations::Unknown:
-	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
+	    throw std::runtime_error( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;
@@ -376,7 +377,7 @@ namespace Sequence
 	  
 	    break;
 	  case Mutations::Unknown:
-	    throw Sequence::SeqException( "SingleSub: mutation type unknown" );
+	    throw std::runtime_error( "SingleSub: mutation type unknown" );
 	    break;
 	  }
 	break;

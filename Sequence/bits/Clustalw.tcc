@@ -55,7 +55,7 @@ namespace Sequence
     s >> clustalw;
     if (clustalw != "CLUSTAL")
       {
-        throw badFormat ("Sequence::ClustalW::read() : input stream does not appear to be in CLUSTALW format");
+        throw std::runtime_error ("Sequence::ClustalW::read() : input stream does not appear to be in CLUSTALW format");
       }
     else
       {

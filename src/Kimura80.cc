@@ -26,10 +26,10 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <cfloat>
 #include <cctype>
 #include <limits>
+#include <stdexcept>
 #include <Sequence/Seq.hpp>
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/SeqEnums.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <Sequence/Kimura80.hpp>
 
 /*!
@@ -43,11 +43,11 @@ namespace Sequence
       /*!
         \param seqa an object of type Sequence::Seq
         \param seqb an object of type Sequence::Seq
-        \exception Sequence::SeqException if sequences are of different lengths
+        \exception std::runtime_error if sequences are of different lengths
       */
   {
     if (seqa->length () != seqb->length ())
-      throw SeqException ("Sequence::Kimura80::Kimura80(): constructor called with two sequence objects of unequal length");
+      throw std::runtime_error ("Sequence::Kimura80::Kimura80(): constructor called with two sequence objects of unequal length");
     num_Ts = 0;
     num_Tv = 0;
     divergence = 0.0;

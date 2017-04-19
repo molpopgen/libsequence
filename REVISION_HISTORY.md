@@ -4,7 +4,7 @@
 
 This document lists major changes between tags/releases of libsequence. The following caveat is important:
 
-If you see a section below referring to libseqeunce version X, and no version X exists as a release, then you must consider the info here inaccurate.  In such cases, the list of changes may refer to planned changes for a future release which may or may not be implemented yet in either the master or some development branch.
+If you see a section below referring to libsequence version X, and no version X exists as a release, then you must consider the info here inaccurate.  In such cases, the list of changes may refer to planned changes for a future release which may or may not be implemented yet in either the master or some development branch.
 
 ## Moving towards a "2.0" release: ABI compatibility in flux
 
@@ -29,6 +29,11 @@ However:
 ### ISSUES:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
+
+## libsequence 1.9.1
+
+* Sequence::SeqException was removed.  Exceptions from namespace std are preferred, and are easier to wrap in other languages.
+* Sequence::PolySNP::ThetaL throws exception if outrgroup not present
 
 ## libsequence 1.9.0
 

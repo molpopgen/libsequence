@@ -92,8 +92,6 @@ host_triplet = @host@
 bin_PROGRAMS = libsequenceConfig$(EXEEXT)
 @HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
 @HAVE_HTSLIB_TRUE@am__append_2 = -lhts
-@DEBUG_TRUE@am__append_3 = -g
-@DEBUG_FALSE@am__append_4 = -DNDEBUG
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -147,8 +145,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
 	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
 	ThreeSubs.lo CodonTable.lo Specializations.lo \
-	Seq/FastaExplicit.lo SeqExceptions.lo SeqConstants.lo \
-	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
+	Seq/FastaExplicit.lo SeqConstants.lo shortestPath.lo \
+	SummStats/HKA.lo SummStats/Snn.lo \
 	Coalescent/CoalescentMutation.lo \
 	Coalescent/CoalescentRecombination.lo \
 	Coalescent/CoalescentSimTypes.lo \
@@ -389,7 +387,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	CodonTable.cc\
 	Specializations.cc\
 	Seq/FastaExplicit.cc\
-	SeqExceptions.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
@@ -418,13 +415,23 @@ libsequence_la_SOURCES = Grantham.cc\
 	threading.cc 
 
 
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
+
 #Link to Intel's TBB runtime library
 AM_LDFLAGS = -version-info 20:0:0 $(am__append_2) -ltbb
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
 	-Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo \
-	-Wsynth $(am__append_1) $(am__append_3) $(am__append_4)
-@PROFILING_FALSE@PROFILE = 
-@PROFILING_TRUE@PROFILE = -pg
+	-Wsynth $(am__append_1)
 all: all-am
 
 .SUFFIXES:
@@ -652,7 +659,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/RedundancyCom95.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqExceptions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimData.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimDataIO.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimParams.Plo@am__quote@

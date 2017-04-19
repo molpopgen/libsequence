@@ -3,13 +3,12 @@
 #define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/fastq.hpp>
-#include <Sequence/SeqExceptions.hpp>
 #include <fstream>
 #include <boost/test/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
 #include <iostream>
-
+#include <stdexcept>
 
 BOOST_AUTO_TEST_CASE( move_construction )
 {

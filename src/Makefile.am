@@ -35,7 +35,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	CodonTable.cc\
 	Specializations.cc\
 	Seq/FastaExplicit.cc\
-	SeqExceptions.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
@@ -72,17 +71,17 @@ AM_CXXFLAGS+=-DHAVE_HTSLIB
 AM_LDFLAGS+=-lhts
 endif
 
-if DEBUG
-AM_CXXFLAGS+=-g
-else
-AM_CXXFLAGS+=-DNDEBUG
-endif
-
-if PROFILING
-PROFILE= -pg
-else
-PROFILE=
-endif
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 #Link to Intel's TBB runtime library
 AM_LDFLAGS+=-ltbb
