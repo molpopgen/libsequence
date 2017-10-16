@@ -7,6 +7,8 @@
 
 #include <Sequence/PolySIM.hpp>
 #include <unordered_map>
+#include <tuple>
+#include <cstdint>
 
 namespace Sequence
 {
@@ -35,30 +37,20 @@ namespace Sequence
      * \param gmap A map relating positions in @a d to genetic map location
      * \ingroup popgenanalysis
      */
-    std::vector<std::pair<double, double>>
+    std::vector<std::tuple<double, double, std::uint32_t>>
     nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
                             = std::unordered_map<double, double>());
 
     /*!
-      Calculate max. abs value of standardized nSL and iHS, with the latter as
-      defined by Ferrer-Admetella et al. The statistics are calculated in
-      parallel.
-	  See \ref threads for details.
-      \param d An object of type Sequence::SimData
-      \param minfreq Exclude mutations with minor allele frequency < minfreq.
-      \param binsize The size of frequency bins.
-      \param gmap The positions of every marker in d on the genetic map. If
-      std::unordered_map<double,double>() is passed,
-      iHS is calculated using SNP positions.
-      \return maximum absolute value of standardized nSL and iHS, with the
-      latter as defined by Ferrer-Admetella et al.
-      \warning The use of 'gmap' is untested.
-      \item The first member of the return value is nSL, the second is iHS
-      \ingroup popgenanalysis
-    */
-    std::pair<double, double>
-    snSL(const SimData &d, const double minfreq, const double binsize,
-         const std::unordered_map<double, double> &gmap
-         = std::unordered_map<double, double>());
+     * Threaded implementation of the nSL statistic. See \ref threads.
+     * \param d A Sequence::SimData
+     * \param core_snps The core snps to analyze
+     * \param gmap A map relating positions in @a d to genetic map location
+     * \ingroup popgenanalysis
+     */
+    std::vector<std::tuple<double, double, std::uint32_t>>
+    nSL_t(const SimData &d, const std::vector<std::size_t> &core_snps,
+          const std::unordered_map<double, double> &gmap
+          = std::unordered_map<double, double>());
 }
 #endif

@@ -1,6 +1,7 @@
 #include <Sequence/SimData.hpp>
 #include <Sequence/SummStats/nSL.hpp>
 #include <algorithm>
+#include <numeric>
 #include <array>
 #include <cmath>
 #include <limits>
@@ -128,130 +129,140 @@ namespace Sequence
         return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
     }
 
-    vector<pair<double, double>>
+    vector<tuple<double, double, uint32_t>>
     nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap)
     {
-        vector<pair<double, double>> rv(d.numsites());
+        vector<size_t> core_snps(d.numsites());
+        for (size_t core = 0; core < core_snps.size(); ++core)
+            core_snps[core] = core;
+        return nSL_t(d, core_snps, gmap);
+    }
+
+    vector<tuple<double, double, uint32_t>>
+    nSL_t(const SimData &d, const std::vector<size_t> &core_snps,
+          const std::unordered_map<double, double> &gmap)
+    {
+        vector<tuple<double, double, uint32_t>> rv(core_snps.size());
+        using offset_type = SimData::const_site_iterator::difference_type;
         tbb::parallel_for(
             tbb::blocked_range<std::size_t>(0, rv.size()),
-            [&rv, &d, &gmap](const tbb::blocked_range<std::size_t> &r) {
+            [&rv, &d, &core_snps,
+             &gmap](const tbb::blocked_range<std::size_t> &r) {
                 for (std::size_t i = r.begin(); i < r.end(); ++i)
                     {
-                        auto temp = __nSLdetails(i, d, gmap);
-                        rv[i] = make_pair(log(temp[0]) - log(temp[2]),
-                                          log(temp[1]) - log(temp[3]));
+                        auto temp = __nSLdetails(core_snps[i], d, gmap);
+                        offset_type offset = static_cast<offset_type>(i);
+                        uint32_t dcount = static_cast<uint32_t>(
+                            count((d.sbegin() + offset)->second.begin(),
+                                  (d.sbegin() + offset)->second.end(), '1'));
+                        rv[i]
+                            = make_tuple(log(temp[0]) - log(temp[2]),
+                                         log(temp[1]) - log(temp[3]), dcount);
                     }
             });
         return rv;
     }
+
+    // double
+    // update_return_value(vector<double> &binned_scores, const double
+    // current_rv)
+    //// normalize, etc.
+    //{
+    //    if (binned_scores.size() > 1)
+    //        {
+    //            double sum = accumulate(binned_scores.begin(),
+    //                                    binned_scores.end(), 0.);
+    //            double sumsq = accumulate(
+    //                binned_scores.begin(), binned_scores.end(), 0.,
+    //                [](double ss, double val) { return ss + pow(val, 2.0);
+    //                });
+    //            double mean = sum /
+    //            static_cast<double>(binned_scores.size());
+    //            double sd = sqrt(sumsq);
+    //            transform(binned_scores.begin(), binned_scores.end(),
+    //                      binned_scores.begin(), [mean, sd](double score) {
+    //                          return (score - mean) / sd;
+    //                      });
+    //            auto me = max_element(
+    //                binned_scores.begin(), binned_scores.end(),
+    //                [](double a, double b) { return fabs(a) < fabs(b); });
+    //            if (!isfinite(current_rv) || fabs(*me) > fabs(current_rv))
+    //                {
+    //                    return fabs(*me);
+    //                }
+    //        }
+    //    return current_rv;
+    //}
     /*
       Return max. abs value of standardized nSL and iHS, with the latter as
       defined by Ferrer-Admetella et al.
     */
-    pair<double, double>
-    snSL(const SimData &d, const double minfreq, const double binsize,
-         const std::unordered_map<double, double> &gmap)
-    {
-        if (d.empty())
-            return make_pair(std::numeric_limits<double>::quiet_NaN(),
-                             std::numeric_limits<double>::quiet_NaN());
-        vector<polymorphicSite> filtered;
-        vector<unsigned> dcounts;
-        dcounts.reserve(d.numsites());
-        for_each(d.sbegin(), d.send(), [&](const polymorphicSite &p) {
-            unsigned dcount = static_cast<unsigned>(
-                count(p.second.begin(), p.second.end(), '1'));
-            if (dcount && dcount < d.size())
-                {
-                    double f = static_cast<double>(dcount)
-                               / static_cast<double>(d.size());
-                    if (min(f, 1. - f) >= minfreq)
-                        {
-                            filtered.push_back(p);
-                            dcounts.push_back(dcount);
-                        }
-                }
-        });
-        if (filtered.empty())
-            return make_pair(std::numeric_limits<double>::quiet_NaN(),
-                             std::numeric_limits<double>::quiet_NaN());
-        SimData __filtered(filtered.begin(), filtered.end());
-        // Get the stats
-        auto nSLstats = nSL_t(__filtered, gmap);
-        // Associate the stats with their DAFs
-        using pp = pair<double, pair<double, double>>;
-        vector<pp> binning;
-        for (unsigned i = 0; i < __filtered.numsites(); ++i)
-            {
-                // pair<double, double> rvi = nSL(i, __filtered, gmap);
-                binning.push_back(
-                    make_pair(static_cast<double>(dcounts[i])
-                                  / static_cast<double>(__filtered.size()),
-                              nSLstats[i]));
-            }
-        // sort based on DAF
-        std::sort(binning.begin(), binning.end(),
-                  [](const pp &a, const pp &b) { return a.first < b.first; });
-        double rv = std::numeric_limits<double>::quiet_NaN(),
-               rv2 = std::numeric_limits<double>::quiet_NaN();
-        // Now, bin, standardise, and move on...
-        vector<pp> thisbin;
-        auto bstart = binning.begin();
-        size_t ttlSNPs = 0;
-        for (double l = minfreq; l < 1.; l += binsize)
-            {
-                thisbin.clear();
-                auto first = lower_bound(
-                    bstart, binning.end(), l,
-                    [](const pp &p, const double d) { return p.first < d; });
-                auto last = upper_bound(
-                    first, binning.end(), l + binsize,
-                    [](const double d, const pp &p) { return d <= p.first; });
-                thisbin.insert(thisbin.end(), first, last);
-                ttlSNPs += thisbin.size();
-                bstart = last;
-                if (thisbin.size() > 1) // otherwise SD = 0, so there's
-                                        // nothing to standardize
-                    {
-                        double sum1 = 0., sum2 = 0., sumsq1 = 0., sumsq2 = 0.;
-                        for (const auto &p : thisbin)
-                            {
-                                if (isfinite(p.second.first))
-                                    {
-                                        sum1 += p.second.first;
-                                        sumsq1 += pow(p.second.first, 2.);
-                                    }
-                                if (isfinite(p.second.second))
-                                    {
-                                        sum2 += p.second.second;
-                                        sumsq2 += pow(p.second.second, 2.);
-                                    }
-                            }
-                        double mean1
-                            = sum1 / static_cast<double>(thisbin.size());
-                        double mean2
-                            = sum2 / static_cast<double>(thisbin.size());
-                        double C = static_cast<double>(thisbin.size())
-                                   / static_cast<double>(thisbin.size() - 1);
-                        double var1
-                            = C * (sumsq1 / static_cast<double>(thisbin.size())
-                                   - pow(mean1, 2.));
-                        double var2
-                            = C * (sumsq2 / static_cast<double>(thisbin.size())
-                                   - pow(mean2, 2.));
-                        double sd1 = sqrt(var1), sd2 = sqrt(var2);
-                        for (const auto &data : thisbin)
-                            {
-                                rv = maxabs(data.second.first, mean1, sd1, rv);
-                                rv2 = maxabs(data.second.second, mean2, sd2,
-                                             rv2);
-                            }
-                    }
-            }
-        if (ttlSNPs != __filtered.numsites())
-            {
-                throw runtime_error("Incorrect number of SNPs processed");
-            }
-        return make_pair(rv, rv2);
-    }
+    // pair<double, double>
+    // snSL(const SimData &d, const double minfreq, const double binsize,
+    //     bool filter_minor, const std::unordered_map<double, double> &gmap)
+    //{
+    //    if (d.empty())
+    //        return make_pair(std::numeric_limits<double>::quiet_NaN(),
+    //                         std::numeric_limits<double>::quiet_NaN());
+
+    //    vector<unsigned> dcounts;
+    //    dcounts.reserve(d.numsites());
+    //    vector<size_t> core_snps;
+
+    //    for (auto p = d.sbegin(); p != d.send(); ++p)
+    //        {
+    //            unsigned dcount = static_cast<unsigned>(
+    //                count(p->second.begin(), p->second.end(), '1'));
+    //            if (dcount && dcount < d.size())
+    //                {
+    //                    double f = static_cast<double>(dcount)
+    //                               / static_cast<double>(d.size());
+    //                    if (filter_minor)
+    //                        {
+    //                            f = min(f, 1. - f);
+    //                            dcount = min(dcount,
+    //                                         static_cast<unsigned>(d.size())
+    //                                             - dcount);
+    //                        }
+    //                    if (f >= minfreq)
+    //                        {
+    //                            core_snps.push_back(
+    //                                static_cast<size_t>(p - d.sbegin()));
+    //                            dcounts.push_back(dcount);
+    //                        }
+    //                }
+    //        }
+    //    if (core_snps.empty())
+    //        return make_pair(std::numeric_limits<double>::quiet_NaN(),
+    //                         std::numeric_limits<double>::quiet_NaN());
+    //    // Get the stats
+    //    auto nSLstats = nSL_t(d, core_snps, gmap);
+    //    const std::size_t nbins = static_cast<size_t>(
+    //        std::ceil(((filter_minor) ? 0.5 : 1.0) / binsize));
+    //    vector<vector<double>> binned_scores_nSL(nbins),
+    //        binned_scores_iHS(nbins);
+    //    double binsize_counts = (binsize * double(d.size()));
+    //    for (size_t i = 0; i < core_snps.size(); ++i)
+    //        {
+    //            size_t bin
+    //                = size_t(static_cast<double>(dcounts[i]) /
+    //                binsize_counts);
+    //            if (isfinite(get<0>(nSLstats[i])))
+    //                {
+    //                    binned_scores_nSL[bin].push_back(get<0>(nSLstats[i]));
+    //                }
+    //            if (isfinite(get<1>(nSLstats[i])))
+    //                {
+    //                    binned_scores_iHS[bin].push_back(get<1>(nSLstats[i]));
+    //                }
+    //        }
+    //    double rv_nSL = numeric_limits<double>::quiet_NaN(),
+    //           rv_iHS = numeric_limits<double>::quiet_NaN();
+    //    for (size_t i = 0; i < binned_scores_nSL.size(); ++i)
+    //        {
+    //            rv_nSL = update_return_value(binned_scores_nSL[i], rv_nSL);
+    //            rv_iHS = update_return_value(binned_scores_iHS[i], rv_iHS);
+    //        }
+    //    return make_pair(rv_nSL, rv_iHS);
+    //}
 }
