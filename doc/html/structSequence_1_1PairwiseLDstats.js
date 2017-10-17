@@ -1,7 +1,6 @@
 var structSequence_1_1PairwiseLDstats =
 [
     [ "PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html#a9a7194d33c532812bdccba95a357a852", null ],
-    [ "PairwiseLDstats", "structSequence_1_1PairwiseLDstats.html#a9a7194d33c532812bdccba95a357a852", null ],
     [ "D", "structSequence_1_1PairwiseLDstats.html#a1e01b313c642d10b246bb8c75a969578", null ],
     [ "Dprime", "structSequence_1_1PairwiseLDstats.html#a252b799ff4f543cd75b4e4d642d6d6d1", null ],
     [ "i", "structSequence_1_1PairwiseLDstats.html#a1afc956d0ca438eadb94b5747a3950f0", null ],

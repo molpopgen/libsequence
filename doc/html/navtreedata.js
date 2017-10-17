@@ -53,8 +53,8 @@ var NAVTREE =
         [ "BAM files", "md_md_tutorial.html#bam", null ]
       ] ]
     ] ],
-    [ "The libsequence home page", "md__home_kevin_src_libsequence_index.html", null ],
-    [ "libsequence revision history", "md__home_kevin_src_libsequence_REVISION_HISTORY.html", null ],
+    [ "The libsequence home page", "md__Users_kevin_src_libsequence_index.html", null ],
+    [ "libsequence revision history", "md__Users_kevin_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -82,7 +82,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ]
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ]
+      ] ]
     ] ],
     [ "Examples", "examples.html", "examples" ]
   ] ]
@@ -91,16 +95,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AlignStreamTest_8cc.html",
-"Specializations_8cc.html#a4084883c9810848f2e7e5ae549eb3c8e",
-"classSequence_1_1Fasta.html#a774d800b62c172303deaff5803145989",
-"classSequence_1_1PolySites.html#a647d2ae280a8294dd6be176b6383c0ff",
-"classSequence_1_1Seq.html#a57bef972a13cff830d0b1236f61407d8",
-"classSequence_1_1SimData.html#afa88a7af813d8833bee7df82a5bcc5b7",
-"classSequence_1_1bamreader.html#a68f0428c0edff111d4a0df72d5705e16",
-"classSequence_1_1phylipData.html#a9ea759103b63e7c55ce0d10f43e86f82",
-"functions_v.html",
-"release_2include_2Sequence_2bits_2Correlations_8tcc_source.html",
-"structSequence_1_1coalsim_1_1segment.html"
+"PolyTableSliceTest_8cc.html#a9290cd76dcad75a791f6db9abd519021",
+"classSequence_1_1Comeron95.html#a0cdb6a41e309499f8417ed1659df1bdd",
+"classSequence_1_1PolyTable.html#af41308232e3bf800974980a47e79e3f4",
+"classSequence_1_1Sites.html",
+"classSequence_1_1shortestPath.html#ac04df3cd4200c3bf7931388ee14ef053",
+"md_md_tutorial.html#seqio",
+"structSequence_1_1lowerCrit.html#a3271c53294e6cf210689f313bf130376"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

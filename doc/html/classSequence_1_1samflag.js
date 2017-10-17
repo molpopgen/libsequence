@@ -2,11 +2,7 @@ var classSequence_1_1samflag =
 [
     [ "samflag", "classSequence_1_1samflag.html#a4e4837813bf57e4f214bddba4f62703c", null ],
     [ "samflag", "classSequence_1_1samflag.html#a8e4826f0b426fcbfe0d5f2d97ab158f1", null ],
-    [ "samflag", "classSequence_1_1samflag.html#a4e4837813bf57e4f214bddba4f62703c", null ],
-    [ "samflag", "classSequence_1_1samflag.html#a8e4826f0b426fcbfe0d5f2d97ab158f1", null ],
-    [ "operator std::int32_t", "classSequence_1_1samflag.html#a2024a0010ef88f2f6c2dfaa755d41c60", null ],
-    [ "operator std::int32_t", "classSequence_1_1samflag.html#a2024a0010ef88f2f6c2dfaa755d41c60", null ],
-    [ "read", "classSequence_1_1samflag.html#a6509d1d3c1fa476fa8ef5f01660e05e9", null ],
+    [ "operator std::int32_t", "classSequence_1_1samflag.html#a784a2723cd01eea60bf3912a444bbf54", null ],
     [ "read", "classSequence_1_1samflag.html#aa6825b0a9836b8498b2384025da1efb6", null ],
     [ "duplicate", "classSequence_1_1samflag.html#a0c4d0d0af6a1c731d333ac7a6822fd95", null ],
     [ "first_read", "classSequence_1_1samflag.html#af429d10ac13952419e09f353918315f3", null ],
