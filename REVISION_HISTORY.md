@@ -30,6 +30,10 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.2
+
+* Refactor API for nSL/iHS calculations
+
 ## libsequence 1.9.1
 
 * Sequence::SeqException was removed.  Exceptions from namespace std are preferred, and are easier to wrap in other languages.
