@@ -326,7 +326,6 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
-runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -399,7 +398,9 @@ pkginclude_HEADERS = AlignStream.hpp\
 	bamrecord.hpp \
 	bamreader.hpp \
 	SeqAlphabets.hpp \
-	threading.hpp
+	threading.hpp \
+	VariantMatrix.hpp \
+	VariantMatrixViews.hpp
 
 all: all-recursive
 

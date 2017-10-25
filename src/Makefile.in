@@ -158,7 +158,9 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo SummStats/Garud.lo \
 	IOhelp.lo hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
 	SummStats/lHaf.lo SummStats/variantCounts.lo \
-	SummStats/classic.lo threading.lo
+	SummStats/classic.lo threading.lo \
+	variant_matrix/VariantMatrix.lo \
+	variant_matrix/VariantMatrixViews.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -344,7 +346,6 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
-runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -412,7 +413,9 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/lHaf.cc \
 	SummStats/variantCounts.cc \
 	SummStats/classic.cc \
-	threading.cc 
+	threading.cc \
+	variant_matrix/VariantMatrix.cc \
+	variant_matrix/VariantMatrixViews.cc
 
 
 #if DEBUG
@@ -573,6 +576,16 @@ SummStats/variantCounts.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/classic.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/$(am__dirstamp):
+	@$(MKDIR_P) variant_matrix
+	@: > variant_matrix/$(am__dirstamp)
+variant_matrix/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) variant_matrix/$(DEPDIR)
+	@: > variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/VariantMatrix.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/VariantMatrixViews.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -640,6 +653,8 @@ mostlyclean-compile:
 	-rm -f SummStats/*.lo
 	-rm -f hts/*.$(OBJEXT)
 	-rm -f hts/*.lo
+	-rm -f variant_matrix/*.$(OBJEXT)
+	-rm -f variant_matrix/*.lo
 
 distclean-compile:
 	-rm -f *.tab.c
@@ -703,6 +718,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -737,6 +754,7 @@ clean-libtool:
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
 	-rm -rf hts/.libs hts/_libs
+	-rm -rf variant_matrix/.libs variant_matrix/_libs
 
 ID: $(am__tagged_files)
 	$(am__define_uniq_tagged_files); mkid -fID $$unique
@@ -863,6 +881,8 @@ distclean-generic:
 	-rm -f SummStats/$(am__dirstamp)
 	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
 	-rm -f hts/$(am__dirstamp)
+	-rm -f variant_matrix/$(DEPDIR)/$(am__dirstamp)
+	-rm -f variant_matrix/$(am__dirstamp)
 
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
@@ -873,7 +893,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -919,7 +939,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
