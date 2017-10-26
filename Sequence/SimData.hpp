@@ -65,30 +65,29 @@ fall in the interval (0,1].
 #include <Sequence/PolyTable.hpp>
 #include <cstdio>
 namespace Sequence
-  {
-  class SimData:public PolyTable
+{
+    class __attribute__((deprecated)) SimData : public PolyTable
     {
-    public:
-      SimData(void);
-      SimData( SimData && );
-      SimData( const SimData & );
-      //SimData( SimData & );// = default;
-      //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
-      //SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
-      //SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
-      SimData(std::vector<double> pos,  std::vector<std::string> data);
-      SimData(const SimData::const_site_iterator & beg, 
-	      const SimData::const_site_iterator & end);
-      
-      ~ SimData (void){}
-      
-      SimData & operator=(SimData &&);
-      SimData & operator=(const SimData &);
+      public:
+        SimData(void);
+        SimData(SimData &&);
+        SimData(const SimData &);
+        //SimData( SimData & );// = default;
+        //explicit SimData (const size_t & nsam=0, const size_t & nsnps = 0);
+        //SimData(double *pos, const char **sample, const unsigned &  nsam, const unsigned & S);
+        //SimData(const std::vector<double> & pos, const std::vector<std::string> & data);
+        SimData(std::vector<double> pos, std::vector<std::string> data);
+        SimData(const SimData::const_site_iterator &beg,
+                const SimData::const_site_iterator &end);
 
-      virtual std::istream & read (std::istream & s) ;
-      virtual std::ostream & print(std::ostream &o) const;
-      virtual int fromfile( FILE * openedfile );
+        ~SimData(void) {}
+
+        SimData &operator=(SimData &&);
+        SimData &operator=(const SimData &);
+
+        virtual std::istream &read(std::istream &s);
+        virtual std::ostream &print(std::ostream &o) const;
+        virtual int fromfile(FILE *openedfile);
     };
-
 }
 #endif

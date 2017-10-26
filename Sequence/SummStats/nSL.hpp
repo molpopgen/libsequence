@@ -29,7 +29,7 @@ namespace Sequence
     std::pair<double, double>
     nSL(const std::size_t &core, const SimData &d,
         const std::unordered_map<double, double> &gmap
-        = std::unordered_map<double, double>());
+        = std::unordered_map<double, double>())__attribute__ ((deprecated));
 
     /*!
      * Threaded implementation of the nSL statistic. See \ref threads.
@@ -39,7 +39,7 @@ namespace Sequence
      */
     std::vector<std::tuple<double, double, std::uint32_t>>
     nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
-                            = std::unordered_map<double, double>());
+                            = std::unordered_map<double, double>())__attribute__ ((deprecated));
 
     /*!
      * Threaded implementation of the nSL statistic. See \ref threads.
@@ -51,6 +51,6 @@ namespace Sequence
     std::vector<std::tuple<double, double, std::uint32_t>>
     nSL_t(const SimData &d, const std::vector<std::size_t> &core_snps,
           const std::unordered_map<double, double> &gmap
-          = std::unordered_map<double, double>());
+          = std::unordered_map<double, double>())__attribute__ ((deprecated));
 }
 #endif
