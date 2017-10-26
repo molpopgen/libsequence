@@ -11,4 +11,5 @@ pkginclude_HEADERS = PolySites.tcc\
 		Correlations.tcc\
 		descriptiveStats.tcc\
 		PolyTableFunctions.tcc\
-		Snn.tcc
+		Snn.tcc \
+		variant_matrix_views_internal.hpp

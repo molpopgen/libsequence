@@ -65,4 +65,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	bamrecord.hpp \
 	bamreader.hpp \
 	SeqAlphabets.hpp \
-	threading.hpp
+	threading.hpp \
+	VariantMatrix.hpp \
+	VariantMatrixViews.hpp

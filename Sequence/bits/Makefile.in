@@ -284,7 +284,6 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
-runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -304,7 +303,8 @@ pkginclude_HEADERS = PolySites.tcc\
 		Correlations.tcc\
 		descriptiveStats.tcc\
 		PolyTableFunctions.tcc\
-		Snn.tcc
+		Snn.tcc \
+		variant_matrix_views_internal.hpp
 
 all: all-am
 
