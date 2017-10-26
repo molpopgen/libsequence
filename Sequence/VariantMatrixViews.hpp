@@ -5,7 +5,6 @@
 #include "bits/variant_matrix_views_internal.hpp"
 
 namespace Sequence
-/// The name space
 {
     /// View of a VariantMatrix row (a variable site)
     using RowView = internal::row_view_<std::int8_t*>;
