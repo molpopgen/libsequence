@@ -67,4 +67,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SeqAlphabets.hpp \
 	threading.hpp \
 	VariantMatrix.hpp \
-	VariantMatrixViews.hpp
+	VariantMatrixViews.hpp \
+	StateCounter.hpp
