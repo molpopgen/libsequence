@@ -160,7 +160,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/lHaf.lo SummStats/variantCounts.lo \
 	SummStats/classic.lo threading.lo \
 	variant_matrix/VariantMatrix.lo \
-	variant_matrix/VariantMatrixViews.lo
+	variant_matrix/VariantMatrixViews.lo \
+	variant_matrix/StateCounter.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -346,6 +347,7 @@ pdfdir = @pdfdir@
 prefix = @prefix@
 program_transform_name = @program_transform_name@
 psdir = @psdir@
+runstatedir = @runstatedir@
 sbindir = @sbindir@
 sharedstatedir = @sharedstatedir@
 srcdir = @srcdir@
@@ -415,7 +417,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/classic.cc \
 	threading.cc \
 	variant_matrix/VariantMatrix.cc \
-	variant_matrix/VariantMatrixViews.cc
+	variant_matrix/VariantMatrixViews.cc \
+	variant_matrix/StateCounter.cc
 
 
 #if DEBUG
@@ -586,6 +589,8 @@ variant_matrix/VariantMatrix.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/VariantMatrixViews.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/StateCounter.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -718,6 +723,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
 
