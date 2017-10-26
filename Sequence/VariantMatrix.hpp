@@ -14,6 +14,9 @@ static_assert(sizeof(std::int8_t) == sizeof(char),
 
 namespace Sequence
 {
+	/// \defgroup variantmatrix Variant Matrix
+	/// \brief Types and functions related to manipulation of variation data
+	
     struct VariantMatrix
     /// Matrix representation of variation data.
     /// The data structure is a row-major matrix.
@@ -34,6 +37,7 @@ namespace Sequence
     /// That reserved value is VariantMatrix::mask,
     /// which is a static constant.
     ///
+    /// \ingroup variantmatrix
     /// \version 1.9.2
     {
         /// Data stored in matrix form with rows as sites.

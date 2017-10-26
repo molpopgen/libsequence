@@ -15,6 +15,7 @@ namespace Sequence
         template <typename T> struct row_view_
         /// Implementation details for Sequence::RowView and
         /// Sequence::ConstRowView
+		/// \ingroup variantmatrix
         {
             static_assert(std::is_pointer<T>::value, "T must be pointer type");
             /// Pointer to row data
@@ -169,6 +170,7 @@ namespace Sequence
         template <typename T> struct col_view_
         /// Implementation details for Sequence::ColView and
         /// Sequence::ConstColView
+		/// \ingroup variantmatrix
         {
             static_assert(std::is_pointer<T>::value, "T must be pointer type");
             /// Pointer to column data
