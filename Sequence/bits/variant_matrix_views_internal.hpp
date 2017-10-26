@@ -255,8 +255,8 @@ namespace Sequence
                 difference_type offset;
                 explicit iterator_(POINTER data_, difference_type stride_,
                                    difference_type offset_)
-                    : data{ data_ }, stride{ stride_ }, offset{ offset_ }
                 /// Constructor
+                    : data{ data_ }, stride{ stride_ }, offset{ offset_ }
                 {
                 }
 
