@@ -44,7 +44,7 @@ namespace Sequence
                 m.data.erase(std::remove(m.data.begin(), m.data.end(),
                                          VariantMatrix::mask),
                              m.data.end());
-                dim -= rv;
+                dim -= static_cast<std::size_t>(rv);
             }
         return rv;
     }
