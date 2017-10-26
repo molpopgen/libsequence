@@ -161,7 +161,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/classic.lo threading.lo \
 	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
-	variant_matrix/StateCounter.lo
+	variant_matrix/StateCounts.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -418,7 +418,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
-	variant_matrix/StateCounter.cc
+	variant_matrix/StateCounts.cc
 
 
 #if DEBUG
@@ -589,7 +589,7 @@ variant_matrix/VariantMatrix.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/VariantMatrixViews.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
-variant_matrix/StateCounter.lo: variant_matrix/$(am__dirstamp) \
+variant_matrix/StateCounts.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
@@ -723,7 +723,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounter.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
 

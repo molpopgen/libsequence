@@ -63,7 +63,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
-	variant_matrix/StateCounter.cc
+	variant_matrix/StateCounts.cc
 
 
 AM_LDFLAGS=-version-info 20:0:0

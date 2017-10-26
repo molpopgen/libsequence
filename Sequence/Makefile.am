@@ -68,4 +68,4 @@ pkginclude_HEADERS = AlignStream.hpp\
 	threading.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
-	StateCounter.hpp
+	StateCounts.hpp
