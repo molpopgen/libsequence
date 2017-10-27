@@ -25,7 +25,7 @@ namespace Sequence
 				      std::vector<chromosome> * sample,
 				      arg * sample_history,
 				      unsigned * max_chromosomes = NULL,
-				      const unsigned & max_chromosomes_inc = 0)
+				      const unsigned & max_chromosomes_inc = 0)__attribute__((deprecated))
     /*!
       @brief A simple function to generate samples under a neutral equilibrium model.
 

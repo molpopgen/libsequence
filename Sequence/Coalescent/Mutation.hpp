@@ -103,7 +103,7 @@ namespace Sequence
 				     uniform_generator & uni,
 				     const int & nsites,
 				     const arg & history,
-				     const double & theta);
+				     const double & theta)__attribute((deprecated));
 
     template<typename poisson_generator,
 	     typename uniform_generator>
@@ -111,21 +111,21 @@ namespace Sequence
 				     const uniform_generator & uni,
 				     const int & nsites,
 				     const arg & history,
-				     const double & theta);
+				     const double & theta)__attribute__((deprecated));
  
     template<typename uniform_generator>
     SimData infinite_sites_sim_data( uniform_generator & uni,
 				     const int & nsites,
 				     const arg & history,
 				     const double * total_times,
-				     const unsigned * segsites);
+				     const unsigned * segsites)__attribute__((deprecated));
 
     template<typename uniform_generator>
     SimData infinite_sites_sim_data( const uniform_generator & uni,
 				     const int & nsites,
 				     const arg & history,
 				     const double * total_times,
-				     const unsigned * segsites);
+				     const unsigned * segsites)__attribute__((deprecated));
 
     void output_gametes(FILE * fp,const unsigned & segsites,
 			const unsigned & nsam,

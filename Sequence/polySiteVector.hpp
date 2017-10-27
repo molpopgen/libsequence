@@ -42,13 +42,13 @@ namespace Sequence
     a position (a double) and the characters at 
     that positions (a std::string)
   */
-  using polymorphicSite = std::pair< double, std::string >__attribute__((deprecated));
+  using polymorphicSite = std::pair< double, std::string >;
 
   /*!
     A polymorphism data set can be represented as
     a vector containing a sequence of polymorphicSite
   */
-  using polySiteVector = std::vector< polymorphicSite >__attribute__((deprecated));
+  using polySiteVector = std::vector< polymorphicSite >;
 
   polySiteVector make_polySiteVector(const Sequence::PolyTable & data)__attribute__((deprecated));
 }
