@@ -15,7 +15,7 @@ namespace Sequence
         template <typename T> struct row_view_
         /// Implementation details for Sequence::RowView and
         /// Sequence::ConstRowView
-		/// \ingroup variantmatrix
+        /// \ingroup variantmatrix
         {
             static_assert(std::is_pointer<T>::value, "T must be pointer type");
             /// Pointer to row data
@@ -26,8 +26,9 @@ namespace Sequence
             std::size_t row_size;
 
             row_view_(T data_, std::size_t row_size_)
-            /// Constructor
-                : data(data_), row_size(row_size_)
+                /// Constructor
+                : data(data_),
+                  row_size(row_size_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -170,7 +171,7 @@ namespace Sequence
         template <typename T> struct col_view_
         /// Implementation details for Sequence::ColView and
         /// Sequence::ConstColView
-		/// \ingroup variantmatrix
+        /// \ingroup variantmatrix
         {
             static_assert(std::is_pointer<T>::value, "T must be pointer type");
             /// Pointer to column data
@@ -184,8 +185,10 @@ namespace Sequence
             std::size_t stride;
 
             col_view_(T data_, std::size_t col_end_, std::size_t stride_)
-            /// Constructor
-                : data(data_), col_end(col_end_), stride(stride_)
+                /// Constructor
+                : data(data_),
+                  col_end(col_end_),
+                  stride(stride_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -255,8 +258,10 @@ namespace Sequence
                 difference_type offset;
                 explicit iterator_(POINTER data_, difference_type stride_,
                                    difference_type offset_)
-                /// Constructor
-                    : data{ data_ }, stride{ stride_ }, offset{ offset_ }
+                    /// Constructor
+                    : data{ data_ },
+                      stride{ stride_ },
+                      offset{ offset_ }
                 {
                 }
 
@@ -342,25 +347,37 @@ namespace Sequence
             begin()
             /// Get iterator to start of range
             {
-                return iterator(data, stride, 0);
+                return iterator(
+                    data,
+                    static_cast<typename iterator::difference_type>(stride),
+                    0);
             }
             iterator
             end()
             /// Get iterator to end of range
             {
-                return iterator(data, stride, col_end);
+                return iterator(
+                    data,
+                    static_cast<typename iterator::difference_type>(stride),
+                    static_cast<typename iterator::difference_type>(col_end));
             }
             const_iterator
             begin() const
             /// Get const iterator to end of range
             {
-                return const_iterator(data, stride, 0);
+                return const_iterator(
+                    data,
+                    static_cast<typename iterator::difference_type>(stride),
+                    0);
             }
             const_iterator
             end() const
             /// Get const iterator to end of range
             {
-                return const_iterator(data, stride, col_end);
+                return const_iterator(
+                    data,
+                    static_cast<typename iterator::difference_type>(stride),
+                    static_cast<typename iterator::difference_type>(col_end));
             }
             const_iterator
             cbegin() const
