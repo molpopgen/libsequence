@@ -63,18 +63,20 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/PolyTable.hpp>
 
 namespace Sequence
-  {
-  class SimpleSNP:public PolyTable
+{
+    class __attribute__((deprecated)) SimpleSNP : public PolyTable
     {
-    private:
-      std::vector<std::string> _names;
-      bool Diploid,isoFemale;
-      bool haveOutgroup;
-    public:
-      SimpleSNP( SimpleSNP && );
-      SimpleSNP (const bool diploid =0,const bool isofemale=0)  : PolyTable(),
-          Diploid(diploid),isoFemale(isofemale),haveOutgroup(false)
-          /*!
+      private:
+        std::vector<std::string> _names;
+        bool Diploid, isoFemale;
+        bool haveOutgroup;
+
+      public:
+        SimpleSNP(SimpleSNP &&);
+        SimpleSNP(const bool diploid = 0, const bool isofemale = 0)
+            : PolyTable(), Diploid(diploid), isoFemale(isofemale),
+              haveOutgroup(false)
+        /*!
           The two bools that this constructor takes allow you to deal
           with two very different types of polymorphism data.  If both
           bools are set to 0 (the default), the data are simply read in
@@ -92,16 +94,17 @@ namespace Sequence
           found, one of the two possible states will be assigned randomly
           (NOT IMPLEMENTED YET!)
           */
-      {}
-      ~ SimpleSNP (void) {}
-     
-      SimpleSNP & operator=(SimpleSNP &&);
+        {
+        }
+        ~SimpleSNP(void) {}
 
-      bool outgroup(void) const;
-      void set_outgroup( const bool & b );
-      std::string label(unsigned i) const;
-      std::istream & read (std::istream & s) ;
-      std::ostream & print(std::ostream &o) const;
+        SimpleSNP &operator=(SimpleSNP &&);
+
+        bool outgroup(void) const;
+        void set_outgroup(const bool &b);
+        std::string label(unsigned i) const;
+        std::istream &read(std::istream &s);
+        std::ostream &print(std::ostream &o) const;
     };
     typedef SimpleSNP Hudson2001;
 }

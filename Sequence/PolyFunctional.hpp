@@ -42,7 +42,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence
 {
-  struct countStates
+  struct __attribute__ ((deprecated)) countStates
   /*!
     \brief Functor to count the number of states, excluding gaps and missing data,
     in a range of characters.
@@ -149,7 +149,7 @@ namespace Sequence
     \endcode
     \brief Calculate nucleotide diversity from a polymorphic site
   */
-  struct ssh : public std::binary_function< double,polymorphicSite,double >
+  struct __attribute__ ((deprecated)) ssh : public std::binary_function< double,polymorphicSite,double >
 
   {
     inline double operator()( double & _ssh,

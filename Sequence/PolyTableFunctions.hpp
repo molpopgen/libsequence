@@ -38,7 +38,7 @@
 namespace Sequence
 {
   //! \return true if \a t contains \a ch, false otherwise
-  bool containsCharacter(const PolyTable * t,const char ch);
+  bool containsCharacter(const PolyTable * t,const char ch)__attribute__ ((deprecated));
 
   /*!
     \return true if the following conditions are met : First, the length of every
@@ -52,7 +52,7 @@ namespace Sequence
     routine can be thought of as a PolyTable equivalent to Alignment::validForPolyAnalysis,
     which works on ranges of Sequence::Seq objects.
   */
-  bool polyTableValid(const PolyTable * t);
+  bool polyTableValid(const PolyTable * t)__attribute__ ((deprecated));
 
   template<typename T> T copyPolyTable(const T & t)
   {
@@ -60,18 +60,18 @@ namespace Sequence
 	     std::vector<std::string>(t.begin(),t.end()));
   }
   
-  template<typename T,typename F> T removeColumns( const T & t, const F & f, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' );
-  template<typename T> T removeGaps( const T & t, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' );
+  template<typename T,typename F> T removeColumns( const T & t, const F & f, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' )__attribute__ ((deprecated));
+  template<typename T> T removeGaps( const T & t, const bool skipAnc = false, const unsigned anc = 0,const char gapchar = '-' )__attribute__ ((deprecated));
   template<typename T> T removeInvariantPos(const T & t, const bool skipAnc = false, const unsigned anc = 0,
-					    const char gapchar = '-');
+					    const char gapchar = '-')__attribute__ ((deprecated));
   template<typename T> T removeAmbiguous(const T & t, const bool skipAnc = false, const unsigned anc = 0,
-					 const char gapchar = '-');
+					 const char gapchar = '-')__attribute__ ((deprecated));
   template<typename T> T removeMissing(const T & t, const bool skipAnc = false, const unsigned anc = 0,
-				       const char gapchar = '-');
+				       const char gapchar = '-')__attribute__ ((deprecated));
   template<typename T> T removeMultiHits(const T & t, const bool skipAnc = false, const unsigned anc = 0,
-					 const char gapchar = '-');
-  template<typename T> T polyTableToBinary(const T & t, const unsigned ref = 0, const char gapchar = '-');
-  template<typename T> T polyTableFreqFilter(const T & t, const unsigned mincount,const bool skipAnc = false, const unsigned anc = 0 , const char gapchar = '-');
+					 const char gapchar = '-')__attribute__ ((deprecated));
+  template<typename T> T polyTableToBinary(const T & t, const unsigned ref = 0, const char gapchar = '-')__attribute__ ((deprecated));
+  template<typename T> T polyTableFreqFilter(const T & t, const unsigned mincount,const bool skipAnc = false, const unsigned anc = 0 , const char gapchar = '-')__attribute__ ((deprecated));
 }
 #include <Sequence/bits/PolyTableFunctions.tcc>
 #endif

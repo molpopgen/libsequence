@@ -43,7 +43,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 namespace Sequence
   {
   class SimData;
-  class PolySIM : public PolySNP
+  class __attribute__ ((deprecated)) PolySIM : public PolySNP
     {
     private:
       //functions for Hudson's Partition Test
