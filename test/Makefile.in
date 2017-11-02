@@ -683,13 +683,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@TESTS = $(check_PROGRAMS)
-
-#BOOST_LIBS=-lboost_unit_test_framework
-#	SEQUENCE=-lsequence
 @BUNIT_TEST_PRESENT_TRUE@AM_CXXFLAGS = -g $(am__append_1)
 @BUNIT_TEST_PRESENT_TRUE@AM_LDFLAGS = -L../src/.libs -static
-@BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lboost_unit_test_framework \
-@BUNIT_TEST_PRESENT_TRUE@	-lsequence $(am__append_2)
+@BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lsequence $(am__append_2)
 @BUNIT_TEST_PRESENT_TRUE@FastaConstructors_SOURCES = FastaConstructors.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaIO_SOURCES = FastaIO.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaExplicitIO_SOURCES = FastaIO.cc

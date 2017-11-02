@@ -1,11 +1,10 @@
 #define BOOST_TEST_MODULE PolyTableTweaking
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/Fasta.hpp>
 #include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <cctype>

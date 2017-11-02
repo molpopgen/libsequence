@@ -1,11 +1,10 @@
 //! \file AlignStreamTest.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
 #define BOOST_TEST_MODULE AlignStream
-#define BOOST_TEST_DYN_LINK
 
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Clustalw.hpp>
 #include <Sequence/phylipData.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
