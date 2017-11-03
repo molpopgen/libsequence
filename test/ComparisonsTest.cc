@@ -1,10 +1,9 @@
 //! \file ComparisonsTests.cc @brief Tests for Sequence/Comparisons.hpp
 #define BOOST_TEST_MODULE ComparisonsTest
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/SeqAlphabets.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
 

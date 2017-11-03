@@ -24,12 +24,9 @@ check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
 
 TESTS=$(check_PROGRAMS)
 
-#BOOST_LIBS=-lboost_unit_test_framework
-#	SEQUENCE=-lsequence
-
 AM_CXXFLAGS=-g
 AM_LDFLAGS=-L../src/.libs -static
-AM_LIBS=-lboost_unit_test_framework -lsequence
+AM_LIBS=-lsequence
 
 if HAVE_HTSLIB
 AM_CXXFLAGS+=-DHAVE_HTSLIB

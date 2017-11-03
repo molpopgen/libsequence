@@ -1,10 +1,9 @@
 #define BOOST_TEST_MODULE FastaIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
 #include <fstream>
 #include <iostream>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
 

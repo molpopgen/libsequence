@@ -1,10 +1,9 @@
 /*! \file Seq8test.cc @brief Unit tests for Sequence/Seq.hpp */
 #define BOOST_TEST_MODULE Seq8test
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Seq8.hpp>
 #include <Sequence/SeqExceptions.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
 #include <sstream>

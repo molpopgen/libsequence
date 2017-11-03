@@ -1,13 +1,12 @@
 //\file FastaOperations.cc
 #define BOOST_TEST_MODULE FastaOperations
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
 #include <string>
 #include <iostream>
 #include <algorithm>
 #include <numeric>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 
 //A generic revcom routine written for this test
 std::string rcom( const std::string & s )

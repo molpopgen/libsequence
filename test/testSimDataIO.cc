@@ -1,8 +1,7 @@
 #define BOOST_TEST_MODULE testSimDataIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/SimDataIO.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <fstream>
 #include <cstdio>
 #include <sstream>

@@ -1,12 +1,11 @@
 #define BOOST_TEST_MODULE SeqConverions
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
 #include <Sequence/fastq.hpp>
 #include <string>
 #include <fstream>
 #include <iostream>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 
 BOOST_AUTO_TEST_CASE( fastq2fasta )
 {
