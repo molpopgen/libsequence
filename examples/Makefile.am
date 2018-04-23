@@ -20,13 +20,8 @@ msstats_SOURCES=msstats.cc
 polySiteVector_test_SOURCES=polySiteVector_test.cc
 
 AM_CXXFLAGS=
-AM_LDFLAGS=-L../src/.libs -static
-
 AM_LIBS=-lsequence
-if HAVE_HTSLIB
-AM_CXXFLAGS+=-DHAVE_HTSLIB
-AM_LIBS+=-lhts
-endif
+AM_LDFLAGS=-L../src/.libs -static
 
 #if DEBUG
 #AM_CXXFLAGS+=-g
