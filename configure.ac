@@ -43,6 +43,9 @@ dnl AM_CONDITIONAL(PROFILING, test x$profiling = xtrue)
 dnl zlib header
 AC_CHECK_HEADER(zlib.h,,[AC_MSG_ERROR([zlib headers missing - cannot continue])])
 
+dnl zlib runtime
+AC_CHECK_LIB([z],gzungetc,,[echo "zlib run time library not found";exit 1])
+
 dnl boost unit test library
 AC_CHECK_HEADER(boost/test/unit_test.hpp, BUNITTEST=1,[echo "boost/test/unit_test.hpp not found. Unit tests will not be compiled."])
 AM_CONDITIONAL([BUNIT_TEST_PRESENT], test x$BUNITTEST = x1)
