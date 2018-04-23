@@ -90,8 +90,6 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 bin_PROGRAMS = libsequenceConfig$(EXEEXT)
-@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
-@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 subdir = src
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -153,12 +151,10 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	Coalescent/CoalescentTreeOperations.lo \
 	Coalescent/CoalescentInitialize.lo \
 	Coalescent/CoalescentCoalesce.lo \
-	Coalescent/CoalescentFragmentsRescaling.lo hts/samrecord.lo \
-	hts/samflag.lo hts/samfunctions.lo polySiteVector.lo \
+	Coalescent/CoalescentFragmentsRescaling.lo polySiteVector.lo \
 	SummStats/SummStats.lo SummStats/nSL.lo SummStats/Garud.lo \
-	IOhelp.lo hts/bamrecord.lo hts/bamreader.lo SeqAlphabets.lo \
-	SummStats/lHaf.lo SummStats/variantCounts.lo \
-	SummStats/classic.lo threading.lo \
+	IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
+	SummStats/variantCounts.lo SummStats/classic.lo threading.lo \
 	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo
@@ -401,16 +397,11 @@ libsequence_la_SOURCES = Grantham.cc\
 	Coalescent/CoalescentInitialize.cc\
 	Coalescent/CoalescentCoalesce.cc\
 	Coalescent/CoalescentFragmentsRescaling.cc\
-	hts/samrecord.cc\
-	hts/samflag.cc\
-	hts/samfunctions.cc\
 	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	SummStats/Garud.cc\
 	IOhelp.cc \
-	hts/bamrecord.cc \
-	hts/bamreader.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	SummStats/variantCounts.cc \
@@ -435,10 +426,8 @@ libsequence_la_SOURCES = Grantham.cc\
 #endif
 
 #Link to Intel's TBB runtime library
-AM_LDFLAGS = -version-info 20:0:0 $(am__append_2) -ltbb
-AM_CXXFLAGS = -Wall -W -Woverloaded-virtual -Wnon-virtual-dtor \
-	-Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo \
-	-Wsynth $(am__append_1)
+AM_LDFLAGS = -version-info 20:0:0 -ltbb
+AM_CXXFLAGS = -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth
 all: all-am
 
 .SUFFIXES:
@@ -557,23 +546,12 @@ Coalescent/CoalescentCoalesce.lo: Coalescent/$(am__dirstamp) \
 Coalescent/CoalescentFragmentsRescaling.lo:  \
 	Coalescent/$(am__dirstamp) \
 	Coalescent/$(DEPDIR)/$(am__dirstamp)
-hts/$(am__dirstamp):
-	@$(MKDIR_P) hts
-	@: > hts/$(am__dirstamp)
-hts/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) hts/$(DEPDIR)
-	@: > hts/$(DEPDIR)/$(am__dirstamp)
-hts/samrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/samflag.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/samfunctions.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 SummStats/SummStats.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/Garud.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
-hts/bamrecord.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
-hts/bamreader.lo: hts/$(am__dirstamp) hts/$(DEPDIR)/$(am__dirstamp)
 SummStats/lHaf.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/variantCounts.lo: SummStats/$(am__dirstamp) \
@@ -659,8 +637,6 @@ mostlyclean-compile:
 	-rm -f Seq/*.lo
 	-rm -f SummStats/*.$(OBJEXT)
 	-rm -f SummStats/*.lo
-	-rm -f hts/*.$(OBJEXT)
-	-rm -f hts/*.lo
 	-rm -f variant_matrix/*.$(OBJEXT)
 	-rm -f variant_matrix/*.lo
 
@@ -721,11 +697,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/variantCounts.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamreader.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/bamrecord.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samflag.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samfunctions.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hts/$(DEPDIR)/samrecord.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
@@ -763,7 +734,6 @@ clean-libtool:
 	-rm -rf Coalescent/.libs Coalescent/_libs
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
-	-rm -rf hts/.libs hts/_libs
 	-rm -rf variant_matrix/.libs variant_matrix/_libs
 
 ID: $(am__tagged_files)
@@ -889,8 +859,6 @@ distclean-generic:
 	-rm -f Seq/$(am__dirstamp)
 	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
 	-rm -f SummStats/$(am__dirstamp)
-	-rm -f hts/$(DEPDIR)/$(am__dirstamp)
-	-rm -f hts/$(am__dirstamp)
 	-rm -f variant_matrix/$(DEPDIR)/$(am__dirstamp)
 	-rm -f variant_matrix/$(am__dirstamp)
 
@@ -903,7 +871,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -949,7 +917,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) hts/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

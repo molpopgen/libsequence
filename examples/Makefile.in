@@ -94,8 +94,6 @@ check_PROGRAMS = baseComp$(EXEEXT) valid_dna$(EXEEXT) \
 	msmm$(EXEEXT) freerec$(EXEEXT) bottleneck$(EXEEXT) \
 	fragments$(EXEEXT) msstats$(EXEEXT) \
 	polySiteVector_test$(EXEEXT)
-@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
-@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 subdir = examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -381,9 +379,8 @@ bottleneck_SOURCES = bottleneck.cc
 fragments_SOURCES = fragments.cc
 msstats_SOURCES = msstats.cc
 polySiteVector_test_SOURCES = polySiteVector_test.cc
-AM_CXXFLAGS = $(am__append_1)
+AM_CXXFLAGS = 
 AM_LDFLAGS = -L../src/.libs -static
-AM_LIBS = -lsequence $(am__append_2)
 all: all-am
 
 .SUFFIXES:

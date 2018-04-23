@@ -28,11 +28,6 @@ AM_CXXFLAGS=-g
 AM_LDFLAGS=-L../src/.libs -static
 AM_LIBS=-lsequence
 
-if HAVE_HTSLIB
-AM_CXXFLAGS+=-DHAVE_HTSLIB
-AM_LIBS+=-lhts
-endif
-
 #if DEBUG
 #AM_CXXFLAGS+=-g
 #else
