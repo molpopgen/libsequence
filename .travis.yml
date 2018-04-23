@@ -6,8 +6,7 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - CC=gcc-5
-        - CXX=g++-5
+        - MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
       addons:
         apt:
           sources:
@@ -25,8 +24,7 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - CC=gcc-4.8
-        - CXX=g++-4.8
+        - MATRIX_EVAL="CC=gcc-4.8 && CXX=g++-4.8"
       addons:
         apt:
           sources:
@@ -57,8 +55,10 @@ matrix:
             - libboost-test-dev
             - libtbb-dev
       env:
-        - CC=gcc-6
-        - CXX=g++-6
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+
+before_install:
+    - eval "${MATRIX_EVAL}"
 
 notifications:
   email: false
