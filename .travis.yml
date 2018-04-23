@@ -6,11 +6,15 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - CC=gcc
-        - CXX=g++
+        - CC=gcc-5
+        - CXX=g++-5
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
+          - g++-5
+          - gcc-5
           - zlib1g
           - zlib1g-dev
           - libboost-dev
