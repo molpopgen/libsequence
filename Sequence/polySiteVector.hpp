@@ -50,6 +50,6 @@ namespace Sequence
   */
   using polySiteVector = std::vector< polymorphicSite >;
 
-  polySiteVector make_polySiteVector(const Sequence::PolyTable & data);
+  polySiteVector make_polySiteVector(const Sequence::PolyTable & data)__attribute__((deprecated));
 }
 #endif

@@ -27,7 +27,7 @@ namespace Sequence
 			  std::vector< std::pair<double,double> > * mutation_scale );
     void rescale_mutation_positions(Sequence::SimData * d,
 				    const std::vector< std::pair<double,double> > & sample_scale, 
-				    const std::vector< std::pair<double,double> > & mutation_scale );
+				    const std::vector< std::pair<double,double> > & mutation_scale )__attribute__((deprecated));
     void rescale_arg( arg * sample_history,
 		    const std::vector< std::pair<int,int> > & fragments );
     double integrate_genetic_map( const std::vector<chromosome> & sample,

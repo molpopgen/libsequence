@@ -1,8 +1,7 @@
 #define BOOST_TEST_MODULE PolySitesIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <sstream>
 #include <fstream>
 #include <unistd.h>

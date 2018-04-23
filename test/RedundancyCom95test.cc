@@ -1,9 +1,8 @@
 #define BOOST_TEST_MODULE RedundancyCom95
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/RedundancyCom95.hpp>
 #include <Sequence/SeqAlphabets.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <string>

@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent SummStats
+SUBDIRS = bits Coalescent SummStats variant_matrix
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -56,13 +56,11 @@ pkginclude_HEADERS = AlignStream.hpp\
 	descriptiveStats.hpp\
 	Crit.hpp\
 	HKA.hpp\
-	samrecord.hpp\
-	samflag.hpp\
-	samfunctions.hpp\
 	typedefs.hpp \
 	SummStats.hpp \
 	IOhelp.hpp \
-	bamrecord.hpp \
-	bamreader.hpp \
 	SeqAlphabets.hpp \
-	threading.hpp
+	threading.hpp \
+	VariantMatrix.hpp \
+	VariantMatrixViews.hpp \
+	StateCounts.hpp

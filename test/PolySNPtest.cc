@@ -1,9 +1,8 @@
 #define BOOST_TEST_MODULE PolySNPtest
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/PolySNP.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <set>

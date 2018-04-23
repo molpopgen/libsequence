@@ -1,10 +1,9 @@
 /*! \file alphabets.cc @brief Unit tests for Sequence/SeqAlphabets.hpp */
 #define BOOST_TEST_MODULE alphabets
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/Fasta.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
 

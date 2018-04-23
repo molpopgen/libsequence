@@ -38,7 +38,7 @@ namespace Sequence
 {
   class PolyTable;
   struct FSTimpl;
-  class FST 
+  class __attribute__ ((deprecated)) FST 
   {
   private:
     std::unique_ptr<FSTimpl> impl;

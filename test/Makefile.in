@@ -111,8 +111,6 @@ host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	stateCounterTest$(EXEEXT)
-@BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_1 = -DHAVE_HTSLIB
-@BUNIT_TEST_PRESENT_TRUE@@HAVE_HTSLIB_TRUE@am__append_2 = -lhts
 
 #if DEBUG
 #AM_CXXFLAGS+=-g
@@ -125,7 +123,7 @@ host_triplet = @host@
 #else
 #PROFILE=
 #endif
-@BUNIT_TEST_PRESENT_TRUE@am__append_3 = $(AM_LIBS)
+@BUNIT_TEST_PRESENT_TRUE@am__append_1 = $(AM_LIBS)
 subdir = test
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -599,7 +597,7 @@ INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
-LIBS = @LIBS@ $(am__append_3)
+LIBS = @LIBS@ $(am__append_1)
 LIBTOOL = @LIBTOOL@
 LIPO = @LIPO@
 LN_S = @LN_S@
@@ -683,13 +681,9 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@TESTS = $(check_PROGRAMS)
-
-#BOOST_LIBS=-lboost_unit_test_framework
-#	SEQUENCE=-lsequence
-@BUNIT_TEST_PRESENT_TRUE@AM_CXXFLAGS = -g $(am__append_1)
+@BUNIT_TEST_PRESENT_TRUE@AM_CXXFLAGS = -g
 @BUNIT_TEST_PRESENT_TRUE@AM_LDFLAGS = -L../src/.libs -static
-@BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lboost_unit_test_framework \
-@BUNIT_TEST_PRESENT_TRUE@	-lsequence $(am__append_2)
+@BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lsequence
 @BUNIT_TEST_PRESENT_TRUE@FastaConstructors_SOURCES = FastaConstructors.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaIO_SOURCES = FastaIO.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaExplicitIO_SOURCES = FastaIO.cc

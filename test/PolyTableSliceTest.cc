@@ -1,8 +1,7 @@
 //! \file PolyTableSliceTest.cc @brief Tests for Sequence/PolyTableSlice.hpp
 #define BOOST_TEST_MODULE ComparisonsTest
-#define BOOST_TEST_DYN_LINK
 
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <Sequence/SimData.hpp>
 #include <iostream>
 #include <Sequence/PolyTableSlice.hpp>

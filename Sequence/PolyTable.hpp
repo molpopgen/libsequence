@@ -57,41 +57,42 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \example PolyTableIterators.cc */
 namespace Sequence
 {
-  class PolyTable 
-  {
-  private:
-    struct PolyTableImpl;
-    std::unique_ptr<PolyTableImpl> impl;
-  public:
-    //! Data type to store site positions
-    using pos_container_t = std::vector<double>;
-    //! Data type for storing genotypes
-    using geno_container_t = std::vector<std::string>;
-    
-    //typedefs for container types
-    //! \brief non-const reference to std::string
-    using reference = geno_container_t::reference;
-    //! \brief const reference to std::string
-    using const_reference = geno_container_t::const_reference;
-    //! \brief The size_type for the haplotype vector
-    using size_type = geno_container_t::size_type;
-    /*!
+    class __attribute__((deprecated)) PolyTable
+    {
+      private:
+        struct PolyTableImpl;
+        std::unique_ptr<PolyTableImpl> impl;
+
+      public:
+        //! Data type to store site positions
+        using pos_container_t = std::vector<double>;
+        //! Data type for storing genotypes
+        using geno_container_t = std::vector<std::string>;
+
+        //typedefs for container types
+        //! \brief non-const reference to std::string
+        using reference = geno_container_t::reference;
+        //! \brief const reference to std::string
+        using const_reference = geno_container_t::const_reference;
+        //! \brief The size_type for the haplotype vector
+        using size_type = geno_container_t::size_type;
+        /*!
       \brief non-const iterator to the haplotypes
     */
-    using data_iterator = geno_container_t::iterator;
-    /*!
+        using data_iterator = geno_container_t::iterator;
+        /*!
       \brief const iterator to the haplotypes
     */
-    using const_data_iterator = geno_container_t::const_iterator;
-    /*!
+        using const_data_iterator = geno_container_t::const_iterator;
+        /*!
       \brief non-const iterator to the positions
     */
-    using pos_iterator =  std::vector<double>::iterator;
-    /*!
+        using pos_iterator = std::vector<double>::iterator;
+        /*!
       \brief const iterator to the positions
     */
-    using const_pos_iterator = std::vector<double>::const_iterator;
-    /*! \brief Const iterator to segregating sites
+        using const_pos_iterator = std::vector<double>::const_iterator;
+        /*! \brief Const iterator to segregating sites
       Const iterator to segregating sites. The value_type of this
       iterator is const std::pair<double,std::string>, where the 
       double is the position of the segregating site, and the
@@ -99,83 +100,83 @@ namespace Sequence
       in the string corresponds to the state of the first character
       in the PolyTable (i.e. (*this)[0]), etc.
     */
-    using const_site_iterator = Sequence::polySiteVector::const_iterator;
-    using row_t = geno_container_t::value_type;
-    using column_t = const_site_iterator::value_type;
-    //functions to return iterators
-    //! \return an iterator pointing to the first "haplotype"
-    data_iterator begin();
-    //! \return an iterator pointing the end of the "haplotypes"
-    data_iterator end();
-    //! \return a const iterator pointing to the first "haplotype"
-    const_data_iterator begin() const;
-    //! \return a const iterator pointing the end of the "haplotypes"
-    const_data_iterator end() const;
-    //! \return a const iterator pointing to the first "haplotype"
-    const_data_iterator cbegin() const;
-    //! \return a const iterator pointing the end of the "haplotypes"
-    const_data_iterator cend() const;
-    //! \return iterator to first position
-    pos_iterator pbegin();
-    //! \return iterator to end of positions
-    pos_iterator pend();
-    //! \return const iterator to first position
-    const_pos_iterator pbegin() const;
-    //! \return const iterator to end of positions
-    const_pos_iterator pend() const;
-    //! \return const iterator to first position
-    const_pos_iterator pcbegin() const;
-    //! \return const iterator to end of positions
-    const_pos_iterator pcend() const;
-    //! \return const iterator to first column (position, variants)
-    const_site_iterator sbegin() const;
-    //! \return const iterator to end of columns
-    const_site_iterator send() const;
-    //! \return const iterator to first column (position, variants)
-    const_site_iterator scbegin() const;
-    //! \return const iterator to first column (position, variants)
-    const_site_iterator scend() const;
+        using const_site_iterator = Sequence::polySiteVector::const_iterator;
+        using row_t = geno_container_t::value_type;
+        using column_t = const_site_iterator::value_type;
+        //functions to return iterators
+        //! \return an iterator pointing to the first "haplotype"
+        data_iterator begin();
+        //! \return an iterator pointing the end of the "haplotypes"
+        data_iterator end();
+        //! \return a const iterator pointing to the first "haplotype"
+        const_data_iterator begin() const;
+        //! \return a const iterator pointing the end of the "haplotypes"
+        const_data_iterator end() const;
+        //! \return a const iterator pointing to the first "haplotype"
+        const_data_iterator cbegin() const;
+        //! \return a const iterator pointing the end of the "haplotypes"
+        const_data_iterator cend() const;
+        //! \return iterator to first position
+        pos_iterator pbegin();
+        //! \return iterator to end of positions
+        pos_iterator pend();
+        //! \return const iterator to first position
+        const_pos_iterator pbegin() const;
+        //! \return const iterator to end of positions
+        const_pos_iterator pend() const;
+        //! \return const iterator to first position
+        const_pos_iterator pcbegin() const;
+        //! \return const iterator to end of positions
+        const_pos_iterator pcend() const;
+        //! \return const iterator to first column (position, variants)
+        const_site_iterator sbegin() const;
+        //! \return const iterator to end of columns
+        const_site_iterator send() const;
+        //! \return const iterator to first column (position, variants)
+        const_site_iterator scbegin() const;
+        //! \return const iterator to first column (position, variants)
+        const_site_iterator scend() const;
 
-    //constructor types
-    explicit PolyTable();
-    explicit PolyTable(PolyTable::const_site_iterator beg,
-		       PolyTable::const_site_iterator end);
-    explicit PolyTable( std::vector<double> __positions,
-			std::vector<std::string> __data );
-    PolyTable(PolyTable &&);
-    PolyTable(const PolyTable &);
-    virtual ~ PolyTable (void);
+        //constructor types
+        explicit PolyTable();
+        explicit PolyTable(PolyTable::const_site_iterator beg,
+                           PolyTable::const_site_iterator end);
+        explicit PolyTable(std::vector<double> __positions,
+                           std::vector<std::string> __data);
+        PolyTable(PolyTable &&);
+        PolyTable(const PolyTable &);
+        virtual ~PolyTable(void);
 
-    //! Convenience function to return site positions
-    std::vector < double > GetPositions (void) const;
-    //! Conventience function to return data.  Each string is a "haplotype".
-    std::vector < std::string > GetData (void) const;
-    
-    //operators and implicit typecasts
+        //! Convenience function to return site positions
+        std::vector<double> GetPositions(void) const;
+        //! Conventience function to return data.  Each string is a "haplotype".
+        std::vector<std::string> GetData(void) const;
 
-    //! Comparison operator.  Case-sensitive
-    virtual bool operator==(const PolyTable &rhs) const;
-    //! Not-equal operator. Case-sensitive
-    virtual bool operator!=(const PolyTable &rhs) const;
-    //! Move assignment
-    PolyTable & operator=(PolyTable &&);
-    //! Copy assignment
-    PolyTable & operator=(const PolyTable &);
-    /*!
+        //operators and implicit typecasts
+
+        //! Comparison operator.  Case-sensitive
+        virtual bool operator==(const PolyTable &rhs) const;
+        //! Not-equal operator. Case-sensitive
+        virtual bool operator!=(const PolyTable &rhs) const;
+        //! Move assignment
+        PolyTable &operator=(PolyTable &&);
+        //! Copy assignment
+        PolyTable &operator=(const PolyTable &);
+        /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
     */
-    const_reference operator[] (const size_type & i) const;
-    /*!
+        const_reference operator[](const size_type &i) const;
+        /*!
       Return the i-th element of PolyTable::data.
       \note range-checking done by assert()
     */
-    reference operator[] (const size_type & i);
-    
-    //! \return true if object contains no data, false otherwise
-    bool empty() const;
+        reference operator[](const size_type &i);
 
-    /*!
+        //! \return true if object contains no data, false otherwise
+        bool empty() const;
+
+        /*!
       Assignment operation, allowing a range of polymorphic sites
       to be assigned to a polymorphism table.  This exists mainly
       for two purposes. One is the ability to assign tables from 
@@ -185,62 +186,62 @@ namespace Sequence
       The only case where false is returned is if the number of individuals
       at each site is not the constant from beg to end.
     */
-    bool assign(PolyTable::const_site_iterator beg,
-		PolyTable::const_site_iterator end);
+        bool assign(PolyTable::const_site_iterator beg,
+                    PolyTable::const_site_iterator end);
 
-    //Swap data with another PolyTable
-    void swap( PolyTable & );
-    /*!
+        //Swap data with another PolyTable
+        void swap(PolyTable &);
+        /*!
       Assign data to object
       \return true if successful
     */
-    bool assign( const std::vector<double> & __positions,
-		 const std::vector<std::string> & __data );
-    /*!
+        bool assign(const std::vector<double> &__positions,
+                    const std::vector<std::string> &__data);
+        /*!
       Move data to object
       \return true if successful
     */
-    bool assign( std::vector<double> && __positions,
-		 std::vector<std::string> && __data );
+        bool assign(std::vector<double> &&__positions,
+                    std::vector<std::string> &&__data);
 
-    //! \return Sample size
-    size_type size (void) const;
+        //! \return Sample size
+        size_type size(void) const;
 
-    //! \return the i-th position from the PolyTable::positions.
-    double position (const std::vector<double>::size_type & i) const;
+        //! \return the i-th position from the PolyTable::positions.
+        double position(const std::vector<double>::size_type &i) const;
 
-    //! \return the number of positions (columns)
-    unsigned numsites (void) const;
+        //! \return the number of positions (columns)
+        unsigned numsites(void) const;
 
-    /*!
+        /*!
       read is a pure virtual function.
       Calls to istream & operator>> (istream & s, PolyTable & c)
       act via this routine, which must be defined in all
       derived classes
     */
-    virtual std::istream & read(std::istream &h) = 0;
+        virtual std::istream &read(std::istream &h) = 0;
 
-    /*!
+        /*!
       print is a pure virtual function.
       Calls to ostream & operator<<(ostream & s, PolyTable & c)
       act via this routine, which must be defined in all
       derived classes
     */
-    virtual std::ostream & print(std::ostream &h) const = 0;
-  };
+        virtual std::ostream &print(std::ostream &h) const = 0;
+    };
 
-  /*!
+    /*!
     \ingroup operators
     Allows objects derived from Sequence::PolyTable
     to be read in from streams
   */
-  std::istream & operator>> (std::istream & s, PolyTable & c);
+    std::istream &operator>>(std::istream &s, PolyTable &c);
 
-  /*!
+    /*!
     \ingroup operators
     Allows objects derived from Sequence::PolyTable
     to be written out to streams
-  */  
-  std::ostream & operator<< (std::ostream & o, const PolyTable & c);
+  */
+    std::ostream &operator<<(std::ostream &o, const PolyTable &c);
 }
 #endif

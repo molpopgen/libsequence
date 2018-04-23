@@ -1,5 +1,4 @@
 #define BOOST_TEST_MODULE PolyTableConversions
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SimpleSNP.hpp>
@@ -7,7 +6,7 @@
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Alignment.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>

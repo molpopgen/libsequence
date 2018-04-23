@@ -1,9 +1,8 @@
 #define BOOST_TEST_MODULE stateCounterTest
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/stateCounter.hpp>
 #include <string>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <iostream>
 #include <algorithm>
 #include <functional>

@@ -36,7 +36,7 @@ in an alignment, or along a sequence
 */
 namespace Sequence
   {
-    class stateCounter : public std::unary_function<char,void>
+    class __attribute__ ((deprecated))stateCounter : public std::unary_function<char,void>
     {
     public:
       typedef unsigned size_type;

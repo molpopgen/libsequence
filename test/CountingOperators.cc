@@ -1,8 +1,7 @@
 #define BOOST_TEST_MODULE CountingOperators
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/CountingOperators.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <algorithm>
 #include <functional>
 #include <string>

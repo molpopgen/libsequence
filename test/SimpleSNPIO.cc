@@ -1,9 +1,8 @@
 #define BOOST_TEST_MODULE SimpleSNPIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SimpleSNP.hpp>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <sstream>
 #include <fstream>
 #include <unistd.h>

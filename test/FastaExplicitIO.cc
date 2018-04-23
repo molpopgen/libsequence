@@ -1,9 +1,8 @@
 #define BOOST_TEST_MODULE FastaExplicitIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/FastaExplicit.hpp>
 #include <fstream>
-#include <boost/test/unit_test.hpp>
+#include <boost/test/included/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
 
