@@ -8,6 +8,15 @@ matrix:
       env:
         - CC=gcc
         - CXX=g++
+      addons:
+        apt:
+          packages:
+          - zlib1g
+          - zlib1g-dev
+          - libboost-dev
+          - libboost-system-dev
+          - libboost-test-dev
+          - libtbb-dev
 
     - os: linux
       dist: trusty
@@ -21,6 +30,13 @@ matrix:
           packages:
             - g++-4.8
             - gcc-4.8
+            - zlib1g
+            - zlib1g-dev
+            - libboost-dev
+            - libboost-system-dev
+            - libboost-test-dev
+            - libtbb-dev
+
 
     - os: linux
       dist: trusty
@@ -30,19 +46,15 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-6
+            - zlib1g
+            - zlib1g-dev
+            - libboost-dev
+            - libboost-system-dev
+            - libboost-test-dev
+            - libtbb-dev
       env:
         - CC=gcc-6
         - CXX=g++-6
-
-addons:
-  apt:
-    packages:
-    - zlib1g
-    - zlib1g-dev
-    - libboost-dev
-    - libboost-system-dev
-    - libboost-test-dev
-    - libtbb-dev
 
 notifications:
   email: false
