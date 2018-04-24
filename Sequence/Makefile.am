@@ -51,7 +51,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	WeightingSchemes.hpp\
 	stateCounter.hpp\
 	shortestPath.hpp\
-	Correlations.hpp\
 	descriptiveStats.hpp\
 	Crit.hpp\
 	HKA.hpp\

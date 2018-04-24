@@ -8,7 +8,6 @@ pkginclude_HEADERS = PolySites.tcc\
 		Alignment.tcc\
 		Clustalw.tcc\
 		phylipData.tcc\
-		Correlations.tcc\
 		descriptiveStats.tcc\
 		PolyTableFunctions.tcc\
 		Snn.tcc \

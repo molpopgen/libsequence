@@ -90,10 +90,9 @@ host_triplet = @host@
 check_PROGRAMS = baseComp$(EXEEXT) valid_dna$(EXEEXT) \
 	translateTest$(EXEEXT) slidingWindow$(EXEEXT) \
 	slidingWindow2$(EXEEXT) PolyTableIterators$(EXEEXT) \
-	correlations$(EXEEXT) critical_values$(EXEEXT) ufs$(EXEEXT) \
-	msmm$(EXEEXT) freerec$(EXEEXT) bottleneck$(EXEEXT) \
-	fragments$(EXEEXT) msstats$(EXEEXT) \
-	polySiteVector_test$(EXEEXT)
+	critical_values$(EXEEXT) ufs$(EXEEXT) msmm$(EXEEXT) \
+	freerec$(EXEEXT) bottleneck$(EXEEXT) fragments$(EXEEXT) \
+	msstats$(EXEEXT) polySiteVector_test$(EXEEXT)
 subdir = examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -120,9 +119,6 @@ baseComp_LDADD = $(LDADD)
 am_bottleneck_OBJECTS = bottleneck.$(OBJEXT)
 bottleneck_OBJECTS = $(am_bottleneck_OBJECTS)
 bottleneck_LDADD = $(LDADD)
-am_correlations_OBJECTS = correlations.$(OBJEXT)
-correlations_OBJECTS = $(am_correlations_OBJECTS)
-correlations_LDADD = $(LDADD)
 am_critical_values_OBJECTS = critical_values.$(OBJEXT)
 critical_values_OBJECTS = $(am_critical_values_OBJECTS)
 critical_values_LDADD = $(LDADD)
@@ -191,19 +187,17 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(bottleneck_SOURCES) $(correlations_SOURCES) \
-	$(critical_values_SOURCES) $(fragments_SOURCES) \
-	$(freerec_SOURCES) $(msmm_SOURCES) $(msstats_SOURCES) \
-	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
-	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
-	$(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(bottleneck_SOURCES) $(critical_values_SOURCES) \
+	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
+	$(msstats_SOURCES) $(polySiteVector_test_SOURCES) \
+	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
+	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
 DIST_SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(bottleneck_SOURCES) $(correlations_SOURCES) \
-	$(critical_values_SOURCES) $(fragments_SOURCES) \
-	$(freerec_SOURCES) $(msmm_SOURCES) $(msstats_SOURCES) \
-	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
-	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
-	$(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(bottleneck_SOURCES) $(critical_values_SOURCES) \
+	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
+	$(msstats_SOURCES) $(polySiteVector_test_SOURCES) \
+	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
+	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -370,7 +364,6 @@ translateTest_SOURCES = translateTest.cc
 slidingWindow_SOURCES = slidingWindow.cc
 slidingWindow2_SOURCES = slidingWindow2.cc
 PolyTableIterators_SOURCES = PolyTableIterators.cc
-correlations_SOURCES = correlations.cc
 critical_values_SOURCES = critical_values.cc
 ufs_SOURCES = ufs.cc
 msmm_SOURCES = msmm.cc
@@ -437,10 +430,6 @@ bottleneck$(EXEEXT): $(bottleneck_OBJECTS) $(bottleneck_DEPENDENCIES) $(EXTRA_bo
 	@rm -f bottleneck$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(bottleneck_OBJECTS) $(bottleneck_LDADD) $(LIBS)
 
-correlations$(EXEEXT): $(correlations_OBJECTS) $(correlations_DEPENDENCIES) $(EXTRA_correlations_DEPENDENCIES) 
-	@rm -f correlations$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(correlations_OBJECTS) $(correlations_LDADD) $(LIBS)
-
 critical_values$(EXEEXT): $(critical_values_OBJECTS) $(critical_values_DEPENDENCIES) $(EXTRA_critical_values_DEPENDENCIES) 
 	@rm -f critical_values$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(critical_values_OBJECTS) $(critical_values_LDADD) $(LIBS)
@@ -494,7 +483,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableIterators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/baseComp.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bottleneck.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/correlations.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/critical_values.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fragments.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freerec.Po@am__quote@
