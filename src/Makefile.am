@@ -34,18 +34,10 @@ libsequence_la_SOURCES=  Grantham.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
-	Seq/FastaExplicit.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
 	SummStats/Snn.cc\
-	Coalescent/CoalescentMutation.cc\
-	Coalescent/CoalescentRecombination.cc\
-	Coalescent/CoalescentSimTypes.cc\
-	Coalescent/CoalescentTreeOperations.cc\
-	Coalescent/CoalescentInitialize.cc\
-	Coalescent/CoalescentCoalesce.cc\
-	Coalescent/CoalescentFragmentsRescaling.cc\
 	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \

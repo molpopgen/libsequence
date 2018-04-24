@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent SummStats variant_matrix
+SUBDIRS = bits SummStats variant_matrix
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -14,7 +14,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	FST.hpp\
 	Fasta.hpp\
 	fastq.hpp\
-	FastaExplicit.hpp\
 	Grantham.hpp\
 	GranthamWeights.hpp\
 	SimpleSNP.hpp\
@@ -52,7 +51,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	WeightingSchemes.hpp\
 	stateCounter.hpp\
 	shortestPath.hpp\
-	Correlations.hpp\
 	descriptiveStats.hpp\
 	Crit.hpp\
 	HKA.hpp\

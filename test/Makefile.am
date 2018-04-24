@@ -1,6 +1,6 @@
 if BUNIT_TEST_PRESENT
 
-check_PROGRAMS=FastaConstructors FastaIO FastaExplicitIO FastaOperations \
+check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	AlignStreamTest \
 	testSimDataIO \
 	CountingOperators \
@@ -44,7 +44,6 @@ LIBS+=$(AM_LIBS)
 
 FastaConstructors_SOURCES=FastaConstructors.cc
 FastaIO_SOURCES=FastaIO.cc
-FastaExplicitIO_SOURCES=FastaIO.cc
 FastaOperations_SOURCES=FastaOperations.cc
 
 AlignStreamTest_SOURCES=AlignStreamTest.cc

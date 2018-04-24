@@ -19,7 +19,7 @@ AM_MAINTAINER_MODE([disable])
 LT_INIT
 AC_PROG_LIBTOOL
 AC_LANG(C++)
-AC_CONFIG_FILES([Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/Coalescent/Makefile Sequence/Coalescent/bits/Makefile Sequence/SummStats/Makefile Sequence/variant_matrix/Makefile test/Makefile examples/Makefile doc/libsequence.doxygen])
+AC_CONFIG_FILES([Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/SummStats/Makefile Sequence/variant_matrix/Makefile test/Makefile examples/Makefile doc/libsequence.doxygen])
 
 dnl AC_ARG_ENABLE(debug,
 dnl [  --enable-debug    Turn on debugging],

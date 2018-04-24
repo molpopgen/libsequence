@@ -142,18 +142,10 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
 	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
 	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
-	ThreeSubs.lo CodonTable.lo Specializations.lo \
-	Seq/FastaExplicit.lo SeqConstants.lo shortestPath.lo \
-	SummStats/HKA.lo SummStats/Snn.lo \
-	Coalescent/CoalescentMutation.lo \
-	Coalescent/CoalescentRecombination.lo \
-	Coalescent/CoalescentSimTypes.lo \
-	Coalescent/CoalescentTreeOperations.lo \
-	Coalescent/CoalescentInitialize.lo \
-	Coalescent/CoalescentCoalesce.lo \
-	Coalescent/CoalescentFragmentsRescaling.lo polySiteVector.lo \
-	SummStats/SummStats.lo SummStats/nSL.lo SummStats/Garud.lo \
-	IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
+	ThreeSubs.lo CodonTable.lo Specializations.lo SeqConstants.lo \
+	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
+	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
+	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
 	SummStats/variantCounts.lo SummStats/classic.lo threading.lo \
 	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
@@ -385,18 +377,10 @@ libsequence_la_SOURCES = Grantham.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
-	Seq/FastaExplicit.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
 	SummStats/Snn.cc\
-	Coalescent/CoalescentMutation.cc\
-	Coalescent/CoalescentRecombination.cc\
-	Coalescent/CoalescentSimTypes.cc\
-	Coalescent/CoalescentTreeOperations.cc\
-	Coalescent/CoalescentInitialize.cc\
-	Coalescent/CoalescentCoalesce.cc\
-	Coalescent/CoalescentFragmentsRescaling.cc\
 	polySiteVector.cc \
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
@@ -519,33 +503,10 @@ Seq/$(DEPDIR)/$(am__dirstamp):
 Seq/Seq.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
 Seq/Fasta.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
 Seq/fastq.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
-Seq/FastaExplicit.lo: Seq/$(am__dirstamp) \
-	Seq/$(DEPDIR)/$(am__dirstamp)
 SummStats/HKA.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/Snn.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
-Coalescent/$(am__dirstamp):
-	@$(MKDIR_P) Coalescent
-	@: > Coalescent/$(am__dirstamp)
-Coalescent/$(DEPDIR)/$(am__dirstamp):
-	@$(MKDIR_P) Coalescent/$(DEPDIR)
-	@: > Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentMutation.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentRecombination.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentSimTypes.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentTreeOperations.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentInitialize.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentCoalesce.lo: Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
-Coalescent/CoalescentFragmentsRescaling.lo:  \
-	Coalescent/$(am__dirstamp) \
-	Coalescent/$(DEPDIR)/$(am__dirstamp)
 SummStats/SummStats.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/nSL.lo: SummStats/$(am__dirstamp) \
@@ -631,8 +592,6 @@ libsequenceConfig$(EXEEXT): $(libsequenceConfig_OBJECTS) $(libsequenceConfig_DEP
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
-	-rm -f Coalescent/*.$(OBJEXT)
-	-rm -f Coalescent/*.lo
 	-rm -f Seq/*.$(OBJEXT)
 	-rm -f Seq/*.lo
 	-rm -f SummStats/*.$(OBJEXT)
@@ -674,15 +633,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threading.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentCoalesce.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentFragmentsRescaling.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentInitialize.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentMutation.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentRecombination.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentSimTypes.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentTreeOperations.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/FastaExplicit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/FST.Plo@am__quote@
@@ -731,7 +682,6 @@ mostlyclean-libtool:
 
 clean-libtool:
 	-rm -rf .libs _libs
-	-rm -rf Coalescent/.libs Coalescent/_libs
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
 	-rm -rf variant_matrix/.libs variant_matrix/_libs
@@ -853,8 +803,6 @@ clean-generic:
 distclean-generic:
 	-test -z "$(CONFIG_CLEAN_FILES)" || rm -f $(CONFIG_CLEAN_FILES)
 	-test . = "$(srcdir)" || test -z "$(CONFIG_CLEAN_VPATH_FILES)" || rm -f $(CONFIG_CLEAN_VPATH_FILES)
-	-rm -f Coalescent/$(DEPDIR)/$(am__dirstamp)
-	-rm -f Coalescent/$(am__dirstamp)
 	-rm -f Seq/$(DEPDIR)/$(am__dirstamp)
 	-rm -f Seq/$(am__dirstamp)
 	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
@@ -871,7 +819,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -917,7 +865,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Coalescent/$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

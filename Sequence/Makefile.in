@@ -335,7 +335,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-SUBDIRS = bits Coalescent SummStats variant_matrix
+SUBDIRS = bits SummStats variant_matrix
 pkginclude_HEADERS = AlignStream.hpp\
 	Alignment.hpp\
 	Clustalw.hpp\
@@ -348,7 +348,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	FST.hpp\
 	Fasta.hpp\
 	fastq.hpp\
-	FastaExplicit.hpp\
 	Grantham.hpp\
 	GranthamWeights.hpp\
 	SimpleSNP.hpp\
@@ -386,7 +385,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	WeightingSchemes.hpp\
 	stateCounter.hpp\
 	shortestPath.hpp\
-	Correlations.hpp\
 	descriptiveStats.hpp\
 	Crit.hpp\
 	HKA.hpp\
