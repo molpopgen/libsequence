@@ -1,4 +1,4 @@
-SUBDIRS = bits Coalescent SummStats variant_matrix
+SUBDIRS = bits SummStats variant_matrix
 
 pkgincludedir=$(prefix)/include/Sequence
 

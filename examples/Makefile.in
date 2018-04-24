@@ -90,9 +90,8 @@ host_triplet = @host@
 check_PROGRAMS = baseComp$(EXEEXT) valid_dna$(EXEEXT) \
 	translateTest$(EXEEXT) slidingWindow$(EXEEXT) \
 	slidingWindow2$(EXEEXT) PolyTableIterators$(EXEEXT) \
-	critical_values$(EXEEXT) ufs$(EXEEXT) msmm$(EXEEXT) \
-	freerec$(EXEEXT) bottleneck$(EXEEXT) fragments$(EXEEXT) \
-	msstats$(EXEEXT) polySiteVector_test$(EXEEXT)
+	critical_values$(EXEEXT) ufs$(EXEEXT) msstats$(EXEEXT) \
+	polySiteVector_test$(EXEEXT)
 subdir = examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -116,21 +115,9 @@ am__v_lt_1 =
 am_baseComp_OBJECTS = baseComp.$(OBJEXT)
 baseComp_OBJECTS = $(am_baseComp_OBJECTS)
 baseComp_LDADD = $(LDADD)
-am_bottleneck_OBJECTS = bottleneck.$(OBJEXT)
-bottleneck_OBJECTS = $(am_bottleneck_OBJECTS)
-bottleneck_LDADD = $(LDADD)
 am_critical_values_OBJECTS = critical_values.$(OBJEXT)
 critical_values_OBJECTS = $(am_critical_values_OBJECTS)
 critical_values_LDADD = $(LDADD)
-am_fragments_OBJECTS = fragments.$(OBJEXT)
-fragments_OBJECTS = $(am_fragments_OBJECTS)
-fragments_LDADD = $(LDADD)
-am_freerec_OBJECTS = freerec.$(OBJEXT)
-freerec_OBJECTS = $(am_freerec_OBJECTS)
-freerec_LDADD = $(LDADD)
-am_msmm_OBJECTS = msmm.$(OBJEXT)
-msmm_OBJECTS = $(am_msmm_OBJECTS)
-msmm_LDADD = $(LDADD)
 am_msstats_OBJECTS = msstats.$(OBJEXT)
 msstats_OBJECTS = $(am_msstats_OBJECTS)
 msstats_LDADD = $(LDADD)
@@ -187,17 +174,15 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(bottleneck_SOURCES) $(critical_values_SOURCES) \
-	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
-	$(msstats_SOURCES) $(polySiteVector_test_SOURCES) \
-	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
-	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(critical_values_SOURCES) $(msstats_SOURCES) \
+	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
 DIST_SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(bottleneck_SOURCES) $(critical_values_SOURCES) \
-	$(fragments_SOURCES) $(freerec_SOURCES) $(msmm_SOURCES) \
-	$(msstats_SOURCES) $(polySiteVector_test_SOURCES) \
-	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
-	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(critical_values_SOURCES) $(msstats_SOURCES) \
+	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -366,10 +351,6 @@ slidingWindow2_SOURCES = slidingWindow2.cc
 PolyTableIterators_SOURCES = PolyTableIterators.cc
 critical_values_SOURCES = critical_values.cc
 ufs_SOURCES = ufs.cc
-msmm_SOURCES = msmm.cc
-freerec_SOURCES = freerec.cc
-bottleneck_SOURCES = bottleneck.cc
-fragments_SOURCES = fragments.cc
 msstats_SOURCES = msstats.cc
 polySiteVector_test_SOURCES = polySiteVector_test.cc
 AM_CXXFLAGS = 
@@ -426,25 +407,9 @@ baseComp$(EXEEXT): $(baseComp_OBJECTS) $(baseComp_DEPENDENCIES) $(EXTRA_baseComp
 	@rm -f baseComp$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(baseComp_OBJECTS) $(baseComp_LDADD) $(LIBS)
 
-bottleneck$(EXEEXT): $(bottleneck_OBJECTS) $(bottleneck_DEPENDENCIES) $(EXTRA_bottleneck_DEPENDENCIES) 
-	@rm -f bottleneck$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(bottleneck_OBJECTS) $(bottleneck_LDADD) $(LIBS)
-
 critical_values$(EXEEXT): $(critical_values_OBJECTS) $(critical_values_DEPENDENCIES) $(EXTRA_critical_values_DEPENDENCIES) 
 	@rm -f critical_values$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(critical_values_OBJECTS) $(critical_values_LDADD) $(LIBS)
-
-fragments$(EXEEXT): $(fragments_OBJECTS) $(fragments_DEPENDENCIES) $(EXTRA_fragments_DEPENDENCIES) 
-	@rm -f fragments$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(fragments_OBJECTS) $(fragments_LDADD) $(LIBS)
-
-freerec$(EXEEXT): $(freerec_OBJECTS) $(freerec_DEPENDENCIES) $(EXTRA_freerec_DEPENDENCIES) 
-	@rm -f freerec$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(freerec_OBJECTS) $(freerec_LDADD) $(LIBS)
-
-msmm$(EXEEXT): $(msmm_OBJECTS) $(msmm_DEPENDENCIES) $(EXTRA_msmm_DEPENDENCIES) 
-	@rm -f msmm$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(msmm_OBJECTS) $(msmm_LDADD) $(LIBS)
 
 msstats$(EXEEXT): $(msstats_OBJECTS) $(msstats_DEPENDENCIES) $(EXTRA_msstats_DEPENDENCIES) 
 	@rm -f msstats$(EXEEXT)
@@ -482,11 +447,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableIterators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/baseComp.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/bottleneck.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/critical_values.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fragments.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/freerec.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msmm.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msstats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slidingWindow.Po@am__quote@
