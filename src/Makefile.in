@@ -142,9 +142,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
 	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
 	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
-	ThreeSubs.lo CodonTable.lo Specializations.lo \
-	Seq/FastaExplicit.lo SeqConstants.lo shortestPath.lo \
-	SummStats/HKA.lo SummStats/Snn.lo \
+	ThreeSubs.lo CodonTable.lo Specializations.lo SeqConstants.lo \
+	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	Coalescent/CoalescentMutation.lo \
 	Coalescent/CoalescentRecombination.lo \
 	Coalescent/CoalescentSimTypes.lo \
@@ -385,7 +384,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
-	Seq/FastaExplicit.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
@@ -519,8 +517,6 @@ Seq/$(DEPDIR)/$(am__dirstamp):
 Seq/Seq.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
 Seq/Fasta.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
 Seq/fastq.lo: Seq/$(am__dirstamp) Seq/$(DEPDIR)/$(am__dirstamp)
-Seq/FastaExplicit.lo: Seq/$(am__dirstamp) \
-	Seq/$(DEPDIR)/$(am__dirstamp)
 SummStats/HKA.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/Snn.lo: SummStats/$(am__dirstamp) \
@@ -682,7 +678,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentSimTypes.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Coalescent/$(DEPDIR)/CoalescentTreeOperations.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/FastaExplicit.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/FST.Plo@am__quote@

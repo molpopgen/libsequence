@@ -27,11 +27,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/Seq.hpp>
-#if (!__STRICT_ANSI__)
-#include <Sequence/FastaExplicit.hpp>
-#else
 #include <Sequence/Alignment.hpp>
-#endif
 #include <cctype>
 #include <type_traits>
 namespace

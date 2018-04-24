@@ -89,7 +89,6 @@ build_triplet = @build@
 host_triplet = @host@
 @BUNIT_TEST_PRESENT_TRUE@check_PROGRAMS = FastaConstructors$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	FastaIO$(EXEEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	FastaExplicitIO$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	FastaOperations$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	AlignStreamTest$(EXEEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testSimDataIO$(EXEEXT) \
@@ -166,11 +165,6 @@ am__FastaConstructors_SOURCES_DIST = FastaConstructors.cc
 @BUNIT_TEST_PRESENT_TRUE@	FastaConstructors.$(OBJEXT)
 FastaConstructors_OBJECTS = $(am_FastaConstructors_OBJECTS)
 FastaConstructors_LDADD = $(LDADD)
-am__FastaExplicitIO_SOURCES_DIST = FastaIO.cc
-@BUNIT_TEST_PRESENT_TRUE@am_FastaExplicitIO_OBJECTS =  \
-@BUNIT_TEST_PRESENT_TRUE@	FastaIO.$(OBJEXT)
-FastaExplicitIO_OBJECTS = $(am_FastaExplicitIO_OBJECTS)
-FastaExplicitIO_LDADD = $(LDADD)
 am__FastaIO_SOURCES_DIST = FastaIO.cc
 @BUNIT_TEST_PRESENT_TRUE@am_FastaIO_OBJECTS = FastaIO.$(OBJEXT)
 FastaIO_OBJECTS = $(am_FastaIO_OBJECTS)
@@ -294,10 +288,10 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(AlignStreamTest_SOURCES) $(AlignmentTest_SOURCES) \
 	$(ComparisonsTest_SOURCES) $(CountingOperators_SOURCES) \
-	$(FastaConstructors_SOURCES) $(FastaExplicitIO_SOURCES) \
-	$(FastaIO_SOURCES) $(FastaOperations_SOURCES) \
-	$(PolySIMtest_SOURCES) $(PolySNPtest_SOURCES) \
-	$(PolySitesIO_SOURCES) $(PolyTableBadBehavior_SOURCES) \
+	$(FastaConstructors_SOURCES) $(FastaIO_SOURCES) \
+	$(FastaOperations_SOURCES) $(PolySIMtest_SOURCES) \
+	$(PolySNPtest_SOURCES) $(PolySitesIO_SOURCES) \
+	$(PolyTableBadBehavior_SOURCES) \
 	$(PolyTableConversions_SOURCES) $(PolyTableSliceTest_SOURCES) \
 	$(PolyTableTweaking_SOURCES) $(RedundancyCom95test_SOURCES) \
 	$(SeqConversions_SOURCES) $(SimpleSNPIO_SOURCES) \
@@ -309,7 +303,6 @@ DIST_SOURCES = $(am__AlignStreamTest_SOURCES_DIST) \
 	$(am__ComparisonsTest_SOURCES_DIST) \
 	$(am__CountingOperators_SOURCES_DIST) \
 	$(am__FastaConstructors_SOURCES_DIST) \
-	$(am__FastaExplicitIO_SOURCES_DIST) \
 	$(am__FastaIO_SOURCES_DIST) \
 	$(am__FastaOperations_SOURCES_DIST) \
 	$(am__PolySIMtest_SOURCES_DIST) \
@@ -686,7 +679,6 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lsequence
 @BUNIT_TEST_PRESENT_TRUE@FastaConstructors_SOURCES = FastaConstructors.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaIO_SOURCES = FastaIO.cc
-@BUNIT_TEST_PRESENT_TRUE@FastaExplicitIO_SOURCES = FastaIO.cc
 @BUNIT_TEST_PRESENT_TRUE@FastaOperations_SOURCES = FastaOperations.cc
 @BUNIT_TEST_PRESENT_TRUE@AlignStreamTest_SOURCES = AlignStreamTest.cc
 @BUNIT_TEST_PRESENT_TRUE@testSimDataIO_SOURCES = testSimDataIO.cc
@@ -770,10 +762,6 @@ CountingOperators$(EXEEXT): $(CountingOperators_OBJECTS) $(CountingOperators_DEP
 FastaConstructors$(EXEEXT): $(FastaConstructors_OBJECTS) $(FastaConstructors_DEPENDENCIES) $(EXTRA_FastaConstructors_DEPENDENCIES) 
 	@rm -f FastaConstructors$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(FastaConstructors_OBJECTS) $(FastaConstructors_LDADD) $(LIBS)
-
-FastaExplicitIO$(EXEEXT): $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_DEPENDENCIES) $(EXTRA_FastaExplicitIO_DEPENDENCIES) 
-	@rm -f FastaExplicitIO$(EXEEXT)
-	$(AM_V_CXXLD)$(CXXLINK) $(FastaExplicitIO_OBJECTS) $(FastaExplicitIO_LDADD) $(LIBS)
 
 FastaIO$(EXEEXT): $(FastaIO_OBJECTS) $(FastaIO_DEPENDENCIES) $(EXTRA_FastaIO_DEPENDENCIES) 
 	@rm -f FastaIO$(EXEEXT)
@@ -1110,13 +1098,6 @@ FastaConstructors.log: FastaConstructors$(EXEEXT)
 FastaIO.log: FastaIO$(EXEEXT)
 	@p='FastaIO$(EXEEXT)'; \
 	b='FastaIO'; \
-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
-	--log-file $$b.log --trs-file $$b.trs \
-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
-	"$$tst" $(AM_TESTS_FD_REDIRECT)
-FastaExplicitIO.log: FastaExplicitIO$(EXEEXT)
-	@p='FastaExplicitIO$(EXEEXT)'; \
-	b='FastaExplicitIO'; \
 	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
 	--log-file $$b.log --trs-file $$b.trs \
 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \

@@ -34,7 +34,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
-	Seq/FastaExplicit.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
 	SummStats/HKA.cc\
