@@ -5,6 +5,7 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <boost/test/included/unit_test.hpp>
 #include <algorithm>
+#include <numeric>  //for std::iota
 #include <iterator>
 
 struct vmatrix_fixture
