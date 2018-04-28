@@ -12,12 +12,18 @@ struct vmatrix_fixture
 {
     std::vector<std::int8_t> input_data;
     std::vector<double> input_pos;
-    Sequence::VariantMatrix m;
+    Sequence::VariantMatrix m,m2;
 
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos)
+          m(input_data, input_pos),m2(input_data,input_pos)
     {
+        //The two VariantMatrix objects
+        //have same data, but different internal
+        //dimensions
+        std::swap(m2.nsites,m2.nsam);
+        m2.positions.resize(m2.nsites);
+        std::iota(std::begin(m2.positions),std::end(m2.positions),0.);
     }
 
     std::vector<std::int8_t>
