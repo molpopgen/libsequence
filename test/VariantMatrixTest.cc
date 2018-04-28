@@ -6,7 +6,7 @@
 #include <boost/test/included/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
-#include <iostream>
+
 struct vmatrix_fixture
 {
     std::vector<std::int8_t> input_data;
@@ -54,6 +54,12 @@ BOOST_FIXTURE_TEST_CASE(test_construction, vmatrix_fixture)
     BOOST_REQUIRE_EQUAL(m.nsam, 20);
 }
 
+BOOST_FIXTURE_TEST_CASE(test_range_exceptions, vmatrix_fixture)
+{
+    BOOST_REQUIRE_THROW(m.at(m.nsites + 1, 0), std::out_of_range);
+    BOOST_REQUIRE_THROW(m.at(0, m.nsam + 1), std::out_of_range);
+}
+
 BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
@@ -66,4 +72,70 @@ BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
                                         static_cast<int>(ex));
                 }
         }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
+{
+    for (std::size_t i = 0; i < m.nsites; ++i)
+        {
+            auto x = Sequence::get_RowView(m, i);
+            for (auto j = x.begin(); j != x.end(); ++j)
+                {
+                    std::int8_t ex
+                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
+                                        static_cast<int>(ex));
+                }
+            for (std::size_t j = 0; j < x.size(); ++j)
+                {
+                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
+                                        static_cast<int>(ex));
+                }
+        }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
+{
+    for (std::size_t i = 0; i < m.nsites; ++i)
+        {
+            auto x = Sequence::get_ConstRowView(m, i);
+            for (auto j = x.begin(); j != x.end(); ++j)
+                {
+                    std::int8_t ex
+                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
+                                        static_cast<int>(ex));
+                }
+            for (std::size_t j = 0; j < x.size(); ++j)
+                {
+                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
+                                        static_cast<int>(ex));
+                }
+        }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_row_view_exceptions, vmatrix_fixture)
+{
+    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
+                        std::exception);
+    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
+                        std::out_of_range);
+
+    auto r = Sequence::get_RowView(m, 0);
+    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::exception);
+    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
+}
+
+BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
+{
+    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
+                        std::exception);
+    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
+                        std::out_of_range);
+
+    auto r = Sequence::get_ConstRowView(m, 0);
+    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::exception);
+    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
 }
