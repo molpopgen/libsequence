@@ -86,21 +86,14 @@ BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
                     BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
                                         static_cast<int>(ex));
                 }
-            for (std::size_t j = 0; j < x.size(); ++j)
+            for (auto j = x.cbegin(); j != x.cend(); ++j)
                 {
-                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
+                    std::int8_t ex
+                        = (std::distance(x.cbegin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
                                         static_cast<int>(ex));
                 }
-        }
-}
-
-BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
-{
-    for (std::size_t i = 0; i < m.nsites; ++i)
-        {
-            auto x = Sequence::get_ConstRowView(m, i);
-            for (auto j = x.begin(); j != x.end(); ++j)
+            for (auto j = std::begin(x); j != std::end(x); ++j)
                 {
                     std::int8_t ex
                         = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
@@ -112,6 +105,58 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
                     std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
                     BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
                                         static_cast<int>(ex));
+                }
+            std::size_t j = 0;
+            for (auto xj : x)
+                {
+                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(xj),
+                                        static_cast<int>(ex));
+                    ++j;
+                }
+        }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
+{
+    for (std::size_t i = 0; i < m.nsites; ++i)
+        {
+            auto x = Sequence::get_ConstRowView(m, i);
+
+            for (auto j = x.begin(); j != x.end(); ++j)
+                {
+                    std::int8_t ex
+                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
+                                        static_cast<int>(ex));
+                }
+            for (auto j = x.cbegin(); j != x.cend(); ++j)
+                {
+                    std::int8_t ex
+                        = (std::distance(x.cbegin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
+                                        static_cast<int>(ex));
+                }
+            for (auto j = std::begin(x); j != std::end(x); ++j)
+                {
+                    std::int8_t ex
+                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
+                                        static_cast<int>(ex));
+                }
+            for (std::size_t j = 0; j < x.size(); ++j)
+                {
+                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
+                                        static_cast<int>(ex));
+                }
+            std::size_t j = 0;
+            for (auto xj : x)
+                {
+                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
+                    BOOST_REQUIRE_EQUAL(static_cast<int>(xj),
+                                        static_cast<int>(ex));
+                    ++j;
                 }
         }
 }
