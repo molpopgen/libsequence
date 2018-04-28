@@ -20,7 +20,8 @@ check_PROGRAMS=FastaConstructors FastaIO FastaOperations \
 	alphabets \
 	polySiteVectorTest \
 	PolyTableSliceTest \
-	stateCounterTest
+	stateCounterTest \
+	VariantMatrixTest
 
 TESTS=$(check_PROGRAMS)
 
@@ -85,5 +86,7 @@ polySiteVectorTest_SOURCES=polySiteVectorTest.cc
 PolyTableSliceTest_SOURCES=PolyTableSliceTest.cc
 
 stateCounterTest_SOURCES=stateCounterTest.cc
+
+VariantMatrixTest_SOURCES=VariantMatrixTest.cc
 
 endif #if BUNIT_TEST_PRESENT
