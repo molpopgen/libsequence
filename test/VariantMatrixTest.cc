@@ -5,7 +5,7 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <boost/test/included/unit_test.hpp>
 #include <algorithm>
-#include <numeric>  //for std::iota
+#include <numeric> //for std::iota
 #include <iterator>
 
 struct vmatrix_fixture
@@ -184,4 +184,42 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
     auto r = Sequence::get_ConstRowView(m, 0);
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::exception);
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
+}
+
+BOOST_FIXTURE_TEST_CASE(test_row_view_iterators, vmatrix_fixture)
+{
+    for (std::size_t i = 0; i < m.nsites; ++i)
+        {
+            auto row = Sequence::get_RowView(m, i);
+            BOOST_REQUIRE_EQUAL(std::distance(row.begin(), row.end()), m.nsam);
+            BOOST_REQUIRE_EQUAL(std::distance(row.cbegin(), row.cend()),
+                                m.nsam);
+        }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
+{
+    for (std::size_t i = 0; i < m.nsam; ++i)
+        {
+            auto col = Sequence::get_ColView(m, i);
+            std::int8_t state = (i % 2 == 0) ? 1 : 0;
+            BOOST_REQUIRE_EQUAL(
+                std::count(std::begin(col), std::end(col), !state), 0);
+            BOOST_REQUIRE_EQUAL(std::count(col.rbegin(), col.rend(), !state),
+                                0);
+            BOOST_REQUIRE_EQUAL(std::count(col.cbegin(), col.cend(), !state),
+                                0);
+            BOOST_REQUIRE_EQUAL(std::count(col.crbegin(), col.crend(), !state),
+                                0);
+
+            //Check that iterators and reverse iterators have the expected relationships:
+            auto fwd = col.begin();
+            auto rev = col.rbegin();
+            for( ; rev < col.rend() ; ++rev )
+            {
+                //auto dr = std::distance(rev,col.rend());
+                //auto df = std::distance(fwd,rev.base());
+                //BOOST_REQUIRE_EQUAL(dr,df);
+            }
+        }
 }
