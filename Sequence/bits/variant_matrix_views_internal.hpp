@@ -302,7 +302,7 @@ namespace Sequence
                 difference_type
                 operator-(iterator_ i)
                 {
-                    return std::distance(*this, i);
+                    return (this->offset - i.offset) / this->stride;
                 }
 
                 bool
