@@ -27,8 +27,7 @@ namespace Sequence
 
             row_view_(T data_, std::size_t row_size_)
                 /// Constructor
-                : data(data_),
-                  row_size(row_size_)
+                : data(data_), row_size(row_size_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -186,9 +185,7 @@ namespace Sequence
 
             col_view_(T data_, std::size_t col_end_, std::size_t stride_)
                 /// Constructor
-                : data(data_),
-                  col_end(col_end_),
-                  stride(stride_)
+                : data(data_), col_end(col_end_), stride(stride_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -259,9 +256,7 @@ namespace Sequence
                 explicit iterator_(POINTER data_, difference_type stride_,
                                    difference_type offset_)
                     /// Constructor
-                    : data{ data_ },
-                      stride{ stride_ },
-                      offset{ offset_ }
+                    : data{ data_ }, stride{ stride_ }, offset{ offset_ }
                 {
                 }
 
@@ -303,6 +298,13 @@ namespace Sequence
                 {
                     return *this - d;
                 }
+
+                difference_type
+                operator-(iterator_ i)
+                {
+                    return std::distance(*this, i);
+                }
+
                 bool
                 operator<=(const iterator_ rhs) const
                 {
