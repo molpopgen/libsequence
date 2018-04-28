@@ -399,27 +399,26 @@ namespace Sequence
             rbegin()
             /// Reverse iterator.  Points to start of reversed range.
             {
-                return reverse_iterator(iterator(data, stride, col_end));
+                return reverse_iterator(end());
             }
             reverse_iterator
             rend()
             /// Reverse iterator.  Points to end of reversed range.
             {
-                return reverse_iterator(iterator(data, stride, 0));
+                return reverse_iterator(begin());
             }
 
             const_reverse_iterator
             rbegin() const
             /// Const reverse iterator.  Points to end of reversed range.
             {
-                return const_reverse_iterator(
-                    const_iterator(data, stride, col_end));
+                return const_reverse_iterator(end());
             }
             const_reverse_iterator
             rend() const
             /// Const reverse iterator.  Points to end of reversed range.
             {
-                return const_reverse_iterator(const_iterator(data, stride, 0));
+                return const_reverse_iterator(begin());
             }
             const_reverse_iterator
             crbegin() const

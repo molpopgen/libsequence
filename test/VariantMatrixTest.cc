@@ -215,11 +215,9 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
             //Check that iterators and reverse iterators have the expected relationships:
             auto fwd = col.begin();
             auto rev = col.rbegin();
-            for( ; rev < col.rend() ; ++rev )
+            for( ; rev < col.rend() ; ++rev, ++fwd)
             {
-                //auto dr = std::distance(rev,col.rend());
-                //auto df = std::distance(fwd,rev.base());
-                //BOOST_REQUIRE_EQUAL(dr,df);
+                std::cout << int(*rev) << ' ' << int(*fwd) << '\n';
             }
         }
 }
