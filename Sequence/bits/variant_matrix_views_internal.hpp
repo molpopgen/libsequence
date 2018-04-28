@@ -417,7 +417,7 @@ namespace Sequence
             rend() const
             /// Const reverse iterator.  Points to end of reversed range.
             {
-                return const_reverse_iterator(const_terator(data, stride, 0));
+                return const_reverse_iterator(const_iterator(data, stride, 0));
             }
             const_reverse_iterator
             crbegin() const
