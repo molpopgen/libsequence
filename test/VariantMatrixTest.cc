@@ -1,4 +1,4 @@
-//! \file ComparisonsTests.cc @brief Tests for Sequence/Comparisons.hpp
+//! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
 #define BOOST_TEST_MODULE VariantMatrixTest
 
 #include <Sequence/VariantMatrix.hpp>
