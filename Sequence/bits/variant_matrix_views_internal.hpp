@@ -159,6 +159,11 @@ namespace Sequence
             swap(row_view_& a, row_view_& b)
             /// Allow swap via argument-dependent lookup, or "ADL"
             {
+                if (a.size() != b.size())
+                    {
+                        throw std::invalid_argument(
+                            "cannot swap row views of different size");
+                    }
                 auto bi = b.begin();
                 for (auto ai = a.begin(); ai != a.end(); ++ai, ++bi)
                     {
@@ -246,6 +251,11 @@ namespace Sequence
                 using iterator_category =
                     typename std::iterator_traits<POINTER>::iterator_category;
 
+                /// The start of a view
+                /// Used to ensure that two
+                /// column iterators refer to the
+                /// same column
+                const POINTER start;
                 /// Iterator data
                 mutable POINTER data;
 
@@ -256,7 +266,9 @@ namespace Sequence
                 explicit iterator_(POINTER data_, difference_type stride_,
                                    difference_type offset_)
                     /// Constructor
-                    : data{ data_ }, stride{ stride_ }, offset{ offset_ }
+                    : start{ data_ }, data{ data_ }, stride{ stride_ }, offset{
+                          offset_
+                      }
                 {
                 }
 
@@ -302,6 +314,13 @@ namespace Sequence
                 difference_type
                 operator-(iterator_ i)
                 {
+                    if (this->start != i.start)
+                        {
+                            throw std::invalid_argument(
+                                "attempt to subtract "
+                                "iterators from different "
+                                "columns");
+                        }
                     return (this->offset - i.offset) / this->stride;
                 }
 
@@ -444,6 +463,11 @@ namespace Sequence
             swap(col_view_& a, col_view_& b)
             /// Allow swap via argument-dependent lookup, or "ADL"
             {
+                if (a.size() != b.size())
+                    {
+                        throw std::invalid_argument(
+                            "cannot swap column views of different size");
+                    }
                 auto bi = b.begin();
                 for (auto ai = a.begin(); ai != a.end(); ++ai, ++bi)
                     {
