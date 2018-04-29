@@ -12,18 +12,18 @@ struct vmatrix_fixture
 {
     std::vector<std::int8_t> input_data;
     std::vector<double> input_pos;
-    Sequence::VariantMatrix m,m2;
+    Sequence::VariantMatrix m, m2;
 
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos),m2(input_data,input_pos)
+          m(input_data, input_pos), m2(input_data, input_pos)
     {
-        //The two VariantMatrix objects
-        //have same data, but different internal
-        //dimensions
-        std::swap(m2.nsites,m2.nsam);
+        // The two VariantMatrix objects
+        // have same data, but different internal
+        // dimensions
+        std::swap(m2.nsites, m2.nsam);
         m2.positions.resize(m2.nsites);
-        std::iota(std::begin(m2.positions),std::end(m2.positions),0.);
+        std::iota(std::begin(m2.positions), std::end(m2.positions), 0.);
     }
 
     std::vector<std::int8_t>
@@ -79,6 +79,20 @@ BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
                                         static_cast<int>(ex));
                 }
         }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_bad_row_swap, vmatrix_fixture)
+{
+    auto a = Sequence::get_RowView(m, 0);
+    auto b = Sequence::get_RowView(m2, 0);
+    BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
+}
+
+BOOST_FIXTURE_TEST_CASE(test_bad_column_swap, vmatrix_fixture)
+{
+    auto a = Sequence::get_ColView(m, 0);
+    auto b = Sequence::get_ColView(m2, 0);
+    BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
 }
 
 BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
@@ -234,4 +248,13 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
                     BOOST_REQUIRE_EQUAL(rf, rb);
                 }
         }
+}
+
+BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
+{
+    auto c0 = Sequence::get_ConstColView(m, 0);
+    auto c1 = Sequence::get_ConstColView(m, 1);
+    BOOST_REQUIRE_NO_THROW(std::distance(c0.begin(),c0.end()));
+    BOOST_REQUIRE_THROW(std::distance(c0.begin(), c1.begin()),
+                        std::invalid_argument);
 }
