@@ -18,16 +18,14 @@ namespace Sequence
         using difference_type =
             typename std::iterator_traits<POINTER>::difference_type;
         /// Value type
-        using value_type =
-            typename std::iterator_traits<POINTER>::value_type;
+        using value_type = typename std::iterator_traits<POINTER>::value_type;
         /// Reference type
-        using reference =
-            typename std::iterator_traits<POINTER>::reference;
+        using reference = typename std::iterator_traits<POINTER>::reference;
         /// Pointer type
         using pointer = POINTER;
         /// Iterator category
-        using iterator_category = typename std::
-            iterator_traits<POINTER>::iterator_category;
+        using iterator_category =
+            typename std::iterator_traits<POINTER>::iterator_category;
 
         /// The start of a view
         /// Used to ensure that two
@@ -154,9 +152,11 @@ namespace Sequence
     }
 
     template <typename POINTER>
-    inline col_view_iterator<POINTER> operator--(col_view_iterator<POINTER>& i)
+    inline col_view_iterator<POINTER>&
+    operator--(col_view_iterator<POINTER>& i)
     {
         i.offset -= i.stride;
+        return i;
     }
 
     template <typename POINTER>
