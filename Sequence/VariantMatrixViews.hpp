@@ -6,16 +6,16 @@
 
 namespace Sequence
 {
-    /// View of a VariantMatrix row (a variable site)
+    /// \brief View of a VariantMatrix row (a variable site)
     /// \ingroup variantmatrix
     using RowView = internal::row_view_<std::int8_t*>;
-    /// Const view of a VariantMatrix row (a variable site)
+    /// \brief Const view of a VariantMatrix row (a variable site)
     /// \ingroup variantmatrix
     using ConstRowView = internal::row_view_<const std::int8_t*>;
-    /// View of a VariantMatrix column ("haplotype")
+    /// \brief View of a VariantMatrix column ("haplotype")
     /// \ingroup variantmatrix
     using ColView = internal::col_view_<std::int8_t*>;
-    /// Const view of a VariantMatrix column ("haplotype")
+    /// \brief Const view of a VariantMatrix column ("haplotype")
     /// \ingroup variantmatrix
     using ConstColView = internal::col_view_<const std::int8_t*>;
 

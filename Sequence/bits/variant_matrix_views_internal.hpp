@@ -13,7 +13,7 @@ namespace Sequence
     namespace internal
     {
         template <typename T> struct row_view_
-        /// Implementation details for Sequence::RowView and
+        /// \brief Implementation details for Sequence::RowView and
         /// Sequence::ConstRowView
         /// \ingroup variantmatrix
         {
@@ -173,7 +173,7 @@ namespace Sequence
         };
 
         template <typename T> struct col_view_
-        /// Implementation details for Sequence::ColView and
+        /// \brief Implementation details for Sequence::ColView and
         /// Sequence::ConstColView
         /// \ingroup variantmatrix
         {

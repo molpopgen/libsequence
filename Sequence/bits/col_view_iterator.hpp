@@ -7,9 +7,11 @@
 namespace Sequence
 {
     template <typename POINTER> struct col_view_iterator
-    /// Iterator for column views.
+    /// \brief Iterator for column views.
+    ///
     /// This is a C++11-compliant, random-access
     /// iterator
+    /// \ingroup variantmatrix
     {
         static_assert(std::is_pointer<POINTER>::value,
                       "iterator must wrap a pointer type");
@@ -55,7 +57,9 @@ namespace Sequence
         /// Get value pointed to
         const reference operator*() const { return *(data + offset); }
 
+        /// Access a reference n elements away
         reference operator[](difference_type n) { return *(*this + n); }
+        /// Access a const reference n elements away
         const reference operator[](difference_type n) const
         {
             return *(*this + n);
@@ -107,6 +111,8 @@ namespace Sequence
     col_view_iterator<POINTER> inline
     operator+(col_view_iterator<POINTER> i,
               typename col_view_iterator<POINTER>::difference_type d)
+    /// Add to an iterator
+    /// \ingroup variantmatrix
     {
         auto rv{ i };
         rv.offset += d * rv.stride;
@@ -117,6 +123,8 @@ namespace Sequence
     col_view_iterator<POINTER> inline
     operator+(typename col_view_iterator<POINTER>::difference_type d,
               col_view_iterator<POINTER> i)
+    /// Add to an iterator
+    /// \ingroup variantmatrix
     {
         return i + d;
     }
@@ -124,6 +132,8 @@ namespace Sequence
     template <typename POINTER>
     inline col_view_iterator<POINTER>&
     operator++(col_view_iterator<POINTER>& i)
+    /// Increment an iterator by one
+    /// \ingroup variantmatrix
     {
         i.offset += i.stride;
         return i;
@@ -133,6 +143,8 @@ namespace Sequence
     inline col_view_iterator<POINTER>
     operator-(col_view_iterator<POINTER> i,
               typename col_view_iterator<POINTER>::difference_type d)
+    /// Subtract from an iterator
+    /// \ingroup variantmatrix
     {
         auto rv{ i };
         rv.offset -= d * rv.stride;
@@ -143,6 +155,8 @@ namespace Sequence
     col_view_iterator<POINTER> inline
     operator-(typename col_view_iterator<POINTER>::difference_type d,
               col_view_iterator<POINTER> i)
+    /// Subtract from an iterator
+    /// \ingroup variantmatrix
     {
         return i - d;
     }
@@ -150,6 +164,8 @@ namespace Sequence
     template <typename POINTER>
     inline col_view_iterator<POINTER>&
     operator--(col_view_iterator<POINTER>& i)
+    /// Decrement iterator by one
+    /// \ingroup variantmatrix
     {
         i.offset -= i.stride;
         return i;
@@ -159,6 +175,8 @@ namespace Sequence
     inline col_view_iterator<POINTER>&
     operator+=(col_view_iterator<POINTER>& i,
                typename col_view_iterator<POINTER>::difference_type d)
+    /// Increment an iterator
+    /// \ingroup variantmatrix
     {
         i.offset += d * i.stride;
         return i;
@@ -168,6 +186,8 @@ namespace Sequence
     inline col_view_iterator<POINTER>&
     operator-=(col_view_iterator<POINTER>& i,
                typename col_view_iterator<POINTER>::difference_type d)
+    /// Decrement an iterator
+    /// \ingroup variantmatrix
     {
         i.offset -= d * i.stride;
         return i;
@@ -176,6 +196,8 @@ namespace Sequence
     template <typename POINTER>
     inline typename col_view_iterator<POINTER>::difference_type
     operator-(col_view_iterator<POINTER> i, col_view_iterator<POINTER> j)
+    /// Distance between two iterators
+    /// \ingroup variantmatrix
     {
         if (i.start != j.start)
             {
