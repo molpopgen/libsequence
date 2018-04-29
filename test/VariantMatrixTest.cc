@@ -280,3 +280,16 @@ BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
     BOOST_REQUIRE_THROW(std::distance(c0.begin(), c1.begin()),
                         std::invalid_argument);
 }
+
+// The remaining tests apply STL algorithms to column iterators,
+// which is a good stress test.  We've already done count above.
+
+BOOST_FIXTURE_TEST_CASE(test_accumulate, vmatrix_fixture)
+{
+    auto c = Sequence::get_ConstColView(m, 0);
+    int sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
+    BOOST_REQUIRE_EQUAL(sum, static_cast<int>(m.nsites));
+    c = Sequence::get_ConstColView(m, 1);
+    sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
+    BOOST_REQUIRE_EQUAL(sum, 0);
+}
