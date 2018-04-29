@@ -3,7 +3,6 @@
 
 #include <iterator>
 #include <stdexcept>
-#include <iostream>
 
 namespace Sequence
 {
@@ -110,10 +109,7 @@ namespace Sequence
               typename col_view_iterator<POINTER>::difference_type d)
     {
         auto rv{ i };
-        std::cout << i.stride << ' ' << ' ' << i.offset << ' ' << rv.stride
-                  << ' ' << rv.offset << " -> ";
         rv.offset += d * rv.stride;
-        std::cout << rv.offset << '\n';
         return rv;
     }
 
