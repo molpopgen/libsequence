@@ -259,6 +259,19 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
         }
 }
 
+BOOST_FIXTURE_TEST_CASE(tesl_col_view_iterator_increment, vmatrix_fixture)
+{
+    auto x = Sequence::get_ConstColView(m, 0);
+    auto b = x.begin();
+    unsigned num_increments = 0;
+    while (b < x.end())
+        {
+            b = b + 2;
+            ++num_increments;
+        }
+    BOOST_REQUIRE_EQUAL(num_increments, 3);
+}
+
 BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
 {
     auto c0 = Sequence::get_ConstColView(m, 0);

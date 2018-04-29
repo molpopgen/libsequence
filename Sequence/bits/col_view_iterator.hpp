@@ -32,7 +32,7 @@ namespace Sequence
         /// Used to ensure that two
         /// column iterators refer to the
         /// same column
-        const POINTER start;
+        mutable POINTER start;
         /// Iterator data
         mutable POINTER data;
 
