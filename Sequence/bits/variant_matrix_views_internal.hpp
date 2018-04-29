@@ -230,8 +230,8 @@ namespace Sequence
                 return col_end / stride;
             }
 
-            using iterator = iterator_<dtype*>;
-            using const_iterator = iterator_<const dtype*>;
+            using iterator = col_view_iterator<dtype*>;
+            using const_iterator = col_view_iterator<const dtype*>;
             using reverse_iterator = std::reverse_iterator<iterator>;
             using const_reverse_iterator
                 = std::reverse_iterator<const_iterator>;

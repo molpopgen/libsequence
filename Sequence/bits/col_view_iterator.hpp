@@ -7,7 +7,7 @@
 
 namespace Sequence
 {
-    template <typename POINTER> struct iterator_
+    template <typename POINTER> struct col_view_iterator
     /// Iterator for column views.
     /// This is a C++11-compliant, random-access
     /// iterator
@@ -18,14 +18,16 @@ namespace Sequence
         using difference_type =
             typename std::iterator_traits<POINTER>::difference_type;
         /// Value type
-        using value_type = typename std::iterator_traits<POINTER>::value_type;
+        using value_type =
+            typename std::iterator_traits<POINTER>::value_type;
         /// Reference type
-        using reference = typename std::iterator_traits<POINTER>::reference;
+        using reference =
+            typename std::iterator_traits<POINTER>::reference;
         /// Pointer type
         using pointer = POINTER;
         /// Iterator category
-        using iterator_category =
-            typename std::iterator_traits<POINTER>::iterator_category;
+        using iterator_category = typename std::
+            iterator_traits<POINTER>::iterator_category;
 
         /// The start of a view
         /// Used to ensure that two
@@ -39,8 +41,8 @@ namespace Sequence
         difference_type stride;
         /// Offset w.r.to data
         difference_type offset;
-        explicit iterator_(POINTER data_, difference_type stride_,
-                           difference_type offset_)
+        explicit col_view_iterator(POINTER data_, difference_type stride_,
+                                   difference_type offset_)
             /// Constructor
             : start{ data_ }, data{ data_ }, stride{ stride_ }, offset{
                   offset_
@@ -48,7 +50,7 @@ namespace Sequence
         {
         }
 
-        iterator_(const iterator_&) = default;
+        col_view_iterator(const col_view_iterator&) = default;
 
         /// Get value pointed to
         reference operator*() { return *(data + offset); }
@@ -62,8 +64,8 @@ namespace Sequence
             return *(*this + n);
         }
 
-        iterator_&
-        operator=(const iterator_& rhs)
+        col_view_iterator&
+        operator=(const col_view_iterator& rhs)
         /// Assignment operator
         {
             this->start = rhs.start;
@@ -73,41 +75,41 @@ namespace Sequence
         }
 
         bool
-        operator<=(const iterator_ rhs) const
+        operator<=(const col_view_iterator rhs) const
         {
             return (this->data + this->offset) <= (rhs.data + rhs.offset);
         }
         bool
-        operator<(const iterator_ rhs) const
+        operator<(const col_view_iterator rhs) const
         {
             return (this->data + this->offset) < (rhs.data + rhs.offset);
         }
         bool
-        operator>(const iterator_ rhs) const
+        operator>(const col_view_iterator rhs) const
         {
             return !(*this <= rhs);
         }
         bool
-        operator>=(const iterator_ rhs) const
+        operator>=(const col_view_iterator rhs) const
         {
             return !(*this < rhs);
         }
         bool
-        operator==(const iterator_ rhs) const
+        operator==(const col_view_iterator rhs) const
         {
             return !(*this < rhs) && !(*this > rhs);
         }
         bool
-        operator!=(const iterator_ rhs) const
+        operator!=(const col_view_iterator rhs) const
         {
             return !(*this == rhs);
         }
     };
 
     template <typename POINTER>
-    iterator_<POINTER> inline
-    operator+(iterator_<POINTER> i,
-              typename iterator_<POINTER>::difference_type d)
+    col_view_iterator<POINTER> inline
+    operator+(col_view_iterator<POINTER> i,
+              typename col_view_iterator<POINTER>::difference_type d)
     {
         auto rv{ i };
         std::cout << i.stride << ' ' << ' ' << i.offset << ' ' << rv.stride
@@ -118,24 +120,25 @@ namespace Sequence
     }
 
     template <typename POINTER>
-    iterator_<POINTER> inline
-    operator+(typename iterator_<POINTER>::difference_type d,
-              iterator_<POINTER> i)
+    col_view_iterator<POINTER> inline
+    operator+(typename col_view_iterator<POINTER>::difference_type d,
+              col_view_iterator<POINTER> i)
     {
         return i + d;
     }
 
     template <typename POINTER>
-    inline iterator_<POINTER>& operator++(iterator_<POINTER>& i)
+    inline col_view_iterator<POINTER>&
+    operator++(col_view_iterator<POINTER>& i)
     {
         i.offset += i.stride;
         return i;
     }
 
     template <typename POINTER>
-    inline iterator_<POINTER>
-    operator-(iterator_<POINTER> i,
-              typename iterator_<POINTER>::difference_type d)
+    inline col_view_iterator<POINTER>
+    operator-(col_view_iterator<POINTER> i,
+              typename col_view_iterator<POINTER>::difference_type d)
     {
         auto rv{ i };
         rv.offset -= d * rv.stride;
@@ -143,40 +146,40 @@ namespace Sequence
     }
 
     template <typename POINTER>
-    iterator_<POINTER> inline
-    operator-(typename iterator_<POINTER>::difference_type d,
-              iterator_<POINTER> i)
+    col_view_iterator<POINTER> inline
+    operator-(typename col_view_iterator<POINTER>::difference_type d,
+              col_view_iterator<POINTER> i)
     {
         return i - d;
     }
 
     template <typename POINTER>
-    inline iterator_<POINTER> operator--(iterator_<POINTER>& i)
+    inline col_view_iterator<POINTER> operator--(col_view_iterator<POINTER>& i)
     {
         i.offset -= i.stride;
     }
 
     template <typename POINTER>
-    inline iterator_<POINTER>&
-    operator+=(iterator_<POINTER>& i,
-               typename iterator_<POINTER>::difference_type d)
+    inline col_view_iterator<POINTER>&
+    operator+=(col_view_iterator<POINTER>& i,
+               typename col_view_iterator<POINTER>::difference_type d)
     {
         i.offset += d * i.stride;
         return i;
     }
 
     template <typename POINTER>
-    inline iterator_<POINTER>&
-    operator-=(iterator_<POINTER>& i,
-               typename iterator_<POINTER>::difference_type d)
+    inline col_view_iterator<POINTER>&
+    operator-=(col_view_iterator<POINTER>& i,
+               typename col_view_iterator<POINTER>::difference_type d)
     {
         i.offset -= d * i.stride;
         return i;
     }
 
     template <typename POINTER>
-    inline typename iterator_<POINTER>::difference_type
-    operator-(iterator_<POINTER> i, iterator_<POINTER> j)
+    inline typename col_view_iterator<POINTER>::difference_type
+    operator-(col_view_iterator<POINTER> i, col_view_iterator<POINTER> j)
     {
         if (i.start != j.start)
             {
