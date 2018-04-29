@@ -247,6 +247,15 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
                     auto rb = std::distance(rev, col.rend());
                     BOOST_REQUIRE_EQUAL(rf, rb);
                 }
+
+            auto cfwd = col.cbegin();
+            auto crev = col.crbegin();
+            for (; crev < col.crend(); ++crev)
+                {
+                    auto rf = std::distance(cfwd, crev.base());
+                    auto rb = std::distance(crev, col.crend());
+                    BOOST_REQUIRE_EQUAL(rf, rb);
+                }
         }
 }
 
@@ -254,7 +263,7 @@ BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
 {
     auto c0 = Sequence::get_ConstColView(m, 0);
     auto c1 = Sequence::get_ConstColView(m, 1);
-    BOOST_REQUIRE_NO_THROW(std::distance(c0.begin(),c0.end()));
+    BOOST_REQUIRE_NO_THROW(std::distance(c0.begin(), c0.end()));
     BOOST_REQUIRE_THROW(std::distance(c0.begin(), c1.begin()),
                         std::invalid_argument);
 }

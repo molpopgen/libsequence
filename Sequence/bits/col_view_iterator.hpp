@@ -2,12 +2,15 @@
 #define SEQUENCE_COL_VIEW_ITERATOR_HPP__
 
 #include <iterator>
+#include <stdexcept>
+#include <iostream>
 
 namespace Sequence
 {
     template <typename POINTER> struct iterator_
     /// Iterator for column views.
-    /// This is a C++11 standard compliant iterator.
+    /// This is a C++11-compliant, random-access
+    /// iterator
     {
         static_assert(std::is_pointer<POINTER>::value,
                       "iterator must wrap a pointer type");
@@ -45,55 +48,28 @@ namespace Sequence
         {
         }
 
+        iterator_(const iterator_&) = default;
+
         /// Get value pointed to
         reference operator*() { return *(data + offset); }
 
         /// Get value pointed to
         const reference operator*() const { return *(data + offset); }
 
+        reference operator[](difference_type n) { return *(*this + n); }
+        const reference operator[](difference_type n) const
+        {
+            return *(*this + n);
+        }
+
         iterator_&
         operator=(const iterator_& rhs)
         /// Assignment operator
         {
+            this->start = rhs.start;
             this->data = rhs.data;
             this->stride = rhs.stride;
             this->offset = rhs.offset;
-        }
-        iterator_&
-        operator+(difference_type d)
-        {
-            offset += d * stride;
-            return *this;
-        }
-        iterator_& operator++() { return *this + 1; }
-        iterator_&
-        operator+=(difference_type d)
-        {
-            return *this + d;
-        }
-
-        iterator_&
-        operator-(difference_type d)
-        {
-            return *this + -d;
-        }
-        iterator_& operator--() { return *this - 1; }
-        iterator_&
-        operator-=(difference_type d)
-        {
-            return *this - d;
-        }
-
-        difference_type
-        operator-(iterator_ i)
-        {
-            if (this->start != i.start)
-                {
-                    throw std::invalid_argument("attempt to subtract "
-                                                "iterators from different "
-                                                "columns");
-                }
-            return (this->offset - i.offset) / this->stride;
         }
 
         bool
@@ -127,6 +103,89 @@ namespace Sequence
             return !(*this == rhs);
         }
     };
+
+    template <typename POINTER>
+    iterator_<POINTER> inline
+    operator+(iterator_<POINTER> i,
+              typename iterator_<POINTER>::difference_type d)
+    {
+        auto rv{ i };
+        std::cout << i.stride << ' ' << ' ' << i.offset << ' ' << rv.stride
+                  << ' ' << rv.offset << " -> ";
+        rv.offset += d * rv.stride;
+        std::cout << rv.offset << '\n';
+        return rv;
+    }
+
+    template <typename POINTER>
+    iterator_<POINTER> inline
+    operator+(typename iterator_<POINTER>::difference_type d,
+              iterator_<POINTER> i)
+    {
+        return i + d;
+    }
+
+    template <typename POINTER>
+    inline iterator_<POINTER>& operator++(iterator_<POINTER>& i)
+    {
+        i.offset += i.stride;
+        return i;
+    }
+
+    template <typename POINTER>
+    inline iterator_<POINTER>
+    operator-(iterator_<POINTER> i,
+              typename iterator_<POINTER>::difference_type d)
+    {
+        auto rv{ i };
+        rv.offset -= d * rv.stride;
+        return rv;
+    }
+
+    template <typename POINTER>
+    iterator_<POINTER> inline
+    operator-(typename iterator_<POINTER>::difference_type d,
+              iterator_<POINTER> i)
+    {
+        return i - d;
+    }
+
+    template <typename POINTER>
+    inline iterator_<POINTER> operator--(iterator_<POINTER>& i)
+    {
+        i.offset -= i.stride;
+    }
+
+    template <typename POINTER>
+    inline iterator_<POINTER>&
+    operator+=(iterator_<POINTER>& i,
+               typename iterator_<POINTER>::difference_type d)
+    {
+        i.offset += d * i.stride;
+        return i;
+    }
+
+    template <typename POINTER>
+    inline iterator_<POINTER>&
+    operator-=(iterator_<POINTER>& i,
+               typename iterator_<POINTER>::difference_type d)
+    {
+        i.offset -= d * i.stride;
+        return i;
+    }
+
+    template <typename POINTER>
+    inline typename iterator_<POINTER>::difference_type
+    operator-(iterator_<POINTER> i, iterator_<POINTER> j)
+    {
+        if (i.start != j.start)
+            {
+                throw std::invalid_argument("attempt to subtract "
+                                            "iterators from different "
+                                            "columns");
+            }
+        return (i.offset - j.offset) / i.stride;
+    }
 }
 
 #endif
