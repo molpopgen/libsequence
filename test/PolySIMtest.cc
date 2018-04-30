@@ -2,11 +2,9 @@
   Validate calculation of summary stats via PolySIM
   by independently recoding them all.  Joy.
  */
-#define BOOST_TEST_MODULE PolySIMtest
-
 #include <Sequence/SimData.hpp>
 #include <Sequence/PolySIM.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <set>
@@ -15,6 +13,8 @@
 #include <cmath>
 
 const char * testfile = "data/single_ms.txt";
+
+BOOST_AUTO_TEST_SUITE(PolySIMTest)
 
 double pi( const Sequence::SimData & d )
 {
@@ -193,3 +193,4 @@ BOOST_AUTO_TEST_CASE( hapdiv )
   BOOST_REQUIRE_CLOSE( lseqvalue, hdiv, 1e-3);
   BOOST_REQUIRE_CLOSE( lseqvalue, hdiv2, 1e-3);
 }
+BOOST_AUTO_TEST_SUITE_END()

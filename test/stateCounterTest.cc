@@ -1,14 +1,13 @@
-#define BOOST_TEST_MODULE stateCounterTest
-
 #include <Sequence/stateCounter.hpp>
 #include <string>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <iostream>
 #include <algorithm>
 #include <functional>
 
 using namespace std;
 using namespace Sequence;
+BOOST_AUTO_TEST_SUITE(stateCounterTest)
 
 BOOST_AUTO_TEST_CASE( test1 )
 {
@@ -23,3 +22,4 @@ BOOST_AUTO_TEST_CASE( test1 )
   BOOST_CHECK_EQUAL(y.gap,1);
   BOOST_CHECK_EQUAL(y.ndna,0);
 }
+BOOST_AUTO_TEST_SUITE_END()

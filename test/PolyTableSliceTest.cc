@@ -1,7 +1,5 @@
 //! \file PolyTableSliceTest.cc @brief Tests for Sequence/PolyTableSlice.hpp
-#define BOOST_TEST_MODULE ComparisonsTest
-
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <Sequence/SimData.hpp>
 #include <iostream>
 #include <Sequence/PolyTableSlice.hpp>
@@ -11,6 +9,8 @@
 
 using namespace std;
 using namespace Sequence;
+
+BOOST_AUTO_TEST_SUITE(PolyTableSliceTest)
 
 BOOST_AUTO_TEST_CASE( lastwindows1 )
 {
@@ -60,3 +60,4 @@ BOOST_AUTO_TEST_CASE( nwindows2 )
 }
 
 
+BOOST_AUTO_TEST_SUITE_END()

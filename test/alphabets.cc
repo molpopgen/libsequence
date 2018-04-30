@@ -1,11 +1,11 @@
 /*! \file alphabets.cc @brief Unit tests for Sequence/SeqAlphabets.hpp */
-#define BOOST_TEST_MODULE alphabets
 
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/Fasta.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
+BOOST_AUTO_TEST_SUITE(AlphabetTest)
 
 BOOST_AUTO_TEST_CASE( check_dna_alphabet )
 {
@@ -83,3 +83,4 @@ BOOST_AUTO_TEST_CASE( dna_poly_alphabet_5 )
 					    Sequence::dna_poly_alphabet.end(),c) ) >= Sequence::NOTPOLYCHAR );
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

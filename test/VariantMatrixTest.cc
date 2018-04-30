@@ -1,12 +1,12 @@
 //! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
-#define BOOST_TEST_MODULE VariantMatrixTest
-
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <numeric> //for std::iota
 #include <iterator>
+
+BOOST_AUTO_TEST_SUITE(VariantMatrixTest)
 
 struct vmatrix_fixture
 {
@@ -293,3 +293,4 @@ BOOST_FIXTURE_TEST_CASE(test_accumulate, vmatrix_fixture)
     sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
     BOOST_REQUIRE_EQUAL(sum, 0);
 }
+BOOST_AUTO_TEST_SUITE_END()

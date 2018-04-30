@@ -1,12 +1,22 @@
 //\file FastaOperations.cc
-#define BOOST_TEST_MODULE FastaOperations
 
 #include <Sequence/Fasta.hpp>
 #include <string>
 #include <iostream>
 #include <algorithm>
 #include <numeric>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
+
+struct fasta_operations_fixture
+{
+    std::string name, seq;
+    fasta_operations_fixture()
+        : name{ "seqname" }, seq{ "AGCGTAGACAGTAGAGTGAT" }
+    {
+    }
+};
+
+BOOST_FIXTURE_TEST_SUITE(FastaOperationsTest, fasta_operations_fixture)
 
 //A generic revcom routine written for this test
 std::string rcom( const std::string & s )
@@ -100,4 +110,5 @@ BOOST_AUTO_TEST_CASE( cpp11access_1 )
   BOOST_REQUIRE_EQUAL(f3.second,"AAA");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

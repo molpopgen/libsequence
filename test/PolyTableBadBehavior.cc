@@ -7,19 +7,19 @@
   - \ref polytable_idiot
  */
 
-#define BOOST_TEST_MODULE PolyTableBadBehavior
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Alignment.hpp>
 #include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <cctype>
 #include <iostream>
 #include <functional>
+
+BOOST_AUTO_TEST_SUITE(PolyTableBadBehaviorTest)
 
 BOOST_AUTO_TEST_CASE( exception1 )
 {
@@ -139,3 +139,4 @@ BOOST_AUTO_TEST_CASE( badness2 )
   //for later actions.
   BOOST_CHECK_EQUAL(Sequence::Alignment::IsAlignment(std::vector<std::string>(ps.begin(),ps.end())), false);
 }
+BOOST_AUTO_TEST_SUITE_END()

@@ -1,14 +1,14 @@
 //! \file AlignStreamTest.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
-#define BOOST_TEST_MODULE AlignStream
 
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Clustalw.hpp>
 #include <Sequence/phylipData.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <unistd.h>
 
+BOOST_AUTO_TEST_SUITE(AlignStreamTest)
 const char * input_data = "data/CG15644-Z.aln";
 const char * phylip_input_data = "data/phylip_input.txt";
 
@@ -313,4 +313,5 @@ BOOST_AUTO_TEST_CASE( convert_write_read )
   unlink(outfile);
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

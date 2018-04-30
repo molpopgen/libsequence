@@ -1,10 +1,8 @@
 //! \file polySiteVectorTest.cc @brief Unit tests for Sequence::polySiteVector
-#define BOOST_TEST_MODULE polySiteVectorTest
-
 #include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SeqAlphabets.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <cctype>
@@ -15,6 +13,8 @@
 
 using psite = Sequence::polymorphicSite;
 using Ptable = Sequence::polySiteVector;
+
+BOOST_AUTO_TEST_SUITE(PolySiteVectorTest)
 
 BOOST_AUTO_TEST_CASE( ptable_remove_1 )
 {
@@ -62,3 +62,4 @@ BOOST_AUTO_TEST_CASE( ptable_make_from_polytable )
 
   BOOST_REQUIRE( t == t2 );
 }
+BOOST_AUTO_TEST_SUITE_END()
