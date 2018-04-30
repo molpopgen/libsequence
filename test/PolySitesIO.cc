@@ -1,10 +1,11 @@
-#define BOOST_TEST_MODULE PolySitesIO
-
 #include <Sequence/PolySites.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <sstream>
 #include <fstream>
 #include <unistd.h>
+
+BOOST_AUTO_TEST_SUITE(PolySitesIOTest)
+
 BOOST_AUTO_TEST_CASE( polysites_io )
 {
   std::vector<double> pos = {1,2,3,4,5};
@@ -33,3 +34,4 @@ BOOST_AUTO_TEST_CASE( polysites_io )
   BOOST_REQUIRE( ps == ps2 );
   unlink(fn);
 }
+BOOST_AUTO_TEST_SUITE_END()

@@ -1,8 +1,6 @@
-#define BOOST_TEST_MODULE RedundancyCom95
-
 #include <Sequence/RedundancyCom95.hpp>
 #include <Sequence/SeqAlphabets.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -12,6 +10,8 @@
 #include <unistd.h>
 
 //Test that redundancy values sum to 3 for all non-stop codons + universal code
+BOOST_AUTO_TEST_SUITE(RedundancyCom95Test)
+
 BOOST_AUTO_TEST_CASE( universal_code_1 )
 {
   Sequence::RedundancyCom95 rc;
@@ -874,7 +874,4 @@ BOOST_AUTO_TEST_CASE( TTT )
   BOOST_CHECK_EQUAL(rc.Third2S(codon),1.);
   BOOST_CHECK_EQUAL(rc.Third2V(codon),0.);
 }
-
-
-
-
+BOOST_AUTO_TEST_SUITE_END()

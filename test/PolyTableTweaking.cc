@@ -1,10 +1,8 @@
-#define BOOST_TEST_MODULE PolyTableTweaking
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/Fasta.hpp>
 #include <Sequence/polySiteVector.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <cctype>
@@ -13,6 +11,8 @@
 
 using namespace Sequence;
 //Removal of N 
+BOOST_AUTO_TEST_SUITE(PolyTableTweakingTest)
+
 BOOST_AUTO_TEST_CASE( remove_missing_N )
 {
   std::vector<double> pos = {1,2,3,4,5};
@@ -502,4 +502,5 @@ BOOST_AUTO_TEST_CASE( remove_invariant )
 }
 
 
+BOOST_AUTO_TEST_SUITE_END()
 

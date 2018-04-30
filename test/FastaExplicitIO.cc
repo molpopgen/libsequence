@@ -1,12 +1,12 @@
-#define BOOST_TEST_MODULE FastaExplicitIO
 
 #include <Sequence/FastaExplicit.hpp>
 #include <fstream>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
 
 std::string name("seqname is a seq"),seq("AGCGTAGACAGTAGAGTGAT"),seq_left("AGCGTAGAC"),seq_right("AGTAGAGTGAT");
+
 
 BOOST_AUTO_TEST_CASE( ostream_test )
 {
@@ -151,4 +151,5 @@ BOOST_AUTO_TEST_CASE( exception_test )
   unlink(filename);
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

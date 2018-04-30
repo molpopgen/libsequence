@@ -1,11 +1,12 @@
-#define BOOST_TEST_MODULE SimpleSNPIO
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SimpleSNP.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <sstream>
 #include <fstream>
 #include <unistd.h>
+
+BOOST_AUTO_TEST_SUITE(SimpleSNPIOTest)
+
 BOOST_AUTO_TEST_CASE( polysites_io )
 {
   std::vector<double> pos = {1,2,3,4,5};
@@ -53,3 +54,4 @@ BOOST_AUTO_TEST_CASE( polysites_io )
 
   unlink(fn2);
 }
+BOOST_AUTO_TEST_SUITE_END()

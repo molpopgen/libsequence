@@ -9,16 +9,16 @@
   This module tests both
 */
 
-#define BOOST_TEST_MODULE AlignmentTest
-
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Alignment.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <vector>
 #include <fstream>
 #include <iterator>
 #include <algorithm>
 #include <unistd.h>
+
+BOOST_AUTO_TEST_SUITE(AlignmentTest)
 
 BOOST_AUTO_TEST_CASE( IsAlignmentFasta )
 {
@@ -464,3 +464,4 @@ BOOST_AUTO_TEST_CASE( TrimComplementSameResults )
       BOOST_REQUIRE_EQUAL( vf2[i].second,vs2[i] );
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

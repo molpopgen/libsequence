@@ -1,13 +1,14 @@
 //\file fastqConstructors.cc
-#define BOOST_TEST_MODULE fastqIO
 
 #include <Sequence/fastq.hpp>
 #include <fstream>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <unistd.h>
 #include <iterator>
 #include <iostream>
 #include <stdexcept>
+
+BOOST_AUTO_TEST_SUITE(FastqConstructorsTest)
 
 BOOST_AUTO_TEST_CASE( move_construction )
 {
@@ -25,3 +26,4 @@ BOOST_AUTO_TEST_CASE( move_construction )
 
   BOOST_CHECK_EQUAL(f.length(),0);
 }
+BOOST_AUTO_TEST_SUITE_END()

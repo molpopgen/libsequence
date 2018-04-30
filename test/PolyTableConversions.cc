@@ -1,15 +1,15 @@
-#define BOOST_TEST_MODULE PolyTableConversions
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SimpleSNP.hpp>
 #include <Sequence/SimData.hpp>
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Alignment.hpp>
 #include <Sequence/PolyTableFunctions.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+
+BOOST_AUTO_TEST_SUITE(PolyTableConversionsTest)
 
 BOOST_AUTO_TEST_CASE( make_a_table_from_strings )
 {
@@ -258,3 +258,4 @@ BOOST_AUTO_TEST_CASE(test_swap)
   BOOST_CHECK(!ps2.empty());
 }
 
+BOOST_AUTO_TEST_SUITE_END()

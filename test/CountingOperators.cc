@@ -1,10 +1,10 @@
-#define BOOST_TEST_MODULE CountingOperators
-
 #include <Sequence/CountingOperators.hpp>
-#include <boost/test/included/unit_test.hpp>
+#include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <functional>
 #include <string>
+
+BOOST_AUTO_TEST_SUITE(CountingOperatorsTest)
 
 BOOST_AUTO_TEST_CASE( test_counting_operators_map_plus )
 {
@@ -74,3 +74,4 @@ BOOST_AUTO_TEST_CASE( test_counting_operators_vector_plus )
   BOOST_REQUIRE_EQUAL( i->second,17 );
 
 }
+BOOST_AUTO_TEST_SUITE_END()
