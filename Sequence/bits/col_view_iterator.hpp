@@ -73,6 +73,7 @@ namespace Sequence
             this->data = rhs.data;
             this->stride = rhs.stride;
             this->offset = rhs.offset;
+            return *this;
         }
 
         bool
