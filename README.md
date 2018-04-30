@@ -6,7 +6,7 @@
 
   libsequence2 is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
+  the Free Software Foundation; either version 3 of the License, or
   (at your option) any later version.
 
   This program is distributed in the hope that it will be useful,
@@ -85,14 +85,8 @@ I support the following compilers:
 * [GCC](http://gcc.gnu.org)
 * [clang](http://clang.llvm.org)
 
-The following compilers are not supported:
-
-* [Intel](https://software.intel.com/en-us/intel-compilers)
-
-The Intel compiler suffers from the following issues:
-
-* It appears to no longer be free for academic use. (boo!)
-* It appears to be based on a version of libstdc++ that is too old to be compatible with libsequence (see [here](https://github.com/molpopgen/libsequence/pull/4) for some discussion of the issue)
+I'd appreciate success/failure reports on Intel's icc compiler. As it is no longer free for academic use, I'm not longer
+able to test it.
 
 ### Simplest installation instructions
 
@@ -171,16 +165,22 @@ Then, when compiling any program using libsequence, you need to add
 to any compilation commands and
 
 ~~~
--L$HOME/lib
+-L$HOME/lib -Wl,-rpath,$HOME/lib
 ~~~
 
 to any linking commands.
 
 When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD_LIBRARY_PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.
 
-### Another installation option (not supported by the libsequence author)
+## Installation via Bioconda
 
-I've recently been made aware that there is a method for installing libsequence using the [brew.sh](http://brew.sh/) system.  This system allows the [homebrew-science](https://github.com/Homebrew/homebrew-science) git repo to be used to obtain libsequence.  I do not use this system myself, nor do I know how to.
+Libsequence is available for installation via [bioconda](https://bioconda.github.io/):
+
+```sh
+conda install -c bioconda libsequence
+```
+
+The above command will give you the most recent stable release on OS X or Linux.
 
 ## Using libsequence to compile other programs
 
@@ -191,10 +191,3 @@ A program that depends on libsequence must provide at least the following librar
 ~~~
 -lsequence -lz 
 ~~~
-
-If you are using features depending on htslib, the linking options become
-
-~~~
--lsequence -lz -lhts
-~~~
-
