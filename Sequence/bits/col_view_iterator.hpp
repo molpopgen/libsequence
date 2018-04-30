@@ -114,7 +114,7 @@ namespace Sequence
     /// Add to an iterator
     /// \ingroup variantmatrix
     {
-        auto rv{ i };
+        auto rv(i);
         rv.offset += d * rv.stride;
         return rv;
     }
@@ -146,7 +146,7 @@ namespace Sequence
     /// Subtract from an iterator
     /// \ingroup variantmatrix
     {
-        auto rv{ i };
+        auto rv(i);
         rv.offset -= d * rv.stride;
         return rv;
     }
