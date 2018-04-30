@@ -1,19 +1,19 @@
 #ifndef SEQUENCE_VARIANT_MATRIX_INTERNAL_HPP__
 #define SEQUENCE_VARIANT_MATRIX_INTERNAL_HPP__
 
-#include <iterator>
 #include <cstdint>
 #include <cstddef>
 #include <stdexcept>
 #include <vector>
 #include <type_traits>
+#include "col_view_iterator.hpp"
 
 namespace Sequence
 {
     namespace internal
     {
         template <typename T> struct row_view_
-        /// Implementation details for Sequence::RowView and
+        /// \brief Implementation details for Sequence::RowView and
         /// Sequence::ConstRowView
         /// \ingroup variantmatrix
         {
@@ -27,8 +27,7 @@ namespace Sequence
 
             row_view_(T data_, std::size_t row_size_)
                 /// Constructor
-                : data(data_),
-                  row_size(row_size_)
+                : data(data_), row_size(row_size_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -160,6 +159,11 @@ namespace Sequence
             swap(row_view_& a, row_view_& b)
             /// Allow swap via argument-dependent lookup, or "ADL"
             {
+                if (a.size() != b.size())
+                    {
+                        throw std::invalid_argument(
+                            "cannot swap row views of different size");
+                    }
                 auto bi = b.begin();
                 for (auto ai = a.begin(); ai != a.end(); ++ai, ++bi)
                     {
@@ -169,7 +173,7 @@ namespace Sequence
         };
 
         template <typename T> struct col_view_
-        /// Implementation details for Sequence::ColView and
+        /// \brief Implementation details for Sequence::ColView and
         /// Sequence::ConstColView
         /// \ingroup variantmatrix
         {
@@ -186,9 +190,7 @@ namespace Sequence
 
             col_view_(T data_, std::size_t col_end_, std::size_t stride_)
                 /// Constructor
-                : data(data_),
-                  col_end(col_end_),
-                  stride(stride_)
+                : data(data_), col_end(col_end_), stride(stride_)
             {
             }
             inline dtype& operator[](const std::size_t i)
@@ -228,117 +230,8 @@ namespace Sequence
                 return col_end / stride;
             }
 
-            template <typename POINTER> struct iterator_
-            /// Iterator for column views.
-            /// This is a C++11 standard compliant iterator.
-            {
-                static_assert(std::is_pointer<POINTER>::value,
-                              "iterator must wrap a pointer type");
-                /// Difference type
-                using difference_type =
-                    typename std::iterator_traits<POINTER>::difference_type;
-                /// Value type
-                using value_type =
-                    typename std::iterator_traits<POINTER>::value_type;
-                /// Reference type
-                using reference =
-                    typename std::iterator_traits<POINTER>::reference;
-                /// Pointer type
-                using pointer = POINTER;
-                /// Iterator category
-                using iterator_category =
-                    typename std::iterator_traits<POINTER>::iterator_category;
-
-                /// Iterator data
-                mutable POINTER data;
-
-                /// Stride needed to increment/decrement
-                difference_type stride;
-                /// Offset w.r.to data
-                difference_type offset;
-                explicit iterator_(POINTER data_, difference_type stride_,
-                                   difference_type offset_)
-                    /// Constructor
-                    : data{ data_ },
-                      stride{ stride_ },
-                      offset{ offset_ }
-                {
-                }
-
-                /// Get value pointed to
-                reference operator*() { return *(data + offset); }
-
-                /// Get value pointed to
-                const reference operator*() const { return *(data + offset); }
-
-                iterator_&
-                operator=(const iterator_& rhs)
-                /// Assignment operator
-                {
-                    this->data = rhs.data;
-                    this->stride = rhs.stride;
-                    this->offset = rhs.offset;
-                }
-                iterator_&
-                operator+(difference_type d)
-                {
-                    offset += d * stride;
-                    return *this;
-                }
-                iterator_& operator++() { return *this + 1; }
-                iterator_&
-                operator+=(difference_type d)
-                {
-                    return *this + d;
-                }
-
-                iterator_&
-                operator-(difference_type d)
-                {
-                    return *this + -d;
-                }
-                iterator_& operator--() { return *this - 1; }
-                iterator_&
-                operator-=(difference_type d)
-                {
-                    return *this - d;
-                }
-                bool
-                operator<=(const iterator_ rhs) const
-                {
-                    return (this->data + this->offset)
-                           <= (rhs.data + rhs.offset);
-                }
-                bool
-                operator<(const iterator_ rhs) const
-                {
-                    return (this->data + this->offset)
-                           < (rhs.data + rhs.offset);
-                }
-                bool
-                operator>(const iterator_ rhs) const
-                {
-                    return !(*this <= rhs);
-                }
-                bool
-                operator>=(const iterator_ rhs) const
-                {
-                    return !(*this < rhs);
-                }
-                bool
-                operator==(const iterator_ rhs) const
-                {
-                    return !(*this < rhs) && !(*this > rhs);
-                }
-                bool
-                operator!=(const iterator_ rhs) const
-                {
-                    return !(*this == rhs);
-                }
-            };
-
-            using iterator = iterator_<dtype*>;
-            using const_iterator = iterator_<const dtype*>;
+            using iterator = col_view_iterator<dtype*>;
+            using const_iterator = col_view_iterator<const dtype*>;
             using reverse_iterator = std::reverse_iterator<iterator>;
             using const_reverse_iterator
                 = std::reverse_iterator<const_iterator>;
@@ -397,27 +290,26 @@ namespace Sequence
             rbegin()
             /// Reverse iterator.  Points to start of reversed range.
             {
-                return reverse_iterator(iterator(data, stride, col_end));
+                return reverse_iterator(end());
             }
             reverse_iterator
             rend()
             /// Reverse iterator.  Points to end of reversed range.
             {
-                return reverse_iterator(iterator(data, stride, 0));
+                return reverse_iterator(begin());
             }
 
             const_reverse_iterator
             rbegin() const
             /// Const reverse iterator.  Points to end of reversed range.
             {
-                return const_reverse_iterator(
-                    const_iterator(data, stride, col_end));
+                return const_reverse_iterator(end());
             }
             const_reverse_iterator
             rend() const
             /// Const reverse iterator.  Points to end of reversed range.
             {
-                return const_reverse_iterator(const_terator(data, stride, 0));
+                return const_reverse_iterator(begin());
             }
             const_reverse_iterator
             crbegin() const
@@ -443,6 +335,11 @@ namespace Sequence
             swap(col_view_& a, col_view_& b)
             /// Allow swap via argument-dependent lookup, or "ADL"
             {
+                if (a.size() != b.size())
+                    {
+                        throw std::invalid_argument(
+                            "cannot swap column views of different size");
+                    }
                 auto bi = b.begin();
                 for (auto ai = a.begin(); ai != a.end(); ++ai, ++bi)
                     {

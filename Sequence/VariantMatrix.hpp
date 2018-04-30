@@ -14,11 +14,12 @@ static_assert(sizeof(std::int8_t) == sizeof(char),
 
 namespace Sequence
 {
-	/// \defgroup variantmatrix Variant Matrix
-	/// \brief Types and functions related to manipulation of variation data
-	
+    /// \defgroup variantmatrix Variant Matrix
+    /// \brief Types and functions related to manipulation of variation data
+
     struct VariantMatrix
-    /// Matrix representation of variation data.
+    /// \brief Matrix representation of variation data.
+    /// 
     /// The data structure is a row-major matrix.
     /// Variants are represented by 8-bit integers.
     /// Negative values represent missing data,
@@ -59,8 +60,7 @@ namespace Sequence
             /// data.size() % positions.size() != 0.0.
             : data(std::forward<data_input>(data_)),
               positions(std::forward<positions_input>(positions_)),
-              nsites(positions.size()),
-              nsam(data.size() / positions.size())
+              nsites(positions.size()), nsam(data.size() / positions.size())
         {
             if (data.size() % positions.size() != 0.0)
                 {

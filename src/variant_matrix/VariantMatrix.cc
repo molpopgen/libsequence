@@ -1,9 +1,10 @@
 #include <Sequence/VariantMatrix.hpp>
-#include <iostream>
+#include <stdexcept>
 
 namespace Sequence
 {
-	const std::int8_t VariantMatrix::mask=std::numeric_limits<std::int8_t>::min();
+    const std::int8_t VariantMatrix::mask
+        = std::numeric_limits<std::int8_t>::min();
     // Non range-checked access
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)
@@ -22,6 +23,11 @@ namespace Sequence
     std::int8_t&
     VariantMatrix::at(const std::size_t site, const std::size_t haplotype)
     {
+        if (site >= nsites || haplotype >= nsam)
+            {
+                throw std::out_of_range(
+                    "VariantMatrix::at -- index out of range");
+            }
         return data.at(site * nsam + haplotype);
     }
 
@@ -29,6 +35,11 @@ namespace Sequence
     VariantMatrix::at(const std::size_t site,
                       const std::size_t haplotype) const
     {
+        if (site >= nsites || haplotype >= nsam)
+            {
+                throw std::out_of_range(
+                    "VariantMatrix::at -- index out of range");
+            }
         return data.at(site * nsam + haplotype);
     }
 }
