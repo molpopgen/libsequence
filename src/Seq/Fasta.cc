@@ -40,8 +40,8 @@ namespace Sequence
 
   std::istream & Fasta::read (std::istream & stream) 
   {
-    first.clear();
-    second.clear();
+    name.clear();
+    seq.clear();
     std::string temp;
     int ch = stream.peek();
     if( stream.eof() ) { return stream; }
@@ -52,13 +52,13 @@ namespace Sequence
     //Read in name
     //stream >> ch >> std::ws;
     ch = stream.get();
-    std::getline(stream,first);
+    std::getline(stream,name);
     stream >> std::ws;
-    second.reserve(1000);
+    seq.reserve(1000);
     while( char( ch = stream.peek() ) != '>' && ! stream.eof() )
       {
 	std::getline(stream,temp);
-	second += temp;
+	seq += temp;
       }
     return (stream);
   }
@@ -66,9 +66,9 @@ namespace Sequence
   std::ostream & Fasta::print (std::ostream & stream) const
   {
     stream << '>'
-	   << first
+	   << name
 	   << '\n'
-	   << second;
+	   << seq;
     return stream;
   }
 }

@@ -34,12 +34,12 @@ BOOST_AUTO_TEST_CASE( check_isDNA_2 )
 			   } );
   BOOST_REQUIRE_EQUAL( std::distance(f.begin(),itr),4 );
 
-  f.second.erase( std::remove_if(f.begin(),
+  f.seq.erase( std::remove_if(f.begin(),
 				 f.end(),
 				 [](const char & __ch) {
 				   return !Sequence::isDNA(__ch);
-				 }), f.second.end() );
-  BOOST_REQUIRE_EQUAL(f.second,"ATGCAGC");
+				 }), f.seq.end() );
+  BOOST_REQUIRE_EQUAL(f.seq,"ATGCAGC");
 }
 
 //Test of dna_poly_alphabet

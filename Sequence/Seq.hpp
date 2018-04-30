@@ -30,10 +30,8 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 /*! \class Sequence::Seq Sequence/Seq.hpp
   \ingroup seqio
   Abstract interface to sequence objects.  A sequence consists of a name and a sequence,
-  both of which are stored as C++ std::strings. Sequence::Seq inherits publicly from 
-  std::pair<std::string,std::string> to store the sequence name and data.  The public
-  member "first" is the name, and "second" is the data.  These can be used to directly
-  access the name and/or data.  Most of the rest of the member functions of this class
+  both of which are stored as C++ std::strings. 
+  Most of the rest of the member functions of this class
   are to make the behavior of Sequence::Seq more "std::string"-like.
   @short Abstract interface to sequence objects
 */
@@ -44,71 +42,77 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <utility>
 
 namespace Sequence
-  {
-    class Seq : public std::pair<std::string,std::string>
+{
+    class Seq
     {
-      using SeqBase = std::pair<std::string,std::string>;
-    public:
-      //using SeqBase::SeqBase;
-      Seq (void);
-      Seq (std::string && name, std::string && seq);
-      Seq (const std::string & name, const std::string & seq);
-      Seq (const char *name, const char *seq);
-      Seq (const Seq & seq) = default;
-      Seq (Seq && seq) = default;
-      virtual ~ Seq (){}
-      //! \deprecated Access first directly
-      std::string GetName (void) const;
-      //! \deprecated Access second directly
-      std::string GetSeq (void) const;
-      //! \deprecated access .second.substr directly
-      std::string substr(std::string::size_type beg, std::string::size_type len) const;
-      //! \deprecated access .second.substr directly
-      std::string substr(std::string::size_type beg) const;
-      /*!
+      public:
+        std::string name, seq;
+        Seq(void);
+        template <typename T>
+        Seq(T &&name_, T &&seq_)
+            : name(std::forward<T>(name_)), seq(std::forward<T>(seq_))
+        {
+        }
+        Seq(const char * n, const char * s)
+            : name(n),seq(s)
+        {
+        }
+        Seq(const Seq &seq) = default;
+        Seq(Seq &&seq) = default;
+        virtual ~Seq() {}
+        //! \deprecated Access first directly
+        std::string GetName(void) const;
+        //! \deprecated Access second directly
+        std::string GetSeq(void) const;
+        //! \deprecated access .second.substr directly
+        std::string substr(std::string::size_type beg,
+                           std::string::size_type len) const;
+        //! \deprecated access .second.substr directly
+        std::string substr(std::string::size_type beg) const;
+        /*!
 	Iterator to sequence elements.  Iterators 
 	access the data, not the sequence name.
 	Value type de-references to char
       */
-      typedef std::string::iterator iterator;
-      /*!
+        typedef std::string::iterator iterator;
+        /*!
 	Const iterator to sequence elements.  Iterators 
 	access the data, not the sequence name.
 	Value type de-references to char
       */
-      typedef std::string::const_iterator const_iterator;
-      typedef std::string::reference reference;
-      typedef std::string::const_reference const_reference;
-      typedef std::string::size_type size_type;
-      iterator begin();
-      iterator end();
-      const_iterator begin() const;
-      const_iterator end() const;
-      const_iterator cbegin() const;
-      const_iterator cend() const;
-      void Revcom (void);
-      void Subseq (const unsigned & ,const unsigned &);
-      void Complement(void);
-      size_type length (void) const;
-      size_type size (void) const;
-      size_type UngappedLength (void) const;
-      bool IsGapped (void) const;
-      reference operator[] (const size_type & i);
-      const_reference operator[] (const size_type & i) const;
-      bool operator==(const Seq & rhs) const;
-      bool operator!=(const Seq & rhs) const;
-      Seq & operator=(const Seq & rhs) = default;
-      Seq & operator=( Seq && rhs) = default;
-      operator std::string() const;
-      const char *c_str(void) const;
-      /*!
+        typedef std::string::const_iterator const_iterator;
+        typedef std::string::reference reference;
+        typedef std::string::const_reference const_reference;
+        typedef std::string::size_type size_type;
+        iterator begin();
+        iterator end();
+        const_iterator begin() const;
+        const_iterator end() const;
+        const_iterator cbegin() const;
+        const_iterator cend() const;
+        void Revcom(void);
+        void Subseq(const unsigned &, const unsigned &);
+        void Complement(void);
+        size_type length(void) const;
+        size_type size(void) const;
+        size_type UngappedLength(void) const;
+        bool IsGapped(void) const;
+        reference operator[](const size_type &i);
+        const_reference operator[](const size_type &i) const;
+        bool operator==(const Seq &rhs) const;
+        bool operator!=(const Seq &rhs) const;
+        Seq &operator=(const Seq &rhs) = default;
+        Seq &operator=(Seq &&rhs) = default;
+        operator std::string() const;
+        const char *c_str(void) const;
+        /*!
 	read an object of type Sequence::Seq from an istream
       */
-      virtual std::istream & read (std::istream & s) = 0;
-      /*!
+        virtual std::istream &read(std::istream &s) = 0;
+        /*!
 	read an object of type Sequence::Seq from an istream
       */
-      virtual std::ostream & print (std::ostream & s) const = 0;
+        virtual std::ostream &print(std::ostream &s) const = 0;
     };
 
     /*!
@@ -117,13 +121,13 @@ namespace Sequence
       to be written to output streams.  This operator
       acts by a call to the virtual funtion Sequence::Seq::print
     */
-    std::ostream & operator<< (std::ostream & s, const Seq & c);
+    std::ostream &operator<<(std::ostream &s, const Seq &c);
     /*!
       \ingroup operators
       Allows objects derived from Sequence::Seq
       to be read from output streams.  This operator
       acts by a call to the virtual funtion Sequence::Seq::read
     */
-    std::istream & operator>> (std::istream & s, Seq &c);
+    std::istream &operator>>(std::istream &s, Seq &c);
 }
 #endif

@@ -60,9 +60,9 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
   //output each element in Fasta format
   //but without using Sequence::Fasta
   cout << '>'
-  << x[i].first
+  << x[i].name
   << '\n'
-  << x[i].second
+  << x[i].seq
   << '\n';
   }
   }
