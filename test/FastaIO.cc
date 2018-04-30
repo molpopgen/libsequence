@@ -42,8 +42,8 @@ BOOST_AUTO_TEST_CASE(ostream_test_3recs)
     while (!in.eof())
         {
             in >> f2 >> std::ws;
-            BOOST_REQUIRE_EQUAL(f.first, f2.first);
-            BOOST_REQUIRE_EQUAL(f.second, f2.second);
+            BOOST_REQUIRE_EQUAL(f.name, f2.name);
+            BOOST_REQUIRE_EQUAL(f.seq, f2.seq);
             ++count;
         }
     BOOST_REQUIRE_EQUAL(count, 3);
@@ -65,8 +65,8 @@ BOOST_AUTO_TEST_CASE(ostream_test_no_newline_end_of_file)
     while (!in.eof())
         {
             in >> f2 >> std::ws;
-            BOOST_REQUIRE_EQUAL(f.first, f2.first);
-            BOOST_REQUIRE_EQUAL(f.second, f2.second);
+            BOOST_REQUIRE_EQUAL(f.name, f2.name);
+            BOOST_REQUIRE_EQUAL(f.seq, f2.seq);
             ++count;
         }
     BOOST_REQUIRE_EQUAL(count, 3);
@@ -88,8 +88,8 @@ BOOST_AUTO_TEST_CASE(ostream_test_newline_within_seq)
     while (!in.eof())
         {
             in >> f2 >> std::ws;
-            BOOST_REQUIRE_EQUAL(f.first, f2.first);
-            BOOST_REQUIRE_EQUAL(f.second, f2.second);
+            BOOST_REQUIRE_EQUAL(f.name, f2.name);
+            BOOST_REQUIRE_EQUAL(f.seq, f2.seq);
             ++count;
         }
     BOOST_REQUIRE_EQUAL(count, 3);
@@ -113,8 +113,8 @@ BOOST_AUTO_TEST_CASE(ostream_test_really_bad_input)
     while (!in.eof())
         {
             in >> f2 >> std::ws;
-            BOOST_REQUIRE_EQUAL(f.first, f2.first);
-            BOOST_REQUIRE_EQUAL(f.second, f2.second);
+            BOOST_REQUIRE_EQUAL(f.name, f2.name);
+            BOOST_REQUIRE_EQUAL(f.seq, f2.seq);
             ++count;
         }
     BOOST_REQUIRE_EQUAL(count, 3);
