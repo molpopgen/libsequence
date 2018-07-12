@@ -6,6 +6,8 @@
 namespace Sequence
 {
     double thetapi(const VariantMatrix &);
+    double thetaw(const VariantMatrix &);
+    double tajd(const VariantMatrix &);
 }
 
 #endif
