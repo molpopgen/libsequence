@@ -1,4 +1,4 @@
-SUBDIRS = bits SummStats variant_matrix
+SUBDIRS = bits SummStats variant_matrix summstats
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -61,4 +61,5 @@ pkginclude_HEADERS = AlignStream.hpp\
 	threading.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
+	summstats.hpp \
 	StateCounts.hpp

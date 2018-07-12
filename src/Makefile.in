@@ -148,7 +148,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
 	threading.lo variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
-	variant_matrix/StateCounts.lo variant_matrix/filtering.lo
+	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
+	summstats/thetapi.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -391,7 +392,8 @@ libsequence_la_SOURCES = Grantham.cc\
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
-	variant_matrix/filtering.cc
+	variant_matrix/filtering.cc \
+	summstats/thetapi.cc
 
 
 #if DEBUG
@@ -526,6 +528,14 @@ variant_matrix/StateCounts.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/filtering.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+summstats/$(am__dirstamp):
+	@$(MKDIR_P) summstats
+	@: > summstats/$(am__dirstamp)
+summstats/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) summstats/$(DEPDIR)
+	@: > summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/thetapi.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -589,6 +599,8 @@ mostlyclean-compile:
 	-rm -f Seq/*.lo
 	-rm -f SummStats/*.$(OBJEXT)
 	-rm -f SummStats/*.lo
+	-rm -f summstats/*.$(OBJEXT)
+	-rm -f summstats/*.lo
 	-rm -f variant_matrix/*.$(OBJEXT)
 	-rm -f variant_matrix/*.lo
 
@@ -639,6 +651,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetapi.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
@@ -675,6 +688,7 @@ clean-libtool:
 	-rm -rf .libs _libs
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
+	-rm -rf summstats/.libs summstats/_libs
 	-rm -rf variant_matrix/.libs variant_matrix/_libs
 
 ID: $(am__tagged_files)
@@ -798,6 +812,8 @@ distclean-generic:
 	-rm -f Seq/$(am__dirstamp)
 	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
 	-rm -f SummStats/$(am__dirstamp)
+	-rm -f summstats/$(DEPDIR)/$(am__dirstamp)
+	-rm -f summstats/$(am__dirstamp)
 	-rm -f variant_matrix/$(DEPDIR)/$(am__dirstamp)
 	-rm -f variant_matrix/$(am__dirstamp)
 
@@ -810,7 +826,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) summstats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -856,7 +872,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) summstats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

@@ -15449,7 +15449,7 @@ ac_compile='$CXX -c $CXXFLAGS $CPPFLAGS conftest.$ac_ext >&5'
 ac_link='$CXX -o conftest$ac_exeext $CXXFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $LIBS >&5'
 ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
 
-ac_config_files="$ac_config_files Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/SummStats/Makefile Sequence/variant_matrix/Makefile test/Makefile examples/Makefile doc/libsequence.doxygen"
+ac_config_files="$ac_config_files Makefile src/Makefile Sequence/Makefile Sequence/bits/Makefile Sequence/SummStats/Makefile Sequence/variant_matrix/Makefile Sequence/summstats/Makefile test/Makefile examples/Makefile doc/libsequence.doxygen"
 
 
 
@@ -16703,6 +16703,7 @@ do
     "Sequence/bits/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/bits/Makefile" ;;
     "Sequence/SummStats/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/SummStats/Makefile" ;;
     "Sequence/variant_matrix/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/variant_matrix/Makefile" ;;
+    "Sequence/summstats/Makefile") CONFIG_FILES="$CONFIG_FILES Sequence/summstats/Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "examples/Makefile") CONFIG_FILES="$CONFIG_FILES examples/Makefile" ;;
     "doc/libsequence.doxygen") CONFIG_FILES="$CONFIG_FILES doc/libsequence.doxygen" ;;
