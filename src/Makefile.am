@@ -50,7 +50,11 @@ libsequence_la_SOURCES=  Grantham.cc\
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
 	variant_matrix/filtering.cc \
-	summstats/thetapi.cc
+	summstats/thetapi.cc \
+	summstats/thetaw.cc \
+	summstats/tajd.cc \
+	summstats/nvariablesites.cc \
+	summstats/auxillary.cc
 
 
 AM_LDFLAGS=-version-info 20:0:0

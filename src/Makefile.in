@@ -149,7 +149,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	threading.lo variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
-	summstats/thetapi.lo
+	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
+	summstats/nvariablesites.lo summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -393,7 +394,11 @@ libsequence_la_SOURCES = Grantham.cc\
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
 	variant_matrix/filtering.cc \
-	summstats/thetapi.cc
+	summstats/thetapi.cc \
+	summstats/thetaw.cc \
+	summstats/tajd.cc \
+	summstats/nvariablesites.cc \
+	summstats/auxillary.cc
 
 
 #if DEBUG
@@ -536,6 +541,14 @@ summstats/$(DEPDIR)/$(am__dirstamp):
 	@: > summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/thetapi.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/thetaw.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/tajd.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/nvariablesites.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/auxillary.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -651,7 +664,11 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/auxillary.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/tajd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetapi.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetaw.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@

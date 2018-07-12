@@ -5,6 +5,7 @@
 
 #include "thetapi.hpp"
 #include "thetaw.hpp"
+#include "nvariablesites.hpp"
 
 namespace Sequence
 {
