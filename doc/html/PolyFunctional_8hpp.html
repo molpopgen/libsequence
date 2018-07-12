@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -61,7 +61,8 @@ $(document).ready(function(){initNavTree('PolyFunctional_8hpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">PolyFunctional.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -79,14 +80,8 @@ $(document).ready(function(){initNavTree('PolyFunctional_8hpp.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1countStates.html">Sequence::countStates</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor to count the number of states, excluding gaps and missing data, in a range of characters.  <a href="structSequence_1_1countStates.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1countDerivedStates.html">Sequence::countDerivedStates</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor to count the number of derived states, excluding gaps and missing data, in a range of characters.  <a href="structSequence_1_1countDerivedStates.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1ssh.html">Sequence::ssh</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate nucleotide diversity from a polymorphic site.  <a href="structSequence_1_1ssh.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1nmuts.html">Sequence::nmuts&lt; counter &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the number of mutations at a polymorphic site.  <a href="structSequence_1_1nmuts.html#details">More...</a><br /></td></tr>
@@ -97,10 +92,16 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceSequence"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html">Sequence</a></td></tr>
 <tr class="memdesc:namespaceSequence"><td class="mdescLeft">&#160;</td><td class="mdescRight">The namespace in which this library resides. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a157e63939bed5dcdf27c62d3e7af7d26"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceSequence.html#a157e63939bed5dcdf27c62d3e7af7d26">Sequence::__attribute__</a> ((deprecated)) countStates</td></tr>
+<tr class="memdesc:a157e63939bed5dcdf27c62d3e7af7d26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functor to count the number of states, excluding gaps and missing data, in a range of characters.  <a href="namespaceSequence.html#a157e63939bed5dcdf27c62d3e7af7d26">More...</a><br /></td></tr>
+<tr class="separator:a157e63939bed5dcdf27c62d3e7af7d26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A collection of function objects for SNP analysis. </p>
-<p>These objects may be useful for certain one-off calculations in lieu of <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">Sequence::PolySNP</a>. They are also useful guides for how to implement functors that can be used in conjunction with STL algorithms to do calculations on objects of type <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a>. This file declares <a class="el" href="structSequence_1_1countStates.html" title="Functor to count the number of states, excluding gaps and missing data, in a range of characters...">Sequence::countStates</a>, <a class="el" href="structSequence_1_1countDerivedStates.html" title="Functor to count the number of derived states, excluding gaps and missing data, in a range of charact...">Sequence::countDerivedStates</a>,<a class="el" href="structSequence_1_1ssh.html" title="Calculate nucleotide diversity from a polymorphic site. ">Sequence::ssh</a>, and <a class="el" href="structSequence_1_1nmuts.html" title="Calculate the number of mutations at a polymorphic site. ">Sequence::nmuts</a>. </p>
+<p>These objects may be useful for certain one-off calculations in lieu of <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">Sequence::PolySNP</a>. They are also useful guides for how to implement functors that can be used in conjunction with STL algorithms to do calculations on objects of type <a class="el" href="classSequence_1_1PolyTable.html" title="The base class for polymorphism tables. ">Sequence::PolyTable</a>. This file declares Sequence::countStates, <a class="el" href="structSequence_1_1countDerivedStates.html" title="Functor to count the number of derived states, excluding gaps and missing data, in a range of charact...">Sequence::countDerivedStates</a>,Sequence::ssh, and <a class="el" href="structSequence_1_1nmuts.html" title="Calculate the number of mutations at a polymorphic site. ">Sequence::nmuts</a>. </p>
 
 <p class="definition">Definition in file <a class="el" href="PolyFunctional_8hpp_source.html">PolyFunctional.hpp</a>.</p>
 </div></div><!-- contents -->
@@ -109,7 +110,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_c7d6cfbe503c6dcf36e46d05d821b41e.html">Sequence</a></li><li class="navelem"><a class="el" href="PolyFunctional_8hpp.html">PolyFunctional.hpp</a></li>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:27 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

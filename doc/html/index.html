@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -64,7 +64,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Copyright (C) 2002 Kevin Thornton</p>
-<p>libsequence2 is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.</p>
+<p>libsequence2 is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.</p>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA</p>
 <p>Comments are welcome. </p><pre class="fragment">    - Kevin Thornton &lt;krthornt@uci.edu&gt;
@@ -109,19 +109,7 @@ $(document).ready(function(){initNavTree('index.html','');});
 <li><a href="http://gcc.gnu.org">GCC</a></li>
 <li><a href="http://clang.llvm.org">clang</a></li>
 </ul>
-<p>The following compilers are not supported:</p>
-<ul>
-<li><a href="https://software.intel.com/en-us/intel-compilers">Intel</a></li>
-</ul>
-<p>The Intel compiler suffers from the following issues:</p>
-<ul>
-<li>It appears to no longer be free for academic use. (boo!)</li>
-<li>It appears to be based on a version of libstdc++ that is too old to be compatible with libsequence (see <a href="https://github.com/molpopgen/libsequence/pull/4">here</a> for some discussion of the issue)</li>
-</ul>
-<h3>Optional dependencies</h3>
-<ol type="1">
-<li><a href="http://htslib.org">htslib</a> The configure script will attempt to detect the presence of htslib on your system. If the library is present, then libsequence will compile with support for features like direct reading from BAM files. If htslib is not present, those features will not be compiled.</li>
-</ol>
+<p>I'd appreciate success/failure reports on Intel's icc compiler. As it is no longer free for academic use, I'm not longer able to test it.</p>
 <h3>Simplest installation instructions</h3>
 <div class="fragment"><div class="line">./configure</div><div class="line">make</div><div class="line">sudo make install</div></div><!-- fragment --><p>The build conditions can be adjusted via the usual environment variables. To compile an optimized "release" build:</p>
 <div class="fragment"><div class="line">./configure CXXFLAGS=&quot;-O3 -DNDEBUG&quot;</div></div><!-- fragment --><p>To compile a debugger-friendly build:</p>
@@ -141,20 +129,20 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>./configure &ndash;prefix=$HOME</p>
 <p>Then, when compiling any program using libsequence, you need to add</p>
 <div class="fragment"><div class="line">-I$HOME/include</div></div><!-- fragment --><p> to any compilation commands and</p>
-<div class="fragment"><div class="line">-L$HOME/lib</div></div><!-- fragment --><p>to any linking commands.</p>
+<div class="fragment"><div class="line">-L$HOME/lib -Wl,-rpath,$HOME/lib</div></div><!-- fragment --><p>to any linking commands.</p>
 <p>When running programs linking to any of the above run-time libraries, and depending on your system, you may also need to adjust variables like LD_LIBRARY_PATH to prepend $HOME/lib to them, etc., but you'll need to figure that out on case-by-case basis, as different systems can behave quite differently.</p>
-<h3>Another installation option (not supported by the libsequence author)</h3>
-<p>I've recently been made aware that there is a method for installing libsequence using the <a href="http://brew.sh/">brew.sh</a> system. This system allows the <a href="https://github.com/Homebrew/homebrew-science">homebrew-science</a> git repo to be used to obtain libsequence. I do not use this system myself, nor do I know how to.</p>
+<h2>Installation via Bioconda</h2>
+<p>Libsequence is available for installation via <a href="https://bioconda.github.io/">bioconda</a>:</p>
+<div class="fragment"><div class="line">conda install -c bioconda libsequence</div></div><!-- fragment --><p>The above command will give you the most recent stable release on OS X or Linux.</p>
 <h2>Using libsequence to compile other programs</h2>
 <p>If libsequence is not installed in a standard path, then you must provide the appropriate include (-I) and link path (-L) commands to your compiler. This may be done in various ways, e.g., via a configure script or your own Makefile.</p>
 <p>A program that depends on libsequence must provide at least the following libraries to the linker:</p>
-<div class="fragment"><div class="line">-lsequence -lz </div></div><!-- fragment --><p>If you are using features depending on htslib, the linking options become</p>
-<div class="fragment"><div class="line">-lsequence -lz -lhts</div></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line">-lsequence -lz </div></div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:35 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

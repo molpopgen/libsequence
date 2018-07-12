@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -68,6 +68,10 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 <li>raw()
 : <a class="el" href="classSequence_1_1bamrecord.html#a04d7d220a41629ee2bc8f1e70a8c8ed4">Sequence::bamrecord</a>
 </li>
+<li>rbegin()
+: <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a52586a81968e38fcc759b7ad42f409bf">Sequence::internal::col_view_&lt; T &gt;</a>
+, <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a2eff4f9740974c4c93ce3517bf4a2f34">Sequence::internal::row_view_&lt; T &gt;</a>
+</li>
 <li>read()
 : <a class="el" href="classSequence_1_1AlignStream.html#af543b2c8983fa1251bed8a09c41d27fd">Sequence::AlignStream&lt; T &gt;</a>
 , <a class="el" href="classSequence_1_1ClustalW.html#a8db95fc7a4027221b4e035e1d0e98c57">Sequence::ClustalW&lt; T &gt;</a>
@@ -75,14 +79,10 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 , <a class="el" href="classSequence_1_1Fasta.html#a10d9c55ca6c9b8b58593cb4f7b359b02">Sequence::Fasta</a>
 , <a class="el" href="classSequence_1_1fastq.html#ae95bca7411b9d1b63b7abd1570be791f">Sequence::fastq</a>
 , <a class="el" href="classSequence_1_1phylipData.html#a68c2921e940106592b9a994892a36641">Sequence::phylipData&lt; T &gt;</a>
-, <a class="el" href="classSequence_1_1PolySites.html#aa9f1477e1e5af9b8c5de61f07bf544c4">Sequence::PolySites</a>
-, <a class="el" href="classSequence_1_1PolyTable.html#a27a62e9ee28d31f4b386c79a7af167a0">Sequence::PolyTable</a>
 , <a class="el" href="classSequence_1_1samflag.html#aa6825b0a9836b8498b2384025da1efb6">Sequence::samflag</a>
 , <a class="el" href="classSequence_1_1samrecord.html#afd031ce1d6498f93026dcb653c85c0cf">Sequence::samrecord</a>
 , <a class="el" href="classSequence_1_1Seq.html#a6e8fd025d52d0183b70ecc327a9f2eb4">Sequence::Seq</a>
-, <a class="el" href="classSequence_1_1SimData.html#a984f64dd6e55c1c54f0cb8b2bc543813">Sequence::SimData</a>
 , <a class="el" href="classSequence_1_1SimParams.html#a9a6b50ddf60b1f5055021d99e741cbab">Sequence::SimParams</a>
-, <a class="el" href="classSequence_1_1SimpleSNP.html#a05672105cbb169f5a122ec83836e1000">Sequence::SimpleSNP</a>
 </li>
 <li>read_name()
 : <a class="el" href="classSequence_1_1bamrecord.html#a949735d8b60c1462b179fc5d29b579ed">Sequence::bamrecord</a>
@@ -106,10 +106,17 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 : <a class="el" href="classSequence_1_1bamreader.html#ac0b6030aa946a37148a6c1673e225547">Sequence::bamreader</a>
 </li>
 <li>reference
-: <a class="el" href="classSequence_1_1PolyTable.html#af3eac733ba06c44da10b04a4d72c17bd">Sequence::PolyTable</a>
+: <a class="el" href="structSequence_1_1col__view__iterator.html#ab46fcb1ddc41858dd158d0a2cf25fef3">Sequence::col_view_iterator&lt; POINTER &gt;</a>
 </li>
 <li>refid()
 : <a class="el" href="classSequence_1_1bamrecord.html#a728ab53738363f04a9fee96b4790293b">Sequence::bamrecord</a>
+</li>
+<li>refstate
+: <a class="el" href="structSequence_1_1StateCounts.html#a4d9c6e6ce38ef1d75ae810adac5a3ea7">Sequence::StateCounts</a>
+</li>
+<li>rend()
+: <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a8573509f4e291484d83bcbd091fba16c">Sequence::internal::col_view_&lt; T &gt;</a>
+, <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a6713d75f417f4a26793b1ad0d9f9ff33">Sequence::internal::row_view_&lt; T &gt;</a>
 </li>
 <li>repname()
 : <a class="el" href="classSequence_1_1fastq.html#a2c9a3999c31213a02702662257a764be">Sequence::fastq</a>
@@ -126,6 +133,12 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 <li>rname()
 : <a class="el" href="classSequence_1_1samrecord.html#a3dcc127769cd519204b4de4e05415f2a">Sequence::samrecord</a>
 </li>
+<li>row_size
+: <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a199e22a9c5b0ccb262d9923455918be8">Sequence::internal::row_view_&lt; T &gt;</a>
+</li>
+<li>row_view_()
+: <a class="el" href="structSequence_1_1internal_1_1row__view__.html#af12a4e21725f5169672dcc364db56501">Sequence::internal::row_view_&lt; T &gt;</a>
+</li>
 <li>rsq
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#ac67e51ef1bf78b99b2c162ba2879149f">Sequence::PairwiseLDstats</a>
 </li>
@@ -138,7 +151,7 @@ $(document).ready(function(){initNavTree('functions_r.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:35 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

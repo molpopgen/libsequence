@@ -53,8 +53,8 @@ var NAVTREE =
         [ "BAM files", "md_md_tutorial.html#bam", null ]
       ] ]
     ] ],
-    [ "The libsequence home page", "md__Users_kevin_src_libsequence_index.html", null ],
-    [ "libsequence revision history", "md__Users_kevin_src_libsequence_REVISION_HISTORY.html", null ],
+    [ "The libsequence home page", "md__home_molpopgen_src_libsequence_index.html", null ],
+    [ "libsequence revision history", "md__home_molpopgen_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -94,14 +94,13 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"AlignStreamTest_8cc.html",
-"PolyTableSliceTest_8cc.html#a9290cd76dcad75a791f6db9abd519021",
-"classSequence_1_1Comeron95.html#a0cdb6a41e309499f8417ed1659df1bdd",
-"classSequence_1_1PolyTable.html#af41308232e3bf800974980a47e79e3f4",
-"classSequence_1_1Sites.html",
-"classSequence_1_1shortestPath.html#ac04df3cd4200c3bf7931388ee14ef053",
-"md_md_tutorial.html#seqio",
-"structSequence_1_1lowerCrit.html#a3271c53294e6cf210689f313bf130376"
+".html",
+"SeqConversions_8cc_source.html",
+"classSequence_1_1Fasta.html#a92249021ecdee99765ff0bd4dc08d369",
+"classSequence_1_1bamrecord.html#a4dda880e906410463af6a5644adceead",
+"functions_k.html",
+"shortestPath_8hpp.html#gab409f485553367b1cc3c0df7fd82b3a2",
+"structSequence_1_1internal_1_1row__view__.html#ac7f86b942a0b092fdac4ba390ed2a88f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

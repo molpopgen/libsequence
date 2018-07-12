@@ -1,7 +1,5 @@
 var AlignmentTest_8cc =
 [
-    [ "BOOST_TEST_DYN_LINK", "AlignmentTest_8cc.html#a139f00d2466d591f60b8d6a73c8273f1", null ],
-    [ "BOOST_TEST_MODULE", "AlignmentTest_8cc.html#a6b2a3852db8bb19ab6909bac01859985", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignmentTest_8cc.html#ac8a88d22870c15cdfb74203fc03d2d15", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignmentTest_8cc.html#a088a65a82d29cb3b7317bd42fc7efb32", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignmentTest_8cc.html#a36382d7f14d8454f3d0ff7d56dca217c", null ],

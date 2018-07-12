@@ -6,12 +6,11 @@ var classSequence_1_1Seq =
     [ "reference", "classSequence_1_1Seq.html#a815ac2802bbb34cd1462955848bd0002", null ],
     [ "size_type", "classSequence_1_1Seq.html#a5ebbac8c2aa65ae452738448b2b42422", null ],
     [ "Seq", "classSequence_1_1Seq.html#ad51e34487b0b6816b52dfe946c4256a8", null ],
-    [ "Seq", "classSequence_1_1Seq.html#a3b1ca17074d3b92a9b92a1415c55d5ba", null ],
-    [ "Seq", "classSequence_1_1Seq.html#a4952883567a9d8cb04224203f119d78d", null ],
-    [ "Seq", "classSequence_1_1Seq.html#a7dc7bdb9122b151abd374bc0ce5f6dea", null ],
+    [ "Seq", "classSequence_1_1Seq.html#ab2e115d456e995fbfbbfb11677ef472b", null ],
+    [ "Seq", "classSequence_1_1Seq.html#a4238bdfec323a00ed3185632259f738a", null ],
     [ "Seq", "classSequence_1_1Seq.html#a9dc380ef956b05378b3a9142eabe6929", null ],
     [ "Seq", "classSequence_1_1Seq.html#a15eacb158eaeb74a67e6285b4d8d1a5c", null ],
-    [ "~ Seq", "classSequence_1_1Seq.html#ad112d651bb961228eff0d8af5c984a46", null ],
+    [ "~Seq", "classSequence_1_1Seq.html#a541a87a27be97a537e0eb333dc771c37", null ],
     [ "begin", "classSequence_1_1Seq.html#abd1fcbf6b32d4699ac98665b79164704", null ],
     [ "begin", "classSequence_1_1Seq.html#a498b3c3d74231f6b6e6f03bdeee1313d", null ],
     [ "c_str", "classSequence_1_1Seq.html#a6d84aa89678750ad74e09a1c7be56725", null ],
@@ -38,5 +37,7 @@ var classSequence_1_1Seq =
     [ "Subseq", "classSequence_1_1Seq.html#a682ffb0f223ab4ba842b7ea4d82163db", null ],
     [ "substr", "classSequence_1_1Seq.html#a2076bce8df742b1016b47cfc6159b428", null ],
     [ "substr", "classSequence_1_1Seq.html#a02743cc1ec278c89bb204581e8d035ba", null ],
-    [ "UngappedLength", "classSequence_1_1Seq.html#a9e24a1dc7c8ac52d066ab9b8121f6700", null ]
+    [ "UngappedLength", "classSequence_1_1Seq.html#a9e24a1dc7c8ac52d066ab9b8121f6700", null ],
+    [ "name", "classSequence_1_1Seq.html#aa43bf5f3508b5213b5a9012fd742ca11", null ],
+    [ "seq", "classSequence_1_1Seq.html#aa679b6ec9463f1b5fcd83f0bfa1c1df3", null ]
 ];

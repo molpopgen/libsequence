@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -62,6 +62,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1Fasta.html','');});
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classSequence_1_1Fasta-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Sequence::Fasta Class Reference<div class="ingroups"><a class="el" href="group__data.html">General I/O</a> &raquo; <a class="el" href="group__seqio.html">Classes for sequence I/O</a></div></div>  </div>
@@ -169,6 +170,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8b4b73079e203826645ec31e200ee06b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d84aa89678750ad74e09a1c7be56725"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1Seq.html#a6d84aa89678750ad74e09a1c7be56725">c_str</a> (void) const</td></tr>
 <tr class="separator:a6d84aa89678750ad74e09a1c7be56725"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:aa43bf5f3508b5213b5a9012fd742ca11"><td class="memItemLeft" align="right" valign="top"><a id="aa43bf5f3508b5213b5a9012fd742ca11"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:aa43bf5f3508b5213b5a9012fd742ca11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa679b6ec9463f1b5fcd83f0bfa1c1df3"><td class="memItemLeft" align="right" valign="top"><a id="aa679b6ec9463f1b5fcd83f0bfa1c1df3"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>seq</b></td></tr>
+<tr class="separator:aa679b6ec9463f1b5fcd83f0bfa1c1df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>FASTA sequence stream. </p>
@@ -203,7 +213,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Const iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8hpp_source.html#l00079">79</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8hpp_source.html#l00083">83</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +238,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Iterator to sequence elements. Iterators access the data, not the sequence name. Value type de-references to char </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8hpp_source.html#l00073">73</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8hpp_source.html#l00077">77</a> of file <a class="el" href="Seq_8hpp_source.html">Seq.hpp</a>.</p>
 
 </div>
 </div>
@@ -308,7 +318,7 @@ ETC... </p>
 <dl class="section return"><dt>Returns</dt><dd>an iterator to the beginning of the sequence </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="valid_dna_8cc-example.html#a2">valid_dna.cc</a>.</dd>
 </dl>
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00209">209</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00189">189</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -336,7 +346,7 @@ ETC... </p>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a const iterator to the beginning of the sequence </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00225">225</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00207">207</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -365,7 +375,7 @@ ETC... </p>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>the the C-style string representing the sequence as a cont char * </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00257">257</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00243">243</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -393,7 +403,7 @@ ETC... </p>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a const iterator to the beginning of the sequence </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00241">241</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00225">225</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -421,7 +431,7 @@ ETC... </p>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a const iterator to the end of the sequence </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00249">249</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00234">234</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -450,7 +460,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Complement the <a class="el" href="namespaceSequence.html" title="The namespace in which this library resides. ">Sequence</a> </p><dl class="section note"><dt>Note</dt><dd>This modifies the data in the object by changing the std::string&ndash;if you want to keep the original sequence, you need to make a copy of the object first. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00185">185</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00163">163</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -479,7 +489,7 @@ ETC... </p>
 <dl class="section return"><dt>Returns</dt><dd>an iterator to the end of the sequence </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="valid_dna_8cc-example.html#a3">valid_dna.cc</a>.</dd>
 </dl>
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00217">217</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00198">198</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -507,7 +517,7 @@ ETC... </p>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>a const iterator to the end of the sequence </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00233">233</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00216">216</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -535,9 +545,6 @@ ETC... </p>
 </table>
 </div><div class="memdoc">
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000006">Deprecated:</a></b></dt><dd>Access first directly </dd></dl>
-<p>Return the sequence name </p>
-
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00053">53</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -565,9 +572,6 @@ ETC... </p>
 </table>
 </div><div class="memdoc">
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000007">Deprecated:</a></b></dt><dd>Access second directly </dd></dl>
-<p>Return the sequence itself </p>
-
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00061">61</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -596,7 +600,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Returns 1 if the sequence contaings the gap character '-', 0 otherwise </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00161">161</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00137">137</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -626,7 +630,7 @@ ETC... </p>
 <p>Return the total length of the sequence in bytes </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="codons_8cc-example.html#a2">codons.cc</a>.</dd>
 </dl>
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00085">85</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00058">58</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -654,7 +658,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>allows (implict) cast to std::string </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00143">143</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00117">117</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -682,9 +686,9 @@ ETC... </p>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>false if the sequences contain the same data, true otherwise. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>only the sequences (i.e. this-&gt;second and rhs.second) are compared </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>only the sequences (i.e. this-&gt;seq and rhs.seq) are compared </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00133">133</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00107">107</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -712,9 +716,9 @@ ETC... </p>
 </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>true if the sequences contain the same data, false otherwise. </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>only the sequences (i.e. this-&gt;second and rhs.second) are compared </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>only the sequences (i.e. this-&gt;seq and rhs.seq) are compared </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00123">123</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00096">96</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -743,7 +747,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Return the i-th element of the sequence. </p><dl class="section note"><dt>Note</dt><dd>range-checking is done by assert() </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00102">102</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00075">75</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -772,7 +776,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Return the i-th element of the sequence. </p><dl class="section note"><dt>Note</dt><dd>range-checking is done by assert() </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00113">113</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00085">85</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -875,7 +879,7 @@ ETC... </p>
 <p>Reverse and complement the sequence. </p><dl class="section note"><dt>Note</dt><dd>This function modifies the data in the object by changing the std::string&ndash;if you want to keep the original sequence, you need to make a copy of the object first. </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>*this </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00196">196</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00175">175</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -904,7 +908,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Return the total length of the sequence in bytes </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00093">93</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00067">67</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -950,7 +954,7 @@ ETC... </p>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>range-checking done by assert() </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00170">170</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00147">147</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -990,7 +994,7 @@ ETC... </p>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000008">Deprecated:</a></b></dt><dd>access .second.substr directly </dd></dl>
 <p>Mimics the std::string member function of the same name. </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00069">69</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00040">40</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -1020,7 +1024,7 @@ ETC... </p>
 <dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000009">Deprecated:</a></b></dt><dd>access .second.substr directly </dd></dl>
 <p>Mimics the standardstd::string member function of the same name. </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00077">77</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00049">49</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1053,7 @@ ETC... </p>
 </div><div class="memdoc">
 <p>Return length of sequence, excluding the gap character '-' </p>
 
-<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00152">152</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Seq_8cc_source.html#l00126">126</a> of file <a class="el" href="Seq_8cc_source.html">Seq.cc</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1067,7 @@ ETC... </p>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1Fasta.html">Fasta</a></li>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:27 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

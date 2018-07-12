@@ -2,7 +2,6 @@ var examples =
 [
     [ "bottleneck.cc", "bottleneck_8cc-example.html", null ],
     [ "codons.cc", "codons_8cc-example.html", null ],
-    [ "correlations.cc", "correlations_8cc-example.html", null ],
     [ "critical_values.cc", "critical_values_8cc-example.html", null ],
     [ "fragments.cc", "fragments_8cc-example.html", null ],
     [ "freerec.cc", "freerec_8cc-example.html", null ],

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -76,7 +76,7 @@ $(document).ready(function(){initNavTree('classSequence_1_1PolyTableSlice.html',
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:a0ee886630059cdca3f7257f5955636c2"><td class="memItemLeft" align="right" valign="top"><a id="a0ee886630059cdca3f7257f5955636c2"></a>
-typedef std::pair&lt; <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>, <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a></td></tr>
+typedef std::pair&lt; PolyTable::const_site_iterator, PolyTable::const_site_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a></td></tr>
 <tr class="memdesc:a0ee886630059cdca3f7257f5955636c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range of a window = [first,second) <br /></td></tr>
 <tr class="separator:a0ee886630059cdca3f7257f5955636c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd719b5503b2885593594ac758635f67"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="classSequence_1_1PolyTableSlice.html#a0ee886630059cdca3f7257f5955636c2">range</a> &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a></td></tr>
@@ -84,11 +84,11 @@ typedef std::pair&lt; <a class="el" href="classSequence_1_1PolyTable.html#a7096e
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
+<tr class="memitem:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5f20a15b959e6533b3c75d1b440cfc2e">PolyTableSlice</a> (const PolyTable::const_site_iterator beg, const PolyTable::const_site_iterator end, const unsigned &amp;window_size_S, const unsigned &amp;window_step_len)</td></tr>
 <tr class="separator:a5f20a15b959e6533b3c75d1b440cfc2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5061a9f5abcc553b119960500a1faffa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5061a9f5abcc553b119960500a1faffa">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const unsigned nwindows)</td></tr>
+<tr class="memitem:a5061a9f5abcc553b119960500a1faffa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a5061a9f5abcc553b119960500a1faffa">PolyTableSlice</a> (const PolyTable::const_site_iterator beg, const PolyTable::const_site_iterator end, const unsigned nwindows)</td></tr>
 <tr class="separator:a5061a9f5abcc553b119960500a1faffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#ae7a2d9a3b0878ea3f0019d336a21f3a2">PolyTableSlice</a> (const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> beg, const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a> end, const double &amp;window_size, const double &amp;step_len, const double &amp;starting_pos=0., const double &amp;ending_pos=1.0)</td></tr>
+<tr class="memitem:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#ae7a2d9a3b0878ea3f0019d336a21f3a2">PolyTableSlice</a> (const PolyTable::const_site_iterator beg, const PolyTable::const_site_iterator end, const double &amp;window_size, const double &amp;step_len, const double &amp;starting_pos=0., const double &amp;ending_pos=1.0)</td></tr>
 <tr class="separator:ae7a2d9a3b0878ea3f0019d336a21f3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d3bb9df02ec8a2e2e1f494a885c4349"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">const_iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolyTableSlice.html#a9d3bb9df02ec8a2e2e1f494a885c4349">cbegin</a> () const</td></tr>
 <tr class="separator:a9d3bb9df02ec8a2e2e1f494a885c4349"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,7 +114,7 @@ Drosophila melanogaster from patterns of polymorphism and divergence." Genetics 
 <p>The user is also referred to Andolfatto, P., J. D. Wall and M. Kreitman, 1999 "Unusual haplotype structure at the proximal breakpoint of In(2L)t in a 
 natural population of Drosophila melanogaster." Genetics 153:1397-1399, which discusses the multiple testing issue.</p>
 <p>The following example reads in data from Hudson's program ms. Tajima's D is calculated for non-overlapping windows of size 0.1: </p><div class="fragment"><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="SimData_8hpp.html">Sequence/SimData.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="SimParams_8hpp.html">Sequence/SimParams.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="PolyTableSlice_8hpp.html">Sequence/PolyTableSlice.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;<a class="code" href="PolySIM_8hpp.html">Sequence/PolySIM.hpp</a>&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;iostream&gt;</span></div><div class="line"><span class="preprocessor">#include&lt;cstdio&gt;</span></div><div class="line"></div><div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1SimParams.html">Sequence::SimParams</a> p;</div><div class="line">std::cin &gt;&gt; p;</div><div class="line"><a class="code" href="classSequence_1_1SimData.html">Sequence::SimData</a> d(p.totsam());</div><div class="line"><span class="keywordtype">int</span> i;</div><div class="line"><span class="keywordflow">while</span>( (i=d.fromstdin()) &amp;&amp; i != EOF) <span class="comment">//read simulated data from stdin</span></div><div class="line">{</div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice&lt;Sequence::SimData&gt;</a> windows(d.sbegin(),d.send(),0.1,0.1,0);</div><div class="line"><span class="comment">//The object only alows const iterations, and libsequence 1.8.5 changed</span></div><div class="line"><span class="comment">//the API to use the &quot;C++11-ese&quot; syntax of cbegin/cend&quot;</span></div><div class="line"><a class="code" href="classSequence_1_1PolyTableSlice.html#acd719b5503b2885593594ac758635f67">PolyTableSlice&lt;Sequence::SimData&gt;::const_iterator</a> itr = windows.cbegin();</div><div class="line"><span class="keywordflow">while</span>(itr &lt; windows.cend()) <span class="comment">//iterate over windows</span></div><div class="line">{</div><div class="line"><span class="comment">//create a data object for the current window</span></div><div class="line">SimData window = windows.get_slice(itr);</div><div class="line"><span class="comment">//calculate and print Tajima&#39;s D for the window</span></div><div class="line">PolySIM analyze(&amp;window); </div><div class="line">std::cout &lt;&lt; analyze.<a class="code" href="classSequence_1_1PolySNP.html#a50ef99ab048d8992081b275e94be6dda">TajimasD</a>() &lt;&lt; <span class="charliteral">&#39;\t&#39;</span>;</div><div class="line">}</div><div class="line">std::cout &lt;&lt; std::endl;</div><div class="line">}</div><div class="line">}</div></div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>The two constructors are left ambiguous intentionally! See their documentation below. The ambiguity is so that the progammer is forced to thing about which type of slding window to use. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#_a4">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#_a3">slidingWindow2.cc</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#_a3">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#_a3">slidingWindow2.cc</a>.</dd>
 </dl>
 <p class="definition">Definition at line <a class="el" href="PolyTableSlice_8hpp_source.html#l00117">117</a> of file <a class="el" href="PolyTableSlice_8hpp_source.html">PolyTableSlice.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -152,13 +152,13 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>beg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
@@ -218,13 +218,13 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>beg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
@@ -271,13 +271,13 @@ template&lt;typename T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classSequence_1_1PolyTableSlice.html">Sequence::PolyTableSlice</a>&lt; T &gt;::<a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a> </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>beg</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1PolyTable.html#a7096e7ad3abcb257a8e7ac8c28a23e5c">PolyTable::const_site_iterator</a>&#160;</td>
+          <td class="paramtype">const PolyTable::const_site_iterator&#160;</td>
           <td class="paramname"><em>end</em>, </td>
         </tr>
         <tr>
@@ -355,7 +355,7 @@ template&lt;typename T&gt; </div>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>Const iterator to begin </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#a7">slidingWindow.cc</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#a4">slidingWindow.cc</a>.</dd>
 </dl>
 </div>
 </div>
@@ -474,7 +474,7 @@ template&lt;typename T&gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolyTableSlice.html">PolyTableSlice</a></li>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:27 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -62,9 +62,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 &#160;
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>a
-: <a class="el" href="classSequence_1_1stateCounter.html#ab7b66a7fa179a3b4d9a4da425873f0ee">Sequence::stateCounter</a>
-</li>
 <li>abv
 : <a class="el" href="structSequence_1_1coalsim_1_1node.html#a4d80551e82308d296303fb79c064cee7">Sequence::coalsim::node</a>
 </li>
@@ -79,11 +76,14 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>c
-: <a class="el" href="classSequence_1_1stateCounter.html#a9c57d5237d59f310642dd2c07feb9ea2">Sequence::stateCounter</a>
-</li>
 <li>chisquareds
 : <a class="el" href="structSequence_1_1HKAresults.html#a0227596159eb7a6f675fe8a159b984c9">Sequence::HKAresults</a>
+</li>
+<li>col_end
+: <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a2de4147cf9be713a95ef49c29acf53cf">Sequence::internal::col_view_&lt; T &gt;</a>
+</li>
+<li>counts
+: <a class="el" href="structSequence_1_1StateCounts.html#ac7a3849a9316958b87b711d31e0f7e43">Sequence::StateCounts</a>
 </li>
 </ul>
 
@@ -92,6 +92,12 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>D
 : <a class="el" href="structSequence_1_1HKAdata.html#a39269dfe605ea4feffd1a334a7b5a6aa">Sequence::HKAdata</a>
 , <a class="el" href="structSequence_1_1PairwiseLDstats.html#a1e01b313c642d10b246bb8c75a969578">Sequence::PairwiseLDstats</a>
+</li>
+<li>data
+: <a class="el" href="structSequence_1_1col__view__iterator.html#ac1307016e780a79367851bee4bc65cfb">Sequence::col_view_iterator&lt; POINTER &gt;</a>
+, <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a8fc2c376b2e7d978fc7a918bec2c87ad">Sequence::internal::col_view_&lt; T &gt;</a>
+, <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a2171dc1148629c5890dbd2dbe2f90645">Sequence::internal::row_view_&lt; T &gt;</a>
+, <a class="el" href="structSequence_1_1VariantMatrix.html#a94d7be4fd87fe6b111802bcff30fdbf7">Sequence::VariantMatrix</a>
 </li>
 <li>Dprime
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#a252b799ff4f543cd75b4e4d642d6d6d1">Sequence::PairwiseLDstats</a>
@@ -111,16 +117,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>flag
 : <a class="el" href="classSequence_1_1samflag.html#a86d7923f2484dae54ce724d373c5f2f8">Sequence::samflag</a>
-</li>
-</ul>
-
-
-<h3><a id="index_g"></a>- g -</h3><ul>
-<li>g
-: <a class="el" href="classSequence_1_1stateCounter.html#a598bc2f9f4b13eeb9cdc507de4de31e9">Sequence::stateCounter</a>
-</li>
-<li>gap
-: <a class="el" href="classSequence_1_1stateCounter.html#a70ca0793a869576acbc93fcb6f6356ce">Sequence::stateCounter</a>
 </li>
 </ul>
 
@@ -146,6 +142,9 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 
 <h3><a id="index_m"></a>- m -</h3><ul>
+<li>mask
+: <a class="el" href="structSequence_1_1VariantMatrix.html#a103282aff369b9029ca10912d6393583">Sequence::VariantMatrix</a>
+</li>
 <li>mate_unmapped
 : <a class="el" href="classSequence_1_1samflag.html#a3ccc0808fca86e33d922af08720d901a">Sequence::samflag</a>
 </li>
@@ -157,13 +156,10 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>n
-: <a class="el" href="classSequence_1_1stateCounter.html#a00e76e86c7ad4cb6847f608a013cb1ab">Sequence::stateCounter</a>
+: <a class="el" href="structSequence_1_1StateCounts.html#adceb902480552c011fbffab1d07c8ed7">Sequence::StateCounts</a>
 </li>
 <li>nA
 : <a class="el" href="structSequence_1_1HKAdata.html#a08acc2c47c9c5c439dd55e1468a5e326">Sequence::HKAdata</a>
-</li>
-<li>ndna
-: <a class="el" href="classSequence_1_1stateCounter.html#a719029a6aa7cc487b46da1e69db12fd3">Sequence::stateCounter</a>
 </li>
 <li>nnodes
 : <a class="el" href="structSequence_1_1coalsim_1_1marginal.html#a235660e8bc856becc5b0ab949785117e">Sequence::coalsim::marginal</a>
@@ -173,16 +169,20 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>nsam
 : <a class="el" href="structSequence_1_1coalsim_1_1marginal.html#ae54539082a912b531b78d17b8ce49780">Sequence::coalsim::marginal</a>
+, <a class="el" href="structSequence_1_1VariantMatrix.html#a4b05dbb1c529cf5ffe98c17a256332bc">Sequence::VariantMatrix</a>
 </li>
 <li>nsegs
 : <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a5da84b1fb9d48b4a466abc0dd6169ff3">Sequence::coalsim::chromosome</a>
+</li>
+<li>nsites
+: <a class="el" href="structSequence_1_1VariantMatrix.html#aac5ad15a638ff8f276e1effd123f5e46">Sequence::VariantMatrix</a>
 </li>
 </ul>
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
-<li>one
-: <a class="el" href="classSequence_1_1stateCounter.html#a5e3a14ea7ac67d6d340a7381bba4b222">Sequence::stateCounter</a>
+<li>offset
+: <a class="el" href="structSequence_1_1col__view__iterator.html#a0b1857e3f8b93d01a29d3366795bd040">Sequence::col_view_iterator&lt; POINTER &gt;</a>
 </li>
 </ul>
 
@@ -190,6 +190,9 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>pop
 : <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#ad8565024c587e2b1df3215038be05343">Sequence::coalsim::chromosome</a>
+</li>
+<li>positions
+: <a class="el" href="structSequence_1_1VariantMatrix.html#aa2f59ddb2b363a764f1f5f625b72c5a9">Sequence::VariantMatrix</a>
 </li>
 </ul>
 
@@ -208,6 +211,12 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
+<li>refstate
+: <a class="el" href="structSequence_1_1StateCounts.html#a4d9c6e6ce38ef1d75ae810adac5a3ea7">Sequence::StateCounts</a>
+</li>
+<li>row_size
+: <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a199e22a9c5b0ccb262d9923455918be8">Sequence::internal::row_view_&lt; T &gt;</a>
+</li>
 <li>rsq
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#ac67e51ef1bf78b99b2c162ba2879149f">Sequence::PairwiseLDstats</a>
 </li>
@@ -230,13 +239,17 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>skipped
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#aaad16c0cb2a9ead7d0fcaa3e2b249b91">Sequence::PairwiseLDstats</a>
 </li>
+<li>start
+: <a class="el" href="structSequence_1_1col__view__iterator.html#a1f9b8a2bab69a51de0a44800149c1c56">Sequence::col_view_iterator&lt; POINTER &gt;</a>
+</li>
+<li>stride
+: <a class="el" href="structSequence_1_1col__view__iterator.html#a3f8e0daa6af95e65cf38b661f1251ada">Sequence::col_view_iterator&lt; POINTER &gt;</a>
+, <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a99362a552d4a8896e8ac771487ea13e9">Sequence::internal::col_view_&lt; T &gt;</a>
+</li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
-<li>t
-: <a class="el" href="classSequence_1_1stateCounter.html#a15130b280893251543bd2600b52bc354">Sequence::stateCounter</a>
-</li>
 <li>tag
 : <a class="el" href="structSequence_1_1bamaux.html#a2c4ab4dec148e7473a7884eddeb74448">Sequence::bamaux</a>
 </li>
@@ -276,19 +289,12 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 : <a class="el" href="structSequence_1_1HKAresults.html#a094ee061909b992bba100c2f69c56e1a">Sequence::HKAresults</a>
 </li>
 </ul>
-
-
-<h3><a id="index_z"></a>- z -</h3><ul>
-<li>zero
-: <a class="el" href="classSequence_1_1stateCounter.html#ad681701c5fb3be4cc3fd4c3e55498917">Sequence::stateCounter</a>
-</li>
-</ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:35 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

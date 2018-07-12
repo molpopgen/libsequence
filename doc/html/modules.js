@@ -7,6 +7,7 @@ var modules =
     [ "Function objects defined in the library", "group__functors.html", "group__functors" ],
     [ "Parallel computing", "group__threads.html", "group__threads" ],
     [ "Miscellany", "group__misc.html", "group__misc" ],
+    [ "Variant Matrix", "group__variantmatrix.html", "group__variantmatrix" ],
     [ "High-throughput sequencing", "group__HTS.html", "group__HTS" ],
     [ "Divergence Statistics", "group__divergence.html", "group__divergence" ],
     [ "Molecular Population Genetics", "group__popgen.html", "group__popgen" ],

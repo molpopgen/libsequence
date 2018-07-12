@@ -41,5 +41,7 @@ var classSequence_1_1fastq =
     [ "substr", "classSequence_1_1fastq.html#a2076bce8df742b1016b47cfc6159b428", null ],
     [ "substr", "classSequence_1_1fastq.html#a02743cc1ec278c89bb204581e8d035ba", null ],
     [ "UngappedLength", "classSequence_1_1fastq.html#a9e24a1dc7c8ac52d066ab9b8121f6700", null ],
-    [ "quality", "classSequence_1_1fastq.html#a3719073369891e88a25ea0546d77c72e", null ]
+    [ "name", "classSequence_1_1fastq.html#aa43bf5f3508b5213b5a9012fd742ca11", null ],
+    [ "quality", "classSequence_1_1fastq.html#a3719073369891e88a25ea0546d77c72e", null ],
+    [ "seq", "classSequence_1_1fastq.html#aa679b6ec9463f1b5fcd83f0bfa1c1df3", null ]
 ];

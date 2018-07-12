@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.2</span>
+   &#160;<span id="projectnumber">1.9.3</span>
    </div>
   </td>
  </tr>
@@ -86,10 +86,10 @@ Functions</h2></td></tr>
 <p>For cases where libsequence is used as a back-end for projects in other languages like R or Python, we provide <a class="el" href="group__threads.html#ga744123dc67a21645e9408ad930f007d3" title="Return a unique_ptr to a tbb::task_scheduler_init. ">Sequence::init_tbb</a> which returns a std::unique_ptr&lt;tbb::task_scheduler_init&gt;. This function can be wrapped, allowing control over threading as desired.</p>
 <p>Unfortunately, Doxygen limits functions to belonging to a single group, making it difficult to auto-generate a list of parallelized functions. The following list of threaded functions in other groups is manually maintained, and may thus be incomplete:</p>
 <ul>
-<li><a class="el" href="group__popgenanalysis.html#ga0f884f3666dd61ec9d41bee2dddfab1d">Sequence::nSL_t</a></li>
+<li><a class="el" href="group__popgenanalysis.html#ga08bc910f7be7c6cd753fa93e2dd33c82">Sequence::nSL_t</a></li>
 <li>Sequence::snSL</li>
 <li><a class="el" href="structSequence_1_1GarudStats.html">Sequence::GarudStats</a></li>
-<li><a class="el" href="namespaceSequence_1_1Recombination.html#a7fe0d2b60f2103f26c2873747fe7ddb5" title="Calculate pairwise LD for a Sequence::PolyTable. ">Sequence::Recombination::Disequilibrium</a></li>
+<li><a class="el" href="namespaceSequence_1_1Recombination.html#a4d94f494d332f13638905822cb98bdc5" title="Calculate pairwise LD for a Sequence::PolyTable. ">Sequence::Recombination::Disequilibrium</a></li>
 </ul>
 <p>While there are lots of calculations that may be parallelized, not all will benefit. We have to test each function individually and make the determination. Fortunately, TBB allows us to do this in the implementation without changing the public interface, meaning we can take our time and slowly introduce more parallelism into the library. </p>
 <h2 class="groupheader">Function Documentation</h2>
@@ -148,7 +148,7 @@ To check if two sequences are unique, Sequence::Comparisons::Different is used, 
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>A vector of statistics related to LD and distance in the sample. An empty vector is returned if there are &lt; 2 polymorphic sites in the sample. See the documentation for <a class="el" href="namespaceSequence_1_1Recombination.html#a7fe0d2b60f2103f26c2873747fe7ddb5" title="Calculate pairwise LD for a Sequence::PolyTable. ">Recombination::Disequilibrium</a> for a description of the return vector. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of statistics related to LD and distance in the sample. An empty vector is returned if there are &lt; 2 polymorphic sites in the sample. See the documentation for <a class="el" href="namespaceSequence_1_1Recombination.html#a4d94f494d332f13638905822cb98bdc5" title="Calculate pairwise LD for a Sequence::PolyTable. ">Recombination::Disequilibrium</a> for a description of the return vector. </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">mincount</td><td>a frequency filter. A polymorphism must be present at least <em>mincount</em> times in the data </td></tr>
@@ -190,7 +190,7 @@ To check if two sequences are unique, Sequence::Comparisons::Different is used, 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 16 2017 17:01:27 for libsequence by
+    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
