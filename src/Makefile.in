@@ -146,8 +146,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
 	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
-	SummStats/variantCounts.lo threading.lo \
-	variant_matrix/VariantMatrix.lo \
+	threading.lo variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
@@ -388,7 +387,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	SummStats/variantCounts.cc \
 	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
@@ -513,8 +511,6 @@ SummStats/nSL.lo: SummStats/$(am__dirstamp) \
 SummStats/Garud.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 SummStats/lHaf.lo: SummStats/$(am__dirstamp) \
-	SummStats/$(DEPDIR)/$(am__dirstamp)
-SummStats/variantCounts.lo: SummStats/$(am__dirstamp) \
 	SummStats/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/$(am__dirstamp):
 	@$(MKDIR_P) variant_matrix
@@ -643,7 +639,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/variantCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
