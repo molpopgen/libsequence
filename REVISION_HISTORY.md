@@ -30,6 +30,17 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.3
+
+* Refactor unit tests to be much faster to compile
+* Remove dependency on htslib.
+* The coalescent simulation machinery is no longer compiled or installed.
+* Mark a lot of code as deprecated
+* Travis CI is now Linux-only
+* Add Sequence::VariantMatrix and Sequence::StateCounts
+
+This release includes the following GitHub PRs: 11, 12, 13, 14, 15, 25, 26, 30, 31, and 32.
+
 ## libsequence 1.9.2
 
 * Refactor API for nSL/iHS calculations

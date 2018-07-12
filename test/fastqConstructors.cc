@@ -1,6 +1,4 @@
 //\file fastqConstructors.cc
-#define BOOST_TEST_MODULE fastqIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/fastq.hpp>
 #include <fstream>
@@ -9,6 +7,8 @@
 #include <iterator>
 #include <iostream>
 #include <stdexcept>
+
+BOOST_AUTO_TEST_SUITE(FastqConstructorsTest)
 
 BOOST_AUTO_TEST_CASE( move_construction )
 {
@@ -26,3 +26,4 @@ BOOST_AUTO_TEST_CASE( move_construction )
 
   BOOST_CHECK_EQUAL(f.length(),0);
 }
+BOOST_AUTO_TEST_SUITE_END()

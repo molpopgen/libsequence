@@ -1,5 +1,3 @@
-#define BOOST_TEST_MODULE fastqIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/fastq.hpp>
 #include <fstream>
@@ -8,6 +6,9 @@
 #include <iterator>
 #include <iostream>
 #include <stdexcept>
+
+BOOST_AUTO_TEST_SUITE(FASTQIOTest)
+
 BOOST_AUTO_TEST_CASE( input_test )
 {
   std::ifstream in("data/data.fastq");
@@ -93,3 +94,4 @@ BOOST_AUTO_TEST_CASE( output_test )
      in.close(); 
      );
 }
+BOOST_AUTO_TEST_SUITE_END()

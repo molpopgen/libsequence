@@ -39,7 +39,7 @@ namespace Sequence
 			const std::vector< std::vector<double> > & dkj,
 			const unsigned config[],
 			const size_t & npop,
-			const unsigned & nsam );
+			const unsigned & nsam )__attribute__ ((deprecated));
   
   template< typename shuffler >
   std::pair<double,double>
@@ -47,7 +47,7 @@ namespace Sequence
 	   const unsigned config[],
 	   const size_t & npop,
 	   shuffler & s,
-	   const unsigned & nperms = 10000);
+	   const unsigned & nperms = 10000)__attribute__ ((deprecated));
 
   template< typename shuffler >
   std::vector< std::vector<double> >
@@ -55,7 +55,7 @@ namespace Sequence
 		    const unsigned config[],
 		    const size_t & npop,
 		    shuffler & s,
-		    const unsigned & nperms = 10000);
+		    const unsigned & nperms = 10000)__attribute__ ((deprecated));
 }
 #endif
 #include <Sequence/bits/Snn.tcc>

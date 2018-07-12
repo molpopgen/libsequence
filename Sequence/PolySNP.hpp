@@ -81,7 +81,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace Sequence 
   {
-    class PolyTable;
+    class __attribute__ ((deprecated)) PolyTable;
     struct _PolySNPImpl;
     class PolySNP 
     {

@@ -1,6 +1,4 @@
 //!\ file FastaConstructors.cc
-#define BOOST_TEST_MODULE FastaConstructors
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
 #include <string>
@@ -8,67 +6,77 @@
 #include <iostream>
 #include <functional>
 
-std::string name("seqname"),seq("AGCGTAGACAGTAGAGTGAT");
-
-BOOST_AUTO_TEST_CASE( empty )
+struct fasta_constructors_fixture
 {
-  Sequence::Fasta f;
-  BOOST_REQUIRE(f.first.empty());
-  BOOST_REQUIRE(f.second.empty());
+    std::string name, seq;
+    fasta_constructors_fixture()
+        : name{ "seqname" }, seq{ "AGCGTAGACAGTAGAGTGAT" }
+    {
+    }
+};
+
+BOOST_FIXTURE_TEST_SUITE(FastaConstructorsTest, fasta_constructors_fixture)
+
+BOOST_AUTO_TEST_CASE(empty)
+{
+    Sequence::Fasta f;
+    BOOST_REQUIRE(f.name.empty());
+    BOOST_REQUIRE(f.seq.empty());
 }
 
-BOOST_AUTO_TEST_CASE( string_con )
+BOOST_AUTO_TEST_CASE(string_con)
 {
-  Sequence::Fasta f = Sequence::Fasta(name,seq);
-  BOOST_CHECK( f.first == name );
-  BOOST_CHECK( f.second == seq );
+    Sequence::Fasta f = Sequence::Fasta(name, seq);
+    BOOST_CHECK(f.name == name);
+    BOOST_CHECK(f.seq == seq);
 }
 
-BOOST_AUTO_TEST_CASE( copy_con )
+BOOST_AUTO_TEST_CASE(copy_con)
 {
-  Sequence::Fasta f = Sequence::Fasta(name.c_str(),seq.c_str());
-  BOOST_CHECK( f.first == name );
-  BOOST_CHECK( f.second == seq );
-  
-  Sequence::Fasta f2(f);
-  BOOST_REQUIRE(f == f2);
+    Sequence::Fasta f = Sequence::Fasta(name.c_str(), seq.c_str());
+    BOOST_CHECK(f.name == name);
+    BOOST_CHECK(f.seq == seq);
+
+    Sequence::Fasta f2(f);
+    BOOST_REQUIRE(f == f2);
 }
 
-BOOST_AUTO_TEST_CASE( move_con )
+BOOST_AUTO_TEST_CASE(move_con)
 {
-  Sequence::Fasta f = Sequence::Fasta(name.c_str(),seq.c_str());
-  BOOST_CHECK( f.first == name );
-  BOOST_CHECK( f.second == seq );
-  
-  Sequence::Fasta f2(std::move(f));
-  BOOST_CHECK( f2.first == name );
-  BOOST_CHECK( f2.second == seq );
-  BOOST_CHECK( f.length() == 0 );
-  BOOST_CHECK( f.first.empty() );
+    Sequence::Fasta f = Sequence::Fasta(name.c_str(), seq.c_str());
+    BOOST_CHECK(f.name == name);
+    BOOST_CHECK(f.seq == seq);
+
+    Sequence::Fasta f2(std::move(f));
+    BOOST_CHECK(f2.name == name);
+    BOOST_CHECK(f2.seq == seq);
+    BOOST_CHECK(f.length() == 0);
+    BOOST_CHECK(f.name.empty());
 }
 
-BOOST_AUTO_TEST_CASE( move_con2 )
+BOOST_AUTO_TEST_CASE(move_con2)
 //This "should" work???
 {
-  std::string a(name),b(seq);
-  Sequence::Fasta f = Sequence::Fasta(std::move(a),std::move(b));
-  BOOST_CHECK( f.first == name );
-  BOOST_CHECK( f.second == seq );
-  BOOST_CHECK( a.empty() );
-  BOOST_CHECK( b.empty() );
+    std::string a(name), b(seq);
+    Sequence::Fasta f = Sequence::Fasta(std::move(a), std::move(b));
+    BOOST_CHECK(f.name == name);
+    BOOST_CHECK(f.seq == seq);
+    BOOST_CHECK(a.empty());
+    BOOST_CHECK(b.empty());
 }
 
-BOOST_AUTO_TEST_CASE( move_assign )
+BOOST_AUTO_TEST_CASE(move_assign)
 {
-  Sequence::Fasta f = Sequence::Fasta(name,seq);
-  BOOST_CHECK( f.first == name );
-  BOOST_CHECK( f.second == seq );
+    Sequence::Fasta f = Sequence::Fasta(name, seq);
+    BOOST_CHECK(f.name == name);
+    BOOST_CHECK(f.seq == seq);
 
-  Sequence::Fasta f2;
-  f2 = std::move(f);
-  BOOST_CHECK( f2.first == name );
-  BOOST_CHECK( f2.second == seq );
-  BOOST_CHECK( f.length() == 0 );
-  BOOST_CHECK( f.first.empty() );
+    Sequence::Fasta f2;
+    f2 = std::move(f);
+    BOOST_CHECK(f2.name == name);
+    BOOST_CHECK(f2.seq == seq);
+    BOOST_CHECK(f.length() == 0);
+    BOOST_CHECK(f.name.empty());
 }
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

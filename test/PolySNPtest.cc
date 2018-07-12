@@ -1,6 +1,3 @@
-#define BOOST_TEST_MODULE PolySNPtest
-#define BOOST_TEST_DYN_LINK 
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/PolySNP.hpp>
 #include <boost/test/unit_test.hpp>
@@ -10,6 +7,8 @@
 #include <algorithm>
 #include <limits>
 #include <cmath>
+
+BOOST_AUTO_TEST_SUITE(PolySNPTest)
 
 BOOST_AUTO_TEST_CASE( check_empty_table )
 {
@@ -67,3 +66,4 @@ BOOST_AUTO_TEST_CASE( check_empty_table )
   BOOST_CHECK( std::isnan(ad.HudsonsC()) );
   BOOST_CHECK( ad.Disequilibrium().empty() );
 }
+BOOST_AUTO_TEST_SUITE_END()

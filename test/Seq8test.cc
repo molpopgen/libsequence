@@ -1,7 +1,4 @@
 /*! \file Seq8test.cc @brief Unit tests for Sequence/Seq.hpp */
-#define BOOST_TEST_MODULE Seq8test
-#define BOOST_TEST_DYN_LINK 
-
 #include <Sequence/Seq8.hpp>
 #include <Sequence/SeqExceptions.hpp>
 #include <boost/test/unit_test.hpp>
@@ -105,4 +102,5 @@ BOOST_AUTO_TEST_CASE( IO_1 )
   BOOST_CHECK( s8.second == s8_2.second );
   BOOST_CHECK_EQUAL( s8.unpack() , s8_2.unpack() );
 }
+BOOST_AUTO_TEST_SUITE_END()
 

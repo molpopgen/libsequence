@@ -75,7 +75,7 @@ namespace Sequence
     namespace Recombination
     {
         double HudsonsC(const Sequence::PolyTable *data,
-                        const bool &haveOutgroup, const unsigned &outgroup);
+                        const bool &haveOutgroup, const unsigned &outgroup)__attribute__ ((deprecated));
         /*!
 		 * \brief Calculate pairwise LD for a Sequence::PolyTable
 		 *
@@ -96,7 +96,7 @@ namespace Sequence
         std::vector<PairwiseLDstats> Disequilibrium(
             const Sequence::PolyTable *data, const bool &haveOutgroup = false,
             const unsigned &outgroup = 0, const unsigned &mincount = 1,
-            const double max_distance = std::numeric_limits<double>::max());
+            const double max_distance = std::numeric_limits<double>::max())__attribute__ ((deprecated));
 
         /*!
          Calculates LD statistics for sites i and j, where j>1.
@@ -118,7 +118,7 @@ namespace Sequence
                                    const unsigned &outgroup = 0,
                                    const unsigned &mincount = 1,
                                    const double max_distance
-                                   = std::numeric_limits<double>::max());
+                                   = std::numeric_limits<double>::max())__attribute__ ((deprecated));
     }
 }
 #endif

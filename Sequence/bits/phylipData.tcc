@@ -63,7 +63,7 @@ namespace Sequence
 	    std::getline(s,temp);
 	    s >> std::ws;
 	    temp.erase( std::remove_if(temp.begin(),temp.end(),[](const char & __ch){ return std::isspace(__ch);}), temp.end() );
-	    _data[i].second+=temp;
+	    _data[i].seq+=temp;
 	  }
       }
     this->assign(std::move(_data));
@@ -76,27 +76,27 @@ namespace Sequence
     size_t nsam = this->size();
     s << nsam 
       << '\t'
-      << (*this)[0].second.size() << '\n';
+      << (*this)[0].seq.size() << '\n';
 
     for( auto __t = this->begin() ; __t != this->end() ; ++__t )
       {
-	if ( __t->first.length() >= 10 ) 
+	if ( __t->name.length() >= 10 ) 
 	  {
-	    std::copy( __t->first.begin(),
-		       __t->first.begin()+10,
+	    std::copy( __t->name.begin(),
+		       __t->name.begin()+10,
 		       std::ostream_iterator<char>(s,""));
 	  }
 	else  //it is too short
 	  {
-	    std::copy( __t->first.begin(),
-		       __t->first.end(),
+	    std::copy( __t->name.begin(),
+		       __t->name.end(),
 		       std::ostream_iterator<char>(s,""));
-	    for( decltype(__t->first.size()) i = __t->first.size() ; i < 10 ; ++i )
+	    for( decltype(__t->name.size()) i = __t->name.size() ; i < 10 ; ++i )
 	      {
 		s << ' ';
 	      }
 	  }
-	s << __t->second;
+	s << __t->seq;
 	if( __t < this->end() - 1 ) s << '\n';
       }
     return s;

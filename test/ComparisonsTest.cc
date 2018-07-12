@@ -1,12 +1,11 @@
 //! \file ComparisonsTests.cc @brief Tests for Sequence/Comparisons.hpp
-#define BOOST_TEST_MODULE ComparisonsTest
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Comparisons.hpp>
 #include <Sequence/SeqAlphabets.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
+BOOST_AUTO_TEST_SUITE(ComparisonsTest)
 
 BOOST_AUTO_TEST_CASE( notagap ) //Silly!
 {
@@ -112,3 +111,4 @@ BOOST_AUTO_TEST_CASE( tstv1 )
   BOOST_REQUIRE_THROW( Sequence::TsTv('G','R'), std::runtime_error );
   BOOST_REQUIRE_THROW( Sequence::TsTv('G','z'), std::runtime_error );
 }
+BOOST_AUTO_TEST_SUITE_END()

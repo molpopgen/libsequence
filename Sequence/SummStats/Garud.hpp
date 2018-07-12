@@ -24,7 +24,7 @@ namespace Sequence
     \ingroup popgenanalysis
     \return An object of type Sequence::GarudStats
   */
-  GarudStats H1H12(const SimData & d);
+  GarudStats H1H12(const SimData & d)__attribute__ ((deprecated));
 }
 
 #endif

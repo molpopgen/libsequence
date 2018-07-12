@@ -8,7 +8,8 @@ pkginclude_HEADERS = PolySites.tcc\
 		Alignment.tcc\
 		Clustalw.tcc\
 		phylipData.tcc\
-		Correlations.tcc\
 		descriptiveStats.tcc\
 		PolyTableFunctions.tcc\
-		Snn.tcc
+		Snn.tcc \
+		variant_matrix_views_internal.hpp \
+		col_view_iterator.hpp

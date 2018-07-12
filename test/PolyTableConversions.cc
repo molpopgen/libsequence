@@ -1,6 +1,3 @@
-#define BOOST_TEST_MODULE PolyTableConversions
-#define BOOST_TEST_DYN_LINK 
-
 #include <Sequence/PolySites.hpp>
 #include <Sequence/SimpleSNP.hpp>
 #include <Sequence/SimData.hpp>
@@ -11,6 +8,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+
+BOOST_AUTO_TEST_SUITE(PolyTableConversionsTest)
 
 BOOST_AUTO_TEST_CASE( make_a_table_from_strings )
 {
@@ -259,3 +258,4 @@ BOOST_AUTO_TEST_CASE(test_swap)
   BOOST_CHECK(!ps2.empty());
 }
 
+BOOST_AUTO_TEST_SUITE_END()

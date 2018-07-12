@@ -1,12 +1,11 @@
 /*! \file alphabets.cc @brief Unit tests for Sequence/SeqAlphabets.hpp */
-#define BOOST_TEST_MODULE alphabets
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/SeqAlphabets.hpp>
 #include <Sequence/Fasta.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <iterator>
+BOOST_AUTO_TEST_SUITE(AlphabetTest)
 
 BOOST_AUTO_TEST_CASE( check_dna_alphabet )
 {
@@ -35,12 +34,12 @@ BOOST_AUTO_TEST_CASE( check_isDNA_2 )
 			   } );
   BOOST_REQUIRE_EQUAL( std::distance(f.begin(),itr),4 );
 
-  f.second.erase( std::remove_if(f.begin(),
+  f.seq.erase( std::remove_if(f.begin(),
 				 f.end(),
 				 [](const char & __ch) {
 				   return !Sequence::isDNA(__ch);
-				 }), f.second.end() );
-  BOOST_REQUIRE_EQUAL(f.second,"ATGCAGC");
+				 }), f.seq.end() );
+  BOOST_REQUIRE_EQUAL(f.seq,"ATGCAGC");
 }
 
 //Test of dna_poly_alphabet
@@ -84,3 +83,4 @@ BOOST_AUTO_TEST_CASE( dna_poly_alphabet_5 )
 					    Sequence::dna_poly_alphabet.end(),c) ) >= Sequence::NOTPOLYCHAR );
     }
 }
+BOOST_AUTO_TEST_SUITE_END()

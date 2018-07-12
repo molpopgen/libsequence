@@ -1,5 +1,3 @@
-#define BOOST_TEST_MODULE FastaExplicitIO
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/FastaExplicit.hpp>
 #include <fstream>
@@ -8,6 +6,7 @@
 #include <iterator>
 
 std::string name("seqname is a seq"),seq("AGCGTAGACAGTAGAGTGAT"),seq_left("AGCGTAGAC"),seq_right("AGTAGAGTGAT");
+
 
 BOOST_AUTO_TEST_CASE( ostream_test )
 {
@@ -152,4 +151,5 @@ BOOST_AUTO_TEST_CASE( exception_test )
   unlink(filename);
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

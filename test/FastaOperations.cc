@@ -1,6 +1,4 @@
 //\file FastaOperations.cc
-#define BOOST_TEST_MODULE FastaOperations
-#define BOOST_TEST_DYN_LINK 
 
 #include <Sequence/Fasta.hpp>
 #include <string>
@@ -8,6 +6,17 @@
 #include <algorithm>
 #include <numeric>
 #include <boost/test/unit_test.hpp>
+
+struct fasta_operations_fixture
+{
+    std::string name, seq;
+    fasta_operations_fixture()
+        : name{ "seqname" }, seq{ "AGCGTAGACAGTAGAGTGAT" }
+    {
+    }
+};
+
+BOOST_FIXTURE_TEST_SUITE(FastaOperationsTest, fasta_operations_fixture)
 
 //A generic revcom routine written for this test
 std::string rcom( const std::string & s )
@@ -47,7 +56,7 @@ BOOST_AUTO_TEST_CASE( revcom )
   Sequence::Fasta f2 = f;
   f2.Revcom();
 
-  BOOST_REQUIRE( f2.second == rcom(seq) );
+  BOOST_REQUIRE( f2.seq == rcom(seq) );
 }
 
 BOOST_AUTO_TEST_CASE( subseq )
@@ -58,11 +67,11 @@ BOOST_AUTO_TEST_CASE( subseq )
   Sequence::Fasta f3(f);
   f3.Subseq(1,3);
 
-  BOOST_REQUIRE( f3.second == "GCG" );
+  BOOST_REQUIRE( f3.seq == "GCG" );
 
   f3.Complement();
 
-  BOOST_REQUIRE( f3.second == "CGC" );
+  BOOST_REQUIRE( f3.seq == "CGC" );
 
   BOOST_REQUIRE( std::string(f3) == "CGC" ); //operator string()
 
@@ -75,7 +84,7 @@ BOOST_AUTO_TEST_CASE( gapped )
 
   BOOST_REQUIRE( !f3.IsGapped() );
 
-  f3.second += '-';
+  f3.seq += '-';
 
   BOOST_REQUIRE( f3.IsGapped() );
 
@@ -84,7 +93,7 @@ BOOST_AUTO_TEST_CASE( gapped )
   BOOST_REQUIRE( f3.UngappedLength() == 3 );
 
   //Remove the gap
-  f3.second.erase( f3.second.find('-'), 1 );
+  f3.seq.erase( f3.seq.find('-'), 1 );
 
   BOOST_REQUIRE( f3.length() == 3 );
 
@@ -98,7 +107,8 @@ BOOST_AUTO_TEST_CASE( cpp11access_1 )
     {
       d = 'A';
     }
-  BOOST_REQUIRE_EQUAL(f3.second,"AAA");
+  BOOST_REQUIRE_EQUAL(f3.seq,"AAA");
 }
 
+BOOST_AUTO_TEST_SUITE_END()
 //EOF

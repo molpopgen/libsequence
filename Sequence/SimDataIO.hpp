@@ -15,7 +15,7 @@ namespace Sequence
     Write a SimData object to a gzFile object (from the C-language zlib library)
     Returns the amount of data written, or -1 on error.
    */
-  long long write_SimData_gz( gzFile & file, const SimData & d, const bool & binary = false);
+  long long write_SimData_gz( gzFile & file, const SimData & d, const bool & binary = false)__attribute__ ((deprecated));
 
   /*! \brief Read a SimData object from a gzFile
     Read a SimData object from a gzFile object (from the C-language zlib library)
@@ -25,7 +25,7 @@ namespace Sequence
     then you cannot expect to use this function to read in the data, and you 
     should use a boost filtering_istream instead.
    */
-  SimData read_SimData_gz( gzFile & file, const bool & binary = false );
+  SimData read_SimData_gz( gzFile & file, const bool & binary = false )__attribute__ ((deprecated));
 
   /*! \brief Write a SimData object in binary format to an ostream.
     Write a SimData object in binary format to an ostream.
@@ -39,7 +39,7 @@ namespace Sequence
     nsites_i values (uint32_t) representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
   */
-  void write_SimData_binary( std::ostream & o, const SimData & d );
+  void write_SimData_binary( std::ostream & o, const SimData & d )__attribute__ ((deprecated));
 
   /*!
     Read a SimData object in binary format from an istream
@@ -53,7 +53,7 @@ namespace Sequence
     nsites_i unsigned values representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
   */
-  SimData read_SimData_binary( std::istream & i );
+  SimData read_SimData_binary( std::istream & i )__attribute__ ((deprecated));
 
   /*! \brief  Write a SimData object in binary format to a C-style file descriptor
     Write a SimData object in binary format to a C-style file descriptor
@@ -67,7 +67,7 @@ namespace Sequence
     nsites_i values (uint32_t) representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
    */
-  long int write_SimData_binary( int fd , const SimData & d );
+  long int write_SimData_binary( int fd , const SimData & d )__attribute__ ((deprecated));
 
   /*! \brief Write a SimData object in binary format to a C-style file pointer
     Write a SimData object in binary format to a C-style file pointer
@@ -81,7 +81,7 @@ namespace Sequence
     nsites_i values (uint32_t) representing the indexes (from 0 to nsites-1) where the derived mutations are
     on haplotype i
    */
-  long int write_SimData_binary( FILE * fp , const SimData & d );
+  long int write_SimData_binary( FILE * fp , const SimData & d )__attribute__ ((deprecated));
 }
 
 #endif
