@@ -45,8 +45,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	SummStats/variantCounts.cc \
-	SummStats/classic.cc \
 	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
