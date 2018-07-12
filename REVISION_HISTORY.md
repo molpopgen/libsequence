@@ -34,6 +34,7 @@ However:
 
 * Refactor unit tests to be much faster to compile
 * Remove dependency on htslib.
+* The coalescent simulation machinery is no longer compiled or installed.
 * Mark a lot of code as deprecated
 * Travis CI is now Linux-only
 * Add Sequence::VariantMatrix and Sequence::StateCounts
