@@ -1,4 +1,3 @@
-#include <unordered_map>
 #include <stdexcept>
 #include <Sequence/StateCounts.hpp>
 #include <Sequence/VariantMatrix.hpp>

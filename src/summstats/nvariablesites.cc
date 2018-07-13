@@ -1,8 +1,7 @@
+#include <cstdint>
 #include <Sequence/StateCounts.hpp>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
-#include <cstdint>
-#include <unordered_map>
 
 namespace Sequence
 {
