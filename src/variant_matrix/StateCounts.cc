@@ -1,4 +1,5 @@
 #include <Sequence/StateCounts.hpp>
+#include <algorithm>
 #include <stdexcept>
 
 inline static decltype(Sequence::StateCounts::n)
@@ -54,6 +55,12 @@ namespace Sequence
     process_variable_sites(const VariantMatrix& m,
                            const std::vector<std::int8_t>& refstates)
     {
+        if (std::any_of(
+                refstates.begin(), refstates.end(),
+                [](const std::int8_t x) { return x == VariantMatrix::mask; }))
+            {
+                throw std::invalid_argument("reserved value encountered");
+            }
         if (refstates.size() != m.nsites)
             {
                 throw std::invalid_argument("refstates.size() != m.nsites");
@@ -70,6 +77,10 @@ namespace Sequence
     std::vector<StateCounts>
     process_variable_sites(const VariantMatrix& m, const std::int8_t refstate)
     {
+        if (refstate == Sequence::VariantMatrix::mask)
+            {
+                throw std::invalid_argument("reserved value encountered");
+            }
         std::vector<StateCounts> rv;
         rv.reserve(m.nsites);
         for (std::size_t i = 0; i < m.nsites; ++i)
