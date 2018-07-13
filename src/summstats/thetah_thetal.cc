@@ -32,7 +32,7 @@ namespace
                             }
                     }
             }
-        if (!ref_seen && num_non_missing_states > 1)
+        if (num_non_missing_states > 2)
             {
                 throw std::runtime_error(
                     "the site has more than one derived state");
