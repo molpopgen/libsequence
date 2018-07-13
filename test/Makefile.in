@@ -549,7 +549,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@TESTS = $(check_PROGRAMS)
 @BUNIT_TEST_PRESENT_TRUE@AM_CXXFLAGS = -g
-@BUNIT_TEST_PRESENT_TRUE@AM_LDFLAGS = -L../src/.libs -static
+@BUNIT_TEST_PRESENT_TRUE@AM_LDFLAGS = -L../src/.libs -Wl,-rpath,../src/.libs
 @BUNIT_TEST_PRESENT_TRUE@AM_LIBS = -lsequence
 @BUNIT_TEST_PRESENT_TRUE@libseq_unit_tests_SOURCES = libseq_unit_tests.cc \
 @BUNIT_TEST_PRESENT_TRUE@FastaConstructors.cc \
