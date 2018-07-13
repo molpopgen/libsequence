@@ -24,10 +24,9 @@ namespace Sequence
                         sshom += static_cast<double>(x.second)
                                  * static_cast<double>(x.second - 1.0);
                     }
-                pi += 1.0
-                      - sshom
-                            / (static_cast<double>(counts.n)
+                double nnm1 = (static_cast<double>(counts.n)
                                * (static_cast<double>(counts.n) - 1.0));
+                pi += 1.0 - sshom / nnm1;
             }
         return pi;
     }
