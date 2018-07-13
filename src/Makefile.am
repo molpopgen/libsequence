@@ -55,6 +55,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	summstats/tajd.cc \
 	summstats/thetah_thetal.cc \
 	summstats/faywuh.cc \
+	summstats/hprime.cc \
 	summstats/nvariablesites.cc \
 	summstats/allele_counts.cc \
 	summstats/auxillary.cc
