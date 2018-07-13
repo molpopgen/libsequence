@@ -7,6 +7,7 @@
 #include "thetaw.hpp"
 #include "thetah.hpp"
 #include "nvariablesites.hpp"
+#include "allele_counts.hpp"
 
 namespace Sequence
 {
