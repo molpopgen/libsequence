@@ -157,4 +157,20 @@ BOOST_AUTO_TEST_CASE(test_thetah)
     BOOST_CHECK_CLOSE(h1, m1, 1e-6);
 }
 
+BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
+{
+    // Create a site with > 1 derived state
+    auto f = Sequence::get_RowView(m, 0);
+    for (std::size_t i = 0; i < f.size(); ++i)
+        {
+            f[i] = (i % 2 == 0.0) ? 2 : 3;
+        }
+    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(m, 0),std::runtime_error);
+    for (std::size_t i = 0; i < f.size(); ++i)
+        {
+            f[i] =  3;
+        }
+    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(m, 0));
+}
+
 BOOST_AUTO_TEST_SUITE_END()

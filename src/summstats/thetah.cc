@@ -12,12 +12,27 @@ updateH(const Sequence::StateCounts& c, const std::int8_t refstate)
 {
     double H = 0.0;
     double nnm1 = static_cast<double>(c.n * (c.n - 1));
+    std::size_t has_missing = (c.counts.find(-1) != c.counts.end());
+    std::size_t num_non_missing_states = c.counts.size() - has_missing;
+    bool ref_seen = false;
     for (auto& x : c.counts)
         {
-            if (!(x.first < 0) && x.first != refstate)
+            if (!(x.first < 0))
                 {
-                    H += std::pow(x.second, 2.0);
+                    if (x.first != refstate)
+                        {
+                            H += std::pow(x.second, 2.0);
+                        }
+                    else
+                        {
+                            ref_seen = true;
+                        }
                 }
+        }
+    if (!ref_seen && num_non_missing_states > 1)
+        {
+            throw std::runtime_error(
+                "the site has more than one derived state");
         }
     H /= nnm1;
     return H;
