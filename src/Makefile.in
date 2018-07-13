@@ -150,7 +150,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
 	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
-	summstats/thetah.lo summstats/faywuh.lo \
+	summstats/thetah_thetal.lo summstats/faywuh.lo \
 	summstats/nvariablesites.lo summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -398,7 +398,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/thetapi.cc \
 	summstats/thetaw.cc \
 	summstats/tajd.cc \
-	summstats/thetah.cc \
+	summstats/thetah_thetal.cc \
 	summstats/faywuh.cc \
 	summstats/nvariablesites.cc \
 	summstats/auxillary.cc
@@ -548,7 +548,7 @@ summstats/thetaw.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/tajd.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
-summstats/thetah.lo: summstats/$(am__dirstamp) \
+summstats/thetah_thetal.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/faywuh.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
@@ -675,7 +675,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/faywuh.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/tajd.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetah.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetah_thetal.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetapi.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetaw.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@

@@ -53,7 +53,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	summstats/thetapi.cc \
 	summstats/thetaw.cc \
 	summstats/tajd.cc \
-	summstats/thetah.cc \
+	summstats/thetah_thetal.cc \
 	summstats/faywuh.cc \
 	summstats/nvariablesites.cc \
 	summstats/auxillary.cc
