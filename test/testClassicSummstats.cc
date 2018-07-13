@@ -20,12 +20,9 @@ struct dataset
     }
 };
 
-BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
-
-BOOST_AUTO_TEST_CASE(test_thetapi)
+static double
+manual_pi(const Sequence::VariantMatrix& m)
 {
-    auto pi = Sequence::thetapi(m);
-
     double manual = 0.0;
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -43,6 +40,16 @@ BOOST_AUTO_TEST_CASE(test_thetapi)
             manual
                 += static_cast<double>(ndiffs) / static_cast<double>(ncomps);
         }
+    return manual;
+}
+
+BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
+
+BOOST_AUTO_TEST_CASE(test_thetapi)
+{
+    auto pi = Sequence::thetapi(m);
+
+    auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
     // in same order.
     BOOST_CHECK_CLOSE(pi, manual, 1e-6);
