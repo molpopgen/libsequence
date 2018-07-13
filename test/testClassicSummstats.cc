@@ -129,6 +129,32 @@ BOOST_AUTO_TEST_CASE(test_total_num_mutations)
     BOOST_REQUIRE_EQUAL(tm, m.nsites + 1);
 }
 
+BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
+{
+    auto S2 = Sequence::nbiallelic_sites(m);
+    BOOST_REQUIRE_EQUAL(S2, m.nsites);
+    auto r = Sequence::get_RowView(m, m.nsites - 1);
+    // Add a third character state
+    r[2] = 2;
+    S2 = Sequence::nbiallelic_sites(m);
+    BOOST_REQUIRE_EQUAL(S2, m.nsites - 1);
+}
+
+BOOST_AUTO_TEST_CASE(test_count_alleles)
+{
+    auto S2 = Sequence::nbiallelic_sites(m);
+    auto ac = Sequence::allele_counts(m);
+    auto nb = 0;
+    for (auto i : ac)
+        {
+            if (i.first == 2)
+                {
+                    ++nb;
+                }
+        }
+    BOOST_REQUIRE_EQUAL(S2, nb);
+}
+
 BOOST_AUTO_TEST_CASE(test_thetaw)
 // The above two tests imply that
 // thetaw is correct.  Thus,

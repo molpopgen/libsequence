@@ -7,6 +7,7 @@
 namespace Sequence
 {
     std::uint32_t nvariable_sites(const VariantMatrix& m);
+    std::uint32_t nbiallelic_sites(const VariantMatrix& m);
     std::uint32_t total_number_of_mutations(const VariantMatrix& m);
 } // namespace Sequence
 

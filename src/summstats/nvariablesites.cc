@@ -23,6 +23,23 @@ namespace Sequence
     }
 
     std::uint32_t
+    nbiallelic_sites(const VariantMatrix& m)
+    {
+        std::uint32_t nv = 0;
+        for (std::size_t site = 0; site < m.nsites; ++site)
+            {
+                auto site_view = get_RowView(m, site);
+                StateCounts counts(site_view);
+                counts.counts.erase(-1);
+                if (counts.counts.size() == 2)
+                    {
+                        ++nv;
+                    }
+            }
+        return nv;
+    }
+
+    std::uint32_t
     total_number_of_mutations(const VariantMatrix& m)
     {
         std::uint32_t nv = 0;
