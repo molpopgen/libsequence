@@ -1,11 +1,12 @@
 //! \file testClassicSummstats.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
 
+#include <cmath>
+#include <algorithm>
+#include <iostream>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/classics.hpp>
 #include <boost/test/unit_test.hpp>
-#include <algorithm>
-#include <iostream>
 
 struct dataset
 {
@@ -46,6 +47,27 @@ manual_pi(const Sequence::VariantMatrix& m)
                 += static_cast<double>(ndiffs) / static_cast<double>(ncomps);
         }
     return manual;
+}
+
+static double
+manual_thetah(const Sequence::VariantMatrix& m, const std::int8_t refstate)
+{
+    double nnm1 = static_cast<double>(m.nsam * (m.nsam - 1));
+    double h = 0.0;
+    for (std::size_t i = 0; i < m.nsites; ++i)
+        {
+            auto r = Sequence::get_ConstRowView(m, i);
+            unsigned nnonref = 0;
+            for (auto ri : r)
+                {
+                    if (ri != refstate)
+                        {
+                            ++nnonref;
+                        }
+                }
+            h += std::pow(nnonref, 2.0);
+        }
+    return h / nnm1;
 }
 
 BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
@@ -122,6 +144,17 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
         }
     auto manual = S / d;
     BOOST_CHECK_CLOSE(w, manual, 1e-6);
+}
+
+BOOST_AUTO_TEST_CASE(test_thetah)
+// Simplest case
+{
+    auto h0 = Sequence::thetah(m, 0);
+    auto h1 = Sequence::thetah(m, 1);
+    auto m0 = manual_thetah(m, 0);
+    auto m1 = manual_thetah(m, 1);
+    BOOST_CHECK_CLOSE(h0, m0, 1e-6);
+    BOOST_CHECK_CLOSE(h1, m1, 1e-6);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
