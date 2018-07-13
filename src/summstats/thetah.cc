@@ -34,6 +34,11 @@ updateH(const Sequence::StateCounts& c, const std::int8_t refstate)
             throw std::runtime_error(
                 "the site has more than one derived state");
         }
+    if (!ref_seen) //The reference state must still be segregating
+                   // TODO: need unit test for this case
+        {
+            return 0.0;
+        }
     H /= nnm1;
     return H;
 }
