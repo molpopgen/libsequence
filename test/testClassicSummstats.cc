@@ -32,11 +32,17 @@ manual_pi(const Sequence::VariantMatrix& m)
                 {
                     for (std::size_t k = j + 1; k < m.nsam; ++k)
                         {
-                            if (r[j] != r[k])
-                                ++ndiffs;
-                            ++ncomps;
+                            if (r[j] >= 0 && r[k] >= 0)
+                                {
+                                    if (r[j] != r[k])
+                                        {
+                                            ++ndiffs;
+                                        }
+                                    ++ncomps;
+                                }
                         }
                 }
+            std::cout << "ncomps = " << ncomps << '\n';
             manual
                 += static_cast<double>(ndiffs) / static_cast<double>(ncomps);
         }
@@ -47,6 +53,25 @@ BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
+    auto pi = Sequence::thetapi(m);
+
+    auto manual = manual_pi(m);
+    // Cannot require equal b/c we aren't doing ops
+    // in same order.
+    BOOST_CHECK_CLOSE(pi, manual, 1e-6);
+}
+
+BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
+// If this test passes, it implies
+// that Sequence::StateCounter behaves
+// correctly w.r.to handling missing data.
+{
+    // Make a bunch of missing data, all w/
+    // different missing data encoding
+    for (int i = 1; i < static_cast<int>(m.nsites); i += 2)
+        {
+            m.data[i] = -i;
+        }
     auto pi = Sequence::thetapi(m);
 
     auto manual = manual_pi(m);
