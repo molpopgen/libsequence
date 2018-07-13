@@ -42,7 +42,6 @@ manual_pi(const Sequence::VariantMatrix& m)
                                 }
                         }
                 }
-            std::cout << "ncomps = " << ncomps << '\n';
             manual
                 += static_cast<double>(ndiffs) / static_cast<double>(ncomps);
         }
