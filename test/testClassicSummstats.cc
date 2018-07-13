@@ -1,4 +1,4 @@
-//! \file testClassicSummstats.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
+//! \file testClassicSummstats.cc @brief unit tests for pop gen summary statistics
 
 #include <cmath>
 #include <algorithm>
