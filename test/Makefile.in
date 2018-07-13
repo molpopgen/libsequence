@@ -123,7 +123,8 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 	AlignmentTest.cc fastqIO.cc fastqConstructors.cc \
 	SeqConversions.cc RedundancyCom95test.cc alphabets.cc \
 	polySiteVectorTest.cc PolyTableSliceTest.cc \
-	stateCounterTest.cc VariantMatrixTest.cc
+	stateCounterTest.cc VariantMatrixTest.cc \
+	testClassicSummstats.cc
 @BUNIT_TEST_PRESENT_TRUE@am_libseq_unit_tests_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	libseq_unit_tests.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	FastaConstructors.$(OBJEXT) \
@@ -149,7 +150,8 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 @BUNIT_TEST_PRESENT_TRUE@	polySiteVectorTest.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	stateCounterTest.$(OBJEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	VariantMatrixTest.$(OBJEXT)
+@BUNIT_TEST_PRESENT_TRUE@	VariantMatrixTest.$(OBJEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	testClassicSummstats.$(OBJEXT)
 libseq_unit_tests_OBJECTS = $(am_libseq_unit_tests_OBJECTS)
 libseq_unit_tests_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -573,7 +575,8 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@polySiteVectorTest.cc \
 @BUNIT_TEST_PRESENT_TRUE@PolyTableSliceTest.cc \
 @BUNIT_TEST_PRESENT_TRUE@stateCounterTest.cc \
-@BUNIT_TEST_PRESENT_TRUE@VariantMatrixTest.cc
+@BUNIT_TEST_PRESENT_TRUE@VariantMatrixTest.cc \
+@BUNIT_TEST_PRESENT_TRUE@testClassicSummstats.cc
 
 all: all-am
 
@@ -652,6 +655,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libseq_unit_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounterTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testClassicSummstats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testSimDataIO.Po@am__quote@
 
 .cc.o:

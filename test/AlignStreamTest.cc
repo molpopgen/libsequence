@@ -1,4 +1,4 @@
-//! \fsle AlignStreamTest.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
+//! \file AlignStreamTest.cc @brief unit tests for Sequence::ClustalW and Sequence::phylipData
 
 #include <Sequence/Fasta.hpp>
 #include <Sequence/Clustalw.hpp>
