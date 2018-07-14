@@ -19,7 +19,7 @@ namespace Sequence
 
     struct VariantMatrix
     /// \brief Matrix representation of variation data.
-    /// 
+    ///
     /// The data structure is a row-major matrix.
     /// Variants are represented by 8-bit integers.
     /// Negative values represent missing data,
@@ -51,6 +51,9 @@ namespace Sequence
         std::size_t nsam;
         /// Reserved value for masked data
         static const std::int8_t mask;
+        /// The value type of the data.
+        /// Helpful for generic programming
+        using value_type = std::int8_t;
 
         template <typename data_input, typename positions_input>
         VariantMatrix(data_input&& data_, positions_input&& positions_)
@@ -87,6 +90,6 @@ namespace Sequence
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
     };
-}
+} // namespace Sequence
 
 #endif
