@@ -58,6 +58,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	summstats/hprime.cc \
 	summstats/nvariablesites.cc \
 	summstats/allele_counts.cc \
+	summstats/haplotype_statistics.cc \
 	summstats/auxillary.cc
 
 
