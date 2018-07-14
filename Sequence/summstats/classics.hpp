@@ -17,6 +17,11 @@ namespace Sequence
 
     double faywuh(const VariantMatrix& m,
                   const std::vector<std::int8_t>& refstates);
+
+    std::vector<std::int32_t> difference_matrix(const VariantMatrix& m);
+    std::vector<std::int32_t> label_haplotypes(const VariantMatrix& m);
+    std::uint32_t number_of_haplotypes(const VariantMatrix& m);
+    double haplotype_diversity(const VariantMatrix& m);
 } // namespace Sequence
 
 #endif
