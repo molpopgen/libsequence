@@ -21,7 +21,8 @@ namespace Sequence
             /// Pointer to row data
             T data;
             /// Data type
-            using dtype = typename std::remove_pointer<T>::type;
+            using value_type = typename std::remove_pointer<T>::type;
+
             /// Number of elements in row.
             std::size_t row_size;
 
@@ -30,17 +31,17 @@ namespace Sequence
                 : data(data_), row_size(row_size_)
             {
             }
-            inline dtype& operator[](const std::size_t i)
+            inline value_type& operator[](const std::size_t i)
             /// Element access without range checking
             {
                 return data[i];
             }
-            inline const dtype& operator[](const std::size_t i) const
+            inline const value_type& operator[](const std::size_t i) const
             /// Element access without range checking
             {
                 return data[i];
             }
-            inline dtype&
+            inline value_type&
             at(const std::size_t i)
             /// Range-checked access
             {
@@ -50,7 +51,7 @@ namespace Sequence
                     }
                 return data[i];
             }
-            inline const dtype&
+            inline const value_type&
             at(const std::size_t i) const
             /// Range-checked access
             {
@@ -67,8 +68,8 @@ namespace Sequence
                 return row_size;
             }
 
-            using iterator = dtype*;
-            using const_iterator = const dtype*;
+            using iterator = value_type*;
+            using const_iterator = const value_type*;
             using reverse_iterator = std::reverse_iterator<iterator>;
             using const_reverse_iterator
                 = std::reverse_iterator<const_iterator>;
@@ -181,7 +182,7 @@ namespace Sequence
             /// Pointer to column data
             T data;
             /// data type
-            using dtype = typename std::remove_pointer<T>::type;
+            using value_type = typename std::remove_pointer<T>::type;
 
             /// data + col_end marks the end of the column data
             std::size_t col_end;
@@ -193,17 +194,17 @@ namespace Sequence
                 : data(data_), col_end(col_end_), stride(stride_)
             {
             }
-            inline dtype& operator[](const std::size_t i)
+            inline value_type& operator[](const std::size_t i)
             /// Element access without range checking.
             {
                 return data[i * stride];
             }
-            inline const dtype& operator[](const std::size_t i) const
+            inline const value_type& operator[](const std::size_t i) const
             /// Element access without range checking.
             {
                 return data[i * stride];
             }
-            inline dtype&
+            inline value_type&
             at(const std::size_t i)
             /// Range-checked access
             {
@@ -213,7 +214,7 @@ namespace Sequence
                     }
                 return data[i * stride];
             }
-            inline const dtype&
+            inline const value_type&
             at(const std::size_t i) const
             /// Range-checked access
             {
@@ -230,8 +231,8 @@ namespace Sequence
                 return col_end / stride;
             }
 
-            using iterator = col_view_iterator<dtype*>;
-            using const_iterator = col_view_iterator<const dtype*>;
+            using iterator = col_view_iterator<value_type*>;
+            using const_iterator = col_view_iterator<const value_type*>;
             using reverse_iterator = std::reverse_iterator<iterator>;
             using const_reverse_iterator
                 = std::reverse_iterator<const_iterator>;
@@ -347,7 +348,7 @@ namespace Sequence
                     }
             }
         };
-    }
-}
+    } // namespace internal
+} // namespace Sequence
 
 #endif
