@@ -1,11 +1,12 @@
 #include <vector>
 #include <utility>
 #include <cstdint>
+#include <Sequence/summstats/allele_counts.hpp>
 #include <Sequence/StateCounts.hpp>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 
-using count_type = std::vector<std::pair<std::int32_t, std::int32_t>>;
+using count_type = std::vector<Sequence::AlleleCounts>;
 
 namespace
 {
@@ -21,11 +22,11 @@ namespace
             {
                 if (c.first < 0)
                     {
-                        ++rv.second;
+                        ++rv.nmissing;
                     }
                 else if (!nonref || (nonref && c.first != counts.refstate))
                     {
-                        ++rv.first;
+                        ++rv.nstates;
                     }
             }
         return rv;

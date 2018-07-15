@@ -8,13 +8,18 @@
 
 namespace Sequence
 {
-    std::vector<std::pair<std::int32_t, std::int32_t>>
+	struct AlleleCounts
+	{
+		int nstates, nmissing;
+	};
+
+    std::vector<AlleleCounts>
     allele_counts(const VariantMatrix& m);
 
-    std::vector<std::pair<std::int32_t, std::int32_t>>
+    std::vector<AlleleCounts>
     non_reference_allele_counts(const VariantMatrix& m, const std::int8_t refstate);
 
-    std::vector<std::pair<std::int32_t, std::int32_t>>
+    std::vector<AlleleCounts>
     non_reference_allele_counts(const VariantMatrix& m, const std::vector<std::int8_t> & refstates);
 } // namespace Sequence
 #endif

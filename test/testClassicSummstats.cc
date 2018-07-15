@@ -147,7 +147,7 @@ BOOST_AUTO_TEST_CASE(test_count_alleles)
     auto nb = 0;
     for (auto i : ac)
         {
-            if (i.first == 2)
+            if (i.nstates == 2)
                 {
                     ++nb;
                 }
