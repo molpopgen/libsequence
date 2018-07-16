@@ -27,7 +27,7 @@ namespace Sequence
                         //and not equal, they are different
                         while (cib != ci.end())
                             {
-                                if (*cib >= 0 && *cib >= 0 && *cib != *cib)
+                                if (*cib >= 0 && *cjb >= 0 && *cib != *cjb)
                                     {
                                         ++ndiffs;
                                     }
@@ -75,7 +75,6 @@ namespace Sequence
                             }
                     }
             }
-
         return rv;
     }
 
@@ -88,8 +87,8 @@ namespace Sequence
                            [](decltype(labels[0]) x) { return x < 0; }),
             labels.end());
         std::sort(labels.begin(), labels.end());
-        std::unique(labels.begin(), labels.end());
-        return static_cast<std::uint32_t>(labels.size());
+        auto u = std::unique(labels.begin(), labels.end());
+        return static_cast<std::uint32_t>(std::distance(labels.begin(), u));
     }
 
     double

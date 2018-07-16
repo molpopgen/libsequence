@@ -203,4 +203,10 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
     BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(m, 0));
 }
 
+BOOST_AUTO_TEST_CASE(test_num_haplotypes)
+{
+    auto nh = Sequence::number_of_haplotypes(m);
+    BOOST_REQUIRE_EQUAL(nh, 5);
+}
+
 BOOST_AUTO_TEST_SUITE_END()
