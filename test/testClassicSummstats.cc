@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <vector>
 #include <iostream>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
@@ -207,6 +208,42 @@ BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 {
     auto nh = Sequence::number_of_haplotypes(m);
     BOOST_REQUIRE_EQUAL(nh, 5);
+}
+
+BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
+{
+    auto hd = Sequence::haplotype_diversity(m);
+
+    // We calculate haplotype diversity here
+    // in a brute-force manner:
+    // 1. Build a vector of all haplotypes.
+    // 2. Construct a vector of all unique haplotypes
+    // 3. Explicitly cound the number of occurrences
+    //    of each unique haplotype.
+    std::vector<std::vector<std::int8_t>> haps;
+    for (std::size_t i = 0; i < m.nsam; ++i)
+        {
+            auto col = Sequence::get_ConstColView(m, i);
+            haps.emplace_back(
+                std::vector<std::int8_t>(col.begin(), col.end()));
+        }
+    decltype(haps) uhaps;
+    for (auto& h : haps)
+        {
+            if (std::find(uhaps.begin(), uhaps.end(), h) == uhaps.end())
+                {
+                    uhaps.push_back(h);
+                }
+        }
+    double mhd = 0.0;
+    for (auto& uh : uhaps)
+        {
+            auto c = std::count(haps.begin(), haps.end(), uh);
+            mhd += static_cast<double>(c * (m.nsam - c));
+        }
+    mhd /= static_cast<double>(m.nsam * (m.nsam - 1));
+
+    BOOST_CHECK_CLOSE(hd, mhd, 1e-6);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
