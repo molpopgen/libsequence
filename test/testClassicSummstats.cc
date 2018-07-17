@@ -7,20 +7,9 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/classics.hpp>
+#include "VariantMatrixFixture.hpp"
 #include <boost/test/unit_test.hpp>
 
-struct dataset
-{
-    using data_type = decltype(Sequence::VariantMatrix::data);
-    using positions_type = decltype(Sequence::VariantMatrix::positions);
-    Sequence::VariantMatrix m;
-    dataset()
-        : m{ data_type{ 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0,
-                        1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
-             positions_type{ 0.1, 0.2, 0.3 } }
-    {
-    }
-};
 
 static double
 manual_pi(const Sequence::VariantMatrix& m)
