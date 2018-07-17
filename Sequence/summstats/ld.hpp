@@ -11,6 +11,7 @@ namespace Sequence
     {
         std::int8_t i, j;
         int n;
+        TwoLocusCounts(std::int8_t i_, std::int8_t j_, int n_);
     };
 
     std::vector<TwoLocusCounts>

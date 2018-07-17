@@ -7,6 +7,11 @@
 
 namespace Sequence
 {
+    TwoLocusCounts::TwoLocusCounts(std::int8_t i_, std::int8_t j_, int n_)
+        : i{ i_ }, j{ j_ }, n{ n_ }
+    {
+    }
+
     std::vector<TwoLocusCounts>
     two_locus_haplotype_counts(const VariantMatrix& m, std::size_t sitei,
                                const std::size_t sitej,
