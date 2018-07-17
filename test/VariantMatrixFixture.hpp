@@ -15,4 +15,12 @@ struct dataset
     }
 };
 
+struct emptydataset
+{
+    using data_type = decltype(Sequence::VariantMatrix::data);
+    using positions_type = decltype(Sequence::VariantMatrix::positions);
+    Sequence::VariantMatrix m;
+    emptydataset() : m{ data_type{}, positions_type{} } {}
+};
+
 #endif
