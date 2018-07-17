@@ -19,14 +19,23 @@ BOOST_AUTO_TEST_CASE(test_two_locus_haplotype_counts)
         {
             for (std::size_t j = i + 1; j < m.nsites; ++j)
                 {
+                    std::vector<std::pair<std::int8_t, std::int8_t>> haps;
                     auto hc
                         = Sequence::two_locus_haplotype_counts(m, i, j, true);
-                    results.push_back(hc.size());
+                    auto ri = Sequence::get_ConstRowView(m, i);
+                    auto rj = Sequence::get_ConstRowView(m, j);
+                    for (std::size_t k = 0; k < ri.size(); ++k)
+                        {
+                            haps.emplace_back(ri[k], rj[k]);
+                        }
+                    std::sort(haps.begin(), haps.end());
+                    auto end_of_unique_haps
+                        = std::unique(haps.begin(), haps.end());
+                    BOOST_REQUIRE_EQUAL(
+                        hc.size(), static_cast<std::size_t>(std::distance(
+                                       haps.begin(), end_of_unique_haps)));
                 }
         }
-    BOOST_REQUIRE_EQUAL(results[0], 4);
-    BOOST_REQUIRE_EQUAL(results[1], 4);
-    BOOST_REQUIRE_EQUAL(results[2], 3);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
