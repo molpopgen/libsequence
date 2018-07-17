@@ -22,7 +22,7 @@ namespace Sequence
         std::vector<TwoLocusCounts> rv;
         for (auto i = ri.begin(), j = rj.begin(); i < ri.end(); ++i, ++j)
             {
-                if (!skip_missing || ((*i < 0 || *j < 0) && !skip_missing))
+                if (!skip_missing || ((*i >= 0 || *j >= 0) && skip_missing))
                     {
                         auto exists
                             = std::find_if(rv.begin(), rv.end(),
