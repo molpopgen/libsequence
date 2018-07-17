@@ -47,6 +47,7 @@ polySiteVectorTest.cc \
 PolyTableSliceTest.cc \
 stateCounterTest.cc \
 VariantMatrixTest.cc \
-testClassicSummstats.cc
+testClassicSummstats.cc \
+testLD.cc
 
 endif #if BUNIT_TEST_PRESENT
