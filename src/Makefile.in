@@ -153,7 +153,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	summstats/thetah_thetal.lo summstats/faywuh.lo \
 	summstats/hprime.lo summstats/nvariablesites.lo \
 	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
-	summstats/ld.lo summstats/auxillary.lo
+	summstats/ld.lo summstats/rmin.lo summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -407,6 +407,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/allele_counts.cc \
 	summstats/haplotype_statistics.cc \
 	summstats/ld.cc \
+	summstats/rmin.cc \
 	summstats/auxillary.cc
 
 
@@ -568,6 +569,8 @@ summstats/haplotype_statistics.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/ld.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/rmin.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/auxillary.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 
@@ -692,6 +695,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/hprime.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/ld.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/rmin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/tajd.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetah_thetal.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetapi.Plo@am__quote@
