@@ -24,7 +24,7 @@ namespace Sequence
             }
         if (biallelic_site_indexes.size() < 2)
             {
-                return -1;
+                return 0;
             }
         bool flag = false;
         std::size_t x = 0;
