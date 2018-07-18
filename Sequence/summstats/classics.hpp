@@ -14,6 +14,8 @@ namespace Sequence
 {
     double tajd(const VariantMatrix&);
 
+    double hprime(const VariantMatrix& m, const std::int8_t refstate);
+
     double faywuh(const VariantMatrix& m, const std::int8_t refstate);
 
     double faywuh(const VariantMatrix& m,
