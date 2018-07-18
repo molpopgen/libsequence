@@ -6,6 +6,7 @@
 #include "thetapi.hpp"
 #include "thetaw.hpp"
 #include "thetah.hpp"
+#include "thetal.hpp"
 #include "nvariablesites.hpp"
 #include "allele_counts.hpp"
 

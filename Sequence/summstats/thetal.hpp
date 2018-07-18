@@ -1,5 +1,5 @@
-#ifndef SEQUENCE_SUMMSTATS_THETAH_HPP__
-#define SEQUENCE_SUMMSTATS_THETAH_HPP__
+#ifndef SEQUENCE_SUMMSTATS_THETAL_HPP__
+#define SEQUENCE_SUMMSTATS_THETAL_HPP__
 
 #include <vector>
 #include <Sequence/VariantMatrix.hpp>
