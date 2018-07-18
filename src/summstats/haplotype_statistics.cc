@@ -78,9 +78,13 @@ namespace Sequence
         return rv;
     }
 
-    std::uint32_t
+    std::int32_t
     number_of_haplotypes(const VariantMatrix& m)
     {
+        if (m.data.empty() || !m.nsam)
+            {
+                return -1;
+            }
         auto labels = label_haplotypes(m);
         labels.erase(
             std::remove_if(labels.begin(), labels.end(),
@@ -88,12 +92,16 @@ namespace Sequence
             labels.end());
         std::sort(labels.begin(), labels.end());
         auto u = std::unique(labels.begin(), labels.end());
-        return static_cast<std::uint32_t>(std::distance(labels.begin(), u));
+        return static_cast<std::int32_t>(std::distance(labels.begin(), u));
     }
 
     double
     haplotype_diversity(const VariantMatrix& m)
     {
+        if (m.data.empty() || !m.nsam)
+            {
+                return std::numeric_limits<double>::quiet_NaN();
+            }
         auto labels = label_haplotypes(m);
         auto nmissing
             = std::count_if(labels.begin(), labels.end(),

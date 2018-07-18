@@ -23,7 +23,7 @@ namespace Sequence
 
     std::vector<std::int32_t> difference_matrix(const VariantMatrix& m);
     std::vector<std::int32_t> label_haplotypes(const VariantMatrix& m);
-    std::uint32_t number_of_haplotypes(const VariantMatrix& m);
+    std::int32_t number_of_haplotypes(const VariantMatrix& m);
     double haplotype_diversity(const VariantMatrix& m);
     std::int32_t rmin(const VariantMatrix& m);
 } // namespace Sequence
