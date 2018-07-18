@@ -69,18 +69,46 @@ BOOST_AUTO_TEST_CASE(test_tajd)
 
 BOOST_AUTO_TEST_CASE(test_faywuh)
 {
-    auto fwh = Sequence::faywuh(empty,0);
+    auto fwh = Sequence::faywuh(empty, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(fwh), true);
-    fwh = Sequence::faywuh(invariant,0);
+    fwh = Sequence::faywuh(invariant, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(fwh), true);
 }
 
 BOOST_AUTO_TEST_CASE(test_hprime)
 {
-    auto hp = Sequence::hprime(empty,0);
+    auto hp = Sequence::hprime(empty, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(hp), true);
-    hp = Sequence::hprime(invariant,0);
+    hp = Sequence::hprime(invariant, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(hp), true);
+}
+
+// Tests of haplotype statistics are more complex.
+// It is not as obvious (to me) what to do for an empty
+// matrix.
+
+BOOST_AUTO_TEST_CASE(test_num_haplotypes)
+{
+    auto nh = Sequence::number_of_haplotypes(empty);
+    BOOST_REQUIRE_EQUAL(nh, -1);
+    nh = Sequence::number_of_haplotypes(invariant);
+    BOOST_REQUIRE_EQUAL(nh, 1);
+}
+
+BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
+{
+    auto hd = Sequence::haplotype_diversity(empty);
+    BOOST_REQUIRE_EQUAL(std::isnan(hd), true);
+    hd = Sequence::haplotype_diversity(invariant);
+    BOOST_REQUIRE_EQUAL(hd, 0.0);
+}
+
+BOOST_AUTO_TEST_CASE(test_rmin)
+{
+    auto rm = Sequence::rmin(empty);
+    BOOST_CHECK_EQUAL(rm, -1);
+    rm = Sequence::rmin(invariant);
+    BOOST_CHECK_EQUAL(rm, 0);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
