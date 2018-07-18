@@ -65,7 +65,8 @@ namespace Sequence
               positions(std::forward<positions_input>(positions_)),
               nsites(positions.size()), nsam(data.size() / positions.size())
         {
-            if (data.size() % positions.size() != 0.0)
+            if ((!data.empty() && !positions.empty())
+                && data.size() % positions.size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }
