@@ -6,8 +6,6 @@
 #include <numeric> //for std::iota
 #include <iterator>
 
-BOOST_AUTO_TEST_SUITE(VariantMatrixTest)
-
 struct vmatrix_fixture
 {
     std::vector<std::int8_t> input_data;
@@ -53,7 +51,9 @@ struct vmatrix_fixture
     }
 };
 
-BOOST_FIXTURE_TEST_CASE(test_construction, vmatrix_fixture)
+BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_fixture)
+
+BOOST_AUTO_TEST_CASE(test_construction)
 {
     Sequence::VariantMatrix m(std::vector<std::int8_t>(100, 1),
                               std::vector<double>(5, 0.0));
@@ -61,13 +61,13 @@ BOOST_FIXTURE_TEST_CASE(test_construction, vmatrix_fixture)
     BOOST_REQUIRE_EQUAL(m.nsam, 20);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_range_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_range_exceptions)
 {
     BOOST_REQUIRE_THROW(m.at(m.nsites + 1, 0), std::out_of_range);
     BOOST_REQUIRE_THROW(m.at(0, m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_iteration)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
         {
@@ -81,21 +81,21 @@ BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_bad_row_swap, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_bad_row_swap)
 {
     auto a = Sequence::get_RowView(m, 0);
     auto b = Sequence::get_RowView(m2, 0);
     BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_bad_column_swap, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_bad_column_swap)
 {
     auto a = Sequence::get_ColView(m, 0);
     auto b = Sequence::get_ColView(m2, 0);
     BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_views)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -138,7 +138,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_const_row_views)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -182,7 +182,7 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_view_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_view_exceptions)
 {
     BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
                         std::exception);
@@ -194,7 +194,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_view_exceptions, vmatrix_fixture)
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_const_row_view_exceptions)
 {
     BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
                         std::exception);
@@ -206,7 +206,7 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_view_iterators, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_view_iterators)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -217,7 +217,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_view_iterators, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_column_views)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
         {
@@ -259,7 +259,7 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(tesl_col_view_iterator_increment, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(tesl_col_view_iterator_increment)
 {
     auto x = Sequence::get_ConstColView(m, 0);
     auto b = x.begin();
@@ -272,7 +272,7 @@ BOOST_FIXTURE_TEST_CASE(tesl_col_view_iterator_increment, vmatrix_fixture)
     BOOST_REQUIRE_EQUAL(num_increments, 3);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_column_view_invalid_compare)
 {
     auto c0 = Sequence::get_ConstColView(m, 0);
     auto c1 = Sequence::get_ConstColView(m, 1);
@@ -284,7 +284,7 @@ BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
 // The remaining tests apply STL algorithms to column iterators,
 // which is a good stress test.  We've already done count above.
 
-BOOST_FIXTURE_TEST_CASE(test_accumulate, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_accumulate)
 {
     auto c = Sequence::get_ConstColView(m, 0);
     int sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
