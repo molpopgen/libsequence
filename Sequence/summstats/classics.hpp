@@ -151,6 +151,11 @@ namespace Sequence
      *
      * This returns the number of unique columns in \a m.
      *
+     * \note The value -1 is returned if \a m.nsam == 0.  If
+     * \a m contains data, but all sites are invariant, the 
+     * function returns 1.  See testClassicSummstatsEmptyVariantMatrix.cc
+     * for examples.
+     *
      * Include via Sequence/summstats.hpp or Sequence/summstats/classics.hpp
      *
      * See \cite Depaulis1998-ol for details.
@@ -166,13 +171,13 @@ namespace Sequence
      * The "haplotype heterozygosity" is calculated by counting
      * haplotype labels (see label_haplotypes).
      *
+     * \note The value nan is returned if \a m.nsam == 0.  If
+     * \a m contains data, but all sites are invariant, the 
+     * function returns 0.0.  See testClassicSummstatsEmptyVariantMatrix.cc
+     * for examples.
+     *
      * Included via Sequence/summstats.hpp or 
      * Sequence/summstats/classics.hpp
-     *
-     * \note The value -1 is returned if \a m.nsam == 0.  If
-     * \a m contains data, but all sites are invariant, the 
-     * function returns 1.  See testClassicSummstatsEmptyVariantMatrix.cc
-     * for examples.
      *
      * See \cite Depaulis1998-ol for details.
      *
