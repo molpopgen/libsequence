@@ -1,6 +1,6 @@
 check_PROGRAMS= baseComp valid_dna translateTest \
 	slidingWindow slidingWindow2 PolyTableIterators \
-	critical_values ufs \
+	ufs \
 	msstats polySiteVector_test
 
 baseComp_SOURCES=baseComp.cc
@@ -9,7 +9,6 @@ translateTest_SOURCES=translateTest.cc
 slidingWindow_SOURCES=slidingWindow.cc
 slidingWindow2_SOURCES=slidingWindow2.cc
 PolyTableIterators_SOURCES=PolyTableIterators.cc
-critical_values_SOURCES=critical_values.cc
 ufs_SOURCES=ufs.cc
 msstats_SOURCES=msstats.cc
 polySiteVector_test_SOURCES=polySiteVector_test.cc

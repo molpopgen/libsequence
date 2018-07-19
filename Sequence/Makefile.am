@@ -52,7 +52,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	stateCounter.hpp\
 	shortestPath.hpp\
 	descriptiveStats.hpp\
-	Crit.hpp\
 	HKA.hpp\
 	typedefs.hpp \
 	SummStats.hpp \
