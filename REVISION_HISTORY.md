@@ -30,6 +30,12 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.4
+
+* Summary statistics can now be calculated from a VariantMatrix.
+  [PR33](https://github.com/molpopgen/libsequence/pull/33)
+* More feature deprecation.  See [Issue 21](https://github.com/molpopgen/libsequence/issues/21).
+
 ## libsequence 1.9.3
 
 * Refactor unit tests to be much faster to compile
