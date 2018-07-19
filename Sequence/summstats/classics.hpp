@@ -16,6 +16,9 @@ namespace Sequence
 
     double hprime(const VariantMatrix& m, const std::int8_t refstate);
 
+    double hprime(const VariantMatrix& m,
+                  const std::vector<std::int8_t>& refstates);
+
     double faywuh(const VariantMatrix& m, const std::int8_t refstate);
 
     double faywuh(const VariantMatrix& m,

@@ -6,18 +6,17 @@
 #include <Sequence/summstats/nvariablesites.hpp>
 #include <Sequence/summstats/auxillary.hpp>
 
-namespace Sequence
+namespace
 {
     double
-    hprime(const VariantMatrix &m, const std::int8_t refstate)
+    hprime_common(const Sequence::VariantMatrix &m, const double tp,
+                  const double tl)
     {
-        auto tp = thetapi(m);
-        auto tl = thetal(m, refstate);
+        using namespace Sequence;
         if (tp == 0.0)
             {
                 return std::numeric_limits<double>::quiet_NaN();
             }
-
         auto a = summstats_aux::a_sub_n(static_cast<std::uint32_t>(m.nsam));
         auto b = summstats_aux::b_sub_n(static_cast<std::uint32_t>(m.nsam));
         auto b1
@@ -42,5 +41,24 @@ namespace Sequence
                  / (2.0 * std::pow((n - 1.0), 2.0)))
                     * tsq;
         return (tp - tl) / std::pow(vThetal + vPi - 2.0 * cov, 0.5);
+    }
+} // namespace
+
+namespace Sequence
+{
+    double
+    hprime(const VariantMatrix &m, const std::int8_t refstate)
+    {
+        auto tp = thetapi(m);
+        auto tl = thetal(m, refstate);
+        return hprime_common(m, tp, tl);
+    }
+
+    double
+    hprime(const VariantMatrix &m, const std::vector<std::int8_t> &refstates)
+    {
+        auto tp = thetapi(m);
+        auto tl = thetal(m, refstates);
+        return hprime_common(m, tp, tl);
     }
 } // namespace Sequence
