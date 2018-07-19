@@ -15,7 +15,8 @@ static_assert(sizeof(std::int8_t) == sizeof(char),
 namespace Sequence
 {
     /// \defgroup variantmatrix Variant Matrix
-    /// \brief Types and functions related to manipulation of variation data
+    /// \brief Representation and manipulation of variation data.
+    /// \ingroup popgen
 
     struct VariantMatrix
     /// \brief Matrix representation of variation data.

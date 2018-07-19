@@ -5,6 +5,7 @@
 
 /*!
   \defgroup popgenanalysis Analysis of molecular population genetic data
+  \brief Summary statistics and other analysis of Sequence::VariantMatrix
   \ingroup popgen
 */
 
