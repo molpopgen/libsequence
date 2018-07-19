@@ -5,7 +5,7 @@ check_PROGRAMS=libseq_unit_tests
 TESTS=$(check_PROGRAMS)
 
 AM_CXXFLAGS=-g
-AM_LDFLAGS=-L../src/.libs -static
+AM_LDFLAGS=-L../src/.libs -Wl,-rpath,../src/.libs
 AM_LIBS=-lsequence
 
 #if DEBUG
@@ -46,6 +46,9 @@ alphabets.cc \
 polySiteVectorTest.cc \
 PolyTableSliceTest.cc \
 stateCounterTest.cc \
-VariantMatrixTest.cc
+VariantMatrixTest.cc \
+testClassicSummstats.cc \
+testClassicSummstatsEmptyVariantMatrix.cc \
+testLD.cc
 
 endif #if BUNIT_TEST_PRESENT

@@ -40,10 +40,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/PolySNPimpl.hpp>
 #include <tbb/blocked_range.h>
 #include <tbb/parallel_reduce.h>
-/*!
-  \defgroup popgenanalysis Analysis of molecular population genetic data
-  \ingroup popgen
-*/
 
 using std::string;
 using namespace Sequence::Recombination;

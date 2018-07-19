@@ -15,11 +15,12 @@ static_assert(sizeof(std::int8_t) == sizeof(char),
 namespace Sequence
 {
     /// \defgroup variantmatrix Variant Matrix
-    /// \brief Types and functions related to manipulation of variation data
+    /// \brief Representation and manipulation of variation data.
+    /// \ingroup popgen
 
     struct VariantMatrix
     /// \brief Matrix representation of variation data.
-    /// 
+    ///
     /// The data structure is a row-major matrix.
     /// Variants are represented by 8-bit integers.
     /// Negative values represent missing data,
@@ -51,6 +52,9 @@ namespace Sequence
         std::size_t nsam;
         /// Reserved value for masked data
         static const std::int8_t mask;
+        /// The value type of the data.
+        /// Helpful for generic programming
+        using value_type = std::int8_t;
 
         template <typename data_input, typename positions_input>
         VariantMatrix(data_input&& data_, positions_input&& positions_)
@@ -62,7 +66,8 @@ namespace Sequence
               positions(std::forward<positions_input>(positions_)),
               nsites(positions.size()), nsam(data.size() / positions.size())
         {
-            if (data.size() % positions.size() != 0.0)
+            if ((!data.empty() && !positions.empty())
+                && data.size() % positions.size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }
@@ -87,6 +92,6 @@ namespace Sequence
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
     };
-}
+} // namespace Sequence
 
 #endif
