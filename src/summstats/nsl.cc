@@ -14,7 +14,8 @@ namespace
     {
         std::int64_t left = static_cast<std::int64_t>(core) - 1;
         std::size_t left_index;
-        do
+
+        while(left>=0)
             {
                 left_index = static_cast<std::size_t>(left);
                 if (sample_i[left_index] >= 0 && sample_j[left_index] >= 0
@@ -22,8 +23,8 @@ namespace
                     {
                         break;
                     }
+                --left;
             }
-        while (--left >= 0);
         return left;
     }
 
@@ -34,7 +35,7 @@ namespace
     {
         std::int64_t right = static_cast<std::int64_t>(core) + 1;
         std::size_t right_index;
-        do
+        while(right<nsites)
             {
                 right_index = static_cast<std::size_t>(right);
                 if (sample_i[right_index] >= 0 && sample_j[right_index] >= 0
@@ -42,8 +43,8 @@ namespace
                     {
                         break;
                     }
+                ++right;
             }
-        while (++right < nsites);
         return right;
     }
 
