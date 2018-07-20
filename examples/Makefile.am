@@ -1,8 +1,10 @@
-check_PROGRAMS= baseComp valid_dna translateTest \
+check_PROGRAMS= ms_to_VariantMatrix \
+	baseComp valid_dna translateTest \
 	slidingWindow slidingWindow2 PolyTableIterators \
 	ufs \
 	msstats polySiteVector_test
 
+ms_to_VariantMatrix_SOURCES=ms_to_VariantMatrix.cc
 baseComp_SOURCES=baseComp.cc
 valid_dna_SOURCES=valid_dna.cc
 translateTest_SOURCES=translateTest.cc

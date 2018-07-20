@@ -61,6 +61,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	summstats/haplotype_statistics.cc \
 	summstats/ld.cc \
 	summstats/rmin.cc \
+	summstats/nsl.cc \
 	summstats/auxillary.cc
 
 
