@@ -15,7 +15,7 @@ namespace
         std::int64_t left = static_cast<std::int64_t>(core) - 1;
         std::size_t left_index;
 
-        while(left>=0)
+        while (left >= 0)
             {
                 left_index = static_cast<std::size_t>(left);
                 if (sample_i[left_index] >= 0 && sample_j[left_index] >= 0
@@ -35,7 +35,7 @@ namespace
     {
         std::int64_t right = static_cast<std::int64_t>(core) + 1;
         std::size_t right_index;
-        while(right<nsites)
+        while (right < nsites)
             {
                 right_index = static_cast<std::size_t>(right);
                 if (sample_i[right_index] >= 0 && sample_j[right_index] >= 0
@@ -71,9 +71,21 @@ namespace
 
 namespace Sequence
 {
-    nSL
+    nSLiHS
     nsl(const VariantMatrix& m, const std::size_t core,
         const std::int8_t refstate)
+    /*! \brief nSL and iHS statistics
+     * \param m A VariantMatrix
+     * \param core The index of the core site
+     * \param refstate The value of the reference/ancestral allelic state
+     *
+     * \return an nSLiHS object
+     * \ingroup popgenanalysis
+     *
+     * See nSL_from_ms.cc for example
+     *
+     * See \cite Ferrer-Admetlla2014-wa for details.
+     */
     {
         auto core_view = get_ConstRowView(m, core);
         // Keep track of distances from core site
@@ -112,7 +124,7 @@ namespace Sequence
                           [refstate](const std::int8_t i) {
                               return i >= 0 && i != refstate;
                           }));
-        return nSL{ std::log(nSL_num) - std::log(nSL_den),
-                    std::log(iHS_num) - std::log(iHS_den), nonrefcount };
+        return nSLiHS{ std::log(nSL_num) - std::log(nSL_den),
+                       std::log(iHS_num) - std::log(iHS_den), nonrefcount };
     }
 } // namespace Sequence

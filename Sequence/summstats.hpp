@@ -13,5 +13,6 @@
 */
 
 #include "summstats/classics.hpp"
+#include "summstats/nsl.hpp"
 
 #endif
