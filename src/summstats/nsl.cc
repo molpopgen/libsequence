@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/summstats/nsl.hpp>
 
 namespace
 {
@@ -63,15 +64,6 @@ namespace
             }
     }
 } // namespace
-
-struct nSL
-{
-    double nsl;
-    double ihs;
-    /// Count of non-reference,
-    /// non-missing allele.
-    std::int32_t core_count;
-};
 
 namespace Sequence
 {
