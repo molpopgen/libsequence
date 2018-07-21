@@ -1,4 +1,4 @@
-/*! \include nsl_from_ms.cc */
+/*! \include nSL_from_ms.cc */
 #include <cmath>
 #include <iostream>
 #include <Sequence/VariantMatrix.hpp>

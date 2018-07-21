@@ -6,6 +6,7 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/nsl.hpp>
 
+/// \example nSL_from_ms.cc
 namespace
 {
     std::int64_t
