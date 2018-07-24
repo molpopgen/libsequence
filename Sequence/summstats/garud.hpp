@@ -1,6 +1,8 @@
 #ifndef SEQUENCE_SUMMSTATS_GARUD_HPP
 #define SEQUENCE_SUMMSTATS_GARUD_HPP
 
+#include <Sequence/VariantMatrix.hpp>
+
 namespace Sequence
 {
   struct GarudStats
@@ -14,6 +16,8 @@ namespace Sequence
     GarudStats();
     GarudStats(const double, const double, const double);
   };
+
+  GarudStats garud_statistics(const VariantMatrix & m);
 }
 
 #endif
