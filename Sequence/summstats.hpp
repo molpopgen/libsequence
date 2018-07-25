@@ -12,6 +12,7 @@
  * 
 */
 
+#include "summstats/generic.hpp"
 #include "summstats/classics.hpp"
 #include "summstats/nsl.hpp"
 #include "summstats/garud.hpp"

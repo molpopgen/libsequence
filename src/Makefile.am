@@ -63,6 +63,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	summstats/rmin.cc \
 	summstats/nsl.cc \
 	summstats/garud.cc \
+	summstats/generic.cc \
 	summstats/auxillary.cc
 
 
