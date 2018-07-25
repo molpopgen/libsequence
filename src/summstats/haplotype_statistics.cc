@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include <Sequence/summstats/util.hpp>
+#include <Sequence/summstats/generic.hpp>
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 
@@ -103,26 +104,7 @@ namespace Sequence
                 return std::numeric_limits<double>::quiet_NaN();
             }
         auto labels = label_haplotypes(m);
-        auto nmissing
-            = std::count_if(labels.begin(), labels.end(),
-                            [](decltype(labels[0]) x) { return x < 0; });
-        auto nsam = m.nsam - static_cast<decltype(m.nsam)>(nmissing);
-        labels.erase(
-            std::remove_if(labels.begin(), labels.end(),
-                           [](decltype(labels[0]) x) { return x < 0; }),
-            labels.end());
-        std::unordered_map<int, int> label_counts;
-        for (auto l : labels)
-            {
-                label_counts[l]++;
-            }
-        double hd = 0.0;
-        for (auto&& c : label_counts)
-            {
-                hd += static_cast<double>(c.second * (c.second - 1));
-            }
-        hd /= static_cast<double>(nsam * (nsam - 1));
-        return 1.0 - hd;
+        return diversity_from_counts(labels, m.nsam);
     }
 
 } // namespace Sequence
