@@ -104,7 +104,20 @@ namespace Sequence
                 return std::numeric_limits<double>::quiet_NaN();
             }
         auto labels = label_haplotypes(m);
-        return diversity_from_counts(labels, m.nsam);
+        auto nmissing
+            = std::count_if(labels.begin(), labels.end(),
+                            [](decltype(labels[0]) x) { return x < 0; });
+        auto nsam_adjusted = m.nsam - static_cast<decltype(m.nsam)>(nmissing);
+        labels.erase(
+            std::remove_if(labels.begin(), labels.end(),
+                           [](decltype(labels[0]) x) { return x < 0; }),
+            labels.end());
+        std::unordered_map<std::int32_t, std::int32_t> label_counts;
+        for (auto l : labels)
+            {
+                label_counts[l]++;
+            }
+        return diversity_from_counts(label_counts, nsam_adjusted);
     }
 
 } // namespace Sequence
