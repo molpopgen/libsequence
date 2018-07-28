@@ -128,4 +128,13 @@ namespace Sequence
         return nSLiHS{ std::log(nSL_num) - std::log(nSL_den),
                        std::log(iHS_num) - std::log(iHS_den), nonrefcount };
     }
+
+    nSLiHS
+    nslx(const VariantMatrix& m, const std::size_t core,
+        const std::int8_t refstate, const int x)
+	{
+		//Need to get indexes of all x-tons.
+		//Then, if two seqs differ at an x-ton,
+		//the stats get updated.
+	}
 } // namespace Sequence
