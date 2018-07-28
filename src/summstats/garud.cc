@@ -55,7 +55,7 @@ namespace Sequence
             counts.begin(), counts.end());
         std::sort(vcounts.begin(), vcounts.end(),
                   [](decltype(vcounts[0])& a, decltype(vcounts[0])& b) {
-                      return a.second < b.second;
+                      return a.second > b.second;
                   });
         double nsam
             = static_cast<double>(m.nsam) - static_cast<double>(nmissing);
