@@ -49,6 +49,7 @@ stateCounterTest.cc \
 VariantMatrixTest.cc \
 testClassicSummstats.cc \
 testClassicSummstatsEmptyVariantMatrix.cc \
-testLD.cc
+testLD.cc \
+testGarudStatistics.cc
 
 endif #if BUNIT_TEST_PRESENT
