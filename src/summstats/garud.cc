@@ -54,7 +54,8 @@ namespace Sequence
         std::vector<std::pair<std::int32_t, std::int32_t>> vcounts(
             counts.begin(), counts.end());
         std::sort(vcounts.begin(), vcounts.end(),
-                  [](decltype(vcounts[0])& a, decltype(vcounts[0])& b) {
+                  [](const std::pair<std::int32_t, std::int32_t>& a,
+                     const std::pair<std::int32_t, std::int32_t>& b) {
                       return a.second > b.second;
                   });
         double nsam
