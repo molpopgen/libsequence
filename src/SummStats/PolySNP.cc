@@ -1060,8 +1060,6 @@ namespace Sequence
       allow missing data to result in 2 sequences being considered
       different (as they would be if you
       simply used the std::string comparison operators == or !=)
-
-          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
@@ -1852,8 +1850,6 @@ namespace Sequence
       If there is an outgroup, it is based on the genotype of derived alleles
       at both
       sites.
-
-          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
