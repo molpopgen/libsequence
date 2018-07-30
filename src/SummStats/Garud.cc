@@ -4,8 +4,6 @@
 #include <cmath>
 #include <numeric>
 #include <Sequence/SummStats/Garud.hpp>
-#include <tbb/parallel_for.h>
-#include <tbb/parallel_reduce.h>
 
 using namespace std;
 
@@ -26,32 +24,21 @@ namespace Sequence
             return GarudStats();
         set<string> uhaps(d.begin(), d.end());
         vector<string> vuhaps(uhaps.size());
-        vector<double> hapcounts(uhaps.size());
         std::move(uhaps.begin(), uhaps.end(), vuhaps.begin());
-        tbb::parallel_for(
-            tbb::blocked_range<std::size_t>(0, uhaps.size()),
-            [&d, &vuhaps,
-             &hapcounts](const tbb::blocked_range<std::size_t> &r) {
-                for (auto i = r.begin(); i < r.end(); ++i)
-                    {
-                        hapcounts[i] = static_cast<double>(
-                            std::count(d.begin(), d.end(), vuhaps[i]));
-                    }
-            });
+        vector<double> hapcounts;
+		hapcounts.reserve(uhaps.size());
+		for(auto & uh : uhaps)
+		{
+			hapcounts.push_back(static_cast<double>(std::count(d.begin(),d.end(),uh)));
+		}
         const double denom = static_cast<double>(d.size() * (d.size() - 1));
-        double H1 = tbb::parallel_reduce(
-            tbb::blocked_range<double *>(hapcounts.data(),
-                                         hapcounts.data() + hapcounts.size()),
-            0.,
-            [denom](const tbb::blocked_range<double *> &r,
-                    double value) -> double {
-                return std::accumulate(r.begin(), r.end(), value,
-                                       [denom](double s, double c) {
-                                           return s + c * (c - 1.) / denom;
-                                       });
-            },
-            std::plus<double>());
-        // GarudStats G;
+        double H1 = 0.0;
+		for(auto c : hapcounts)
+		{
+			H1 += c*(c-1.0);
+		}
+		H1 /= denom;
+        
         sort(hapcounts.begin(), hapcounts.end(),
              std::bind(greater<double>(), std::placeholders::_1,
                        std::placeholders::_2));
