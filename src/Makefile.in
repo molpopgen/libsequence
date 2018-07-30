@@ -414,21 +414,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/generic.cc \
 	summstats/auxillary.cc
 
-
-#if DEBUG
-#AM_CXXFLAGS+=-g
-#else
-#AM_CXXFLAGS+=-DNDEBUG
-#endif
-#
-#if PROFILING
-#PROFILE= -pg
-#else
-#PROFILE=
-#endif
-
-#Link to Intel's TBB runtime library
-AM_LDFLAGS = -version-info 20:0:0 -ltbb
+AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth
 all: all-am
 
@@ -972,6 +958,18 @@ uninstall-am: uninstall-binPROGRAMS uninstall-libLTLIBRARIES
 
 .PRECIOUS: Makefile
 
+
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

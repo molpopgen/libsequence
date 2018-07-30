@@ -83,5 +83,3 @@ AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wcon
 #PROFILE=
 #endif
 
-#Link to Intel's TBB runtime library
-AM_LDFLAGS+=-ltbb
