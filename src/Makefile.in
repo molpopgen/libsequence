@@ -146,7 +146,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
 	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
-	threading.lo variant_matrix/VariantMatrix.lo \
+	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
 	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
@@ -393,7 +393,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
@@ -670,7 +669,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threading.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
