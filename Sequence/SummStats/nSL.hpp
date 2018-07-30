@@ -30,27 +30,5 @@ namespace Sequence
     nSL(const std::size_t &core, const SimData &d,
         const std::unordered_map<double, double> &gmap
         = std::unordered_map<double, double>())__attribute__ ((deprecated));
-
-    /*!
-     * Threaded implementation of the nSL statistic. See \ref threads.
-     * \param d A Sequence::SimData
-     * \param gmap A map relating positions in @a d to genetic map location
-     * \ingroup popgenanalysis
-     */
-    std::vector<std::tuple<double, double, std::uint32_t>>
-    nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap
-                            = std::unordered_map<double, double>())__attribute__ ((deprecated));
-
-    /*!
-     * Threaded implementation of the nSL statistic. See \ref threads.
-     * \param d A Sequence::SimData
-     * \param core_snps The core snps to analyze
-     * \param gmap A map relating positions in @a d to genetic map location
-     * \ingroup popgenanalysis
-     */
-    std::vector<std::tuple<double, double, std::uint32_t>>
-    nSL_t(const SimData &d, const std::vector<std::size_t> &core_snps,
-          const std::unordered_map<double, double> &gmap
-          = std::unordered_map<double, double>())__attribute__ ((deprecated));
 }
 #endif
