@@ -45,7 +45,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
@@ -83,5 +82,3 @@ AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wcon
 #PROFILE=
 #endif
 
-#Link to Intel's TBB runtime library
-AM_LDFLAGS+=-ltbb

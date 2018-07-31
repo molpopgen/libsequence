@@ -146,7 +146,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
 	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
-	threading.lo variant_matrix/VariantMatrix.lo \
+	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
 	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
@@ -393,7 +393,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/StateCounts.cc \
@@ -414,21 +413,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/generic.cc \
 	summstats/auxillary.cc
 
-
-#if DEBUG
-#AM_CXXFLAGS+=-g
-#else
-#AM_CXXFLAGS+=-DNDEBUG
-#endif
-#
-#if PROFILING
-#PROFILE= -pg
-#else
-#PROFILE=
-#endif
-
-#Link to Intel's TBB runtime library
-AM_LDFLAGS = -version-info 20:0:0 -ltbb
+AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth
 all: all-am
 
@@ -684,7 +669,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threading.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
@@ -972,6 +956,18 @@ uninstall-am: uninstall-binPROGRAMS uninstall-libLTLIBRARIES
 
 .PRECIOUS: Makefile
 
+
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

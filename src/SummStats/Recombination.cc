@@ -29,8 +29,6 @@
 #include <Sequence/Recombination.hpp>
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqProperties.hpp>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_for.h>
 
 using std::pow;
 using std::vector;
@@ -326,7 +324,7 @@ namespace Sequence
                 esk = sumpd + b1 / n + b2 / (n * n) + b3 / (n * n * n);
                 return (2. * esk);
             }
-        }
+        } // namespace
         double
         HudsonsC(const Sequence::PolyTable *data, const bool &haveOutgroup,
                  const unsigned &outgroup)
@@ -351,26 +349,6 @@ namespace Sequence
             return (chatsub(totsam, sksq, sumhi, sumhisq));
         }
 
-        struct LDtask
-        {
-            using return_type = std::vector<PairwiseLDstats>;
-            return_type values;
-            LDtask() : values(return_type()) {}
-            inline void
-            operator()(const PolyTable *data, const unsigned i,
-                       const bool haveOutgroup, const unsigned outgroup,
-                       const unsigned mincount, const double max_distance)
-            {
-                values.reserve(data->numsites() - i);
-                for (unsigned j = i + 1; j < data->numsites(); ++j)
-                    {
-                        values.emplace_back(
-                            PairwiseLD(data, i, j, haveOutgroup, outgroup,
-                                       mincount, max_distance));
-                    }
-            }
-        };
-
         std::vector<PairwiseLDstats>
         Disequilibrium(const Sequence::PolyTable *data,
                        const bool &haveOutgroup, const unsigned &outgroup,
@@ -381,22 +359,16 @@ namespace Sequence
                 return return_type();
 
             auto nsites = data->numsites();
-            vector<LDtask> tasks(nsites - 1);
-            tbb::parallel_for(
-                tbb::blocked_range<unsigned>(0, nsites - 1),
-                [&data, &tasks, nsites, haveOutgroup, outgroup, mincount,
-                 max_distance](const tbb::blocked_range<unsigned> &r) {
-                    for (auto i = r.begin(); i < r.end(); ++i)
-                        {
-                            tasks[i](data, i, haveOutgroup, outgroup, mincount,
-                                     max_distance);
-                        }
-                });
             return_type rv;
-            for (auto &t : tasks)
+            rv.reserve(nsites);
+            for (std::size_t i = 0; i < nsites - 1; ++i)
                 {
-                    std::move(t.values.begin(), t.values.end(),
-                              std::back_inserter(rv));
+                    for (std::size_t j = i + 1; j < nsites; ++i)
+                        {
+                            rv.push_back(PairwiseLD(data, i, j, haveOutgroup,
+                                                    outgroup, mincount,
+                                                    max_distance));
+                        }
                 }
             return rv;
         }
@@ -784,4 +756,4 @@ namespace Sequence
         }
 
     } // namespace Recombination
-} // ns Sequence
+} // namespace Sequence

@@ -57,7 +57,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SummStats.hpp \
 	IOhelp.hpp \
 	SeqAlphabets.hpp \
-	threading.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
 	summstats.hpp \
