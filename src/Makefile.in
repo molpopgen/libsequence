@@ -141,11 +141,11 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
 	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
 	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
-	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
-	ThreeSubs.lo CodonTable.lo Specializations.lo SeqConstants.lo \
+	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo ThreeSubs.lo \
+	CodonTable.lo Specializations.lo SeqConstants.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
-	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
+	SummStats/Garud.lo SeqAlphabets.lo SummStats/lHaf.lo \
 	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
@@ -378,7 +378,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
-	SimDataIO.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
@@ -390,7 +389,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	SummStats/Garud.cc\
-	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	variant_matrix/VariantMatrix.cc \
@@ -645,7 +643,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComplementBase.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Grantham.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GranthamWeights.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IOhelp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PathwayHelper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
@@ -655,7 +652,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimData.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimDataIO.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimParams.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SingleSub.Plo@am__quote@
