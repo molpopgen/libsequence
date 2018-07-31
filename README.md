@@ -75,8 +75,6 @@ Again, a few options:
 ### Dependencies
 
 1. A C++11-compliant compiler (see next section)
-2. zlib: http://zlib.net
-3. [Intel's TBB library](http://threadbuildingblocks.org) is used for parallelization.
 
 ### Compilers
 
