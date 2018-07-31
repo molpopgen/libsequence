@@ -1,3 +1,5 @@
+/// \file Sequence/summstats/nsl.hpp
+/// \brief nSL and iHS
 #ifndef SEQUENCE_SUMMSTATS_NSL_HPP__
 #define SEQUENCE_SUMMSTATS_NSL_HPP__
 
@@ -8,12 +10,12 @@ namespace Sequence
 {
     struct nSLiHS
     /// Stores the results of nSL and iHS calculations.
-    /// See nsl for details.
+    /// See Sequence::nsl for details.
     /// \ingroup popgenanalysis
     {
-        /// The nSL statistic
+        /// The nSL statistic \cite Ferrer-Admetlla2014-wa
         double nsl;
-        /// The iHS statistic
+        /// The iHS statistic, calculated according to \cite Ferrer-Admetlla2014-wa
         double ihs;
         /// Count of non-reference,
         /// non-missing allele.

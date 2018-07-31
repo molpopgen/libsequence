@@ -1,3 +1,5 @@
+/// \file Sequence/summstats/generic.hpp
+/// \brief Generic utilities for calculating summary statistics
 #ifndef SEQUENCE_SUMMSTATS_GENERIC_HPP
 #define SEQUENCE_SUMMSTATS_GENERIC_HPP
 
