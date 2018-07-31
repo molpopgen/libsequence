@@ -30,7 +30,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
-	SimDataIO.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
@@ -42,7 +41,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	SummStats/Garud.cc\
-	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
 	variant_matrix/VariantMatrix.cc \

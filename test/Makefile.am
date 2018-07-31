@@ -27,7 +27,6 @@ FastaConstructors.cc \
 FastaIO.cc \
 FastaOperations.cc \
 AlignStreamTest.cc \
-testSimDataIO.cc \
 CountingOperators.cc \
 PolyTableConversions.cc \
 PolyTableTweaking.cc \

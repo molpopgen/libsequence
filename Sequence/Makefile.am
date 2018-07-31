@@ -39,7 +39,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SeqRegexes.hpp\
 	SeqUtilities.hpp\
 	SimData.hpp\
-	SimDataIO.hpp\
 	SimParams.hpp\
 	SingleSub.hpp\
 	Sites.hpp\
@@ -55,7 +54,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	HKA.hpp\
 	typedefs.hpp \
 	SummStats.hpp \
-	IOhelp.hpp \
 	SeqAlphabets.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
