@@ -15,6 +15,7 @@
 #include "summstats/generic.hpp"
 #include "summstats/classics.hpp"
 #include "summstats/nsl.hpp"
+#include "summstats/ld.hpp"
 #include "summstats/garud.hpp"
 
 #endif
