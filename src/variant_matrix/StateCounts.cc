@@ -28,6 +28,31 @@ namespace Sequence
                         ++n;
                         ++counts[static_cast<std::size_t>(i)];
                     }
+                else if (i == VariantMatrix::mask)
+                    {
+                        throw std::invalid_argument(
+                            "reserved value encountered");
+                    }
+            }
+    }
+
+    void
+    StateCounts::operator()(const RowView& row)
+    {
+        std::fill(counts.begin(), counts.end(), 0);
+        n = 0;
+        for (auto& i : row)
+            {
+                if (i >= 0)
+                    {
+                        ++n;
+                        ++counts[static_cast<std::size_t>(i)];
+                    }
+                else if (i == VariantMatrix::mask)
+                    {
+                        throw std::invalid_argument(
+                            "reserved value encountered");
+                    }
             }
     }
 

@@ -36,6 +36,7 @@ namespace Sequence
         StateCounts(const std::int8_t refstate_);
         StateCounts();
         void operator()(ConstRowView &);
+        void operator()(const RowView &);
     };
 
     /// Create a vector of StateCounts from a VariantMatrix.
