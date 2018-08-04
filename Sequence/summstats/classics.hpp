@@ -125,6 +125,17 @@ namespace Sequence
      */
     std::vector<std::int32_t> difference_matrix(const VariantMatrix& m);
 
+    /*! Returns whether or not haplotypes differ.
+     * \param m A VariantMatrix
+     * \return std::vector<std::int32_t>
+     *
+     * This function is conceptually indentical to difference_matrix,
+     * but the return value contains 0 = identical, 1 = different 
+     * rather than the actual number of differences. Thus, it is 
+     * faster to calculate when the binary answer is needed.
+     */
+    std::vector<std::int32_t> is_different_matrix(const VariantMatrix& m);
+
     /*! \brief Assign a unique label to each haplotype.
      *
      * \param m A VariantMatrix
