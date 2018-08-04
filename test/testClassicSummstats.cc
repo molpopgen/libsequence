@@ -2,6 +2,8 @@
 
 #include <cmath>
 #include <algorithm>
+#include <set>
+#include <string>
 #include <vector>
 #include <iostream>
 #include <Sequence/VariantMatrix.hpp>
@@ -9,7 +11,6 @@
 #include <Sequence/summstats/classics.hpp>
 #include "VariantMatrixFixture.hpp"
 #include <boost/test/unit_test.hpp>
-
 
 static double
 manual_pi(const Sequence::VariantMatrix& m)
@@ -199,6 +200,32 @@ BOOST_AUTO_TEST_CASE(test_num_haplotypes)
     BOOST_REQUIRE_EQUAL(nh, 5);
 }
 
+BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
+{
+    for (std::size_t i = 0; i < m.nsam; ++i)
+        {
+            Sequence::VariantMatrix m2(m.data, m.positions);
+            // We make a unique haplotype at this index in our copy of
+            // the fixture
+            auto cv = Sequence::get_ColView(m2, i);
+            for (auto& j : cv)
+                {
+                    j = 2;
+                }
+            auto nh = Sequence::number_of_haplotypes(m2);
+            std::vector<std::string> haps;
+            for(std::size_t j=0;j<m2.nsam;++j)
+            {
+                auto cvj = Sequence::get_ConstColView(m2,j);
+                std::string h;
+                for(auto state : cvj) h += state;
+                haps.push_back(std::move(h));
+            }
+            std::set<std::string> uhaps(haps.begin(),haps.end());
+            BOOST_REQUIRE_EQUAL(uhaps.size(),nh);
+        }
+}
+
 BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
 {
     auto hd = Sequence::haplotype_diversity(m);
@@ -237,8 +264,8 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
 
 BOOST_AUTO_TEST_CASE(test_rmin)
 {
-	auto rm = Sequence::rmin(m);
-	BOOST_REQUIRE_EQUAL(rm,1);
+    auto rm = Sequence::rmin(m);
+    BOOST_REQUIRE_EQUAL(rm, 1);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
