@@ -1,9 +1,11 @@
 #ifndef SEQUENCE_VARIANTMATRIX_STATECOUNTS_HPP__
 #define SEQUENCE_VARIANTMATRIX_STATECOUNTS_HPP__
 
+#include "VariantMatrix.hpp"
 #include "VariantMatrixViews.hpp"
-#include <unordered_map>
+#include <limits>
 #include <vector>
+#include <unordered_map>
 
 namespace Sequence
 {
@@ -20,6 +22,8 @@ namespace Sequence
     ///
     /// \ingroup variantmatrix
     {
+        static constexpr VariantMatrix::value_type max_allele
+            = std::numeric_limits<VariantMatrix::value_type>::max();
         /// Keep track of (state, count) pairs
         std::unordered_map<std::int8_t, std::uint32_t> counts;
         /// The sample size at this site.  Excluded missing data.
@@ -41,13 +45,13 @@ namespace Sequence
     std::vector<StateCounts>
     process_variable_sites(const VariantMatrix& m,
                            const std::vector<std::int8_t>& refstates);
-	/// Create a vector of StateCounts with a specific reference state
-	/// used for all sites
+    /// Create a vector of StateCounts with a specific reference state
+    /// used for all sites
     /// \ingroup variantmatrix
     std::vector<StateCounts>
     process_variable_sites(const VariantMatrix& m, const std::int8_t refstate);
-	/// Create a vector of StateCounts with a reference state of -1
-	/// used for all sites
+    /// Create a vector of StateCounts with a reference state of -1
+    /// used for all sites
     /// \ingroup variantmatrix
     std::vector<StateCounts> process_variable_sites(const VariantMatrix& m);
 } // namespace Sequence
