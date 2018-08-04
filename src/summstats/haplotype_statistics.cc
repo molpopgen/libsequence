@@ -42,6 +42,36 @@ namespace Sequence
     }
 
     std::vector<std::int32_t>
+    is_different_matrix(const VariantMatrix& m)
+    {
+        std::vector<std::int32_t> rv;
+        rv.reserve(m.nsam);
+        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+            {
+                auto ci = get_ConstColView(m, i);
+                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                    {
+                        auto cj = get_ConstColView(m, j);
+                        auto cib = ci.begin(), cjb = cj.begin();
+                        std::int32_t different = 0;
+                        //If both sites are not missing
+                        //and not equal, they are different
+                        while (cib != ci.end() && !different)
+                            {
+                                if (*cib >= 0 && *cjb >= 0 && *cib != *cjb)
+                                    {
+                                        different = 1;
+                                    }
+                                ++cib;
+                                ++cjb;
+                            }
+                        rv.push_back(different);
+                    }
+            }
+        return rv;
+    }
+
+    std::vector<std::int32_t>
     label_haplotypes(const VariantMatrix& m)
     {
         std::vector<std::int32_t> rv(m.nsam, -1);
@@ -50,7 +80,7 @@ namespace Sequence
                 return rv;
             }
         rv.reserve(m.nsam);
-        const auto dm = difference_matrix(m);
+        const auto dm = is_different_matrix(m);
         auto dmi = dm.cbegin();
         int next_label = 0;
         // We got all the way to nsam for the
