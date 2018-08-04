@@ -53,7 +53,11 @@ namespace Sequence
         const auto dm = difference_matrix(m);
         auto dmi = dm.cbegin();
         int next_label = 0;
-        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+        // We got all the way to nsam for the
+        // case where the last haplotype is unique.
+        // In 1.9.4, we went to nsam-1, which was wrong.
+        // Fixed in 1.9.5
+        for (std::size_t i = 0; i < m.nsam; ++i)
             {
                 if (rv[i] < 0)
                     {
