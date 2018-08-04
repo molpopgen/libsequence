@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stdexcept>
 #include <Sequence/StateCounts.hpp>
 #include <Sequence/VariantMatrix.hpp>
@@ -10,14 +11,16 @@ namespace Sequence
     thetaw(const VariantMatrix& m)
     {
         double w = 0.0;
+        StateCounts counts;
         for (std::size_t site = 0; site < m.nsites; ++site)
             {
                 auto site_view = get_RowView(m, site);
-                StateCounts counts(site_view);
-                counts.counts.erase(-1);
+                counts(site_view);
                 if (counts.counts.size() > 1)
                     {
-                        auto nstates = counts.counts.size();
+                        auto nstates = counts.counts.size()
+                                       - std::count(counts.counts.begin(),
+                                                    counts.counts.end(), 0);
                         auto denom = summstats_aux::a_sub_n(counts.n);
                         w += static_cast<double>(nstates - 1) / denom;
                     }

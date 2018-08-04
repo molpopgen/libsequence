@@ -15,16 +15,18 @@ namespace
     {
         double H = 0.0;
         double nnm1 = static_cast<double>(c.n * (c.n - 1));
-        std::size_t has_missing = (c.counts.find(-1) != c.counts.end());
-        std::size_t num_non_missing_states = c.counts.size() - has_missing;
+        //std::size_t has_missing = (c.counts.find(-1) != c.counts.end());
+        std::size_t num_non_missing_states
+            = std::count_if(c.counts.begin(), c.counts.end(),
+                            [](const std::int32_t x) { return x > 0; });
         bool ref_seen = false;
-        for (auto& x : c.counts)
+        for(std::size_t i=0;i<c.counts.size();++i)
             {
-                if (!(x.first < 0))
+                if(c.counts[i]>0)
                     {
-                        if (x.first != refstate)
+                        if (static_cast<std::int8_t>(i) != refstate)
                             {
-                                H += std::pow(x.second, power);
+                                H += std::pow(c.counts[i], power);
                             }
                         else
                             {
@@ -56,10 +58,11 @@ namespace
                     "all reference states are encoded as missing");
             }
         double stat = 0.0;
+        Sequence::StateCounts counts(refstate);
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
                 auto r = get_ConstRowView(m, i);
-                Sequence::StateCounts counts(r, refstate);
+                counts(r);
                 stat += update(counts, refstate, power);
             }
         return stat;
@@ -76,10 +79,12 @@ namespace
                     "all reference states are encoded as missing");
             }
         double stat = 0.0;
+        Sequence::StateCounts counts;
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
+                counts.refstate = refstates[i];
                 auto r = get_ConstRowView(m, i);
-                Sequence::StateCounts counts(r, refstates[i]);
+                counts(r);
                 stat += update(counts, refstates[i], power);
             }
         return stat;

@@ -2,53 +2,58 @@
 #include <algorithm>
 #include <stdexcept>
 
-inline static decltype(Sequence::StateCounts::n)
-fill_counts(decltype(Sequence::StateCounts::counts)& counts,
-            const Sequence::ConstRowView& r)
-{
-
-    decltype(Sequence::StateCounts::n) n{ 0u };
-    for (auto i : r)
-        {
-            if (i == Sequence::VariantMatrix::mask)
-                {
-                    throw std::invalid_argument("reserved value encountered");
-                }
-            if (i < 0)
-                i = -1;
-            auto itr = counts.find(i);
-            if (itr == counts.end())
-                {
-                    counts.insert(std::make_pair(i, 1));
-                }
-            else
-                {
-                    itr->second++;
-                }
-        }
-    for (const auto& ci : counts)
-        {
-            if (ci.first >= 0)
-                {
-                    n += ci.second;
-                }
-        }
-    return n;
-}
-
 namespace Sequence
 {
-    StateCounts::StateCounts(const ConstRowView& r)
-        : counts{}, n{ 0u }, refstate(-1)
+    StateCounts::StateCounts()
+        : counts(std::vector<std::int32_t>(max_allele + 1, 0)), n{ 0u },
+          refstate(-1)
     {
-        n = fill_counts(counts, r);
     }
 
-    StateCounts::StateCounts(const ConstRowView& r,
-                             const std::int8_t refstate_)
-        : counts{}, n{ 0u }, refstate(refstate_)
+    StateCounts::StateCounts(const std::int8_t refstate_)
+        : counts(std::vector<std::int32_t>(max_allele + 1, 0)), n{ 0u },
+          refstate(refstate_)
     {
-        n = fill_counts(counts, r);
+    }
+
+    void
+    StateCounts::operator()(ConstRowView& row)
+    {
+        std::fill(counts.begin(), counts.end(), 0);
+        n = 0;
+        for (auto& i : row)
+            {
+                if (i >= 0)
+                    {
+                        ++n;
+                        ++counts[static_cast<std::size_t>(i)];
+                    }
+                else if (i == VariantMatrix::mask)
+                    {
+                        throw std::invalid_argument(
+                            "reserved value encountered");
+                    }
+            }
+    }
+
+    void
+    StateCounts::operator()(const RowView& row)
+    {
+        std::fill(counts.begin(), counts.end(), 0);
+        n = 0;
+        for (auto& i : row)
+            {
+                if (i >= 0)
+                    {
+                        ++n;
+                        ++counts[static_cast<std::size_t>(i)];
+                    }
+                else if (i == VariantMatrix::mask)
+                    {
+                        throw std::invalid_argument(
+                            "reserved value encountered");
+                    }
+            }
     }
 
     std::vector<StateCounts>
@@ -69,7 +74,10 @@ namespace Sequence
         rv.reserve(m.nsites);
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
-                rv.emplace_back(get_ConstRowView(m, i), refstates[i]);
+                StateCounts c(refstates[i]);
+                auto r = get_RowView(m, i);
+                c(r);
+                rv.emplace_back(std::move(c));
             }
         return rv;
     }
@@ -85,7 +93,10 @@ namespace Sequence
         rv.reserve(m.nsites);
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
-                rv.emplace_back(get_ConstRowView(m, i), refstate);
+                StateCounts c(refstate);
+                auto r = get_RowView(m, i);
+                c(r);
+                rv.emplace_back(std::move(c));
             }
         return rv;
     }
