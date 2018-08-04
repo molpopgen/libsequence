@@ -5,7 +5,6 @@
 #include "VariantMatrixViews.hpp"
 #include <limits>
 #include <vector>
-#include <unordered_map>
 
 namespace Sequence
 {
@@ -25,7 +24,7 @@ namespace Sequence
         static constexpr VariantMatrix::value_type max_allele
             = std::numeric_limits<VariantMatrix::value_type>::max();
         /// Keep track of (state, count) pairs
-        std::unordered_map<std::int8_t, std::uint32_t> counts;
+        std::vector<std::int32_t> counts;
         /// The sample size at this site.  Excluded missing data.
         std::uint32_t n;
         /// The reference state for this site.  Needed for certain summary
@@ -34,8 +33,9 @@ namespace Sequence
 
         /// Construct with a ConstRowView and a reference state, which defaults
         /// to 0.
-        StateCounts(const ConstRowView& r, const std::int8_t refstate_);
-        StateCounts(const ConstRowView& r);
+        StateCounts(const std::int8_t refstate_);
+        StateCounts();
+        void operator()(ConstRowView &);
     };
 
     /// Create a vector of StateCounts from a VariantMatrix.
