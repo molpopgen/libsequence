@@ -11,22 +11,24 @@ using count_type = std::vector<Sequence::AlleleCounts>;
 namespace
 {
     typename count_type::value_type
-    add_counts(const Sequence::StateCounts& counts, const bool nonref)
+    add_counts(const Sequence::StateCounts& counts, const std::size_t nsam,
+               const bool nonref)
     {
         if (nonref && counts.refstate == -1)
             {
                 return count_type::value_type{ -1, -1 };
             }
         typename count_type::value_type rv{ 0, 0 };
-        for (auto& c : counts.counts)
+        rv.nmissing = nsam - counts.n;
+        for (std::size_t i = 0; i < counts.counts.size(); ++i)
             {
-                if (c.first < 0)
+                if (counts.counts[i] > 0)
                     {
-                        ++rv.nmissing;
-                    }
-                else if (!nonref || (nonref && c.first != counts.refstate))
-                    {
-                        ++rv.nstates;
+                        if (!nonref
+                            || (nonref && counts.counts[i] != counts.refstate))
+                            {
+                                ++rv.nstates;
+                            }
                     }
             }
         return rv;
@@ -39,11 +41,12 @@ namespace Sequence
     allele_counts(const VariantMatrix& m)
     {
         count_type rv;
+        StateCounts counts;
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
                 auto r = get_ConstRowView(m, i);
-                StateCounts counts(r);
-                rv.emplace_back(add_counts(counts, false));
+                counts(r);
+                rv.emplace_back(add_counts(counts, m.nsam, false));
             }
         return rv;
     }
@@ -58,11 +61,13 @@ namespace Sequence
                                             "not equal number of sites");
             }
         count_type rv;
+        StateCounts counts;
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
+                counts.refstate = refstates[i];
                 auto r = get_ConstRowView(m, i);
-                StateCounts counts(r, refstates[i]);
-                rv.emplace_back(add_counts(counts, true));
+                counts(r);
+                rv.emplace_back(add_counts(counts, m.nsam, true));
             }
         return rv;
     }
@@ -72,11 +77,12 @@ namespace Sequence
                                 const std::int8_t refstate)
     {
         count_type rv;
+        StateCounts counts(refstate);
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
                 auto r = get_ConstRowView(m, i);
-                StateCounts counts(r, refstate);
-                rv.emplace_back(add_counts(counts, true));
+                counts(r);
+                rv.emplace_back(add_counts(counts, m.nsam, true));
             }
         return rv;
     }
