@@ -1,16 +1,16 @@
 #include <cmath>
+#include <functional>
+#include <Sequence/summstats/algorithm.hpp>
+#include "hprime_faywuh_aggregator.hpp"
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
-#include <Sequence/summstats/thetapi.hpp>
-#include <Sequence/summstats/thetal.hpp>
-#include <Sequence/summstats/nvariablesites.hpp>
 #include <Sequence/summstats/auxillary.hpp>
 
 namespace
 {
     double
-    hprime_common(const Sequence::VariantMatrix &m, const double tp,
-                  const double tl)
+    hprime_common(const Sequence::VariantMatrix &m, const unsigned S,
+                  const double tp, const double tl)
     {
         using namespace Sequence;
         if (tp == 0.0)
@@ -22,9 +22,6 @@ namespace
         auto b1
             = summstats_aux::b_sub_n_plus1(static_cast<std::uint32_t>(m.nsam));
 
-        //Count number of bi-allelic sites
-        //TODO: generalize this
-        auto S = nbiallelic_sites(m);
         double tw
             = static_cast<double>(S) / a; //TODO: replace with call to thetaw
         double tsq = S * (S - 1) / (a * a + b);
@@ -49,16 +46,16 @@ namespace Sequence
     double
     hprime(const VariantMatrix &m, const std::int8_t refstate)
     {
-        auto tp = thetapi(m);
-        auto tl = thetal(m, refstate);
-        return hprime_common(m, tp, tl);
+        detail::hprime_faywuh_aggregator hp(1.0);
+        sstats_algo::aggregate_sites(m, std::ref(hp), refstate);
+        return hprime_common(m, hp.S, hp.pi, hp.theta);
     }
 
     double
     hprime(const VariantMatrix &m, const std::vector<std::int8_t> &refstates)
     {
-        auto tp = thetapi(m);
-        auto tl = thetal(m, refstates);
-        return hprime_common(m, tp, tl);
+        detail::hprime_faywuh_aggregator hp(1.0);
+        sstats_algo::aggregate_sites(m, std::ref(hp), refstates);
+        return hprime_common(m, hp.S, hp.pi, hp.theta);
     }
 } // namespace Sequence

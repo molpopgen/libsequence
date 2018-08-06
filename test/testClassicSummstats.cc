@@ -174,6 +174,20 @@ BOOST_AUTO_TEST_CASE(test_thetah)
     BOOST_CHECK_CLOSE(h1, m1, 1e-6);
 }
 
+BOOST_AUTO_TEST_CASE(test_faywuh)
+// Fay and Wu's H is calculated using
+// an aggregation distinct from
+// thetah and thetapi.  That means
+// we can compare results from the various functions
+// in order to test.
+{
+    auto h = Sequence::thetah(m, 0);
+    auto pi = Sequence::thetapi(m);
+    auto fwh = Sequence::faywuh(m, 0);
+    BOOST_CHECK_EQUAL(fwh + h, pi);
+    BOOST_REQUIRE_EQUAL(pi - h, fwh);
+}
+
 BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
 {
     // Create a site with > 2 derived states
@@ -214,15 +228,16 @@ BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
                 }
             auto nh = Sequence::number_of_haplotypes(m2);
             std::vector<std::string> haps;
-            for(std::size_t j=0;j<m2.nsam;++j)
-            {
-                auto cvj = Sequence::get_ConstColView(m2,j);
-                std::string h;
-                for(auto state : cvj) h += state;
-                haps.push_back(std::move(h));
-            }
-            std::set<std::string> uhaps(haps.begin(),haps.end());
-            BOOST_REQUIRE_EQUAL(uhaps.size(),nh);
+            for (std::size_t j = 0; j < m2.nsam; ++j)
+                {
+                    auto cvj = Sequence::get_ConstColView(m2, j);
+                    std::string h;
+                    for (auto state : cvj)
+                        h += state;
+                    haps.push_back(std::move(h));
+                }
+            std::set<std::string> uhaps(haps.begin(), haps.end());
+            BOOST_REQUIRE_EQUAL(uhaps.size(), nh);
         }
 }
 
