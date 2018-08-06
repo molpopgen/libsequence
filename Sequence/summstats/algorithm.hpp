@@ -50,6 +50,51 @@ namespace Sequence
                     f(c);
                 }
         }
+
+        template <typename F>
+        inline void
+        aggregate_sites(const VariantMatrix& m, const F& f,
+                        const std::vector<std::int8_t>& refstates)
+        /*! Helper algorithm for implementing summary statistics.
+         *
+         *  Several common summary statistics are combinations of
+         *  others.  Examples include Tajima's D, Fay and Wu's H,
+         *  etc..  If we take D as an example, it is tempting to
+         *  use existing functions, such as Sequence::thetapi and
+         *  Sequence::thetaw, as intermediate steps.
+         *  However, doing so goes over the data multiple times.  
+         *
+         *  Fortunately, these statistics are often easy enough to 
+         *  implement that we could calculate pi and Watterson's theta 
+         *  in one loop.  This function helps you do that.
+         *  
+         *  \param m A VariantMatrix
+         *  \param f A function taking a const StateCounts & and returning nothing.
+         *  \param refstates Vector of reference states
+         *
+         *  This function loops over \a m.nsites and passes the state counts on
+         *  to the aggregator function \a f.
+         *
+         *  See the implementation of Sequence::hprime for an example.
+         *
+         *  \ingroup popgenanalysis
+         */
+        {
+            if (refstates.size() != m.nsites)
+                {
+                    throw std::invalid_argument(
+                        "number of reference states must equal number of "
+                        "sites in VariantMatrix");
+                }
+            StateCounts c;
+            for (std::size_t i = 0; i < m.nsites; ++i)
+                {
+                    c.refstate = refstates[i];
+                    auto r = get_ConstRowView(m, i);
+                    c(r);
+                    f(c);
+                }
+        }
     } // namespace sstats_algo
 } // namespace Sequence
 
