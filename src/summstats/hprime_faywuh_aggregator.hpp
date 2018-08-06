@@ -35,7 +35,8 @@ namespace Sequence
                                 ++nstates;
                                 if (static_cast<std::int8_t>(i) != c.refstate)
                                     {
-                                        temp += std::pow(static_cast<double>(i),power);
+                                        temp += std::pow(
+                                            static_cast<double>(ci), power);
                                     }
                                 else
                                     {
