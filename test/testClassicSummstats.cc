@@ -171,10 +171,14 @@ BOOST_AUTO_TEST_CASE(test_thetah)
 {
     auto h0 = Sequence::thetah(m, 0);
     auto h1 = Sequence::thetah(m, 1);
+    auto h0c = Sequence::thetah(c, 0);
+    auto h1c = Sequence::thetah(c, 1);
     auto m0 = manual_thetah(m, 0);
     auto m1 = manual_thetah(m, 1);
     BOOST_CHECK_CLOSE(h0, m0, 1e-6);
     BOOST_CHECK_CLOSE(h1, m1, 1e-6);
+    BOOST_CHECK_CLOSE(h0, h0c, 1e-6);
+    BOOST_CHECK_CLOSE(h1, h1c, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_faywuh)

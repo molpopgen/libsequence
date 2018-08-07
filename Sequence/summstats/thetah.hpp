@@ -28,6 +28,9 @@ namespace Sequence
      */
     double thetah(const VariantMatrix& m,
                   const std::vector<std::int8_t>& refstates);
+    double thetah(const AlleleCountMatrix& ac, const std::int8_t refstate);
+    double thetah(const AlleleCountMatrix& m,
+                  const std::vector<std::int8_t>& refstates);
 } // namespace Sequence
 
 #endif
