@@ -70,7 +70,6 @@ BOOST_AUTO_TEST_CASE(test_thetapi)
     // Cannot require equal b/c we aren't doing ops
     // in same order.
     BOOST_CHECK_CLOSE(pi, manual, 1e-6);
-    Sequence::AlleleCountMatrix c(m);
     auto pi_from_counts = Sequence::thetapi(c);
     BOOST_CHECK_CLOSE(pi, pi_from_counts, 1e-6);
 }
