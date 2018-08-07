@@ -25,6 +25,8 @@ namespace Sequence
             = std::numeric_limits<VariantMatrix::value_type>::max();
         /// Keep track of (state, count) pairs
         std::vector<std::int32_t> counts;
+        /// The max allelic value seen
+        std::size_t max_allele_idx;
         /// The sample size at this site.  Excluded missing data.
         std::uint32_t n;
         /// The reference state for this site.  Needed for certain summary

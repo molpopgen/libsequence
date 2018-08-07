@@ -5,30 +5,34 @@
 namespace Sequence
 {
     StateCounts::StateCounts()
-        : counts(std::vector<std::int32_t>(max_allele + 1, 0)), n{ 0u },
-          refstate(-1)
+        : counts(std::vector<std::int32_t>(max_allele + 1, 0)),
+          max_allele_idx{ 0 }, n{ 0u }, refstate(-1)
     {
     }
 
     StateCounts::StateCounts(const std::int8_t refstate_)
-        : counts(std::vector<std::int32_t>(max_allele + 1, 0)), n{ 0u },
-          refstate(refstate_)
+        : counts(std::vector<std::int32_t>(max_allele + 1, 0)),
+          max_allele_idx{ 0 }, n{ 0u }, refstate(refstate_)
     {
     }
 
     void
     StateCounts::operator()(ConstRowView& row)
     {
-        std::fill(counts.begin(), counts.end(), 0);
+        std::fill(counts.begin(), counts.begin() + max_allele_idx + 1, 0);
         n = 0;
-        for (auto& i : row)
+        max_allele_idx = 0;
+        for (std::size_t i = 0; i < row.size(); ++i)
             {
-                if (i >= 0)
+                auto ri = row[i];
+                if (ri >= 0)
                     {
                         ++n;
-                        ++counts[static_cast<std::size_t>(i)];
+                        ++counts[static_cast<std::size_t>(ri)];
+                        max_allele_idx = std::max(
+                            max_allele_idx, static_cast<std::size_t>(ri));
                     }
-                else if (i == VariantMatrix::mask)
+                else if (ri == VariantMatrix::mask)
                     {
                         throw std::invalid_argument(
                             "reserved value encountered");
@@ -39,16 +43,20 @@ namespace Sequence
     void
     StateCounts::operator()(const RowView& row)
     {
-        std::fill(counts.begin(), counts.end(), 0);
+        std::fill(counts.begin(), counts.begin() + max_allele_idx + 1, 0);
         n = 0;
-        for (auto& i : row)
+        max_allele_idx = 0;
+        for (std::size_t i = 0; i < row.size(); ++i)
             {
-                if (i >= 0)
+                auto ri = row[i];
+                if (ri >= 0)
                     {
                         ++n;
-                        ++counts[static_cast<std::size_t>(i)];
+                        ++counts[static_cast<std::size_t>(ri)];
+                        max_allele_idx = std::max(
+                            max_allele_idx, static_cast<std::size_t>(ri));
                     }
-                else if (i == VariantMatrix::mask)
+                else if (ri == VariantMatrix::mask)
                     {
                         throw std::invalid_argument(
                             "reserved value encountered");
