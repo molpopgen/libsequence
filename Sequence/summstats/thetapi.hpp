@@ -21,6 +21,9 @@ namespace Sequence
      * \ingroup popgenanalysis
      */
     double thetapi(const VariantMatrix& m);
+
+    double
+    thetapi(const AlleleCountMatrix& ac);
 } // namespace Sequence
 
 #endif

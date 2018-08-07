@@ -28,6 +28,9 @@ namespace Sequence
      */
     double tajd(const VariantMatrix& m);
 
+    double
+    tajd(const AlleleCountMatrix& ac);
+
     /*! The H' statistic
      * \param m A VariantMatrix
      * \param refstate How the ancestral state is encoded.
