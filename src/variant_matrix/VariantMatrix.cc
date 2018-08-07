@@ -8,6 +8,10 @@ namespace Sequence
     std::vector<std::int32_t>
     AlleleCountMatrix::init_counts(const VariantMatrix& m)
     {
+        if (m.max_allele < 0)
+            {
+                throw std::invalid_argument("matrix max_allele must be >= 0");
+            }
         std::vector<std::int32_t> counts;
         counts.reserve(m.nsam * static_cast<std::size_t>(m.max_allele + 1));
         StateCounts c;

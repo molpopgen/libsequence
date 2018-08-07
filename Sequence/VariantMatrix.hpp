@@ -52,6 +52,13 @@ namespace Sequence
                     auto itr = std::max_element(data.begin(), data.end());
                     return *itr;
                 }
+            //special case to allow construction of empty data sets
+            //without throwing an exception
+            else if (data.empty())
+
+                {
+                    return 0;
+                }
             return max_allele_value;
         }
 
@@ -84,6 +91,10 @@ namespace Sequence
               nsam(data.size() / positions.size()), max_allele{ set_max_allele(
                                                         max_allele_value) }
         {
+            if (max_allele < 0)
+                {
+                    throw std::invalid_argument("max allele must be >= 0");
+                }
             if ((!data.empty() && !positions.empty())
                 && data.size() % positions.size() != 0.0)
                 {
