@@ -162,6 +162,8 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
         }
     auto manual = S / d;
     BOOST_CHECK_CLOSE(w, manual, 1e-6);
+    auto w2 = Sequence::thetaw(c);
+    BOOST_CHECK_CLOSE(w, w2, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetah)

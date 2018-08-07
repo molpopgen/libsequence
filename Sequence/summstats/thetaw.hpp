@@ -19,7 +19,8 @@ namespace Sequence
      * See \cite Watterson1975-ej for details.
      * \ingroup popgenanalysis
      */
-    double thetaw(const VariantMatrix &m);
+    double thetaw(const VariantMatrix& m);
+    double thetaw(const AlleleCountMatrix& ac);
 } // namespace Sequence
 
 #endif
