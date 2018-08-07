@@ -66,11 +66,13 @@ BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
     auto pi = Sequence::thetapi(m);
-
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
     // in same order.
     BOOST_CHECK_CLOSE(pi, manual, 1e-6);
+    Sequence::AlleleCountMatrix c(m);
+    auto pi_from_counts = Sequence::thetapi(c);
+    BOOST_CHECK_CLOSE(pi, pi_from_counts, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)

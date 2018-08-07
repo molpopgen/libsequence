@@ -1,6 +1,7 @@
 #ifndef SEQUENCE_VARIANT_MATRIX_HPP__
 #define SEQUENCE_VARIANT_MATRIX_HPP__
 
+#include <algorithm>
 #include <cstdint>
 #include <cstddef>
 #include <utility>
@@ -18,7 +19,7 @@ namespace Sequence
     /// \brief Representation and manipulation of variation data.
     /// \ingroup popgen
 
-    struct VariantMatrix
+    class VariantMatrix
     /// \brief Matrix representation of variation data.
     ///
     /// The data structure is a row-major matrix.
@@ -42,6 +43,19 @@ namespace Sequence
     /// \ingroup variantmatrix
     /// \version 1.9.2
     {
+      private:
+        std::int8_t
+        set_max_allele(const std::int8_t max_allele_value)
+        {
+            if (max_allele_value < 0 && !data.empty())
+                {
+                    auto itr = std::max_element(data.begin(), data.end());
+                    return *itr;
+                }
+            return max_allele_value;
+        }
+
+      public:
         /// Data stored in matrix form with rows as sites.
         std::vector<std::int8_t> data;
         /// Position of sites.
@@ -55,16 +69,20 @@ namespace Sequence
         /// The value type of the data.
         /// Helpful for generic programming
         using value_type = std::int8_t;
-
+        /// Max allelic value stored in matrix
+        const std::int8_t max_allele;
         template <typename data_input, typename positions_input>
-        VariantMatrix(data_input&& data_, positions_input&& positions_)
+        VariantMatrix(data_input&& data_, positions_input&& positions_,
+                      const std::int8_t max_allele_value = -1)
             /// \brief "Perfect-forwarding" constructor.
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
             : data(std::forward<data_input>(data_)),
               positions(std::forward<positions_input>(positions_)),
-              nsites(positions.size()), nsam(data.size() / positions.size())
+              nsites(positions.size()),
+              nsam(data.size() / positions.size()), max_allele{ set_max_allele(
+                                                        max_allele_value) }
         {
             if ((!data.empty() && !positions.empty())
                 && data.size() % positions.size() != 0.0)
@@ -91,6 +109,21 @@ namespace Sequence
         /// std::out_of_range is thrown if indexes are invalid.
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
+
+        //AlleleCountMatrix count_alleles() const;
+    };
+
+    class AlleleCountMatrix
+    /// \brief Matrix representation of allele counts in a VariantMatrix
+    /// To be constructed
+    {
+      private:
+        static std::vector<std::int32_t> init_counts(const VariantMatrix& m);
+
+      public:
+        const std::vector<std::int32_t> counts;
+        const std::size_t row_size;
+        AlleleCountMatrix(const VariantMatrix& m);
     };
 } // namespace Sequence
 
