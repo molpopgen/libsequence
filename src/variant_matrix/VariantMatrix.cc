@@ -29,9 +29,8 @@ namespace Sequence
     }
 
     AlleleCountMatrix::AlleleCountMatrix(const VariantMatrix& m)
-        : counts(init_counts(m)), row_size{
-              static_cast<std::size_t>(m.max_allele) + 1
-          }
+        : counts(init_counts(m)),
+          row_size(static_cast<std::size_t>(m.max_allele) + 1), nsam(m.nsam)
     {
     }
 

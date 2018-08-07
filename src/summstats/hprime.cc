@@ -5,27 +5,29 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/auxillary.hpp>
+#include <Sequence/summstats/thetapi.hpp>
+#include <Sequence/summstats/thetal.hpp>
 
 namespace
 {
     double
-    hprime_common(const Sequence::VariantMatrix &m, const unsigned S,
-                  const double tp, const double tl)
+    hprime_common(const std::uint32_t nsam, const unsigned S, const double tp,
+                  const double tl)
     {
         using namespace Sequence;
         if (tp == 0.0)
             {
                 return std::numeric_limits<double>::quiet_NaN();
             }
-        auto a = summstats_aux::a_sub_n(static_cast<std::uint32_t>(m.nsam));
-        auto b = summstats_aux::b_sub_n(static_cast<std::uint32_t>(m.nsam));
+        auto a = summstats_aux::a_sub_n(static_cast<std::uint32_t>(nsam));
+        auto b = summstats_aux::b_sub_n(static_cast<std::uint32_t>(nsam));
         auto b1
-            = summstats_aux::b_sub_n_plus1(static_cast<std::uint32_t>(m.nsam));
+            = summstats_aux::b_sub_n_plus1(static_cast<std::uint32_t>(nsam));
 
         double tw
             = static_cast<double>(S) / a; //TODO: replace with call to thetaw
         double tsq = S * (S - 1) / (a * a + b);
-        double n = static_cast<double>(m.nsam);
+        double n = static_cast<double>(nsam);
 
         double vThetal
             = (n * tw) / (2.0 * (n - 1.0))
@@ -48,7 +50,7 @@ namespace Sequence
     {
         detail::hprime_faywuh_aggregator hp(1.0);
         sstats_algo::aggregate_sites(m, std::ref(hp), refstate);
-        return hprime_common(m, hp.S, hp.pi, hp.theta);
+        return hprime_common(m.nsam, hp.S, hp.pi, hp.theta);
     }
 
     double
@@ -56,6 +58,59 @@ namespace Sequence
     {
         detail::hprime_faywuh_aggregator hp(1.0);
         sstats_algo::aggregate_sites(m, std::ref(hp), refstates);
-        return hprime_common(m, hp.S, hp.pi, hp.theta);
+        return hprime_common(m.nsam, hp.S, hp.pi, hp.theta);
+    }
+
+    double
+    hprime(const AlleleCountMatrix &ac, const std::int8_t refstate)
+    {
+        double pi = 0.0;
+        double hp = 0.0;
+        unsigned S = 0;
+        auto refindex = static_cast<std::size_t>(refstate);
+        if (refindex >= ac.row_size)
+            {
+                throw std::invalid_argument(
+                    "reference state greater than max allelic state");
+            }
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+            {
+                int nsam = 0;
+                int nnonref = 0;
+                double temp = 0.0;
+                double homozygosity = 0.0;
+                bool ref_seen = false;
+                for (std::size_t j = i; j < i + ac.row_size; ++j)
+                    {
+                        if (ac.counts[j] > 0)
+                            {
+                                nsam += ac.counts[j];
+                                homozygosity += static_cast<double>(
+                                    ac.counts[j] * (ac.counts[j] - 1));
+                                if (j - i != refindex)
+                                    {
+                                        ++nnonref;
+                                        temp += std::pow(ac.counts[j], 1.0);
+                                    }
+                                else
+                                    {
+                                        ref_seen = true;
+                                    }
+                            }
+                    }
+                if (nnonref > 1)
+                    {
+                        throw std::runtime_error(
+                            "site has more than one derived state");
+                    }
+                if (ref_seen)
+                    {
+                        double nnm1 = static_cast<double>(nsam * (nsam - 1));
+                        hp += temp / nnm1;
+                        pi += 1.0 - homozygosity / nnm1;
+                        ++S;
+                    }
+            }
+        return hprime_common(ac.nsam, S, pi, hp);
     }
 } // namespace Sequence

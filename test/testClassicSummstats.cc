@@ -195,6 +195,13 @@ BOOST_AUTO_TEST_CASE(test_faywuh)
     BOOST_REQUIRE_EQUAL(pi - h, fwh);
 }
 
+BOOST_AUTO_TEST_CASE(theta_hprime)
+{
+    auto hp = Sequence::hprime(m, 0);
+    auto hpac = Sequence::hprime(c, 0);
+    BOOST_CHECK_CLOSE(hp, hpac, 1e-6);
+}
+
 BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
 {
     // Create a site with > 2 derived states

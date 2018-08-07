@@ -28,8 +28,7 @@ namespace Sequence
      */
     double tajd(const VariantMatrix& m);
 
-    double
-    tajd(const AlleleCountMatrix& ac);
+    double tajd(const AlleleCountMatrix& ac);
 
     /*! The H' statistic
      * \param m A VariantMatrix
@@ -47,6 +46,7 @@ namespace Sequence
      * \ingroup popgenanalysis
      */
     double hprime(const VariantMatrix& m, const std::int8_t refstate);
+    double hprime(const AlleleCountMatrix& ac, const std::int8_t refstate);
 
     /*! The H' statistic
      * \param m A VariantMatrix
