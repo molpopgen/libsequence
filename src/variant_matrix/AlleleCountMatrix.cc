@@ -36,7 +36,7 @@ namespace Sequence
         : counts(init_counts(m)),
           ncol(!m.data.empty() ? static_cast<std::size_t>(m.max_allele) + 1
                                : 0),
-          nrow(!m.data.empty() ? m.data.size() / ncol : 0), nsam(m.nsam)
+          nrow(!m.data.empty() ? counts.size() / ncol : 0), nsam(m.nsam)
     {
     }
 
