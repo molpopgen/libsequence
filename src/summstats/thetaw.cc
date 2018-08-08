@@ -11,12 +11,13 @@ namespace Sequence
         double w = 0.0;
         for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
-                std::int32_t nsam = 0, nstates = 0;
+                std::uint32_t nsam = 0, nstates = 0;
                 for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
                         if (ac.counts[j] > 0)
                             {
-                                nsam += ac.counts[j];
+                                nsam += static_cast<std::uint32_t>(
+                                    ac.counts[j]);
                                 nstates++;
                             }
                     }

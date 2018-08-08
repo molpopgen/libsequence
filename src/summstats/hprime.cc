@@ -59,7 +59,8 @@ namespace Sequence
             {
                 rp(ac, i, refindex);
             }
-        return hprime_common(ac.nsam, rp.S, rp.pi, rp.theta);
+        return hprime_common(static_cast<std::uint32_t>(ac.nsam), rp.S, rp.pi,
+                             rp.theta);
     }
 
     double
@@ -84,8 +85,7 @@ namespace Sequence
 
         detail::hprime_faywuh_row_processor rp(1.0);
         std::size_t rstate = 0;
-        for (std::size_t i = 0; i < ac.counts.size();
-             i += ac.ncol, ++rstate)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol, ++rstate)
             {
                 if (refstates[rstate] >= 0)
                     {
@@ -100,6 +100,7 @@ namespace Sequence
                         rp(ac, i, refindex);
                     }
             }
-        return hprime_common(ac.nsam, rp.S, rp.pi, rp.theta);
+        return hprime_common(static_cast<std::uint32_t>(ac.nsam), rp.S, rp.pi,
+                             rp.theta);
     }
 } // namespace Sequence

@@ -24,7 +24,7 @@ namespace
                 throw std::invalid_argument("reference state out of range");
             }
         typename count_type::value_type rv{ 0, 0 };
-        unsigned nnon_missing = 0;
+        int nnon_missing = 0;
         for (auto i = row.first; i != row.second; ++i)
             {
                 if (*i > 0)
@@ -39,7 +39,7 @@ namespace
                             }
                     }
             }
-        rv.nmissing = nsam - nnon_missing;
+        rv.nmissing = static_cast<int>(nsam) - nnon_missing;
         return rv;
     }
 } // namespace
