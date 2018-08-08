@@ -135,7 +135,7 @@ namespace Sequence
         const std::vector<std::int32_t> counts;
         const std::size_t row_size;
         const std::size_t nsam;
-        AlleleCountMatrix(const VariantMatrix& m);
+        explicit AlleleCountMatrix(const VariantMatrix& m);
     };
 } // namespace Sequence
 
