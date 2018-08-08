@@ -64,53 +64,58 @@ namespace Sequence
     double
     hprime(const AlleleCountMatrix &ac, const std::int8_t refstate)
     {
-        double pi = 0.0;
-        double hp = 0.0;
-        unsigned S = 0;
         auto refindex = static_cast<std::size_t>(refstate);
         if (refindex >= ac.row_size)
             {
                 throw std::invalid_argument(
                     "reference state greater than max allelic state");
             }
+        detail::hprime_faywuh_row_processor rp(1.0);
         for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
             {
-                int nsam = 0;
-                int nnonref = 0;
-                double temp = 0.0;
-                double homozygosity = 0.0;
-                bool ref_seen = false;
-                for (std::size_t j = i; j < i + ac.row_size; ++j)
+                rp(ac, i, refindex);
+            }
+        return hprime_common(ac.nsam, rp.S, rp.pi, rp.theta);
+    }
+
+    double
+    hprime(const AlleleCountMatrix &ac,
+           const std::vector<std::int8_t> &refstates)
+    {
+        if (ac.counts.empty())
+            {
+                return std::numeric_limits<double>::quiet_NaN();
+            }
+        if (refstates.size() != ac.counts.size() / ac.row_size)
+            {
+                throw std::invalid_argument(
+                    "incorrect number of reference states");
+            }
+        if (std::all_of(refstates.begin(), refstates.end(),
+                        [](const std::int8_t i) { return i < 0; }))
+            {
+                throw std::invalid_argument(
+                    "all reference states encoded as missing");
+            }
+
+        detail::hprime_faywuh_row_processor rp(1.0);
+        std::size_t rstate = 0;
+        for (std::size_t i = 0; i < ac.counts.size();
+             i += ac.row_size, ++rstate)
+            {
+                if (refstates[rstate] >= 0)
                     {
-                        if (ac.counts[j] > 0)
+                        auto refindex
+                            = static_cast<std::size_t>(refstates[rstate]);
+                        if (refindex >= ac.row_size)
                             {
-                                nsam += ac.counts[j];
-                                homozygosity += static_cast<double>(
-                                    ac.counts[j] * (ac.counts[j] - 1));
-                                if (j - i != refindex)
-                                    {
-                                        ++nnonref;
-                                        temp += std::pow(ac.counts[j], 1.0);
-                                    }
-                                else
-                                    {
-                                        ref_seen = true;
-                                    }
+                                throw std::invalid_argument(
+                                    "reference state greater than max allelic "
+                                    "state");
                             }
-                    }
-                if (nnonref > 1)
-                    {
-                        throw std::runtime_error(
-                            "site has more than one derived state");
-                    }
-                if (ref_seen)
-                    {
-                        double nnm1 = static_cast<double>(nsam * (nsam - 1));
-                        hp += temp / nnm1;
-                        pi += 1.0 - homozygosity / nnm1;
-                        ++S;
+                        rp(ac, i, refindex);
                     }
             }
-        return hprime_common(ac.nsam, S, pi, hp);
+        return hprime_common(ac.nsam, rp.S, rp.pi, rp.theta);
     }
 } // namespace Sequence

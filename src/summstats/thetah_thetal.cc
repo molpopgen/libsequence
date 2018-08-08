@@ -147,11 +147,14 @@ namespace
                 throw std::invalid_argument(
                     "all reference states encoded as missing");
             }
-        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+        std::size_t rstate = 0;
+        for (std::size_t i = 0; i < ac.counts.size();
+             i += ac.row_size, ++rstate)
             {
-                if (refstates[i] >= 0)
+                if (refstates[rstate] >= 0)
                     {
-                        auto refindex = static_cast<std::size_t>(refstates[i]);
+                        auto refindex
+                            = static_cast<std::size_t>(refstates[rstate]);
                         if (refindex >= ac.row_size)
                             {
                                 throw std::invalid_argument(

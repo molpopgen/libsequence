@@ -191,6 +191,8 @@ BOOST_AUTO_TEST_CASE(test_faywuh)
     auto h = Sequence::thetah(m, 0);
     auto pi = Sequence::thetapi(m);
     auto fwh = Sequence::faywuh(m, 0);
+    auto fwhac = Sequence::faywuh(c, 0);
+    BOOST_CHECK_CLOSE(fwh, fwhac, 1e-6);
     BOOST_CHECK_EQUAL(fwh + h, pi);
     BOOST_REQUIRE_EQUAL(pi - h, fwh);
 }
@@ -199,6 +201,9 @@ BOOST_AUTO_TEST_CASE(theta_hprime)
 {
     auto hp = Sequence::hprime(m, 0);
     auto hpac = Sequence::hprime(c, 0);
+    BOOST_CHECK_CLOSE(hp, hpac, 1e-6);
+    hp = Sequence::hprime(m, 1);
+    hpac = Sequence::hprime(c, 1);
     BOOST_CHECK_CLOSE(hp, hpac, 1e-6);
 }
 

@@ -83,6 +83,7 @@ namespace Sequence
      */
     double faywuh(const VariantMatrix& m, const std::int8_t refstate);
 
+    double faywuh(const AlleleCountMatrix& ac, const std::int8_t refstate);
     /*! \brief Fay and Wu's H.
      * \param m A VariantMatrix
      * \param refstates The ancestral state at each site.
@@ -99,6 +100,8 @@ namespace Sequence
      * \ingroup popgenanalysis
      */
     double faywuh(const VariantMatrix& m,
+                  const std::vector<std::int8_t>& refstates);
+    double faywuh(const AlleleCountMatrix& ac,
                   const std::vector<std::int8_t>& refstates);
 
     /*!  \brief Calculate number of differences between all samples.
