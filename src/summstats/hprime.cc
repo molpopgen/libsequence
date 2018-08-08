@@ -44,6 +44,10 @@ namespace Sequence
     double
     hprime(const AlleleCountMatrix &ac, const std::int8_t refstate)
     {
+        if (ac.counts.empty())
+            {
+                return std::numeric_limits<double>::quiet_NaN();
+            }
         auto refindex = static_cast<std::size_t>(refstate);
         if (refindex >= ac.ncol)
             {

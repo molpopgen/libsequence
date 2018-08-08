@@ -90,6 +90,10 @@ namespace
               const std::int8_t refstate, const double power)
     {
         double rv = 0.0;
+        if (ac.counts.empty())
+            {
+                return rv;
+            }
         auto refindex = static_cast<std::size_t>(refstate);
         if (refindex >= ac.ncol)
             {
