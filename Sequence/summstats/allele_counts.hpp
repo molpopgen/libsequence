@@ -6,7 +6,7 @@
 #include <vector>
 #include <utility>
 #include <cstdint>
-#include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 namespace Sequence
 {
@@ -21,27 +21,27 @@ namespace Sequence
     };
 
     /*! \brief Count number of alleles at each site
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \ingroup popgenanalysis
      */
-    std::vector<AlleleCounts> allele_counts(const VariantMatrix& m);
+    std::vector<AlleleCounts> allele_counts(const AlleleCountMatrix& m);
 
     /*! \brief Count number of non-reference alleles at each site
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param m refstate The reference state for all sites.
      * \ingroup popgenanalysis
      */
     std::vector<AlleleCounts>
-    non_reference_allele_counts(const VariantMatrix& m,
+    non_reference_allele_counts(const AlleleCountMatrix& m,
                                 const std::int8_t refstate);
 
     /*! \brief Count number of non-reference alleles at each site
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param m refstate The reference state at each site.
      * \ingroup popgenanalysis
      */
     std::vector<AlleleCounts>
-    non_reference_allele_counts(const VariantMatrix& m,
+    non_reference_allele_counts(const AlleleCountMatrix& m,
                                 const std::vector<std::int8_t>& refstates);
 } // namespace Sequence
 #endif

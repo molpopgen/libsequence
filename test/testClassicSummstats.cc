@@ -138,7 +138,7 @@ BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
 BOOST_AUTO_TEST_CASE(test_count_alleles)
 {
     auto S2 = Sequence::nbiallelic_sites(c);
-    auto ac = Sequence::allele_counts(m);
+    auto ac = Sequence::allele_counts(c);
     auto nb = 0;
     for (auto i : ac)
         {

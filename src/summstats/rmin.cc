@@ -2,6 +2,7 @@
 #include <Sequence/summstats/ld.hpp>
 #include <Sequence/summstats/allele_counts.hpp>
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 
 namespace Sequence
@@ -13,7 +14,8 @@ namespace Sequence
             {
                 return -1;
             }
-        auto ac = allele_counts(m);
+        Sequence::AlleleCountMatrix acm(m);
+        auto ac = allele_counts(acm);
         std::vector<std::size_t> biallelic_site_indexes;
         for (std::size_t i = 0; i < ac.size(); ++i)
             {
