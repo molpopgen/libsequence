@@ -17,6 +17,7 @@ namespace Sequence
 
       public:
         const std::vector<std::int32_t> counts;
+        using value_type = std::vector<std::int32_t>::value_type;
         const std::size_t ncol;
         const std::size_t nrow;
         const std::size_t nsam;
