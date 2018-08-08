@@ -42,7 +42,6 @@ namespace Sequence
                         homozygosity += static_cast<double>(
                             ac.counts[j] * (ac.counts[j] - 1));
                     }
-
                 pi += 1.0
                       - homozygosity / static_cast<double>(nsam * (nsam - 1));
             }
