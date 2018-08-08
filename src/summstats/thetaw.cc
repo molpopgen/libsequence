@@ -1,27 +1,29 @@
 #include <algorithm>
 #include <stdexcept>
-#include <Sequence/StateCounts.hpp>
-#include <Sequence/VariantMatrix.hpp>
-#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/summstats/auxillary.hpp>
 
 namespace Sequence
 {
     double
-    thetaw(const VariantMatrix& m)
+    thetaw(const AlleleCountMatrix& ac)
     {
         double w = 0.0;
-        StateCounts counts;
-        for (std::size_t site = 0; site < m.nsites; ++site)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
-                auto site_view = get_RowView(m, site);
-                counts(site_view);
-                if (counts.counts.size() > 1)
+                std::uint32_t nsam = 0, nstates = 0;
+                for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
-                        auto nstates = counts.counts.size()
-                                       - std::count(counts.counts.begin(),
-                                                    counts.counts.end(), 0);
-                        auto denom = summstats_aux::a_sub_n(counts.n);
+                        if (ac.counts[j] > 0)
+                            {
+                                nsam += static_cast<std::uint32_t>(
+                                    ac.counts[j]);
+                                nstates++;
+                            }
+                    }
+                if (nstates > 1)
+                    {
+                        auto denom = summstats_aux::a_sub_n(nsam);
                         w += static_cast<double>(nstates - 1) / denom;
                     }
             }

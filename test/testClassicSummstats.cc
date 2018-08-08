@@ -65,8 +65,7 @@ BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
-    auto pi = Sequence::thetapi(m);
-
+    auto pi = Sequence::thetapi(c);
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
     // in same order.
@@ -84,7 +83,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
         {
             m.data[i] = -i;
         }
-    auto pi = Sequence::thetapi(m);
+    auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
@@ -94,20 +93,21 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
 
 BOOST_AUTO_TEST_CASE(test_num_poly_sites)
 {
-    auto S = Sequence::nvariable_sites(m);
+    auto S = Sequence::nvariable_sites(c);
     // Not universally true, but is true here:
     BOOST_REQUIRE_EQUAL(m.nsites, S);
 
-    auto tm = Sequence::total_number_of_mutations(m);
+    auto tm = Sequence::total_number_of_mutations(c);
     // Not universally true, but is true here:
     BOOST_REQUIRE_EQUAL(m.nsites, tm);
 
     //Make the last site invariant:
     auto r = Sequence::get_RowView(m, m.nsites - 1);
     std::fill(r.begin(), r.end(), 0);
-    S = Sequence::nvariable_sites(m);
+    Sequence::AlleleCountMatrix c2(m);
+    S = Sequence::nvariable_sites(c2);
     BOOST_REQUIRE_EQUAL(S, m.nsites - 1);
-    tm = Sequence::total_number_of_mutations(m);
+    tm = Sequence::total_number_of_mutations(c2);
     BOOST_REQUIRE_EQUAL(m.nsites - 1, tm);
 }
 
@@ -116,25 +116,29 @@ BOOST_AUTO_TEST_CASE(test_total_num_mutations)
     auto r = Sequence::get_RowView(m, m.nsites - 1);
     // Add a third character state
     r[2] = 2;
-    auto tm = Sequence::total_number_of_mutations(m);
+    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    Sequence::AlleleCountMatrix c2(m2);
+    auto tm = Sequence::total_number_of_mutations(c2);
     BOOST_REQUIRE_EQUAL(tm, m.nsites + 1);
 }
 
 BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
 {
-    auto S2 = Sequence::nbiallelic_sites(m);
+    auto S2 = Sequence::nbiallelic_sites(c);
     BOOST_REQUIRE_EQUAL(S2, m.nsites);
     auto r = Sequence::get_RowView(m, m.nsites - 1);
     // Add a third character state
     r[2] = 2;
-    S2 = Sequence::nbiallelic_sites(m);
+    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    Sequence::AlleleCountMatrix c2(m2);
+    S2 = Sequence::nbiallelic_sites(c2);
     BOOST_REQUIRE_EQUAL(S2, m.nsites - 1);
 }
 
 BOOST_AUTO_TEST_CASE(test_count_alleles)
 {
-    auto S2 = Sequence::nbiallelic_sites(m);
-    auto ac = Sequence::allele_counts(m);
+    auto S2 = Sequence::nbiallelic_sites(c);
+    auto ac = Sequence::allele_counts(c);
     auto nb = 0;
     for (auto i : ac)
         {
@@ -152,7 +156,7 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
 // all we're doing below is
 // checking the denominator.
 {
-    auto w = Sequence::thetaw(m);
+    auto w = Sequence::thetaw(c);
     double S = m.nsites;
     double d = 0.0;
     for (int i = 1; i < m.nsam; ++i)
@@ -166,8 +170,8 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
 BOOST_AUTO_TEST_CASE(test_thetah)
 // Simplest case
 {
-    auto h0 = Sequence::thetah(m, 0);
-    auto h1 = Sequence::thetah(m, 1);
+    auto h0 = Sequence::thetah(c, 0);
+    auto h1 = Sequence::thetah(c, 1);
     auto m0 = manual_thetah(m, 0);
     auto m1 = manual_thetah(m, 1);
     BOOST_CHECK_CLOSE(h0, m0, 1e-6);
@@ -181,9 +185,9 @@ BOOST_AUTO_TEST_CASE(test_faywuh)
 // we can compare results from the various functions
 // in order to test.
 {
-    auto h = Sequence::thetah(m, 0);
-    auto pi = Sequence::thetapi(m);
-    auto fwh = Sequence::faywuh(m, 0);
+    auto h = Sequence::thetah(c, 0);
+    auto pi = Sequence::thetapi(c);
+    auto fwh = Sequence::faywuh(c, 0);
     BOOST_CHECK_EQUAL(fwh + h, pi);
     BOOST_REQUIRE_EQUAL(pi - h, fwh);
 }
@@ -200,12 +204,19 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
                     f[i] = 4;
                 }
         }
-    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(m, 0), std::runtime_error);
+    //We have to make data copies here so that
+    //max_allele is reset.
+    Sequence::VariantMatrix m2(m.data, m.positions);
+    BOOST_REQUIRE_THROW(auto h
+                        = Sequence::thetah(Sequence::AlleleCountMatrix(m2), 0),
+                        std::runtime_error);
     for (std::size_t i = 0; i < f.size(); ++i)
         {
             f[i] = 3;
         }
-    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(m, 0));
+    Sequence::VariantMatrix m3(m.data, m.positions);
+    BOOST_REQUIRE_NO_THROW(
+        auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
 
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)

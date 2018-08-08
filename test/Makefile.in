@@ -124,7 +124,7 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 	SeqConversions.cc RedundancyCom95test.cc alphabets.cc \
 	polySiteVectorTest.cc PolyTableSliceTest.cc \
 	stateCounterTest.cc VariantMatrixTest.cc \
-	testClassicSummstats.cc \
+	testAlleleCountMatrix.cc testClassicSummstats.cc \
 	testClassicSummstatsEmptyVariantMatrix.cc testLD.cc \
 	testGarudStatistics.cc
 @BUNIT_TEST_PRESENT_TRUE@am_libseq_unit_tests_OBJECTS =  \
@@ -152,6 +152,7 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 @BUNIT_TEST_PRESENT_TRUE@	PolyTableSliceTest.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	stateCounterTest.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	VariantMatrixTest.$(OBJEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	testAlleleCountMatrix.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testClassicSummstats.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testClassicSummstatsEmptyVariantMatrix.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testLD.$(OBJEXT) \
@@ -579,6 +580,7 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@PolyTableSliceTest.cc \
 @BUNIT_TEST_PRESENT_TRUE@stateCounterTest.cc \
 @BUNIT_TEST_PRESENT_TRUE@VariantMatrixTest.cc \
+@BUNIT_TEST_PRESENT_TRUE@testAlleleCountMatrix.cc \
 @BUNIT_TEST_PRESENT_TRUE@testClassicSummstats.cc \
 @BUNIT_TEST_PRESENT_TRUE@testClassicSummstatsEmptyVariantMatrix.cc \
 @BUNIT_TEST_PRESENT_TRUE@testLD.cc \
@@ -661,6 +663,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libseq_unit_tests.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounterTest.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testAlleleCountMatrix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testClassicSummstats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testClassicSummstatsEmptyVariantMatrix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testGarudStatistics.Po@am__quote@

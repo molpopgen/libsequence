@@ -45,6 +45,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SummStats/lHaf.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
+	variant_matrix/AlleleCountMatrix.cc \
 	variant_matrix/StateCounts.cc \
 	variant_matrix/filtering.cc \
 	summstats/thetapi.cc \

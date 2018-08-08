@@ -4,6 +4,7 @@
 #define SEQUENCE_SUMMSTATS_CLASSICS_HPP__
 
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 #include "thetapi.hpp"
 #include "thetaw.hpp"
@@ -15,7 +16,7 @@
 namespace Sequence
 {
     /*! \brief Tajima's D
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \return Tajima's D
      * \note nan is returned if m is empty/invariant.
      *
@@ -26,10 +27,10 @@ namespace Sequence
      *
      * \ingroup popgenanalysis
      */
-    double tajd(const VariantMatrix& m);
+    double tajd(const AlleleCountMatrix& ac);
 
     /*! The H' statistic
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param refstate How the ancestral state is encoded.
      * \return H'
      * \note nan is returned if m is empty/invariant.  It is
@@ -43,10 +44,10 @@ namespace Sequence
      *
      * \ingroup popgenanalysis
      */
-    double hprime(const VariantMatrix& m, const std::int8_t refstate);
+    double hprime(const AlleleCountMatrix& ac, const std::int8_t refstate);
 
     /*! The H' statistic
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param refstates A vector of ancestral states, equal in length to m.sites
      * \return H'
      * \note nan is returned if m is empty/invariant.  It is
@@ -60,11 +61,11 @@ namespace Sequence
      *
      * \ingroup popgenanalysis
      */
-    double hprime(const VariantMatrix& m,
+    double hprime(const AlleleCountMatrix& m,
                   const std::vector<std::int8_t>& refstates);
 
     /*! \brief Fay and Wu's H.
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param refstate The ancestral state.
      * \return Fay and Wu's H, or nan if \a m is empty/invariant.
      *
@@ -78,10 +79,10 @@ namespace Sequence
      * See \cite Fay2000-ef for details.
      * \ingroup popgenanalysis
      */
-    double faywuh(const VariantMatrix& m, const std::int8_t refstate);
+    double faywuh(const AlleleCountMatrix& ac, const std::int8_t refstate);
 
     /*! \brief Fay and Wu's H.
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \param refstates The ancestral state at each site.
      * \return Fay and Wu's H, or nan if \a m is empty/invariant.
      *
@@ -95,7 +96,7 @@ namespace Sequence
      * 
      * \ingroup popgenanalysis
      */
-    double faywuh(const VariantMatrix& m,
+    double faywuh(const AlleleCountMatrix& ac,
                   const std::vector<std::int8_t>& refstates);
 
     /*!  \brief Calculate number of differences between all samples.

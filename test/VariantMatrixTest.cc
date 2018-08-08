@@ -1,5 +1,6 @@
 //! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
@@ -11,10 +12,10 @@ struct vmatrix_fixture
     std::vector<std::int8_t> input_data;
     std::vector<double> input_pos;
     Sequence::VariantMatrix m, m2;
-
+    Sequence::AlleleCountMatrix c, c2;
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos), m2(input_data, input_pos)
+          m(input_data, input_pos), m2(input_data, input_pos), c{ m }, c2{ m2 }
     {
         // The two VariantMatrix objects
         // have same data, but different internal
@@ -59,6 +60,16 @@ BOOST_AUTO_TEST_CASE(test_construction)
                               std::vector<double>(5, 0.0));
     BOOST_REQUIRE_EQUAL(m.nsites, 5);
     BOOST_REQUIRE_EQUAL(m.nsam, 20);
+    BOOST_REQUIRE_EQUAL(m.max_allele, 1);
+}
+
+BOOST_AUTO_TEST_CASE(test_max_allele)
+{
+    m.data[3] = 5;
+    Sequence::VariantMatrix vm(m.data,m.positions);
+    BOOST_CHECK_EQUAL(vm.max_allele, 5);
+    Sequence::AlleleCountMatrix vmc(vm);
+    BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
 }
 
 BOOST_AUTO_TEST_CASE(test_range_exceptions)

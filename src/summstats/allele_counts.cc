@@ -2,35 +2,44 @@
 #include <utility>
 #include <cstdint>
 #include <Sequence/summstats/allele_counts.hpp>
-#include <Sequence/StateCounts.hpp>
-#include <Sequence/VariantMatrix.hpp>
-#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 using count_type = std::vector<Sequence::AlleleCounts>;
 
 namespace
 {
+    template <typename T>
     typename count_type::value_type
-    add_counts(const Sequence::StateCounts& counts, const std::size_t nsam,
-               const bool nonref)
+    add_counts(const T& row, const std::size_t nsam, const bool nonref,
+               const std::int8_t refstate)
     {
-        if (nonref && counts.refstate == -1)
+        if (nonref && refstate == -1)
             {
                 return count_type::value_type{ -1, -1 };
             }
-        typename count_type::value_type rv{ 0, 0 };
-        rv.nmissing = nsam - counts.n;
-        for (std::size_t i = 0; i < counts.counts.size(); ++i)
+        std::size_t refindex = static_cast<std::size_t>(refstate);
+        if (nonref
+            && refindex >= static_cast<std::size_t>(row.second - row.first))
             {
-                if (counts.counts[i] > 0)
+                throw std::invalid_argument("reference state out of range");
+            }
+        typename count_type::value_type rv{ 0, 0 };
+        int nnon_missing = 0;
+        for (auto i = row.first; i != row.second; ++i)
+            {
+                if (*i > 0)
                     {
+                        nnon_missing += *i;
                         if (!nonref
-                            || (nonref && counts.counts[i] != counts.refstate))
+                            || (nonref
+                                && static_cast<std::size_t>(i - row.first)
+                                       != refindex))
                             {
                                 ++rv.nstates;
                             }
                     }
             }
+        rv.nmissing = static_cast<int>(nsam) - nnon_missing;
         return rv;
     }
 } // namespace
@@ -38,51 +47,44 @@ namespace
 namespace Sequence
 {
     count_type
-    allele_counts(const VariantMatrix& m)
+    allele_counts(const AlleleCountMatrix& m)
     {
         count_type rv;
-        StateCounts counts;
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nrow; ++i)
             {
-                auto r = get_ConstRowView(m, i);
-                counts(r);
-                rv.emplace_back(add_counts(counts, m.nsam, false));
+                auto r = m.row(i);
+                rv.emplace_back(add_counts(r, m.nsam, false, -1));
             }
         return rv;
     }
 
     count_type
-    non_reference_allele_counts(const VariantMatrix& m,
+    non_reference_allele_counts(const AlleleCountMatrix& m,
                                 const std::vector<std::int8_t>& refstates)
     {
-        if (refstates.size() != m.nsites)
+        if (refstates.size() != m.nrow)
             {
                 throw std::invalid_argument("number of reference states does "
                                             "not equal number of sites");
             }
         count_type rv;
-        StateCounts counts;
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nrow; ++i)
             {
-                counts.refstate = refstates[i];
-                auto r = get_ConstRowView(m, i);
-                counts(r);
-                rv.emplace_back(add_counts(counts, m.nsam, true));
+                auto r = m.row(i);
+                rv.emplace_back(add_counts(r, m.nsam, true, refstates[i]));
             }
         return rv;
     }
 
     count_type
-    non_reference_allele_counts(const VariantMatrix& m,
+    non_reference_allele_counts(const AlleleCountMatrix& m,
                                 const std::int8_t refstate)
     {
         count_type rv;
-        StateCounts counts(refstate);
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nrow; ++i)
             {
-                auto r = get_ConstRowView(m, i);
-                counts(r);
-                rv.emplace_back(add_counts(counts, m.nsam, true));
+                auto r = m.row(i);
+                rv.emplace_back(add_counts(r, m.nsam, true, refstate));
             }
         return rv;
     }

@@ -4,12 +4,12 @@
 #ifndef SEQUENCE_SUMMSTATS_THETAPI_HPP__
 #define SEQUENCE_SUMMSTATS_THETAPI_HPP__
 
-#include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 namespace Sequence
 {
     /*! \brief Mean pairwise differences
-     * \param m A VariantMatrix
+     * \param m An AlleleCountMatrix
      * \return Mean pairwise differences
      * \note Calcuated as sum over one minus site homozygosity
      *
@@ -20,7 +20,7 @@ namespace Sequence
      * See \cite Tajima1983-it for details.
      * \ingroup popgenanalysis
      */
-    double thetapi(const VariantMatrix& m);
+    double thetapi(const AlleleCountMatrix& ac);
 } // namespace Sequence
 
 #endif

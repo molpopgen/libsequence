@@ -46,6 +46,7 @@ polySiteVectorTest.cc \
 PolyTableSliceTest.cc \
 stateCounterTest.cc \
 VariantMatrixTest.cc \
+testAlleleCountMatrix.cc \
 testClassicSummstats.cc \
 testClassicSummstatsEmptyVariantMatrix.cc \
 testLD.cc \

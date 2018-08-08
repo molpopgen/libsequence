@@ -2,38 +2,38 @@
 #define SEQUENCE_DETAIL_HPRIME_FAYWUH_AGGREGATOR_HPP
 
 #include <cmath>
-#include <Sequence/StateCounts.hpp>
 
 namespace Sequence
 {
     namespace detail
     {
-        struct hprime_faywuh_aggregator
+        struct hprime_faywuh_row_processor
         {
             unsigned S;
             double pi, theta;
             const double power;
-            hprime_faywuh_aggregator(const double p)
+            hprime_faywuh_row_processor(const double p)
                 : S{ 0 }, pi{ 0.0 }, theta{ 0.0 }, power{ p }
             {
             }
 
             inline void
-            operator()(const Sequence::StateCounts &c)
+            operator()(const Sequence::AlleleCountMatrix &ac,
+                       const std::size_t i, const std::size_t refindex)
             {
                 unsigned nstates = 0;
                 bool refseen = false;
                 double temp = 0.0;
                 double homozygosity = 0.0;
-                for (std::size_t i = 0; i < c.counts.size(); ++i)
+                for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
-                        auto ci = c.counts[i];
+                        auto ci = ac.counts[j];
                         if (ci > 0)
                             {
                                 homozygosity
                                     += static_cast<double>(ci * (ci - 1));
                                 ++nstates;
-                                if (static_cast<std::int8_t>(i) != c.refstate)
+                                if (j - i != refindex)
                                     {
                                         temp += std::pow(
                                             static_cast<double>(ci), power);
@@ -56,7 +56,8 @@ namespace Sequence
                     }
                 if (refseen)
                     {
-                        double nnm1 = static_cast<double>(c.n * (c.n - 1));
+                        double nnm1
+                            = static_cast<double>(ac.nsam * (ac.nsam - 1));
                         pi += 1.0 - homozygosity / nnm1;
                         theta += temp / nnm1;
                     }
