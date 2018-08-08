@@ -44,11 +44,4 @@ namespace Sequence
             }
         return data.at(site * nsam + haplotype);
     }
-
-    //AlleleCountMatrix
-    //VariantMatrix::count_alleles() const
-    //{
-    //    return AlleleCountMatrix(std::move(counts),
-    //                             static_cast<std::size_t>(max_allele + 1));
-    //}
 } // namespace Sequence
