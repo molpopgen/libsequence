@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <utility>
 #include <Sequence/VariantMatrix.hpp>
 
 namespace Sequence
@@ -20,7 +21,10 @@ namespace Sequence
         const std::size_t nrow;
         const std::size_t nsam;
         explicit AlleleCountMatrix(const VariantMatrix& m);
+        std::pair<std::vector<std::int32_t>::const_iterator,
+                  std::vector<std::int32_t>::const_iterator>
+        row(const std::size_t) const;
     };
-}
+} // namespace Sequence
 
 #endif

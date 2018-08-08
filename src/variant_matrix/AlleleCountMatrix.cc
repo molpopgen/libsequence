@@ -39,4 +39,16 @@ namespace Sequence
           nrow(!m.data.empty() ? m.data.size() / ncol : 0), nsam(m.nsam)
     {
     }
+
+    std::pair<std::vector<std::int32_t>::const_iterator,
+              std::vector<std::int32_t>::const_iterator>
+    AlleleCountMatrix::row(const std::size_t i) const
+    {
+        if (i >= nrow)
+            {
+                throw std::out_of_range("row index out of range");
+            }
+        return std::make_pair(counts.begin() + i * ncol,
+                              counts.begin() + i * ncol + ncol);
+    }
 } // namespace Sequence
