@@ -2,3 +2,15 @@
 *.lo
 *~
 Makefile
+*.deps
+*.libs
+*.cache
+config.h
+*.log
+*.status
+libtool
+*.dirstamp
+*.la
+*.trs
+*.doxygen
+stamp-h1
