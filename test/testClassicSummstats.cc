@@ -83,7 +83,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
         {
             m.data[i] = -i;
         }
-    auto pi = Sequence::thetapi(c);
+    auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
