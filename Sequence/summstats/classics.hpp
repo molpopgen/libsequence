@@ -4,6 +4,7 @@
 #define SEQUENCE_SUMMSTATS_CLASSICS_HPP__
 
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 #include "thetapi.hpp"
 #include "thetaw.hpp"

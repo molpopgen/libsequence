@@ -1,6 +1,5 @@
 #include <stdexcept>
-#include <Sequence/VariantMatrix.hpp>
-#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 namespace Sequence
 {

@@ -2,6 +2,8 @@
 #define LIBSEQUENCE_TESTS_VARIANTMATRIXFIXTURE_HPP__
 
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
+
 struct dataset
 {
     using data_type = decltype(Sequence::VariantMatrix::data);

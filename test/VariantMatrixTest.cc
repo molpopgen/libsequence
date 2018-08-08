@@ -1,5 +1,6 @@
 //! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>

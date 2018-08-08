@@ -1,12 +1,8 @@
 #include <cmath>
 #include <functional>
-#include <Sequence/summstats/algorithm.hpp>
-#include "hprime_faywuh_aggregator.hpp"
-#include <Sequence/VariantMatrix.hpp>
-#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/summstats/auxillary.hpp>
-#include <Sequence/summstats/thetapi.hpp>
-#include <Sequence/summstats/thetal.hpp>
+#include "hprime_faywuh_aggregator.hpp"
 
 namespace
 {
@@ -45,22 +41,6 @@ namespace
 
 namespace Sequence
 {
-    double
-    hprime(const VariantMatrix &m, const std::int8_t refstate)
-    {
-        detail::hprime_faywuh_aggregator hp(1.0);
-        sstats_algo::aggregate_sites(m, std::ref(hp), refstate);
-        return hprime_common(m.nsam, hp.S, hp.pi, hp.theta);
-    }
-
-    double
-    hprime(const VariantMatrix &m, const std::vector<std::int8_t> &refstates)
-    {
-        detail::hprime_faywuh_aggregator hp(1.0);
-        sstats_algo::aggregate_sites(m, std::ref(hp), refstates);
-        return hprime_common(m.nsam, hp.S, hp.pi, hp.theta);
-    }
-
     double
     hprime(const AlleleCountMatrix &ac, const std::int8_t refstate)
     {

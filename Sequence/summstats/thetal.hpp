@@ -4,7 +4,7 @@
 #define SEQUENCE_SUMMSTATS_THETAL_HPP__
 
 #include <vector>
-#include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 namespace Sequence
 {

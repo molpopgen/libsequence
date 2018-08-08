@@ -4,7 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <stdexcept>
-#include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 
 namespace
 {

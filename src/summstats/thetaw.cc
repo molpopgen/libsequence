@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <stdexcept>
-#include <Sequence/VariantMatrix.hpp>
-#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/summstats/auxillary.hpp>
 
 namespace Sequence

@@ -57,5 +57,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SeqAlphabets.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
+	AlleleCountMatrix.hpp \
 	summstats.hpp \
 	StateCounts.hpp
