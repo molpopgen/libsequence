@@ -11,7 +11,7 @@ namespace Sequence
     /*! \brief Number of polymorphic sites
      *
      * Returns the number of sites with more than one non-missing state
-     * \param m An alleleCountMatrix
+     * \param m An AlleleCountMatrix
      * \return std::uint32_t
      * \ingroup popgenanalysis
      */
@@ -20,7 +20,7 @@ namespace Sequence
     /*! \brief Number of bi-allelic sites
      *
      * Return the number of sites with exactly two non-missing states.
-     * \param m An alleleCountMatrix
+     * \param m An AlleleCountMatrix
      * \return std::uint32_t
      * \ingroup popgenanalysis
      */
@@ -32,7 +32,7 @@ namespace Sequence
      * is \f$k_i - 1\f$ if \f$k_i\f$, the number of states at the \f$i^{th}\f$ site,
      * is greater than one, and zero otherwise.
      *
-     * \param m An alleleCountMatrix
+     * \param m An AlleleCountMatrix
      * \return std::uint32_t
      * \ingroup popgenanalysis
      */
