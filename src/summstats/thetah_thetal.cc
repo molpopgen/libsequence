@@ -16,7 +16,7 @@ namespace
         std::int32_t nnonref = 0;
         double temp = 0.0;
         bool ref_seen = false;
-        for (std::size_t j = i; j < i + ac.row_size; ++j)
+        for (std::size_t j = i; j < i + ac.ncol; ++j)
             {
                 if (ac.counts[j])
                     {
@@ -54,7 +54,7 @@ namespace
             {
                 return rv;
             }
-        if (refstates.size() != ac.counts.size() / ac.row_size)
+        if (refstates.size() != ac.counts.size() / ac.ncol)
             {
                 throw std::invalid_argument(
                     "incorrect number of reference states");
@@ -67,13 +67,13 @@ namespace
             }
         std::size_t rstate = 0;
         for (std::size_t i = 0; i < ac.counts.size();
-             i += ac.row_size, ++rstate)
+             i += ac.ncol, ++rstate)
             {
                 if (refstates[rstate] >= 0)
                     {
                         auto refindex
                             = static_cast<std::size_t>(refstates[rstate]);
-                        if (refindex >= ac.row_size)
+                        if (refindex >= ac.ncol)
                             {
                                 throw std::invalid_argument(
                                     "reference state greater than max allelic "
@@ -91,12 +91,12 @@ namespace
     {
         double rv = 0.0;
         auto refindex = static_cast<std::size_t>(refstate);
-        if (refindex >= ac.row_size)
+        if (refindex >= ac.ncol)
             {
                 throw std::invalid_argument(
                     "reference state greater than max allelic state");
             }
-        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
                 rv += process_row(ac, i, refindex, power);
             }

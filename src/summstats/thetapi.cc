@@ -7,11 +7,11 @@ namespace Sequence
     thetapi(const AlleleCountMatrix& ac)
     {
         double pi = 0.0;
-        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
                 std::int32_t nsam = 0;
                 double homozygosity = 0.0;
-                for (std::size_t j = i; j < i + ac.row_size; ++j)
+                for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
                         nsam += ac.counts[j];
                         homozygosity += static_cast<double>(

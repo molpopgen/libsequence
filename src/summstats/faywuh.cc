@@ -8,13 +8,13 @@ namespace Sequence
     faywuh(const AlleleCountMatrix& ac, const std::int8_t refstate)
     {
         auto refindex = static_cast<std::size_t>(refstate);
-        if (refindex >= ac.row_size)
+        if (refindex >= ac.ncol)
             {
                 throw std::invalid_argument(
                     "reference state greater than max allelic state");
             }
         detail::hprime_faywuh_row_processor rp(2.0);
-        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
                 rp(ac, i, refindex);
             }
@@ -33,7 +33,7 @@ namespace Sequence
             {
                 return std::numeric_limits<double>::quiet_NaN();
             }
-        if (refstates.size() != ac.counts.size() / ac.row_size)
+        if (refstates.size() != ac.counts.size() / ac.ncol)
             {
                 throw std::invalid_argument(
                     "incorrect number of reference states");
@@ -48,13 +48,13 @@ namespace Sequence
         detail::hprime_faywuh_row_processor rp(2.0);
         std::size_t rstate = 0;
         for (std::size_t i = 0; i < ac.counts.size();
-             i += ac.row_size, ++rstate)
+             i += ac.ncol, ++rstate)
             {
                 if (refstates[rstate] >= 0)
                     {
                         auto refindex
                             = static_cast<std::size_t>(refstates[rstate]);
-                        if (refindex >= ac.row_size)
+                        if (refindex >= ac.ncol)
                             {
                                 throw std::invalid_argument(
                                     "reference state greater than max allelic "

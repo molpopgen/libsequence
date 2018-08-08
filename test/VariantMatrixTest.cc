@@ -69,7 +69,7 @@ BOOST_AUTO_TEST_CASE(test_max_allele)
     Sequence::VariantMatrix vm(m.data,m.positions);
     BOOST_CHECK_EQUAL(vm.max_allele, 5);
     Sequence::AlleleCountMatrix vmc(vm);
-    BOOST_REQUIRE_EQUAL(vmc.row_size, 6);
+    BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
 }
 
 BOOST_AUTO_TEST_CASE(test_range_exceptions)

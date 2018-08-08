@@ -9,10 +9,10 @@ namespace Sequence
     thetaw(const AlleleCountMatrix& ac)
     {
         double w = 0.0;
-        for (std::size_t i = 0; i < ac.counts.size(); i += ac.row_size)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
                 std::int32_t nsam = 0, nstates = 0;
-                for (std::size_t j = i; j < i + ac.row_size; ++j)
+                for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
                         if (ac.counts[j] > 0)
                             {

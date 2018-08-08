@@ -26,7 +26,7 @@ namespace Sequence
                 bool refseen = false;
                 double temp = 0.0;
                 double homozygosity = 0.0;
-                for (std::size_t j = i; j < i + ac.row_size; ++j)
+                for (std::size_t j = i; j < i + ac.ncol; ++j)
                     {
                         auto ci = ac.counts[j];
                         if (ci > 0)
