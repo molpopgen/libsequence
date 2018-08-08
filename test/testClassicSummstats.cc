@@ -199,12 +199,16 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
                     f[i] = 4;
                 }
         }
-    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(c, 0), std::runtime_error);
+    //We have to make data copies here so that 
+    //max_allele is reset.
+    Sequence::VariantMatrix m2(m.data, m.positions);
+    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m2), 0), std::runtime_error);
     for (std::size_t i = 0; i < f.size(); ++i)
         {
             f[i] = 3;
         }
-    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(c, 0));
+    Sequence::VariantMatrix m3(m.data, m.positions);
+    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
 
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
