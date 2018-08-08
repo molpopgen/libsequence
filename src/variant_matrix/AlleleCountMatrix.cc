@@ -1,3 +1,4 @@
+#include <stdexcept>
 #include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/StateCounts.hpp>
 
@@ -16,6 +17,11 @@ namespace Sequence
         for (std::size_t i = 0; i < m.nsites; ++i)
             {
                 auto r = get_ConstRowView(m, i);
+                if (static_cast<std::int8_t>(c.max_allele_idx) > m.max_allele)
+                    {
+                        throw std::runtime_error("found allele value greater "
+                                                 "than matrix.max_allele");
+                    }
                 c(r);
                 for (std::size_t j = 0;
                      j < static_cast<std::size_t>(m.max_allele + 1); ++j)
@@ -31,4 +37,4 @@ namespace Sequence
           row_size(static_cast<std::size_t>(m.max_allele) + 1), nsam(m.nsam)
     {
     }
-}
+} // namespace Sequence
