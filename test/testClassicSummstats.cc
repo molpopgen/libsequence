@@ -65,13 +65,11 @@ BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
-    auto pi = Sequence::thetapi(m);
+    auto pi = Sequence::thetapi(c);
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
     // in same order.
     BOOST_CHECK_CLOSE(pi, manual, 1e-6);
-    auto pi_from_counts = Sequence::thetapi(c);
-    BOOST_CHECK_CLOSE(pi, pi_from_counts, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
@@ -85,7 +83,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
         {
             m.data[i] = -i;
         }
-    auto pi = Sequence::thetapi(m);
+    auto pi = Sequence::thetapi(c);
 
     auto manual = manual_pi(m);
     // Cannot require equal b/c we aren't doing ops
@@ -153,7 +151,7 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
 // all we're doing below is
 // checking the denominator.
 {
-    auto w = Sequence::thetaw(m);
+    auto w = Sequence::thetaw(c);
     double S = m.nsites;
     double d = 0.0;
     for (int i = 1; i < m.nsam; ++i)
@@ -162,23 +160,17 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
         }
     auto manual = S / d;
     BOOST_CHECK_CLOSE(w, manual, 1e-6);
-    auto w2 = Sequence::thetaw(c);
-    BOOST_CHECK_CLOSE(w, w2, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetah)
 // Simplest case
 {
-    auto h0 = Sequence::thetah(m, 0);
-    auto h1 = Sequence::thetah(m, 1);
-    auto h0c = Sequence::thetah(c, 0);
-    auto h1c = Sequence::thetah(c, 1);
+    auto h0 = Sequence::thetah(c, 0);
+    auto h1 = Sequence::thetah(c, 1);
     auto m0 = manual_thetah(m, 0);
     auto m1 = manual_thetah(m, 1);
     BOOST_CHECK_CLOSE(h0, m0, 1e-6);
     BOOST_CHECK_CLOSE(h1, m1, 1e-6);
-    BOOST_CHECK_CLOSE(h0, h0c, 1e-6);
-    BOOST_CHECK_CLOSE(h1, h1c, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_faywuh)
@@ -188,23 +180,11 @@ BOOST_AUTO_TEST_CASE(test_faywuh)
 // we can compare results from the various functions
 // in order to test.
 {
-    auto h = Sequence::thetah(m, 0);
-    auto pi = Sequence::thetapi(m);
-    auto fwh = Sequence::faywuh(m, 0);
-    auto fwhac = Sequence::faywuh(c, 0);
-    BOOST_CHECK_CLOSE(fwh, fwhac, 1e-6);
+    auto h = Sequence::thetah(c, 0);
+    auto pi = Sequence::thetapi(c);
+    auto fwh = Sequence::faywuh(c, 0);
     BOOST_CHECK_EQUAL(fwh + h, pi);
     BOOST_REQUIRE_EQUAL(pi - h, fwh);
-}
-
-BOOST_AUTO_TEST_CASE(theta_hprime)
-{
-    auto hp = Sequence::hprime(m, 0);
-    auto hpac = Sequence::hprime(c, 0);
-    BOOST_CHECK_CLOSE(hp, hpac, 1e-6);
-    hp = Sequence::hprime(m, 1);
-    hpac = Sequence::hprime(c, 1);
-    BOOST_CHECK_CLOSE(hp, hpac, 1e-6);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
@@ -219,12 +199,12 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
                     f[i] = 4;
                 }
         }
-    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(m, 0), std::runtime_error);
+    BOOST_REQUIRE_THROW(auto h = Sequence::thetah(c, 0), std::runtime_error);
     for (std::size_t i = 0; i < f.size(); ++i)
         {
             f[i] = 3;
         }
-    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(m, 0));
+    BOOST_REQUIRE_NO_THROW(auto h = Sequence::thetah(c, 0));
 }
 
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)

@@ -29,57 +29,57 @@ BOOST_FIXTURE_TEST_SUITE(test_classic_stats_with_empty_variant_matrix,
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
-    auto pi = Sequence::thetapi(empty);
+    auto pi = Sequence::thetapi(empty_counts);
     BOOST_REQUIRE_EQUAL(pi, 0.0);
-    pi = Sequence::thetapi(invariant);
+    pi = Sequence::thetapi(invariant_counts);
     BOOST_REQUIRE_EQUAL(pi, 0.0);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetaw)
 {
-    auto tw = Sequence::thetaw(empty);
+    auto tw = Sequence::thetaw(empty_counts);
     BOOST_REQUIRE_EQUAL(tw, 0.0);
-    tw = Sequence::thetaw(invariant);
+    tw = Sequence::thetaw(invariant_counts);
     BOOST_REQUIRE_EQUAL(tw, 0.0);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetah)
 {
-    auto th = Sequence::thetah(empty, 0);
+    auto th = Sequence::thetah(empty_counts, 0);
     BOOST_REQUIRE_EQUAL(th, 0.0);
-    th = Sequence::thetah(invariant, 0);
+    th = Sequence::thetah(invariant_counts, 0);
     BOOST_REQUIRE_EQUAL(th, 0.0);
 }
 
 BOOST_AUTO_TEST_CASE(test_thetal)
 {
-    auto tl = Sequence::thetal(empty, 0);
+    auto tl = Sequence::thetal(empty_counts, 0);
     BOOST_REQUIRE_EQUAL(tl, 0.0);
-    tl = Sequence::thetal(invariant, 0);
+    tl = Sequence::thetal(invariant_counts, 0);
     BOOST_REQUIRE_EQUAL(tl, 0.0);
 }
 
 BOOST_AUTO_TEST_CASE(test_tajd)
 {
-    auto td = Sequence::tajd(empty);
+    auto td = Sequence::tajd(empty_counts);
     BOOST_REQUIRE_EQUAL(std::isnan(td), true);
-    td = Sequence::tajd(invariant);
+    td = Sequence::tajd(invariant_counts);
     BOOST_REQUIRE_EQUAL(std::isnan(td), true);
 }
 
 BOOST_AUTO_TEST_CASE(test_faywuh)
 {
-    auto fwh = Sequence::faywuh(empty, 0);
+    auto fwh = Sequence::faywuh(empty_counts, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(fwh), true);
-    fwh = Sequence::faywuh(invariant, 0);
+    fwh = Sequence::faywuh(invariant_counts, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(fwh), true);
 }
 
 BOOST_AUTO_TEST_CASE(test_hprime)
 {
-    auto hp = Sequence::hprime(empty, 0);
+    auto hp = Sequence::hprime(empty_counts, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(hp), true);
-    hp = Sequence::hprime(invariant, 0);
+    hp = Sequence::hprime(invariant_counts, 0);
     BOOST_REQUIRE_EQUAL(std::isnan(hp), true);
 }
 
