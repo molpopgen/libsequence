@@ -58,7 +58,8 @@ manual_thetah(const Sequence::VariantMatrix& m, const std::int8_t refstate)
                 }
             h += std::pow(nnonref, 2.0);
         }
-    return h / nnm1;
+    h *= 2.0 / nnm1;
+    return h;
 }
 
 BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)

@@ -59,7 +59,9 @@ namespace Sequence
                         double nnm1
                             = static_cast<double>(ac.nsam * (ac.nsam - 1));
                         pi += 1.0 - homozygosity / nnm1;
-                        theta += temp / nnm1;
+                        double x = (power==1.0) ? 1.0/static_cast<double>(ac.nsam) : 
+                            2.0/static_cast<double>(ac.nsam*(ac.nsam-1));
+                        theta += temp * x;
                     }
             }
         };
