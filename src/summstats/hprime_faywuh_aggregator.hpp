@@ -1,25 +1,54 @@
 #ifndef SEQUENCE_DETAIL_HPRIME_FAYWUH_AGGREGATOR_HPP
 #define SEQUENCE_DETAIL_HPRIME_FAYWUH_AGGREGATOR_HPP
 
+#include <Sequence/AlleleCountMatrix.hpp>
+#include <stdexcept>
 #include <cmath>
 
 namespace Sequence
 {
     namespace detail
     {
-        struct hprime_faywuh_row_processor
+        struct stat_is_faywuh
         {
-            unsigned S;
-            double pi, theta;
-            const double power;
-            hprime_faywuh_row_processor(const double p)
-                : S{ 0 }, pi{ 0.0 }, theta{ 0.0 }, power{ p }
+        };
+
+        struct stat_is_hprime
+        {
+        };
+
+        class hprime_faywuh_row_processor
+        {
+          private:
+            inline double
+            update_stat(const double d, const stat_is_faywuh)
             {
+                return std::pow(d, 2.0);
             }
 
+            inline double
+            update_stat(const double d, const stat_is_hprime)
+            {
+                return d;
+            }
+
+            inline double
+            denominator(const std::size_t nsam, const stat_is_faywuh)
+            {
+                return 2./static_cast<double>(nsam * (nsam - 1));
+            }
+
+            inline double
+            denominator(const std::size_t nsam, const stat_is_hprime)
+            {
+                return 1./static_cast<double>(nsam - 1);
+            }
+
+            template <typename T>
             inline void
-            operator()(const Sequence::AlleleCountMatrix &ac,
-                       const std::size_t i, const std::size_t refindex)
+            stat_details(const Sequence::AlleleCountMatrix &ac,
+                         const std::size_t i, const std::size_t refindex,
+                         const T t)
             {
                 unsigned nstates = 0;
                 bool refseen = false;
@@ -35,8 +64,7 @@ namespace Sequence
                                 ++nstates;
                                 if (j - i != refindex)
                                     {
-                                        temp += std::pow(
-                                            static_cast<double>(ci), power);
+                                        temp += update_stat(ci, t);
                                     }
                                 else
                                     {
@@ -59,10 +87,33 @@ namespace Sequence
                         double nnm1
                             = static_cast<double>(ac.nsam * (ac.nsam - 1));
                         pi += 1.0 - homozygosity / nnm1;
-                        double x = (power==1.0) ? 1.0/static_cast<double>(ac.nsam) : 
-                            2.0/static_cast<double>(ac.nsam*(ac.nsam-1));
+                        double x = denominator(ac.nsam, t);
                         theta += temp * x;
                     }
+            }
+
+          public:
+            unsigned S;
+            double pi, theta;
+            hprime_faywuh_row_processor()
+                : S{ 0 }, pi{ 0.0 }, theta{ 0.0 }
+            {
+            }
+
+            inline void
+            operator()(const Sequence::AlleleCountMatrix &ac,
+                       const std::size_t i, const std::size_t refindex,
+                       const stat_is_faywuh dispatch)
+            {
+                stat_details(ac, i, refindex, dispatch);
+            }
+
+            inline void
+            operator()(const Sequence::AlleleCountMatrix &ac,
+                       const std::size_t i, const std::size_t refindex,
+                       const stat_is_hprime dispatch)
+            {
+                stat_details(ac, i, refindex, dispatch);
             }
         };
     } // namespace detail

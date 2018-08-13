@@ -54,10 +54,10 @@ namespace Sequence
                 throw std::invalid_argument(
                     "reference state greater than max allelic state");
             }
-        detail::hprime_faywuh_row_processor rp(1.0);
+        detail::hprime_faywuh_row_processor rp;
         for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
-                rp(ac, i, refindex);
+                rp(ac, i, refindex, detail::stat_is_hprime());
             }
         return hprime_common(static_cast<std::uint32_t>(ac.nsam), rp.S, rp.pi,
                              rp.theta);
@@ -83,7 +83,7 @@ namespace Sequence
                     "all reference states encoded as missing");
             }
 
-        detail::hprime_faywuh_row_processor rp(1.0);
+        detail::hprime_faywuh_row_processor rp;
         std::size_t rstate = 0;
         for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol, ++rstate)
             {
@@ -97,7 +97,7 @@ namespace Sequence
                                     "reference state greater than max allelic "
                                     "state");
                             }
-                        rp(ac, i, refindex);
+                        rp(ac, i, refindex, detail::stat_is_hprime());
                     }
             }
         return hprime_common(static_cast<std::uint32_t>(ac.nsam), rp.S, rp.pi,

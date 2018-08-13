@@ -41,7 +41,7 @@ namespace
             {
                 //double nnm1 = static_cast<double>(nsam * (nsam - 1));
                 //return temp / nnm1;
-				auto x = (power == 1.0) ? 1./static_cast<double>(nsam) :
+				auto x = (power == 1.0) ? 1./static_cast<double>(nsam-1) :
 					2.0/static_cast<double>(nsam*(nsam-1));
 				return temp * x;
             }

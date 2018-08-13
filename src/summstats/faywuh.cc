@@ -17,10 +17,10 @@ namespace Sequence
                 throw std::invalid_argument(
                     "reference state greater than max allelic state");
             }
-        detail::hprime_faywuh_row_processor rp(2.0);
+        detail::hprime_faywuh_row_processor rp;
         for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol)
             {
-                rp(ac, i, refindex);
+                rp(ac, i, refindex, detail::stat_is_faywuh());
             }
         if (!rp.S)
             {
@@ -49,10 +49,9 @@ namespace Sequence
                     "all reference states encoded as missing");
             }
 
-        detail::hprime_faywuh_row_processor rp(2.0);
+        detail::hprime_faywuh_row_processor rp;
         std::size_t rstate = 0;
-        for (std::size_t i = 0; i < ac.counts.size();
-             i += ac.ncol, ++rstate)
+        for (std::size_t i = 0; i < ac.counts.size(); i += ac.ncol, ++rstate)
             {
                 if (refstates[rstate] >= 0)
                     {
@@ -64,7 +63,7 @@ namespace Sequence
                                     "reference state greater than max allelic "
                                     "state");
                             }
-                        rp(ac, i, refindex);
+                        rp(ac, i, refindex, detail::stat_is_faywuh());
                     }
             }
         if (!rp.S)
