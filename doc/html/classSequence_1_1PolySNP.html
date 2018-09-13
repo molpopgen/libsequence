@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.3</span>
+   &#160;<span id="projectnumber">1.9.5</span>
    </div>
   </td>
  </tr>
@@ -136,13 +136,13 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a822c36d718b88819c4124913441561e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b8559a4fe0075ef78e751768ac7821f"><td class="memItemLeft" align="right" valign="top">virtual unsigned&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySNP.html#a7b8559a4fe0075ef78e751768ac7821f">Minrec</a> (void) const</td></tr>
 <tr class="separator:a7b8559a4fe0075ef78e751768ac7821f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa2d944ca3bf2a6a8a9c10a18306082bb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1PairwiseLDstats.html">PairwiseLDstats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__threads.html#gaa2d944ca3bf2a6a8a9c10a18306082bb">Disequilibrium</a> (const unsigned &amp;mincount=1, const double &amp;max_marker_distance=std::numeric_limits&lt; double &gt;::max()) const</td></tr>
-<tr class="separator:gaa2d944ca3bf2a6a8a9c10a18306082bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d944ca3bf2a6a8a9c10a18306082bb"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1PairwiseLDstats.html">PairwiseLDstats</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySNP.html#aa2d944ca3bf2a6a8a9c10a18306082bb">Disequilibrium</a> (const unsigned &amp;mincount=1, const double &amp;max_marker_distance=std::numeric_limits&lt; double &gt;::max()) const</td></tr>
+<tr class="separator:aa2d944ca3bf2a6a8a9c10a18306082bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:gae62947ef6ee60f62b3f43096aecaec26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__threads.html#gae62947ef6ee60f62b3f43096aecaec26">DepaulisVeuilleStatistics</a> (void) const</td></tr>
-<tr class="separator:gae62947ef6ee60f62b3f43096aecaec26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae62947ef6ee60f62b3f43096aecaec26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySNP.html#ae62947ef6ee60f62b3f43096aecaec26">DepaulisVeuilleStatistics</a> (void) const</td></tr>
+<tr class="separator:ae62947ef6ee60f62b3f43096aecaec26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f1f249e7631b5f5e343d3d82c07e035"><td class="memItemLeft" align="right" valign="top"><a id="a5f1f249e7631b5f5e343d3d82c07e035"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>WallStats</b> (void) const</td></tr>
 <tr class="separator:a5f1f249e7631b5f5e343d3d82c07e035"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -233,7 +233,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </dl>
 <dl class="section note"><dt>Note</dt><dd>this constructor allocates a pointer to an implementation class, which automatically pre-processes the SNP data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00177">177</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00171">171</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -262,11 +262,11 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_30.png"/>
+<img class="formulaDsp" alt="\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]" src="form_40.png"/>
 </p>
 <p> This is the denominator of Watterson's Theta (see <a class="el" href="classSequence_1_1PolySNP.html#a6e96fbea0c3a1c0ef0c21a69ba7fd473">PolySNP::ThetaW</a>) </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01529">1529</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01504">1504</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -294,11 +294,11 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_31.png"/>
+<img class="formulaDsp" alt="\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]" src="form_41.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01545">1545</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01520">1520</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -326,11 +326,11 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_32.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]" src="form_42.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01562">1562</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01537">1537</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -358,12 +358,12 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_33.png"/>
+<img class="formulaDsp" alt="\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]" src="form_43.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01577">1577</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01552">1552</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -391,11 +391,11 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n &gt; 2 \\ \end{array}\right.\ \]" src="form_34.png"/>
+<img class="formulaDsp" alt="\[ c_n=\left\{\begin{array}{cl} 1 , &amp; when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, &amp; when\ n &gt; 2 \\ \end{array}\right.\ \]" src="form_44.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01593">1593</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01568">1568</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -423,11 +423,11 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </table>
 </div><div class="memdoc">
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_35.png"/>
+<img class="formulaDsp" alt="\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]" src="form_45.png"/>
 </p>
  <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01620">1620</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01595">1595</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -448,7 +448,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>To check if two sequences are unique, Sequence::Comparisons::Different is used, which does not allow missing data to result in 2 sequences being considered different (as they would be if you simply used thestd::string comparison operators == or !=) </p><dl class="section return"><dt>Returns</dt><dd>the haplotype diversity of the data. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01639">1639</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01614">1614</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -469,7 +469,75 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>To check if two sequences are unique, Sequence::Comparisons::Different is used, which does not allow missing data to result in 2 sequences being considered different (as they would be if you simply used the std::string comparison operators == or !=) </p><dl class="section return"><dt>Returns</dt><dd>number of haplotypes in the sample </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01656">1656</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01631">1631</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+
+</div>
+</div>
+<a id="ae62947ef6ee60f62b3f43096aecaec26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae62947ef6ee60f62b3f43096aecaec26">&#9670;&nbsp;</a></span>DepaulisVeuilleStatistics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sequence::PolySNP::DepaulisVeuilleStatistics </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Calculate the number of haplotypes in the sample, and haplotype diversity. Unlike Depaulis and Veuille's original paper, this routine uses an unbiased calculation of haplotype diversity (i.e. divide by n choose 2). <br />
+To check if two sequences are unique, Sequence::Comparisons::Different is used, which does not allow missing data to result in 2 sequences being considered different (as they would be if you simply used the std::string comparison operators == or !=) </p>
+
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01050">1050</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+
+</div>
+</div>
+<a id="aa2d944ca3bf2a6a8a9c10a18306082bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d944ca3bf2a6a8a9c10a18306082bb">&#9670;&nbsp;</a></span>Disequilibrium()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="structSequence_1_1PairwiseLDstats.html">PairwiseLDstats</a> &gt; Sequence::PolySNP::Disequilibrium </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned &amp;&#160;</td>
+          <td class="paramname"><em>mincount</em> = <code>1</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double &amp;&#160;</td>
+          <td class="paramname"><em>max_marker_distance</em> = <code>std::numeric_limits&lt;double&gt;::max()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>A vector of statistics related to LD and distance in the sample. An empty vector is returned if there are &lt; 2 polymorphic sites in the sample. See the documentation for <a class="el" href="namespaceSequence_1_1Recombination.html#a4d94f494d332f13638905822cb98bdc5" title="Calculate pairwise LD for a Sequence::PolyTable. ">Recombination::Disequilibrium</a> for a description of the return vector. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mincount</td><td>a frequency filter. A polymorphism must be present at least <em>mincount</em> times in the data </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>For D and D', the 11 gamete is defined as follows: If no outgroup is present, it refers to the genotype of minor alleles at both sites. If there is an outgroup, it is based on the genotype of derived alleles at both sites. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01837">1837</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -530,7 +598,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01384">1384</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01359">1359</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -560,7 +628,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Fu and Li (1993) D*, or nan if there are no polymorphic sites </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01453">1453</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01428">1428</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -591,7 +659,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required, else undefined </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01413">1413</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01388">1388</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -621,7 +689,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <p>Fu and Li (1993) F* statistic. Incorporates correction from Simonsen et al. (1995) Genetics 141: 413, eqn A5. </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Fu and Li (1993) F* statistic, or nan if there are no polymorphic sites </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01487">1487</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01462">1462</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -651,7 +719,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>ThetaPi-ThetaH/(~Var(ThetaPi-ThetaH)). This corresponds to Equation 5 in Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster" and Equation 13 of Zeng et al. (2006) Genetics 1431-1439 </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">likeThorntonAndolfatto</td><td>The calculation of H' requires calculation of <img class="formulaInl" alt="$\theta^2$" src="form_27.png"/>. In Thornton and Andolfatto, we simply used <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_28.png"/>, which is slightly biased. By default, this function calculates <img class="formulaInl" alt="$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$" src="form_29.png"/>, unless this bool is set to false, in which case <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_28.png"/> is used. </td></tr>
+    <tr><td class="paramname">likeThorntonAndolfatto</td><td>The calculation of H' requires calculation of <img class="formulaInl" alt="$\theta^2$" src="form_37.png"/>. In Thornton and Andolfatto, we simply used <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_38.png"/>, which is slightly biased. By default, this function calculates <img class="formulaInl" alt="$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$" src="form_39.png"/>, unless this bool is set to false, in which case <img class="formulaInl" alt="$\widehat\theta_W^2$" src="form_38.png"/> is used. </td></tr>
   </table>
   </dd>
 </dl>
@@ -677,10 +745,10 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_36.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a275df78182d6ef85cc0ab6cda14db9ee">Recombination::HudsonsC</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Hudson's (1987) estimator of <img class="formulaInl" alt="$\rho=4Nc$" src="form_46.png"/>, an estimator of the population recombination rate that depends on the variance of the site frequencies. The calculation is made by a call to <a class="el" href="namespaceSequence_1_1Recombination.html#a275df78182d6ef85cc0ab6cda14db9ee">Recombination::HudsonsC</a> </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Will return nan if there are no polymorphic sites </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01673">1673</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01648">1648</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -710,7 +778,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 <dl class="section return"><dt>Returns</dt><dd>The minimum number of recombination events observed in the sample (Hudson and Kaplan 1985). Will return SEQMAXUNSIGNED if there are &lt; 2 segregating sites. </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Code is a modification of that provided by Jeff Wall </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01690">1690</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01665">1665</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -840,7 +908,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>Component of variance of mean pairwise differences from sampling. Tajima in Takahata/Clark book, (15) </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01349">1349</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01324">1324</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -861,7 +929,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
 </div><div class="memdoc">
 <p>Stochastic variance of mean pairwise differences. Tajima in Takahata/Clark book, (14). </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01331">1331</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01306">1306</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -888,7 +956,7 @@ neutrality" are, strictly speaking, undefined if missing data are present. The r
   </tr>
 </table>
 </div><div class="memdoc">
-<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_26.png"/>. This routine does calculate the denominator of the test statistic. </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
+<p>A common summary of the site frequency spectrum. Proportional to <img class="formulaInl" alt="$\widehat\theta_\pi-\widehat\theta_W$" src="form_36.png"/>. This routine does calculate the denominator of the test statistic. </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>Tajima's D, or nan if there are no polymorphic sites </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="slidingWindow_8cc-example.html#a2">slidingWindow.cc</a>, and <a class="el" href="slidingWindow2_8cc-example.html#a2">slidingWindow2.cc</a>.</dd>
 </dl>
@@ -939,9 +1007,9 @@ G N<br />
 G N<br />
 N T<br />
 <br />
-This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>When using <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>, an outgroup is required. When using <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">PolySIM</a>, which is constructed with a <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">SimData</a> *, an outgroup is not required (as the 0,1 coding of the data refers to ancestral and derived, respectively). </dd></dl>
+This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_34.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>When using <a class="el" href="classSequence_1_1PolySNP.html" title="Molecular population genetic analysis. ">PolySNP</a>, an outgroup is required. When using <a class="el" href="classSequence_1_1PolySIM.html" title="Analysis of coalescent simulation data. ">PolySIM</a>, which is constructed with a <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">SimData</a> *, an outgroup is not required (as the 0,1 coding of the data refers to ancestral and derived, respectively). </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00372">372</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00366">366</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -968,7 +1036,7 @@ This keeps the expectation of the statistic equal to <img class="formulaInl" alt
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Calculate Theta ( = 4Nu) from site homozygosity, corresponding to equation 1 in Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster," (although we labelled in <img class="formulaInl" alt="$theta_\eta$" src="form_25.png"/> in that paper) The test requires that the ancestral state (inferred from the outgroup) still be segregating in the ingroup. If that is not true, the site is skipped.<br />
+<p>Calculate Theta ( = 4Nu) from site homozygosity, corresponding to equation 1 in Thornton and Andolfatto (Genetics) "Approximate Bayesian Inference reveals evidence for a recent, severe, bottleneck in a Netherlands population of Drosophila melanogaster," (although we labelled in <img class="formulaInl" alt="$theta_\eta$" src="form_35.png"/> in that paper) The test requires that the ancestral state (inferred from the outgroup) still be segregating in the ingroup. If that is not true, the site is skipped.<br />
  If there are &gt;= 2 derived states inferred, a "missing data" approach is taken.<br />
 For example:<br />
 Outgroup : <br />
@@ -988,7 +1056,7 @@ G N<br />
 G N<br />
 N T<br />
 <br />
-This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_0.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
+This keeps the expectation of the statistic equal to <img class="formulaInl" alt="$\theta$" src="form_34.png"/>, and uses the correct number of derived mutations ovserved in the data. </p><dl class="section note"><dt>Note</dt><dd>For sequence data, an outgroup is required. This requirement is checked by assert() </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Joshua Shapiro </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00594">594</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
@@ -1020,17 +1088,17 @@ This keeps the expectation of the statistic equal to <img class="formulaInl" alt
 </div><div class="memdoc">
 <p>Calculated here as the sum of 1.0 - sum of site homozygosity accross sites.<br />
  </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}&gt;0 \]" src="form_16.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}&gt;0 \]" src="form_25.png"/>
 </p>
-<p> Where <img class="formulaInl" alt="$S$" src="form_17.png"/> is the number of segregating sites, <img class="formulaInl" alt="$k_{j,i}$" src="form_18.png"/> is the number of occurences of the <img class="formulaInl" alt="$j_{th}$" src="form_19.png"/> character state at site <img class="formulaInl" alt="$i$" src="form_20.png"/>, and <img class="formulaInl" alt="$n_i$" src="form_21.png"/> is the sample size at site <img class="formulaInl" alt="$i$" src="form_20.png"/>. Calculating the statistic in this manner makes it easy to generalize to an arbitrary number of character states per polymorphic site<br />
+<p> Where <img class="formulaInl" alt="$S$" src="form_26.png"/> is the number of segregating sites, <img class="formulaInl" alt="$k_{j,i}$" src="form_27.png"/> is the number of occurences of the <img class="formulaInl" alt="$j_{th}$" src="form_28.png"/> character state at site <img class="formulaInl" alt="$i$" src="form_29.png"/>, and <img class="formulaInl" alt="$n_i$" src="form_30.png"/> is the sample size at site <img class="formulaInl" alt="$i$" src="form_29.png"/>. Calculating the statistic in this manner makes it easy to generalize to an arbitrary number of character states per polymorphic site<br />
 Also equivalent to sum of site heterozygosities:<br />
  </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]" src="form_22.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]" src="form_31.png"/>
 </p>
 <p><br />
 Also equivalent to mean pairwise differences, but that's slow to calculate.<br />
 <br />
-If there is missing data (indicated by 'N' characters), the sample size is reduced for that site. For example, if the data for the <img class="formulaInl" alt="$i_{th}$" src="form_23.png"/> site is:<br />
+If there is missing data (indicated by 'N' characters), the sample size is reduced for that site. For example, if the data for the <img class="formulaInl" alt="$i_{th}$" src="form_32.png"/> site is:<br />
 A<br />
 A<br />
 A<br />
@@ -1041,7 +1109,7 @@ Then ThetaPi is calculated for that site as if the sample size were 4 (not 6), a
 <br />
 </p>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00199">199</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00193">193</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1069,12 +1137,12 @@ Then ThetaPi is calculated for that site as if the sample size were 4 (not 6), a
 </table>
 </div><div class="memdoc">
 <p>The classic "Watterson's Theta" statistic, generalized to missing data and multiple mutations per site: </p><p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]" src="form_24.png"/>
+<img class="formulaDsp" alt="\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]" src="form_33.png"/>
 </p>
 <p><br />
-For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is either the number of segregating sites, or the number of mutations on the genealogy and <img class="formulaInl" alt="$n_i$" src="form_21.png"/> is the sample size at site i. If totMuts == 1, the number of mutations is used, else the number ofsegregating sites is used. </p><dl class="section warning"><dt>Warning</dt><dd>Statistic undefined if there are untyped SNPs. In the presence of missing data, ThetaW is calculated as the sum (over all segregating sites) of 1/a_sub_n, where a_sub_n is the denominator of ThetaW, using the number of alleles without missing data as the sample size. More formally, the routine returns a calculation base on an unweighted sample size adjustment accross sites. </dd></dl>
+For this statistic, <img class="formulaInl" alt="$S$" src="form_26.png"/> is either the number of segregating sites, or the number of mutations on the genealogy and <img class="formulaInl" alt="$n_i$" src="form_30.png"/> is the sample size at site i. If totMuts == 1, the number of mutations is used, else the number ofsegregating sites is used. </p><dl class="section warning"><dt>Warning</dt><dd>Statistic undefined if there are untyped SNPs. In the presence of missing data, ThetaW is calculated as the sum (over all segregating sites) of 1/a_sub_n, where a_sub_n is the denominator of ThetaW, using the number of alleles without missing data as the sample size. More formally, the routine returns a calculation base on an unweighted sample size adjustment accross sites. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00320">320</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l00314">314</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1095,7 +1163,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 </div><div class="memdoc">
 <p>Total variance of mean pairwise differences. Tajima in Takahata/Clark book, (13). </p><dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01313">1313</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01288">1288</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1185,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Variance of Watterson's Theta (<a class="el" href="classSequence_1_1PolySNP.html#a6e96fbea0c3a1c0ef0c21a69ba7fd473">ThetaW()</a>). </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>statistic undefined if there are untyped SNPs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01366">1366</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01341">1341</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1147,7 +1215,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's B Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01169">1169</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01144">1144</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1177,7 +1245,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's B' Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01287">1287</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01262">1262</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1207,7 +1275,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <dl class="section return"><dt>Returns</dt><dd>Wall's Q Statistic. Wall, J. (1999) Genetical Research 74, pp 65-79 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>Kevin Thornton </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01300">1300</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PolySNP_8cc_source.html#l01275">1275</a> of file <a class="el" href="PolySNP_8cc_source.html">PolySNP.cc</a>.</p>
 
 </div>
 </div>
@@ -1221,7 +1289,7 @@ For this statistic, <img class="formulaInl" alt="$S$" src="form_17.png"/> is eit
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="classSequence_1_1PolySNP.html">PolySNP</a></li>
-    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
+    <li class="footer">Generated on Thu Sep 13 2018 15:07:05 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

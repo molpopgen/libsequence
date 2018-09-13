@@ -1,39 +1,49 @@
-\form#0:$\theta$
-\form#1:$\pi$
-\form#2:$F_{st}$
-\form#3:$\rho_{87}$
-\form#4:$K_a/K_s$
-\form#5:$F_{ST}$
-\form#6:\[F_{ST}=\frac{\pi_{D}}{\pi_S + \pi_D},\]
-\form#7:\[F_{ST}=\frac{\pi_D}{2\pi_S + \pi_D},\]
-\form#8:\[F_{ST}= 1 - \frac{\pi_S}{\pi_T} , \]
-\form#9:\[\pi_B= \frac{\sum_{i<j}w_i w_j \pi_{ij}}{\sum_{i<j}w_i w_j}, \]
-\form#10:\[\pi_T = \sum_i w_i^2 \pi_{ii} + 2\sum_{i<j}w_i w_j \pi_{ij}, \]
-\form#11:\[\pi_S = \frac{\sum_i w_i^2 \pi_{ii}}{\sum_i w_i^2},\]
-\form#12:\[ \pi_D = \frac{\pi_T - \pi_S}{2 \sum_{i<j}w_i w_j}, \]
-\form#13:$t_1 - t_0,$
-\form#14:$t_1$
-\form#15:$t_o$
-\form#16:\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}>0 \]
-\form#17:$S$
-\form#18:$k_{j,i}$
-\form#19:$j_{th}$
-\form#20:$i$
-\form#21:$n_i$
-\form#22:\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]
-\form#23:$i_{th}$
-\form#24:\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]
-\form#25:$theta_\eta$
-\form#26:$\widehat\theta_\pi-\widehat\theta_W$
-\form#27:$\theta^2$
-\form#28:$\widehat\theta_W^2$
-\form#29:$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$
-\form#30:\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]
-\form#31:\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]
-\form#32:\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]
-\form#33:\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]
-\form#34:\[ c_n=\left\{\begin{array}{cl} 1 , & when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, & when\ n > 2 \\ \end{array}\right.\ \]
-\form#35:\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]
-\form#36:$\rho=4Nc$
-\form#37:$\widehat\theta_\pi$
-\form#38:$\widehat\theta_\pi^2$
+\form#0:$\rho_{87}$
+\form#1:$n$
+\form#2:$n \choose 2$
+\form#3:$k$
+\form#4:$[0,k)$
+\form#5:$\sum_{i=0}^{i=m.nsites-1}I(i)$
+\form#6:$I(i)$
+\form#7:$k_i - 1$
+\form#8:$k_i$
+\form#9:$i^{th}$
+\form#10:$\hat\theta_H$
+\form#11:$\hat\theta_L$
+\form#12:$k-1$
+\form#13:$K_a/K_s$
+\form#14:$F_{ST}$
+\form#15:\[F_{ST}=\frac{\pi_{D}}{\pi_S + \pi_D},\]
+\form#16:\[F_{ST}=\frac{\pi_D}{2\pi_S + \pi_D},\]
+\form#17:\[F_{ST}= 1 - \frac{\pi_S}{\pi_T} , \]
+\form#18:\[\pi_B= \frac{\sum_{i<j}w_i w_j \pi_{ij}}{\sum_{i<j}w_i w_j}, \]
+\form#19:\[\pi_T = \sum_i w_i^2 \pi_{ii} + 2\sum_{i<j}w_i w_j \pi_{ij}, \]
+\form#20:\[\pi_S = \frac{\sum_i w_i^2 \pi_{ii}}{\sum_i w_i^2},\]
+\form#21:\[ \pi_D = \frac{\pi_T - \pi_S}{2 \sum_{i<j}w_i w_j}, \]
+\form#22:$t_1 - t_0,$
+\form#23:$t_1$
+\form#24:$t_o$
+\form#25:\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}(1-\sum_{j=1}^{j=4}\frac{k_{j,i} \times (k_{j,i}-1)}{n_i \times (n_i - 1)});k_{j,i}>0 \]
+\form#26:$S$
+\form#27:$k_{j,i}$
+\form#28:$j_{th}$
+\form#29:$i$
+\form#30:$n_i$
+\form#31:\[ \widehat\theta_\pi=\sum_{i=1}^{i=S}2{p_i}{q_i} \]
+\form#32:$i_{th}$
+\form#33:\[ \widehat\theta_w=\sum_{i=1}^{i=S}\frac{S}{\sum_{j=1}^{j=n_i-1}\frac{1}{j}} \]
+\form#34:$\theta$
+\form#35:$theta_\eta$
+\form#36:$\widehat\theta_\pi-\widehat\theta_W$
+\form#37:$\theta^2$
+\form#38:$\widehat\theta_W^2$
+\form#39:$\theta^2=\frac{S(S-1)}{a_n^2+b_n}$
+\form#40:\[a_n=\sum_{i=1}^{i=n-1}\frac{1}{i}.\ \]
+\form#41:\[a_{n+1}=\sum_{i=1}^{i=n}\frac{1}{i}\ \]
+\form#42:\[b_n=\sum_{i=1}^{i=n-1}\frac{1}{i^2}\ \]
+\form#43:\[b_n=\sum_{i=1}^{i=n}\frac{1}{i^2}\ \]
+\form#44:\[ c_n=\left\{\begin{array}{cl} 1 , & when\ n = 2 \\ \frac{2 \times (n \times a_n - 2 \times (n-1))}{(n-1) \times (n-2)}, & when\ n > 2 \\ \end{array}\right.\ \]
+\form#45:\[\ d_n=\frac{2}{n-1} \times (1.5 - \frac{2 \times a_{n+1}}{n-2} - \frac{1}{n})\ \]
+\form#46:$\rho=4Nc$
+\form#47:$\widehat\theta_\pi$
+\form#48:$\widehat\theta_\pi^2$

@@ -10,12 +10,21 @@ var group__popgenanalysis =
       [ "rsq", "structSequence_1_1PairwiseLDstats.html#ac67e51ef1bf78b99b2c162ba2879149f", null ],
       [ "skipped", "structSequence_1_1PairwiseLDstats.html#aaad16c0cb2a9ead7d0fcaa3e2b249b91", null ]
     ] ],
+    [ "AlleleCounts", "structSequence_1_1AlleleCounts.html", [
+      [ "nmissing", "structSequence_1_1AlleleCounts.html#ace1d1d3529e97cfdab532f59657c6e2b", null ],
+      [ "nstates", "structSequence_1_1AlleleCounts.html#af67dee85a922a2b6dbe5cd5adc064f00", null ]
+    ] ],
     [ "GarudStats", "structSequence_1_1GarudStats.html", [
       [ "GarudStats", "structSequence_1_1GarudStats.html#a791c27c1a70cfc418e56a53545b7e42a", null ],
       [ "GarudStats", "structSequence_1_1GarudStats.html#a019aec3528ef10476219c39cda46babc", null ],
       [ "H1", "structSequence_1_1GarudStats.html#a3a6dd32022e5123d24d25d3042849bf0", null ],
       [ "H12", "structSequence_1_1GarudStats.html#a99724d39a1c2482beb75f1c37b46c1c2", null ],
       [ "H2H1", "structSequence_1_1GarudStats.html#acba63a0cbfa7713da72f9f124b6d1c71", null ]
+    ] ],
+    [ "nSLiHS", "structSequence_1_1nSLiHS.html", [
+      [ "core_count", "structSequence_1_1nSLiHS.html#a072d4301690ae58c9147abcdd507abca", null ],
+      [ "ihs", "structSequence_1_1nSLiHS.html#a1bcd5b28e83f28aa54251f41d42a95d6", null ],
+      [ "nsl", "structSequence_1_1nSLiHS.html#a232aae91c055eee8b46ece42362cb90a", null ]
     ] ],
     [ "PolySIM", "classSequence_1_1PolySIM.html", null ],
     [ "PolySNP", "classSequence_1_1PolySNP.html", [
@@ -30,8 +39,8 @@ var group__popgenanalysis =
       [ "d_sub_n", "classSequence_1_1PolySNP.html#a7d29b55c24728de0989826f99e32a106", null ],
       [ "DandVH", "classSequence_1_1PolySNP.html#acd83085ce25916d6c4c55264e5e6b12b", null ],
       [ "DandVK", "classSequence_1_1PolySNP.html#a3d5dda9612344ebc0e4d2e29c613359b", null ],
-      [ "DepaulisVeuilleStatistics", "group__threads.html#gae62947ef6ee60f62b3f43096aecaec26", null ],
-      [ "Disequilibrium", "group__threads.html#gaa2d944ca3bf2a6a8a9c10a18306082bb", null ],
+      [ "DepaulisVeuilleStatistics", "classSequence_1_1PolySNP.html#ae62947ef6ee60f62b3f43096aecaec26", null ],
+      [ "Disequilibrium", "classSequence_1_1PolySNP.html#aa2d944ca3bf2a6a8a9c10a18306082bb", null ],
       [ "Dnominator", "classSequence_1_1PolySNP.html#a8f3fddfddf2abae078278ce2627317b8", null ],
       [ "FuLiD", "classSequence_1_1PolySNP.html#a6499b4c62cd4113852506c747927ebd4", null ],
       [ "FuLiDStar", "classSequence_1_1PolySNP.html#a3527d4a50f5f8aeca5c37e6777170e46", null ],
@@ -73,7 +82,30 @@ var group__popgenanalysis =
       [ "size", "classSequence_1_1PolyTableSlice.html#a8f651210e56334f9c9056c8908fbc2a9", null ]
     ] ],
     [ "FST", "classSequence_1_1FST.html", null ],
+    [ "aggregate_sites", "group__popgenanalysis.html#ga2ff52f295a59b1d1c18e89c5fac22b4f", null ],
+    [ "aggregate_sites", "group__popgenanalysis.html#ga078ace30fe1142b794bfcedb6071780b", null ],
+    [ "allele_counts", "group__popgenanalysis.html#gac6a0c6c502d6fb4bb6b1f946fa959cc9", null ],
+    [ "difference_matrix", "group__popgenanalysis.html#ga045b5f2dbd39a9fb0f23bda2982922bc", null ],
+    [ "faywuh", "group__popgenanalysis.html#ga91ef90d896d243d103d60b3030c72b1c", null ],
+    [ "faywuh", "group__popgenanalysis.html#ga1535e6b21460af1fdfe924a70cc7cfd1", null ],
+    [ "haplotype_diversity", "group__popgenanalysis.html#ga771034cfe9346ae1cb6d2ae02c6ca03e", null ],
+    [ "hprime", "group__popgenanalysis.html#gac1c2377cc536d966337fb66dd5774a09", null ],
+    [ "hprime", "group__popgenanalysis.html#ga366995000ebdba145e8dc30cc2ff8960", null ],
+    [ "label_haplotypes", "group__popgenanalysis.html#gafb7b705c644cf777c00f98ced5583c12", null ],
+    [ "nbiallelic_sites", "group__popgenanalysis.html#ga6ec92a395ea8c549df6d78f12bc4c056", null ],
+    [ "non_reference_allele_counts", "group__popgenanalysis.html#ga875281ef6c2cf9e6700f71891b4ea545", null ],
+    [ "non_reference_allele_counts", "group__popgenanalysis.html#ga970ab4adfe4f42f0e1fdedfe54b86de9", null ],
+    [ "nsl", "group__popgenanalysis.html#ga4ff11f3a197b127ba0b1fea93690a798", null ],
     [ "nSL", "group__popgenanalysis.html#ga22bece35153a90354184354ea7ca12a2", null ],
-    [ "nSL_t", "group__popgenanalysis.html#ga08bc910f7be7c6cd753fa93e2dd33c82", null ],
-    [ "nSL_t", "group__popgenanalysis.html#ga80f7547e21c6c61e0f1ed79c5b4782d6", null ]
+    [ "number_of_haplotypes", "group__popgenanalysis.html#ga315047dd61b94ff3c700a1966114cf3e", null ],
+    [ "nvariable_sites", "group__popgenanalysis.html#gaa224265ef8a1030e9b63f1d06b5583da", null ],
+    [ "rmin", "group__popgenanalysis.html#gab08126b86f0550aade6960c5d08f3aa2", null ],
+    [ "tajd", "group__popgenanalysis.html#gab644da065aecf3501765a89899cdd9db", null ],
+    [ "thetah", "group__popgenanalysis.html#ga2784cc28057f56b13395c9f87cec06fd", null ],
+    [ "thetah", "group__popgenanalysis.html#ga755e79f8ae0737ad773c1ba631b72750", null ],
+    [ "thetal", "group__popgenanalysis.html#gaa65391d75f8257d49692e01f74262c17", null ],
+    [ "thetal", "group__popgenanalysis.html#gaee54083faf39464c8651011cfae34ce5", null ],
+    [ "thetapi", "group__popgenanalysis.html#gabba8ecae9493ce2f2a063631bab4ef14", null ],
+    [ "thetaw", "group__popgenanalysis.html#ga06c5c1a9e4559ce96d8e03d99514509e", null ],
+    [ "total_number_of_mutations", "group__popgenanalysis.html#gadca085620028aae55e983989282ea596", null ]
 ];

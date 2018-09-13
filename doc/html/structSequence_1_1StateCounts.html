@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.3</span>
+   &#160;<span id="projectnumber">1.9.5</span>
    </div>
   </td>
  </tr>
@@ -62,44 +62,61 @@ $(document).ready(function(){initNavTree('structSequence_1_1StateCounts.html',''
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="structSequence_1_1StateCounts-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Sequence::StateCounts Struct Reference<div class="ingroups"><a class="el" href="group__variantmatrix.html">Variant Matrix</a></div></div>  </div>
+<div class="title">Sequence::StateCounts Struct Reference<div class="ingroups"><a class="el" href="group__popgen.html">Molecular Population Genetics</a> &raquo; <a class="el" href="group__variantmatrix.html">Variant Matrix</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Track character state occurrence at a site in a <a class="el" href="structSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>.  
+<p>Track character state occurrence at a site in a <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>.  
  <a href="structSequence_1_1StateCounts.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StateCounts_8hpp_source.html">StateCounts.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ab4ec2589b8e9ac5a2dee6de2c79464b3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#ab4ec2589b8e9ac5a2dee6de2c79464b3">StateCounts</a> (const <a class="el" href="group__variantmatrix.html#ga6689ef90ac7773780a835bbd0a619b88">ConstRowView</a> &amp;r, const std::int8_t refstate_=0)</td></tr>
-<tr class="separator:ab4ec2589b8e9ac5a2dee6de2c79464b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a673be661f31aa2969b0bd2c32964a537"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#a673be661f31aa2969b0bd2c32964a537">StateCounts</a> (const std::int8_t refstate_)</td></tr>
+<tr class="separator:a673be661f31aa2969b0bd2c32964a537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae73ade9ab604914ca0e87028eda7c88c"><td class="memItemLeft" align="right" valign="top"><a id="ae73ade9ab604914ca0e87028eda7c88c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (<a class="el" href="group__variantmatrix.html#ga6689ef90ac7773780a835bbd0a619b88">ConstRowView</a> &amp;)</td></tr>
+<tr class="separator:ae73ade9ab604914ca0e87028eda7c88c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13641ac42703ddc901c0938615944479"><td class="memItemLeft" align="right" valign="top"><a id="a13641ac42703ddc901c0938615944479"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const <a class="el" href="group__variantmatrix.html#ga43812fe29bc1da41fcb80b0e026ae591">RowView</a> &amp;)</td></tr>
+<tr class="separator:a13641ac42703ddc901c0938615944479"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac7a3849a9316958b87b711d31e0f7e43"><td class="memItemLeft" align="right" valign="top"><a id="ac7a3849a9316958b87b711d31e0f7e43"></a>
-std::unordered_map&lt; std::int8_t, std::uint32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#ac7a3849a9316958b87b711d31e0f7e43">counts</a></td></tr>
-<tr class="memdesc:ac7a3849a9316958b87b711d31e0f7e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep track of (state, count) pairs. <br /></td></tr>
-<tr class="separator:ac7a3849a9316958b87b711d31e0f7e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa644b484f1939ec800819d9d41087bc"><td class="memItemLeft" align="right" valign="top"><a id="aaa644b484f1939ec800819d9d41087bc"></a>
+std::vector&lt; std::int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#aaa644b484f1939ec800819d9d41087bc">counts</a></td></tr>
+<tr class="memdesc:aaa644b484f1939ec800819d9d41087bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keep track of (state, count) pairs. <br /></td></tr>
+<tr class="separator:aaa644b484f1939ec800819d9d41087bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16e07fb1ee0c76a1cb1ab8d6184ad2c1"><td class="memItemLeft" align="right" valign="top"><a id="a16e07fb1ee0c76a1cb1ab8d6184ad2c1"></a>
+std::size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#a16e07fb1ee0c76a1cb1ab8d6184ad2c1">max_allele_idx</a></td></tr>
+<tr class="memdesc:a16e07fb1ee0c76a1cb1ab8d6184ad2c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max allelic value seen. <br /></td></tr>
+<tr class="separator:a16e07fb1ee0c76a1cb1ab8d6184ad2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adceb902480552c011fbffab1d07c8ed7"><td class="memItemLeft" align="right" valign="top"><a id="adceb902480552c011fbffab1d07c8ed7"></a>
 std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#adceb902480552c011fbffab1d07c8ed7">n</a></td></tr>
 <tr class="memdesc:adceb902480552c011fbffab1d07c8ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sample size at this site. Excluded missing data. <br /></td></tr>
 <tr class="separator:adceb902480552c011fbffab1d07c8ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d9c6e6ce38ef1d75ae810adac5a3ea7"><td class="memItemLeft" align="right" valign="top">std::int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1StateCounts.html#a4d9c6e6ce38ef1d75ae810adac5a3ea7">refstate</a></td></tr>
 <tr class="separator:a4d9c6e6ce38ef1d75ae810adac5a3ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:abef7640b37f7462504984d84254a1b70"><td class="memItemLeft" align="right" valign="top"><a id="abef7640b37f7462504984d84254a1b70"></a>
+static constexpr <a class="el" href="classSequence_1_1VariantMatrix.html#a582c2fb9fe095dbcd1dd24b693b657ac">VariantMatrix::value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><b>max_allele</b> = std::numeric_limits&lt;<a class="el" href="classSequence_1_1VariantMatrix.html#a582c2fb9fe095dbcd1dd24b693b657ac">VariantMatrix::value_type</a>&gt;::max()</td></tr>
+<tr class="separator:abef7640b37f7462504984d84254a1b70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Track character state occurrence at a site in a <a class="el" href="structSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>. </p>
-<p>This class keeps track of how many times each character state occurs at a variable site in a <a class="el" href="structSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>. All missing data (negative state values) are considered equivalent and collapsed into the single missing value of -1.</p>
+<div class="textblock"><p>Track character state occurrence at a site in a <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>. </p>
+<p>This class keeps track of how many times each character state occurs at a variable site in a <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a>. All missing data (negative state values) are considered equivalent and collapsed into the single missing value of -1.</p>
 <p>When constructed, the sample size at a site is considered to be the sum of the number of occurrences of all non-missing states. </p>
 
-<p class="definition">Definition at line <a class="el" href="StateCounts_8hpp_source.html#l00010">10</a> of file <a class="el" href="StateCounts_8hpp_source.html">StateCounts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateCounts_8hpp_source.html#l00011">11</a> of file <a class="el" href="StateCounts_8hpp_source.html">StateCounts.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ab4ec2589b8e9ac5a2dee6de2c79464b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab4ec2589b8e9ac5a2dee6de2c79464b3">&#9670;&nbsp;</a></span>StateCounts()</h2>
+<a id="a673be661f31aa2969b0bd2c32964a537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a673be661f31aa2969b0bd2c32964a537">&#9670;&nbsp;</a></span>StateCounts()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -107,25 +124,15 @@ std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
         <tr>
           <td class="memname">Sequence::StateCounts::StateCounts </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="group__variantmatrix.html#ga6689ef90ac7773780a835bbd0a619b88">ConstRowView</a> &amp;&#160;</td>
-          <td class="paramname"><em>r</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">const std::int8_t&#160;</td>
-          <td class="paramname"><em>refstate_</em> = <code>0</code>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>refstate_</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Construct with a ConstRowView and a reference state, which defaults to 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="StateCounts_8cc_source.html#l00006">6</a> of file <a class="el" href="StateCounts_8cc_source.html">StateCounts.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateCounts_8cc_source.html#l00013">13</a> of file <a class="el" href="StateCounts_8cc_source.html">StateCounts.cc</a>.</p>
 
 </div>
 </div>
@@ -143,7 +150,7 @@ std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 </div><div class="memdoc">
 <p>The reference state for this site. Needed for certain summary statistics. Default is -1 (missing). </p>
 
-<p class="definition">Definition at line <a class="el" href="StateCounts_8hpp_source.html#l00029">29</a> of file <a class="el" href="StateCounts_8hpp_source.html">StateCounts.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="StateCounts_8hpp_source.html#l00034">34</a> of file <a class="el" href="StateCounts_8hpp_source.html">StateCounts.hpp</a>.</p>
 
 </div>
 </div>
@@ -157,7 +164,7 @@ std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" h
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespaceSequence.html">Sequence</a></li><li class="navelem"><a class="el" href="structSequence_1_1StateCounts.html">StateCounts</a></li>
-    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
+    <li class="footer">Generated on Thu Sep 13 2018 15:07:05 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

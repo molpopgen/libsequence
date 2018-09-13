@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.3</span>
+   &#160;<span id="projectnumber">1.9.5</span>
    </div>
   </td>
  </tr>
@@ -73,22 +73,25 @@ $(document).ready(function(){initNavTree('md__home_molpopgen_src_libsequence_REV
 <li>As a rule, software depending on libsequence will have to be recompiled, not rewritten. The ABI breakage is (mostly...) coming from changing the implementation, not the interface.</li>
 <li>If I remove features, they will be marked as deprecated, meaning that they will be removed in 2.0</li>
 </ul>
-<h3>TODO:</h3>
-<ul>
-<li>Move BAM alphabet to SeqAlphabets</li>
-</ul>
-<ol type="1">
-<li>H12 from Petrov, Messer, et al.</li>
-<li>G stat for differentiation &ndash; <a href="http://arxiv.org/pdf/1403.1552.pdf">http://arxiv.org/pdf/1403.1552.pdf</a></li>
-<li>iHH?</li>
-<li><a href="http://mbe.oxfordjournals.org/content/31/5/1275.abstract">http://mbe.oxfordjournals.org/content/31/5/1275.abstract</a> &ndash; DONE</li>
-<li>Nucleotide, Genotype classes</li>
-<li>Document: Ptable, bamrecord, bamreader, sam*</li>
-</ol>
 <h3>ISSUES:</h3>
 <ol type="1">
 <li><a class="el" href="SeqRegexes_8hpp.html" title="various useful rexex-based functions for dealing with data. Declares Sequence::basic_dna_alphabet,Sequence::full_dna_alphabet, Sequence::pep_alphabet, and the function Sequence::validSeq. ">Sequence/SeqRegexes.hpp</a> &ndash; not working. This will not be fixed until GCC supports &lt;regex&gt;. The function is now currently implemented in a non-regex manner, which is lame, but it works.</li>
 </ol>
+<h2>libsequence 1.9.5</h2>
+<ul>
+<li>Support for slices of VariantMatrix and AlleleCountMatrix. <a href="https://github.com/molpopgen/libsequence/pull/49">PR49</a></li>
+<li>Faster summary statistic calculation. <a href="https://github.com/molpopgen/libsequence/pull/46">PR46</a> <a href="https://github.com/molpopgen/libsequence/pull/47">PR47</a> <a href="https://github.com/molpopgen/libsequence/pull/48">PR48</a></li>
+<li>Added <a class="el" href="namespaceSequence.html#a7686343ff2b87b50a42ce782b594cf0e">Sequence::is_different_matrix</a>. <a href="https://github.com/molpopgen/libsequence/pull/45">PR45</a></li>
+<li>Fixed a bug in <a class="el" href="group__popgenanalysis.html#gafb7b705c644cf777c00f98ced5583c12" title="Assign a unique label to each haplotype. ">Sequence::label_haplotypes</a>.<a href="https://github.com/molpopgen/libsequence/pull/44">PR44</a></li>
+</ul>
+<h2>libsequence 1.9.4</h2>
+<p>A major step towards 2.0</p>
+<ul>
+<li>Summary statistics can now be calculated from a VariantMatrix. <a href="https://github.com/molpopgen/libsequence/pull/33">PR33</a> <a href="https://github.com/molpopgen/libsequence/pull/36">PR36</a></li>
+<li>More feature deprecation. See <a href="https://github.com/molpopgen/libsequence/issues/21">Issue 21</a>.</li>
+<li>Dependency on TBB removed. <a href="https://github.com/molpopgen/libsequence/pull/38">PR38</a></li>
+<li>Dependency on zlib removed. <a href="https://github.com/molpopgen/libsequence/pull/39">PR39</a></li>
+</ul>
 <h2>libsequence 1.9.3</h2>
 <ul>
 <li>Refactor unit tests to be much faster to compile</li>
@@ -96,7 +99,7 @@ $(document).ready(function(){initNavTree('md__home_molpopgen_src_libsequence_REV
 <li>The coalescent simulation machinery is no longer compiled or installed.</li>
 <li>Mark a lot of code as deprecated</li>
 <li>Travis CI is now Linux-only</li>
-<li>Add <a class="el" href="structSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">Sequence::VariantMatrix</a> and <a class="el" href="structSequence_1_1StateCounts.html" title="Track character state occurrence at a site in a VariantMatrix. ">Sequence::StateCounts</a></li>
+<li>Add <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">Sequence::VariantMatrix</a> and <a class="el" href="structSequence_1_1StateCounts.html" title="Track character state occurrence at a site in a VariantMatrix. ">Sequence::StateCounts</a></li>
 </ul>
 <p>This release includes the following GitHub PRs: 11, 12, 13, 14, 15, 25, 26, 30, 31, and 32.</p>
 <h2>libsequence 1.9.2</h2>
@@ -190,11 +193,11 @@ $(document).ready(function(){initNavTree('md__home_molpopgen_src_libsequence_REV
 <li>Lots of function prototypes have changed. There were some leftover foo(int x) that are now foo(const int &amp; x). When called many times, the latter may be noticeably faster.</li>
 <li>A new class, Sequence::Ptable : public std::vector&lt;Sequence::polymorhpicSite&gt; is added. This is a very powerful class for maninpulating polymorphism data in a general way.</li>
 <li>The build system has been rebuilt around automake-1.14</li>
-<li><a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">SimDataIO.hpp</a>/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.</li>
-<li>A new namespace, Sequence::IOhelp, is declared in <a class="el" href="IOhelp_8hpp_source.html">Sequence/IOhelp.hpp</a>. It contains some functions to reduce the tedium of some IO conversions.</li>
+<li>SimDataIO.hpp/.cc have been rewritten. The new implementation is better, cleaner, and breaks binary compatibility.</li>
+<li>A new namespace, Sequence::IOhelp, is declared in Sequence/IOhelp.hpp. It contains some functions to reduce the tedium of some IO conversions.</li>
 <li>A new, faster implementation of Sequence::SimData::read</li>
 <li>The configure script how checks for the existence of <a href="http://www.htslib.org">htslib</a></li>
-<li><a class="el" href="bamreader_8hpp.html" title="BAM input stream. ">Sequence/bamreader.hpp</a> and <a class="el" href="bamrecord_8hpp.html" title="Sequence::bamaux and Sequence::bamrecord. ">Sequence/bamrecord.hpp</a> added for direct reading from bam files. Will only compile if <a href="http://htslib.org">htslib</a> is detected by the configure script</li>
+<li>Sequence/bamreader.hpp and Sequence/bamrecord.hpp added for direct reading from bam files. Will only compile if <a href="http://htslib.org">htslib</a> is detected by the configure script</li>
 <li>I've performed extensive code auditing using cppcheck. Many issues were resolved. Most were stylistic, but they do make the code more idiomatic.</li>
 <li>A unit test suite is starting to take shape in the test/ subdirectory. These test programs depend on the <a href="http://www.boost.org">boost</a> "test" library. Future tests could add future dependencies.</li>
 <li>The unit testing revealed a variety of subtle issues in the code base. All of these were in "dark corners" of the library, <em>e.g.</em> functions that have seen little or no use in production programs.</li>
@@ -204,7 +207,7 @@ $(document).ready(function(){initNavTree('md__home_molpopgen_src_libsequence_REV
 <p>version 1.7.9 (Dec 12, 2013) Forward declaration of templates in namespace std were removed from <a class="el" href="typedefs_8hpp.html" title="typedefs used by libsequence ">Sequence/typedefs.hpp</a>. The library will now compile on OS X Mavericks.</p>
 <p>version 1.7.8 (Nov 8, 2013): Fixed (a possibly 10 year old) bug in <a class="el" href="SingleSub_8cc_source.html">SingleSub.cc</a>. This bug misclassified AGG to CGG changes as q_0 rather than q_2V. This would lead to errors in synonymous/nonsynonymous substitution counting. Programs like gestimator and polydNdS were affected. However, I have run through a lot of my own data, and recorded no differences in output. You have to have had this specific change (or possibly others involving amino acids with 6 codons in the family). The SingleSub code is now vastly simplified and gives correct output (fingers crossed).</p>
 <p>Binary compatilibity with previous versions of libsequence is now broken: All exception specifications are removed in anticipation of that language feature being removed/deprecated.</p>
-<p>A new file, <a class="el" href="SimDataIO_8hpp.html" title="Various I/O functions for Sequence::SimData. ">SimDataIO.hpp</a> has been added, allowing .gz and binary I/O for SimData objects. See <a class="el" href="test__SimDataIO_8cc_source.html">examples/test_SimDataIO.cc</a> for documentation. This now changes how one compiles programs depending on libsequence: you need zlib installed and must include -lsequence -lz (in that order) when compiling programs.</p>
+<p>A new file, SimDataIO.hpp has been added, allowing .gz and binary I/O for SimData objects. See <a class="el" href="test__SimDataIO_8cc_source.html">examples/test_SimDataIO.cc</a> for documentation. This now changes how one compiles programs depending on libsequence: you need zlib installed and must include -lsequence -lz (in that order) when compiling programs.</p>
 <p>version 1.7.7: never happened. never publicly released</p>
 <p>version 1.7.6 (Feb 13, 2013) Fixed inconsistent exception declarations in templates. libsequence is now compilable with the clang compiler. To use: CXX=clang++ CC=clang ./configure; make ; sudo make install</p>
 <p>version 1.7.5 (Dec. 18 2012). The operator&gt;&gt; for Clustalw was not processing whitespace properly when compiled with new versions of gcc. That issue is now fixed.</p>
@@ -326,7 +329,7 @@ $(document).ready(function(){initNavTree('md__home_molpopgen_src_libsequence_REV
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
+    <li class="footer">Generated on Thu Sep 13 2018 15:07:05 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

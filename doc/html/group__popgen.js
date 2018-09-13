@@ -1,8 +1,9 @@
 var group__popgen =
 [
     [ "Classes and functions related to simulating data under coalescent models", "group__coalescent.html", "group__coalescent" ],
-    [ "Classes Related to Polymorphism tables", "group__polytables.html", "group__polytables" ],
     [ "Analysis of molecular population genetic data", "group__popgenanalysis.html", "group__popgenanalysis" ],
+    [ "Variant Matrix", "group__variantmatrix.html", "group__variantmatrix" ],
+    [ "Classes Related to Polymorphism tables", "group__polytables.html", "group__polytables" ],
     [ "HKAdata", "structSequence_1_1HKAdata.html", [
       [ "HKAdata", "structSequence_1_1HKAdata.html#abe70b66cc88ddcacc19134a95332d735", null ],
       [ "HKAdata", "structSequence_1_1HKAdata.html#ab21a706c1d529d96c11b0c0f6ea3242b", null ],

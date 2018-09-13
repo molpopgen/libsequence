@@ -2,58 +2,7 @@ var NAVTREE =
 [
   [ "libsequence", "index.html", [
     [ "libsequence - A C++ class library for evolutionary genetic analysis", "index.html", null ],
-    [ "References to primary sources", "md_md_literature.html", [
-      [ "General", "md_md_literature.html#genref", null ],
-      [ "Sequence::PolySNP", "md_md_literature.html#poly", null ],
-      [ "namespace Sequence::Recombination", "md_md_literature.html#rec", null ],
-      [ "Sequence::Comeron95", "md_md_literature.html#com", null ],
-      [ "Sequence::Kimura80", "md_md_literature.html#kim", null ]
-    ] ],
-    [ "Tutorial/overview", "md_md_tutorial.html", [
-      [ "Background", "md_md_tutorial.html#background", [
-        [ "A quick note on streams", "md_md_tutorial.html#streams", null ]
-      ] ],
-      [ "Handling biological sequences.", "md_md_tutorial.html#seq", [
-        [ "Reading and writing", "md_md_tutorial.html#seqio", [
-          [ "Gzipped files, etc.", "md_md_tutorial.html#seqgz", null ]
-        ] ],
-        [ "Manipulating a sequence", "md_md_tutorial.html#manip", null ]
-      ] ],
-      [ "Testing for correct character sets", "md_md_tutorial.html#alphabet", null ],
-      [ "Input and output of DNA sequence alignments", "md_md_tutorial.html#alignments", null ],
-      [ "Polymorphism tables", "md_md_tutorial.html#polymorphism_tables", [
-        [ "Definitions of terms", "md_md_tutorial.html#polytable_terms", null ],
-        [ "Sequence::PolyTable in detail", "md_md_tutorial.html#polytable", [
-          [ "The inheritance hierarchy.", "md_md_tutorial.html#polytables", null ],
-          [ "Handling custom input formats", "md_md_tutorial.html#customptables", null ],
-          [ "Constructing PolyTables", "md_md_tutorial.html#polytable_construct", [
-            [ "From streams", "md_md_tutorial.html#polytable_read", null ]
-          ] ],
-          [ "Using move construction", "md_md_tutorial.html#polytable_move", null ],
-          [ "Accessing the data", "md_md_tutorial.html#polytable_access", null ],
-          [ "Manipulating PolyTables", "md_md_tutorial.html#polytable_manip", null ],
-          [ "Methods provided", "md_md_tutorial.html#polytable_manip_builtin", [
-            [ "Don't be this guy", "md_md_tutorial.html#polytable_idiot", null ]
-          ] ],
-          [ "Iterating over sites directly", "md_md_tutorial.html#polytable_csi", null ]
-        ] ],
-        [ "Sequence::polySiteVector in detail", "md_md_tutorial.html#ptable_detail", null ],
-        [ "The relationship between PolyTable and polySiteVector", "md_md_tutorial.html#polytable_ptable", null ]
-      ] ],
-      [ "Summary statistics", "md_md_tutorial.html#summstats", [
-        [ "Standard summary statistics", "md_md_tutorial.html#classic", null ],
-        [ "FST", "md_md_tutorial.html#classic_fst", null ],
-        [ "The HKA test", "md_md_tutorial.html#hka", null ],
-        [ "The future", "md_md_tutorial.html#stat_future", null ]
-      ] ],
-      [ "Coalescent simulation", "md_md_tutorial.html#coalsim", null ],
-      [ "High-throughput sequencing", "md_md_tutorial.html#hts_tut", [
-        [ "SAM records", "md_md_tutorial.html#sam", null ],
-        [ "SAM flags and bit fields", "md_md_tutorial.html#samflags", null ],
-        [ "BAM files", "md_md_tutorial.html#bam", null ]
-      ] ]
-    ] ],
-    [ "The libsequence home page", "md__home_molpopgen_src_libsequence_index.html", null ],
+    [ "Tutorial/overview", "md_md_tutorial.html", null ],
     [ "libsequence revision history", "md__home_molpopgen_src_libsequence_REVISION_HISTORY.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Bibliography", "citelist.html", null ],
@@ -95,12 +44,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"SeqConversions_8cc_source.html",
-"classSequence_1_1Fasta.html#a92249021ecdee99765ff0bd4dc08d369",
-"classSequence_1_1bamrecord.html#a4dda880e906410463af6a5644adceead",
-"functions_k.html",
-"shortestPath_8hpp.html#gab409f485553367b1cc3c0df7fd82b3a2",
-"structSequence_1_1internal_1_1row__view__.html#ac7f86b942a0b092fdac4ba390ed2a88f"
+"Seq8test_8cc.html#a8d2ad633af1c44687e9f5588289b278d",
+"classSequence_1_1Comeron95.html",
+"classSequence_1_1VariantMatrix.html#a582c2fb9fe095dbcd1dd24b693b657ac",
+"group__coalescent.html#ga23ef0fa48fefd60c2b0d0e709e433871",
+"structSequence_1_1StateCounts.html#ae73ade9ab604914ca0e87028eda7c88c",
+"testGarudStatistics_8cc.html#a999044efe26ee657bcbaf188e0a3b925"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

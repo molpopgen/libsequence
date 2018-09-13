@@ -1,7 +1,5 @@
 var AlignStreamTest_8cc =
 [
-    [ "BOOST_TEST_DYN_LINK", "AlignStreamTest_8cc.html#a139f00d2466d591f60b8d6a73c8273f1", null ],
-    [ "BOOST_TEST_MODULE", "AlignStreamTest_8cc.html#a6b2a3852db8bb19ab6909bac01859985", null ],
     [ "clustal", "AlignStreamTest_8cc.html#aa6121a36e9746ea5a5f5d30a9cd150de", null ],
     [ "phylip", "AlignStreamTest_8cc.html#a7e04dad166f075f9634404d2cea580c2", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#a126a22afeb829d09a0604fbafcb778e2", null ],
@@ -22,9 +20,5 @@ var AlignStreamTest_8cc =
     [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#a395f3a3c7b863de9b9d06f71574e7693", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#a57b25d18eba123ac1e058dbd3fbd9b22", null ],
     [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#aab511acac8cfc540d0924cebf061a7ef", null ],
-    [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#aab78c5d961c0e2f7b26f73198bacac2f", null ],
-    [ "clustal_pairs", "AlignStreamTest_8cc.html#aa72bf21446a038f811fddcdc59a6e075", null ],
-    [ "input_data", "AlignStreamTest_8cc.html#ac178a19ec164da84b15b403661021649", null ],
-    [ "phylip_input_data", "AlignStreamTest_8cc.html#a09d033da4f8ac99dad9bbdde8d9edd82", null ],
-    [ "phylip_pairs", "AlignStreamTest_8cc.html#a7c5628137e40940a589f7a7155836661", null ]
+    [ "BOOST_AUTO_TEST_CASE", "AlignStreamTest_8cc.html#aab78c5d961c0e2f7b26f73198bacac2f", null ]
 ];

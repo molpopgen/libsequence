@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.3</span>
+   &#160;<span id="projectnumber">1.9.5</span>
    </div>
   </td>
  </tr>
@@ -82,8 +82,11 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>col_end
 : <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a2de4147cf9be713a95ef49c29acf53cf">Sequence::internal::col_view_&lt; T &gt;</a>
 </li>
+<li>core_count
+: <a class="el" href="structSequence_1_1nSLiHS.html#a072d4301690ae58c9147abcdd507abca">Sequence::nSLiHS</a>
+</li>
 <li>counts
-: <a class="el" href="structSequence_1_1StateCounts.html#ac7a3849a9316958b87b711d31e0f7e43">Sequence::StateCounts</a>
+: <a class="el" href="structSequence_1_1StateCounts.html#aaa644b484f1939ec800819d9d41087bc">Sequence::StateCounts</a>
 </li>
 </ul>
 
@@ -97,13 +100,10 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 : <a class="el" href="structSequence_1_1col__view__iterator.html#ac1307016e780a79367851bee4bc65cfb">Sequence::col_view_iterator&lt; POINTER &gt;</a>
 , <a class="el" href="structSequence_1_1internal_1_1col__view__.html#a8fc2c376b2e7d978fc7a918bec2c87ad">Sequence::internal::col_view_&lt; T &gt;</a>
 , <a class="el" href="structSequence_1_1internal_1_1row__view__.html#a2171dc1148629c5890dbd2dbe2f90645">Sequence::internal::row_view_&lt; T &gt;</a>
-, <a class="el" href="structSequence_1_1VariantMatrix.html#a94d7be4fd87fe6b111802bcff30fdbf7">Sequence::VariantMatrix</a>
+, <a class="el" href="classSequence_1_1VariantMatrix.html#a94d7be4fd87fe6b111802bcff30fdbf7">Sequence::VariantMatrix</a>
 </li>
 <li>Dprime
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#a252b799ff4f543cd75b4e4d642d6d6d1">Sequence::PairwiseLDstats</a>
-</li>
-<li>duplicate
-: <a class="el" href="classSequence_1_1samflag.html#a0c4d0d0af6a1c731d333ac7a6822fd95">Sequence::samflag</a>
 </li>
 </ul>
 
@@ -112,12 +112,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>fhat
 : <a class="el" href="structSequence_1_1HKAresults.html#aafa1aa6f0bd8b84eb7b51e2dfd3f152a">Sequence::HKAresults</a>
 </li>
-<li>first_read
-: <a class="el" href="classSequence_1_1samflag.html#af429d10ac13952419e09f353918315f3">Sequence::samflag</a>
-</li>
-<li>flag
-: <a class="el" href="classSequence_1_1samflag.html#a86d7923f2484dae54ce724d373c5f2f8">Sequence::samflag</a>
-</li>
 </ul>
 
 
@@ -125,11 +119,8 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>i
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#a1afc956d0ca438eadb94b5747a3950f0">Sequence::PairwiseLDstats</a>
 </li>
-<li>is_paired
-: <a class="el" href="classSequence_1_1samflag.html#af831de6c7940e6a2ea642f5dad6ba3be">Sequence::samflag</a>
-</li>
-<li>is_proper_pair
-: <a class="el" href="classSequence_1_1samflag.html#a1e00b0c1a4789a9a0b9fdaf2eefcb84c">Sequence::samflag</a>
+<li>ihs
+: <a class="el" href="structSequence_1_1nSLiHS.html#a1bcd5b28e83f28aa54251f41d42a95d6">Sequence::nSLiHS</a>
 </li>
 </ul>
 
@@ -143,13 +134,13 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>mask
-: <a class="el" href="structSequence_1_1VariantMatrix.html#a103282aff369b9029ca10912d6393583">Sequence::VariantMatrix</a>
+: <a class="el" href="classSequence_1_1VariantMatrix.html#a103282aff369b9029ca10912d6393583">Sequence::VariantMatrix</a>
 </li>
-<li>mate_unmapped
-: <a class="el" href="classSequence_1_1samflag.html#a3ccc0808fca86e33d922af08720d901a">Sequence::samflag</a>
+<li>max_allele
+: <a class="el" href="classSequence_1_1VariantMatrix.html#ac5298744e4955e1252632bad6a701562">Sequence::VariantMatrix</a>
 </li>
-<li>mstrand
-: <a class="el" href="classSequence_1_1samflag.html#a5b7aa53b3a9d4f9c85ae9d876306c321">Sequence::samflag</a>
+<li>max_allele_idx
+: <a class="el" href="structSequence_1_1StateCounts.html#a16e07fb1ee0c76a1cb1ab8d6184ad2c1">Sequence::StateCounts</a>
 </li>
 </ul>
 
@@ -161,21 +152,27 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>nA
 : <a class="el" href="structSequence_1_1HKAdata.html#a08acc2c47c9c5c439dd55e1468a5e326">Sequence::HKAdata</a>
 </li>
+<li>nmissing
+: <a class="el" href="structSequence_1_1AlleleCounts.html#ace1d1d3529e97cfdab532f59657c6e2b">Sequence::AlleleCounts</a>
+</li>
 <li>nnodes
 : <a class="el" href="structSequence_1_1coalsim_1_1marginal.html#a235660e8bc856becc5b0ab949785117e">Sequence::coalsim::marginal</a>
 </li>
-<li>not_primary
-: <a class="el" href="classSequence_1_1samflag.html#ab550965507f0e92be113d42da8267546">Sequence::samflag</a>
-</li>
 <li>nsam
 : <a class="el" href="structSequence_1_1coalsim_1_1marginal.html#ae54539082a912b531b78d17b8ce49780">Sequence::coalsim::marginal</a>
-, <a class="el" href="structSequence_1_1VariantMatrix.html#a4b05dbb1c529cf5ffe98c17a256332bc">Sequence::VariantMatrix</a>
+, <a class="el" href="classSequence_1_1VariantMatrix.html#a4b05dbb1c529cf5ffe98c17a256332bc">Sequence::VariantMatrix</a>
 </li>
 <li>nsegs
 : <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a5da84b1fb9d48b4a466abc0dd6169ff3">Sequence::coalsim::chromosome</a>
 </li>
 <li>nsites
-: <a class="el" href="structSequence_1_1VariantMatrix.html#aac5ad15a638ff8f276e1effd123f5e46">Sequence::VariantMatrix</a>
+: <a class="el" href="classSequence_1_1VariantMatrix.html#aac5ad15a638ff8f276e1effd123f5e46">Sequence::VariantMatrix</a>
+</li>
+<li>nsl
+: <a class="el" href="structSequence_1_1nSLiHS.html#a232aae91c055eee8b46ece42362cb90a">Sequence::nSLiHS</a>
+</li>
+<li>nstates
+: <a class="el" href="structSequence_1_1AlleleCounts.html#af67dee85a922a2b6dbe5cd5adc064f00">Sequence::AlleleCounts</a>
 </li>
 </ul>
 
@@ -192,20 +189,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 : <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#ad8565024c587e2b1df3215038be05343">Sequence::coalsim::chromosome</a>
 </li>
 <li>positions
-: <a class="el" href="structSequence_1_1VariantMatrix.html#aa2f59ddb2b363a764f1f5f625b72c5a9">Sequence::VariantMatrix</a>
-</li>
-</ul>
-
-
-<h3><a id="index_q"></a>- q -</h3><ul>
-<li>qcfail
-: <a class="el" href="classSequence_1_1samflag.html#a3d520a22671dcf1734b27c0a8d76cda3">Sequence::samflag</a>
-</li>
-<li>qstrand
-: <a class="el" href="classSequence_1_1samflag.html#a47e47b9d94de1e2eb519214a6fe7a80f">Sequence::samflag</a>
-</li>
-<li>query_unmapped
-: <a class="el" href="classSequence_1_1samflag.html#aa37f77d226b46bce5231c53386557cd1">Sequence::samflag</a>
+: <a class="el" href="classSequence_1_1VariantMatrix.html#aa2f59ddb2b363a764f1f5f625b72c5a9">Sequence::VariantMatrix</a>
 </li>
 </ul>
 
@@ -227,14 +211,8 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <li>SA
 : <a class="el" href="structSequence_1_1HKAdata.html#a54fd2847c5cd6b588ee907c920604baf">Sequence::HKAdata</a>
 </li>
-<li>second_read
-: <a class="el" href="classSequence_1_1samflag.html#a01491db51eb75aabb00e54d81811cec7">Sequence::samflag</a>
-</li>
 <li>segs
 : <a class="el" href="structSequence_1_1coalsim_1_1chromosome.html#a9d3a58c7e072fe9947e2067677f81f23">Sequence::coalsim::chromosome</a>
-</li>
-<li>size
-: <a class="el" href="structSequence_1_1bamaux.html#a801a14d6944f2072ba4b4fa62598a47b">Sequence::bamaux</a>
 </li>
 <li>skipped
 : <a class="el" href="structSequence_1_1PairwiseLDstats.html#aaad16c0cb2a9ead7d0fcaa3e2b249b91">Sequence::PairwiseLDstats</a>
@@ -250,9 +228,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
-<li>tag
-: <a class="el" href="structSequence_1_1bamaux.html#a2c4ab4dec148e7473a7884eddeb74448">Sequence::bamaux</a>
-</li>
 <li>That
 : <a class="el" href="structSequence_1_1HKAresults.html#a804f660735039fea9b1962edbf584adf">Sequence::HKAresults</a>
 </li>
@@ -264,16 +239,6 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </li>
 <li>tree
 : <a class="el" href="structSequence_1_1coalsim_1_1marginal.html#a3fd69de7d02238b8d165880fa43b5938">Sequence::coalsim::marginal</a>
-</li>
-</ul>
-
-
-<h3><a id="index_v"></a>- v -</h3><ul>
-<li>value
-: <a class="el" href="structSequence_1_1bamaux.html#a036c766b5ce51fb029c19a276cc2f1e6">Sequence::bamaux</a>
-</li>
-<li>value_type
-: <a class="el" href="structSequence_1_1bamaux.html#a572d97ef05afe74ec43d1e5622215798">Sequence::bamaux</a>
 </li>
 </ul>
 
@@ -294,7 +259,7 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
+    <li class="footer">Generated on Thu Sep 13 2018 15:07:10 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>

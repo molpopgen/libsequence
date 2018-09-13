@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">libsequence
-   &#160;<span id="projectnumber">1.9.3</span>
+   &#160;<span id="projectnumber">1.9.5</span>
    </div>
   </td>
  </tr>
@@ -67,6 +67,9 @@ $(document).ready(function(){initNavTree('group__popgenanalysis.html','');});
 <div class="title">Analysis of molecular population genetic data<div class="ingroups"><a class="el" href="group__popgen.html">Molecular Population Genetics</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Summary statistics and other analysis of <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">Sequence::VariantMatrix</a>See <a class="el" href="md_md_tutorial.html">Tutorial/overview</a>.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
@@ -79,7 +82,11 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1PairwiseLDstats.html">Sequence::PairwiseLDstats</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pairwise linkage disequilibrium (LD) stats </p><pre class="fragment"></pre><p>.  <a href="structSequence_1_1PairwiseLDstats.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1AlleleCounts.html">Sequence::AlleleCounts</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1GarudStats.html">Sequence::GarudStats</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structSequence_1_1nSLiHS.html">Sequence::nSLiHS</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1PolySIM.html">Sequence::PolySIM</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analysis of coalescent simulation data.  <a href="classSequence_1_1PolySIM.html#details">More...</a><br /></td></tr>
@@ -91,20 +98,658 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A container class for "sliding windows" along a polymorphism table.  <a href="classSequence_1_1PolyTableSlice.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSequence_1_1FST.html">Sequence::FST</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">analysis of population structure using <img class="formulaInl" alt="$F_{ST}$" src="form_5.png"/>  <a href="classSequence_1_1FST.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">analysis of population structure using <img class="formulaInl" alt="$F_{ST}$" src="form_14.png"/>  <a href="classSequence_1_1FST.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ga22bece35153a90354184354ea7ca12a2"><td class="memItemLeft" align="right" valign="top">std::pair&lt; double, double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga22bece35153a90354184354ea7ca12a2">Sequence::nSL</a> (const std::size_t &amp;core, const <a class="el" href="classSequence_1_1SimData.html">SimData</a> &amp;d, const std::unordered_map&lt; double, double &gt; &amp;gmap=std::unordered_map&lt; double, double &gt;()) <a class="el" href="namespaceSequence.html#a157e63939bed5dcdf27c62d3e7af7d26">__attribute__</a>((deprecated))</td></tr>
 <tr class="separator:ga22bece35153a90354184354ea7ca12a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga08bc910f7be7c6cd753fa93e2dd33c82"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; double, double, std::uint32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga08bc910f7be7c6cd753fa93e2dd33c82">Sequence::nSL_t</a> (const <a class="el" href="classSequence_1_1SimData.html">SimData</a> &amp;d, const std::unordered_map&lt; double, double &gt; &amp;gmap=std::unordered_map&lt; double, double &gt;()) <a class="el" href="namespaceSequence.html#a157e63939bed5dcdf27c62d3e7af7d26">__attribute__</a>((deprecated))</td></tr>
-<tr class="separator:ga08bc910f7be7c6cd753fa93e2dd33c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga80f7547e21c6c61e0f1ed79c5b4782d6"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::tuple&lt; double, double, std::uint32_t &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga80f7547e21c6c61e0f1ed79c5b4782d6">Sequence::nSL_t</a> (const <a class="el" href="classSequence_1_1SimData.html">SimData</a> &amp;d, const std::vector&lt; std::size_t &gt; &amp;core_snps, const std::unordered_map&lt; double, double &gt; &amp;gmap=std::unordered_map&lt; double, double &gt;()) <a class="el" href="namespaceSequence.html#a157e63939bed5dcdf27c62d3e7af7d26">__attribute__</a>((deprecated))</td></tr>
-<tr class="separator:ga80f7547e21c6c61e0f1ed79c5b4782d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2ff52f295a59b1d1c18e89c5fac22b4f"><td class="memTemplParams" colspan="2">template&lt;typename F &gt; </td></tr>
+<tr class="memitem:ga2ff52f295a59b1d1c18e89c5fac22b4f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga2ff52f295a59b1d1c18e89c5fac22b4f">Sequence::sstats_algo::aggregate_sites</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m, const F &amp;f, const std::int8_t refstate)</td></tr>
+<tr class="separator:ga2ff52f295a59b1d1c18e89c5fac22b4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga078ace30fe1142b794bfcedb6071780b"><td class="memTemplParams" colspan="2">template&lt;typename F &gt; </td></tr>
+<tr class="memitem:ga078ace30fe1142b794bfcedb6071780b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga078ace30fe1142b794bfcedb6071780b">Sequence::sstats_algo::aggregate_sites</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m, const F &amp;f, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="separator:ga078ace30fe1142b794bfcedb6071780b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac6a0c6c502d6fb4bb6b1f946fa959cc9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1AlleleCounts.html">AlleleCounts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gac6a0c6c502d6fb4bb6b1f946fa959cc9">Sequence::allele_counts</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:gac6a0c6c502d6fb4bb6b1f946fa959cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count number of alleles at each site.  <a href="group__popgenanalysis.html#gac6a0c6c502d6fb4bb6b1f946fa959cc9">More...</a><br /></td></tr>
+<tr class="separator:gac6a0c6c502d6fb4bb6b1f946fa959cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga875281ef6c2cf9e6700f71891b4ea545"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1AlleleCounts.html">AlleleCounts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga875281ef6c2cf9e6700f71891b4ea545">Sequence::non_reference_allele_counts</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m, const std::int8_t refstate)</td></tr>
+<tr class="memdesc:ga875281ef6c2cf9e6700f71891b4ea545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count number of non-reference alleles at each site.  <a href="group__popgenanalysis.html#ga875281ef6c2cf9e6700f71891b4ea545">More...</a><br /></td></tr>
+<tr class="separator:ga875281ef6c2cf9e6700f71891b4ea545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga970ab4adfe4f42f0e1fdedfe54b86de9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structSequence_1_1AlleleCounts.html">AlleleCounts</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga970ab4adfe4f42f0e1fdedfe54b86de9">Sequence::non_reference_allele_counts</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="memdesc:ga970ab4adfe4f42f0e1fdedfe54b86de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count number of non-reference alleles at each site.  <a href="group__popgenanalysis.html#ga970ab4adfe4f42f0e1fdedfe54b86de9">More...</a><br /></td></tr>
+<tr class="separator:ga970ab4adfe4f42f0e1fdedfe54b86de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab644da065aecf3501765a89899cdd9db"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gab644da065aecf3501765a89899cdd9db">Sequence::tajd</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac)</td></tr>
+<tr class="memdesc:gab644da065aecf3501765a89899cdd9db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tajima's D.  <a href="group__popgenanalysis.html#gab644da065aecf3501765a89899cdd9db">More...</a><br /></td></tr>
+<tr class="separator:gab644da065aecf3501765a89899cdd9db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac1c2377cc536d966337fb66dd5774a09"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gac1c2377cc536d966337fb66dd5774a09">Sequence::hprime</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac, const std::int8_t refstate)</td></tr>
+<tr class="separator:gac1c2377cc536d966337fb66dd5774a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga366995000ebdba145e8dc30cc2ff8960"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga366995000ebdba145e8dc30cc2ff8960">Sequence::hprime</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="separator:ga366995000ebdba145e8dc30cc2ff8960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga91ef90d896d243d103d60b3030c72b1c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga91ef90d896d243d103d60b3030c72b1c">Sequence::faywuh</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac, const std::int8_t refstate)</td></tr>
+<tr class="memdesc:ga91ef90d896d243d103d60b3030c72b1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fay and Wu's H.  <a href="group__popgenanalysis.html#ga91ef90d896d243d103d60b3030c72b1c">More...</a><br /></td></tr>
+<tr class="separator:ga91ef90d896d243d103d60b3030c72b1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1535e6b21460af1fdfe924a70cc7cfd1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga1535e6b21460af1fdfe924a70cc7cfd1">Sequence::faywuh</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="memdesc:ga1535e6b21460af1fdfe924a70cc7cfd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fay and Wu's H.  <a href="group__popgenanalysis.html#ga1535e6b21460af1fdfe924a70cc7cfd1">More...</a><br /></td></tr>
+<tr class="separator:ga1535e6b21460af1fdfe924a70cc7cfd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga045b5f2dbd39a9fb0f23bda2982922bc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga045b5f2dbd39a9fb0f23bda2982922bc">Sequence::difference_matrix</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:ga045b5f2dbd39a9fb0f23bda2982922bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate number of differences between all samples.  <a href="group__popgenanalysis.html#ga045b5f2dbd39a9fb0f23bda2982922bc">More...</a><br /></td></tr>
+<tr class="separator:ga045b5f2dbd39a9fb0f23bda2982922bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafb7b705c644cf777c00f98ced5583c12"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::int32_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gafb7b705c644cf777c00f98ced5583c12">Sequence::label_haplotypes</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:gafb7b705c644cf777c00f98ced5583c12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign a unique label to each haplotype.  <a href="group__popgenanalysis.html#gafb7b705c644cf777c00f98ced5583c12">More...</a><br /></td></tr>
+<tr class="separator:gafb7b705c644cf777c00f98ced5583c12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga315047dd61b94ff3c700a1966114cf3e"><td class="memItemLeft" align="right" valign="top">std::int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga315047dd61b94ff3c700a1966114cf3e">Sequence::number_of_haplotypes</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:ga315047dd61b94ff3c700a1966114cf3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the number of haplotypes in a sample.  <a href="group__popgenanalysis.html#ga315047dd61b94ff3c700a1966114cf3e">More...</a><br /></td></tr>
+<tr class="separator:ga315047dd61b94ff3c700a1966114cf3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga771034cfe9346ae1cb6d2ae02c6ca03e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga771034cfe9346ae1cb6d2ae02c6ca03e">Sequence::haplotype_diversity</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:ga771034cfe9346ae1cb6d2ae02c6ca03e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the haplotype diversity of a sample.  <a href="group__popgenanalysis.html#ga771034cfe9346ae1cb6d2ae02c6ca03e">More...</a><br /></td></tr>
+<tr class="separator:ga771034cfe9346ae1cb6d2ae02c6ca03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab08126b86f0550aade6960c5d08f3aa2"><td class="memItemLeft" align="right" valign="top">std::int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gab08126b86f0550aade6960c5d08f3aa2">Sequence::rmin</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m)</td></tr>
+<tr class="separator:gab08126b86f0550aade6960c5d08f3aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa224265ef8a1030e9b63f1d06b5583da"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gaa224265ef8a1030e9b63f1d06b5583da">Sequence::nvariable_sites</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:gaa224265ef8a1030e9b63f1d06b5583da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of polymorphic sites.  <a href="group__popgenanalysis.html#gaa224265ef8a1030e9b63f1d06b5583da">More...</a><br /></td></tr>
+<tr class="separator:gaa224265ef8a1030e9b63f1d06b5583da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ec92a395ea8c549df6d78f12bc4c056"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga6ec92a395ea8c549df6d78f12bc4c056">Sequence::nbiallelic_sites</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:ga6ec92a395ea8c549df6d78f12bc4c056"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bi-allelic sites.  <a href="group__popgenanalysis.html#ga6ec92a395ea8c549df6d78f12bc4c056">More...</a><br /></td></tr>
+<tr class="separator:ga6ec92a395ea8c549df6d78f12bc4c056"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadca085620028aae55e983989282ea596"><td class="memItemLeft" align="right" valign="top">std::uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gadca085620028aae55e983989282ea596">Sequence::total_number_of_mutations</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m)</td></tr>
+<tr class="memdesc:gadca085620028aae55e983989282ea596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of mutations in the sample.  <a href="group__popgenanalysis.html#gadca085620028aae55e983989282ea596">More...</a><br /></td></tr>
+<tr class="separator:gadca085620028aae55e983989282ea596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2784cc28057f56b13395c9f87cec06fd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga2784cc28057f56b13395c9f87cec06fd">Sequence::thetah</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac, const std::int8_t refstate)</td></tr>
+<tr class="memdesc:ga2784cc28057f56b13395c9f87cec06fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fay and Wu's <img class="formulaInl" alt="$\hat\theta_H$" src="form_10.png"/>.  <a href="group__popgenanalysis.html#ga2784cc28057f56b13395c9f87cec06fd">More...</a><br /></td></tr>
+<tr class="separator:ga2784cc28057f56b13395c9f87cec06fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga755e79f8ae0737ad773c1ba631b72750"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga755e79f8ae0737ad773c1ba631b72750">Sequence::thetah</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="memdesc:ga755e79f8ae0737ad773c1ba631b72750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fay and Wu's <img class="formulaInl" alt="$\hat\theta_H$" src="form_10.png"/>.  <a href="group__popgenanalysis.html#ga755e79f8ae0737ad773c1ba631b72750">More...</a><br /></td></tr>
+<tr class="separator:ga755e79f8ae0737ad773c1ba631b72750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa65391d75f8257d49692e01f74262c17"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gaa65391d75f8257d49692e01f74262c17">Sequence::thetal</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac, const std::int8_t refstate)</td></tr>
+<tr class="memdesc:gaa65391d75f8257d49692e01f74262c17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeng et al. <img class="formulaInl" alt="$\hat\theta_L$" src="form_11.png"/>.  <a href="group__popgenanalysis.html#gaa65391d75f8257d49692e01f74262c17">More...</a><br /></td></tr>
+<tr class="separator:gaa65391d75f8257d49692e01f74262c17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaee54083faf39464c8651011cfae34ce5"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gaee54083faf39464c8651011cfae34ce5">Sequence::thetal</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;m, const std::vector&lt; std::int8_t &gt; &amp;refstates)</td></tr>
+<tr class="memdesc:gaee54083faf39464c8651011cfae34ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeng et al. <img class="formulaInl" alt="$\hat\theta_L$" src="form_11.png"/>.  <a href="group__popgenanalysis.html#gaee54083faf39464c8651011cfae34ce5">More...</a><br /></td></tr>
+<tr class="separator:gaee54083faf39464c8651011cfae34ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabba8ecae9493ce2f2a063631bab4ef14"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#gabba8ecae9493ce2f2a063631bab4ef14">Sequence::thetapi</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac)</td></tr>
+<tr class="memdesc:gabba8ecae9493ce2f2a063631bab4ef14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mean pairwise differences.  <a href="group__popgenanalysis.html#gabba8ecae9493ce2f2a063631bab4ef14">More...</a><br /></td></tr>
+<tr class="separator:gabba8ecae9493ce2f2a063631bab4ef14"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga06c5c1a9e4559ce96d8e03d99514509e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga06c5c1a9e4559ce96d8e03d99514509e">Sequence::thetaw</a> (const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;ac)</td></tr>
+<tr class="memdesc:ga06c5c1a9e4559ce96d8e03d99514509e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Watterson's theta.  <a href="group__popgenanalysis.html#ga06c5c1a9e4559ce96d8e03d99514509e">More...</a><br /></td></tr>
+<tr class="separator:ga06c5c1a9e4559ce96d8e03d99514509e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ff11f3a197b127ba0b1fea93690a798"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSequence_1_1nSLiHS.html">nSLiHS</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__popgenanalysis.html#ga4ff11f3a197b127ba0b1fea93690a798">Sequence::nsl</a> (const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;m, const std::size_t core, const std::int8_t refstate)</td></tr>
+<tr class="memdesc:ga4ff11f3a197b127ba0b1fea93690a798"><td class="mdescLeft">&#160;</td><td class="mdescRight">nSL and iHS statistics  <a href="group__popgenanalysis.html#ga4ff11f3a197b127ba0b1fea93690a798">More...</a><br /></td></tr>
+<tr class="separator:ga4ff11f3a197b127ba0b1fea93690a798"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>Summary statistics and other analysis of <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">Sequence::VariantMatrix</a></p>
+<p>See <a class="el" href="md_md_tutorial.html">Tutorial/overview</a>. </p>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga2ff52f295a59b1d1c18e89c5fac22b4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2ff52f295a59b1d1c18e89c5fac22b4f">&#9670;&nbsp;</a></span>aggregate_sites() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sequence::sstats_algo::aggregate_sites </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const F &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper algorithm for implementing summary statistics.</p>
+<p>Several common summary statistics are combinations of others. Examples include Tajima's D, Fay and Wu's H, etc.. If we take D as an example, it is tempting to use existing functions, such as <a class="el" href="group__popgenanalysis.html#gabba8ecae9493ce2f2a063631bab4ef14" title="Mean pairwise differences. ">Sequence::thetapi</a> and <a class="el" href="group__popgenanalysis.html#ga06c5c1a9e4559ce96d8e03d99514509e" title="Watterson&#39;s theta. ">Sequence::thetaw</a>, as intermediate steps. However, doing so goes over the data multiple times.</p>
+<p>Fortunately, these statistics are often easy enough to implement that we could calculate pi and Watterson's theta in one loop. This function helps you do that.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+    <tr><td class="paramname">f</td><td>A function taking a const <a class="el" href="structSequence_1_1StateCounts.html" title="Track character state occurrence at a site in a VariantMatrix. ">StateCounts</a> &amp; and returning nothing. </td></tr>
+    <tr><td class="paramname">refstate</td><td>The reference state.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function loops over <em>m.nsites</em> and passes the state counts on to the aggregator function <em>f</em>.</p>
+<p>See the implementation of <a class="el" href="group__popgenanalysis.html#gab644da065aecf3501765a89899cdd9db" title="Tajima&#39;s D. ">Sequence::tajd</a> for an example. </p>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8hpp_source.html#l00018">18</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ga078ace30fe1142b794bfcedb6071780b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga078ace30fe1142b794bfcedb6071780b">&#9670;&nbsp;</a></span>aggregate_sites() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Sequence::sstats_algo::aggregate_sites </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const F &amp;&#160;</td>
+          <td class="paramname"><em>f</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Helper algorithm for implementing summary statistics.</p>
+<p>Several common summary statistics are combinations of others. Examples include Tajima's D, Fay and Wu's H, etc.. If we take D as an example, it is tempting to use existing functions, such as <a class="el" href="group__popgenanalysis.html#gabba8ecae9493ce2f2a063631bab4ef14" title="Mean pairwise differences. ">Sequence::thetapi</a> and <a class="el" href="group__popgenanalysis.html#ga06c5c1a9e4559ce96d8e03d99514509e" title="Watterson&#39;s theta. ">Sequence::thetaw</a>, as intermediate steps. However, doing so goes over the data multiple times.</p>
+<p>Fortunately, these statistics are often easy enough to implement that we could calculate pi and Watterson's theta in one loop. This function helps you do that.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+    <tr><td class="paramname">f</td><td>A function taking a const <a class="el" href="structSequence_1_1StateCounts.html" title="Track character state occurrence at a site in a VariantMatrix. ">StateCounts</a> &amp; and returning nothing. </td></tr>
+    <tr><td class="paramname">refstates</td><td>Vector of reference states</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>This function loops over <em>m.nsites</em> and passes the state counts on to the aggregator function <em>f</em>.</p>
+<p>See the implementation of <a class="el" href="group__popgenanalysis.html#gac1c2377cc536d966337fb66dd5774a09">Sequence::hprime</a> for an example. </p>
+
+<p class="definition">Definition at line <a class="el" href="algorithm_8hpp_source.html#l00056">56</a> of file <a class="el" href="algorithm_8hpp_source.html">algorithm.hpp</a>.</p>
+
+</div>
+</div>
+<a id="gac6a0c6c502d6fb4bb6b1f946fa959cc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac6a0c6c502d6fb4bb6b1f946fa959cc9">&#9670;&nbsp;</a></span>allele_counts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">count_type Sequence::allele_counts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count number of alleles at each site. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="allele__counts_8cc_source.html#l00050">50</a> of file <a class="el" href="allele__counts_8cc_source.html">allele_counts.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga045b5f2dbd39a9fb0f23bda2982922bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga045b5f2dbd39a9fb0f23bda2982922bc">&#9670;&nbsp;</a></span>difference_matrix()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::int32_t &gt; Sequence::difference_matrix </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate number of differences between all samples. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::int32_t&gt;</dd></dl>
+<p>For <img class="formulaInl" alt="$n$" src="form_1.png"/> samples in <em>m</em>, the output contains <img class="formulaInl" alt="$n \choose 2$" src="form_2.png"/> elements. More concretely, the elements are populated according to:</p>
+<div class="fragment"><div class="line">for(int i=0; i &lt; m.nsam - 1; ++i)</div><div class="line">{</div><div class="line">     for(int j=i+1 ; j &lt; m.nsam ; ++j)</div><div class="line">     {</div><div class="line">         //diffs[i] = number of diffs between sample i and j      </div><div class="line">     }</div><div class="line">}    </div></div><!-- fragment --><p>Missing data to not contribute to differences between sequences. Thus, low-quality data may lead to uninformative return values.</p>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="haplotype__statistics_8cc_source.html#l00015">15</a> of file <a class="el" href="haplotype__statistics_8cc_source.html">haplotype_statistics.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga91ef90d896d243d103d60b3030c72b1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga91ef90d896d243d103d60b3030c72b1c">&#9670;&nbsp;</a></span>faywuh() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::faywuh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fay and Wu's H. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>The ancestral state. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Fay and Wu's H, or nan if <em>m</em> is empty/invariant.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>It is an error to consider <em>refstate</em> as anything other than the ancestral state for each site.</dd></dl>
+<p>This function is included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a>, <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> <a class="el" href="thetah_8hpp.html" title="Fay and Wu&#39;s . ">Sequence/summstats/thetah.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Fay2000-ef">[2]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="faywuh_8cc_source.html#l00008">8</a> of file <a class="el" href="faywuh_8cc_source.html">faywuh.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga1535e6b21460af1fdfe924a70cc7cfd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1535e6b21460af1fdfe924a70cc7cfd1">&#9670;&nbsp;</a></span>faywuh() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::faywuh </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fay and Wu's H. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstates</td><td>The ancestral state at each site. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Fay and Wu's H, or nan if <em>m</em> is empty/invariant.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>It is an error to consider <em>refstates</em> as anything other than the ancestral state at each site.</dd></dl>
+<p>This function is included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a>, or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Fay2000-ef">[2]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="faywuh_8cc_source.html#l00033">33</a> of file <a class="el" href="faywuh_8cc_source.html">faywuh.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga771034cfe9346ae1cb6d2ae02c6ca03e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga771034cfe9346ae1cb6d2ae02c6ca03e">&#9670;&nbsp;</a></span>haplotype_diversity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::haplotype_diversity </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the haplotype diversity of a sample. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Haplotype heterozygosity, a double.</dd></dl>
+<p>The "haplotype heterozygosity" is calculated by counting haplotype labels (see label_haplotypes).</p>
+<dl class="section note"><dt>Note</dt><dd>The value nan is returned if <em>m.nsam</em> == 0. If <em>m</em> contains data, but all sites are invariant, the function returns 0.0. See <a class="el" href="testClassicSummstatsEmptyVariantMatrix_8cc.html" title="unit tests for pop gen summary statistics ">testClassicSummstatsEmptyVariantMatrix.cc</a> for examples.</dd></dl>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Depaulis1998-ol">[1]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="haplotype__statistics_8cc_source.html#l00134">134</a> of file <a class="el" href="haplotype__statistics_8cc_source.html">haplotype_statistics.cc</a>.</p>
+
+</div>
+</div>
+<a id="gac1c2377cc536d966337fb66dd5774a09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac1c2377cc536d966337fb66dd5774a09">&#9670;&nbsp;</a></span>hprime() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::hprime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The H' statistic </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>How the ancestral state is encoded. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>H' </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>nan is returned if m is empty/invariant. It is an error to consider <em>refstate</em> as anything other than the ancestral state.</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Zeng2006-is">[10]</a> for details.</p>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="hprime_8cc_source.html#l00045">45</a> of file <a class="el" href="hprime_8cc_source.html">hprime.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga366995000ebdba145e8dc30cc2ff8960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga366995000ebdba145e8dc30cc2ff8960">&#9670;&nbsp;</a></span>hprime() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::hprime </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The H' statistic </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstates</td><td>A vector of ancestral states, equal in length to m.sites </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>H' </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>nan is returned if m is empty/invariant. It is an error to consider <em>refstates</em> as anything other than the ancestral state at each site.</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Zeng2006-is">[10]</a> for details.</p>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="hprime_8cc_source.html#l00067">67</a> of file <a class="el" href="hprime_8cc_source.html">hprime.cc</a>.</p>
+
+</div>
+</div>
+<a id="gafb7b705c644cf777c00f98ced5583c12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gafb7b705c644cf777c00f98ced5583c12">&#9670;&nbsp;</a></span>label_haplotypes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; std::int32_t &gt; Sequence::label_haplotypes </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Assign a unique label to each haplotype. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;std::int32_t&gt;</dd></dl>
+<p>If there are <img class="formulaInl" alt="$k$" src="form_3.png"/> unique samples in <em>m</em>, which represents a sample of size <em>nsam</em>, the return value contains <em>nsam</em> elements whose values are <img class="formulaInl" alt="$[0,k)$" src="form_4.png"/> for "good" input. Here, "bad" input means that some of the samples consist entirely of missing data. In that case, they are given the label of -1.</p>
+<p>This function is implemented via a call to difference_matrix.</p>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="haplotype__statistics_8cc_source.html#l00075">75</a> of file <a class="el" href="haplotype__statistics_8cc_source.html">haplotype_statistics.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga6ec92a395ea8c549df6d78f12bc4c056"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6ec92a395ea8c549df6d78f12bc4c056">&#9670;&nbsp;</a></span>nbiallelic_sites()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint32_t Sequence::nbiallelic_sites </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of bi-allelic sites. </p>
+<p>Return the number of sites with exactly two non-missing states. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::uint32_t </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nvariablesites_8cc_source.html#l00028">28</a> of file <a class="el" href="nvariablesites_8cc_source.html">nvariablesites.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga875281ef6c2cf9e6700f71891b4ea545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga875281ef6c2cf9e6700f71891b4ea545">&#9670;&nbsp;</a></span>non_reference_allele_counts() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">count_type Sequence::non_reference_allele_counts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count number of non-reference alleles at each site. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">m</td><td>refstate The reference state for all sites. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="allele__counts_8cc_source.html#l00080">80</a> of file <a class="el" href="allele__counts_8cc_source.html">allele_counts.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga970ab4adfe4f42f0e1fdedfe54b86de9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga970ab4adfe4f42f0e1fdedfe54b86de9">&#9670;&nbsp;</a></span>non_reference_allele_counts() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">count_type Sequence::non_reference_allele_counts </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Count number of non-reference alleles at each site. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">m</td><td>refstate The reference state at each site. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="allele__counts_8cc_source.html#l00062">62</a> of file <a class="el" href="allele__counts_8cc_source.html">allele_counts.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga4ff11f3a197b127ba0b1fea93690a798"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4ff11f3a197b127ba0b1fea93690a798">&#9670;&nbsp;</a></span>nsl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structSequence_1_1nSLiHS.html">nSLiHS</a> Sequence::nsl </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::size_t&#160;</td>
+          <td class="paramname"><em>core</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>nSL and iHS statistics </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+    <tr><td class="paramname">core</td><td>The index of the core site </td></tr>
+    <tr><td class="paramname">refstate</td><td>The value of the reference/ancestral allelic state</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an <a class="el" href="structSequence_1_1nSLiHS.html">nSLiHS</a> object</dd></dl>
+<p>See <a class="el" href="nSL__from__ms_8cc_source.html">nSL_from_ms.cc</a> for example</p>
+<p>See <a class="el" href="citelist.html#CITEREF_Ferrer-Admetlla2014-wa">[3]</a> for details. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="nSL_from_ms_8cc-example.html#a1">nSL_from_ms.cc</a>.</dd>
+</dl>
+<p class="definition">Definition at line <a class="el" href="nsl_8cc_source.html#l00076">76</a> of file <a class="el" href="nsl_8cc_source.html">nsl.cc</a>.</p>
+
+</div>
+</div>
 <a id="ga22bece35153a90354184354ea7ca12a2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga22bece35153a90354184354ea7ca12a2">&#9670;&nbsp;</a></span>nSL()</h2>
 
@@ -148,27 +793,150 @@ Functions</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>This routine was validated by comparing to code provided by Ferrer-Admetlla et al. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>The use of 'gmap' is untested. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="nSL_8cc_source.html#l00125">125</a> of file <a class="el" href="nSL_8cc_source.html">nSL.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="nSL_8cc_source.html#l00124">124</a> of file <a class="el" href="nSL_8cc_source.html">nSL.cc</a>.</p>
 
 </div>
 </div>
-<a id="ga08bc910f7be7c6cd753fa93e2dd33c82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga08bc910f7be7c6cd753fa93e2dd33c82">&#9670;&nbsp;</a></span>nSL_t() <span class="overload">[1/2]</span></h2>
+<a id="ga315047dd61b94ff3c700a1966114cf3e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga315047dd61b94ff3c700a1966114cf3e">&#9670;&nbsp;</a></span>number_of_haplotypes()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; tuple&lt; double, double, uint32_t &gt; &gt; Sequence::nSL_t </td>
+          <td class="memname">std::int32_t Sequence::number_of_haplotypes </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1SimData.html">SimData</a> &amp;&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the number of haplotypes in a sample. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of unique elements in the sample, std::int32_t</dd></dl>
+<p>This returns the number of unique columns in <em>m</em>.</p>
+<dl class="section note"><dt>Note</dt><dd>The value -1 is returned if <em>m.nsam</em> == 0. If <em>m</em> contains data, but all sites are invariant, the function returns 1. See <a class="el" href="testClassicSummstatsEmptyVariantMatrix_8cc.html" title="unit tests for pop gen summary statistics ">testClassicSummstatsEmptyVariantMatrix.cc</a> for examples.</dd></dl>
+<p>Include via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Depaulis1998-ol">[1]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="haplotype__statistics_8cc_source.html#l00117">117</a> of file <a class="el" href="haplotype__statistics_8cc_source.html">haplotype_statistics.cc</a>.</p>
+
+</div>
+</div>
+<a id="gaa224265ef8a1030e9b63f1d06b5583da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa224265ef8a1030e9b63f1d06b5583da">&#9670;&nbsp;</a></span>nvariable_sites()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint32_t Sequence::nvariable_sites </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of polymorphic sites. </p>
+<p>Returns the number of sites with more than one non-missing state </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::uint32_t </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nvariablesites_8cc_source.html#l00008">8</a> of file <a class="el" href="nvariablesites_8cc_source.html">nvariablesites.cc</a>.</p>
+
+</div>
+</div>
+<a id="gab08126b86f0550aade6960c5d08f3aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab08126b86f0550aade6960c5d08f3aa2">&#9670;&nbsp;</a></span>rmin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::int32_t Sequence::rmin </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1VariantMatrix.html">VariantMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Hudson and Kaplan's Rmin statistic </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Rmin, std::int32_t</dd></dl>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Hudson1985-cq">[5]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="rmin_8cc_source.html#l00011">11</a> of file <a class="el" href="rmin_8cc_source.html">rmin.cc</a>.</p>
+
+</div>
+</div>
+<a id="gab644da065aecf3501765a89899cdd9db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gab644da065aecf3501765a89899cdd9db">&#9670;&nbsp;</a></span>tajd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::tajd </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tajima's D. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Tajima's D </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>nan is returned if m is empty/invariant.</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Tajima1989-de">[7]</a> for details.</p>
+<p>Included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a> or <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="tajd_8cc_source.html#l00009">9</a> of file <a class="el" href="tajd_8cc_source.html">tajd.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga2784cc28057f56b13395c9f87cec06fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2784cc28057f56b13395c9f87cec06fd">&#9670;&nbsp;</a></span>thetah() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::thetah </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::unordered_map&lt; double, double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>gmap</em> = <code>std::unordered_map&lt;double,&#160;double&gt;()</code>&#160;</td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -177,41 +945,39 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Threaded implementation of the nSL statistic. See <a class="el" href="group__threads.html">Parallel computing</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fay and Wu's <img class="formulaInl" alt="$\hat\theta_H$" src="form_10.png"/>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>A <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> </td></tr>
-    <tr><td class="paramname">gmap</td><td>A map relating positions in <em>d</em> to genetic map location </td></tr>
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>The ancestral state </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>double</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Fay2000-ef">[2]</a> for details. </p>
 
-<p class="definition">Definition at line <a class="el" href="nSL_8cc_source.html#l00133">133</a> of file <a class="el" href="nSL_8cc_source.html">nSL.cc</a>.</p>
+<p class="definition">Definition at line <a class="el" href="thetah__thetal_8cc_source.html#l00117">117</a> of file <a class="el" href="thetah__thetal_8cc_source.html">thetah_thetal.cc</a>.</p>
 
 </div>
 </div>
-<a id="ga80f7547e21c6c61e0f1ed79c5b4782d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga80f7547e21c6c61e0f1ed79c5b4782d6">&#9670;&nbsp;</a></span>nSL_t() <span class="overload">[2/2]</span></h2>
+<a id="ga755e79f8ae0737ad773c1ba631b72750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga755e79f8ae0737ad773c1ba631b72750">&#9670;&nbsp;</a></span>thetah() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::tuple&lt;double, double, std::uint32_t&gt; &gt; Sequence::nSL_t </td>
+          <td class="memname">double Sequence::thetah </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classSequence_1_1SimData.html">SimData</a> &amp;&#160;</td>
-          <td class="paramname"><em>d</em>, </td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::size_t &gt; &amp;&#160;</td>
-          <td class="paramname"><em>core_snps</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const std::unordered_map&lt; double, double &gt; &amp;&#160;</td>
-          <td class="paramname"><em>gmap</em> = <code>std::unordered_map&lt;&#160;double,&#160;double&#160;&gt;()</code>&#160;</td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -220,14 +986,194 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Threaded implementation of the nSL statistic. See <a class="el" href="group__threads.html">Parallel computing</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+
+<p>Fay and Wu's <img class="formulaInl" alt="$\hat\theta_H$" src="form_10.png"/>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">d</td><td>A <a class="el" href="classSequence_1_1SimData.html" title="Data from coalescent simulations. ">Sequence::SimData</a> </td></tr>
-    <tr><td class="paramname">core_snps</td><td>The core snps to analyze </td></tr>
-    <tr><td class="paramname">gmap</td><td>A map relating positions in <em>d</em> to genetic map location </td></tr>
+    <tr><td class="paramname">m</td><td>a <a class="el" href="classSequence_1_1VariantMatrix.html" title="Matrix representation of variation data. ">VariantMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>Vector of ancestral states. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>double</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Fay2000-ef">[2]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="thetah__thetal_8cc_source.html#l00123">123</a> of file <a class="el" href="thetah__thetal_8cc_source.html">thetah_thetal.cc</a>.</p>
+
+</div>
+</div>
+<a id="gaa65391d75f8257d49692e01f74262c17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa65391d75f8257d49692e01f74262c17">&#9670;&nbsp;</a></span>thetal() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::thetal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::int8_t&#160;</td>
+          <td class="paramname"><em>refstate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zeng et al. <img class="formulaInl" alt="$\hat\theta_L$" src="form_11.png"/>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>The ancestral state </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Zeng2006-is">[10]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="thetah__thetal_8cc_source.html#l00130">130</a> of file <a class="el" href="thetah__thetal_8cc_source.html">thetah_thetal.cc</a>.</p>
+
+</div>
+</div>
+<a id="gaee54083faf39464c8651011cfae34ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaee54083faf39464c8651011cfae34ce5">&#9670;&nbsp;</a></span>thetal() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::thetal </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::int8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>refstates</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Zeng et al. <img class="formulaInl" alt="$\hat\theta_L$" src="form_11.png"/>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+    <tr><td class="paramname">refstate</td><td>Vector of ancestral states. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>double</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Zeng2006-is">[10]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="thetah__thetal_8cc_source.html#l00136">136</a> of file <a class="el" href="thetah__thetal_8cc_source.html">thetah_thetal.cc</a>.</p>
+
+</div>
+</div>
+<a id="gabba8ecae9493ce2f2a063631bab4ef14"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabba8ecae9493ce2f2a063631bab4ef14">&#9670;&nbsp;</a></span>thetapi()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::thetapi </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Mean pairwise differences. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Mean pairwise differences </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Calcuated as sum over one minus site homozygosity</dd></dl>
+<p>This function is included via <a class="el" href="summstats_8hpp.html" title="Include all summary statistic functions and types. ">Sequence/summstats.hpp</a>, <a class="el" href="classics_8hpp.html" title="&quot;Classic&quot; summaries of variation data. ">Sequence/summstats/classics.hpp</a> or <a class="el" href="thetapi_8hpp.html">Sequence/summstats/thetapi.hpp</a></p>
+<p>See <a class="el" href="citelist.html#CITEREF_Tajima1983-it">[6]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="thetapi_8cc_source.html#l00007">7</a> of file <a class="el" href="thetapi_8cc_source.html">thetapi.cc</a>.</p>
+
+</div>
+</div>
+<a id="ga06c5c1a9e4559ce96d8e03d99514509e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga06c5c1a9e4559ce96d8e03d99514509e">&#9670;&nbsp;</a></span>thetaw()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Sequence::thetaw </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>ac</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Watterson's theta. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Watterson's theta, a double</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>For a site with <img class="formulaInl" alt="$k$" src="form_3.png"/> states, <img class="formulaInl" alt="$k-1$" src="form_12.png"/> is added to the number of inferred mutations. In other words, the calculation is based on the total number of mutations.</dd></dl>
+<p>See <a class="el" href="citelist.html#CITEREF_Watterson1975-ej">[9]</a> for details. </p>
+
+<p class="definition">Definition at line <a class="el" href="thetaw_8cc_source.html#l00009">9</a> of file <a class="el" href="thetaw_8cc_source.html">thetaw.cc</a>.</p>
+
+</div>
+</div>
+<a id="gadca085620028aae55e983989282ea596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadca085620028aae55e983989282ea596">&#9670;&nbsp;</a></span>total_number_of_mutations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::uint32_t Sequence::total_number_of_mutations </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classSequence_1_1AlleleCountMatrix.html">AlleleCountMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Total number of mutations in the sample. </p>
+<p>Return <img class="formulaInl" alt="$\sum_{i=0}^{i=m.nsites-1}I(i)$" src="form_5.png"/> where <img class="formulaInl" alt="$I(i)$" src="form_6.png"/> is <img class="formulaInl" alt="$k_i - 1$" src="form_7.png"/> if <img class="formulaInl" alt="$k_i$" src="form_8.png"/>, the number of states at the <img class="formulaInl" alt="$i^{th}$" src="form_9.png"/> site, is greater than one, and zero otherwise.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>An <a class="el" href="classSequence_1_1AlleleCountMatrix.html" title="Matrix representation of allele counts in a VariantMatrix To be constructed. ">AlleleCountMatrix</a> </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::uint32_t </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="nvariablesites_8cc_source.html#l00048">48</a> of file <a class="el" href="nvariablesites_8cc_source.html">nvariablesites.cc</a>.</p>
 
 </div>
 </div>
@@ -236,7 +1182,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jul 12 2018 15:34:19 for libsequence by
+    <li class="footer">Generated on Thu Sep 13 2018 15:07:05 for libsequence by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.13 </li>
   </ul>
