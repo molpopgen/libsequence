@@ -1,4 +1,4 @@
-SUBDIRS = bits SummStats variant_matrix
+SUBDIRS = bits SummStats variant_matrix summstats
 
 pkgincludedir=$(prefix)/include/Sequence
 
@@ -39,7 +39,6 @@ pkginclude_HEADERS = AlignStream.hpp\
 	SeqRegexes.hpp\
 	SeqUtilities.hpp\
 	SimData.hpp\
-	SimDataIO.hpp\
 	SimParams.hpp\
 	SingleSub.hpp\
 	Sites.hpp\
@@ -52,13 +51,12 @@ pkginclude_HEADERS = AlignStream.hpp\
 	stateCounter.hpp\
 	shortestPath.hpp\
 	descriptiveStats.hpp\
-	Crit.hpp\
 	HKA.hpp\
 	typedefs.hpp \
 	SummStats.hpp \
-	IOhelp.hpp \
 	SeqAlphabets.hpp \
-	threading.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
+	AlleleCountMatrix.hpp \
+	summstats.hpp \
 	StateCounts.hpp

@@ -141,14 +141,22 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	TwoSubs.lo stateCounter.lo SummStats/FST.lo Comparisons.lo \
 	SimpleSNP.lo PolyTable.lo PolyTableFunctions.lo Seq/Seq.lo \
 	ComplementBase.lo Sites.lo Unweighted.lo Seq/Fasta.lo \
-	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo SimDataIO.lo \
-	ThreeSubs.lo CodonTable.lo Specializations.lo SeqConstants.lo \
+	Seq/fastq.lo Kimura80.lo PolySites.lo SimData.lo ThreeSubs.lo \
+	CodonTable.lo Specializations.lo SeqConstants.lo \
 	shortestPath.lo SummStats/HKA.lo SummStats/Snn.lo \
 	polySiteVector.lo SummStats/SummStats.lo SummStats/nSL.lo \
-	SummStats/Garud.lo IOhelp.lo SeqAlphabets.lo SummStats/lHaf.lo \
-	threading.lo variant_matrix/VariantMatrix.lo \
+	SummStats/Garud.lo SeqAlphabets.lo SummStats/lHaf.lo \
+	variant_matrix/VariantMatrix.lo \
 	variant_matrix/VariantMatrixViews.lo \
-	variant_matrix/StateCounts.lo variant_matrix/filtering.lo
+	variant_matrix/AlleleCountMatrix.lo \
+	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
+	variant_matrix/windows.lo summstats/thetapi.lo \
+	summstats/thetaw.lo summstats/tajd.lo \
+	summstats/thetah_thetal.lo summstats/faywuh.lo \
+	summstats/hprime.lo summstats/nvariablesites.lo \
+	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
+	summstats/ld.lo summstats/rmin.lo summstats/nsl.lo \
+	summstats/garud.lo summstats/generic.lo summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -372,7 +380,6 @@ libsequence_la_SOURCES = Grantham.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
-	SimDataIO.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
@@ -384,30 +391,31 @@ libsequence_la_SOURCES = Grantham.cc\
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	SummStats/Garud.cc\
-	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
+	variant_matrix/AlleleCountMatrix.cc \
 	variant_matrix/StateCounts.cc \
-	variant_matrix/filtering.cc
+	variant_matrix/filtering.cc \
+	variant_matrix/windows.cc \
+	summstats/thetapi.cc \
+	summstats/thetaw.cc \
+	summstats/tajd.cc \
+	summstats/thetah_thetal.cc \
+	summstats/faywuh.cc \
+	summstats/hprime.cc \
+	summstats/nvariablesites.cc \
+	summstats/allele_counts.cc \
+	summstats/haplotype_statistics.cc \
+	summstats/ld.cc \
+	summstats/rmin.cc \
+	summstats/nsl.cc \
+	summstats/garud.cc \
+	summstats/generic.cc \
+	summstats/auxillary.cc
 
-
-#if DEBUG
-#AM_CXXFLAGS+=-g
-#else
-#AM_CXXFLAGS+=-DNDEBUG
-#endif
-#
-#if PROFILING
-#PROFILE= -pg
-#else
-#PROFILE=
-#endif
-
-#Link to Intel's TBB runtime library
-AM_LDFLAGS = -version-info 20:0:0 -ltbb
+AM_LDFLAGS = -version-info 20:0:0
 AM_CXXFLAGS = -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wconversion -Wsign-conversion -Wsign-promo -Wsynth
 all: all-am
 
@@ -522,10 +530,50 @@ variant_matrix/VariantMatrix.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/VariantMatrixViews.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/AlleleCountMatrix.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/StateCounts.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/filtering.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/windows.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+summstats/$(am__dirstamp):
+	@$(MKDIR_P) summstats
+	@: > summstats/$(am__dirstamp)
+summstats/$(DEPDIR)/$(am__dirstamp):
+	@$(MKDIR_P) summstats/$(DEPDIR)
+	@: > summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/thetapi.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/thetaw.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/tajd.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/thetah_thetal.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/faywuh.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/hprime.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/nvariablesites.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/allele_counts.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/haplotype_statistics.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/ld.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/rmin.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/nsl.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/garud.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/generic.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/auxillary.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 
 libsequence.la: $(libsequence_la_OBJECTS) $(libsequence_la_DEPENDENCIES) $(EXTRA_libsequence_la_DEPENDENCIES) 
 	$(AM_V_CXXLD)$(CXXLINK) -rpath $(libdir) $(libsequence_la_OBJECTS) $(libsequence_la_LIBADD) $(LIBS)
@@ -589,6 +637,8 @@ mostlyclean-compile:
 	-rm -f Seq/*.lo
 	-rm -f SummStats/*.$(OBJEXT)
 	-rm -f SummStats/*.lo
+	-rm -f summstats/*.$(OBJEXT)
+	-rm -f summstats/*.lo
 	-rm -f variant_matrix/*.$(OBJEXT)
 	-rm -f variant_matrix/*.lo
 
@@ -601,7 +651,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ComplementBase.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Grantham.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/GranthamWeights.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/IOhelp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Kimura80.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PathwayHelper.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolySites.Plo@am__quote@
@@ -611,7 +660,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqAlphabets.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SeqConstants.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimData.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimDataIO.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimParams.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SimpleSNP.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SingleSub.Plo@am__quote@
@@ -625,7 +673,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/shortestPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounter.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/threading.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Fasta.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/Seq.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@Seq/$(DEPDIR)/fastq.Plo@am__quote@
@@ -639,10 +686,27 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/SummStats.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/lHaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@SummStats/$(DEPDIR)/nSL.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/allele_counts.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/auxillary.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/faywuh.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/garud.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/generic.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/haplotype_statistics.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/hprime.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/ld.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nsl.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/rmin.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/tajd.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetah_thetal.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetapi.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/thetaw.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/AlleleCountMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/StateCounts.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/filtering.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/windows.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -675,6 +739,7 @@ clean-libtool:
 	-rm -rf .libs _libs
 	-rm -rf Seq/.libs Seq/_libs
 	-rm -rf SummStats/.libs SummStats/_libs
+	-rm -rf summstats/.libs summstats/_libs
 	-rm -rf variant_matrix/.libs variant_matrix/_libs
 
 ID: $(am__tagged_files)
@@ -798,6 +863,8 @@ distclean-generic:
 	-rm -f Seq/$(am__dirstamp)
 	-rm -f SummStats/$(DEPDIR)/$(am__dirstamp)
 	-rm -f SummStats/$(am__dirstamp)
+	-rm -f summstats/$(DEPDIR)/$(am__dirstamp)
+	-rm -f summstats/$(am__dirstamp)
 	-rm -f variant_matrix/$(DEPDIR)/$(am__dirstamp)
 	-rm -f variant_matrix/$(am__dirstamp)
 
@@ -810,7 +877,7 @@ clean-am: clean-binPROGRAMS clean-generic clean-libLTLIBRARIES \
 	clean-libtool mostlyclean-am
 
 distclean: distclean-am
-	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) summstats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -856,7 +923,7 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) variant_matrix/$(DEPDIR)
+	-rm -rf ./$(DEPDIR) Seq/$(DEPDIR) SummStats/$(DEPDIR) summstats/$(DEPDIR) variant_matrix/$(DEPDIR)
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 
@@ -895,6 +962,18 @@ uninstall-am: uninstall-binPROGRAMS uninstall-libLTLIBRARIES
 
 .PRECIOUS: Makefile
 
+
+#if DEBUG
+#AM_CXXFLAGS+=-g
+#else
+#AM_CXXFLAGS+=-DNDEBUG
+#endif
+#
+#if PROFILING
+#PROFILE= -pg
+#else
+#PROFILE=
+#endif
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

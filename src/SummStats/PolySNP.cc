@@ -38,12 +38,6 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 #include <Sequence/stateCounter.hpp>
 #include <Sequence/SeqConstants.hpp>
 #include <Sequence/PolySNPimpl.hpp>
-#include <tbb/blocked_range.h>
-#include <tbb/parallel_reduce.h>
-/*!
-  \defgroup popgenanalysis Analysis of molecular population genetic data
-  \ingroup popgen
-*/
 
 using std::string;
 using namespace Sequence::Recombination;
@@ -460,7 +454,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .a),
                                                           2.0))
                                                        / denom
@@ -470,7 +465,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .g),
                                                           2.0))
                                                        / denom
@@ -480,7 +476,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .c),
                                                           2.0))
                                                        / denom
@@ -490,7 +487,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .t),
                                                           2.0))
                                                        / denom
@@ -501,7 +499,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .zero),
                                                           2.0))
                                                        / denom
@@ -511,7 +510,8 @@ namespace Sequence
                                                  ? (2.0
                                                     * pow(double(
                                                               rep->_derivedCounts
-                                                                  [i].second
+                                                                  [i]
+                                                                      .second
                                                                       .one),
                                                           2.0))
                                                        / denom
@@ -631,10 +631,10 @@ namespace Sequence
       @author Joshua Shapiro
     */
     {
-		if(!rep->_haveOutgroup)
-		{
-			return std::numeric_limits<double>::quiet_NaN();
-		}
+        if (!rep->_haveOutgroup)
+            {
+                return std::numeric_limits<double>::quiet_NaN();
+            }
         assert(rep->_preprocessed);
         double thetal = 0.0;
         if (rep->_NumPoly == 0)
@@ -1060,8 +1060,6 @@ namespace Sequence
       allow missing data to result in 2 sequences being considered
       different (as they would be if you
       simply used the std::string comparison operators == or !=)
-
-          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
@@ -1099,65 +1097,42 @@ namespace Sequence
                         rep->_DVK = unsigned(unique_haplotypes.size());
                         std::move(unique_haplotypes.begin(),
                                   unique_haplotypes.end(), vuhaps.begin());
-                        // now do the real work via parallel reduction
-                        auto homozygosity_reduce = [&vuhaps, this](
-                            const tbb::blocked_range<std::size_t> &range,
-                            const bool haveOutgroup, const unsigned outgroup) {
-                            return tbb::parallel_reduce(
-                                range, 0.,
-                                [&vuhaps, this, haveOutgroup, outgroup](
-                                    const tbb::blocked_range<std::size_t> &r,
-                                    double value) {
-                                    for (auto i = r.begin(); i < r.end(); ++i)
-                                        {
-                                            double c = 0.;
-                                            if (haveOutgroup)
-                                                {
-                                                    c = static_cast<double>(std::count_if(
-                                                        rep->_data->begin(),
-                                                        rep->_data->begin()+outgroup,
-                                                        [&vuhaps, i, this](
-                                                            const std::string
-                                                                &__s) {
-                                                            return !Different(
-                                                                __s, vuhaps[i],
-                                                                false, true);
-                                                        }));
-													c += static_cast<double>(std::count_if(
-                                                        rep->_data->begin()+outgroup+1,
-                                                        rep->_data->end(),
-                                                        [&vuhaps, i, this](
-                                                            const std::string
-                                                                &__s) {
-                                                            return !Different(
-                                                                __s, vuhaps[i],
-                                                                false, true);
-                                                        }));
-													
-                                                }
-                                            else
-                                                {
-                                                    c = static_cast<double>(std::count_if(
-                                                        rep->_data->begin(),
-                                                        rep->_data->end(),
-                                                        [&vuhaps, i, this](
-                                                            const std::string
-                                                                &__s) {
-                                                            return !Different(
-                                                                __s, vuhaps[i],
-                                                                false, true);
-                                                        }));
-												}
-											c /= static_cast<double>(rep->_totsam);
-											value += pow(c,2.);
-											return value;
-                                        }
-                                    return value;
-                                },
-                                std::plus<double>());
-                        };
-                        double homozygosity = homozygosity_reduce(
-                            tbb::blocked_range<std::size_t>(0, vuhaps.size()),rep->_haveOutgroup,rep->_outgroup);
+                        double homozygosity = 0.0;
+                        for (auto &uh : vuhaps)
+                            {
+                                double c = 0.0;
+                                if (rep->_haveOutgroup)
+                                    {
+                                        c = static_cast<double>(std::count_if(
+                                            rep->_data->begin(),
+                                            rep->_data->begin()
+                                                + rep->_outgroup,
+                                            [&uh](const std::string &__s) {
+                                                return !Different(__s, uh,
+                                                                  false, true);
+                                            }));
+                                        c += static_cast<double>(std::count_if(
+                                            rep->_data->begin()
+                                                + rep->_outgroup + 1,
+                                            rep->_data->end(),
+                                            [&uh](const std::string &__s) {
+                                                return !Different(__s, uh,
+                                                                  false, true);
+                                            }));
+                                    }
+                                else
+                                    {
+                                        c = static_cast<double>(std::count_if(
+                                            rep->_data->begin(),
+                                            rep->_data->end(),
+                                            [&uh](const std::string &__s) {
+                                                return !Different(__s, uh,
+                                                                  false, true);
+                                            }));
+                                    }
+                                c /= static_cast<double>(rep->_totsam);
+                                homozygosity += pow(c, 2.);
+                            }
                         rep->_DVH -= homozygosity;
                         rep->_DVH *= rep->_totsam / (rep->_totsam - 1.0);
                         rep->_CalculatedDandV = 1;
@@ -1399,9 +1374,9 @@ namespace Sequence
         double a = a_sub_n();
         double b = b_sub_n();
         double c = c_sub_n();
-        double vD
-            = 1.0 + (pow(a, 2.0) / (b + pow(a, 2.0))
-                     * (c - (rep->_totsam + 1.0) / (rep->_totsam - 1.0)));
+        double vD = 1.0
+                    + (pow(a, 2.0) / (b + pow(a, 2.0))
+                       * (c - (rep->_totsam + 1.0) / (rep->_totsam - 1.0)));
         double uD = a - 1.0 - vD;
         double D = NumMut - a * double(ExternalMutations);
         D /= pow((uD * NumMut + vD * pow(NumMut, 2.0)), 0.5);
@@ -1875,8 +1850,6 @@ namespace Sequence
       If there is an outgroup, it is based on the genotype of derived alleles
       at both
       sites.
-
-          \ingroup threads
     */
     {
         assert(rep->_preprocessed);
@@ -1886,4 +1859,4 @@ namespace Sequence
                                              rep->_outgroup, mincount,
                                              max_marker_distance);
     }
-}
+} // namespace Sequence

@@ -15,20 +15,27 @@ However:
 * As a rule, software depending on libsequence will have to be recompiled, not rewritten.  The ABI breakage is (mostly...) coming from changing the implementation, not the interface.
 * If I remove features, they will be marked as deprecated, meaning that they will be removed in 2.0
 
-### TODO:
-
-* Move BAM alphabet to SeqAlphabets
-
-1. H12 from Petrov, Messer, et al.
-2. G stat for differentiation -- http://arxiv.org/pdf/1403.1552.pdf
-3. iHH?
-4. http://mbe.oxfordjournals.org/content/31/5/1275.abstract -- DONE
-5. Nucleotide, Genotype classes
-6. Document: Ptable, bamrecord, bamreader, sam*
-
 ### ISSUES:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
+
+## libsequence 1.9.5
+
+* Support for slices of VariantMatrix and AlleleCountMatrix. [PR49](https://github.com/molpopgen/libsequence/pull/49)
+* Faster summary statistic calculation. [PR46](https://github.com/molpopgen/libsequence/pull/46) [PR47](https://github.com/molpopgen/libsequence/pull/47) [PR48](https://github.com/molpopgen/libsequence/pull/48)
+* Added Sequence::is_different_matrix. [PR45](https://github.com/molpopgen/libsequence/pull/45)
+* Fixed a bug in Sequence::label_haplotypes.[PR44](https://github.com/molpopgen/libsequence/pull/44)
+
+## libsequence 1.9.4
+
+A major step towards 2.0
+
+
+* Summary statistics can now be calculated from a VariantMatrix.
+  [PR33](https://github.com/molpopgen/libsequence/pull/33) [PR36](https://github.com/molpopgen/libsequence/pull/36)
+* More feature deprecation.  See [Issue 21](https://github.com/molpopgen/libsequence/issues/21).
+* Dependency on TBB removed. [PR38](https://github.com/molpopgen/libsequence/pull/38)
+* Dependency on zlib removed. [PR39](https://github.com/molpopgen/libsequence/pull/39)
 
 ## libsequence 1.9.3
 

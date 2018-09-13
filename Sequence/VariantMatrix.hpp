@@ -1,6 +1,7 @@
 #ifndef SEQUENCE_VARIANT_MATRIX_HPP__
 #define SEQUENCE_VARIANT_MATRIX_HPP__
 
+#include <algorithm>
 #include <cstdint>
 #include <cstddef>
 #include <utility>
@@ -15,11 +16,12 @@ static_assert(sizeof(std::int8_t) == sizeof(char),
 namespace Sequence
 {
     /// \defgroup variantmatrix Variant Matrix
-    /// \brief Types and functions related to manipulation of variation data
+    /// \brief Representation and manipulation of variation data.
+    /// \ingroup popgen
 
-    struct VariantMatrix
+    class VariantMatrix
     /// \brief Matrix representation of variation data.
-    /// 
+    ///
     /// The data structure is a row-major matrix.
     /// Variants are represented by 8-bit integers.
     /// Negative values represent missing data,
@@ -41,6 +43,26 @@ namespace Sequence
     /// \ingroup variantmatrix
     /// \version 1.9.2
     {
+      private:
+        std::int8_t
+        set_max_allele(const std::int8_t max_allele_value)
+        {
+            if (max_allele_value < 0 && !data.empty())
+                {
+                    auto itr = std::max_element(data.begin(), data.end());
+                    return *itr;
+                }
+            //special case to allow construction of empty data sets
+            //without throwing an exception
+            else if (data.empty())
+
+                {
+                    return 0;
+                }
+            return max_allele_value;
+        }
+
+      public:
         /// Data stored in matrix form with rows as sites.
         std::vector<std::int8_t> data;
         /// Position of sites.
@@ -51,18 +73,30 @@ namespace Sequence
         std::size_t nsam;
         /// Reserved value for masked data
         static const std::int8_t mask;
-
+        /// The value type of the data.
+        /// Helpful for generic programming
+        using value_type = std::int8_t;
+        /// Max allelic value stored in matrix
+        const std::int8_t max_allele;
         template <typename data_input, typename positions_input>
-        VariantMatrix(data_input&& data_, positions_input&& positions_)
+        VariantMatrix(data_input&& data_, positions_input&& positions_,
+                      const std::int8_t max_allele_value = -1)
             /// \brief "Perfect-forwarding" constructor.
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
             : data(std::forward<data_input>(data_)),
               positions(std::forward<positions_input>(positions_)),
-              nsites(positions.size()), nsam(data.size() / positions.size())
+              nsites(positions.size()),
+              nsam((nsites > 0) ? data.size() / positions.size() : 0),
+              max_allele{ set_max_allele(max_allele_value) }
         {
-            if (data.size() % positions.size() != 0.0)
+            if (max_allele < 0)
+                {
+                    throw std::invalid_argument("max allele must be >= 0");
+                }
+            if ((!data.empty() && !positions.empty())
+                && data.size() % positions.size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }
@@ -87,6 +121,7 @@ namespace Sequence
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
     };
-}
+
+} // namespace Sequence
 
 #endif

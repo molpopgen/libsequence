@@ -30,7 +30,6 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Kimura80.cc\
 	PolySites.cc\
 	SimData.cc\
-	SimDataIO.cc\
 	ThreeSubs.cc\
 	CodonTable.cc\
 	Specializations.cc\
@@ -42,14 +41,29 @@ libsequence_la_SOURCES=  Grantham.cc\
 	SummStats/SummStats.cc \
 	SummStats/nSL.cc \
 	SummStats/Garud.cc\
-	IOhelp.cc \
 	SeqAlphabets.cc \
 	SummStats/lHaf.cc \
-	threading.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
+	variant_matrix/AlleleCountMatrix.cc \
 	variant_matrix/StateCounts.cc \
-	variant_matrix/filtering.cc
+	variant_matrix/filtering.cc \
+	variant_matrix/windows.cc \
+	summstats/thetapi.cc \
+	summstats/thetaw.cc \
+	summstats/tajd.cc \
+	summstats/thetah_thetal.cc \
+	summstats/faywuh.cc \
+	summstats/hprime.cc \
+	summstats/nvariablesites.cc \
+	summstats/allele_counts.cc \
+	summstats/haplotype_statistics.cc \
+	summstats/ld.cc \
+	summstats/rmin.cc \
+	summstats/nsl.cc \
+	summstats/garud.cc \
+	summstats/generic.cc \
+	summstats/auxillary.cc
 
 
 AM_LDFLAGS=-version-info 20:0:0
@@ -68,5 +82,3 @@ AM_CXXFLAGS= -Wall -W -Woverloaded-virtual  -Wnon-virtual-dtor -Wcast-qual -Wcon
 #PROFILE=
 #endif
 
-#Link to Intel's TBB runtime library
-AM_LDFLAGS+=-ltbb

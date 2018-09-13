@@ -5,7 +5,7 @@ check_PROGRAMS=libseq_unit_tests
 TESTS=$(check_PROGRAMS)
 
 AM_CXXFLAGS=-g
-AM_LDFLAGS=-L../src/.libs -static
+AM_LDFLAGS=-L../src/.libs -Wl,-rpath,../src/.libs
 AM_LIBS=-lsequence
 
 #if DEBUG
@@ -27,7 +27,6 @@ FastaConstructors.cc \
 FastaIO.cc \
 FastaOperations.cc \
 AlignStreamTest.cc \
-testSimDataIO.cc \
 CountingOperators.cc \
 PolyTableConversions.cc \
 PolyTableTweaking.cc \
@@ -46,6 +45,11 @@ alphabets.cc \
 polySiteVectorTest.cc \
 PolyTableSliceTest.cc \
 stateCounterTest.cc \
-VariantMatrixTest.cc
+VariantMatrixTest.cc \
+testAlleleCountMatrix.cc \
+testClassicSummstats.cc \
+testClassicSummstatsEmptyVariantMatrix.cc \
+testLD.cc \
+testGarudStatistics.cc
 
 endif #if BUNIT_TEST_PRESENT

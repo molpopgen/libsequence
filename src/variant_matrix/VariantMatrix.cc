@@ -1,4 +1,6 @@
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/StateCounts.hpp>
 #include <stdexcept>
 
 namespace Sequence
@@ -42,4 +44,4 @@ namespace Sequence
             }
         return data.at(site * nsam + haplotype);
     }
-}
+} // namespace Sequence

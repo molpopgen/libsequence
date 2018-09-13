@@ -1,22 +1,24 @@
 //! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
+
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/variant_matrix/windows.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <numeric> //for std::iota
 #include <iterator>
-
-BOOST_AUTO_TEST_SUITE(VariantMatrixTest)
+#include "VariantMatrixFixture.hpp"
 
 struct vmatrix_fixture
 {
     std::vector<std::int8_t> input_data;
     std::vector<double> input_pos;
     Sequence::VariantMatrix m, m2;
-
+    Sequence::AlleleCountMatrix c, c2;
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos), m2(input_data, input_pos)
+          m(input_data, input_pos), m2(input_data, input_pos), c{ m }, c2{ m2 }
     {
         // The two VariantMatrix objects
         // have same data, but different internal
@@ -53,21 +55,54 @@ struct vmatrix_fixture
     }
 };
 
-BOOST_FIXTURE_TEST_CASE(test_construction, vmatrix_fixture)
+BOOST_AUTO_TEST_SUITE(BasicVariantMatrixTests)
+
+BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_move)
+{
+    std::vector<std::int8_t> d{};
+    std::vector<double> p{};
+    Sequence::VariantMatrix m(std::move(d), std::move(p));
+    BOOST_REQUIRE_EQUAL(m.nsam, 0);
+    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+}
+
+BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_init_lists)
+{
+    Sequence::VariantMatrix m(std::vector<std::int8_t>{},
+                              std::vector<double>{});
+    BOOST_REQUIRE_EQUAL(m.nsam, 0);
+    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_fixture)
+
+BOOST_AUTO_TEST_CASE(test_construction)
 {
     Sequence::VariantMatrix m(std::vector<std::int8_t>(100, 1),
                               std::vector<double>(5, 0.0));
     BOOST_REQUIRE_EQUAL(m.nsites, 5);
     BOOST_REQUIRE_EQUAL(m.nsam, 20);
+    BOOST_REQUIRE_EQUAL(m.max_allele, 1);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_range_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_max_allele)
+{
+    m.data[3] = 5;
+    Sequence::VariantMatrix vm(m.data, m.positions);
+    BOOST_CHECK_EQUAL(vm.max_allele, 5);
+    Sequence::AlleleCountMatrix vmc(vm);
+    BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
+}
+
+BOOST_AUTO_TEST_CASE(test_range_exceptions)
 {
     BOOST_REQUIRE_THROW(m.at(m.nsites + 1, 0), std::out_of_range);
     BOOST_REQUIRE_THROW(m.at(0, m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_iteration)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
         {
@@ -81,21 +116,21 @@ BOOST_FIXTURE_TEST_CASE(test_iteration, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_bad_row_swap, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_bad_row_swap)
 {
     auto a = Sequence::get_RowView(m, 0);
     auto b = Sequence::get_RowView(m2, 0);
     BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_bad_column_swap, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_bad_column_swap)
 {
     auto a = Sequence::get_ColView(m, 0);
     auto b = Sequence::get_ColView(m2, 0);
     BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_views)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -138,7 +173,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_const_row_views)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -182,7 +217,7 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_view_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_view_exceptions)
 {
     BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
                         std::exception);
@@ -194,7 +229,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_view_exceptions, vmatrix_fixture)
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_const_row_view_exceptions)
 {
     BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
                         std::exception);
@@ -206,7 +241,7 @@ BOOST_FIXTURE_TEST_CASE(test_const_row_view_exceptions, vmatrix_fixture)
     BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_row_view_iterators, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_row_view_iterators)
 {
     for (std::size_t i = 0; i < m.nsites; ++i)
         {
@@ -217,7 +252,7 @@ BOOST_FIXTURE_TEST_CASE(test_row_view_iterators, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_column_views)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
         {
@@ -259,7 +294,7 @@ BOOST_FIXTURE_TEST_CASE(test_column_views, vmatrix_fixture)
         }
 }
 
-BOOST_FIXTURE_TEST_CASE(tesl_col_view_iterator_increment, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(tesl_col_view_iterator_increment)
 {
     auto x = Sequence::get_ConstColView(m, 0);
     auto b = x.begin();
@@ -272,7 +307,7 @@ BOOST_FIXTURE_TEST_CASE(tesl_col_view_iterator_increment, vmatrix_fixture)
     BOOST_REQUIRE_EQUAL(num_increments, 3);
 }
 
-BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_column_view_invalid_compare)
 {
     auto c0 = Sequence::get_ConstColView(m, 0);
     auto c1 = Sequence::get_ConstColView(m, 1);
@@ -284,7 +319,7 @@ BOOST_FIXTURE_TEST_CASE(test_column_view_invalid_compare, vmatrix_fixture)
 // The remaining tests apply STL algorithms to column iterators,
 // which is a good stress test.  We've already done count above.
 
-BOOST_FIXTURE_TEST_CASE(test_accumulate, vmatrix_fixture)
+BOOST_AUTO_TEST_CASE(test_accumulate)
 {
     auto c = Sequence::get_ConstColView(m, 0);
     int sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
@@ -293,4 +328,58 @@ BOOST_FIXTURE_TEST_CASE(test_accumulate, vmatrix_fixture)
     sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
     BOOST_REQUIRE_EQUAL(sum, 0);
 }
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(VariantMatrixWindowTest, dataset)
+
+BOOST_AUTO_TEST_CASE(tests_windows_size_0)
+{
+    auto w = Sequence::make_window(m, 10, 10);
+    BOOST_REQUIRE_EQUAL(w.nsam, 0);
+    BOOST_REQUIRE_EQUAL(w.nsites, 0);
+}
+
+BOOST_AUTO_TEST_CASE(tests_windows_size_1)
+{
+    for (std::size_t i = 0; i < m.positions.size(); ++i)
+        {
+            auto w = Sequence::make_window(m, m.positions[i], m.positions[i]);
+            BOOST_REQUIRE_EQUAL(w.positions[0], m.positions[i]);
+            auto r = Sequence::get_ConstRowView(m, i);
+            BOOST_REQUIRE_EQUAL(
+                std::mismatch(w.data.begin(), w.data.end(), r.begin()).first
+                    == w.data.end(),
+                true);
+        }
+}
+
+BOOST_AUTO_TEST_CASE(test_windows_multi_site)
+{
+    auto w = Sequence::make_window(m, 0.11, 0.29);
+    BOOST_REQUIRE_EQUAL(w.nsites, 1);
+    BOOST_REQUIRE_EQUAL(w.positions[0], 0.2);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(test_AlleleCountMatrixOperations, dataset)
+
+BOOST_AUTO_TEST_CASE(test_slice)
+{
+    Sequence::AlleleCountMatrix am(m);
+    auto w = Sequence::make_window(m, 0, 0.25);
+    Sequence::AlleleCountMatrix amw(w);
+    std::vector<int> c;
+    for (std::size_t i = 0; i < 2; ++i)
+        {
+            auto r = am.row(i);
+            c.insert(c.end(), r.first, r.second);
+        }
+    Sequence::AlleleCountMatrix amslice(std::move(c), 2, 2, m.nsam);
+    BOOST_REQUIRE_EQUAL(amw.counts == amslice.counts, true);
+    BOOST_REQUIRE_EQUAL(amw.ncol, amslice.ncol);
+    BOOST_REQUIRE_EQUAL(amw.nrow, amslice.nrow);
+    BOOST_REQUIRE_EQUAL(amw.nsam, amslice.nsam);
+}
+
 BOOST_AUTO_TEST_SUITE_END()

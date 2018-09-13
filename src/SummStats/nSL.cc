@@ -9,7 +9,6 @@
 // For parallelizing nSL:
 #include <functional>
 #include <iostream>
-#include <tbb/parallel_for.h>
 
 using namespace std;
 
@@ -127,40 +126,6 @@ namespace Sequence
     {
         auto nsl = __nSLdetails(core, d, gmap);
         return make_pair(log(nsl[0]) - log(nsl[2]), log(nsl[1]) - log(nsl[3]));
-    }
-
-    vector<tuple<double, double, uint32_t>>
-    nSL_t(const SimData &d, const std::unordered_map<double, double> &gmap)
-    {
-        vector<size_t> core_snps(d.numsites());
-        for (size_t core = 0; core < core_snps.size(); ++core)
-            core_snps[core] = core;
-        return nSL_t(d, core_snps, gmap);
-    }
-
-    vector<tuple<double, double, uint32_t>>
-    nSL_t(const SimData &d, const std::vector<size_t> &core_snps,
-          const std::unordered_map<double, double> &gmap)
-    {
-        vector<tuple<double, double, uint32_t>> rv(core_snps.size());
-        using offset_type = SimData::const_site_iterator::difference_type;
-        tbb::parallel_for(
-            tbb::blocked_range<std::size_t>(0, rv.size()),
-            [&rv, &d, &core_snps,
-             &gmap](const tbb::blocked_range<std::size_t> &r) {
-                for (std::size_t i = r.begin(); i < r.end(); ++i)
-                    {
-                        auto temp = __nSLdetails(core_snps[i], d, gmap);
-                        offset_type offset = static_cast<offset_type>(i);
-                        uint32_t dcount = static_cast<uint32_t>(
-                            count((d.sbegin() + offset)->second.begin(),
-                                  (d.sbegin() + offset)->second.end(), '1'));
-                        rv[i]
-                            = make_tuple(log(temp[0]) - log(temp[2]),
-                                         log(temp[1]) - log(temp[3]), dcount);
-                    }
-            });
-        return rv;
     }
 
     // double
