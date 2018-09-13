@@ -19,6 +19,10 @@ namespace Sequence
     VariantMatrix make_window(const VariantMatrix& m, const double beg,
                               const double end);
 
+    VariantMatrix make_slice(const VariantMatrix& m, const double beg,
+                             const double end,
+                             const std::size_t i,
+                             const std::size_t j);
 } // namespace Sequence
 
 #endif
