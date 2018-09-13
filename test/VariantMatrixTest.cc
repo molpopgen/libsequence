@@ -1,11 +1,14 @@
 //! \file VariantMatrixTest.cc @brief Tests for Sequence/VariantMatrix.hpp
+
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
+#include <Sequence/variant_matrix/windows.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <numeric> //for std::iota
 #include <iterator>
+#include "VariantMatrixFixture.hpp"
 
 struct vmatrix_fixture
 {
@@ -66,7 +69,7 @@ BOOST_AUTO_TEST_CASE(test_construction)
 BOOST_AUTO_TEST_CASE(test_max_allele)
 {
     m.data[3] = 5;
-    Sequence::VariantMatrix vm(m.data,m.positions);
+    Sequence::VariantMatrix vm(m.data, m.positions);
     BOOST_CHECK_EQUAL(vm.max_allele, 5);
     Sequence::AlleleCountMatrix vmc(vm);
     BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
@@ -304,4 +307,34 @@ BOOST_AUTO_TEST_CASE(test_accumulate)
     sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
     BOOST_REQUIRE_EQUAL(sum, 0);
 }
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(VariantMatrixWindowTest, dataset)
+
+BOOST_AUTO_TEST_CASE(tests_windows_size_0)
+{
+	auto w = Sequence::make_window(m, 10, 10);
+}
+
+BOOST_AUTO_TEST_CASE(tests_windows_size_1)
+{
+    for (std::size_t i = 0; i < m.positions.size(); ++i)
+        {
+            auto w = Sequence::make_window(m, m.positions[i], m.positions[i]);
+            BOOST_REQUIRE_EQUAL(w.positions[0], m.positions[i]);
+            auto r = Sequence::get_ConstRowView(m, i);
+            BOOST_REQUIRE_EQUAL(
+                std::mismatch(w.data.begin(), w.data.end(), r.begin()).first
+                    == w.data.end(),
+                true);
+        }
+}
+
+BOOST_AUTO_TEST_CASE(test_windows_multi_site)
+{
+	auto w = Sequence::make_window(m, 0.11, 0.29);
+	BOOST_REQUIRE_EQUAL(w.nsites, 1);
+	BOOST_REQUIRE_EQUAL(w.positions[0], 0.2);
+}
+
 BOOST_AUTO_TEST_SUITE_END()

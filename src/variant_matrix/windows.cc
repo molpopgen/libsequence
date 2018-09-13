@@ -11,7 +11,7 @@ namespace Sequence
             }
         auto pb
             = std::lower_bound(m.positions.begin(), m.positions.end(), beg);
-        auto pe = std::lower_bound(pb, m.positions.end(), end);
+        auto pe = std::upper_bound(pb, m.positions.end(), end);
         decltype(m.data) data;
         decltype(m.positions) pos;
         if (pb == m.positions.end())

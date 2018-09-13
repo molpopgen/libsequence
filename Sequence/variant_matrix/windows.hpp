@@ -14,7 +14,7 @@ namespace Sequence
      * \param beg Beginning of window
      * \param end End of window
      *
-     * \note The window intervals are half-open, [beg,end)
+     * \note The window intervals are open, [beg,end]
      */
     VariantMatrix make_window(const VariantMatrix& m, const double beg,
                               const double end);
