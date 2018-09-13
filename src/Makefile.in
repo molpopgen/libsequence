@@ -150,7 +150,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	variant_matrix/VariantMatrixViews.lo \
 	variant_matrix/AlleleCountMatrix.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
-	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
+	variant_matrix/windows.lo summstats/thetapi.lo \
+	summstats/thetaw.lo summstats/tajd.lo \
 	summstats/thetah_thetal.lo summstats/faywuh.lo \
 	summstats/hprime.lo summstats/nvariablesites.lo \
 	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
@@ -397,6 +398,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	variant_matrix/AlleleCountMatrix.cc \
 	variant_matrix/StateCounts.cc \
 	variant_matrix/filtering.cc \
+	variant_matrix/windows.cc \
 	summstats/thetapi.cc \
 	summstats/thetaw.cc \
 	summstats/tajd.cc \
@@ -533,6 +535,8 @@ variant_matrix/AlleleCountMatrix.lo: variant_matrix/$(am__dirstamp) \
 variant_matrix/StateCounts.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/filtering.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/windows.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 summstats/$(am__dirstamp):
 	@$(MKDIR_P) summstats
@@ -702,6 +706,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrix.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/filtering.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/windows.Plo@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\

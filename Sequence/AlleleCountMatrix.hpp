@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <utility>
+#include <stdexcept>
 #include <Sequence/VariantMatrix.hpp>
 
 namespace Sequence
@@ -22,6 +23,21 @@ namespace Sequence
         const std::size_t nrow;
         const std::size_t nsam;
         explicit AlleleCountMatrix(const VariantMatrix& m);
+
+        /// This constructor is for advanced use only,
+        /// such as constructing from a slice of a
+        /// pre-existing AlleleCountMatrix.
+        template <typename T>
+        AlleleCountMatrix(T&& t, const std::size_t nc_, const std::size_t nr_,
+                          const std::size_t n_)
+            : counts(std::forward<T>(t)), ncol{ nc_ }, nrow{ nr_ }, nsam{ n_ }
+        {
+            if (ncol * nrow != counts.size())
+                {
+                    throw std::invalid_argument(
+                        "incorrect dimensions for AlleleCountMatrix");
+                }
+        }
         std::pair<std::vector<std::int32_t>::const_iterator,
                   std::vector<std::int32_t>::const_iterator>
         row(const std::size_t) const;
