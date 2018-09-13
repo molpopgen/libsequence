@@ -55,6 +55,27 @@ struct vmatrix_fixture
     }
 };
 
+BOOST_AUTO_TEST_SUITE(BasicVariantMatrixTests)
+
+BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_move)
+{
+    std::vector<std::int8_t> d{};
+    std::vector<double>p{};
+    Sequence::VariantMatrix m(std::move(d),std::move(p));
+    BOOST_REQUIRE_EQUAL(m.nsam, 0);
+    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+}
+
+BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_init_lists)
+{
+    Sequence::VariantMatrix m(std::vector<std::int8_t>{}, std::vector<double>{});
+    BOOST_REQUIRE_EQUAL(m.nsam, 0);
+    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+
 BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_fixture)
 
 BOOST_AUTO_TEST_CASE(test_construction)
