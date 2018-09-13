@@ -335,6 +335,8 @@ BOOST_FIXTURE_TEST_SUITE(VariantMatrixWindowTest, dataset)
 BOOST_AUTO_TEST_CASE(tests_windows_size_0)
 {
 	auto w = Sequence::make_window(m, 10, 10);
+    BOOST_REQUIRE_EQUAL(w.nsam, 0);
+    BOOST_REQUIRE_EQUAL(w.nsites, 0);
 }
 
 BOOST_AUTO_TEST_CASE(tests_windows_size_1)
