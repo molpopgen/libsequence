@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 #include <utility>
+#include <stdexcept>
 #include <Sequence/VariantMatrix.hpp>
 
 namespace Sequence
@@ -31,6 +32,11 @@ namespace Sequence
                           const std::size_t n_)
             : counts(std::forward<T>(t)), ncol{ nc_ }, nrow{ nr_ }, nsam{ n_ }
         {
+            if (ncol * nrow != counts.size())
+                {
+                    throw std::invalid_argument(
+                        "incorrect dimensions for AlleleCountMatrix");
+                }
         }
         std::pair<std::vector<std::int32_t>::const_iterator,
                   std::vector<std::int32_t>::const_iterator>
