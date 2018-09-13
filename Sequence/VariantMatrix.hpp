@@ -88,8 +88,8 @@ namespace Sequence
             : data(std::forward<data_input>(data_)),
               positions(std::forward<positions_input>(positions_)),
               nsites(positions.size()),
-              nsam(data.size() / positions.size()), max_allele{ set_max_allele(
-                                                        max_allele_value) }
+              nsam((nsites > 0) ? data.size() / positions.size() : 0),
+              max_allele{ set_max_allele(max_allele_value) }
         {
             if (max_allele < 0)
                 {
