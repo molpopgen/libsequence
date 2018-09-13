@@ -19,6 +19,13 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.5
+
+* Support for slices of VariantMatrix and AlleleCountMatrix. [PR49](https://github.com/molpopgen/libsequence/pull/49)
+* Faster summary statistic calculation. [PR46](https://github.com/molpopgen/libsequence/pull/46) [PR47](https://github.com/molpopgen/libsequence/pull/47) [PR48](https://github.com/molpopgen/libsequence/pull/48)
+* Added Sequence::is_different_matrix. [PR45](https://github.com/molpopgen/libsequence/pull/45)
+* Fixed a bug in Sequence::label_haplotypes.[PR44](https://github.com/molpopgen/libsequence/pull/44)
+
 ## libsequence 1.9.4
 
 A major step towards 2.0
