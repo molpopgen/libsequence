@@ -3,6 +3,7 @@
 #ifndef SEQUENCE_SUMMSTATS_NSL_HPP__
 #define SEQUENCE_SUMMSTATS_NSL_HPP__
 
+#include <vector>
 #include <cstdint>
 #include <Sequence/VariantMatrix.hpp>
 
@@ -24,6 +25,8 @@ namespace Sequence
 
     nSLiHS nsl(const VariantMatrix& m, const std::size_t core,
                const std::int8_t refstate);
+    std::vector<nSLiHS>
+    all_nsl(const VariantMatrix& m, const std::int8_t refstate);
 } // namespace Sequence
 
 #endif
