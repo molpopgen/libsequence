@@ -68,6 +68,41 @@ namespace
                 counts[index]++;
             }
     }
+
+    inline void
+    update_edge_matrix(const Sequence::VariantMatrix& m,
+                       const Sequence::ConstColView& hapi,
+                       const Sequence::ConstColView& hapj,
+                       std::vector<std::int64_t>& edges,
+                       const std::size_t core, const std::size_t i,
+                       const std::size_t j)
+    // For the all_nsl operations, this function keeps track
+    // of the left/right boundaries of haplotype homozygosity
+    // as core moves through the sample:
+    {
+        std::size_t lindex = j * m.nsam + i;
+        std::int64_t left_edge = edges[lindex];
+        if (left_edge == -1)
+            {
+                left_edge = get_left(hapi, hapj, core, 0);
+                edges[lindex] = left_edge;
+            }
+        if (left_edge >= 0)
+            {
+                std::size_t rindex = i * m.nsam + j;
+                std::int64_t right_edge = edges[rindex];
+                // This next line is a gotcha
+                // to to signed/unsigned comparison:
+                if (right_edge == -1
+                    || static_cast<std::size_t>(right_edge) <= core)
+                    {
+                        right_edge
+                            = get_right(hapi, hapj, core,
+                                        static_cast<std::int64_t>(m.nsites));
+                        edges[rindex] = right_edge;
+                    }
+            }
+    }
 } // namespace
 
 namespace Sequence
@@ -161,12 +196,14 @@ namespace Sequence
         // and the upper right are the right edges.
         // -1 mean unevaluated.
         std::vector<std::int64_t> edges(m.nsam * m.nsam, -1);
+        std::size_t lindex, rindex;
         for (std::size_t core = 0; core < m.nsites; ++core)
             {
                 auto core_view = get_ConstRowView(m, core);
                 double nsl_values[2] = { 0, 0 };
                 double ihs_values[2] = { 0, 0 };
-                //Count sample size for non-ref and ref alleles at core site contributing to nSL
+                //Count sample size for non-ref and
+                //ref alleles at core site contributing to nSL
                 int counts[2] = { 0, 0 };
                 for (std::size_t i = 0; i < m.nsam - 1; ++i)
                     {
@@ -177,65 +214,22 @@ namespace Sequence
                                     && core_view[i] >= 0)
                                     {
                                         auto sample_j = get_ConstColView(m, j);
-                                        std::size_t lindex = j * m.nsam + i;
-                                        std::size_t rindex = i * m.nsam + j;
-                                        std::int64_t lstart
-                                            = (edges[lindex] == -1)
-                                                  ? 0
-                                                  : edges[lindex];
-                                        std::int64_t rstart
-                                            = (edges[rindex] == -1)
-                                                  ? static_cast<std::int64_t>(
-                                                        m.nsites)
-                                                  : edges[rindex];
-                                        if (rstart <= core)
-                                            {
-                                                rstart = m.nsites;
-                                            }
-                                        auto left
-                                            = (edges[lindex] == -1)
-                                                  ? get_left(sample_i,
-                                                             sample_j, core,
-                                                             lstart)
-                                                  : lstart;
-                                        if (left >= 0)
-                                            {
-                                                if (rstart < m.nsites)
-                                                    {
-                                                        update_counts(
-                                                            nsl_values,
-                                                            ihs_values, counts,
-                                                            m.nsites,
-                                                            m.positions,
-                                                            static_cast<
-                                                                std::size_t>(
-                                                                core_view[i]
-                                                                == refstate),
-                                                            left, rstart);
-                                                    }
-                                                else
-                                                    {
-                                                        auto right = get_right(
-                                                            sample_i, sample_j,
-                                                            core, rstart);
-                                                        update_counts(
-                                                            nsl_values,
-                                                            ihs_values, counts,
-                                                            m.nsites,
-                                                            m.positions,
-                                                            static_cast<
-                                                                std::size_t>(
-                                                                core_view[i]
-                                                                == refstate),
-                                                            left, right);
-                                                        edges[rindex] = right;
-                                                    }
-                                            }
-                                        edges[lindex] = left;
+                                        lindex = j * m.nsam + i;
+                                        rindex = i * m.nsam + j;
+                                        update_edge_matrix(m, sample_i,
+                                                           sample_j, edges,
+                                                           core, i, j);
+                                        update_counts(
+                                            nsl_values, ihs_values, counts,
+                                            m.nsites, m.positions,
+                                            static_cast<std::size_t>(
+                                                core_view[i] == refstate),
+                                            edges[lindex], edges[rindex]);
                                     }
                                 else //The sites differ, making this a new left edge
                                     {
-                                        edges[j * m.nsam + i] = core;
+                                        edges[j * m.nsam + i]
+                                            = static_cast<std::int64_t>(core);
                                     }
                             }
                     }
