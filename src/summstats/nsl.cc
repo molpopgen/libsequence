@@ -15,16 +15,17 @@ namespace
              std::int64_t minleft)
     {
         std::int64_t left = static_cast<std::int64_t>(core) - 1;
-        std::size_t left_index;
+        auto state_i = sample_i.begin() + left;
+        auto state_j = sample_j.begin() + left;
         while (left >= minleft)
             {
-                left_index = static_cast<std::size_t>(left);
-                if (sample_i[left_index] >= 0 && sample_j[left_index] >= 0
-                    && sample_i[left_index] != sample_j[left_index])
+                if (*state_i != *state_j && !(*state_i < 0 || *state_j < 0))
                     {
                         break;
                     }
                 --left;
+                --state_i;
+                --state_j;
             }
         return left;
     }
@@ -35,16 +36,17 @@ namespace
               const std::int64_t nsites)
     {
         std::int64_t right = static_cast<std::int64_t>(core) + 1;
-        std::size_t right_index;
+        auto state_i = sample_i.begin() + right;
+        auto state_j = sample_j.begin() + right;
         while (right < nsites)
             {
-                right_index = static_cast<std::size_t>(right);
-                if (sample_i[right_index] >= 0 && sample_j[right_index] >= 0
-                    && sample_i[right_index] != sample_j[right_index])
+                if (*state_i != *state_j && !(*state_i < 0 || *state_j < 0))
                     {
                         break;
                     }
                 ++right;
+                ++state_i;
+                ++state_j;
             }
         return right;
     }
@@ -103,6 +105,27 @@ namespace
                     }
             }
     }
+
+    inline Sequence::nSLiHS
+    get_stat(const Sequence::ConstRowView& core_view,
+             const std::int8_t refstate, const double nsl_values[2],
+             const double ihs_values[2], const int counts[2])
+    {
+
+        double nSL_den = nsl_values[0] / static_cast<double>(counts[0]);
+        double nSL_num = nsl_values[1] / static_cast<double>(counts[1]);
+        double iHS_den = ihs_values[0] / static_cast<double>(counts[0]);
+        double iHS_num = ihs_values[1] / static_cast<double>(counts[1]);
+        auto nonrefcount = static_cast<std::int32_t>(
+            std::count_if(core_view.begin(), core_view.end(),
+                          [refstate](const std::int8_t i) {
+                              return i >= 0 && i != refstate;
+                          }));
+        return Sequence::nSLiHS{ std::log(nSL_num) - std::log(nSL_den),
+                                 std::log(iHS_num) - std::log(iHS_den),
+                                 nonrefcount };
+    }
+
 } // namespace
 
 namespace Sequence
@@ -157,17 +180,7 @@ namespace Sequence
                             }
                     }
             }
-        double nSL_den = nsl_values[0] / static_cast<double>(counts[0]);
-        double nSL_num = nsl_values[1] / static_cast<double>(counts[1]);
-        double iHS_den = ihs_values[0] / static_cast<double>(counts[0]);
-        double iHS_num = ihs_values[1] / static_cast<double>(counts[1]);
-        auto nonrefcount = static_cast<std::int32_t>(
-            std::count_if(core_view.begin(), core_view.end(),
-                          [refstate](const std::int8_t i) {
-                              return i >= 0 && i != refstate;
-                          }));
-        return nSLiHS{ std::log(nSL_num) - std::log(nSL_den),
-                       std::log(iHS_num) - std::log(iHS_den), nonrefcount };
+        return get_stat(core_view, refstate, nsl_values, ihs_values, counts);
     }
 
     // TODO: A further optimization may be possible.
@@ -233,22 +246,8 @@ namespace Sequence
                                     }
                             }
                     }
-                double nSL_den
-                    = nsl_values[0] / static_cast<double>(counts[0]);
-                double nSL_num
-                    = nsl_values[1] / static_cast<double>(counts[1]);
-                double iHS_den
-                    = ihs_values[0] / static_cast<double>(counts[0]);
-                double iHS_num
-                    = ihs_values[1] / static_cast<double>(counts[1]);
-                auto nonrefcount = static_cast<std::int32_t>(
-                    std::count_if(core_view.begin(), core_view.end(),
-                                  [refstate](const std::int8_t i) {
-                                      return i >= 0 && i != refstate;
-                                  }));
-                rv.emplace_back(nSLiHS{ std::log(nSL_num) - std::log(nSL_den),
-                                        std::log(iHS_num) - std::log(iHS_den),
-                                        nonrefcount });
+                rv.emplace_back(get_stat(core_view, refstate, nsl_values,
+                                         ihs_values, counts));
             }
         return rv;
     }
