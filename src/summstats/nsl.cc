@@ -183,16 +183,6 @@ namespace Sequence
         return get_stat(core_view, refstate, nsl_values, ihs_values, counts);
     }
 
-    // TODO: A further optimization may be possible.
-    // If you move the iteration over cores to the innermost
-    // loop, then you can keep recording the same value
-    // up until you hit the right position.  The
-    // reason is that you know that homozygosity
-    // extends to the right and all you have to
-    // check for is ancestral, derived, or missing.
-    // This change would reduce the extra n^2 memory
-    // required but it would introduce an O(nsites)
-    // traversal for all sequence pairs.
     std::vector<nSLiHS>
     all_nsl(const VariantMatrix& m, const std::int8_t refstate)
     {
