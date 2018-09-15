@@ -100,7 +100,7 @@ namespace Sequence
                 auto sample_i = get_ConstColView(m, i);
                 for (std::size_t j = i + 1; j < m.nsam; ++j)
                     {
-                        if (core_view[i] == core_view[j])
+                        if (core_view[i] == core_view[j] && core_view[i] >= 0)
                             {
                                 auto sample_j = get_ConstColView(m, j);
                                 //Find where samples i and j differ
@@ -135,6 +135,16 @@ namespace Sequence
                        std::log(iHS_num) - std::log(iHS_den), nonrefcount };
     }
 
+    // TODO: A further optimization may be possible.
+    // If you move the iteration over cores to the innermost
+    // loop, then you can keep recording the same value
+    // up until you hit the right position.  The
+    // reason is that you know that homozygosity
+    // extends to the right and all you have to
+    // check for is ancestral, derived, or missing.
+    // This change would reduce the extra n^2 memory
+    // required but it would introduce an O(nsites)
+    // traversal for all sequence pairs.
     std::vector<nSLiHS>
     all_nsl(const VariantMatrix& m, const std::int8_t refstate)
     {
@@ -163,7 +173,8 @@ namespace Sequence
                         auto sample_i = get_ConstColView(m, i);
                         for (std::size_t j = i + 1; j < m.nsam; ++j)
                             {
-                                if (core_view[i] == core_view[j])
+                                if (core_view[i] == core_view[j]
+                                    && core_view[i] >= 0)
                                     {
                                         auto sample_j = get_ConstColView(m, j);
                                         std::size_t lindex = j * m.nsam + i;
