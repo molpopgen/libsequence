@@ -126,6 +126,31 @@ namespace
                                  nonrefcount };
     }
 
+    std::pair<std::int64_t, std::int64_t>
+    get_flanking_xtons(const std::vector<int64_t>& xtons,
+                       const std::size_t core)
+    {
+        auto left_xton = std::upper_bound(
+            xtons.rbegin(), xtons.rend(), core,
+            [](const std::int64_t element, const std::size_t value) {
+                return element > value;
+            });
+        if (left_xton == xtons.rend())
+            {
+                return std::make_pair(-1, -1);
+            }
+        auto right_xton = std::upper_bound(
+            left_xton.base(), xtons.end(), core,
+            [](const std::int64_t element, const std::size_t value) {
+                return element < value;
+            });
+        if (right_xton == xtons.end())
+            {
+                return std::make_pair(-1, -1);
+            }
+        return std::make_pair(std::distance(xtons.begin(), left_xton.base()),
+                              std::distance(xtons.begin(), right_xton));
+    }
 } // namespace
 
 namespace Sequence
@@ -242,12 +267,61 @@ namespace Sequence
         return rv;
     }
 
-    nSLiHS
-    nslx(const VariantMatrix& m, const std::size_t core,
-         const std::int8_t refstate, const int x)
+    std::vector<nSLiHS>
+    nslx(const VariantMatrix& m, const std::int8_t refstate, const int x)
     {
         //Need to get indexes of all x-tons.
         //Then, if two seqs differ at an x-ton,
         //the stats get updated.
+        std::vector<std::int64_t> xtons;
+        for (std::int64_t i = 0; i < static_cast<std::int64_t>(m.nsites); ++i)
+            {
+                auto r = get_ConstRowView(m, static_cast<std::size_t>(i));
+                auto nonref = std::count_if(
+                    r.begin(), r.end(), [refstate](const std::int8_t a) {
+                        return a != refstate && !(a < 0);
+                    });
+                if (nonref == x)
+                    {
+                        xtons.push_back(i);
+                    }
+            }
+        std::vector<nSLiHS> rv;
+        if (xtons.empty() || !m.nsam || !m.nsites)
+            {
+                return rv;
+            }
+
+        std::vector<std::int64_t> edges(m.nsam * m.nsam, -1);
+        std::size_t lindex, rindex;
+        for (std::size_t core = 0; core < m.nsites; ++core)
+            {
+                auto core_view = get_ConstRowView(m, core);
+                // Doing any work requires the existence
+                // of x-tons left and right of core
+                auto flanks = get_flanking_xtons(xtons, core);
+                if (flanks.first != -1)
+                    {
+                        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+                            {
+                                auto sample_i = get_ConstColView(m, i);
+                                for (std::size_t j = i + 1; i < m.nsam; ++j)
+                                    {
+                                        lindex = j * m.nsam + i;
+                                        rindex = i * m.nsam + j;
+                                        if (core_view[i] != core_view[j]
+                                            && !(core_view[i] < 0))
+                                            {
+                                            }
+                                        else
+                                            {
+                                                edges[lindex] = static_cast<
+                                                    std::int64_t>(core);
+                                            }
+                                    }
+                            }
+                    }
+            }
+        return rv;
     }
 } // namespace Sequence
