@@ -61,7 +61,8 @@ namespace
                             }
                     }
             }
-        else if (is_xton(xtons, core))
+        else if (std::binary_search(xtons.begin() + flanks.first,
+                                    xtons.begin() + flanks.second, core))
             {
                 edges[lindex] = core;
             }
