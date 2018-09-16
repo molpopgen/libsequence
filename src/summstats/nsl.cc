@@ -115,7 +115,7 @@ namespace
             }
         else
             {
-                edges[lindex] = core;
+                edges[lindex] = static_cast<std::int64_t>(core);
             }
         return rv;
     }
