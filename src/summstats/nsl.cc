@@ -86,8 +86,11 @@ namespace
         std::int64_t left_edge = edges[lindex];
         if (left_edge == -1)
             {
-                left_edge = get_left(hapi, hapj, core, 0);
-                edges[lindex] = left_edge;
+                if (hapi[0] != hapj[0])
+                    {
+                        left_edge = 0;
+                        edges[lindex] = left_edge;
+                    }
             }
         if (left_edge >= 0)
             {
