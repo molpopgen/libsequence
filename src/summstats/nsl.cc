@@ -120,6 +120,69 @@ namespace
         return rv;
     }
 
+    inline bool
+    is_xton(const std::vector<std::int64_t>& xtons, const std::int64_t test)
+    {
+        return std::binary_search(xtons.begin(), xtons.end(), test);
+    }
+
+    inline bool
+    update_edge_matrix(const Sequence::VariantMatrix& m,
+                       const std::vector<std::int64_t>& xtons,
+                       const std::pair<std::int64_t, std::int64_t> flanks,
+                       const Sequence::ConstRowView& core_view,
+                       const Sequence::ConstColView& hapi,
+                       std::vector<std::int64_t>& edges,
+                       const std::size_t core, const std::size_t i,
+                       const std::size_t j)
+    // edge updating for nslx
+    // precondition: !xtons.empty()
+    {
+        bool rv = false;
+        std::size_t lindex = j * m.nsam + i;
+        if (core_view[i] == core_view[j] && !(core_view[i] < 0))
+            {
+                auto hapj = get_ConstColView(m, j);
+                std::int64_t left_edge = edges[lindex];
+                if (left_edge == -1)
+                    {
+                        //Variant 0 can only break homozygosity
+                        //run if it is an xton
+                        if (xtons.front() == 0 && hapi[0] != hapj[0])
+                            {
+                                left_edge = 0;
+                                edges[lindex] = left_edge;
+                                rv = true;
+                            }
+                    }
+                if (left_edge >= 0)
+                    {
+                        std::size_t rindex = i * m.nsam + j;
+                        std::int64_t right_edge = edges[rindex];
+                        if (right_edge == -1
+                            || static_cast<std::size_t>(right_edge) <= core)
+                            {
+                                rv = false;
+                                for (auto r = flanks.second; r < xtons.size();
+                                     ++r)
+                                    {
+                                        if (hapi[r] != hapj[r]
+                                            && !(hapi[r] < 0))
+                                            {
+                                                rv = true;
+                                                edges[rindex] = r;
+                                            }
+                                    }
+                            }
+                    }
+            }
+        else if (is_xton(xtons, core))
+            {
+                edges[lindex] = core;
+            }
+        return rv;
+    }
+
     inline Sequence::nSLiHS
     get_stat(const Sequence::ConstRowView& core_view,
              const std::int8_t refstate, const double nsl_values[2],
@@ -313,6 +376,25 @@ namespace Sequence
                         for (std::size_t i = 0; i < m.nsam - 1; ++i)
                             {
                                 auto sample_i = get_ConstColView(m, i);
+                                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                                    {
+                                        if (update_edge_matrix(
+                                                m, xtons, flanks, core_view,
+                                                sample_i, edges, core, i, j))
+                                            {
+                                                lindex = j * m.nsam + i;
+                                                rindex = i * m.nsam + j;
+                                                update_counts(
+                                                    nsl_values, ihs_values,
+                                                    counts, m.nsites,
+                                                    m.positions,
+                                                    static_cast<std::size_t>(
+                                                        core_view[i]
+                                                        == refstate),
+                                                    edges[lindex],
+                                                    edges[rindex]);
+                                            }
+                                    }
                             }
                     }
                 rv.emplace_back(get_stat(core_view, refstate, nsl_values,
