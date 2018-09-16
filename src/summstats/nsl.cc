@@ -71,10 +71,10 @@ namespace
             }
     }
 
-    inline void
+    inline bool
     update_edge_matrix(const Sequence::VariantMatrix& m,
+                       const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
-                       const Sequence::ConstColView& hapj,
                        std::vector<std::int64_t>& edges,
                        const std::size_t core, const std::size_t i,
                        const std::size_t j)
@@ -82,31 +82,42 @@ namespace
     // of the left/right boundaries of haplotype homozygosity
     // as core moves through the sample:
     {
+        bool rv = false;
         std::size_t lindex = j * m.nsam + i;
-        std::int64_t left_edge = edges[lindex];
-        if (left_edge == -1)
+        if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
-                if (hapi[0] != hapj[0])
+                auto hapj = get_ConstColView(m, j);
+                rv = true;
+                std::int64_t left_edge = edges[lindex];
+                if (left_edge == -1)
                     {
-                        left_edge = 0;
-                        edges[lindex] = left_edge;
+                        if (hapi[0] != hapj[0])
+                            {
+                                left_edge = 0;
+                                edges[lindex] = left_edge;
+                            }
+                    }
+                if (left_edge >= 0)
+                    {
+                        std::size_t rindex = i * m.nsam + j;
+                        std::int64_t right_edge = edges[rindex];
+                        // This next line is a gotcha
+                        // to to signed/unsigned comparison:
+                        if (right_edge == -1
+                            || static_cast<std::size_t>(right_edge) <= core)
+                            {
+                                right_edge = get_right(
+                                    hapi, hapj, core,
+                                    static_cast<std::int64_t>(m.nsites));
+                                edges[rindex] = right_edge;
+                            }
                     }
             }
-        if (left_edge >= 0)
+        else
             {
-                std::size_t rindex = i * m.nsam + j;
-                std::int64_t right_edge = edges[rindex];
-                // This next line is a gotcha
-                // to to signed/unsigned comparison:
-                if (right_edge == -1
-                    || static_cast<std::size_t>(right_edge) <= core)
-                    {
-                        right_edge
-                            = get_right(hapi, hapj, core,
-                                        static_cast<std::int64_t>(m.nsites));
-                        edges[rindex] = right_edge;
-                    }
+                edges[lindex] = core;
             }
+        return rv;
     }
 
     inline Sequence::nSLiHS
@@ -241,26 +252,17 @@ namespace Sequence
                         auto sample_i = get_ConstColView(m, i);
                         for (std::size_t j = i + 1; j < m.nsam; ++j)
                             {
-                                if (core_view[i] == core_view[j]
-                                    && core_view[i] >= 0)
+                                if (update_edge_matrix(m, core_view, sample_i,
+                                                       edges, core, i, j))
                                     {
-                                        auto sample_j = get_ConstColView(m, j);
                                         lindex = j * m.nsam + i;
                                         rindex = i * m.nsam + j;
-                                        update_edge_matrix(m, sample_i,
-                                                           sample_j, edges,
-                                                           core, i, j);
                                         update_counts(
                                             nsl_values, ihs_values, counts,
                                             m.nsites, m.positions,
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
                                             edges[lindex], edges[rindex]);
-                                    }
-                                else //The sites differ, making this a new left edge
-                                    {
-                                        edges[j * m.nsam + i]
-                                            = static_cast<std::int64_t>(core);
                                     }
                             }
                     }
