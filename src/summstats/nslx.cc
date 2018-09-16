@@ -45,6 +45,11 @@ namespace
                                 for (auto r = flanks.second; r < xtons.size();
                                      ++r)
                                     {
+                                        if (!(r < core))
+                                            {
+                                                throw std::logic_error(
+                                                    "r < core");
+                                            }
                                         if (hapi[r] != hapj[r]
                                             && !(hapi[r] < 0))
                                             {
@@ -58,6 +63,8 @@ namespace
         else if (std::binary_search(xtons.begin() + flanks.first,
                                     xtons.begin() + flanks.second, core))
             {
+                //seqs i and j differ and core is an xton,
+                //thus core is a new left
                 edges[lindex] = core;
             }
         return rv;
