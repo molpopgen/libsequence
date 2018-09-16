@@ -305,27 +305,18 @@ namespace Sequence
                 // Doing any work requires the existence
                 // of x-tons left and right of core
                 auto flanks = get_flanking_xtons(xtons, core);
+                double nsl_values[2] = { 0, 0 };
+                double ihs_values[2] = { 0, 0 };
+                int counts[2] = { 0, 0 };
                 if (flanks.first != -1)
                     {
                         for (std::size_t i = 0; i < m.nsam - 1; ++i)
                             {
                                 auto sample_i = get_ConstColView(m, i);
-                                for (std::size_t j = i + 1; i < m.nsam; ++j)
-                                    {
-                                        lindex = j * m.nsam + i;
-                                        rindex = i * m.nsam + j;
-                                        if (core_view[i] != core_view[j]
-                                            && !(core_view[i] < 0))
-                                            {
-                                            }
-                                        else
-                                            {
-                                                edges[lindex] = static_cast<
-                                                    std::int64_t>(core);
-                                            }
-                                    }
                             }
                     }
+                rv.emplace_back(get_stat(core_view, refstate, nsl_values,
+                                         ihs_values, counts));
             }
         return rv;
     }
