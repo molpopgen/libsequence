@@ -42,8 +42,12 @@ namespace
                             || static_cast<std::size_t>(right_edge) <= core)
                             {
                                 rv = false;
-                                for (auto r = flanks.second; r < xtons.size();
-                                     ++r)
+                                // To update right edge:
+                                // Iterate over all xtons > core
+                                // and check if haplotypes i,j
+                                // differ at those sites.
+                                for (auto r = flanks.second;
+                                     r < xtons.size() && rv == false; ++r)
                                     {
                                         if (!(r < core))
                                             {
