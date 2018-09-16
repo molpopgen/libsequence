@@ -6,12 +6,6 @@
 namespace
 {
     inline bool
-    is_xton(const std::vector<std::int64_t>& xtons, const std::int64_t test)
-    {
-        return std::binary_search(xtons.begin(), xtons.end(), test);
-    }
-
-    inline bool
     update_edge_matrix(const Sequence::VariantMatrix& m,
                        const std::vector<std::int64_t>& xtons,
                        const std::pair<std::int64_t, std::int64_t> flanks,
