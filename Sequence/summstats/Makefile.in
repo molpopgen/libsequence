@@ -294,7 +294,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 pkginclude_HEADERS = classics.hpp thetapi.hpp thetaw.hpp thetah.hpp thetal.hpp auxillary.hpp nvariablesites.hpp allele_counts.hpp \
-					 util.hpp ld.hpp nsl.hpp garud.hpp generic.hpp \
+					 util.hpp ld.hpp nsl.hpp nslx.hpp garud.hpp generic.hpp \
 					 algorithm.hpp
 
 all: all-am
