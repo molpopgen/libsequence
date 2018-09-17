@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <Sequence/summstats/nsl.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
+#include <iostream>
 #include "nsl_common.hpp"
 
 namespace
@@ -49,13 +50,13 @@ namespace
                                 for (auto r = flanks.second;
                                      r < xtons.size() && rv == false; ++r)
                                     {
-                                        if (!(r < core))
+                                        if (!(core <= xtons[r]))
                                             {
                                                 throw std::logic_error(
                                                     "r < core");
                                             }
-                                        if (hapi[r] != hapj[r]
-                                            && !(hapi[r] < 0))
+                                        if (hapi[xtons[r]] != hapj[xtons[r]]
+                                            && !(hapi[xtons[r]] < 0))
                                             {
                                                 rv = true;
                                                 edges[rindex] = r;
