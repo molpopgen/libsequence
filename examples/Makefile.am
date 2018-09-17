@@ -1,5 +1,6 @@
 check_PROGRAMS= ms_to_VariantMatrix \
 	nSL_from_ms \
+	nSL_vs_nSLx \
 	baseComp valid_dna translateTest \
 	slidingWindow slidingWindow2 PolyTableIterators \
 	ufs \
@@ -7,6 +8,7 @@ check_PROGRAMS= ms_to_VariantMatrix \
 
 ms_to_VariantMatrix_SOURCES=ms_to_VariantMatrix.cc
 nSL_from_ms_SOURCES=nSL_from_ms.cc
+nSL_vs_nSLx_SOURCES=nSL_vs_nSLx.cc
 baseComp_SOURCES=baseComp.cc
 valid_dna_SOURCES=valid_dna.cc
 translateTest_SOURCES=translateTest.cc

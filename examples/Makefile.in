@@ -88,10 +88,10 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = ms_to_VariantMatrix$(EXEEXT) nSL_from_ms$(EXEEXT) \
-	baseComp$(EXEEXT) valid_dna$(EXEEXT) translateTest$(EXEEXT) \
-	slidingWindow$(EXEEXT) slidingWindow2$(EXEEXT) \
-	PolyTableIterators$(EXEEXT) ufs$(EXEEXT) msstats$(EXEEXT) \
-	polySiteVector_test$(EXEEXT)
+	nSL_vs_nSLx$(EXEEXT) baseComp$(EXEEXT) valid_dna$(EXEEXT) \
+	translateTest$(EXEEXT) slidingWindow$(EXEEXT) \
+	slidingWindow2$(EXEEXT) PolyTableIterators$(EXEEXT) \
+	ufs$(EXEEXT) msstats$(EXEEXT) polySiteVector_test$(EXEEXT)
 subdir = examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -124,6 +124,9 @@ msstats_LDADD = $(LDADD)
 am_nSL_from_ms_OBJECTS = nSL_from_ms.$(OBJEXT)
 nSL_from_ms_OBJECTS = $(am_nSL_from_ms_OBJECTS)
 nSL_from_ms_LDADD = $(LDADD)
+am_nSL_vs_nSLx_OBJECTS = nSL_vs_nSLx.$(OBJEXT)
+nSL_vs_nSLx_OBJECTS = $(am_nSL_vs_nSLx_OBJECTS)
+nSL_vs_nSLx_LDADD = $(LDADD)
 am_polySiteVector_test_OBJECTS = polySiteVector_test.$(OBJEXT)
 polySiteVector_test_OBJECTS = $(am_polySiteVector_test_OBJECTS)
 polySiteVector_test_LDADD = $(LDADD)
@@ -178,14 +181,16 @@ am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
 	$(ms_to_VariantMatrix_SOURCES) $(msstats_SOURCES) \
-	$(nSL_from_ms_SOURCES) $(polySiteVector_test_SOURCES) \
-	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
-	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(nSL_from_ms_SOURCES) $(nSL_vs_nSLx_SOURCES) \
+	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
 DIST_SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
 	$(ms_to_VariantMatrix_SOURCES) $(msstats_SOURCES) \
-	$(nSL_from_ms_SOURCES) $(polySiteVector_test_SOURCES) \
-	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
-	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(nSL_from_ms_SOURCES) $(nSL_vs_nSLx_SOURCES) \
+	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
+	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
+	$(ufs_SOURCES) $(valid_dna_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -348,6 +353,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ms_to_VariantMatrix_SOURCES = ms_to_VariantMatrix.cc
 nSL_from_ms_SOURCES = nSL_from_ms.cc
+nSL_vs_nSLx_SOURCES = nSL_vs_nSLx.cc
 baseComp_SOURCES = baseComp.cc
 valid_dna_SOURCES = valid_dna.cc
 translateTest_SOURCES = translateTest.cc
@@ -423,6 +429,10 @@ nSL_from_ms$(EXEEXT): $(nSL_from_ms_OBJECTS) $(nSL_from_ms_DEPENDENCIES) $(EXTRA
 	@rm -f nSL_from_ms$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(nSL_from_ms_OBJECTS) $(nSL_from_ms_LDADD) $(LIBS)
 
+nSL_vs_nSLx$(EXEEXT): $(nSL_vs_nSLx_OBJECTS) $(nSL_vs_nSLx_DEPENDENCIES) $(EXTRA_nSL_vs_nSLx_DEPENDENCIES) 
+	@rm -f nSL_vs_nSLx$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(nSL_vs_nSLx_OBJECTS) $(nSL_vs_nSLx_LDADD) $(LIBS)
+
 polySiteVector_test$(EXEEXT): $(polySiteVector_test_OBJECTS) $(polySiteVector_test_DEPENDENCIES) $(EXTRA_polySiteVector_test_DEPENDENCIES) 
 	@rm -f polySiteVector_test$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(polySiteVector_test_OBJECTS) $(polySiteVector_test_LDADD) $(LIBS)
@@ -458,6 +468,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ms_to_VariantMatrix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msstats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nSL_from_ms.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nSL_vs_nSLx.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVector_test.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slidingWindow.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/slidingWindow2.Po@am__quote@
