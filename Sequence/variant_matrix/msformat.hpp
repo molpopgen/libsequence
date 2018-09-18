@@ -3,6 +3,7 @@
 
 #include <istream>
 #include <Sequence/VariantMatrix.hpp>
+#include <Sequence/VariantMatrixViews.hpp>
 
 namespace Sequence
 {
