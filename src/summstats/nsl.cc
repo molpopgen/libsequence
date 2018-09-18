@@ -99,18 +99,6 @@ namespace Sequence
     nSLiHS
     nsl(const VariantMatrix& m, const std::size_t core,
         const std::int8_t refstate)
-    /*! \brief nSL and iHS statistics
-     * \param m A VariantMatrix
-     * \param core The index of the core site
-     * \param refstate The value of the reference/ancestral allelic state
-     *
-     * \return an nSLiHS object
-     * \ingroup popgenanalysis
-     *
-     * See nSL_from_ms.cc for example
-     *
-     * See \cite Ferrer-Admetlla2014-wa for details.
-     */
     {
         auto core_view = get_ConstRowView(m, core);
         // Keep track of distances from core site
