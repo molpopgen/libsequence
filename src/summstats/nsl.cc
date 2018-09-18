@@ -50,6 +50,7 @@ namespace
     update_edge_matrix(const Sequence::VariantMatrix& m,
                        const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
+                       const Sequence::ConstColView& hapj,
                        std::vector<std::int64_t>& edges,
                        const std::size_t core, const std::size_t i,
                        const std::size_t j)
@@ -61,7 +62,6 @@ namespace
         std::size_t lindex = j * m.nsam + i;
         if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
-                auto hapj = get_ConstColView(m, j);
                 rv = true;
                 std::int64_t left_edge = edges[lindex];
                 if (left_edge == -1)
@@ -164,6 +164,12 @@ namespace Sequence
         // -1 mean unevaluated.
         std::vector<std::int64_t> edges(m.nsam * m.nsam, -1);
         std::size_t lindex, rindex;
+        std::vector<ConstColView> alleles;
+        alleles.reserve(m.nsam);
+        for (std::size_t i = 0; i < m.nsam; ++i)
+            {
+                alleles.push_back(get_ConstColView(m, i));
+            }
         for (std::size_t core = 0; core < m.nsites; ++core)
             {
                 auto core_view = get_ConstRowView(m, core);
@@ -174,11 +180,12 @@ namespace Sequence
                 int counts[2] = { 0, 0 };
                 for (std::size_t i = 0; i < m.nsam - 1; ++i)
                     {
-                        auto sample_i = get_ConstColView(m, i);
+                        const auto& hapi = alleles[i];
                         for (std::size_t j = i + 1; j < m.nsam; ++j)
                             {
-                                if (update_edge_matrix(m, core_view, sample_i,
-                                                       edges, core, i, j))
+                                if (update_edge_matrix(m, core_view, hapi,
+                                                       alleles[j], edges, core,
+                                                       i, j))
                                     {
                                         lindex = j * m.nsam + i;
                                         rindex = i * m.nsam + j;
