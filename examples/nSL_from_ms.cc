@@ -11,7 +11,7 @@ int
 main(int argc, char** argv)
 {
     auto vm = Sequence::from_msformat(std::cin);
-    auto nsl_stats = Sequence::all_nsl(vm, 0);
+    auto nsl_stats = Sequence::nsl(vm, 0);
     assert(nsl_stats.size() == vm.nsites);
     for (std::size_t i = 0; i < vm.nsites; ++i)
         {

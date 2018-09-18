@@ -54,7 +54,7 @@ namespace
                        std::vector<std::int64_t>& edges,
                        const std::size_t core, const std::size_t i,
                        const std::size_t j)
-    // For the all_nsl operations, this function keeps track
+    // For the nsl operations, this function keeps track
     // of the left/right boundaries of haplotype homozygosity
     // as core moves through the sample:
     {
@@ -148,7 +148,7 @@ namespace Sequence
     }
 
     std::vector<nSLiHS>
-    all_nsl(const VariantMatrix& m, const std::int8_t refstate)
+    nsl(const VariantMatrix& m, const std::int8_t refstate)
     {
         std::vector<nSLiHS> rv;
         if (m.nsam == 0)
