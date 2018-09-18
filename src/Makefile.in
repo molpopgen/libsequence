@@ -156,7 +156,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	summstats/hprime.lo summstats/nvariablesites.lo \
 	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
 	summstats/ld.lo summstats/rmin.lo summstats/nsl.lo \
-	summstats/garud.lo summstats/generic.lo summstats/auxillary.lo
+	summstats/nslx.lo summstats/garud.lo summstats/generic.lo \
+	summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -411,6 +412,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/ld.cc \
 	summstats/rmin.cc \
 	summstats/nsl.cc \
+	summstats/nslx.cc \
 	summstats/garud.cc \
 	summstats/generic.cc \
 	summstats/auxillary.cc
@@ -568,6 +570,8 @@ summstats/rmin.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/nsl.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/nslx.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/garud.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/generic.lo: summstats/$(am__dirstamp) \
@@ -695,6 +699,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/hprime.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/ld.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nsl.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nslx.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/rmin.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/tajd.Plo@am__quote@
