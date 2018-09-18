@@ -293,7 +293,7 @@ target_alias = @target_alias@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-pkginclude_HEADERS = filtering.hpp windows.hpp
+pkginclude_HEADERS = filtering.hpp windows.hpp msformat.hpp
 all: all-am
 
 .SUFFIXES:
