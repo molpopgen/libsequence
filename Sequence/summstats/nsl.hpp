@@ -6,22 +6,10 @@
 #include <vector>
 #include <cstdint>
 #include <Sequence/VariantMatrix.hpp>
+#include "nSLiHS.hpp"
 
 namespace Sequence
 {
-    struct nSLiHS
-    /// Stores the results of nSL and iHS calculations.
-    /// See Sequence::nsl for details.
-    /// \ingroup popgenanalysis
-    {
-        /// The nSL statistic \cite Ferrer-Admetlla2014-wa
-        double nsl;
-        /// The iHS statistic, calculated according to \cite Ferrer-Admetlla2014-wa
-        double ihs;
-        /// Count of non-reference,
-        /// non-missing allele.
-        std::int32_t core_count;
-    };
 
     /*! \brief nSL and iHS statistics
      * \param m A VariantMatrix

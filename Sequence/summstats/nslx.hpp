@@ -6,11 +6,10 @@
 #include <vector>
 #include <cstdint>
 #include <Sequence/VariantMatrix.hpp>
+#include "nSLiHS.hpp"
 
 namespace Sequence
 {
-    struct nSLiHS; //Forward declaration. See Sequence/summstats/nsl.hpp
-
     std::vector<nSLiHS> nslx(const VariantMatrix& m,
                              const std::int8_t refstate, const int x);
 } // namespace Sequence

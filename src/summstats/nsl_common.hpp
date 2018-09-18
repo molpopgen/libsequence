@@ -8,7 +8,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-#include <Sequence/summstats/nsl.hpp>
+#include <Sequence/summstats/nSLiHS.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 
 namespace Sequence
