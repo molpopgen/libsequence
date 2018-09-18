@@ -19,6 +19,12 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.6
+
+* Fix GitHub issue [PR50](https://github.com/molpopgen/libsequence/issues/50) via [PR51](https://github.com/molpopgen/libsequence/issues/51).
+* Added very efficient overload of Sequence::nsl. [PR51](https://github.com/molpopgen/libsequence/issues/51).
+* Include Sequence/variant_matrix/msformat.hpp when installing the library.
+
 ## libsequence 1.9.5
 
 * Support for slices of VariantMatrix and AlleleCountMatrix. [PR49](https://github.com/molpopgen/libsequence/pull/49)
