@@ -66,7 +66,7 @@ namespace
                 std::int64_t left_edge = edges[lindex];
                 if (left_edge == -1)
                     {
-                        if (hapi[0] != hapj[0])
+                        if (hapi[0] != hapj[0] && !(hapi[0]<0||hapj[0]<0))
                             {
                                 left_edge = 0;
                                 edges[lindex] = left_edge;
@@ -86,7 +86,7 @@ namespace
                             }
                     }
             }
-        else
+        else if (!(core_view[i]<0||core_view[j]<0))
             {
                 edges[lindex] = static_cast<std::int64_t>(core);
             }
