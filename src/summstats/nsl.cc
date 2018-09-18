@@ -33,23 +33,17 @@ namespace
 
     std::int64_t
     get_right(const Sequence::ConstColView& sample_i,
-              const Sequence::ConstColView& sample_j, const std::size_t core,
-              const std::int64_t nsites)
+              const Sequence::ConstColView& sample_j, const std::size_t core)
     {
-        std::int64_t right = static_cast<std::int64_t>(core) + 1;
-        auto state_i = sample_i.begin() + right;
-        auto state_j = sample_j.begin() + right;
-        while (right < nsites)
+        auto state_i = sample_i.begin() + static_cast<std::int64_t>(core) + 1;
+        auto state_j = sample_j.begin() + static_cast<std::int64_t>(core) + 1;
+        auto m = std::mismatch(state_i, sample_i.end(), state_j);
+        while (m.first < sample_i.end() && (*m.first < 0 || *m.second < 0))
+            // Do not let missing data break homozygosity runs
             {
-                if (*state_i != *state_j && !(*state_i < 0 || *state_j < 0))
-                    {
-                        break;
-                    }
-                ++right;
-                ++state_i;
-                ++state_j;
+                m = std::mismatch(m.first, sample_i.end(), m.second);
             }
-        return right;
+        return std::distance(sample_i.begin(), m.first);
     }
 
     inline bool
@@ -87,9 +81,7 @@ namespace
                         if (right_edge == -1
                             || static_cast<std::size_t>(right_edge) <= core)
                             {
-                                right_edge = get_right(
-                                    hapi, hapj, core,
-                                    static_cast<std::int64_t>(m.nsites));
+                                right_edge = get_right(hapi, hapj, core);
                                 edges[rindex] = right_edge;
                             }
                     }
@@ -100,7 +92,7 @@ namespace
             }
         return rv;
     }
-}
+} // namespace
 
 namespace Sequence
 {
@@ -140,10 +132,8 @@ namespace Sequence
                                     = get_left(sample_i, sample_j, core, 0);
                                 if (left >= 0)
                                     {
-                                        auto right = get_right(
-                                            sample_i, sample_j, core,
-                                            static_cast<std::int64_t>(
-                                                m.nsites));
+                                        auto right = get_right(sample_i,
+                                                               sample_j, core);
                                         update_counts(
                                             nsl_values, ihs_values, counts,
                                             m.nsites, m.positions,
