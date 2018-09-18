@@ -196,7 +196,7 @@ namespace Sequence
 
     template <typename POINTER>
     inline typename col_view_iterator<POINTER>::difference_type
-    operator-(col_view_iterator<POINTER> i, col_view_iterator<POINTER> j)
+    operator-(col_view_iterator<POINTER>& i, col_view_iterator<POINTER>& j)
     /// Distance between two iterators
     /// \ingroup variantmatrix
     {
