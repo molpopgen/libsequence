@@ -12,6 +12,7 @@ namespace Sequence
 {
     //TODO: modify to ignore sequences
     //with missing data above a certain threshold?
+	//TODO: needs unit test
     std::vector<std::int32_t>
     difference_matrix(const VariantMatrix& m)
     {
@@ -23,19 +24,9 @@ namespace Sequence
                 for (std::size_t j = i + 1; j < m.nsam; ++j)
                     {
                         auto cj = get_ConstColView(m, j);
-                        std::int32_t ndiffs = 0;
-                        auto cib = ci.begin(), cjb = cj.begin();
-                        //If both sites are not missing
-                        //and not equal, they are different
-                        while (cib != ci.end())
-                            {
-                                if (*cib >= 0 && *cjb >= 0 && *cib != *cjb)
-                                    {
-                                        ++ndiffs;
-                                    }
-                                ++cib;
-                                ++cjb;
-                            }
+                        std::int32_t ndiffs
+                            = summstats_algo::ndiff_skip_missing(
+                                ci.begin(), ci.end(), cj.begin());
                         rv.push_back(ndiffs);
                     }
             }
