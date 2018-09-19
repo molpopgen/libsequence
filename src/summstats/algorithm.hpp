@@ -15,7 +15,7 @@ namespace Sequence
             auto m = std::mismatch(beg, end, beg2);
             while (m.first < end && (*m.first < 0 || *m.second < 0))
                 {
-                    m = std::mismatch(beg + 1, end, beg2 + 1);
+                    m = std::mismatch(m.first + 1, end, m.second + 1);
                 }
             return m;
         }
