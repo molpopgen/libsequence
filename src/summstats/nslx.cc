@@ -12,35 +12,30 @@ namespace
                        const std::pair<std::int64_t, std::int64_t> flanks,
                        const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
-                       std::vector<std::int64_t>& edges,
+                       Sequence::summstats_details::suffix_edges& edges,
                        const std::size_t core, const std::size_t i,
                        const std::size_t j)
     // edge updating for nslx
     // precondition: !xtons.empty()
     {
         bool rv = false;
-        std::size_t lindex = j * m.nsam + i;
         if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
                 auto hapj = get_ConstColView(m, j);
-                std::int64_t left_edge = edges[lindex];
-                if (left_edge == -1)
+                if (edges.left == -1)
                     {
                         //Variant 0 can only break homozygosity
                         //run if it is an xton
                         if (xtons.front() == 0 && hapi[0] != hapj[0])
                             {
-                                left_edge = 0;
-                                edges[lindex] = left_edge;
+                                edges.left = 0;
                                 rv = true;
                             }
                     }
-                if (left_edge >= 0)
+                if (edges.left >= 0)
                     {
-                        std::size_t rindex = i * m.nsam + j;
-                        std::int64_t right_edge = edges[rindex];
-                        if (right_edge == -1
-                            || static_cast<std::size_t>(right_edge) <= core)
+                        if (edges.right == -1
+                            || static_cast<std::size_t>(edges.right) <= core)
                             {
                                 rv = false;
                                 // To update right edge:
@@ -59,7 +54,7 @@ namespace
                                             && !(hapi[xtons[r]] < 0))
                                             {
                                                 rv = true;
-                                                edges[rindex] = r;
+                                                edges.right = r;
                                             }
                                     }
                             }
@@ -70,7 +65,7 @@ namespace
             {
                 //seqs i and j differ and core is an xton,
                 //thus core is a new left
-                edges[lindex] = core;
+                edges.left = core;
             }
         return rv;
     }
@@ -129,7 +124,8 @@ namespace Sequence
                 return rv;
             }
 
-        std::vector<std::int64_t> edges(m.nsam * m.nsam, -1);
+        std::size_t npairs = m.nsam * (m.nsam - 1) / 2;
+        std::vector<summstats_details::suffix_edges> edges(npairs);
         std::size_t lindex, rindex;
         for (std::size_t core = 0; core < m.nsites; ++core)
             {
@@ -140,34 +136,40 @@ namespace Sequence
                 double nsl_values[2] = { 0, 0 };
                 double ihs_values[2] = { 0, 0 };
                 int counts[2] = { 0, 0 };
+                std::size_t pair_index = 0;
                 if (flanks.first != -1)
                     {
                         for (std::size_t i = 0; i < m.nsam - 1; ++i)
                             {
                                 auto sample_i = get_ConstColView(m, i);
-                                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                                for (std::size_t j = i + 1; j < m.nsam;
+                                     ++j, ++pair_index)
                                     {
                                         if (update_edge_matrix(
                                                 m, xtons, flanks, core_view,
-                                                sample_i, edges, core, i, j))
+                                                sample_i, edges[pair_index],
+                                                core, i, j))
                                             {
                                                 lindex = j * m.nsam + i;
                                                 rindex = i * m.nsam + j;
-                                                summstats_details::update_counts(
-                                                    nsl_values, ihs_values,
-                                                    counts, m.nsites,
-                                                    m.positions,
-                                                    static_cast<std::size_t>(
-                                                        core_view[i]
-                                                        == refstate),
-                                                    edges[lindex],
-                                                    edges[rindex]);
+                                                summstats_details::
+                                                    update_counts(
+                                                        nsl_values, ihs_values,
+                                                        counts, m.nsites,
+                                                        m.positions,
+                                                        static_cast<
+                                                            std::size_t>(
+                                                            core_view[i]
+                                                            == refstate),
+                                                        edges[pair_index].left,
+                                                        edges[pair_index]
+                                                            .right);
                                             }
                                     }
                             }
                     }
-                rv.emplace_back(summstats_details::get_stat(core_view, refstate, nsl_values,
-                                         ihs_values, counts));
+                rv.emplace_back(summstats_details::get_stat(
+                    core_view, refstate, nsl_values, ihs_values, counts));
             }
         return rv;
     }
