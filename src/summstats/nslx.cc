@@ -103,6 +103,7 @@ namespace
 
 namespace Sequence
 {
+    //TODO refactor to use suffix_edges
     std::vector<nSLiHS>
     nslx(const VariantMatrix& m, const std::int8_t refstate, const int x)
     {
