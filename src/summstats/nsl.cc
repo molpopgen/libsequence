@@ -51,45 +51,37 @@ namespace
                        const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
                        const Sequence::ConstColView& hapj,
-                       std::vector<std::int64_t>& edges,
-                       const std::size_t core, const std::size_t i,
-                       const std::size_t j)
+                       Sequence::summstats_details::suffix_edges& edges, const std::size_t core,
+                       const std::size_t i, const std::size_t j)
     // For the nsl operations, this function keeps track
     // of the left/right boundaries of haplotype homozygosity
     // as core moves through the sample:
     {
         bool rv = false;
-        std::size_t lindex = j * m.nsam + i;
         if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
                 rv = true;
-                std::int64_t left_edge = edges[lindex];
-                if (left_edge == -1)
+                if (edges.left == -1)
                     {
                         if (hapi[0] != hapj[0]
                             && !(hapi[0] < 0 || hapj[0] < 0))
                             {
-                                left_edge = 0;
-                                edges[lindex] = left_edge;
+                                edges.left = 0;
                             }
                     }
-                if (left_edge >= 0)
+                if (edges.left >= 0)
                     {
-                        std::size_t rindex = i * m.nsam + j;
-                        std::int64_t right_edge = edges[rindex];
                         // This next line is a gotcha
                         // to to signed/unsigned comparison:
-                        if (right_edge == -1
-                            || static_cast<std::size_t>(right_edge) <= core)
+                        if (edges.right == -1 || edges.right <= core)
                             {
-                                right_edge = get_right(hapi, hapj, core);
-                                edges[rindex] = right_edge;
+                                edges.right = get_right(hapi, hapj, core);
                             }
                     }
             }
         else if (!(core_view[i] < 0 || core_view[j] < 0))
             {
-                edges[lindex] = static_cast<std::int64_t>(core);
+                edges.left = static_cast<std::int64_t>(core);
             }
         return rv;
     }
@@ -123,7 +115,7 @@ namespace Sequence
                                     {
                                         auto right = get_right(sample_i,
                                                                sample_j, core);
-                                        update_counts(
+                                        summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
                                             m.nsites, m.positions,
                                             static_cast<std::size_t>(
@@ -133,7 +125,7 @@ namespace Sequence
                             }
                     }
             }
-        return get_stat(core_view, refstate, nsl_values, ihs_values, counts);
+        return summstats_details::get_stat(core_view, refstate, nsl_values, ihs_values, counts);
     }
 
     std::vector<nSLiHS>
@@ -151,7 +143,8 @@ namespace Sequence
         // The lower left corresponds to left edges,
         // and the upper right are the right edges.
         // -1 mean unevaluated.
-        std::vector<std::int64_t> edges(m.nsam * m.nsam, -1);
+        auto npairs = m.nsam * (m.nsam - 1) / 2;
+        std::vector<summstats_details::suffix_edges> edges(npairs);
         std::size_t lindex, rindex;
         std::vector<ConstColView> alleles;
         alleles.reserve(m.nsam);
@@ -161,6 +154,7 @@ namespace Sequence
             }
         for (std::size_t core = 0; core < m.nsites; ++core)
             {
+                std::size_t pair_index = 0;
                 auto core_view = get_ConstRowView(m, core);
                 double nsl_values[2] = { 0, 0 };
                 double ihs_values[2] = { 0, 0 };
@@ -170,25 +164,27 @@ namespace Sequence
                 for (std::size_t i = 0; i < m.nsam - 1; ++i)
                     {
                         const auto& hapi = alleles[i];
-                        for (std::size_t j = i + 1; j < m.nsam; ++j)
+                        for (std::size_t j = i + 1; j < m.nsam;
+                             ++j, ++pair_index)
                             {
-                                if (update_edge_matrix(m, core_view, hapi,
-                                                       alleles[j], edges, core,
-                                                       i, j))
+                                if (update_edge_matrix(
+                                        m, core_view, hapi, alleles[j],
+                                        edges[pair_index], core, i, j))
                                     {
                                         lindex = j * m.nsam + i;
                                         rindex = i * m.nsam + j;
-                                        update_counts(
+                                        summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
                                             m.nsites, m.positions,
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
-                                            edges[lindex], edges[rindex]);
+                                            edges[pair_index].left,
+                                            edges[pair_index].right);
                                     }
                             }
                     }
-                rv.emplace_back(get_stat(core_view, refstate, nsl_values,
-                                         ihs_values, counts));
+                rv.emplace_back(summstats_details::get_stat(
+                    core_view, refstate, nsl_values, ihs_values, counts));
             }
         return rv;
     }
