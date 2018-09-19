@@ -12,6 +12,7 @@ namespace
                        const std::pair<std::int64_t, std::int64_t> flanks,
                        const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
+                       const Sequence::ConstColView& hapj,
                        Sequence::summstats_details::suffix_edges& edges,
                        const std::size_t core, const std::size_t i,
                        const std::size_t j)
@@ -21,12 +22,12 @@ namespace
         bool rv = false;
         if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
-                auto hapj = get_ConstColView(m, j);
                 if (edges.left == -1)
                     {
                         //Variant 0 can only break homozygosity
                         //run if it is an xton
-                        if (xtons.front() == 0 && hapi[0] != hapj[0])
+                        if (xtons.front() == 0 && hapi[0] != hapj[0]
+                            && !(hapi[0] < 0 || hapj[0] < 0))
                             {
                                 edges.left = 0;
                                 rv = true;
@@ -51,7 +52,8 @@ namespace
                                                     "r < core");
                                             }
                                         if (hapi[xtons[r]] != hapj[xtons[r]]
-                                            && !(hapi[xtons[r]] < 0))
+                                            && !(hapi[xtons[r]] < 0
+                                                 || hapj[xtons[r]] < 0))
                                             {
                                                 rv = true;
                                                 edges.right = r;
@@ -60,8 +62,9 @@ namespace
                             }
                     }
             }
-        else if (std::binary_search(xtons.begin() + flanks.first,
-                                    xtons.begin() + flanks.second, core))
+        else if (!(hapi[core] < 0 || hapj[core] < 0)
+                 && std::binary_search(xtons.begin() + flanks.first,
+                                       xtons.begin() + flanks.second, core))
             {
                 //seqs i and j differ and core is an xton,
                 //thus core is a new left
@@ -126,7 +129,12 @@ namespace Sequence
 
         std::size_t npairs = m.nsam * (m.nsam - 1) / 2;
         std::vector<summstats_details::suffix_edges> edges(npairs);
-        std::size_t lindex, rindex;
+        std::vector<ConstColView> alleles;
+        alleles.reserve(m.nsam);
+        for (std::size_t i = 0; i < m.nsam; ++i)
+            {
+                alleles.push_back(get_ColView(m, i));
+            }
         for (std::size_t core = 0; core < m.nsites; ++core)
             {
                 auto core_view = get_ConstRowView(m, core);
@@ -141,17 +149,15 @@ namespace Sequence
                     {
                         for (std::size_t i = 0; i < m.nsam - 1; ++i)
                             {
-                                auto sample_i = get_ConstColView(m, i);
                                 for (std::size_t j = i + 1; j < m.nsam;
                                      ++j, ++pair_index)
                                     {
                                         if (update_edge_matrix(
                                                 m, xtons, flanks, core_view,
-                                                sample_i, edges[pair_index],
+                                                alleles[i], alleles[j],
+                                                edges[pair_index],
                                                 core, i, j))
                                             {
-                                                lindex = j * m.nsam + i;
-                                                rindex = i * m.nsam + j;
                                                 summstats_details::
                                                     update_counts(
                                                         nsl_values, ihs_values,
