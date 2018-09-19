@@ -88,10 +88,11 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 check_PROGRAMS = ms_to_VariantMatrix$(EXEEXT) nSL_from_ms$(EXEEXT) \
-	nSL_vs_nSLx$(EXEEXT) baseComp$(EXEEXT) valid_dna$(EXEEXT) \
-	translateTest$(EXEEXT) slidingWindow$(EXEEXT) \
-	slidingWindow2$(EXEEXT) PolyTableIterators$(EXEEXT) \
-	ufs$(EXEEXT) msstats$(EXEEXT) polySiteVector_test$(EXEEXT)
+	mean_nSLx$(EXEEXT) nSL_vs_nSLx$(EXEEXT) baseComp$(EXEEXT) \
+	valid_dna$(EXEEXT) translateTest$(EXEEXT) \
+	slidingWindow$(EXEEXT) slidingWindow2$(EXEEXT) \
+	PolyTableIterators$(EXEEXT) ufs$(EXEEXT) msstats$(EXEEXT) \
+	polySiteVector_test$(EXEEXT)
 subdir = examples
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/ax_cxx_compile_stdxx_11.m4 \
@@ -115,6 +116,9 @@ am__v_lt_1 =
 am_baseComp_OBJECTS = baseComp.$(OBJEXT)
 baseComp_OBJECTS = $(am_baseComp_OBJECTS)
 baseComp_LDADD = $(LDADD)
+am_mean_nSLx_OBJECTS = mean_nSLx.$(OBJEXT)
+mean_nSLx_OBJECTS = $(am_mean_nSLx_OBJECTS)
+mean_nSLx_LDADD = $(LDADD)
 am_ms_to_VariantMatrix_OBJECTS = ms_to_VariantMatrix.$(OBJEXT)
 ms_to_VariantMatrix_OBJECTS = $(am_ms_to_VariantMatrix_OBJECTS)
 ms_to_VariantMatrix_LDADD = $(LDADD)
@@ -180,17 +184,17 @@ am__v_CXXLD_ = $(am__v_CXXLD_@AM_DEFAULT_V@)
 am__v_CXXLD_0 = @echo "  CXXLD   " $@;
 am__v_CXXLD_1 = 
 SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(ms_to_VariantMatrix_SOURCES) $(msstats_SOURCES) \
-	$(nSL_from_ms_SOURCES) $(nSL_vs_nSLx_SOURCES) \
-	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
-	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
-	$(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(mean_nSLx_SOURCES) $(ms_to_VariantMatrix_SOURCES) \
+	$(msstats_SOURCES) $(nSL_from_ms_SOURCES) \
+	$(nSL_vs_nSLx_SOURCES) $(polySiteVector_test_SOURCES) \
+	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
+	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
 DIST_SOURCES = $(PolyTableIterators_SOURCES) $(baseComp_SOURCES) \
-	$(ms_to_VariantMatrix_SOURCES) $(msstats_SOURCES) \
-	$(nSL_from_ms_SOURCES) $(nSL_vs_nSLx_SOURCES) \
-	$(polySiteVector_test_SOURCES) $(slidingWindow_SOURCES) \
-	$(slidingWindow2_SOURCES) $(translateTest_SOURCES) \
-	$(ufs_SOURCES) $(valid_dna_SOURCES)
+	$(mean_nSLx_SOURCES) $(ms_to_VariantMatrix_SOURCES) \
+	$(msstats_SOURCES) $(nSL_from_ms_SOURCES) \
+	$(nSL_vs_nSLx_SOURCES) $(polySiteVector_test_SOURCES) \
+	$(slidingWindow_SOURCES) $(slidingWindow2_SOURCES) \
+	$(translateTest_SOURCES) $(ufs_SOURCES) $(valid_dna_SOURCES)
 am__can_run_installinfo = \
   case $$AM_UPDATE_INFO_DIR in \
     n|no|NO) false;; \
@@ -353,6 +357,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ms_to_VariantMatrix_SOURCES = ms_to_VariantMatrix.cc
 nSL_from_ms_SOURCES = nSL_from_ms.cc
+mean_nSLx_SOURCES = mean_nSLx.cc
 nSL_vs_nSLx_SOURCES = nSL_vs_nSLx.cc
 baseComp_SOURCES = baseComp.cc
 valid_dna_SOURCES = valid_dna.cc
@@ -417,6 +422,10 @@ baseComp$(EXEEXT): $(baseComp_OBJECTS) $(baseComp_DEPENDENCIES) $(EXTRA_baseComp
 	@rm -f baseComp$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(baseComp_OBJECTS) $(baseComp_LDADD) $(LIBS)
 
+mean_nSLx$(EXEEXT): $(mean_nSLx_OBJECTS) $(mean_nSLx_DEPENDENCIES) $(EXTRA_mean_nSLx_DEPENDENCIES) 
+	@rm -f mean_nSLx$(EXEEXT)
+	$(AM_V_CXXLD)$(CXXLINK) $(mean_nSLx_OBJECTS) $(mean_nSLx_LDADD) $(LIBS)
+
 ms_to_VariantMatrix$(EXEEXT): $(ms_to_VariantMatrix_OBJECTS) $(ms_to_VariantMatrix_DEPENDENCIES) $(EXTRA_ms_to_VariantMatrix_DEPENDENCIES) 
 	@rm -f ms_to_VariantMatrix$(EXEEXT)
 	$(AM_V_CXXLD)$(CXXLINK) $(ms_to_VariantMatrix_OBJECTS) $(ms_to_VariantMatrix_LDADD) $(LIBS)
@@ -465,6 +474,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/PolyTableIterators.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/baseComp.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/mean_nSLx.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ms_to_VariantMatrix.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msstats.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/nSL_from_ms.Po@am__quote@
