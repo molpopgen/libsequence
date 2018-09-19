@@ -6,6 +6,7 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/nsl.hpp>
 #include "nsl_common.hpp"
+#include "algorithm.hpp"
 
 /// \example nSL_from_ms.cc
 namespace
@@ -37,12 +38,8 @@ namespace
     {
         auto state_i = sample_i.begin() + static_cast<std::int64_t>(core) + 1;
         auto state_j = sample_j.begin() + static_cast<std::int64_t>(core) + 1;
-        auto m = std::mismatch(state_i, sample_i.end(), state_j);
-        while (m.first < sample_i.end() && (*m.first < 0 || *m.second < 0))
-            // Do not let missing data break homozygosity runs
-            {
-                m = std::mismatch(m.first + 1, sample_i.end(), m.second + 1);
-            }
+        auto m = Sequence::summstats_algo::mismatch_skip_missing(
+            state_i, sample_i.end(), state_j);
         return std::distance(sample_i.begin(), m.first);
     }
 
@@ -51,8 +48,9 @@ namespace
                        const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
                        const Sequence::ConstColView& hapj,
-                       Sequence::summstats_details::suffix_edges& edges, const std::size_t core,
-                       const std::size_t i, const std::size_t j)
+                       Sequence::summstats_details::suffix_edges& edges,
+                       const std::size_t core, const std::size_t i,
+                       const std::size_t j)
     // For the nsl operations, this function keeps track
     // of the left/right boundaries of haplotype homozygosity
     // as core moves through the sample:
@@ -125,7 +123,8 @@ namespace Sequence
                             }
                     }
             }
-        return summstats_details::get_stat(core_view, refstate, nsl_values, ihs_values, counts);
+        return summstats_details::get_stat(core_view, refstate, nsl_values,
+                                           ihs_values, counts);
     }
 
     std::vector<nSLiHS>
