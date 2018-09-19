@@ -220,6 +220,26 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
         auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
 
+BOOST_AUTO_TEST_CASE(test_number_of_differences)
+{
+    auto nd = Sequence::difference_matrix(m);
+    std::size_t x = 0;
+    for (std::size_t i = 0; i < m.nsam - 1; ++i)
+        {
+            for (std::size_t j = i + 1; j < m.nsam; ++j, ++x)
+                {
+                    auto hi = Sequence::get_ConstColView(m, i);
+                    auto hj = Sequence::get_ConstColView(m, j);
+                    int ndiffs = 0;
+                    for (std ::size_t k = 0; k < hi.size(); ++k)
+                        {
+                            ndiffs += hi[k] != hj[k];
+                        }
+                    BOOST_REQUIRE_EQUAL(nd[x], ndiffs);
+                }
+        }
+}
+
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 {
     auto nh = Sequence::number_of_haplotypes(m);

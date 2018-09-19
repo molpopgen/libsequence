@@ -12,7 +12,6 @@ namespace Sequence
 {
     //TODO: modify to ignore sequences
     //with missing data above a certain threshold?
-	//TODO: needs unit test
     std::vector<std::int32_t>
     difference_matrix(const VariantMatrix& m)
     {
