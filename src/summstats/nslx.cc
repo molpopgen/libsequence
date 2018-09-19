@@ -152,7 +152,7 @@ namespace Sequence
                                             {
                                                 lindex = j * m.nsam + i;
                                                 rindex = i * m.nsam + j;
-                                                update_counts(
+                                                summstats_details::update_counts(
                                                     nsl_values, ihs_values,
                                                     counts, m.nsites,
                                                     m.positions,
@@ -165,7 +165,7 @@ namespace Sequence
                                     }
                             }
                     }
-                rv.emplace_back(get_stat(core_view, refstate, nsl_values,
+                rv.emplace_back(summstats_details::get_stat(core_view, refstate, nsl_values,
                                          ihs_values, counts));
             }
         return rv;
