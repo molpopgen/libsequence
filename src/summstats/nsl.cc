@@ -59,14 +59,6 @@ namespace
         if (core_view[i] == core_view[j] && !(core_view[i] < 0))
             {
                 rv = true;
-                if (edges.left == -1)
-                    {
-                        if (hapi[0] != hapj[0]
-                            && !(hapi[0] < 0 || hapj[0] < 0))
-                            {
-                                edges.left = 0;
-                            }
-                    }
                 if (edges.left >= 0)
                     {
                         // This next line is a gotcha
