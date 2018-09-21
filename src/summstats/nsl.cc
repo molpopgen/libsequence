@@ -44,8 +44,7 @@ namespace
     }
 
     inline bool
-    update_edge_matrix(const Sequence::VariantMatrix& m,
-                       const Sequence::ConstRowView& core_view,
+    update_edge_matrix(const Sequence::ConstRowView& core_view,
                        const Sequence::ConstColView& hapi,
                        const Sequence::ConstColView& hapj,
                        Sequence::summstats_details::suffix_edges& edges,
@@ -63,7 +62,8 @@ namespace
                     {
                         // This next line is a gotcha
                         // to to signed/unsigned comparison:
-                        if (edges.right == -1 || edges.right <= core)
+                        if (edges.right == -1
+                            || static_cast<std::size_t>(edges.right) <= core)
                             {
                                 edges.right = get_right(hapi, hapj, core);
                             }
@@ -136,7 +136,6 @@ namespace Sequence
         // -1 mean unevaluated.
         auto npairs = m.nsam * (m.nsam - 1) / 2;
         std::vector<summstats_details::suffix_edges> edges(npairs);
-        std::size_t lindex, rindex;
         std::vector<ConstColView> alleles;
         alleles.reserve(m.nsam);
         for (std::size_t i = 0; i < m.nsam; ++i)
@@ -159,11 +158,9 @@ namespace Sequence
                              ++j, ++pair_index)
                             {
                                 if (update_edge_matrix(
-                                        m, core_view, hapi, alleles[j],
+                                        core_view, hapi, alleles[j],
                                         edges[pair_index], core, i, j))
                                     {
-                                        lindex = j * m.nsam + i;
-                                        rindex = i * m.nsam + j;
                                         summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
                                             m.nsites, m.positions,
