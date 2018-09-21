@@ -34,7 +34,7 @@ namespace Sequence
      * \ingroup popgenanalysis
      *
      * This function differs from the version working 
-     * on a core site in that it uses an efficient matrix-based
+     * on a core site in that it uses an efficient
      * method to dynamically update suffix lengths as each 
      * core site is processed.  The result is a huge runtime
      * reduction compared to calculating the statistic
@@ -42,7 +42,7 @@ namespace Sequence
      *
      * See \cite Ferrer-Admetlla2014-wa for details.
      */
-        std::vector<nSLiHS> nsl(const VariantMatrix& m,
+    std::vector<nSLiHS> nsl(const VariantMatrix& m,
                             const std::int8_t refstate);
 } // namespace Sequence
 
