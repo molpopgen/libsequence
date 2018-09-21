@@ -24,6 +24,7 @@ However:
 * Fix GitHub issue [PR50](https://github.com/molpopgen/libsequence/issues/50) via [PR51](https://github.com/molpopgen/libsequence/issues/51).
 * Added very efficient overload of Sequence::nsl. [PR51](https://github.com/molpopgen/libsequence/issues/51) and [PR52](https://github.com/molpopgen/libsequence/issues/52)
 * [PR52](https://github.com/molpopgen/libsequence/issues/52) added a first implementation of Sequence::nslx, a series of back-end changes to some of the summary statistic code as well as some more testing.
+* Added Sequence::lhaf. [PR53](https://github.com/molpopgen/libsequence/issues/53)
 * Include Sequence/variant_matrix/msformat.hpp when installing the library.
 
 ## libsequence 1.9.5
