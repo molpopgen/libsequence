@@ -17,6 +17,7 @@
 #include "summstats/nsl.hpp"
 #include "summstats/nslx.hpp"
 #include "summstats/ld.hpp"
+#include "summstats/lhaf.hpp"
 #include "summstats/garud.hpp"
 
 #endif

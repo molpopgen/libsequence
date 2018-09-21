@@ -157,7 +157,7 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
 	summstats/ld.lo summstats/rmin.lo summstats/nsl.lo \
 	summstats/nslx.lo summstats/garud.lo summstats/generic.lo \
-	summstats/auxillary.lo
+	summstats/lhaf.lo summstats/auxillary.lo
 libsequence_la_OBJECTS = $(am_libsequence_la_OBJECTS)
 AM_V_lt = $(am__v_lt_@AM_V@)
 am__v_lt_ = $(am__v_lt_@AM_DEFAULT_V@)
@@ -415,6 +415,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	summstats/nslx.cc \
 	summstats/garud.cc \
 	summstats/generic.cc \
+	summstats/lhaf.cc \
 	summstats/auxillary.cc
 
 AM_LDFLAGS = -version-info 20:0:0
@@ -576,6 +577,8 @@ summstats/garud.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/generic.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
+summstats/lhaf.lo: summstats/$(am__dirstamp) \
+	summstats/$(DEPDIR)/$(am__dirstamp)
 summstats/auxillary.lo: summstats/$(am__dirstamp) \
 	summstats/$(DEPDIR)/$(am__dirstamp)
 
@@ -698,6 +701,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/haplotype_statistics.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/hprime.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/ld.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/lhaf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nsl.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nslx.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@summstats/$(DEPDIR)/nvariablesites.Plo@am__quote@
