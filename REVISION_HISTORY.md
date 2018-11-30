@@ -19,6 +19,10 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.7
+
+* Fix error in Sequence::lhaf that led to an infinite loop.
+
 ## libsequence 1.9.6
 
 * Fix GitHub issue [PR50](https://github.com/molpopgen/libsequence/issues/50) via [PR51](https://github.com/molpopgen/libsequence/issues/51).
