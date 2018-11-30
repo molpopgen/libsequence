@@ -24,7 +24,7 @@ namespace Sequence
 
         // Get the values for each element in the data
         std::vector<double> rv;
-        rv.reserve(m.nsites);
+        rv.reserve(m.nsam);
         for (std::size_t i = 0; i < m.nsam; ++i)
             {
                 auto c = get_ConstColView(m, i);
@@ -35,7 +35,7 @@ namespace Sequence
                         size_t d2 = static_cast<std::size_t>(
                             std::distance(c.cbegin(), j));
                         score += std::pow(static_cast<double>(dcounts[d2]), l);
-                        j = std::find_if(c.cbegin(), c.cend(), find_nonref);
+                        j = std::find_if(j + 1, c.cend(), find_nonref);
                     }
                 rv.push_back(score);
             }
