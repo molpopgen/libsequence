@@ -363,7 +363,7 @@ namespace Sequence
             rv.reserve(nsites);
             for (std::size_t i = 0; i < nsites - 1; ++i)
                 {
-                    for (std::size_t j = i + 1; j < nsites; ++i)
+                    for (std::size_t j = i + 1; j < nsites; ++j)
                         {
                             rv.push_back(PairwiseLD(data, i, j, haveOutgroup,
                                                     outgroup, mincount,
