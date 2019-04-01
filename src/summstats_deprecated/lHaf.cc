@@ -1,4 +1,4 @@
-#include <Sequence/SummStats/lHaf.hpp>
+#include <Sequence/SummStatsDeprecated/lHaf.hpp>
 #include <algorithm>
 #include <numeric>
 #include <cmath>

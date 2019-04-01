@@ -1,5 +1,5 @@
 #include <Sequence/SimData.hpp>
-#include <Sequence/SummStats/nSL.hpp>
+#include <Sequence/SummStatsDeprecated/nSL.hpp>
 #include <algorithm>
 #include <numeric>
 #include <array>

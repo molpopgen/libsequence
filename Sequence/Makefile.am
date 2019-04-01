@@ -1,4 +1,4 @@
-SUBDIRS = bits SummStats variant_matrix summstats
+SUBDIRS = bits SummStatsDeprecated variant_matrix summstats
 
 pkgincludedir=$(prefix)/include/Sequence
 

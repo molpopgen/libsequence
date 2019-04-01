@@ -3,7 +3,7 @@
 #include <string>
 #include <cmath>
 #include <numeric>
-#include <Sequence/SummStats/Garud.hpp>
+#include <Sequence/SummStatsDeprecated/Garud.hpp>
 
 using namespace std;
 

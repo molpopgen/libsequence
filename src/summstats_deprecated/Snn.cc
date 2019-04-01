@@ -21,7 +21,7 @@ long with libsequence.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include <Sequence/SummStats/Snn.hpp>
+#include <Sequence/SummStatsDeprecated/Snn.hpp>
 
 namespace Sequence
 {
