@@ -5,18 +5,18 @@ libsequenceConfig_SOURCES=libsequenceConfig.cc
 
 libsequence_la_SOURCES=  Grantham.cc\
 	PathwayHelper.cc\
-	SummStats/Recombination.cc\
+	summstats_deprecated/Recombination.cc\
 	SimParams.cc\
 	Translate.cc\
 	Comeron95.cc\
 	GranthamWeights.cc\
-	SummStats/PolySNP.cc\
-	SummStats/PolySIM.cc\
+	summstats_deprecated/PolySNP.cc\
+	summstats_deprecated/PolySIM.cc\
 	RedundancyCom95.cc\
 	SingleSub.cc\
 	TwoSubs.cc\
 	stateCounter.cc\
-	SummStats/FST.cc\
+	summstats_deprecated/FST.cc\
 	Comparisons.cc\
 	SimpleSNP.cc\
 	PolyTable.cc\
@@ -35,14 +35,14 @@ libsequence_la_SOURCES=  Grantham.cc\
 	Specializations.cc\
 	SeqConstants.cc\
 	shortestPath.cc\
-	SummStats/HKA.cc\
-	SummStats/Snn.cc\
+	summstats_deprecated/HKA.cc\
+	summstats_deprecated/Snn.cc\
 	polySiteVector.cc \
-	SummStats/SummStats.cc \
-	SummStats/nSL.cc \
-	SummStats/Garud.cc\
+	summstats_deprecated/SummStats.cc \
+	summstats_deprecated/nSL.cc \
+	summstats_deprecated/Garud.cc\
 	SeqAlphabets.cc \
-	SummStats/lHaf.cc \
+	summstats_deprecated/lHaf.cc \
 	variant_matrix/VariantMatrix.cc \
 	variant_matrix/VariantMatrixViews.cc \
 	variant_matrix/AlleleCountMatrix.cc \
