@@ -53,7 +53,7 @@ pkginclude_HEADERS = AlignStream.hpp\
 	descriptiveStats.hpp\
 	HKA.hpp\
 	typedefs.hpp \
-	SummStats.hpp \
+	SummStatsDeprecated.hpp \
 	SeqAlphabets.hpp \
 	VariantMatrix.hpp \
 	VariantMatrixViews.hpp \
