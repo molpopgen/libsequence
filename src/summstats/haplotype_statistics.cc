@@ -101,7 +101,7 @@ namespace Sequence
     std::int32_t
     number_of_haplotypes(const VariantMatrix& m)
     {
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam)
             {
                 return -1;
             }
@@ -118,7 +118,7 @@ namespace Sequence
     double
     haplotype_diversity(const VariantMatrix& m)
     {
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam)
             {
                 return std::numeric_limits<double>::quiet_NaN();
             }

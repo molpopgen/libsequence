@@ -11,7 +11,7 @@ namespace
             {
                 throw std::out_of_range("row index out of range");
             }
-        return T(m.data.data() + row * m.nsam, m.nsam);
+        return T(m.data() + row * m.nsam, m.nsam);
     }
     template <typename T, typename VM>
     T
@@ -21,7 +21,7 @@ namespace
             {
                 throw std::out_of_range("column index out of range");
             }
-        return T(m.data.data() + col, m.nsam * m.nsites, m.nsam);
+        return T(m.data() + col, m.nsam * m.nsites, m.nsam);
     }
 }
 

@@ -11,14 +11,14 @@ namespace Sequence
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)
     {
-        return data[site * nsam + haplotype];
+        return capsule->operator[](site* nsam + haplotype);
     }
 
     const std::int8_t&
     VariantMatrix::get(const std::size_t site,
                        const std::size_t haplotype) const
     {
-        return data[site * nsam + haplotype];
+        return capsule->operator[](site* nsam + haplotype);
     }
 
     // Ranged-checked access after std::vector<T>::at.
@@ -30,7 +30,7 @@ namespace Sequence
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return data.at(site * nsam + haplotype);
+        return capsule->operator[](site* nsam + haplotype);
     }
 
     const std::int8_t&
@@ -42,6 +42,24 @@ namespace Sequence
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return data.at(site * nsam + haplotype);
+        return capsule->operator[](site* nsam + haplotype);
+    }
+
+    std::int8_t*
+    VariantMatrix::data()
+    {
+        return capsule->data();
+    }
+
+    const std::int8_t*
+    VariantMatrix::data() const
+    {
+        return capsule->data();
+    }
+
+    bool
+    VariantMatrix::empty() const
+    {
+        return capsule->empty();
     }
 } // namespace Sequence

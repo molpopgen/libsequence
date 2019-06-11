@@ -45,17 +45,18 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
+        std::unique_ptr<VariantMatrixCapsule> capsule;
         std::int8_t
         set_max_allele(const std::int8_t max_allele_value)
         {
-            if (max_allele_value < 0 && !data.empty())
+            if (max_allele_value < 0 && !capsule->empty())
                 {
-                    auto itr = std::max_element(data.begin(), data.end());
+                    auto itr = std::max_element(capsule->begin(), capsule->end());
                     return *itr;
                 }
             //special case to allow construction of empty data sets
             //without throwing an exception
-            else if (data.empty())
+            else if (capsule->empty())
 
                 {
                     return 0;
@@ -65,7 +66,7 @@ namespace Sequence
 
       public:
         /// Data stored in matrix form with rows as sites.
-        std::vector<std::int8_t> data;
+        //std::vector<std::int8_t> data;
         /// Position of sites.
         std::vector<double> positions;
         /// Number of sites in data set.
@@ -86,18 +87,18 @@ namespace Sequence
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
-            : data(std::forward<data_input>(data_)),
+            : capsule(VectorCapsule(std::forward<data_input>(data_))),
               positions(std::forward<positions_input>(positions_)),
               nsites(positions.size()),
-              nsam((nsites > 0) ? data.size() / positions.size() : 0),
+              nsam((nsites > 0) ? capsule->size() / positions.size() : 0),
               max_allele{ set_max_allele(max_allele_value) }
         {
             if (max_allele < 0)
                 {
                     throw std::invalid_argument("max allele must be >= 0");
                 }
-            if ((!data.empty() && !positions.empty())
-                && data.size() % positions.size() != 0.0)
+            if ((!capsule->empty() && !positions.empty())
+                && capsule->size() % positions.size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }
@@ -121,6 +122,9 @@ namespace Sequence
         /// std::out_of_range is thrown if indexes are invalid.
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
+        std::int8_t * data();
+        const std::int8_t * data() const;
+        bool empty() const;
     };
 
 } // namespace Sequence
