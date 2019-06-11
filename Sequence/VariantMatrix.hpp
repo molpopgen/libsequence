@@ -51,7 +51,8 @@ namespace Sequence
         {
             if (max_allele_value < 0 && !capsule->empty())
                 {
-                    auto itr = std::max_element(capsule->begin(), capsule->end());
+                    auto itr
+                        = std::max_element(capsule->begin(), capsule->end());
                     return *itr;
                 }
             //special case to allow construction of empty data sets
@@ -63,6 +64,7 @@ namespace Sequence
                 }
             return max_allele_value;
         }
+        std::int8_t max_allele_;
 
       public:
         /// Data stored in matrix form with rows as sites.
@@ -78,8 +80,6 @@ namespace Sequence
         /// The value type of the data.
         /// Helpful for generic programming
         using value_type = std::int8_t;
-        /// Max allelic value stored in matrix
-        const std::int8_t max_allele;
         template <typename data_input, typename positions_input>
         VariantMatrix(data_input&& data_, positions_input&& positions_,
                       const std::int8_t max_allele_value = -1)
@@ -87,13 +87,13 @@ namespace Sequence
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
-            : capsule(VectorCapsule(std::forward<data_input>(data_))),
+            : capsule(new VectorCapsule(std::forward<data_input>(data_))),
               positions(std::forward<positions_input>(positions_)),
               nsites(positions.size()),
               nsam((nsites > 0) ? capsule->size() / positions.size() : 0),
-              max_allele{ set_max_allele(max_allele_value) }
+              max_allele_{ set_max_allele(max_allele_value) }
         {
-            if (max_allele < 0)
+            if (max_allele() < 0)
                 {
                     throw std::invalid_argument("max allele must be >= 0");
                 }
@@ -122,11 +122,16 @@ namespace Sequence
         /// std::out_of_range is thrown if indexes are invalid.
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
-        std::int8_t * data();
-        const std::int8_t * data() const;
+        std::int8_t* data();
+        const std::int8_t* data() const;
         bool empty() const;
+        /// Max allelic value stored in matrix
+        std::int8_t max_allele() const;
+
+        void swap(VariantMatrix& rhs);
     };
 
+    void swap(VariantMatrix& a, VariantMatrix& b);
 } // namespace Sequence
 
 #endif

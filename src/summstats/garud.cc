@@ -26,7 +26,7 @@ namespace Sequence
     garud_statistics(const VariantMatrix& m)
     {
         GarudStats rv;
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam)
             {
                 return rv;
             }

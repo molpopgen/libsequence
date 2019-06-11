@@ -84,14 +84,16 @@ BOOST_AUTO_TEST_CASE(test_construction)
                               std::vector<double>(5, 0.0));
     BOOST_REQUIRE_EQUAL(m.nsites, 5);
     BOOST_REQUIRE_EQUAL(m.nsam, 20);
-    BOOST_REQUIRE_EQUAL(m.max_allele, 1);
+    BOOST_REQUIRE_EQUAL(m.max_allele(), 1);
 }
 
 BOOST_AUTO_TEST_CASE(test_max_allele)
 {
-    m.data[3] = 5;
-    Sequence::VariantMatrix vm(m.data, m.positions);
-    BOOST_CHECK_EQUAL(vm.max_allele, 5);
+    m.data()[3] = 5;
+    Sequence::VariantMatrix vm(
+        std::vector<std::int8_t>(m.data(), m.data() + m.nsites * m.nsam),
+        m.positions);
+    BOOST_CHECK_EQUAL(vm.max_allele(), 5);
     Sequence::AlleleCountMatrix vmc(vm);
     BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
 }
@@ -346,10 +348,12 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
             auto w = Sequence::make_window(m, m.positions[i], m.positions[i]);
             BOOST_REQUIRE_EQUAL(w.positions[0], m.positions[i]);
             auto r = Sequence::get_ConstRowView(m, i);
-            BOOST_REQUIRE_EQUAL(
-                std::mismatch(w.data.begin(), w.data.end(), r.begin()).first
-                    == w.data.end(),
-                true);
+            BOOST_REQUIRE_EQUAL(std::mismatch(w.data(),
+                                              w.data() + w.nsites * w.nsam,
+                                              r.begin())
+                                        .first
+                                    == w.data() + w.nsites * w.nsam,
+                                true);
         }
 }
 

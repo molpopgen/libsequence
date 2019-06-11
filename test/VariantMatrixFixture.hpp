@@ -6,7 +6,7 @@
 
 struct dataset
 {
-    using data_type = decltype(Sequence::VariantMatrix::data);
+    using data_type = std::vector<std::int8_t>;
     using positions_type = decltype(Sequence::VariantMatrix::positions);
     Sequence::VariantMatrix m;
     Sequence::AlleleCountMatrix c;
@@ -21,7 +21,7 @@ struct dataset
 
 struct invariantdataset
 {
-    using data_type = decltype(Sequence::VariantMatrix::data);
+    using data_type = std::vector<std::int8_t>;
     using positions_type = decltype(Sequence::VariantMatrix::positions);
     Sequence::VariantMatrix empty, invariant;
     Sequence::AlleleCountMatrix empty_counts, invariant_counts;

@@ -82,7 +82,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
     // different missing data encoding
     for (int i = 1; i < static_cast<int>(m.nsites); i += 2)
         {
-            m.data[i] = -i;
+            m.data()[i] = -i;
         }
     auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
@@ -117,7 +117,8 @@ BOOST_AUTO_TEST_CASE(test_total_num_mutations)
     auto r = Sequence::get_RowView(m, m.nsites - 1);
     // Add a third character state
     r[2] = 2;
-    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites * m.nsam);
+    Sequence::VariantMatrix m2(std::move(temp), std::move(m.positions));
     Sequence::AlleleCountMatrix c2(m2);
     auto tm = Sequence::total_number_of_mutations(c2);
     BOOST_REQUIRE_EQUAL(tm, m.nsites + 1);
@@ -130,7 +131,8 @@ BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
     auto r = Sequence::get_RowView(m, m.nsites - 1);
     // Add a third character state
     r[2] = 2;
-    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites * m.nsam);
+    Sequence::VariantMatrix m2(std::move(temp), std::move(m.positions));
     Sequence::AlleleCountMatrix c2(m2);
     S2 = Sequence::nbiallelic_sites(c2);
     BOOST_REQUIRE_EQUAL(S2, m.nsites - 1);
@@ -207,7 +209,8 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
         }
     //We have to make data copies here so that
     //max_allele is reset.
-    Sequence::VariantMatrix m2(m.data, m.positions);
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites * m.nsam);
+    Sequence::VariantMatrix m2(temp, m.positions);
     BOOST_REQUIRE_THROW(auto h
                         = Sequence::thetah(Sequence::AlleleCountMatrix(m2), 0),
                         std::runtime_error);
@@ -215,7 +218,8 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
         {
             f[i] = 3;
         }
-    Sequence::VariantMatrix m3(m.data, m.positions);
+    temp.assign(m.data(), m.data() + m.nsites * m.nsam);
+    Sequence::VariantMatrix m3(temp, m.positions);
     BOOST_REQUIRE_NO_THROW(
         auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
@@ -250,7 +254,9 @@ BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
 {
     for (std::size_t i = 0; i < m.nsam; ++i)
         {
-            Sequence::VariantMatrix m2(m.data, m.positions);
+            std::vector<std::int8_t> temp(m.data(),
+                                          m.data() + m.nsites * m.nsam);
+            Sequence::VariantMatrix m2(temp, m.positions);
             // We make a unique haplotype at this index in our copy of
             // the fixture
             auto cv = Sequence::get_ColView(m2, i);

@@ -7,6 +7,13 @@ namespace Sequence
 {
     const std::int8_t VariantMatrix::mask
         = std::numeric_limits<std::int8_t>::min();
+
+    std::int8_t
+    VariantMatrix::max_allele() const
+    {
+        return max_allele_;
+    }
+
     // Non range-checked access
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)
@@ -61,5 +68,21 @@ namespace Sequence
     VariantMatrix::empty() const
     {
         return capsule->empty();
+    }
+
+    void
+    VariantMatrix::swap(VariantMatrix& rhs)
+    {
+        this->capsule.swap(rhs.capsule);
+        this->positions.swap(rhs.positions);
+        std::swap(this->nsam, rhs.nsam);
+        std::swap(this->nsites, rhs.nsites);
+        std::swap(this->max_allele_, rhs.max_allele_);
+    }
+
+    void
+    swap(VariantMatrix& a, VariantMatrix& b)
+    {
+        a.swap(b);
     }
 } // namespace Sequence

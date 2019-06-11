@@ -12,8 +12,8 @@ namespace Sequence
         auto pb
             = std::lower_bound(m.positions.begin(), m.positions.end(), beg);
         auto pe = std::upper_bound(pb, m.positions.end(), end);
-        decltype(m.data) data;
-        decltype(m.positions) pos;
+		std::vector<int8_t> data;
+		std::vector<double> pos;
         if (pb == m.positions.end())
             {
                 return VariantMatrix(std::move(data), std::move(pos));
@@ -49,8 +49,8 @@ namespace Sequence
         auto pb
             = std::lower_bound(m.positions.begin(), m.positions.end(), beg);
         auto pe = std::upper_bound(pb, m.positions.end(), end);
-        decltype(m.data) data;
-        decltype(m.positions) pos;
+		std::vector<std::int8_t> data;
+		std::vector<double> pos;
         if (pb == m.positions.end() || i == j)
             {
                 return VariantMatrix(std::move(data), std::move(pos));
