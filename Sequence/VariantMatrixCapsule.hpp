@@ -87,8 +87,17 @@ namespace Sequence
             return buffer.data() + buffer.size();
         }
 
-        bool empty() const final{ return buffer.empty(); }
-        std::size_t size() const final { return buffer.size(); }
+        bool
+        empty() const final
+        {
+            return buffer.empty();
+        }
+
+        std::size_t
+        size() const final
+        {
+            return buffer.size();
+        }
     };
 } // namespace Sequence
 
