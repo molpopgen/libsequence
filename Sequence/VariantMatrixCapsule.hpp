@@ -33,6 +33,12 @@ namespace Sequence
         virtual std::size_t nsam() const = 0;
     };
 
+    struct PositionCapsule : public Capsule<double>
+    {
+        virtual ~PositionCapsule() = default;
+        virtual std::size_t nsites() const = 0;
+    };
+
     using VariantMatrixCapsule = Capsule<std::int8_t>;
 
     class VectorCapsule : public VariantMatrixCapsule
