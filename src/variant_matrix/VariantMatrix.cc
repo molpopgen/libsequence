@@ -37,6 +37,36 @@ namespace Sequence
         return capsule->nsam();
     }
 
+    double
+    VariantMatrix::position(std::size_t i) const
+    {
+        return pcapsule->operator[](i);
+    }
+
+    double*
+    VariantMatrix::pbegin()
+    {
+        return pcapsule->begin();
+    }
+
+    const double*
+    VariantMatrix::pbegin() const
+    {
+        return pcapsule->begin();
+    }
+
+    double*
+    VariantMatrix::pend()
+    {
+        return pcapsule->end();
+    }
+
+    const double*
+    VariantMatrix::pend() const
+    {
+        return pcapsule->end();
+    }
+
     // Non range-checked access
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)

@@ -131,6 +131,14 @@ namespace Sequence
         /// Max allelic value stored in matrix
         std::int8_t max_allele() const;
 
+        // Iterator access to positions
+        double * pbegin();
+        const double * pbegin() const;
+        double * pend();
+        const double * pend() const;
+
+        double position(std::size_t) const;
+
         void swap(VariantMatrix& rhs);
     };
 

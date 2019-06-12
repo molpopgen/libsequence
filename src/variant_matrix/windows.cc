@@ -9,12 +9,11 @@ namespace Sequence
             {
                 throw std::invalid_argument("end must be >= beg");
             }
-        auto pb
-            = std::lower_bound(m.positions.begin(), m.positions.end(), beg);
-        auto pe = std::upper_bound(pb, m.positions.end(), end);
-		std::vector<int8_t> data;
-		std::vector<double> pos;
-        if (pb == m.positions.end())
+        auto pb = std::lower_bound(m.pbegin(), m.pend(), beg);
+        auto pe = std::upper_bound(pb, m.pend(), end);
+        std::vector<int8_t> data;
+        std::vector<double> pos;
+        if (pb == m.pend())
             {
                 return VariantMatrix(std::move(data), std::move(pos));
             }
@@ -23,8 +22,7 @@ namespace Sequence
         for (auto i = pb; i < pe; ++i)
             {
                 auto v = get_ConstRowView(
-                    m, static_cast<std::size_t>(
-                           std::distance(m.positions.begin(), i)));
+                    m, static_cast<std::size_t>(std::distance(m.pbegin(), i)));
                 data.insert(data.end(), v.begin(), v.end());
             }
         return VariantMatrix(std::move(data), std::move(pos));
@@ -46,12 +44,11 @@ namespace Sequence
             {
                 throw std::invalid_argument("slice indexes out of range");
             }
-        auto pb
-            = std::lower_bound(m.positions.begin(), m.positions.end(), beg);
-        auto pe = std::upper_bound(pb, m.positions.end(), end);
-		std::vector<std::int8_t> data;
-		std::vector<double> pos;
-        if (pb == m.positions.end() || i == j)
+        auto pb = std::lower_bound(m.pbegin(), m.pend(), beg);
+        auto pe = std::upper_bound(pb, m.pend(), end);
+        std::vector<std::int8_t> data;
+        std::vector<double> pos;
+        if (pb == m.pend() || i == j)
             {
                 return VariantMatrix(std::move(data), std::move(pos));
             }
@@ -59,8 +56,8 @@ namespace Sequence
         for (auto pi = pb; pi < pe; ++pi)
             {
                 auto v = get_ConstRowView(
-                    m, static_cast<std::size_t>(
-                           std::distance(m.positions.begin(), pi)));
+                    m,
+                    static_cast<std::size_t>(std::distance(m.pbegin(), pi)));
                 data.insert(data.end(), v.begin() + i, v.begin() + j);
             }
         return VariantMatrix(std::move(data), std::move(pos));

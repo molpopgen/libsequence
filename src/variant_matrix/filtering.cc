@@ -40,7 +40,7 @@ namespace Sequence
                                           end(newdata));
                                 if (remove_pos)
                                     {
-                                        newpos.push_back(m.positions[i]);
+                                        newpos.push_back(m.position(i));
                                     }
                             }
                     }
