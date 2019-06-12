@@ -37,15 +37,19 @@ namespace Sequence
                             {
                                 auto view = viewmaker(m, i);
                                 std::copy(view.begin(), view.end(),
-                                          end(newdata));
+                                          std::back_inserter(newdata));
                                 if (remove_pos)
                                     {
                                         newpos.push_back(m.position(i));
                                     }
                             }
+                        else
+                            {
+                                ++removed;
+                            }
                     }
                 VariantMatrix v(std::move(newdata), std::move(newpos));
-				swap(m, v);
+                swap(m, v);
             }
         return rv;
     }
