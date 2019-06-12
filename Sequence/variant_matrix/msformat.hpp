@@ -69,20 +69,20 @@ namespace Sequence
      * See ms_to_VariantMatrix.cc for example.
      */
     {
-        o << "//\nsegsites: " << m.nsites << "\npositions: ";
+        o << "//\nsegsites: " << m.nsites() << "\npositions: ";
         for (auto& p : m.positions)
             {
                 o << p << ' ';
             }
         o << '\n';
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 auto col = get_ConstColView(m, i);
                 for (auto state : col)
                     {
                         o << static_cast<int>(state);
                     }
-                if (i < m.nsam - 1)
+                if (i < m.nsam() - 1)
                     {
                         o << '\n';
                     }
