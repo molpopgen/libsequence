@@ -18,14 +18,14 @@ struct vmatrix_fixture
     Sequence::AlleleCountMatrix c, c2;
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos), m2(input_data, input_pos), c{ m }, c2{ m2 }
+          m(input_data, input_pos), m2(input_data, std::vector<double>(input_pos.begin(),input_pos.begin()+m.nsam())), c{ m }, c2{ m2 }
     {
         // The two VariantMatrix objects
         // have same data, but different internal
         // dimensions
-        std::swap(m2.nsites(), m2.nsam());
-        m2.positions.resize(m2.nsites());
-        std::iota(std::begin(m2.positions), std::end(m2.positions), 0.);
+        //std::swap(m2.nsites(), m2.nsam());
+        //m2.positions.resize(m2.nsites());
+        std::iota(m2.pbegin(),m2.pend(), 0.);
     }
 
     std::vector<std::int8_t>
@@ -92,7 +92,7 @@ BOOST_AUTO_TEST_CASE(test_max_allele)
     m.data()[3] = 5;
     Sequence::VariantMatrix vm(
         std::vector<std::int8_t>(m.data(), m.data() + m.nsites() * m.nsam()),
-        m.positions);
+        std::vector<double>(m.pbegin(), m.pend()));
     BOOST_CHECK_EQUAL(vm.max_allele(), 5);
     Sequence::AlleleCountMatrix vmc(vm);
     BOOST_REQUIRE_EQUAL(vmc.ncol, 6);
@@ -248,7 +248,8 @@ BOOST_AUTO_TEST_CASE(test_row_view_iterators)
     for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto row = Sequence::get_RowView(m, i);
-            BOOST_REQUIRE_EQUAL(std::distance(row.begin(), row.end()), m.nsam());
+            BOOST_REQUIRE_EQUAL(std::distance(row.begin(), row.end()),
+                                m.nsam());
             BOOST_REQUIRE_EQUAL(std::distance(row.cbegin(), row.cend()),
                                 m.nsam());
         }
@@ -343,10 +344,10 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_0)
 
 BOOST_AUTO_TEST_CASE(tests_windows_size_1)
 {
-    for (std::size_t i = 0; i < m.positions.size(); ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
-            auto w = Sequence::make_window(m, m.positions[i], m.positions[i]);
-            BOOST_REQUIRE_EQUAL(w.positions[0], m.positions[i]);
+            auto w = Sequence::make_window(m, m.position(i), m.position(i));
+            BOOST_REQUIRE_EQUAL(w.position(0), m.position(i));
             auto r = Sequence::get_ConstRowView(m, i);
             BOOST_REQUIRE_EQUAL(std::mismatch(w.data(),
                                               w.data() + w.nsites() * w.nsam(),
@@ -361,7 +362,7 @@ BOOST_AUTO_TEST_CASE(test_windows_multi_site)
 {
     auto w = Sequence::make_window(m, 0.11, 0.29);
     BOOST_REQUIRE_EQUAL(w.nsites(), 1);
-    BOOST_REQUIRE_EQUAL(w.positions[0], 0.2);
+    BOOST_REQUIRE_EQUAL(w.position(0), 0.2);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

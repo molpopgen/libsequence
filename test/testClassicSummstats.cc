@@ -118,7 +118,8 @@ BOOST_AUTO_TEST_CASE(test_total_num_mutations)
     // Add a third character state
     r[2] = 2;
     std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
-    Sequence::VariantMatrix m2(std::move(temp), std::move(m.positions));
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(std::move(temp), std::move(tpos));
     Sequence::AlleleCountMatrix c2(m2);
     auto tm = Sequence::total_number_of_mutations(c2);
     BOOST_REQUIRE_EQUAL(tm, m.nsites() + 1);
@@ -132,7 +133,8 @@ BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
     // Add a third character state
     r[2] = 2;
     std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
-    Sequence::VariantMatrix m2(std::move(temp), std::move(m.positions));
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(std::move(temp), std::move(tpos));
     Sequence::AlleleCountMatrix c2(m2);
     S2 = Sequence::nbiallelic_sites(c2);
     BOOST_REQUIRE_EQUAL(S2, m.nsites() - 1);
@@ -210,7 +212,8 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
     //We have to make data copies here so that
     //max_allele is reset.
     std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
-    Sequence::VariantMatrix m2(temp, m.positions);
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(temp, tpos);
     BOOST_REQUIRE_THROW(auto h
                         = Sequence::thetah(Sequence::AlleleCountMatrix(m2), 0),
                         std::runtime_error);
@@ -219,7 +222,7 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
             f[i] = 3;
         }
     temp.assign(m.data(), m.data() + m.nsites() * m.nsam());
-    Sequence::VariantMatrix m3(temp, m.positions);
+    Sequence::VariantMatrix m3(temp, tpos);
     BOOST_REQUIRE_NO_THROW(
         auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
@@ -256,7 +259,8 @@ BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
         {
             std::vector<std::int8_t> temp(m.data(),
                                           m.data() + m.nsites() * m.nsam());
-            Sequence::VariantMatrix m2(temp, m.positions);
+            std::vector<double> tpos(m.pbegin(), m.pend());
+            Sequence::VariantMatrix m2(temp, tpos);
             // We make a unique haplotype at this index in our copy of
             // the fixture
             auto cv = Sequence::get_ColView(m2, i);

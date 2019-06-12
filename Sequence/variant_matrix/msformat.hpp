@@ -70,10 +70,10 @@ namespace Sequence
      */
     {
         o << "//\nsegsites: " << m.nsites() << "\npositions: ";
-        for (auto& p : m.positions)
-            {
-                o << p << ' ';
-            }
+        for (auto p = m.pbegin(); p < m.pend(); ++p)
+        {
+            o << *p << ' ';
+        }
         o << '\n';
         for (std::size_t i = 0; i < m.nsam(); ++i)
             {
