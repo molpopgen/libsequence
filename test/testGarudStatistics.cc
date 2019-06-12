@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_garud_stats)
 
     //Let's do an alternative method.
     std::vector<std::string> haps;
-    for (auto i = 0; i < m.nsam; ++i)
+    for (auto i = 0; i < m.nsam(); ++i)
         {
             auto c = Sequence::get_ConstColView(m, i);
             std::string h;
@@ -50,7 +50,7 @@ BOOST_AUTO_TEST_CASE(test_garud_stats)
         }
     std::sort(hcounts.begin(), hcounts.end(), std::greater<int>());
     double H1 = 0.0;
-    double nsam = static_cast<double>(m.nsam);
+    double nsam = static_cast<double>(m.nsam());
     for (auto hc : hcounts)
         {
             H1 += static_cast<double>(hc) * static_cast<double>(hc - 1);

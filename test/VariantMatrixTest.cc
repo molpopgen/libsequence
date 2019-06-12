@@ -23,8 +23,8 @@ struct vmatrix_fixture
         // The two VariantMatrix objects
         // have same data, but different internal
         // dimensions
-        std::swap(m2.nsites, m2.nsam);
-        m2.positions.resize(m2.nsites);
+        std::swap(m2.nsites(), m2.nsam());
+        m2.positions.resize(m2.nsites());
         std::iota(std::begin(m2.positions), std::end(m2.positions), 0.);
     }
 
@@ -62,16 +62,16 @@ BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_move)
     std::vector<std::int8_t> d{};
     std::vector<double> p{};
     Sequence::VariantMatrix m(std::move(d), std::move(p));
-    BOOST_REQUIRE_EQUAL(m.nsam, 0);
-    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+    BOOST_REQUIRE_EQUAL(m.nsam(), 0);
+    BOOST_REQUIRE_EQUAL(m.nsites(), 0);
 }
 
 BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_init_lists)
 {
     Sequence::VariantMatrix m(std::vector<std::int8_t>{},
                               std::vector<double>{});
-    BOOST_REQUIRE_EQUAL(m.nsam, 0);
-    BOOST_REQUIRE_EQUAL(m.nsites, 0);
+    BOOST_REQUIRE_EQUAL(m.nsam(), 0);
+    BOOST_REQUIRE_EQUAL(m.nsites(), 0);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -82,8 +82,8 @@ BOOST_AUTO_TEST_CASE(test_construction)
 {
     Sequence::VariantMatrix m(std::vector<std::int8_t>(100, 1),
                               std::vector<double>(5, 0.0));
-    BOOST_REQUIRE_EQUAL(m.nsites, 5);
-    BOOST_REQUIRE_EQUAL(m.nsam, 20);
+    BOOST_REQUIRE_EQUAL(m.nsites(), 5);
+    BOOST_REQUIRE_EQUAL(m.nsam(), 20);
     BOOST_REQUIRE_EQUAL(m.max_allele(), 1);
 }
 
@@ -91,7 +91,7 @@ BOOST_AUTO_TEST_CASE(test_max_allele)
 {
     m.data()[3] = 5;
     Sequence::VariantMatrix vm(
-        std::vector<std::int8_t>(m.data(), m.data() + m.nsites * m.nsam),
+        std::vector<std::int8_t>(m.data(), m.data() + m.nsites() * m.nsam()),
         m.positions);
     BOOST_CHECK_EQUAL(vm.max_allele(), 5);
     Sequence::AlleleCountMatrix vmc(vm);
@@ -100,15 +100,15 @@ BOOST_AUTO_TEST_CASE(test_max_allele)
 
 BOOST_AUTO_TEST_CASE(test_range_exceptions)
 {
-    BOOST_REQUIRE_THROW(m.at(m.nsites + 1, 0), std::out_of_range);
-    BOOST_REQUIRE_THROW(m.at(0, m.nsam + 1), std::out_of_range);
+    BOOST_REQUIRE_THROW(m.at(m.nsites() + 1, 0), std::out_of_range);
+    BOOST_REQUIRE_THROW(m.at(0, m.nsam() + 1), std::out_of_range);
 }
 
 BOOST_AUTO_TEST_CASE(test_iteration)
 {
-    for (std::size_t i = 0; i < m.nsam; ++i)
+    for (std::size_t i = 0; i < m.nsam(); ++i)
         {
-            for (std::size_t j = 0; j < m.nsites; ++j)
+            for (std::size_t j = 0; j < m.nsites(); ++j)
                 {
                     auto x = m.get(j, i);
                     std::int8_t ex = (i % 2 == 0.) ? 1 : 0;
@@ -134,7 +134,7 @@ BOOST_AUTO_TEST_CASE(test_bad_column_swap)
 
 BOOST_AUTO_TEST_CASE(test_row_views)
 {
-    for (std::size_t i = 0; i < m.nsites; ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto x = Sequence::get_RowView(m, i);
             for (auto j = x.begin(); j != x.end(); ++j)
@@ -177,7 +177,7 @@ BOOST_AUTO_TEST_CASE(test_row_views)
 
 BOOST_AUTO_TEST_CASE(test_const_row_views)
 {
-    for (std::size_t i = 0; i < m.nsites; ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto x = Sequence::get_ConstRowView(m, i);
 
@@ -221,42 +221,42 @@ BOOST_AUTO_TEST_CASE(test_const_row_views)
 
 BOOST_AUTO_TEST_CASE(test_row_view_exceptions)
 {
-    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
+    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites() + 1),
                         std::exception);
-    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites + 1),
+    BOOST_REQUIRE_THROW(Sequence::get_RowView(m, m.nsites() + 1),
                         std::out_of_range);
 
     auto r = Sequence::get_RowView(m, 0);
-    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::exception);
-    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
+    BOOST_REQUIRE_THROW(r.at(m.nsam() + 1), std::exception);
+    BOOST_REQUIRE_THROW(r.at(m.nsam() + 1), std::out_of_range);
 }
 
 BOOST_AUTO_TEST_CASE(test_const_row_view_exceptions)
 {
-    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
+    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites() + 1),
                         std::exception);
-    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites + 1),
+    BOOST_REQUIRE_THROW(Sequence::get_ConstRowView(m, m.nsites() + 1),
                         std::out_of_range);
 
     auto r = Sequence::get_ConstRowView(m, 0);
-    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::exception);
-    BOOST_REQUIRE_THROW(r.at(m.nsam + 1), std::out_of_range);
+    BOOST_REQUIRE_THROW(r.at(m.nsam() + 1), std::exception);
+    BOOST_REQUIRE_THROW(r.at(m.nsam() + 1), std::out_of_range);
 }
 
 BOOST_AUTO_TEST_CASE(test_row_view_iterators)
 {
-    for (std::size_t i = 0; i < m.nsites; ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto row = Sequence::get_RowView(m, i);
-            BOOST_REQUIRE_EQUAL(std::distance(row.begin(), row.end()), m.nsam);
+            BOOST_REQUIRE_EQUAL(std::distance(row.begin(), row.end()), m.nsam());
             BOOST_REQUIRE_EQUAL(std::distance(row.cbegin(), row.cend()),
-                                m.nsam);
+                                m.nsam());
         }
 }
 
 BOOST_AUTO_TEST_CASE(test_column_views)
 {
-    for (std::size_t i = 0; i < m.nsam; ++i)
+    for (std::size_t i = 0; i < m.nsam(); ++i)
         {
             auto col = Sequence::get_ColView(m, i);
             std::int8_t state = (i % 2 == 0) ? 1 : 0;
@@ -270,9 +270,9 @@ BOOST_AUTO_TEST_CASE(test_column_views)
                                 0);
 
             BOOST_REQUIRE_EQUAL(std::distance(std::begin(col), std::end(col)),
-                                m.nsites);
+                                m.nsites());
             BOOST_REQUIRE_EQUAL(std::distance(col.rbegin(), col.rend()),
-                                m.nsites);
+                                m.nsites());
 
             // Check that iterators and reverse iterators have the expected
             // relationships:
@@ -325,7 +325,7 @@ BOOST_AUTO_TEST_CASE(test_accumulate)
 {
     auto c = Sequence::get_ConstColView(m, 0);
     int sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
-    BOOST_REQUIRE_EQUAL(sum, static_cast<int>(m.nsites));
+    BOOST_REQUIRE_EQUAL(sum, static_cast<int>(m.nsites()));
     c = Sequence::get_ConstColView(m, 1);
     sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
     BOOST_REQUIRE_EQUAL(sum, 0);
@@ -337,8 +337,8 @@ BOOST_FIXTURE_TEST_SUITE(VariantMatrixWindowTest, dataset)
 BOOST_AUTO_TEST_CASE(tests_windows_size_0)
 {
     auto w = Sequence::make_window(m, 10, 10);
-    BOOST_REQUIRE_EQUAL(w.nsam, 0);
-    BOOST_REQUIRE_EQUAL(w.nsites, 0);
+    BOOST_REQUIRE_EQUAL(w.nsam(), 0);
+    BOOST_REQUIRE_EQUAL(w.nsites(), 0);
 }
 
 BOOST_AUTO_TEST_CASE(tests_windows_size_1)
@@ -349,10 +349,10 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
             BOOST_REQUIRE_EQUAL(w.positions[0], m.positions[i]);
             auto r = Sequence::get_ConstRowView(m, i);
             BOOST_REQUIRE_EQUAL(std::mismatch(w.data(),
-                                              w.data() + w.nsites * w.nsam,
+                                              w.data() + w.nsites() * w.nsam(),
                                               r.begin())
                                         .first
-                                    == w.data() + w.nsites * w.nsam,
+                                    == w.data() + w.nsites() * w.nsam(),
                                 true);
         }
 }
@@ -360,7 +360,7 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
 BOOST_AUTO_TEST_CASE(test_windows_multi_site)
 {
     auto w = Sequence::make_window(m, 0.11, 0.29);
-    BOOST_REQUIRE_EQUAL(w.nsites, 1);
+    BOOST_REQUIRE_EQUAL(w.nsites(), 1);
     BOOST_REQUIRE_EQUAL(w.positions[0], 0.2);
 }
 
@@ -379,7 +379,7 @@ BOOST_AUTO_TEST_CASE(test_slice)
             auto r = am.row(i);
             c.insert(c.end(), r.first, r.second);
         }
-    Sequence::AlleleCountMatrix amslice(std::move(c), 2, 2, m.nsam);
+    Sequence::AlleleCountMatrix amslice(std::move(c), 2, 2, m.nsam());
     BOOST_REQUIRE_EQUAL(amw.counts == amslice.counts, true);
     BOOST_REQUIRE_EQUAL(amw.ncol, amslice.ncol);
     BOOST_REQUIRE_EQUAL(amw.nrow, amslice.nrow);
