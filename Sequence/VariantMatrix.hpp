@@ -93,7 +93,7 @@ namespace Sequence
             : pcapsule(new VectorPositionCapsule(
                 std::forward<positions_input>(positions_))),
               capsule(new VectorGenotypeCapsule(
-                  std::forward<data_input>(data_), pcapsule->nsites())),
+                  std::forward<data_input>(data_), pcapsule->size())),
               max_allele_{ set_max_allele(max_allele_value) }
         {
             if (max_allele() < 0)

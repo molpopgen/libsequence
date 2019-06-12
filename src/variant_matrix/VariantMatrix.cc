@@ -97,7 +97,7 @@ namespace Sequence
     VariantMatrix::swap(VariantMatrix& rhs)
     {
         this->capsule.swap(rhs.capsule);
-        this->positions.swap(rhs.positions);
+        this->pcapsule.swap(rhs.pcapsule);
         std::swap(this->max_allele_, rhs.max_allele_);
     }
 
