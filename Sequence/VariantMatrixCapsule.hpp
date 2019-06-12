@@ -21,6 +21,8 @@ namespace Sequence
         virtual const T* begin() const = 0;
         virtual T* end() = 0;
         virtual const T* end() const = 0;
+        virtual const T* cbegin() const = 0;
+        virtual const T* cend() const = 0;
         virtual bool empty() const = 0;
         virtual std::size_t size() const = 0;
     };
@@ -136,6 +138,18 @@ namespace Sequence
             return buffer.data() + buffer.size();
         }
 
+        const std::int8_t*
+        cbegin() const final
+        {
+            return begin();
+        }
+
+        const std::int8_t*
+        cend() const final
+        {
+            return end();
+        }
+
         bool
         empty() const final
         {
@@ -204,6 +218,18 @@ namespace Sequence
         end() const final
         {
             return buffer.data() + buffer.size();
+        }
+
+        const double*
+        cbegin() const final
+        {
+            return begin();
+        }
+
+        const double*
+        cend() const final
+        {
+            return end();
         }
 
         bool

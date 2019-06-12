@@ -53,7 +53,7 @@ namespace Sequence
             if (max_allele_value < 0 && !capsule->empty())
                 {
                     auto itr
-                        = std::max_element(capsule->begin(), capsule->end());
+                        = std::max_element(capsule->cbegin(), capsule->cend());
                     return *itr;
                 }
             //special case to allow construction of empty data sets
@@ -107,6 +107,22 @@ namespace Sequence
                 }
         }
 
+        VariantMatrix(std::unique_ptr<GenotypeCapsule> data_,
+                      std::unique_ptr<PositionCapsule> positions_)
+            : pcapsule(std::move(positions_)),
+              capsule(std::move(data_)), max_allele_{ set_max_allele(-1) }
+        {
+            if (max_allele() < 0)
+                {
+                    throw std::invalid_argument("max allele must be >= 0");
+                }
+            if ((!capsule->empty() && !pcapsule->empty())
+                && capsule->size() % pcapsule->size() != 0.0)
+                {
+                    throw std::invalid_argument("incorrect dimensions");
+                }
+        }
+
         // Non range-checked access
 
         /// \brief Get data from marker `site` and haplotype `haplotype`.
@@ -132,10 +148,10 @@ namespace Sequence
         std::int8_t max_allele() const;
 
         // Iterator access to positions
-        double * pbegin();
-        const double * pbegin() const;
-        double * pend();
-        const double * pend() const;
+        double* pbegin();
+        const double* pbegin() const;
+        double* pend();
+        const double* pend() const;
 
         double position(std::size_t) const;
 
