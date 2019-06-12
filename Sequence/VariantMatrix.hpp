@@ -45,6 +45,7 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
+        std::unique_ptr<PositionCapsule> pcapsule;
         std::unique_ptr<GenotypeCapsule> capsule;
         std::int8_t
         set_max_allele(const std::int8_t max_allele_value)
@@ -70,7 +71,7 @@ namespace Sequence
         /// Data stored in matrix form with rows as sites.
         //std::vector<std::int8_t> data;
         /// Position of sites.
-        std::vector<double> positions;
+        //std::vector<double> positions;
         /// Number of sites in data set.
         std::size_t nsites() const;
         std::size_t& nsites();
@@ -89,17 +90,18 @@ namespace Sequence
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
-            : capsule(new VectorGenotypeCapsule(
-                std::forward<data_input>(data_), positions_.size())),
-              positions(std::forward<positions_input>(positions_)),
+            : pcapsule(new VectorPositionCapsule(
+                std::forward<positions_input>(positions_))),
+              capsule(new VectorGenotypeCapsule(
+                  std::forward<data_input>(data_), pcapsule->nsites())),
               max_allele_{ set_max_allele(max_allele_value) }
         {
             if (max_allele() < 0)
                 {
                     throw std::invalid_argument("max allele must be >= 0");
                 }
-            if ((!capsule->empty() && !positions.empty())
-                && capsule->size() % positions.size() != 0.0)
+            if ((!capsule->empty() && !pcapsule->empty())
+                && capsule->size() % pcapsule->size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }

@@ -39,6 +39,7 @@ namespace Sequence
     {
         virtual ~PositionCapsule() = default;
         virtual std::size_t nsites() const = 0;
+        virtual std::unique_ptr<PositionCapsule> clone() const = 0;
     };
 
     class VectorGenotypeCapsule : public GenotypeCapsule
@@ -143,6 +144,82 @@ namespace Sequence
 
         std::size_t
         size() const final
+        {
+            return buffer.size();
+        }
+    };
+
+    class VectorPositionCapsule : public PositionCapsule
+    {
+      private:
+        std::vector<double> buffer;
+
+      public:
+        template <typename T>
+        explicit VectorPositionCapsule(T&& t) : buffer(std::forward<T>(t))
+        {
+        }
+        double& operator[](std::size_t i) { return buffer[i]; }
+
+        const double& operator[](std::size_t i) const { return buffer[i]; }
+
+        double*
+        data() final
+        {
+            return buffer.data();
+        }
+
+        const double*
+        data() const final
+        {
+            return buffer.data();
+        }
+
+        std::unique_ptr<PositionCapsule>
+        clone() const final
+        {
+            return std::unique_ptr<PositionCapsule>(
+                new VectorPositionCapsule(*this));
+        }
+
+        double*
+        begin() final
+        {
+            return buffer.data();
+        }
+
+        const double*
+        begin() const final
+        {
+            return buffer.data();
+        }
+
+        double*
+        end() final
+        {
+            return buffer.data() + buffer.size();
+        }
+
+        const double*
+        end() const final
+        {
+            return buffer.data() + buffer.size();
+        }
+
+        bool
+        empty() const final
+        {
+            return buffer.empty();
+        }
+
+        std::size_t
+        size() const final
+        {
+            return buffer.size();
+        }
+
+        std::size_t
+        nsites() const
         {
             return buffer.size();
         }
