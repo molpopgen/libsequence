@@ -17,6 +17,7 @@ namespace Sequence
         //                               std::size_t sample) const = 0;
         virtual T* data() = 0;
         virtual const T* data() const = 0;
+        virtual const T* cdata() const = 0;
         virtual T* begin() = 0;
         virtual const T* begin() const = 0;
         virtual T* end() = 0;
@@ -107,6 +108,12 @@ namespace Sequence
             return buffer.data();
         }
 
+        const std::int8_t*
+        cdata() const final
+        {
+            return buffer.data();
+        }
+
         std::unique_ptr<GenotypeCapsule>
         clone() const final
         {
@@ -185,6 +192,12 @@ namespace Sequence
 
         const double*
         data() const final
+        {
+            return buffer.data();
+        }
+
+        const double*
+        cdata() const final
         {
             return buffer.data();
         }

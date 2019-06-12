@@ -117,6 +117,12 @@ namespace Sequence
         return capsule->data();
     }
 
+    const std::int8_t*
+    VariantMatrix::cdata() const
+    {
+        return capsule->cdata();
+    }
+
     bool
     VariantMatrix::empty() const
     {

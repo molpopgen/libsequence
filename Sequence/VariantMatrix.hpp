@@ -143,6 +143,7 @@ namespace Sequence
                               const std::size_t haplotype) const;
         std::int8_t* data();
         const std::int8_t* data() const;
+        const std::int8_t* cdata() const;
         bool empty() const;
         /// Max allelic value stored in matrix
         std::int8_t max_allele() const;
