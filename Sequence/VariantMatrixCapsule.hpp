@@ -21,7 +21,6 @@ namespace Sequence
         virtual const T* begin() const = 0;
         virtual T* end() = 0;
         virtual const T* end() const = 0;
-        virtual std::unique_ptr<Capsule> clone() const = 0;
         virtual bool empty() const = 0;
         virtual std::size_t size() const = 0;
     };
@@ -31,6 +30,9 @@ namespace Sequence
         virtual ~GenotypeCapsule() = default;
         virtual std::size_t nsites() const = 0;
         virtual std::size_t nsam() const = 0;
+        virtual std::size_t& nsites() = 0;
+        virtual std::size_t& nsam() = 0;
+        virtual std::unique_ptr<GenotypeCapsule> clone() const = 0;
     };
 
     struct PositionCapsule : public Capsule<double>
@@ -39,17 +41,48 @@ namespace Sequence
         virtual std::size_t nsites() const = 0;
     };
 
-    using VariantMatrixCapsule = Capsule<std::int8_t>;
-
-    class VectorCapsule : public VariantMatrixCapsule
+    class VectorGenotypeCapsule : public GenotypeCapsule
     {
       private:
         std::vector<std::int8_t> buffer;
+        std::size_t nsites_, nsam_;
+
+        std::size_t
+        fill_nsam(std::size_t num_rows)
+        {
+            return ((num_rows > 0) ? buffer.size() / num_rows : 0);
+        }
 
       public:
         template <typename T>
-        explicit VectorCapsule(T&& t) : buffer(std::forward<T>(t))
+        VectorGenotypeCapsule(T&& t, std::size_t num_rows)
+            : buffer(std::forward<T>(t)), nsites_(num_rows),
+              nsam_(fill_nsam(num_rows))
         {
+        }
+
+        std::size_t&
+        nsites()
+        {
+            return nsites_;
+        }
+
+        std::size_t&
+        nsam()
+        {
+            return nsam_;
+        }
+
+        std::size_t
+        nsites() const
+        {
+            return nsites_;
+        }
+
+        std::size_t
+        nsam() const
+        {
+            return nsam_;
         }
 
         std::int8_t& operator[](std::size_t i) { return buffer[i]; }
@@ -71,11 +104,11 @@ namespace Sequence
             return buffer.data();
         }
 
-        std::unique_ptr<VariantMatrixCapsule>
+        std::unique_ptr<GenotypeCapsule>
         clone() const final
         {
-            return std::unique_ptr<VariantMatrixCapsule>(
-                new VectorCapsule(this->buffer));
+            return std::unique_ptr<GenotypeCapsule>(
+                new VectorGenotypeCapsule(this->buffer, this->nsites_));
         }
 
         std::int8_t*

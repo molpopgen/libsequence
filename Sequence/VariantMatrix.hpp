@@ -45,7 +45,7 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
-        std::unique_ptr<VariantMatrixCapsule> capsule;
+        std::unique_ptr<GenotypeCapsule> capsule;
         std::int8_t
         set_max_allele(const std::int8_t max_allele_value)
         {
@@ -72,9 +72,11 @@ namespace Sequence
         /// Position of sites.
         std::vector<double> positions;
         /// Number of sites in data set.
-        std::size_t nsites;
+        std::size_t nsites() const;
+        std::size_t& nsites();
         /// Sample size of data set.
-        std::size_t nsam;
+        std::size_t nsam() const;
+        std::size_t& nsam();
         /// Reserved value for masked data
         static const std::int8_t mask;
         /// The value type of the data.
@@ -87,10 +89,9 @@ namespace Sequence
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
-            : capsule(new VectorCapsule(std::forward<data_input>(data_))),
+            : capsule(new VectorGenotypeCapsule(
+                std::forward<data_input>(data_), positions_.size())),
               positions(std::forward<positions_input>(positions_)),
-              nsites(positions.size()),
-              nsam((nsites > 0) ? capsule->size() / positions.size() : 0),
               max_allele_{ set_max_allele(max_allele_value) }
         {
             if (max_allele() < 0)

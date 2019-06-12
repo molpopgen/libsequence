@@ -14,42 +14,65 @@ namespace Sequence
         return max_allele_;
     }
 
+    std::size_t
+    VariantMatrix::nsites() const
+    {
+        return capsule->nsites();
+    }
+    std::size_t&
+    VariantMatrix::nsites()
+    {
+        return capsule->nsites();
+    }
+
+    std::size_t
+    VariantMatrix::nsam() const
+    {
+        return capsule->nsam();
+    }
+
+    std::size_t&
+    VariantMatrix::nsam()
+    {
+        return capsule->nsam();
+    }
+
     // Non range-checked access
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)
     {
-        return capsule->operator[](site* nsam + haplotype);
+        return capsule->operator[](site* nsam() + haplotype);
     }
 
     const std::int8_t&
     VariantMatrix::get(const std::size_t site,
                        const std::size_t haplotype) const
     {
-        return capsule->operator[](site* nsam + haplotype);
+        return capsule->operator[](site* nsam() + haplotype);
     }
 
     // Ranged-checked access after std::vector<T>::at.
     std::int8_t&
     VariantMatrix::at(const std::size_t site, const std::size_t haplotype)
     {
-        if (site >= nsites || haplotype >= nsam)
+        if (site >= nsites() || haplotype >= nsam())
             {
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return capsule->operator[](site* nsam + haplotype);
+        return capsule->operator[](site* nsam() + haplotype);
     }
 
     const std::int8_t&
     VariantMatrix::at(const std::size_t site,
                       const std::size_t haplotype) const
     {
-        if (site >= nsites || haplotype >= nsam)
+        if (site >= nsites() || haplotype >= nsam())
             {
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return capsule->operator[](site* nsam + haplotype);
+        return capsule->operator[](site* nsam() + haplotype);
     }
 
     std::int8_t*
@@ -75,8 +98,6 @@ namespace Sequence
     {
         this->capsule.swap(rhs.capsule);
         this->positions.swap(rhs.positions);
-        std::swap(this->nsam, rhs.nsam);
-        std::swap(this->nsites, rhs.nsites);
         std::swap(this->max_allele_, rhs.max_allele_);
     }
 

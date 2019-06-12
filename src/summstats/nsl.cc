@@ -90,10 +90,10 @@ namespace Sequence
         double ihs_values[2] = { 0, 0 };
         //Count sample size for non-ref and ref alleles at core site contributing to nSL
         int counts[2] = { 0, 0 };
-        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+        for (std::size_t i = 0; i < m.nsam() - 1; ++i)
             {
                 auto sample_i = get_ConstColView(m, i);
-                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                for (std::size_t j = i + 1; j < m.nsam(); ++j)
                     {
                         if (core_view[i] == core_view[j] && core_view[i] >= 0)
                             {
@@ -107,7 +107,7 @@ namespace Sequence
                                                                sample_j, core);
                                         summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
-                                            m.nsites, m.positions,
+                                            m.nsites(), m.positions,
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
                                             left, right);
@@ -123,26 +123,26 @@ namespace Sequence
     nsl(const VariantMatrix& m, const std::int8_t refstate)
     {
         std::vector<nSLiHS> rv;
-        if (m.nsam == 0)
+        if (m.nsam() == 0)
             {
                 return rv;
             }
-        rv.reserve(m.nsites);
+        rv.reserve(m.nsites());
 
         // A matrix keeping track of the
         // index where sample i,j last differed.
         // The lower left corresponds to left edges,
         // and the upper right are the right edges.
         // -1 mean unevaluated.
-        auto npairs = m.nsam * (m.nsam - 1) / 2;
+        auto npairs = m.nsam() * (m.nsam() - 1) / 2;
         std::vector<summstats_details::suffix_edges> edges(npairs);
         std::vector<ConstColView> alleles;
-        alleles.reserve(m.nsam);
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        alleles.reserve(m.nsam());
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 alleles.push_back(get_ConstColView(m, i));
             }
-        for (std::size_t core = 0; core < m.nsites; ++core)
+        for (std::size_t core = 0; core < m.nsites(); ++core)
             {
                 std::size_t pair_index = 0;
                 auto core_view = get_ConstRowView(m, core);
@@ -151,10 +151,10 @@ namespace Sequence
                 //Count sample size for non-ref and
                 //ref alleles at core site contributing to nSL
                 int counts[2] = { 0, 0 };
-                for (std::size_t i = 0; i < m.nsam - 1; ++i)
+                for (std::size_t i = 0; i < m.nsam() - 1; ++i)
                     {
                         const auto& hapi = alleles[i];
-                        for (std::size_t j = i + 1; j < m.nsam;
+                        for (std::size_t j = i + 1; j < m.nsam();
                              ++j, ++pair_index)
                             {
                                 if (update_edge_matrix(
@@ -163,7 +163,7 @@ namespace Sequence
                                     {
                                         summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
-                                            m.nsites, m.positions,
+                                            m.nsites(), m.positions,
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
                                             edges[pair_index].left,

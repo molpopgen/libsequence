@@ -10,7 +10,7 @@ namespace Sequence
     std::int32_t
     rmin(const VariantMatrix& m)
     {
-        if (m.nsites < 2)
+        if (m.nsites() < 2)
             {
                 return -1;
             }

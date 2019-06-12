@@ -12,9 +12,9 @@ namespace Sequence
                 throw std::invalid_argument("matrix max_allele must be >= 0");
             }
         std::vector<std::int32_t> counts;
-        counts.reserve(m.nsam * static_cast<std::size_t>(m.max_allele() + 1));
+        counts.reserve(m.nsam() * static_cast<std::size_t>(m.max_allele() + 1));
         StateCounts c;
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nsites(); ++i)
             {
                 auto r = get_ConstRowView(m, i);
                 if (static_cast<std::int8_t>(c.max_allele_idx) > m.max_allele())
@@ -36,7 +36,7 @@ namespace Sequence
         : counts(init_counts(m)),
           ncol(!m.empty() ? static_cast<std::size_t>(m.max_allele()) + 1
                                : 0),
-          nrow(!m.empty() ? counts.size() / ncol : 0), nsam(m.nsam)
+          nrow(!m.empty() ? counts.size() / ncol : 0), nsam(m.nsam())
     {
     }
 

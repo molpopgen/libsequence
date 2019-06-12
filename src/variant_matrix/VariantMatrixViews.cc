@@ -7,21 +7,21 @@ namespace
     T
     row_view_wrapper(VM& m, const std::size_t row)
     {
-        if (row >= m.nsites)
+        if (row >= m.nsites())
             {
                 throw std::out_of_range("row index out of range");
             }
-        return T(m.data() + row * m.nsam, m.nsam);
+        return T(m.data() + row * m.nsam(), m.nsam());
     }
     template <typename T, typename VM>
     T
     col_view_wrapper(VM& m, const std::size_t col)
     {
-        if (col >= m.nsam)
+        if (col >= m.nsam())
             {
                 throw std::out_of_range("column index out of range");
             }
-        return T(m.data() + col, m.nsam * m.nsites, m.nsam);
+        return T(m.data() + col, m.nsam() * m.nsites(), m.nsam());
     }
 }
 

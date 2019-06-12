@@ -59,7 +59,7 @@ namespace Sequence
             [](VariantMatrix &m, const std::size_t i) {
                 return get_RowView(m, i);
             },
-            m.nsites);
+            m.nsites());
     }
 
     std::int32_t
@@ -71,6 +71,6 @@ namespace Sequence
             [](VariantMatrix &m, const std::size_t i) {
                 return get_ColView(m, i);
             },
-            m.nsam);
+            m.nsam());
     }
 } // namespace Sequence
