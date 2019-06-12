@@ -116,7 +116,7 @@ namespace Sequence
                                     {
                                         summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
-                                            m.nsites(), m.positions,
+                                            m.nsites(), m.pbegin(),
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
                                             edges[pair_index].left,

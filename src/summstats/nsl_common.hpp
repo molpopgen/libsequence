@@ -24,7 +24,8 @@ namespace Sequence
         static void
         update_counts(double nsl_values[2], double ihs_values[2],
                       int counts[2], const std::size_t nsites,
-                      const std::vector<double>& positions,
+                      // NOTE: code smell here -- dangerous
+                      const double * positions,
                       const std::size_t index, const std::int64_t left,
                       const std::int64_t right)
         {
