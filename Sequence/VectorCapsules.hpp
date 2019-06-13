@@ -64,7 +64,7 @@ namespace Sequence
 
         bool resizable() const final;
 
-        void resize() final;
+        void resize(bool) final;
     };
 
     class VectorPositionCapsule : public PositionCapsule
@@ -112,7 +112,7 @@ namespace Sequence
 
         bool resizable() const final;
 
-        void resize() final;
+        void resize(bool) final;
     };
 } // namespace Sequence
 #endif

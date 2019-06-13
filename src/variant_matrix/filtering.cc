@@ -33,7 +33,7 @@ namespace Sequence
             }
         if (rv)
             {
-                m.resize_capsules();
+                m.resize_capsules(remove_pos);
             }
         return rv;
     }

@@ -120,7 +120,7 @@ namespace Sequence
     }
 
     void
-    VectorGenotypeCapsule::resize()
+    VectorGenotypeCapsule::resize(bool remove_sites)
     {
         buffer.erase(std::remove_if(
                          std::begin(buffer), std::end(buffer),
@@ -129,6 +129,14 @@ namespace Sequence
                                     == std::numeric_limits<std::int8_t>::min();
                          }),
                      std::end(buffer));
+        if (remove_sites)
+            {
+                nsites_ = buffer.size() / nsam_;
+            }
+        else
+            {
+                nsam_ = buffer.size() / nsites_;
+            }
     }
 
     // Position capsule based on std::vector here
@@ -226,8 +234,9 @@ namespace Sequence
     {
         return true;
     }
+
     void
-    VectorPositionCapsule::resize()
+    VectorPositionCapsule::resize(bool /*unused*/)
     {
         buffer.erase(
             std::remove_if(std::begin(buffer), std::end(buffer),

@@ -150,10 +150,10 @@ namespace Sequence
     }
 
     void
-    VariantMatrix::resize_capsules()
+    VariantMatrix::resize_capsules(bool remove_sites)
     {
-        capsule->resize();
-        pcapsule->resize();
+        capsule->resize(remove_sites);
+        pcapsule->resize(remove_sites);
     }
 
     void

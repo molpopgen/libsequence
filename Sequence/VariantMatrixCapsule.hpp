@@ -31,7 +31,7 @@ namespace Sequence
         virtual bool resizable() const = 0;
 
         /// Overload iff resizable() returns true
-        virtual void resize() { throw std::runtime_error("Capsule cannot be resized"); }
+        virtual void resize(bool) { throw std::runtime_error("Capsule cannot be resized"); }
     };
 
     struct GenotypeCapsule : public Capsule<std::int8_t>

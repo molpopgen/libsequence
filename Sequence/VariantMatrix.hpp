@@ -161,7 +161,7 @@ namespace Sequence
         void swap(VariantMatrix& rhs);
 
         bool resizable() const;
-        void resize_capsules();
+        void resize_capsules(bool remove_sites);
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);
