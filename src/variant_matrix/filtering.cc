@@ -117,7 +117,7 @@ namespace Sequence
         return filter_common_resizable<ColView>(
             m, f,
             [](VariantMatrix &m, const std::size_t i) {
-					return get_ColView(m, i);
+                return get_ColView(m, i);
             },
             m.nsam());
     }
