@@ -45,7 +45,7 @@ namespace Sequence
         const std::function<T(VariantMatrix &, const std::size_t)> &viewmaker,
         std::size_t &dim)
     {
-        constexpr auto remove_pos = std::is_same<T, RowView>::value;
+        constexpr auto remove_pos = std::is_same<T, ConstRowView>::value;
         std::int32_t rv = 0;
         std::vector<std::size_t> removed_indexes;
         for (std::size_t i = 0; i < dim; ++i)
