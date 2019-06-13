@@ -18,14 +18,17 @@ struct vmatrix_fixture
     Sequence::AlleleCountMatrix c, c2;
     vmatrix_fixture()
         : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos), m2(input_data, std::vector<double>(input_pos.begin(),input_pos.begin()+m.nsam())), c{ m }, c2{ m2 }
+          m(input_data, input_pos),
+          m2(input_data, std::vector<double>(input_pos.begin(),
+                                             input_pos.begin() + m.nsam())),
+          c{ m }, c2{ m2 }
     {
         // The two VariantMatrix objects
         // have same data, but different internal
         // dimensions
         //std::swap(m2.nsites(), m2.nsam());
         //m2.positions.resize(m2.nsites());
-        std::iota(m2.pbegin(),m2.pend(), 0.);
+        std::iota(m2.pbegin(), m2.pend(), 0.);
     }
 
     std::vector<std::int8_t>
@@ -55,6 +58,17 @@ struct vmatrix_fixture
     }
 };
 
+bool
+is_const_row_view(Sequence::ConstRowView& v)
+{
+    return true;
+}
+
+bool
+is_const_row_view(Sequence::RowView& v)
+{
+    return false;
+}
 BOOST_AUTO_TEST_SUITE(BasicVariantMatrixTests)
 
 BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_move)
@@ -137,6 +151,7 @@ BOOST_AUTO_TEST_CASE(test_row_views)
     for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto x = Sequence::get_RowView(m, i);
+            BOOST_REQUIRE_EQUAL(is_const_row_view(x), false);
             for (auto j = x.begin(); j != x.end(); ++j)
                 {
                     std::int8_t ex
@@ -180,7 +195,7 @@ BOOST_AUTO_TEST_CASE(test_const_row_views)
     for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto x = Sequence::get_ConstRowView(m, i);
-
+            BOOST_REQUIRE_EQUAL(is_const_row_view(x), true);
             for (auto j = x.begin(); j != x.end(); ++j)
                 {
                     std::int8_t ex
