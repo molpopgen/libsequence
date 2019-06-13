@@ -94,7 +94,7 @@ namespace Sequence
                 std::forward<positions_input>(positions_))),
               capsule(new VectorGenotypeCapsule(
                   std::forward<data_input>(data_), pcapsule->size())),
-              max_allele_{ set_max_allele(max_allele_value) }
+              max_allele_(set_max_allele(max_allele_value))
         {
             if (max_allele() < 0)
                 {
@@ -108,9 +108,10 @@ namespace Sequence
         }
 
         VariantMatrix(std::unique_ptr<GenotypeCapsule> data_,
-                      std::unique_ptr<PositionCapsule> positions_)
-            : pcapsule(std::move(positions_)),
-              capsule(std::move(data_)), max_allele_{ set_max_allele(-1) }
+                      std::unique_ptr<PositionCapsule> positions_,
+                      std::int8_t max_allele_value)
+            : pcapsule(std::move(positions_)), capsule(std::move(data_)),
+              max_allele_(set_max_allele(max_allele_value))
         {
             if (max_allele() < 0)
                 {
