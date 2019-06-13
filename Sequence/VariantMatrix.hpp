@@ -9,7 +9,7 @@
 #include <limits>
 #include <stdexcept>
 #include <type_traits>
-#include "VariantMatrixCapsule.hpp"
+#include "VectorCapsules.hpp"
 
 static_assert(sizeof(std::int8_t) == sizeof(char),
               "sizeof(char) is not 8 bits");

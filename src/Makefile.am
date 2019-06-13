@@ -49,6 +49,7 @@ libsequence_la_SOURCES=  Grantham.cc\
 	variant_matrix/StateCounts.cc \
 	variant_matrix/filtering.cc \
 	variant_matrix/windows.cc \
+	variant_matrix/capsule.cc \
 	summstats/thetapi.cc \
 	summstats/thetaw.cc \
 	summstats/tajd.cc \
