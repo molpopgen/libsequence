@@ -156,8 +156,12 @@ namespace Sequence
         const double* pend() const;
 
         double position(std::size_t) const;
+        double & position(std::size_t);
 
         void swap(VariantMatrix& rhs);
+
+        bool resizable() const;
+        void resize_capsules();
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);

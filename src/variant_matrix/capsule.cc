@@ -1,4 +1,8 @@
 #include <Sequence/VectorCapsules.hpp>
+#include <limits>
+#include <algorithm>
+#include <iterator>
+#include <cmath>
 
 namespace Sequence
 {
@@ -109,6 +113,24 @@ namespace Sequence
         return buffer.size();
     }
 
+    bool
+    VectorGenotypeCapsule::resizable() const
+    {
+        return true;
+    }
+
+    void
+    VectorGenotypeCapsule::resize()
+    {
+        buffer.erase(std::remove_if(
+                         std::begin(buffer), std::end(buffer),
+                         [this](std::int8_t x) {
+                             return x
+                                    == std::numeric_limits<std::int8_t>::min();
+                         }),
+                     std::end(buffer));
+    }
+
     // Position capsule based on std::vector here
     double& VectorPositionCapsule::operator[](std::size_t i)
     {
@@ -121,74 +143,74 @@ namespace Sequence
     }
 
     double*
-    VectorPositionCapsule::data() 
+    VectorPositionCapsule::data()
     {
         return buffer.data();
     }
 
     const double*
-    VectorPositionCapsule::data() const 
+    VectorPositionCapsule::data() const
     {
         return buffer.data();
     }
 
     const double*
-    VectorPositionCapsule::cdata() const 
+    VectorPositionCapsule::cdata() const
     {
         return buffer.data();
     }
 
     std::unique_ptr<PositionCapsule>
-    VectorPositionCapsule::clone() const 
+    VectorPositionCapsule::clone() const
     {
         return std::unique_ptr<PositionCapsule>(
             new VectorPositionCapsule(*this));
     }
 
     double*
-    VectorPositionCapsule::begin() 
+    VectorPositionCapsule::begin()
     {
         return buffer.data();
     }
 
     const double*
-    VectorPositionCapsule::begin() const 
+    VectorPositionCapsule::begin() const
     {
         return buffer.data();
     }
 
     double*
-    VectorPositionCapsule::end() 
+    VectorPositionCapsule::end()
     {
         return buffer.data() + buffer.size();
     }
 
     const double*
-    VectorPositionCapsule::end() const 
+    VectorPositionCapsule::end() const
     {
         return buffer.data() + buffer.size();
     }
 
     const double*
-    VectorPositionCapsule::cbegin() const 
+    VectorPositionCapsule::cbegin() const
     {
         return begin();
     }
 
     const double*
-    VectorPositionCapsule::cend() const 
+    VectorPositionCapsule::cend() const
     {
         return end();
     }
 
     bool
-    VectorPositionCapsule::empty() const 
+    VectorPositionCapsule::empty() const
     {
         return buffer.empty();
     }
 
     std::size_t
-    VectorPositionCapsule::size() const 
+    VectorPositionCapsule::size() const
     {
         return buffer.size();
     }
@@ -197,5 +219,19 @@ namespace Sequence
     VectorPositionCapsule::nsites() const
     {
         return buffer.size();
+    }
+
+    bool
+    VectorPositionCapsule::resizable() const
+    {
+        return true;
+    }
+    void
+    VectorPositionCapsule::resize()
+    {
+        buffer.erase(
+            std::remove_if(std::begin(buffer), std::end(buffer),
+                           [this](double d) { return std::isnan(d); }),
+            std::end(buffer));
     }
 } // namespace Sequence

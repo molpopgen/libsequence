@@ -8,6 +8,38 @@ namespace Sequence
 {
     template <typename T>
     std::int32_t
+    filter_common_resizable(
+        VariantMatrix &m, const std::function<bool(const T &)> &f,
+        const std::function<T(VariantMatrix &, const std::size_t)> &viewmaker,
+        std::size_t &dim)
+    {
+        constexpr auto remove_pos = std::is_same<T, RowView>::value;
+        std::int32_t rv = 0;
+        for (std::size_t i = 0; i < dim; ++i)
+            {
+                auto view = viewmaker(m, i);
+                if (f(view))
+                    {
+                        ++rv;
+                        std::transform(
+                            view.begin(), view.end(), view.begin(),
+                            [](double) { return VariantMatrix::mask; });
+                        if (remove_pos)
+                            {
+                                m.position(i)
+                                    = std::numeric_limits<double>::quiet_NaN();
+                            }
+                    }
+            }
+        if (rv)
+            {
+                m.resize_capsules();
+            }
+        return rv;
+    }
+
+    template <typename T>
+    std::int32_t
     filter_common(
         VariantMatrix &m, const std::function<bool(const T &)> &f,
         const std::function<T(VariantMatrix &, const std::size_t)> &viewmaker,
@@ -58,7 +90,7 @@ namespace Sequence
     filter_sites(VariantMatrix &m,
                  const std::function<bool(const RowView &)> &f)
     {
-        return filter_common<RowView>(
+        return filter_common_resizable<RowView>(
             m, f,
             [](VariantMatrix &m, const std::size_t i) {
                 return get_RowView(m, i);
@@ -67,13 +99,37 @@ namespace Sequence
     }
 
     std::int32_t
+    filter_sites(VariantMatrix &m,
+                 const std::function<bool(const ConstRowView &)> &f)
+    {
+        return filter_common<ConstRowView>(
+            m, f,
+            [](VariantMatrix &m, const std::size_t i) {
+                return get_ConstRowView(m, i);
+            },
+            m.nsites());
+    }
+
+    std::int32_t
     filter_haplotypes(VariantMatrix &m,
                       const std::function<bool(const ColView &)> &f)
     {
-        return filter_common<ColView>(
+        return filter_common_resizable<ColView>(
             m, f,
             [](VariantMatrix &m, const std::size_t i) {
-                return get_ColView(m, i);
+					return get_ColView(m, i);
+            },
+            m.nsam());
+    }
+
+    std::int32_t
+    filter_haplotypes(VariantMatrix &m,
+                      const std::function<bool(const ConstColView &)> &f)
+    {
+        return filter_common<ConstColView>(
+            m, f,
+            [](VariantMatrix &m, const std::size_t i) {
+                return get_ConstColView(m, i);
             },
             m.nsam());
     }

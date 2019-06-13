@@ -2,6 +2,7 @@
 #define VECTOR_CAPSULES_HPP
 
 #include "VariantMatrixCapsule.hpp"
+#include <vector>
 
 namespace Sequence
 {
@@ -60,16 +61,22 @@ namespace Sequence
         bool empty() const final;
 
         std::size_t size() const final;
+
+        bool resizable() const final;
+
+        void resize() final;
     };
 
     class VectorPositionCapsule : public PositionCapsule
     {
       private:
         std::vector<double> buffer;
+        std::size_t current_size;
 
       public:
         template <typename T>
-        explicit VectorPositionCapsule(T&& t) : buffer(std::forward<T>(t))
+        explicit VectorPositionCapsule(T&& t)
+            : buffer(std::forward<T>(t)), current_size(buffer.size())
         {
         }
 
@@ -102,6 +109,10 @@ namespace Sequence
         std::size_t size() const final;
 
         std::size_t nsites() const;
+
+        bool resizable() const final;
+
+        void resize() final;
     };
 } // namespace Sequence
 #endif

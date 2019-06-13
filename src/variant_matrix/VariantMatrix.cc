@@ -43,6 +43,12 @@ namespace Sequence
         return pcapsule->operator[](i);
     }
 
+    double&
+    VariantMatrix::position(std::size_t i)
+    {
+        return pcapsule->operator[](i);
+    }
+
     double*
     VariantMatrix::pbegin()
     {
@@ -135,6 +141,19 @@ namespace Sequence
         this->capsule.swap(rhs.capsule);
         this->pcapsule.swap(rhs.pcapsule);
         std::swap(this->max_allele_, rhs.max_allele_);
+    }
+
+    bool
+    VariantMatrix::resizable() const
+    {
+        return capsule->resizable() && pcapsule->resizable();
+    }
+
+    void
+    VariantMatrix::resize_capsules()
+    {
+        capsule->resize();
+        pcapsule->resize();
     }
 
     void

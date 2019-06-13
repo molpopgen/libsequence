@@ -27,6 +27,11 @@ namespace Sequence
         virtual const T* cend() const = 0;
         virtual bool empty() const = 0;
         virtual std::size_t size() const = 0;
+
+        virtual bool resizable() const = 0;
+
+        /// Overload iff resizable() returns true
+        virtual void resize() { throw std::runtime_error("Capsule cannot be resized"); }
     };
 
     struct GenotypeCapsule : public Capsule<std::int8_t>
