@@ -1,3 +1,4 @@
+#include <Sequence/NonOwningCapsules.hpp>
 #include <Sequence/variant_matrix/windows.hpp>
 
 namespace Sequence
