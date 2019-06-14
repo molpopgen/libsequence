@@ -39,9 +39,12 @@ namespace Sequence
         return nsam_;
     }
 
-    std::int8_t& NonOwningGenotypeCapsule::operator()(std::size_t, std::size_t)
+    std::int8_t&
+    NonOwningGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
     {
         raise();
+        return *const_cast<std::int8_t*>(
+            &buffer[(k1 * tda + k2) + site * tda + sample]);
     }
 
     const std::int8_t&
@@ -56,6 +59,7 @@ namespace Sequence
     NonOwningGenotypeCapsule::data()
     {
         raise();
+        return const_cast<std::int8_t*>(buffer.get());
     }
 
     const std::int8_t*
@@ -82,6 +86,7 @@ namespace Sequence
     NonOwningGenotypeCapsule::begin()
     {
         raise();
+        return const_cast<std::int8_t*>(buffer.get());
     }
 
     const std::int8_t*
@@ -94,6 +99,7 @@ namespace Sequence
     NonOwningGenotypeCapsule::end()
     {
         raise();
+        return const_cast<std::int8_t*>(buffer.get()) + nsam_ * nsites_;
     }
 
     const std::int8_t*
@@ -133,7 +139,11 @@ namespace Sequence
     }
 
     // Position capsule based on std::vector here
-    double& NonOwningPositionCapsule::operator[](std::size_t i) { raise(); }
+    double& NonOwningPositionCapsule::operator[](std::size_t i)
+    {
+        raise();
+        return *const_cast<double*>(&buffer[i]);
+    }
 
     const double& NonOwningPositionCapsule::operator[](std::size_t i) const
     {
@@ -144,6 +154,7 @@ namespace Sequence
     NonOwningPositionCapsule::data()
     {
         raise();
+        return const_cast<double*>(buffer.get());
     }
 
     const double*
@@ -169,6 +180,7 @@ namespace Sequence
     NonOwningPositionCapsule::begin()
     {
         raise();
+        return const_cast<double*>(buffer.get());
     }
 
     const double*
@@ -181,6 +193,7 @@ namespace Sequence
     NonOwningPositionCapsule::end()
     {
         raise();
+        return const_cast<double*>(cdata()) + current_size;
     }
 
     const double*
