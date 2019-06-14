@@ -91,7 +91,7 @@ namespace Sequence
     VariantMatrix::cpend() const
     {
         const auto cp = extract_const_ptr(pcapsule);
-        static_assert(std::is_const<decltype(cp)>::value,"foo");
+        static_assert(std::is_const<decltype(cp)>::value, "foo");
         return cp->end();
     }
 
@@ -107,6 +107,14 @@ namespace Sequence
                        const std::size_t haplotype) const
     {
         return capsule->operator()(site, haplotype);
+    }
+
+    const std::int8_t&
+    VariantMatrix::cget(const std::size_t site,
+                        const std::size_t haplotype) const
+    {
+        auto cp = extract_const_ptr(this->capsule);
+        return cp->operator()(site, haplotype);
     }
 
     // Ranged-checked access after std::vector<T>::at.
@@ -131,6 +139,19 @@ namespace Sequence
                     "VariantMatrix::at -- index out of range");
             }
         return capsule->operator()(site, haplotype);
+    }
+
+    const std::int8_t&
+    VariantMatrix::cat(const std::size_t site,
+                      const std::size_t haplotype) const
+    {
+        if (site >= nsites() || haplotype >= nsam())
+            {
+                throw std::out_of_range(
+                    "VariantMatrix::at -- index out of range");
+            }
+        auto cp = extract_const_ptr(this->capsule);
+        return cp->operator()(site, haplotype);
     }
 
     std::int8_t*
