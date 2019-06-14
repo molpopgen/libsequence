@@ -44,10 +44,12 @@ namespace Sequence
         raise();
     }
 
-    const std::int8_t& NonOwningGenotypeCapsule::
-    operator()(std::size_t site, std::size_t sample) const
+    const std::int8_t&
+    NonOwningGenotypeCapsule::operator()(std::size_t site,
+                                         std::size_t sample) const
     {
-        return buffer[0]; // TODO: fix
+        //m'(i,j) = m->data[(k1*m->tda + k2) + i*m->tda + j]
+        return buffer[(k1 * tda + k2) + site * tda + sample];
     }
 
     std::int8_t*
@@ -72,7 +74,7 @@ namespace Sequence
     NonOwningGenotypeCapsule::clone() const
     {
         return std::unique_ptr<GenotypeCapsule>(new NonOwningGenotypeCapsule(
-            this->buffer.get(), this->nsites_, this->nsam_, this->tda_));
+            this->buffer.get(), this->nsites_, this->nsam_, this->k1, this->k2, this->tda));
     }
 
     std::int8_t*
