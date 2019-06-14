@@ -74,7 +74,8 @@ namespace Sequence
     NonOwningGenotypeCapsule::clone() const
     {
         return std::unique_ptr<GenotypeCapsule>(new NonOwningGenotypeCapsule(
-            this->buffer.get(), this->nsites_, this->nsam_, this->k1, this->k2, this->tda));
+            this->buffer.get(), this->nsites_, this->nsam_, this->k1, this->k2,
+            this->tda));
     }
 
     std::int8_t*
