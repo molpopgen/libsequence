@@ -10,8 +10,6 @@ namespace Sequence
     template <typename T> struct Capsule
     {
         virtual ~Capsule() = default;
-        virtual T& operator[](std::size_t) = 0;
-        virtual const T& operator[](std::size_t) const = 0;
         // Following two may not be needed
         //virtual T& get(std::size_t site, std::size_t sample) = 0;
         //virtual const T& get(std::size_t site,
@@ -31,7 +29,11 @@ namespace Sequence
         virtual bool resizable() const = 0;
 
         /// Overload iff resizable() returns true
-        virtual void resize(bool) { throw std::runtime_error("Capsule cannot be resized"); }
+        virtual void
+        resize(bool)
+        {
+            throw std::runtime_error("Capsule cannot be resized");
+        }
     };
 
     struct GenotypeCapsule : public Capsule<std::int8_t>
@@ -42,6 +44,9 @@ namespace Sequence
         virtual std::size_t& nsites() = 0;
         virtual std::size_t& nsam() = 0;
         virtual std::unique_ptr<GenotypeCapsule> clone() const = 0;
+        virtual std::int8_t& operator()(std::size_t, std::size_t) = 0;
+        virtual const std::int8_t& operator()(std::size_t,
+                                              std::size_t) const = 0;
     };
 
     struct PositionCapsule : public Capsule<double>
@@ -49,6 +54,8 @@ namespace Sequence
         virtual ~PositionCapsule() = default;
         virtual std::size_t nsites() const = 0;
         virtual std::unique_ptr<PositionCapsule> clone() const = 0;
+        virtual double& operator[](std::size_t) = 0;
+        virtual const double& operator[](std::size_t) const = 0;
     };
 
 } // namespace Sequence

@@ -34,9 +34,9 @@ namespace Sequence
 
         std::size_t nsam() const;
 
-        std::int8_t& operator[](std::size_t);
+        std::int8_t& operator()(std::size_t, std::size_t);
 
-        const std::int8_t& operator[](std::size_t) const;
+        const std::int8_t& operator()(std::size_t, std::size_t) const;
 
         std::int8_t* data() final;
 
