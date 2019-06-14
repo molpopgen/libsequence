@@ -20,7 +20,8 @@ namespace Sequence
                                      m.max_allele());
             }
         std::unique_ptr<GenotypeCapsule> gc(new NonOwningGenotypeCapsule(
-            m.cdata(), pe - pb, m.nsam(), m.nsites()));
+            m.cdata() + (pb - m.pbegin()) * m.nsam(), pe - pb, m.nsam(),
+            m.nsites()));
         std::unique_ptr<PositionCapsule> pc(
             new NonOwningPositionCapsule(&*pb, pe - pb));
         return VariantMatrix(std::move(gc), std::move(pc), m.max_allele());
