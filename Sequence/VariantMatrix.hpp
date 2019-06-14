@@ -156,7 +156,8 @@ namespace Sequence
         const double* pend() const;
 
         double position(std::size_t) const;
-        double & position(std::size_t);
+        const double& cposition(std::size_t) const;
+        double& position(std::size_t);
 
         void swap(VariantMatrix& rhs);
 

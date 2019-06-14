@@ -43,6 +43,13 @@ namespace Sequence
         return pcapsule->operator[](i);
     }
 
+    const double&
+    VariantMatrix::cposition(std::size_t i) const
+    {
+        auto cp = const_cast<const PositionCapsule*>(pcapsule.get());
+        return cp->operator[](i);
+    }
+
     double&
     VariantMatrix::position(std::size_t i)
     {

@@ -362,13 +362,13 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
     for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto w = Sequence::make_window(m, m.position(i), m.position(i));
-            BOOST_REQUIRE_EQUAL(w.position(0), m.position(i));
+            BOOST_REQUIRE_EQUAL(w.cposition(0), m.cposition(i));
             auto r = Sequence::get_ConstRowView(m, i);
-            BOOST_REQUIRE_EQUAL(std::mismatch(w.data(),
-                                              w.data() + w.nsites() * w.nsam(),
+            BOOST_REQUIRE_EQUAL(std::mismatch(w.cdata(),
+                                              w.cdata() + w.nsites() * w.nsam(),
                                               r.begin())
                                         .first
-                                    == w.data() + w.nsites() * w.nsam(),
+                                    == w.cdata() + w.nsites() * w.nsam(),
                                 true);
         }
 }
@@ -377,7 +377,7 @@ BOOST_AUTO_TEST_CASE(test_windows_multi_site)
 {
     auto w = Sequence::make_window(m, 0.11, 0.29);
     BOOST_REQUIRE_EQUAL(w.nsites(), 1);
-    BOOST_REQUIRE_EQUAL(w.position(0), 0.2);
+    BOOST_REQUIRE_EQUAL(w.cposition(0), 0.2);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
