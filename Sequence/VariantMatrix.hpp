@@ -45,6 +45,13 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
+        template <typename T>
+        inline const typename T::element_type*
+        extract_const_ptr(T& t) const
+        {
+            return const_cast<const typename T::element_type*>(t.get());
+        }
+
         std::unique_ptr<PositionCapsule> pcapsule;
         std::unique_ptr<GenotypeCapsule> capsule;
         std::int8_t
@@ -152,8 +159,10 @@ namespace Sequence
         // Iterator access to positions
         double* pbegin();
         const double* pbegin() const;
+        const double* cpbegin() const;
         double* pend();
         const double* pend() const;
+        const double* cpend() const;
 
         double position(std::size_t) const;
         const double& cposition(std::size_t) const;

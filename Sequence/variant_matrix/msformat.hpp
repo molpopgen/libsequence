@@ -70,7 +70,7 @@ namespace Sequence
      */
     {
         o << "//\nsegsites: " << m.nsites() << "\npositions: ";
-        for (auto p = m.pbegin(); p < m.pend(); ++p)
+        for (auto p = m.cpbegin(); p < m.cpend(); ++p)
         {
             o << *p << ' ';
         }

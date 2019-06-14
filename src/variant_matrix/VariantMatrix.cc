@@ -46,7 +46,7 @@ namespace Sequence
     const double&
     VariantMatrix::cposition(std::size_t i) const
     {
-        auto cp = const_cast<const PositionCapsule*>(pcapsule.get());
+        auto cp = extract_const_ptr(this->pcapsule);
         return cp->operator[](i);
     }
 
@@ -68,6 +68,13 @@ namespace Sequence
         return pcapsule->begin();
     }
 
+    const double*
+    VariantMatrix::cpbegin() const
+    {
+        const auto cp = extract_const_ptr(pcapsule);
+        return cp->begin();
+    }
+
     double*
     VariantMatrix::pend()
     {
@@ -78,6 +85,14 @@ namespace Sequence
     VariantMatrix::pend() const
     {
         return pcapsule->end();
+    }
+
+    const double*
+    VariantMatrix::cpend() const
+    {
+        const auto cp = extract_const_ptr(pcapsule);
+        static_assert(std::is_const<decltype(cp)>::value,"foo");
+        return cp->end();
     }
 
     // Non range-checked access

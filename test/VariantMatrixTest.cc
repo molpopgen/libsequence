@@ -367,7 +367,7 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
             auto r = Sequence::get_ConstRowView(m, i);
             auto wr = Sequence::get_ConstRowView(w, 0);
             BOOST_REQUIRE_EQUAL(
-                std::mismatch(r.begin(), r.end(), wr.begin()).first == r.end(),
+                std::mismatch(r.begin(), r.end(), wr.cbegin()).first == r.end(),
                 true);
             BOOST_REQUIRE_EQUAL(
                 std::mismatch(w.cdata(), w.cdata() + w.nsites() * w.nsam(),
