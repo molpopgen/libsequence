@@ -363,21 +363,16 @@ BOOST_AUTO_TEST_CASE(tests_windows_size_1)
         {
             auto w = Sequence::make_window(m, m.position(i), m.position(i));
             // This is a const-correctness test
-            BOOST_REQUIRE_NO_THROW(auto x = w.cget(0,0));
-            BOOST_REQUIRE_NO_THROW(auto x = w.get(0,0)); 
+            BOOST_REQUIRE_NO_THROW(auto x = w.cget(0, 0));
+            BOOST_REQUIRE_THROW(auto x = w.get(0, 0), std::runtime_error);
 
             BOOST_REQUIRE_EQUAL(w.cposition(0), m.cposition(i));
             BOOST_REQUIRE_EQUAL(w.nsites(), 1);
             auto r = Sequence::get_ConstRowView(m, i);
             auto wr = Sequence::get_ConstRowView(w, 0);
             BOOST_REQUIRE_EQUAL(
-                std::mismatch(r.begin(), r.end(), wr.cbegin()).first == r.end(),
-                true);
-            BOOST_REQUIRE_EQUAL(
-                std::mismatch(w.cdata(), w.cdata() + w.nsites() * w.nsam(),
-                              r.begin())
-                        .first
-                    == w.cdata() + w.nsites() * w.nsam(),
+                std::mismatch(r.begin(), r.end(), wr.cbegin()).first
+                    == r.end(),
                 true);
         }
 }

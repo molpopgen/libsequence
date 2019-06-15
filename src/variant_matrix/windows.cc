@@ -12,21 +12,24 @@ namespace Sequence
             }
         auto pb = std::lower_bound(m.pbegin(), m.pend(), beg);
         auto pe = std::upper_bound(pb, m.pend(), end);
-        std::vector<int8_t> data;
-        std::vector<double> pos;
         if (pb == m.pend())
             {
-                return VariantMatrix(std::move(data), std::move(pos), -1);
+                std::unique_ptr<GenotypeCapsule> gc(
+                    new NonOwningGenotypeCapsule(m.cdata(), 0, 0, 0, 0, 0));
+                std::unique_ptr<PositionCapsule> pc(
+                    new NonOwningPositionCapsule(pb, 0));
+                return VariantMatrix(std::move(gc), std::move(pc),
+                                     m.max_allele());
             }
-        pos.assign(pb, pe);
-        for (auto i = pb; i < pe; ++i)
-            {
-                auto v = get_ConstRowView(
-                    m,
-                    static_cast<std::size_t>(std::distance(m.cpbegin(), i)));
-                data.insert(data.end(), v.begin(), v.end());
-            }
-        return VariantMatrix(std::move(data), std::move(pos), -1);
+        std::size_t nsites = pe - pb;
+        std::size_t nsam = m.nsam();
+        std::size_t row_offset = pb - m.pbegin();
+
+        std::unique_ptr<GenotypeCapsule> gc(new NonOwningGenotypeCapsule(
+            m.cdata(), nsites, nsam, row_offset, 0, nsam));
+        std::unique_ptr<PositionCapsule> pc(
+            new NonOwningPositionCapsule(pb, pe - pb));
+        return VariantMatrix(std::move(gc), std::move(pc), m.max_allele());
     }
 
     VariantMatrix
