@@ -211,6 +211,12 @@ namespace Sequence
         return capsule->col_offset();
     }
 
+    std::size_t
+    VariantMatrix::genotype_stride() const
+    {
+        return capsule->stride();
+    }
+
     void
     swap(VariantMatrix& a, VariantMatrix& b)
     {

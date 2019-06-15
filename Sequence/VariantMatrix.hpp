@@ -178,6 +178,7 @@ namespace Sequence
         void resize_capsules(bool remove_sites);
         std::size_t genotype_row_offset() const;
         std::size_t genotype_col_offset() const;
+        std::size_t genotype_stride() const;
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);

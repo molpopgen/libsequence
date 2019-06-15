@@ -48,6 +48,8 @@ namespace Sequence
 
         std::size_t col_offset() const final;
 
+        std::size_t stride() const final;
+
         std::int8_t& operator()(std::size_t, std::size_t);
 
         const std::int8_t& operator()(std::size_t, std::size_t) const;

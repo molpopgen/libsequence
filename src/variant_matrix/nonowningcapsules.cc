@@ -51,6 +51,12 @@ namespace Sequence
         return k2;
     }
 
+    std::size_t
+    NonOwningGenotypeCapsule::stride() const
+    {
+        return tda;
+    }
+
     std::int8_t&
     NonOwningGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
     {

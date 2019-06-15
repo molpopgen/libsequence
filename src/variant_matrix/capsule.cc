@@ -42,6 +42,12 @@ namespace Sequence
         return 0;
     }
 
+    std::size_t
+    VectorGenotypeCapsule::stride() const
+    {
+        return nsam_;
+    }
+
     std::int8_t&
     VectorGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
     {
