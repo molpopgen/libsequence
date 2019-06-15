@@ -43,6 +43,8 @@ namespace Sequence
         virtual std::size_t nsam() const = 0;
         virtual std::size_t& nsites() = 0;
         virtual std::size_t& nsam() = 0;
+        virtual std::size_t row_offset() const = 0;
+        virtual std::size_t col_offset() const = 0;
         virtual std::unique_ptr<GenotypeCapsule> clone() const = 0;
         virtual std::int8_t& operator()(std::size_t, std::size_t) = 0;
         virtual const std::int8_t& operator()(std::size_t,

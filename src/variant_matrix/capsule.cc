@@ -30,14 +30,29 @@ namespace Sequence
         return nsam_;
     }
 
-    std::int8_t& VectorGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
+    std::size_t
+    VectorGenotypeCapsule::row_offset() const
     {
-        return buffer[site*nsam_ + sample];
+        return 0;
     }
 
-    const std::int8_t& VectorGenotypeCapsule::operator()(std::size_t site, std::size_t sample) const
+    std::size_t
+    VectorGenotypeCapsule::col_offset() const
     {
-        return buffer[site*nsam_ + sample];
+        return 0;
+    }
+
+    std::int8_t&
+    VectorGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
+    {
+        return buffer[site * nsam_ + sample];
+    }
+
+    const std::int8_t&
+    VectorGenotypeCapsule::operator()(std::size_t site,
+                                      std::size_t sample) const
+    {
+        return buffer[site * nsam_ + sample];
     }
 
     std::int8_t*

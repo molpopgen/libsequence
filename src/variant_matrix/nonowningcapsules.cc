@@ -39,6 +39,18 @@ namespace Sequence
         return nsam_;
     }
 
+    std::size_t
+    NonOwningGenotypeCapsule::row_offset() const
+    {
+        return k1;
+    }
+
+    std::size_t
+    NonOwningGenotypeCapsule::col_offset() const
+    {
+        return k2;
+    }
+
     std::int8_t&
     NonOwningGenotypeCapsule::operator()(std::size_t site, std::size_t sample)
     {
