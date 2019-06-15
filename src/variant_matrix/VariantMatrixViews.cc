@@ -11,8 +11,11 @@ namespace
             {
                 throw std::out_of_range("row index out of range");
             }
-        return T(m.data() + row * m.nsam(), m.nsam());
+        auto x = m.data() + m.genotype_row_offset() * m.nsam()
+                 + m.genotype_col_offset() + row * m.nsam();
+        return T(x,  m.nsam());
     }
+
     template <typename T, typename VM>
     T
     col_view_wrapper(VM& m, const std::size_t col)
@@ -21,7 +24,10 @@ namespace
             {
                 throw std::out_of_range("column index out of range");
             }
-        return T(m.data() + col, m.nsam() * m.nsites(), m.nsam());
+        auto x = m.data() + m.genotype_row_offset() * m.nsam()
+                 + m.genotype_col_offset() + col * m.nsam();
+        // NOTE: wrong
+        return T(x,  m.nsam() * m.nsites(), m.nsam());
     }
 
     template <typename T, typename VM>
@@ -32,7 +38,9 @@ namespace
             {
                 throw std::out_of_range("row index out of range");
             }
-        return T(m.cdata() + row * m.nsam(), m.nsam());
+        auto x = m.cdata() + m.genotype_row_offset() * m.nsam()
+                 + m.genotype_col_offset() + row * m.nsam();
+        return T(x,  m.nsam());
     }
     template <typename T, typename VM>
     T
@@ -42,9 +50,12 @@ namespace
             {
                 throw std::out_of_range("column index out of range");
             }
-        return T(m.cdata() + col, m.nsam() * m.nsites(), m.nsam());
+        // NOTE: wrong
+        auto x = m.cdata() + m.genotype_row_offset() * m.nsam()
+                 + m.genotype_col_offset() + col * m.nsam();
+        return T(x, m.nsam() * m.nsites(), m.nsam());
     }
-}
+} // namespace
 
 namespace Sequence
 {
@@ -96,4 +107,4 @@ namespace Sequence
     {
         return const_col_view_wrapper<ConstColView>(m, col);
     }
-}
+} // namespace Sequence
