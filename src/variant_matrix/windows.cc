@@ -12,19 +12,21 @@ namespace Sequence
             }
         auto pb = std::lower_bound(m.pbegin(), m.pend(), beg);
         auto pe = std::upper_bound(pb, m.pend(), end);
+        std::vector<int8_t> data;
+        std::vector<double> pos;
         if (pb == m.pend())
             {
-                std::vector<int8_t> data;
-                std::vector<double> pos;
-                return VariantMatrix(std::move(data), std::move(pos),
-                                     m.max_allele());
+                return VariantMatrix(std::move(data), std::move(pos), -1);
             }
-        std::unique_ptr<GenotypeCapsule> gc(new NonOwningGenotypeCapsule(
-            m.cdata() + (pb - m.pbegin()) * m.nsam(), pe - pb, m.nsam(),
-            m.nsites()));
-        std::unique_ptr<PositionCapsule> pc(
-            new NonOwningPositionCapsule(&*pb, pe - pb));
-        return VariantMatrix(std::move(gc), std::move(pc), m.max_allele());
+        pos.assign(pb, pe);
+        for (auto i = pb; i < pe; ++i)
+            {
+                auto v = get_ConstRowView(
+                    m,
+                    static_cast<std::size_t>(std::distance(m.cpbegin(), i)));
+                data.insert(data.end(), v.begin(), v.end());
+            }
+        return VariantMatrix(std::move(data), std::move(pos), -1);
     }
 
     VariantMatrix
