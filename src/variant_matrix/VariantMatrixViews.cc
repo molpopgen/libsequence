@@ -11,8 +11,8 @@ namespace
             {
                 throw std::out_of_range("row index out of range");
             }
-        auto x = m.data() + m.genotype_row_offset() * m.nsam()
-                 + m.genotype_col_offset() + row * m.nsam();
+        auto x = m.data() + m.genotype_row_offset() * m.genotype_stride()
+                 + m.genotype_col_offset() + row * m.genotype_stride();
         return T(x, m.nsam());
     }
 
@@ -37,8 +37,8 @@ namespace
             {
                 throw std::out_of_range("row index out of range");
             }
-        auto x = m.cdata() + m.genotype_row_offset() * m.nsam()
-                 + m.genotype_col_offset() + row * m.nsam();
+        auto x = m.cdata() + m.genotype_row_offset() * m.genotype_stride()
+                 + m.genotype_col_offset() + row * m.genotype_stride();
         return T(x, m.nsam());
     }
 
