@@ -50,6 +50,7 @@ testAlleleCountMatrix.cc \
 testClassicSummstats.cc \
 testClassicSummstatsEmptyVariantMatrix.cc \
 testLD.cc \
-testGarudStatistics.cc
+testGarudStatistics.cc \
+msformatdata.cc
 
 endif #if BUNIT_TEST_PRESENT

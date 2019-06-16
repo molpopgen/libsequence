@@ -126,7 +126,7 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 	stateCounterTest.cc VariantMatrixTest.cc \
 	testAlleleCountMatrix.cc testClassicSummstats.cc \
 	testClassicSummstatsEmptyVariantMatrix.cc testLD.cc \
-	testGarudStatistics.cc
+	testGarudStatistics.cc msformatdata.cc
 @BUNIT_TEST_PRESENT_TRUE@am_libseq_unit_tests_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	libseq_unit_tests.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	FastaConstructors.$(OBJEXT) \
@@ -156,7 +156,8 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 @BUNIT_TEST_PRESENT_TRUE@	testClassicSummstats.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testClassicSummstatsEmptyVariantMatrix.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testLD.$(OBJEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	testGarudStatistics.$(OBJEXT)
+@BUNIT_TEST_PRESENT_TRUE@	testGarudStatistics.$(OBJEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	msformatdata.$(OBJEXT)
 libseq_unit_tests_OBJECTS = $(am_libseq_unit_tests_OBJECTS)
 libseq_unit_tests_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -192,7 +193,7 @@ am__depfiles_remade = ./$(DEPDIR)/AlignStreamTest.Po \
 	./$(DEPDIR)/SeqConversions.Po ./$(DEPDIR)/SimpleSNPIO.Po \
 	./$(DEPDIR)/VariantMatrixTest.Po ./$(DEPDIR)/alphabets.Po \
 	./$(DEPDIR)/fastqConstructors.Po ./$(DEPDIR)/fastqIO.Po \
-	./$(DEPDIR)/libseq_unit_tests.Po \
+	./$(DEPDIR)/libseq_unit_tests.Po ./$(DEPDIR)/msformatdata.Po \
 	./$(DEPDIR)/polySiteVectorTest.Po \
 	./$(DEPDIR)/stateCounterTest.Po \
 	./$(DEPDIR)/testAlleleCountMatrix.Po \
@@ -605,7 +606,8 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@testClassicSummstats.cc \
 @BUNIT_TEST_PRESENT_TRUE@testClassicSummstatsEmptyVariantMatrix.cc \
 @BUNIT_TEST_PRESENT_TRUE@testLD.cc \
-@BUNIT_TEST_PRESENT_TRUE@testGarudStatistics.cc
+@BUNIT_TEST_PRESENT_TRUE@testGarudStatistics.cc \
+@BUNIT_TEST_PRESENT_TRUE@msformatdata.cc
 
 all: all-am
 
@@ -682,6 +684,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqConstructors.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/fastqIO.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libseq_unit_tests.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/msformatdata.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/polySiteVectorTest.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/stateCounterTest.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testAlleleCountMatrix.Po@am__quote@ # am--include-marker
@@ -1041,6 +1044,7 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/fastqConstructors.Po
 	-rm -f ./$(DEPDIR)/fastqIO.Po
 	-rm -f ./$(DEPDIR)/libseq_unit_tests.Po
+	-rm -f ./$(DEPDIR)/msformatdata.Po
 	-rm -f ./$(DEPDIR)/polySiteVectorTest.Po
 	-rm -f ./$(DEPDIR)/stateCounterTest.Po
 	-rm -f ./$(DEPDIR)/testAlleleCountMatrix.Po
@@ -1115,6 +1119,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/fastqConstructors.Po
 	-rm -f ./$(DEPDIR)/fastqIO.Po
 	-rm -f ./$(DEPDIR)/libseq_unit_tests.Po
+	-rm -f ./$(DEPDIR)/msformatdata.Po
 	-rm -f ./$(DEPDIR)/polySiteVectorTest.Po
 	-rm -f ./$(DEPDIR)/stateCounterTest.Po
 	-rm -f ./$(DEPDIR)/testAlleleCountMatrix.Po
