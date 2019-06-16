@@ -44,7 +44,8 @@ namespace Sequence
             {
                 throw std::invalid_argument("i must be < j");
             }
-        if (i >= m.nsam() || j >= m.nsam())
+        if (i >= m.nsam()
+            || j >= m.nsam()) // NOTE: if previous check passes, this one is a bit redundant
             {
                 throw std::invalid_argument("slice indexes out of range");
             }
