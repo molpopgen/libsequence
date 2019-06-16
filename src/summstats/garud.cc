@@ -26,7 +26,7 @@ namespace Sequence
     garud_statistics(const VariantMatrix& m)
     {
         GarudStats rv;
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam())
             {
                 return rv;
             }
@@ -50,7 +50,7 @@ namespace Sequence
             {
                 return rv;
             }
-        rv.H1 = 1.0 - diversity_from_counts(counts, m.nsam - nmissing);
+        rv.H1 = 1.0 - diversity_from_counts(counts, m.nsam() - nmissing);
         std::vector<std::pair<std::int32_t, std::int32_t>> vcounts(
             counts.begin(), counts.end());
         std::sort(vcounts.begin(), vcounts.end(),
@@ -59,7 +59,7 @@ namespace Sequence
                       return a.second > b.second;
                   });
         double nsam
-            = static_cast<double>(m.nsam) - static_cast<double>(nmissing);
+            = static_cast<double>(m.nsam()) - static_cast<double>(nmissing);
         rv.H12 = rv.H1
                  + 2. * static_cast<double>(vcounts[0].second)
                        * static_cast<double>(vcounts[1].second)

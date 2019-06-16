@@ -26,7 +26,7 @@ namespace
                         if (edges.right == -1
                             || static_cast<std::size_t>(edges.right) <= core)
                             {
-                                edges.right = m.nsites;
+                                edges.right = m.nsites();
                                 // To update right edge:
                                 // Iterate over all xtons > core
                                 // and check if haplotypes i,j
@@ -69,7 +69,7 @@ namespace Sequence
         //Then, if two seqs differ at an x-ton,
         //the stats get updated.
         std::vector<std::int64_t> xtons;
-        for (std::int64_t i = 0; i < static_cast<std::int64_t>(m.nsites); ++i)
+        for (std::int64_t i = 0; i < static_cast<std::int64_t>(m.nsites()); ++i)
             {
                 auto r = get_ConstRowView(m, static_cast<std::size_t>(i));
                 auto nonref = std::count_if(
@@ -82,20 +82,20 @@ namespace Sequence
                     }
             }
         std::vector<nSLiHS> rv;
-        if (xtons.empty() || !m.nsam || !m.nsites)
+        if (xtons.empty() || !m.nsam() || !m.nsites())
             {
                 return rv;
             }
 
-        std::size_t npairs = m.nsam * (m.nsam - 1) / 2;
+        std::size_t npairs = m.nsam() * (m.nsam() - 1) / 2;
         std::vector<summstats_details::suffix_edges> edges(npairs);
         std::vector<ConstColView> alleles;
-        alleles.reserve(m.nsam);
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        alleles.reserve(m.nsam());
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 alleles.push_back(get_ColView(m, i));
             }
-        for (std::size_t core = 0; core < m.nsites; ++core)
+        for (std::size_t core = 0; core < m.nsites(); ++core)
             {
                 auto core_view = get_ConstRowView(m, core);
                 // Doing any work requires the existence
@@ -104,9 +104,9 @@ namespace Sequence
                 double ihs_values[2] = { 0, 0 };
                 int counts[2] = { 0, 0 };
                 std::size_t pair_index = 0;
-                for (std::size_t i = 0; i < m.nsam - 1; ++i)
+                for (std::size_t i = 0; i < m.nsam() - 1; ++i)
                     {
-                        for (std::size_t j = i + 1; j < m.nsam;
+                        for (std::size_t j = i + 1; j < m.nsam();
                              ++j, ++pair_index)
                             {
                                 if (update_edge_matrix(m, xtons, core_view,
@@ -116,7 +116,7 @@ namespace Sequence
                                     {
                                         summstats_details::update_counts(
                                             nsl_values, ihs_values, counts,
-                                            m.nsites, m.positions,
+                                            m.nsites(), m.pbegin(),
                                             static_cast<std::size_t>(
                                                 core_view[i] == refstate),
                                             edges[pair_index].left,

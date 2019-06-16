@@ -11,11 +11,11 @@ namespace Sequence
     lhaf(const VariantMatrix &m, const std::int8_t refstate, const double l)
     {
         std::vector<long int> dcounts;
-        dcounts.reserve(m.nsites);
+        dcounts.reserve(m.nsites());
         const auto find_nonref = [refstate](const std::int8_t x) {
             return x != refstate && !(x < 0);
         };
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nsites(); ++i)
             {
                 auto r = get_ConstRowView(m, i);
                 dcounts.push_back(
@@ -24,8 +24,8 @@ namespace Sequence
 
         // Get the values for each element in the data
         std::vector<double> rv;
-        rv.reserve(m.nsam);
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        rv.reserve(m.nsam());
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 auto c = get_ConstColView(m, i);
                 auto j = std::find_if(c.cbegin(), c.cend(), find_nonref);

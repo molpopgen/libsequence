@@ -9,6 +9,7 @@
 #include <limits>
 #include <stdexcept>
 #include <type_traits>
+#include "VectorCapsules.hpp"
 
 static_assert(sizeof(std::int8_t) == sizeof(char),
               "sizeof(char) is not 8 bits");
@@ -44,40 +45,51 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
+        template <typename T>
+        inline const typename T::element_type*
+        extract_const_ptr(T& t) const
+        {
+            return const_cast<const typename T::element_type*>(t.get());
+        }
+
+        std::unique_ptr<PositionCapsule> pcapsule;
+        std::unique_ptr<GenotypeCapsule> capsule;
         std::int8_t
         set_max_allele(const std::int8_t max_allele_value)
         {
-            if (max_allele_value < 0 && !data.empty())
+            if (max_allele_value < 0 && !capsule->empty())
                 {
-                    auto itr = std::max_element(data.begin(), data.end());
+                    auto itr
+                        = std::max_element(capsule->cbegin(), capsule->cend());
                     return *itr;
                 }
             //special case to allow construction of empty data sets
             //without throwing an exception
-            else if (data.empty())
+            else if (capsule->empty())
 
                 {
                     return 0;
                 }
             return max_allele_value;
         }
+        std::int8_t max_allele_;
 
       public:
         /// Data stored in matrix form with rows as sites.
-        std::vector<std::int8_t> data;
+        //std::vector<std::int8_t> data;
         /// Position of sites.
-        std::vector<double> positions;
+        //std::vector<double> positions;
         /// Number of sites in data set.
-        std::size_t nsites;
+        std::size_t nsites() const;
+        std::size_t& nsites();
         /// Sample size of data set.
-        std::size_t nsam;
+        std::size_t nsam() const;
+        std::size_t& nsam();
         /// Reserved value for masked data
         static const std::int8_t mask;
         /// The value type of the data.
         /// Helpful for generic programming
         using value_type = std::int8_t;
-        /// Max allelic value stored in matrix
-        const std::int8_t max_allele;
         template <typename data_input, typename positions_input>
         VariantMatrix(data_input&& data_, positions_input&& positions_,
                       const std::int8_t max_allele_value = -1)
@@ -85,18 +97,35 @@ namespace Sequence
             ///
             /// std::invalid_argument will be thrown if
             /// data.size() % positions.size() != 0.0.
-            : data(std::forward<data_input>(data_)),
-              positions(std::forward<positions_input>(positions_)),
-              nsites(positions.size()),
-              nsam((nsites > 0) ? data.size() / positions.size() : 0),
-              max_allele{ set_max_allele(max_allele_value) }
+            : pcapsule(new VectorPositionCapsule(
+                std::forward<positions_input>(positions_))),
+              capsule(new VectorGenotypeCapsule(
+                  std::forward<data_input>(data_), pcapsule->size())),
+              max_allele_(set_max_allele(max_allele_value))
         {
-            if (max_allele < 0)
+            if (max_allele() < 0)
                 {
                     throw std::invalid_argument("max allele must be >= 0");
                 }
-            if ((!data.empty() && !positions.empty())
-                && data.size() % positions.size() != 0.0)
+            if ((!capsule->empty() && !pcapsule->empty())
+                && capsule->size() % pcapsule->size() != 0.0)
+                {
+                    throw std::invalid_argument("incorrect dimensions");
+                }
+        }
+
+        VariantMatrix(std::unique_ptr<GenotypeCapsule> data_,
+                      std::unique_ptr<PositionCapsule> positions_,
+                      std::int8_t max_allele_value)
+            : pcapsule(std::move(positions_)), capsule(std::move(data_)),
+              max_allele_(set_max_allele(max_allele_value))
+        {
+            if (max_allele() < 0)
+                {
+                    throw std::invalid_argument("max allele must be >= 0");
+                }
+            if ((!capsule->empty() && !pcapsule->empty())
+                && capsule->size() % pcapsule->size() != 0.0)
                 {
                     throw std::invalid_argument("incorrect dimensions");
                 }
@@ -111,6 +140,8 @@ namespace Sequence
         /// No range-checking is done.
         const std::int8_t& get(const std::size_t site,
                                const std::size_t haplotype) const;
+        const std::int8_t& cget(const std::size_t site,
+                                const std::size_t haplotype) const;
 
         // Ranged-checked access after std::vector<T>::at.
         /// \brief Get data from marker `site` and haplotype `haplotype`.
@@ -120,8 +151,37 @@ namespace Sequence
         /// std::out_of_range is thrown if indexes are invalid.
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
+        const std::int8_t& cat(const std::size_t site,
+                               const std::size_t haplotype) const;
+        std::int8_t* data();
+        const std::int8_t* data() const;
+        const std::int8_t* cdata() const;
+        bool empty() const;
+        /// Max allelic value stored in matrix
+        std::int8_t max_allele() const;
+
+        // Iterator access to positions
+        double* pbegin();
+        const double* pbegin() const;
+        const double* cpbegin() const;
+        double* pend();
+        const double* pend() const;
+        const double* cpend() const;
+
+        double position(std::size_t) const;
+        const double& cposition(std::size_t) const;
+        double& position(std::size_t);
+
+        void swap(VariantMatrix& rhs);
+
+        bool resizable() const;
+        void resize_capsules(bool remove_sites);
+        std::size_t genotype_row_offset() const;
+        std::size_t genotype_col_offset() const;
+        std::size_t genotype_stride() const;
     };
 
+    void swap(VariantMatrix& a, VariantMatrix& b);
 } // namespace Sequence
 
 #endif

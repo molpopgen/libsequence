@@ -16,11 +16,11 @@ namespace Sequence
     difference_matrix(const VariantMatrix& m)
     {
         std::vector<std::int32_t> rv;
-        rv.reserve(m.nsam);
-        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+        rv.reserve(m.nsam());
+        for (std::size_t i = 0; i < m.nsam() - 1; ++i)
             {
                 auto ci = get_ConstColView(m, i);
-                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                for (std::size_t j = i + 1; j < m.nsam(); ++j)
                     {
                         auto cj = get_ConstColView(m, j);
                         std::int32_t ndiffs
@@ -36,16 +36,16 @@ namespace Sequence
     is_different_matrix(const VariantMatrix& m)
     {
         std::vector<std::int32_t> rv;
-        rv.reserve(m.nsam);
+        rv.reserve(m.nsam());
         std::vector<ConstColView> alleles;
-        alleles.reserve(m.nsam);
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        alleles.reserve(m.nsam());
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 alleles.push_back(get_ConstColView(m, i));
             }
-        for (std::size_t i = 0; i < m.nsam - 1; ++i)
+        for (std::size_t i = 0; i < m.nsam() - 1; ++i)
             {
-                for (std::size_t j = i + 1; j < m.nsam; ++j)
+                for (std::size_t j = i + 1; j < m.nsam(); ++j)
                     {
                         auto m = summstats_algo::mismatch_skip_missing(
                             alleles[i].begin(), alleles[i].end(),
@@ -59,12 +59,12 @@ namespace Sequence
     std::vector<std::int32_t>
     label_haplotypes(const VariantMatrix& m)
     {
-        std::vector<std::int32_t> rv(m.nsam, -1);
+        std::vector<std::int32_t> rv(m.nsam(), -1);
         if (rv.empty())
             {
                 return rv;
             }
-        rv.reserve(m.nsam);
+        rv.reserve(m.nsam());
         const auto dm = is_different_matrix(m);
         auto dmi = dm.cbegin();
         int next_label = 0;
@@ -72,14 +72,14 @@ namespace Sequence
         // case where the last haplotype is unique.
         // In 1.9.4, we went to nsam-1, which was wrong.
         // Fixed in 1.9.5
-        for (std::size_t i = 0; i < m.nsam; ++i)
+        for (std::size_t i = 0; i < m.nsam(); ++i)
             {
                 if (rv[i] < 0)
                     {
                         if (!all_missing(get_ConstColView(m, i)))
                             {
                                 rv[i] = next_label;
-                                for (std::size_t j = i + 1; j < m.nsam;
+                                for (std::size_t j = i + 1; j < m.nsam();
                                      ++j, ++dmi)
                                     {
                                         if (!all_missing(
@@ -101,7 +101,7 @@ namespace Sequence
     std::int32_t
     number_of_haplotypes(const VariantMatrix& m)
     {
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam())
             {
                 return -1;
             }
@@ -118,7 +118,7 @@ namespace Sequence
     double
     haplotype_diversity(const VariantMatrix& m)
     {
-        if (m.data.empty() || !m.nsam)
+        if (m.empty() || !m.nsam())
             {
                 return std::numeric_limits<double>::quiet_NaN();
             }
@@ -126,7 +126,7 @@ namespace Sequence
         auto nmissing
             = std::count_if(labels.begin(), labels.end(),
                             [](decltype(labels[0]) x) { return x < 0; });
-        auto nsam_adjusted = m.nsam - static_cast<decltype(m.nsam)>(nmissing);
+        auto nsam_adjusted = m.nsam() - static_cast<decltype(m.nsam())>(nmissing);
         labels.erase(
             std::remove_if(labels.begin(), labels.end(),
                            [](decltype(labels[0]) x) { return x < 0; }),

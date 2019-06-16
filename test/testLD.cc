@@ -15,9 +15,9 @@ BOOST_FIXTURE_TEST_SUITE(test_LD, dataset)
 BOOST_AUTO_TEST_CASE(test_two_locus_haplotype_counts)
 {
     std::vector<int> results;
-    for (std::size_t i = 0; i < m.nsites - 1; ++i)
+    for (std::size_t i = 0; i < m.nsites() - 1; ++i)
         {
-            for (std::size_t j = i + 1; j < m.nsites; ++j)
+            for (std::size_t j = i + 1; j < m.nsites(); ++j)
                 {
                     std::vector<std::pair<std::int8_t, std::int8_t>> haps;
                     auto hc

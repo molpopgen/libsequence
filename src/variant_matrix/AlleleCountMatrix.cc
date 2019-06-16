@@ -7,24 +7,24 @@ namespace Sequence
     std::vector<std::int32_t>
     AlleleCountMatrix::init_counts(const VariantMatrix& m)
     {
-        if (m.max_allele < 0)
+        if (m.max_allele() < 0)
             {
                 throw std::invalid_argument("matrix max_allele must be >= 0");
             }
         std::vector<std::int32_t> counts;
-        counts.reserve(m.nsam * static_cast<std::size_t>(m.max_allele + 1));
+        counts.reserve(m.nsam() * static_cast<std::size_t>(m.max_allele() + 1));
         StateCounts c;
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        for (std::size_t i = 0; i < m.nsites(); ++i)
             {
                 auto r = get_ConstRowView(m, i);
-                if (static_cast<std::int8_t>(c.max_allele_idx) > m.max_allele)
+                if (static_cast<std::int8_t>(c.max_allele_idx) > m.max_allele())
                     {
                         throw std::runtime_error("found allele value greater "
                                                  "than matrix.max_allele");
                     }
                 c(r);
                 for (std::size_t j = 0;
-                     j < static_cast<std::size_t>(m.max_allele + 1); ++j)
+                     j < static_cast<std::size_t>(m.max_allele() + 1); ++j)
                     {
                         counts.push_back(c.counts[j]);
                     }
@@ -34,9 +34,9 @@ namespace Sequence
 
     AlleleCountMatrix::AlleleCountMatrix(const VariantMatrix& m)
         : counts(init_counts(m)),
-          ncol(!m.data.empty() ? static_cast<std::size_t>(m.max_allele) + 1
+          ncol(!m.empty() ? static_cast<std::size_t>(m.max_allele()) + 1
                                : 0),
-          nrow(!m.data.empty() ? counts.size() / ncol : 0), nsam(m.nsam)
+          nrow(!m.empty() ? counts.size() / ncol : 0), nsam(m.nsam())
     {
     }
 

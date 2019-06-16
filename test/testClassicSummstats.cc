@@ -16,13 +16,13 @@ static double
 manual_pi(const Sequence::VariantMatrix& m)
 {
     double manual = 0.0;
-    for (std::size_t i = 0; i < m.nsites; ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto r = Sequence::get_ConstRowView(m, i);
             int ndiffs = 0, ncomps = 0;
-            for (std::size_t j = 0; j < m.nsam - 1; ++j)
+            for (std::size_t j = 0; j < m.nsam() - 1; ++j)
                 {
-                    for (std::size_t k = j + 1; k < m.nsam; ++k)
+                    for (std::size_t k = j + 1; k < m.nsam(); ++k)
                         {
                             if (r[j] >= 0 && r[k] >= 0)
                                 {
@@ -43,9 +43,9 @@ manual_pi(const Sequence::VariantMatrix& m)
 static double
 manual_thetah(const Sequence::VariantMatrix& m, const std::int8_t refstate)
 {
-    double nnm1 = static_cast<double>(m.nsam * (m.nsam - 1));
+    double nnm1 = static_cast<double>(m.nsam() * (m.nsam() - 1));
     double h = 0.0;
-    for (std::size_t i = 0; i < m.nsites; ++i)
+    for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto r = Sequence::get_ConstRowView(m, i);
             unsigned nnonref = 0;
@@ -80,9 +80,9 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
 {
     // Make a bunch of missing data, all w/
     // different missing data encoding
-    for (int i = 1; i < static_cast<int>(m.nsites); i += 2)
+    for (int i = 1; i < static_cast<int>(m.nsites()); i += 2)
         {
-            m.data[i] = -i;
+            m.data()[i] = -i;
         }
     auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
@@ -96,44 +96,48 @@ BOOST_AUTO_TEST_CASE(test_num_poly_sites)
 {
     auto S = Sequence::nvariable_sites(c);
     // Not universally true, but is true here:
-    BOOST_REQUIRE_EQUAL(m.nsites, S);
+    BOOST_REQUIRE_EQUAL(m.nsites(), S);
 
     auto tm = Sequence::total_number_of_mutations(c);
     // Not universally true, but is true here:
-    BOOST_REQUIRE_EQUAL(m.nsites, tm);
+    BOOST_REQUIRE_EQUAL(m.nsites(), tm);
 
     //Make the last site invariant:
-    auto r = Sequence::get_RowView(m, m.nsites - 1);
+    auto r = Sequence::get_RowView(m, m.nsites() - 1);
     std::fill(r.begin(), r.end(), 0);
     Sequence::AlleleCountMatrix c2(m);
     S = Sequence::nvariable_sites(c2);
-    BOOST_REQUIRE_EQUAL(S, m.nsites - 1);
+    BOOST_REQUIRE_EQUAL(S, m.nsites() - 1);
     tm = Sequence::total_number_of_mutations(c2);
-    BOOST_REQUIRE_EQUAL(m.nsites - 1, tm);
+    BOOST_REQUIRE_EQUAL(m.nsites() - 1, tm);
 }
 
 BOOST_AUTO_TEST_CASE(test_total_num_mutations)
 {
-    auto r = Sequence::get_RowView(m, m.nsites - 1);
+    auto r = Sequence::get_RowView(m, m.nsites() - 1);
     // Add a third character state
     r[2] = 2;
-    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(std::move(temp), std::move(tpos));
     Sequence::AlleleCountMatrix c2(m2);
     auto tm = Sequence::total_number_of_mutations(c2);
-    BOOST_REQUIRE_EQUAL(tm, m.nsites + 1);
+    BOOST_REQUIRE_EQUAL(tm, m.nsites() + 1);
 }
 
 BOOST_AUTO_TEST_CASE(test_nbiallelic_sites)
 {
     auto S2 = Sequence::nbiallelic_sites(c);
-    BOOST_REQUIRE_EQUAL(S2, m.nsites);
-    auto r = Sequence::get_RowView(m, m.nsites - 1);
+    BOOST_REQUIRE_EQUAL(S2, m.nsites());
+    auto r = Sequence::get_RowView(m, m.nsites() - 1);
     // Add a third character state
     r[2] = 2;
-    Sequence::VariantMatrix m2(std::move(m.data), std::move(m.positions));
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(std::move(temp), std::move(tpos));
     Sequence::AlleleCountMatrix c2(m2);
     S2 = Sequence::nbiallelic_sites(c2);
-    BOOST_REQUIRE_EQUAL(S2, m.nsites - 1);
+    BOOST_REQUIRE_EQUAL(S2, m.nsites() - 1);
 }
 
 BOOST_AUTO_TEST_CASE(test_count_alleles)
@@ -158,9 +162,9 @@ BOOST_AUTO_TEST_CASE(test_thetaw)
 // checking the denominator.
 {
     auto w = Sequence::thetaw(c);
-    double S = m.nsites;
+    double S = m.nsites();
     double d = 0.0;
-    for (int i = 1; i < m.nsam; ++i)
+    for (int i = 1; i < m.nsam(); ++i)
         {
             d += 1. / static_cast<double>(i);
         }
@@ -207,7 +211,9 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
         }
     //We have to make data copies here so that
     //max_allele is reset.
-    Sequence::VariantMatrix m2(m.data, m.positions);
+    std::vector<std::int8_t> temp(m.data(), m.data() + m.nsites() * m.nsam());
+    std::vector<double> tpos(m.pbegin(), m.pend());
+    Sequence::VariantMatrix m2(temp, tpos);
     BOOST_REQUIRE_THROW(auto h
                         = Sequence::thetah(Sequence::AlleleCountMatrix(m2), 0),
                         std::runtime_error);
@@ -215,7 +221,8 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
         {
             f[i] = 3;
         }
-    Sequence::VariantMatrix m3(m.data, m.positions);
+    temp.assign(m.data(), m.data() + m.nsites() * m.nsam());
+    Sequence::VariantMatrix m3(temp, tpos);
     BOOST_REQUIRE_NO_THROW(
         auto h = Sequence::thetah(Sequence::AlleleCountMatrix(m3), 0));
 }
@@ -224,9 +231,9 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
 {
     auto nd = Sequence::difference_matrix(m);
     std::size_t x = 0;
-    for (std::size_t i = 0; i < m.nsam - 1; ++i)
+    for (std::size_t i = 0; i < m.nsam() - 1; ++i)
         {
-            for (std::size_t j = i + 1; j < m.nsam; ++j, ++x)
+            for (std::size_t j = i + 1; j < m.nsam(); ++j, ++x)
                 {
                     auto hi = Sequence::get_ConstColView(m, i);
                     auto hj = Sequence::get_ConstColView(m, j);
@@ -248,9 +255,12 @@ BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 
 BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
 {
-    for (std::size_t i = 0; i < m.nsam; ++i)
+    for (std::size_t i = 0; i < m.nsam(); ++i)
         {
-            Sequence::VariantMatrix m2(m.data, m.positions);
+            std::vector<std::int8_t> temp(m.data(),
+                                          m.data() + m.nsites() * m.nsam());
+            std::vector<double> tpos(m.pbegin(), m.pend());
+            Sequence::VariantMatrix m2(temp, tpos);
             // We make a unique haplotype at this index in our copy of
             // the fixture
             auto cv = Sequence::get_ColView(m2, i);
@@ -260,7 +270,7 @@ BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
                 }
             auto nh = Sequence::number_of_haplotypes(m2);
             std::vector<std::string> haps;
-            for (std::size_t j = 0; j < m2.nsam; ++j)
+            for (std::size_t j = 0; j < m2.nsam(); ++j)
                 {
                     auto cvj = Sequence::get_ConstColView(m2, j);
                     std::string h;
@@ -284,7 +294,7 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
     // 3. Explicitly cound the number of occurrences
     //    of each unique haplotype.
     std::vector<std::vector<std::int8_t>> haps;
-    for (std::size_t i = 0; i < m.nsam; ++i)
+    for (std::size_t i = 0; i < m.nsam(); ++i)
         {
             auto col = Sequence::get_ConstColView(m, i);
             haps.emplace_back(
@@ -302,9 +312,9 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
     for (auto& uh : uhaps)
         {
             auto c = std::count(haps.begin(), haps.end(), uh);
-            mhd += static_cast<double>(c * (m.nsam - c));
+            mhd += static_cast<double>(c * (m.nsam() - c));
         }
-    mhd /= static_cast<double>(m.nsam * (m.nsam - 1));
+    mhd /= static_cast<double>(m.nsam() * (m.nsam() - 1));
 
     BOOST_CHECK_CLOSE(hd, mhd, 1e-6);
 }

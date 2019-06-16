@@ -74,13 +74,13 @@ namespace Sequence
             {
                 throw std::invalid_argument("reserved value encountered");
             }
-        if (refstates.size() != m.nsites)
+        if (refstates.size() != m.nsites())
             {
                 throw std::invalid_argument("refstates.size() != m.nsites");
             }
         std::vector<StateCounts> rv;
-        rv.reserve(m.nsites);
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        rv.reserve(m.nsites());
+        for (std::size_t i = 0; i < m.nsites(); ++i)
             {
                 StateCounts c(refstates[i]);
                 auto r = get_RowView(m, i);
@@ -98,8 +98,8 @@ namespace Sequence
                 throw std::invalid_argument("reserved value encountered");
             }
         std::vector<StateCounts> rv;
-        rv.reserve(m.nsites);
-        for (std::size_t i = 0; i < m.nsites; ++i)
+        rv.reserve(m.nsites());
+        for (std::size_t i = 0; i < m.nsites(); ++i)
             {
                 StateCounts c(refstate);
                 auto r = get_RowView(m, i);
