@@ -21,13 +21,6 @@ namespace Sequence
 
       public:
         NonOwningGenotypeCapsule(const std::int8_t* data, std::size_t nrow,
-                                 std::size_t ncol, std::size_t trailing)
-            : buffer(data, nodelete()), nsites_(nrow), nsam_(ncol), k1(0),
-              k2(0), tda(trailing)
-        {
-        }
-
-        NonOwningGenotypeCapsule(const std::int8_t* data, std::size_t nrow,
                                  std::size_t ncol, std::size_t row_offset,
                                  std::size_t column_offset,
                                  std::size_t trailing)
