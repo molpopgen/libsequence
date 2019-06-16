@@ -126,7 +126,8 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 	stateCounterTest.cc VariantMatrixTest.cc \
 	testAlleleCountMatrix.cc testClassicSummstats.cc \
 	testClassicSummstatsEmptyVariantMatrix.cc testLD.cc \
-	testGarudStatistics.cc msformatdata.cc
+	testGarudStatistics.cc msformatdata.cc \
+	testVariantMatrixWindows.cc
 @BUNIT_TEST_PRESENT_TRUE@am_libseq_unit_tests_OBJECTS =  \
 @BUNIT_TEST_PRESENT_TRUE@	libseq_unit_tests.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	FastaConstructors.$(OBJEXT) \
@@ -157,7 +158,8 @@ am__libseq_unit_tests_SOURCES_DIST = libseq_unit_tests.cc \
 @BUNIT_TEST_PRESENT_TRUE@	testClassicSummstatsEmptyVariantMatrix.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testLD.$(OBJEXT) \
 @BUNIT_TEST_PRESENT_TRUE@	testGarudStatistics.$(OBJEXT) \
-@BUNIT_TEST_PRESENT_TRUE@	msformatdata.$(OBJEXT)
+@BUNIT_TEST_PRESENT_TRUE@	msformatdata.$(OBJEXT) \
+@BUNIT_TEST_PRESENT_TRUE@	testVariantMatrixWindows.$(OBJEXT)
 libseq_unit_tests_OBJECTS = $(am_libseq_unit_tests_OBJECTS)
 libseq_unit_tests_LDADD = $(LDADD)
 AM_V_lt = $(am__v_lt_@AM_V@)
@@ -199,7 +201,8 @@ am__depfiles_remade = ./$(DEPDIR)/AlignStreamTest.Po \
 	./$(DEPDIR)/testAlleleCountMatrix.Po \
 	./$(DEPDIR)/testClassicSummstats.Po \
 	./$(DEPDIR)/testClassicSummstatsEmptyVariantMatrix.Po \
-	./$(DEPDIR)/testGarudStatistics.Po ./$(DEPDIR)/testLD.Po
+	./$(DEPDIR)/testGarudStatistics.Po ./$(DEPDIR)/testLD.Po \
+	./$(DEPDIR)/testVariantMatrixWindows.Po
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS)
@@ -607,7 +610,8 @@ top_srcdir = @top_srcdir@
 @BUNIT_TEST_PRESENT_TRUE@testClassicSummstatsEmptyVariantMatrix.cc \
 @BUNIT_TEST_PRESENT_TRUE@testLD.cc \
 @BUNIT_TEST_PRESENT_TRUE@testGarudStatistics.cc \
-@BUNIT_TEST_PRESENT_TRUE@msformatdata.cc
+@BUNIT_TEST_PRESENT_TRUE@msformatdata.cc \
+@BUNIT_TEST_PRESENT_TRUE@testVariantMatrixWindows.cc
 
 all: all-am
 
@@ -692,6 +696,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testClassicSummstatsEmptyVariantMatrix.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testGarudStatistics.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testLD.Po@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/testVariantMatrixWindows.Po@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
 	@$(MKDIR_P) $(@D)
@@ -1052,6 +1057,7 @@ distclean: distclean-am
 	-rm -f ./$(DEPDIR)/testClassicSummstatsEmptyVariantMatrix.Po
 	-rm -f ./$(DEPDIR)/testGarudStatistics.Po
 	-rm -f ./$(DEPDIR)/testLD.Po
+	-rm -f ./$(DEPDIR)/testVariantMatrixWindows.Po
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
 	distclean-tags
@@ -1127,6 +1133,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f ./$(DEPDIR)/testClassicSummstatsEmptyVariantMatrix.Po
 	-rm -f ./$(DEPDIR)/testGarudStatistics.Po
 	-rm -f ./$(DEPDIR)/testLD.Po
+	-rm -f ./$(DEPDIR)/testVariantMatrixWindows.Po
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic
 

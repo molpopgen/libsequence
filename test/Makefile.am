@@ -51,6 +51,7 @@ testClassicSummstats.cc \
 testClassicSummstatsEmptyVariantMatrix.cc \
 testLD.cc \
 testGarudStatistics.cc \
-msformatdata.cc
+msformatdata.cc \
+testVariantMatrixWindows.cc
 
 endif #if BUNIT_TEST_PRESENT
