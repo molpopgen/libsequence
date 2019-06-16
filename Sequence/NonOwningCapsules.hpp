@@ -1,28 +1,31 @@
-#ifndef VECTOR_CAPSULES_HPP
-#define VECTOR_CAPSULES_HPP
+#ifndef NONOWNING_CAPSULES_HPP
+#define NONOWNING_CAPSULES_HPP
 
 #include "VariantMatrixCapsule.hpp"
 #include <vector>
 
 namespace Sequence
 {
-    class VectorGenotypeCapsule : public GenotypeCapsule
+    class NonOwningGenotypeCapsule : public GenotypeCapsule
     {
       private:
-        std::vector<std::int8_t> buffer;
-        std::size_t nsites_, nsam_;
-
-        std::size_t
-        fill_nsam(std::size_t num_rows)
+        struct nodelete
         {
-            return ((num_rows > 0) ? buffer.size() / num_rows : 0);
-        }
+            void
+            operator()(const std::int8_t*)
+            {
+            }
+        };
+        std::unique_ptr<const std::int8_t[], nodelete> buffer;
+        std::size_t nsites_, nsam_, k1, k2, tda;
 
       public:
-        template <typename T>
-        VectorGenotypeCapsule(T&& t, std::size_t num_rows)
-            : buffer(std::forward<T>(t)), nsites_(num_rows),
-              nsam_(fill_nsam(num_rows))
+        NonOwningGenotypeCapsule(const std::int8_t* data, std::size_t nrow,
+                                 std::size_t ncol, std::size_t row_offset,
+                                 std::size_t column_offset,
+                                 std::size_t trailing)
+            : buffer(data, nodelete()), nsites_(nrow), nsam_(ncol),
+              k1(row_offset), k2(column_offset), tda(trailing)
         {
         }
 
@@ -69,20 +72,24 @@ namespace Sequence
         std::size_t size() const final;
 
         bool resizable() const final;
-
-        void resize(bool) final;
     };
 
-    class VectorPositionCapsule : public PositionCapsule
+    class NonOwningPositionCapsule : public PositionCapsule
     {
       private:
-        std::vector<double> buffer;
+        struct nodelete
+        {
+            void
+            operator()(const double*)
+            {
+            }
+        };
+        std::unique_ptr<const double[], nodelete> buffer;
         std::size_t current_size;
 
       public:
-        template <typename T>
-        explicit VectorPositionCapsule(T&& t)
-            : buffer(std::forward<T>(t)), current_size(buffer.size())
+        NonOwningPositionCapsule(const double* data, const std::size_t nsites)
+            : buffer(data, nodelete()), current_size(nsites)
         {
         }
 
@@ -117,8 +124,7 @@ namespace Sequence
         std::size_t nsites() const;
 
         bool resizable() const final;
-
-        void resize(bool) final;
     };
 } // namespace Sequence
 #endif
+

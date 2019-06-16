@@ -155,7 +155,8 @@ am_libsequence_la_OBJECTS = Grantham.lo PathwayHelper.lo \
 	variant_matrix/AlleleCountMatrix.lo \
 	variant_matrix/StateCounts.lo variant_matrix/filtering.lo \
 	variant_matrix/windows.lo variant_matrix/capsule.lo \
-	summstats/thetapi.lo summstats/thetaw.lo summstats/tajd.lo \
+	variant_matrix/nonowningcapsules.lo summstats/thetapi.lo \
+	summstats/thetaw.lo summstats/tajd.lo \
 	summstats/thetah_thetal.lo summstats/faywuh.lo \
 	summstats/hprime.lo summstats/nvariablesites.lo \
 	summstats/allele_counts.lo summstats/haplotype_statistics.lo \
@@ -229,6 +230,7 @@ am__depfiles_remade = ./$(DEPDIR)/CodonTable.Plo \
 	variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo \
 	variant_matrix/$(DEPDIR)/capsule.Plo \
 	variant_matrix/$(DEPDIR)/filtering.Plo \
+	variant_matrix/$(DEPDIR)/nonowningcapsules.Plo \
 	variant_matrix/$(DEPDIR)/windows.Plo
 am__mv = mv -f
 CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
@@ -449,6 +451,7 @@ libsequence_la_SOURCES = Grantham.cc\
 	variant_matrix/filtering.cc \
 	variant_matrix/windows.cc \
 	variant_matrix/capsule.cc \
+	variant_matrix/nonowningcapsules.cc \
 	summstats/thetapi.cc \
 	summstats/thetaw.cc \
 	summstats/tajd.cc \
@@ -643,6 +646,8 @@ variant_matrix/windows.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 variant_matrix/capsule.lo: variant_matrix/$(am__dirstamp) \
 	variant_matrix/$(DEPDIR)/$(am__dirstamp)
+variant_matrix/nonowningcapsules.lo: variant_matrix/$(am__dirstamp) \
+	variant_matrix/$(DEPDIR)/$(am__dirstamp)
 summstats/$(am__dirstamp):
 	@$(MKDIR_P) summstats
 	@: > summstats/$(am__dirstamp)
@@ -769,6 +774,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/capsule.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/filtering.Plo@am__quote@ # am--include-marker
+@AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/nonowningcapsules.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@variant_matrix/$(DEPDIR)/windows.Plo@am__quote@ # am--include-marker
 
 $(am__depfiles_remade):
@@ -1013,6 +1019,7 @@ distclean: distclean-am
 	-rm -f variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo
 	-rm -f variant_matrix/$(DEPDIR)/capsule.Plo
 	-rm -f variant_matrix/$(DEPDIR)/filtering.Plo
+	-rm -f variant_matrix/$(DEPDIR)/nonowningcapsules.Plo
 	-rm -f variant_matrix/$(DEPDIR)/windows.Plo
 	-rm -f Makefile
 distclean-am: clean-am distclean-compile distclean-generic \
@@ -1123,6 +1130,7 @@ maintainer-clean: maintainer-clean-am
 	-rm -f variant_matrix/$(DEPDIR)/VariantMatrixViews.Plo
 	-rm -f variant_matrix/$(DEPDIR)/capsule.Plo
 	-rm -f variant_matrix/$(DEPDIR)/filtering.Plo
+	-rm -f variant_matrix/$(DEPDIR)/nonowningcapsules.Plo
 	-rm -f variant_matrix/$(DEPDIR)/windows.Plo
 	-rm -f Makefile
 maintainer-clean-am: distclean-am maintainer-clean-generic

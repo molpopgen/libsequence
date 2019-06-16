@@ -45,6 +45,13 @@ namespace Sequence
     /// \version 1.9.2
     {
       private:
+        template <typename T>
+        inline const typename T::element_type*
+        extract_const_ptr(T& t) const
+        {
+            return const_cast<const typename T::element_type*>(t.get());
+        }
+
         std::unique_ptr<PositionCapsule> pcapsule;
         std::unique_ptr<GenotypeCapsule> capsule;
         std::int8_t
@@ -133,6 +140,8 @@ namespace Sequence
         /// No range-checking is done.
         const std::int8_t& get(const std::size_t site,
                                const std::size_t haplotype) const;
+        const std::int8_t& cget(const std::size_t site,
+                                const std::size_t haplotype) const;
 
         // Ranged-checked access after std::vector<T>::at.
         /// \brief Get data from marker `site` and haplotype `haplotype`.
@@ -142,6 +151,8 @@ namespace Sequence
         /// std::out_of_range is thrown if indexes are invalid.
         const std::int8_t& at(const std::size_t site,
                               const std::size_t haplotype) const;
+        const std::int8_t& cat(const std::size_t site,
+                               const std::size_t haplotype) const;
         std::int8_t* data();
         const std::int8_t* data() const;
         const std::int8_t* cdata() const;
@@ -152,16 +163,22 @@ namespace Sequence
         // Iterator access to positions
         double* pbegin();
         const double* pbegin() const;
+        const double* cpbegin() const;
         double* pend();
         const double* pend() const;
+        const double* cpend() const;
 
         double position(std::size_t) const;
-        double & position(std::size_t);
+        const double& cposition(std::size_t) const;
+        double& position(std::size_t);
 
         void swap(VariantMatrix& rhs);
 
         bool resizable() const;
         void resize_capsules(bool remove_sites);
+        std::size_t genotype_row_offset() const;
+        std::size_t genotype_col_offset() const;
+        std::size_t genotype_stride() const;
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);

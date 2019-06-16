@@ -43,6 +43,13 @@ namespace Sequence
         return pcapsule->operator[](i);
     }
 
+    const double&
+    VariantMatrix::cposition(std::size_t i) const
+    {
+        auto cp = extract_const_ptr(this->pcapsule);
+        return cp->operator[](i);
+    }
+
     double&
     VariantMatrix::position(std::size_t i)
     {
@@ -61,6 +68,13 @@ namespace Sequence
         return pcapsule->begin();
     }
 
+    const double*
+    VariantMatrix::cpbegin() const
+    {
+        const auto cp = extract_const_ptr(pcapsule);
+        return cp->begin();
+    }
+
     double*
     VariantMatrix::pend()
     {
@@ -73,18 +87,34 @@ namespace Sequence
         return pcapsule->end();
     }
 
+    const double*
+    VariantMatrix::cpend() const
+    {
+        const auto cp = extract_const_ptr(pcapsule);
+        static_assert(std::is_const<decltype(cp)>::value, "foo");
+        return cp->end();
+    }
+
     // Non range-checked access
     std::int8_t&
     VariantMatrix::get(const std::size_t site, const std::size_t haplotype)
     {
-        return capsule->operator[](site* nsam() + haplotype);
+        return capsule->operator()(site, haplotype);
     }
 
     const std::int8_t&
     VariantMatrix::get(const std::size_t site,
                        const std::size_t haplotype) const
     {
-        return capsule->operator[](site* nsam() + haplotype);
+        return capsule->operator()(site, haplotype);
+    }
+
+    const std::int8_t&
+    VariantMatrix::cget(const std::size_t site,
+                        const std::size_t haplotype) const
+    {
+        auto cp = extract_const_ptr(this->capsule);
+        return cp->operator()(site, haplotype);
     }
 
     // Ranged-checked access after std::vector<T>::at.
@@ -96,7 +126,7 @@ namespace Sequence
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return capsule->operator[](site* nsam() + haplotype);
+        return capsule->operator()(site, haplotype);
     }
 
     const std::int8_t&
@@ -108,7 +138,20 @@ namespace Sequence
                 throw std::out_of_range(
                     "VariantMatrix::at -- index out of range");
             }
-        return capsule->operator[](site* nsam() + haplotype);
+        return capsule->operator()(site, haplotype);
+    }
+
+    const std::int8_t&
+    VariantMatrix::cat(const std::size_t site,
+                       const std::size_t haplotype) const
+    {
+        if (site >= nsites() || haplotype >= nsam())
+            {
+                throw std::out_of_range(
+                    "VariantMatrix::at -- index out of range");
+            }
+        auto cp = extract_const_ptr(this->capsule);
+        return cp->operator()(site, haplotype);
     }
 
     std::int8_t*
@@ -154,6 +197,24 @@ namespace Sequence
     {
         capsule->resize(remove_sites);
         pcapsule->resize(remove_sites);
+    }
+
+    std::size_t
+    VariantMatrix::genotype_row_offset() const
+    {
+        return capsule->row_offset();
+    }
+
+    std::size_t
+    VariantMatrix::genotype_col_offset() const
+    {
+        return capsule->col_offset();
+    }
+
+    std::size_t
+    VariantMatrix::genotype_stride() const
+    {
+        return capsule->stride();
     }
 
     void
