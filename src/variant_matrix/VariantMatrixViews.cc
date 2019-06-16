@@ -88,8 +88,8 @@ namespace Sequence
     {
         return col_view_wrapper<ColView>(m, col);
     }
-    ConstColView
 
+    ConstColView
     get_ColView(const VariantMatrix& m, const std::size_t col)
     {
         return col_view_wrapper<ConstColView>(m, col);
