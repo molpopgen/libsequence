@@ -26,7 +26,7 @@ namespace
             }
         auto x = m.data() + m.genotype_row_offset() * m.genotype_stride()
                  + m.genotype_col_offset() + col;
-        return T(x, m.nsam() * m.nsites(), m.genotype_stride());
+        return T(x, m.genotype_stride() * m.nsites(), m.genotype_stride());
     }
 
     template <typename T, typename VM>
@@ -52,7 +52,7 @@ namespace
             }
         auto x = m.cdata() + m.genotype_row_offset() * m.genotype_stride()
                  + m.genotype_col_offset() + col;
-        return T(x, m.nsam() * m.nsites(), m.genotype_stride());
+        return T(x, m.genotype_stride() * m.nsites(), m.genotype_stride());
     }
 } // namespace
 
