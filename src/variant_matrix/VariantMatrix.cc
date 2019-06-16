@@ -143,7 +143,7 @@ namespace Sequence
 
     const std::int8_t&
     VariantMatrix::cat(const std::size_t site,
-                      const std::size_t haplotype) const
+                       const std::size_t haplotype) const
     {
         if (site >= nsites() || haplotype >= nsam())
             {
@@ -197,6 +197,24 @@ namespace Sequence
     {
         capsule->resize(remove_sites);
         pcapsule->resize(remove_sites);
+    }
+
+    std::size_t
+    VariantMatrix::genotype_row_offset() const
+    {
+        return capsule->row_offset();
+    }
+
+    std::size_t
+    VariantMatrix::genotype_col_offset() const
+    {
+        return capsule->col_offset();
+    }
+
+    std::size_t
+    VariantMatrix::genotype_stride() const
+    {
+        return capsule->stride();
     }
 
     void
