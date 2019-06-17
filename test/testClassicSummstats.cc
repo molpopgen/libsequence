@@ -9,7 +9,7 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/classics.hpp>
-#include "VariantMatrixFixture.hpp"
+#include "msprime_data_fixture.hpp"
 #include <boost/test/unit_test.hpp>
 
 static double
@@ -62,7 +62,23 @@ manual_thetah(const Sequence::VariantMatrix& m, const std::int8_t refstate)
     return h;
 }
 
-BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
+int
+manual_num_haps(const Sequence::VariantMatrix& m)
+{
+    std::vector<std::vector<std::int8_t>> uhaps;
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            auto c = Sequence::get_ConstColView(m, i);
+            std::vector<std::int8_t> v(c.begin(), c.end());
+            if (std::find(begin(uhaps), end(uhaps), v) == end(uhaps))
+                {
+                    uhaps.push_back(std::move(v));
+                };
+        }
+    return uhaps.size();
+}
+
+BOOST_FIXTURE_TEST_SUITE(test_classic_stats, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
@@ -82,7 +98,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
     // different missing data encoding
     for (int i = 1; i < static_cast<int>(m.nsites()); i += 2)
         {
-            m.data()[i] = -i;
+            m.data()[i] = std::max(-i, -100);
         }
     auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
@@ -250,7 +266,8 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 {
     auto nh = Sequence::number_of_haplotypes(m);
-    BOOST_REQUIRE_EQUAL(nh, 5);
+    auto mh = manual_num_haps(m);
+    BOOST_REQUIRE_EQUAL(nh, mh);
 }
 
 BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
