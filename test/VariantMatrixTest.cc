@@ -361,11 +361,8 @@ BOOST_AUTO_TEST_CASE(test_io_roundtrip)
     Sequence::to_msformat(m, o);
     std::istringstream in(o.str());
     auto vm = Sequence::from_msformat(in);
-    auto pdiff = std::mismatch(m.pbegin(), m.pend(), vm.pbegin());
-    BOOST_REQUIRE_EQUAL(pdiff.first == m.pend(), true);
-    auto ddiff
-        = std::mismatch(m.data(), m.data() + m.nsites() * m.nsam(), vm.data());
-    BOOST_REQUIRE_EQUAL(ddiff.first == m.data() + m.nsites() * m.nsam(), true);
+    BOOST_REQUIRE_EQUAL(m==vm, true);
+    BOOST_REQUIRE_EQUAL(m!=vm, false);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

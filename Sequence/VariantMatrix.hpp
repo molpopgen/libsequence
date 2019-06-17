@@ -182,6 +182,8 @@ namespace Sequence
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);
+    bool operator==(const VariantMatrix&, const VariantMatrix&);
+    bool operator!=(const VariantMatrix&, const VariantMatrix&);
 } // namespace Sequence
 
 #endif
