@@ -336,10 +336,11 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
     BOOST_CHECK_CLOSE(hd, mhd, 1e-6);
 }
 
-BOOST_AUTO_TEST_CASE(test_rmin)
-{
-    auto rm = Sequence::rmin(m);
-    BOOST_REQUIRE_EQUAL(rm, 1);
-}
+// TODO: need an independent test of this???
+//BOOST_AUTO_TEST_CASE(test_rmin)
+//{
+//    auto rm = Sequence::rmin(m);
+//    BOOST_REQUIRE_EQUAL(rm, 1);
+//}
 
 BOOST_AUTO_TEST_SUITE_END()
