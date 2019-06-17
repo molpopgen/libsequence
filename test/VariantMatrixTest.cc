@@ -12,56 +12,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#include "VariantMatrixFixture.hpp"
 #include "msprime_data_fixture.hpp"
-
-struct vmatrix_fixture
-{
-    std::vector<std::int8_t> input_data;
-    std::vector<double> input_pos;
-    Sequence::VariantMatrix m, m2;
-    Sequence::AlleleCountMatrix c, c2;
-    vmatrix_fixture()
-        : input_data(make_input_data()), input_pos(make_intput_pos()),
-          m(input_data, input_pos),
-          m2(input_data, std::vector<double>(input_pos.begin(),
-                                             input_pos.begin() + m.nsam())),
-          c{ m }, c2{ m2 }
-    {
-        // The two VariantMatrix objects
-        // have same data, but different internal
-        // dimensions
-        //std::swap(m2.nsites(), m2.nsam());
-        //m2.positions.resize(m2.nsites());
-        std::iota(m2.pbegin(), m2.pend(), 0.);
-    }
-
-    std::vector<std::int8_t>
-    make_input_data()
-    {
-        int nsam = 20;
-        int nsites = 5;
-        std::vector<std::int8_t> rv;
-        for (int i = 0; i < nsites; ++i)
-            {
-                for (int j = 0; j < nsam; ++j)
-                    {
-                        std::int8_t state = (j % 2 == 0.) ? 1 : 0;
-                        rv.push_back(state);
-                    }
-            }
-        return rv;
-    }
-
-    std::vector<double>
-    make_intput_pos()
-    {
-        std::vector<double> rv;
-        rv.resize(5);
-        std::iota(rv.begin(), rv.end(), 0.);
-        return rv;
-    }
-};
 
 bool
 is_const_row_view(Sequence::ConstRowView& v)
@@ -71,6 +22,18 @@ is_const_row_view(Sequence::ConstRowView& v)
 
 bool
 is_const_row_view(Sequence::RowView& v)
+{
+    return false;
+}
+
+bool
+is_const_col_view(Sequence::ConstColView& v)
+{
+    return true;
+}
+
+bool
+is_const_col_view(Sequence::ColView& v)
 {
     return false;
 }
@@ -105,7 +68,7 @@ BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_init_lists)
 
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_fixture)
+BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_from_msprime)
 
 
 BOOST_AUTO_TEST_CASE(test_max_allele)
@@ -125,75 +88,12 @@ BOOST_AUTO_TEST_CASE(test_range_exceptions)
     BOOST_REQUIRE_THROW(m.at(0, m.nsam() + 1), std::out_of_range);
 }
 
-BOOST_AUTO_TEST_CASE(test_iteration)
-{
-    for (std::size_t i = 0; i < m.nsam(); ++i)
-        {
-            for (std::size_t j = 0; j < m.nsites(); ++j)
-                {
-                    auto x = m.get(j, i);
-                    std::int8_t ex = (i % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(x),
-                                        static_cast<int>(ex));
-                }
-        }
-}
-
-BOOST_AUTO_TEST_CASE(test_bad_row_swap)
-{
-    auto a = Sequence::get_RowView(m, 0);
-    auto b = Sequence::get_RowView(m2, 0);
-    BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
-}
-
-BOOST_AUTO_TEST_CASE(test_bad_column_swap)
-{
-    auto a = Sequence::get_ColView(m, 0);
-    auto b = Sequence::get_ColView(m2, 0);
-    BOOST_REQUIRE_THROW(swap(a, b), std::invalid_argument);
-}
-
 BOOST_AUTO_TEST_CASE(test_row_views)
 {
     for (std::size_t i = 0; i < m.nsites(); ++i)
         {
             auto x = Sequence::get_RowView(m, i);
             BOOST_REQUIRE_EQUAL(is_const_row_view(x), false);
-            for (auto j = x.begin(); j != x.end(); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (auto j = x.cbegin(); j != x.cend(); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.cbegin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (auto j = std::begin(x); j != std::end(x); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (std::size_t j = 0; j < x.size(); ++j)
-                {
-                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
-                                        static_cast<int>(ex));
-                }
-            std::size_t j = 0;
-            for (auto xj : x)
-                {
-                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(xj),
-                                        static_cast<int>(ex));
-                    ++j;
-                }
         }
 }
 
@@ -203,41 +103,6 @@ BOOST_AUTO_TEST_CASE(test_const_row_views)
         {
             auto x = Sequence::get_ConstRowView(m, i);
             BOOST_REQUIRE_EQUAL(is_const_row_view(x), true);
-            for (auto j = x.begin(); j != x.end(); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (auto j = x.cbegin(); j != x.cend(); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.cbegin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (auto j = std::begin(x); j != std::end(x); ++j)
-                {
-                    std::int8_t ex
-                        = (std::distance(x.begin(), j) % 2 == 0.0) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(*j),
-                                        static_cast<int>(ex));
-                }
-            for (std::size_t j = 0; j < x.size(); ++j)
-                {
-                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(x[j]),
-                                        static_cast<int>(ex));
-                }
-            std::size_t j = 0;
-            for (auto xj : x)
-                {
-                    std::int8_t ex = (j % 2 == 0.) ? 1 : 0;
-                    BOOST_REQUIRE_EQUAL(static_cast<int>(xj),
-                                        static_cast<int>(ex));
-                    ++j;
-                }
         }
 }
 
@@ -282,54 +147,8 @@ BOOST_AUTO_TEST_CASE(test_column_views)
     for (std::size_t i = 0; i < m.nsam(); ++i)
         {
             auto col = Sequence::get_ColView(m, i);
-            std::int8_t state = (i % 2 == 0) ? 1 : 0;
-            BOOST_REQUIRE_EQUAL(
-                std::count(std::begin(col), std::end(col), !state), 0);
-            BOOST_REQUIRE_EQUAL(std::count(col.rbegin(), col.rend(), !state),
-                                0);
-            BOOST_REQUIRE_EQUAL(std::count(col.cbegin(), col.cend(), !state),
-                                0);
-            BOOST_REQUIRE_EQUAL(std::count(col.crbegin(), col.crend(), !state),
-                                0);
-
-            BOOST_REQUIRE_EQUAL(std::distance(std::begin(col), std::end(col)),
-                                m.nsites());
-            BOOST_REQUIRE_EQUAL(std::distance(col.rbegin(), col.rend()),
-                                m.nsites());
-
-            // Check that iterators and reverse iterators have the expected
-            // relationships:
-            auto fwd = col.begin();
-            auto rev = col.rbegin();
-            for (; rev < col.rend(); ++rev)
-                {
-                    auto rf = std::distance(fwd, rev.base());
-                    auto rb = std::distance(rev, col.rend());
-                    BOOST_REQUIRE_EQUAL(rf, rb);
-                }
-
-            auto cfwd = col.cbegin();
-            auto crev = col.crbegin();
-            for (; crev < col.crend(); ++crev)
-                {
-                    auto rf = std::distance(cfwd, crev.base());
-                    auto rb = std::distance(crev, col.crend());
-                    BOOST_REQUIRE_EQUAL(rf, rb);
-                }
+            BOOST_REQUIRE_EQUAL(is_const_col_view(col), false);
         }
-}
-
-BOOST_AUTO_TEST_CASE(tesl_col_view_iterator_increment)
-{
-    auto x = Sequence::get_ConstColView(m, 0);
-    auto b = x.begin();
-    unsigned num_increments = 0;
-    while (b < x.end())
-        {
-            b = b + 2;
-            ++num_increments;
-        }
-    BOOST_REQUIRE_EQUAL(num_increments, 3);
 }
 
 BOOST_AUTO_TEST_CASE(test_column_view_invalid_compare)
@@ -341,18 +160,6 @@ BOOST_AUTO_TEST_CASE(test_column_view_invalid_compare)
                         std::invalid_argument);
 }
 
-// The remaining tests apply STL algorithms to column iterators,
-// which is a good stress test.  We've already done count above.
-
-BOOST_AUTO_TEST_CASE(test_accumulate)
-{
-    auto c = Sequence::get_ConstColView(m, 0);
-    int sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
-    BOOST_REQUIRE_EQUAL(sum, static_cast<int>(m.nsites()));
-    c = Sequence::get_ConstColView(m, 1);
-    sum = static_cast<int>(std::accumulate(c.cbegin(), c.cend(), 0));
-    BOOST_REQUIRE_EQUAL(sum, 0);
-}
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_FIXTURE_TEST_SUITE(test_deep_copy, vmatrix_from_msprime)
@@ -362,6 +169,22 @@ BOOST_AUTO_TEST_CASE(test_variant_matrix_deepcopy)
     auto c = m.deepcopy();
     BOOST_REQUIRE_EQUAL(m == c, true);
     BOOST_REQUIRE_EQUAL(m != c, false);
+}
+
+BOOST_AUTO_TEST_CASE(test_row_swap)
+{
+    auto m2 = m.deepcopy();
+    auto a = Sequence::get_RowView(m, 0);
+    auto b = Sequence::get_RowView(m2, 0);
+    BOOST_REQUIRE_NO_THROW(swap(a, b));
+}
+
+BOOST_AUTO_TEST_CASE(test_column_swap)
+{
+    auto m2 = m.deepcopy();
+    auto a = Sequence::get_ColView(m, 0);
+    auto b = Sequence::get_ColView(m2, 0);
+    BOOST_REQUIRE_NO_THROW(swap(a, b));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
