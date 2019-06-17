@@ -263,6 +263,13 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
         }
 }
 
+BOOST_AUTO_TEST_CASE(test_labelling_haplotypes)
+{
+    auto labels = Sequence::label_haplotypes(m);
+    std::set<std::int32_t> ulabels(begin(labels),end(labels));
+    BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
+}
+
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 {
     auto nh = Sequence::number_of_haplotypes(m);
