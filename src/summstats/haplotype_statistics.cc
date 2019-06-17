@@ -1,6 +1,8 @@
 #include <algorithm>
+#include <numeric>
 #include <vector>
 #include <cstdint>
+#include <iostream>
 #include <unordered_map>
 #include <Sequence/summstats/util.hpp>
 #include <Sequence/summstats/generic.hpp>
@@ -59,39 +61,50 @@ namespace Sequence
     std::vector<std::int32_t>
     label_haplotypes(const VariantMatrix& m)
     {
-        std::vector<std::int32_t> rv(m.nsam(), -1);
+        std::vector<std::int32_t> rv(m.nsam(), 0);
+        std::vector<std::int32_t> processed(m.nsam(), 0);
+        std::iota(begin(rv), end(rv), 0);
         if (rv.empty())
             {
                 return rv;
             }
-        rv.reserve(m.nsam());
         const auto dm = is_different_matrix(m);
-        auto dmi = dm.cbegin();
-        int next_label = 0;
-        // We got all the way to nsam for the
-        // case where the last haplotype is unique.
-        // In 1.9.4, we went to nsam-1, which was wrong.
-        // Fixed in 1.9.5
+        const std::size_t n = m.nsam();
+        const std::size_t C = n * (n - 1) / 2;
+
+        // k refers to an element in the upper triangle 
+        // of an nsam*nsam matrix, excluding the diagonal.
+        std::size_t k = std::numeric_limits<std::size_t>::max();
         for (std::size_t i = 0; i < m.nsam(); ++i)
             {
-                if (rv[i] < 0)
+                if (!processed[i])
                     {
                         if (!all_missing(get_ConstColView(m, i)))
                             {
-                                rv[i] = next_label;
-                                for (std::size_t j = i + 1; j < m.nsam();
-                                     ++j, ++dmi)
+                                for (std::size_t j = i + 1; j < m.nsam(); ++j)
                                     {
                                         if (!all_missing(
                                                 get_ConstColView(m, j)))
                                             {
-                                                if (*dmi == 0)
+                                                k = C
+                                                    - (n - i) * (n - i - 1) / 2
+                                                    + j - i - 1;
+                                                if (!dm[k])
                                                     {
-                                                        rv[j] = next_label;
+                                                        rv[j] = rv[i];
+                                                        processed[j] = 1;
                                                     }
                                             }
+                                        else
+                                            {
+                                                rv[j] = -1;
+                                                processed[j] = 1;
+                                            }
                                     }
-                                ++next_label;
+                            }
+                        else
+                            {
+                                rv[i] = -1;
                             }
                     }
             }
@@ -126,7 +139,8 @@ namespace Sequence
         auto nmissing
             = std::count_if(labels.begin(), labels.end(),
                             [](decltype(labels[0]) x) { return x < 0; });
-        auto nsam_adjusted = m.nsam() - static_cast<decltype(m.nsam())>(nmissing);
+        auto nsam_adjusted
+            = m.nsam() - static_cast<decltype(m.nsam())>(nmissing);
         labels.erase(
             std::remove_if(labels.begin(), labels.end(),
                            [](decltype(labels[0]) x) { return x < 0; }),

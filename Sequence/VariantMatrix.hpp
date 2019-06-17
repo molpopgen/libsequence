@@ -173,6 +173,9 @@ namespace Sequence
         double& position(std::size_t);
 
         void swap(VariantMatrix& rhs);
+        /// Make a "deep" copy by cloning
+        /// the genotype and position capsules
+        VariantMatrix deepcopy() const;
 
         bool resizable() const;
         void resize_capsules(bool remove_sites);
@@ -182,6 +185,8 @@ namespace Sequence
     };
 
     void swap(VariantMatrix& a, VariantMatrix& b);
+    bool operator==(const VariantMatrix&, const VariantMatrix&);
+    bool operator!=(const VariantMatrix&, const VariantMatrix&);
 } // namespace Sequence
 
 #endif

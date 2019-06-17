@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <numeric>
 #include <set>
 #include <string>
 #include <vector>
@@ -9,7 +10,7 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/classics.hpp>
-#include "VariantMatrixFixture.hpp"
+#include "msprime_data_fixture.hpp"
 #include <boost/test/unit_test.hpp>
 
 static double
@@ -62,7 +63,50 @@ manual_thetah(const Sequence::VariantMatrix& m, const std::int8_t refstate)
     return h;
 }
 
-BOOST_FIXTURE_TEST_SUITE(test_classic_stats, dataset)
+int
+manual_num_haps(const Sequence::VariantMatrix& m)
+{
+    std::vector<std::vector<std::int8_t>> uhaps;
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            auto c = Sequence::get_ConstColView(m, i);
+            std::vector<std::int8_t> v(c.begin(), c.end());
+            if (std::find(begin(uhaps), end(uhaps), v) == end(uhaps))
+                {
+                    uhaps.push_back(std::move(v));
+                };
+        }
+    return uhaps.size();
+}
+
+std::vector<int>
+manual_haplotype_labels_no_missing_data(const Sequence::VariantMatrix& m)
+{
+    std::vector<int> l(m.nsam()), processed(m.nsam(), 0);
+    std::iota(begin(l), end(l), 0);
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            if (!processed[i])
+                {
+                    auto ci = Sequence::get_ConstColView(m, i);
+                    for (std::size_t j = i + 1; j < m.nsam(); ++j)
+                        {
+                            auto cj = Sequence::get_ConstColView(m, j);
+                            auto diff = std::mismatch(ci.begin(), ci.end(),
+                                                      cj.begin());
+                            if (diff.first == ci.end())
+                                {
+                                    //haps i and j are identical
+                                    l[j] = l[i];
+                                    processed[j] = 1;
+                                }
+                        }
+                }
+        }
+    return l;
+}
+
+BOOST_FIXTURE_TEST_SUITE(test_classic_stats, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_thetapi)
 {
@@ -82,7 +126,7 @@ BOOST_AUTO_TEST_CASE(test_thetapi_with_mising_data)
     // different missing data encoding
     for (int i = 1; i < static_cast<int>(m.nsites()); i += 2)
         {
-            m.data()[i] = -i;
+            m.data()[i] = std::max(-i, -100);
         }
     auto pi = Sequence::thetapi(Sequence::AlleleCountMatrix(m));
 
@@ -230,6 +274,7 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
 BOOST_AUTO_TEST_CASE(test_number_of_differences)
 {
     auto nd = Sequence::difference_matrix(m);
+    BOOST_REQUIRE_EQUAL(nd.size(), (m.nsam() * (m.nsam() - 1) / 2));
     std::size_t x = 0;
     for (std::size_t i = 0; i < m.nsam() - 1; ++i)
         {
@@ -247,10 +292,56 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
         }
 }
 
+BOOST_AUTO_TEST_CASE(test_is_different_matrix)
+{
+    auto nd = Sequence::difference_matrix(m);
+    auto isdiff = Sequence::is_different_matrix(m);
+    BOOST_REQUIRE_EQUAL(isdiff.size(), (m.nsam() * (m.nsam() - 1) / 2));
+    std::size_t x = 0;
+    for (std::size_t i = 0; i < m.nsam() - 1; ++i)
+        {
+            for (std::size_t j = i + 1; j < m.nsam(); ++j, ++x)
+                {
+                    auto test = (nd[x] != 0);
+                    BOOST_REQUIRE_EQUAL(test, isdiff[x]);
+                }
+        }
+}
+
+BOOST_AUTO_TEST_CASE(test_number_haplotype_labels)
+{
+    auto labels = Sequence::label_haplotypes(m);
+    std::set<std::int32_t> ulabels(begin(labels), end(labels));
+    BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
+}
+
+BOOST_AUTO_TEST_CASE(test_haploype_label_correctness)
+{
+    auto manual_labels = manual_haplotype_labels_no_missing_data(m);
+    std::set<std::int32_t> ulabels(begin(manual_labels), end(manual_labels));
+    // sanity-check our manual fxn
+    BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
+
+    // TODO: compare to output from the libseq fxn
+    auto labels = Sequence::label_haplotypes(m);
+    BOOST_REQUIRE_EQUAL(manual_labels.size(), labels.size());
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            for (std::size_t j = i + 1; j < m.nsam(); ++j)
+                {
+                    if (manual_labels[i] == manual_labels[j])
+                        {
+                            BOOST_REQUIRE_EQUAL(labels[i], labels[j]);
+                        }
+                }
+        }
+}
+
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
 {
     auto nh = Sequence::number_of_haplotypes(m);
-    BOOST_REQUIRE_EQUAL(nh, 5);
+    auto mh = manual_num_haps(m);
+    BOOST_REQUIRE_EQUAL(nh, mh);
 }
 
 BOOST_AUTO_TEST_CASE(test_unique_hap_at_any_index)
@@ -319,10 +410,29 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
     BOOST_CHECK_CLOSE(hd, mhd, 1e-6);
 }
 
-BOOST_AUTO_TEST_CASE(test_rmin)
+// TODO: need an independent test of this???
+//BOOST_AUTO_TEST_CASE(test_rmin)
+//{
+//    auto rm = Sequence::rmin(m);
+//    BOOST_REQUIRE_EQUAL(rm, 1);
+//}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(test_from_stream, msprime_stream)
+
+// NOTE: this is paranoia from issue #59
+BOOST_AUTO_TEST_CASE(test_haplotype_stats)
 {
-    auto rm = Sequence::rmin(m);
-    BOOST_REQUIRE_EQUAL(rm, 1);
+    do
+        {
+            auto m = Sequence::from_msformat(in);
+            auto nh = Sequence::number_of_haplotypes(m);
+            auto mh = manual_num_haps(m);
+            BOOST_REQUIRE_EQUAL(nh, mh);
+        }
+    while (!in.eof());
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+

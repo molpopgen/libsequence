@@ -1,12 +1,13 @@
 //! \file testAlleleCountMatrix.cc @brief Tests for Sequence/VariantMatrix.hpp
-#include "VariantMatrixFixture.hpp"
+#include "msprime_data_fixture.hpp"
+#include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/variant_matrix/windows.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <numeric> //for std::iota
 #include <iterator>
 
-BOOST_FIXTURE_TEST_SUITE(test_allele_count_matrix, dataset)
+BOOST_FIXTURE_TEST_SUITE(test_allele_count_matrix, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_max_allele_exception)
 {

@@ -2,6 +2,7 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/StateCounts.hpp>
 #include <stdexcept>
+#include <algorithm>
 
 namespace Sequence
 {
@@ -186,6 +187,13 @@ namespace Sequence
         std::swap(this->max_allele_, rhs.max_allele_);
     }
 
+    VariantMatrix
+    VariantMatrix::deepcopy() const
+    {
+        return VariantMatrix(capsule->clone(), pcapsule->clone(),
+                             max_allele());
+    }
+
     bool
     VariantMatrix::resizable() const
     {
@@ -222,4 +230,28 @@ namespace Sequence
     {
         a.swap(b);
     }
+
+    bool
+    operator==(const VariantMatrix& a, const VariantMatrix& b)
+    {
+        if (a.nsites() != b.nsites() || a.nsam() != b.nsam())
+            return false;
+
+        if (a.max_allele() != b.max_allele())
+            return false;
+
+        auto pdiff = std::mismatch(a.pbegin(), a.pend(), b.pbegin());
+        if (pdiff.first != a.pend())
+            return false;
+        auto ddiff = std::mismatch(a.data(), a.data() + a.nsites() * a.nsam(),
+                                   b.data());
+        return ddiff.first == a.data() + a.nsites() * a.nsam();
+    }
+
+    bool
+    operator!=(const VariantMatrix& a, const VariantMatrix& b)
+    {
+        return !(a == b);
+    }
+
 } // namespace Sequence

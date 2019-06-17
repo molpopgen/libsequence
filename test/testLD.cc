@@ -7,10 +7,10 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/ld.hpp>
-#include "VariantMatrixFixture.hpp"
 #include <boost/test/unit_test.hpp>
+#include "msprime_data_fixture.hpp"
 
-BOOST_FIXTURE_TEST_SUITE(test_LD, dataset)
+BOOST_FIXTURE_TEST_SUITE(test_LD, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_two_locus_haplotype_counts)
 {

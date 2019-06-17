@@ -4,21 +4,6 @@
 #include <Sequence/VariantMatrix.hpp>
 #include <Sequence/AlleleCountMatrix.hpp>
 
-struct dataset
-{
-    using data_type = std::vector<std::int8_t>;
-    using positions_type = std::vector<double>;
-    Sequence::VariantMatrix m;
-    Sequence::AlleleCountMatrix c;
-    dataset()
-        : m{ data_type{ 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0,
-                        1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0 },
-             positions_type{ 0.1, 0.2, 0.3 } },
-          c{ m }
-    {
-    }
-};
-
 struct invariantdataset
 {
     using data_type = std::vector<std::int8_t>;
