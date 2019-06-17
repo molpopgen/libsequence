@@ -74,7 +74,17 @@ is_const_row_view(Sequence::RowView& v)
 {
     return false;
 }
+
 BOOST_AUTO_TEST_SUITE(BasicVariantMatrixTests)
+
+BOOST_AUTO_TEST_CASE(test_construction)
+{
+    Sequence::VariantMatrix m(std::vector<std::int8_t>(100, 1),
+                              std::vector<double>(5, 0.0));
+    BOOST_REQUIRE_EQUAL(m.nsites(), 5);
+    BOOST_REQUIRE_EQUAL(m.nsam(), 20);
+    BOOST_REQUIRE_EQUAL(m.max_allele(), 1);
+}
 
 BOOST_AUTO_TEST_CASE(construct_empty_VariantMatrix_from_move)
 {
@@ -97,14 +107,6 @@ BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_FIXTURE_TEST_SUITE(VariantMatrixTest, vmatrix_fixture)
 
-BOOST_AUTO_TEST_CASE(test_construction)
-{
-    Sequence::VariantMatrix m(std::vector<std::int8_t>(100, 1),
-                              std::vector<double>(5, 0.0));
-    BOOST_REQUIRE_EQUAL(m.nsites(), 5);
-    BOOST_REQUIRE_EQUAL(m.nsam(), 20);
-    BOOST_REQUIRE_EQUAL(m.max_allele(), 1);
-}
 
 BOOST_AUTO_TEST_CASE(test_max_allele)
 {
