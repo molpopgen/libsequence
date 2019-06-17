@@ -274,6 +274,7 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
 BOOST_AUTO_TEST_CASE(test_number_of_differences)
 {
     auto nd = Sequence::difference_matrix(m);
+    BOOST_REQUIRE_EQUAL(nd.size(), (m.nsam() * (m.nsam()-1)/2));
     std::size_t x = 0;
     for (std::size_t i = 0; i < m.nsam() - 1; ++i)
         {
@@ -287,6 +288,22 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
                             ndiffs += hi[k] != hj[k];
                         }
                     BOOST_REQUIRE_EQUAL(nd[x], ndiffs);
+                }
+        }
+}
+
+BOOST_AUTO_TEST_CASE(test_is_different_matrix)
+{
+    auto nd = Sequence::difference_matrix(m);
+    auto isdiff = Sequence::is_different_matrix(m);
+    BOOST_REQUIRE_EQUAL(isdiff.size(), (m.nsam() * (m.nsam()-1)/2));
+    std::size_t x = 0;
+    for (std::size_t i = 0; i < m.nsam() - 1; ++i)
+        {
+            for (std::size_t j = i + 1; j < m.nsam(); ++j, ++x)
+                {
+                    auto test = (nd[x] != 0);
+                    BOOST_REQUIRE_EQUAL(test, isdiff[x]);
                 }
         }
 }
@@ -312,10 +329,10 @@ BOOST_AUTO_TEST_CASE(test_haploype_label_correctness)
         {
             for (std::size_t j = i + 1; j < m.nsam(); ++j)
                 {
-                    if(manual_labels[i]==manual_labels[j])
-                    {
-                        BOOST_REQUIRE_EQUAL(labels[i],labels[j]);
-                    }
+                    if (manual_labels[i] == manual_labels[j])
+                        {
+                            BOOST_REQUIRE_EQUAL(labels[i], labels[j]);
+                        }
                 }
         }
 }
