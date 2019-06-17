@@ -274,7 +274,7 @@ BOOST_AUTO_TEST_CASE(test_thetah_multiple_derived_states)
 BOOST_AUTO_TEST_CASE(test_number_of_differences)
 {
     auto nd = Sequence::difference_matrix(m);
-    BOOST_REQUIRE_EQUAL(nd.size(), (m.nsam() * (m.nsam()-1)/2));
+    BOOST_REQUIRE_EQUAL(nd.size(), (m.nsam() * (m.nsam() - 1) / 2));
     std::size_t x = 0;
     for (std::size_t i = 0; i < m.nsam() - 1; ++i)
         {
@@ -296,7 +296,7 @@ BOOST_AUTO_TEST_CASE(test_is_different_matrix)
 {
     auto nd = Sequence::difference_matrix(m);
     auto isdiff = Sequence::is_different_matrix(m);
-    BOOST_REQUIRE_EQUAL(isdiff.size(), (m.nsam() * (m.nsam()-1)/2));
+    BOOST_REQUIRE_EQUAL(isdiff.size(), (m.nsam() * (m.nsam() - 1) / 2));
     std::size_t x = 0;
     for (std::size_t i = 0; i < m.nsam() - 1; ++i)
         {
@@ -418,3 +418,21 @@ BOOST_AUTO_TEST_CASE(test_haplotype_diversity)
 //}
 
 BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(test_from_stream, msprime_stream)
+
+// NOTE: this is paranoia from issue #59
+BOOST_AUTO_TEST_CASE(test_haplotype_stats)
+{
+    do
+        {
+            auto m = Sequence::from_msformat(in);
+            auto nh = Sequence::number_of_haplotypes(m);
+            auto mh = manual_num_haps(m);
+            BOOST_REQUIRE_EQUAL(nh, mh);
+        }
+    while (!in.eof());
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+

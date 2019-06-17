@@ -4,5 +4,6 @@
 #include <string>
 
 std::string get_msformat_data();
+std::string get_msformat_stream();
 
 #endif

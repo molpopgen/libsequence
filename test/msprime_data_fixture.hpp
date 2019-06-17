@@ -22,4 +22,10 @@ struct vmatrix_from_msprime
     vmatrix_from_msprime() : m(read()), c(m) {}
 };
 
+struct msprime_stream
+{
+    std::istringstream in;
+    msprime_stream() : in(get_msformat_stream()) {}
+};
+
 #endif
