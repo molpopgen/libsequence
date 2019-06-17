@@ -4,11 +4,16 @@
 #include <Sequence/AlleleCountMatrix.hpp>
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/variant_matrix/windows.hpp>
+#include <Sequence/variant_matrix/msformat.hpp>
 #include <boost/test/unit_test.hpp>
 #include <algorithm>
 #include <numeric> //for std::iota
 #include <iterator>
+#include <sstream>
+#include <fstream>
+#include <iostream>
 #include "VariantMatrixFixture.hpp"
+#include "msprime_data_fixture.hpp"
 
 struct vmatrix_fixture
 {
@@ -366,6 +371,22 @@ BOOST_AUTO_TEST_CASE(test_slice)
     BOOST_REQUIRE_EQUAL(amw.ncol, amslice.ncol);
     BOOST_REQUIRE_EQUAL(amw.nrow, amslice.nrow);
     BOOST_REQUIRE_EQUAL(amw.nsam, amslice.nsam);
+}
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_FIXTURE_TEST_SUITE(test_msformat_round_trips, vmatrix_from_msprime)
+
+BOOST_AUTO_TEST_CASE(test_io_roundtrip)
+{
+    std::ostringstream o;
+    Sequence::to_msformat(m, o);
+    std::istringstream in(o.str());
+    auto vm = Sequence::from_msformat(in);
+    auto pdiff = std::mismatch(m.pbegin(), m.pend(), vm.pbegin());
+    BOOST_REQUIRE_EQUAL(pdiff.first == m.pend(), true);
+    auto ddiff
+        = std::mismatch(m.data(), m.data() + m.nsites() * m.nsam(), vm.data());
+    BOOST_REQUIRE_EQUAL(ddiff.first == m.data() + m.nsites() * m.nsam(), true);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
