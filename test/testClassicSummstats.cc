@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <numeric>
 #include <set>
 #include <string>
 #include <vector>
@@ -76,6 +77,33 @@ manual_num_haps(const Sequence::VariantMatrix& m)
                 };
         }
     return uhaps.size();
+}
+
+std::vector<int>
+manual_haplotype_labels_no_missing_data(const Sequence::VariantMatrix& m)
+{
+    std::vector<int> l(m.nsam()), processed(m.nsam(), 0);
+    std::iota(begin(l), end(l), 0);
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            if (!processed[i])
+                {
+                    auto ci = Sequence::get_ConstColView(m, i);
+                    for (std::size_t j = i + 1; j < m.nsam(); ++j)
+                        {
+                            auto cj = Sequence::get_ConstColView(m, j);
+                            auto diff = std::mismatch(
+                                ci.begin(), ci.end(), cj.begin());
+                            if (diff.first == ci.end())
+                                {
+                                    //haps i and j are identical
+                                    l[j] = l[i];
+                                    processed[j] = 1;
+                                }
+                        }
+                }
+        }
+    return l;
 }
 
 BOOST_FIXTURE_TEST_SUITE(test_classic_stats, vmatrix_from_msprime)
@@ -263,11 +291,20 @@ BOOST_AUTO_TEST_CASE(test_number_of_differences)
         }
 }
 
-BOOST_AUTO_TEST_CASE(test_labelling_haplotypes)
+BOOST_AUTO_TEST_CASE(test_number_haplotype_labels)
 {
     auto labels = Sequence::label_haplotypes(m);
-    std::set<std::int32_t> ulabels(begin(labels),end(labels));
+    std::set<std::int32_t> ulabels(begin(labels), end(labels));
     BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
+}
+
+BOOST_AUTO_TEST_CASE(test_haploype_label_correctness)
+{
+    auto manual_labels = manual_haplotype_labels_no_missing_data(m);
+    std::set<std::int32_t> ulabels(begin(manual_labels), end(manual_labels));
+    BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
+
+    // TODO: compare to output from the libseq fxn
 }
 
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
