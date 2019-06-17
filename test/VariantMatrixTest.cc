@@ -353,27 +353,6 @@ BOOST_AUTO_TEST_CASE(test_accumulate)
 }
 BOOST_AUTO_TEST_SUITE_END()
 
-BOOST_FIXTURE_TEST_SUITE(test_AlleleCountMatrixOperations, dataset)
-
-BOOST_AUTO_TEST_CASE(test_slice)
-{
-    Sequence::AlleleCountMatrix am(m);
-    auto w = Sequence::make_window(m, 0, 0.25);
-    Sequence::AlleleCountMatrix amw(w);
-    std::vector<int> c;
-    for (std::size_t i = 0; i < 2; ++i)
-        {
-            auto r = am.row(i);
-            c.insert(c.end(), r.first, r.second);
-        }
-    Sequence::AlleleCountMatrix amslice(std::move(c), 2, 2, m.nsam());
-    BOOST_REQUIRE_EQUAL(amw.counts == amslice.counts, true);
-    BOOST_REQUIRE_EQUAL(amw.ncol, amslice.ncol);
-    BOOST_REQUIRE_EQUAL(amw.nrow, amslice.nrow);
-    BOOST_REQUIRE_EQUAL(amw.nsam, amslice.nsam);
-}
-BOOST_AUTO_TEST_SUITE_END()
-
 BOOST_FIXTURE_TEST_SUITE(test_msformat_round_trips, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_io_roundtrip)
