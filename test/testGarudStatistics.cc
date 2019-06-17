@@ -10,10 +10,10 @@
 #include <Sequence/VariantMatrixViews.hpp>
 #include <Sequence/summstats/garud.hpp>
 #include <Sequence/summstats/classics.hpp>
-#include "VariantMatrixFixture.hpp"
+#include "msprime_data_fixture.hpp"
 #include <boost/test/unit_test.hpp>
 
-BOOST_FIXTURE_TEST_SUITE(test_garud_stats, dataset)
+BOOST_FIXTURE_TEST_SUITE(test_garud_stats, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_garud_stats)
 /* This test compares the results to alternative
