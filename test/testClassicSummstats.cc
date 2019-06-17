@@ -92,8 +92,8 @@ manual_haplotype_labels_no_missing_data(const Sequence::VariantMatrix& m)
                     for (std::size_t j = i + 1; j < m.nsam(); ++j)
                         {
                             auto cj = Sequence::get_ConstColView(m, j);
-                            auto diff = std::mismatch(
-                                ci.begin(), ci.end(), cj.begin());
+                            auto diff = std::mismatch(ci.begin(), ci.end(),
+                                                      cj.begin());
                             if (diff.first == ci.end())
                                 {
                                     //haps i and j are identical
@@ -302,9 +302,22 @@ BOOST_AUTO_TEST_CASE(test_haploype_label_correctness)
 {
     auto manual_labels = manual_haplotype_labels_no_missing_data(m);
     std::set<std::int32_t> ulabels(begin(manual_labels), end(manual_labels));
+    // sanity-check our manual fxn
     BOOST_REQUIRE_EQUAL(ulabels.size(), manual_num_haps(m));
 
     // TODO: compare to output from the libseq fxn
+    auto labels = Sequence::label_haplotypes(m);
+    BOOST_REQUIRE_EQUAL(manual_labels.size(), labels.size());
+    for (std::size_t i = 0; i < m.nsam(); ++i)
+        {
+            for (std::size_t j = i + 1; j < m.nsam(); ++j)
+                {
+                    if(manual_labels[i]==manual_labels[j])
+                    {
+                        BOOST_REQUIRE_EQUAL(labels[i],labels[j]);
+                    }
+                }
+        }
 }
 
 BOOST_AUTO_TEST_CASE(test_num_haplotypes)
