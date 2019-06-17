@@ -353,6 +353,17 @@ BOOST_AUTO_TEST_CASE(test_accumulate)
 }
 BOOST_AUTO_TEST_SUITE_END()
 
+BOOST_FIXTURE_TEST_SUITE(test_deep_copy, vmatrix_from_msprime)
+
+BOOST_AUTO_TEST_CASE(test_variant_matrix_deepcopy)
+{
+    auto c = m.deepcopy();
+    BOOST_REQUIRE_EQUAL(m == c, true);
+    BOOST_REQUIRE_EQUAL(m != c, false);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
 BOOST_FIXTURE_TEST_SUITE(test_msformat_round_trips, vmatrix_from_msprime)
 
 BOOST_AUTO_TEST_CASE(test_io_roundtrip)
@@ -361,8 +372,8 @@ BOOST_AUTO_TEST_CASE(test_io_roundtrip)
     Sequence::to_msformat(m, o);
     std::istringstream in(o.str());
     auto vm = Sequence::from_msformat(in);
-    BOOST_REQUIRE_EQUAL(m==vm, true);
-    BOOST_REQUIRE_EQUAL(m!=vm, false);
+    BOOST_REQUIRE_EQUAL(m == vm, true);
+    BOOST_REQUIRE_EQUAL(m != vm, false);
 }
 
 BOOST_AUTO_TEST_SUITE_END()

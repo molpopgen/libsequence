@@ -187,6 +187,13 @@ namespace Sequence
         std::swap(this->max_allele_, rhs.max_allele_);
     }
 
+    VariantMatrix
+    VariantMatrix::deepcopy() const
+    {
+        return VariantMatrix(capsule->clone(), pcapsule->clone(),
+                             max_allele());
+    }
+
     bool
     VariantMatrix::resizable() const
     {
@@ -228,6 +235,9 @@ namespace Sequence
     operator==(const VariantMatrix& a, const VariantMatrix& b)
     {
         if (a.nsites() != b.nsites() || a.nsam() != b.nsam())
+            return false;
+
+        if (a.max_allele() != b.max_allele())
             return false;
 
         auto pdiff = std::mismatch(a.pbegin(), a.pend(), b.pbegin());
