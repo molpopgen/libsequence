@@ -19,6 +19,12 @@ However:
 
 1. Sequence/SeqRegexes.hpp -- not working.  This will not be fixed until GCC supports <regex>.  The function is now currently implemented in a non-regex manner, which is lame, but it works.
 
+## libsequence 1.9.8
+
+* Refactor VariantMatrix to manage memory via Sequence::GenotypeCapsule and Sequence::PositionCapsule
+* Windows of VariantMatrix objects now do not require copies, and instead use Sequence::NonOwningGenotypeCapsule and Sequence::NonOwningPositionCapsule.
+* A bug in haplotype labelling is fixed. [Issue 59](https://github.com/molpopgen/libsequence/issues/59).  Statistics like number of haplotypes, haplotype diversity, etc., were affected by this issue, but the errors were small for larger data sets.
+
 ## libsequence 1.9.7
 
 * Fix error in Sequence::lhaf that led to an infinite loop.
