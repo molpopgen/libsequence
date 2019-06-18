@@ -3,6 +3,7 @@
 #include <functional>
 #include <limits>
 #include <cmath>
+#include <pybind11/pybind11.h>
 
 namespace Sequence
 {
@@ -72,7 +73,7 @@ namespace Sequence
                                           std::back_inserter(newdata));
                                 if (remove_pos)
                                     {
-                                        newpos.push_back(m.position(i));
+                                        newpos.push_back(m.cposition(i));
                                     }
                             }
                         else
