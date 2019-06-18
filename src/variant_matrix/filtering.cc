@@ -3,7 +3,6 @@
 #include <functional>
 #include <limits>
 #include <cmath>
-#include <pybind11/pybind11.h>
 
 namespace Sequence
 {

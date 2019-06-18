@@ -2,7 +2,6 @@
 #include <numeric>
 #include <vector>
 #include <cstdint>
-#include <iostream>
 #include <unordered_map>
 #include <Sequence/summstats/util.hpp>
 #include <Sequence/summstats/generic.hpp>
