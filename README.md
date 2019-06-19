@@ -29,9 +29,9 @@ Please post to the [libsequence user group](https://groups.google.com/forum/#!fo
 # Build status
 
 * master branch: [![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=master)](https://travis-ci.org/molpopgen/libsequence)
-. master branch on Circle: [![CircleCI](https://circleci.com/gh/molpopgen/libsequence/tree/master.svg?style=svg)](https://circleci.com/gh/molpopgen/libsequence/tree/master)
+* master branch on Circle: [![CircleCI](https://circleci.com/gh/molpopgen/libsequence/tree/master.svg?style=svg)](https://circleci.com/gh/molpopgen/libsequence/tree/master)
 * dev branch: [![Build Status](https://travis-ci.org/molpopgen/libsequence.svg?branch=dev)](https://travis-ci.org/molpopgen/libsequence)
-. dev branch on Circle: [![CircleCI](https://circleci.com/gh/molpopgen/libsequence/tree/dev.svg?style=svg)](https://circleci.com/gh/molpopgen/libsequence/tree/dev)
+* dev branch on Circle: [![CircleCI](https://circleci.com/gh/molpopgen/libsequence/tree/dev.svg?style=svg)](https://circleci.com/gh/molpopgen/libsequence/tree/dev)
 
 
 # Citation
