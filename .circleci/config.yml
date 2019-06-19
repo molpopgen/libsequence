@@ -1,0 +1,39 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/stretch
+    working_directory: /home/circleci/libsequence
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci *
+      - restore_cache:
+          key: libsequence-{{ .Branch }}
+      - run:
+          name: Checkout submodules
+          command: |
+            git submodule update --init --recursive 
+            # Write out the status for debugging purposes. Are we checked out at tags?
+            git submodule status --recursive
+      - run:
+          name: Install dependencies and set path
+          command: |
+            sudo apt-get update
+            sudo apt-get install libboost-*dev
+            # way to set path persistently https://circleci.com/docs/2.0/env-vars/#setting-path
+            echo 'export PATH=/home/circleci/.local/bin:$PATH' >> $BASH_ENV
+      - save_cache:
+          key: libsequence-{{ .Branch }}
+          paths:
+            - "/home/circleci/.local"
+
+      - run:
+          name: Compile package
+          command: |
+              ./configure
+              make
+
+      - run:
+          name: Run test suite
+          command: |
+              make check
