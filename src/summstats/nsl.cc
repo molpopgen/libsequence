@@ -129,11 +129,6 @@ namespace Sequence
             }
         rv.reserve(m.nsites());
 
-        // A matrix keeping track of the
-        // index where sample i,j last differed.
-        // The lower left corresponds to left edges,
-        // and the upper right are the right edges.
-        // -1 mean unevaluated.
         auto npairs = m.nsam() * (m.nsam() - 1) / 2;
         std::vector<summstats_details::suffix_edges> edges(npairs);
         std::vector<ConstColView> alleles;
